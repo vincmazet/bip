@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Histogram transformations &#8212; Basics of Image Processing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conclusion" href="outro.html" />
+    <link rel="prev" title="Definition" href="histogram.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Basics of Image Processing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Foreword
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Digital images
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="definition.html">
+   What is a digital image?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="display.html">
+   Displaying an image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="operations.html">
+   Arithmetic operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="histogram.html">
+   Definition
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Histogram transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Filtering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/convolution.html">
+   Convolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/fourier.html">
+   Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/filtering.html">
+   Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/outro.html">
+   Outro
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Compression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossless.html">
+   Lossless compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossy.html">
+   Lossy compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Mathematical morphology
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/basics.html">
+   Basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/composition.html">
+   Composition of basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/measure.html">
+   Measure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Interpolation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interpolation/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interpolation/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Registration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../registration/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../registration/registration.html">
+   Registration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../registration/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Segmentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/intensity.html">
+   Intensity-based segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/region.html">
+   Region-based segmentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/watershed.html">
+   Watershed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/evaluation.html">
+   How to evaluate a segmentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Restoration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/denoising.html">
+   Denoising
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/deconvolution.html">
+   Deconvolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Feature detection
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/matched-filter.html">
+   Matched filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/pattern.html">
+   Pattern detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/edges.html">
+   Edge detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/corners.html">
+   Corner detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/lines.html">
+   Line detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab1.html">
+   Lab 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc1.html">
+     Correction of lab 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab2.html">
+   Lab 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc2.html">
+     Correction of lab 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab3.html">
+   Lab 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc3.html">
+     Correction of lab 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In a nutshell
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/optimization.html">
+   Mathematical optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/classification.html">
+   Classification
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://moodle3.unistra.fr/course/view.php?id=7653">
+   Moodle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/python.html">
+   Installing and using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/digital-images/transformations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#negative-image">
+   Negative image
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gamma-correction">
+   Gamma correction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram-spreading">
+   Histogram spreading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram-equalization">
+   Histogram equalization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thresholding">
+   Thresholding
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="histogram-transformations">
+<span id="c-histogram-transformations"></span><h1>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Permalink to this headline">¶</a></h1>
+<p>An histogram transformation consists in applying a mathematical function to the intensity distribution.
+Generally, the transformations are useful to improve the visual quality of an image,
+but are rarely needed inside an automatic processing.</p>
+<p>The transform, denoted <span class="math notranslate nohighlight">\(T\)</span>, is applied on the pixel intensities to change their values:</p>
+<div class="math notranslate nohighlight">
+\[j = T(i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(i\)</span> are respectively the intensities of the new and the original image.
+As a consequence, the histogram of the new image differs from the histogram of the original image.</p>
+<p>Below are some common transformations (we suppose the pixel intensities to lie in <span class="math notranslate nohighlight">\([0,1]\)</span>).</p>
+<div class="section" id="negative-image">
+<h2>Negative image<a class="headerlink" href="#negative-image" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[T(i) = 1-i\]</div>
+<div class="figure align-default" id="f-histogram-negative">
+<a class="reference internal image-reference" href="../_images/negative.svg"><img alt="../_images/negative.svg" src="../_images/negative.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Negative image: the gray levels are reversed.</span><a class="headerlink" href="#f-histogram-negative" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="gamma-correction">
+<h2>Gamma correction<a class="headerlink" href="#gamma-correction" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[T(i) = i^\gamma\]</div>
+<div class="figure align-default" id="f-histogram-gamma">
+<a class="reference internal image-reference" href="../_images/gamma.svg"><img alt="../_images/gamma.svg" src="../_images/gamma.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Gamma correction modify the coulours of an image acquired by an electronic system,
+it is used to take into account the non-linear sensibility of human eyes to the light.
+Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a class="headerlink" href="#f-histogram-gamma" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="histogram-spreading">
+<h2>Histogram spreading<a class="headerlink" href="#histogram-spreading" title="Permalink to this headline">¶</a></h2>
+<p>(french: <em>étalement d’histogramme</em>)</p>
+<div class="math notranslate nohighlight">
+\[T(i) = \frac{i-i_\text{min}}{i_\text{max}-i_\text{min}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i_\text{min}\)</span> and <span class="math notranslate nohighlight">\(i_\text{max}\)</span> are respectively the minimum and maximum intensities in the image.</p>
+<div class="figure align-default" id="f-histogram-spread">
+<a class="reference internal image-reference" href="../_images/spreading.svg"><img alt="../_images/spreading.svg" src="../_images/spreading.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Histogram spreading enhances the contrast by “dilating” the histogram to the whole intensity interval.</span><a class="headerlink" href="#f-histogram-spread" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="histogram-equalization">
+<h2>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Permalink to this headline">¶</a></h2>
+<p>(french: <em>égalisation d’histogramme</em>)</p>
+<div class="math notranslate nohighlight">
+\[T(i) = \frac{1}{MN} \sum_{k=0}^i n_k\]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are the image size and <span class="math notranslate nohighlight">\(n_k\)</span> is the number of pixels with intensity <span class="math notranslate nohighlight">\(k\)</span>.
+This transformation aims to spread the histogram over the entire intensity range, and to make the histogram as flat as possible.
+A consequence is an increasing of the image contrast.
+It is a fully automatic method that does not require any parameters to be set.
+The demonstration of this equation is available in <a class="reference internal" href="../appendices/refs.html#c-refs"><span class="std std-ref">[Gonzalez 2010, section 3.3.1]</span></a>.</p>
+<div class="figure align-default" id="f-histogram-equalization">
+<a class="reference internal image-reference" href="../_images/equalization.svg"><img alt="../_images/equalization.svg" src="../_images/equalization.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tend to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="thresholding">
+<h2>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this headline">¶</a></h2>
+<p>The histogram is sometimes very useful to segment the image in two classes,
+that is to distinguish the objects in the image with respect to their gray level.
+Indeed, if the histogram shows clearly two modes (<em>i.e.</em> two “bumps”),
+on can define a threshold <span class="math notranslate nohighlight">\(T\)</span> between these two modes, then apply a thresholding on the pixels, such that:</p>
+<ul class="simple">
+<li><p>if the pixel level is lower that <span class="math notranslate nohighlight">\(T\)</span>, then the pixel is in class 0 (displayed in black in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 11</span></a>),</p></li>
+<li><p>otherwise the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 11</span></a>).</p></li>
+</ul>
+<div class="figure align-default" id="f-histogram-threshold">
+<a class="reference internal image-reference" href="../_images/thresholding.svg"><img alt="../_images/thresholding.svg" src="../_images/thresholding.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Threshold with a threshold set to 0.45.</span><a class="headerlink" href="#f-histogram-threshold" title="Permalink to this image">¶</a></p>
+</div>
+<p>Such a thresholding yields a binary image whose pixels have only two values.
+Several methods exist that compute automatically the threshold, such that <span class="xref std std-ref">Otsu’s method</span>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./digital-images"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="histogram.html" title="previous page">Definition</a>
+    <a class='right-next' id="next-link" href="outro.html" title="next page">Conclusion</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vincent Mazet (University of Strasbourg, France)<br/>
+        
+            &copy; Copyright 2021-2022.<br/>
+          <div class="extra_footer">
+            Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2021 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

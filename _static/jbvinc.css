@@ -1,0 +1,58 @@
+/* Feuille de style perso VM */
+
+
+/* Style général */
+
+@import url('fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=auto');
+
+body {
+  font-family: "Source Sans Pro";
+  font-size: 1.1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+}
+
+h1 {font-size: 2.5em}
+h2 {font-size: 1.7em}
+h3 {
+  font-size: 1.0em;
+  margin: 1.2rem 0 .5rem 0;
+}
+
+span.pre {
+  background-color: #eee;
+  padding: 1px 5px;
+  border: 0;
+  color: #000;
+  font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  font-size: inherit;
+  line-height: 1.3077
+}
+
+/* Taille des légendes */
+
+main.bd-content #main-content div.figure span {
+  font-size: 1.1rem;
+}
+
+/* Hack pour faire disparaître le footer (et mettre le mien à la place) */
+
+.footer p {
+    display: none;
+}
+
+/* Style pour l'impression */
+
+@media print {
+  body {
+    font-family: Times;
+    margin: 2cm
+  }
+}
+
+/* Tableaux */
+
+table p { margin-bottom: 0 }
