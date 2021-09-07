@@ -3,7 +3,7 @@
 
 ## Definition
 
-Many image processing methods result from a modification of one pixel with respect to its neighbors.
+Many image processing results come from a modification of one pixel with respect to its neighbors.
 When this modification is similar in the entire image $g$,
 it can be mathematically defined using a second image $h$ which defines the neighbor relationships.
 This results in a third image $f$.
@@ -23,7 +23,7 @@ name: F:convolution:sketch
 Example for computing the pixel (2,2) of $f$.
 ```
 
-For the sake of simplicity, the image $h$ is:
+For the sake of simplicity, the image $h$ is often:
 * of odd size ($3\times3$, $5\times5$, $7\times7$...);
 * centered, _i.e._ the pixel with coordinates $(0,0)$ is at the center of the image $h$.
 
