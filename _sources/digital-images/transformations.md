@@ -38,7 +38,7 @@ name: F:histogram:gamma
 width: 80%
 ---
 
-Gamma correction modify the coulours of an image acquired by an electronic system,
+Gamma correction modifies the coulours of an image acquired by an electronic system,
 it is used to take into account the non-linear sensibility of human eyes to the light.
 Here, $\gamma=0.4$
 ```
@@ -86,7 +86,7 @@ Histogram equalization is another contrast enhancing and tend to make the detail
 The histogram is sometimes very useful to segment the image in two classes,
 that is to distinguish the objects in the image with respect to their gray level.
 Indeed, if the histogram shows clearly two modes (_i.e._ two "bumps"),
-on can define a threshold $T$ between these two modes, then apply a thresholding on the pixels, such that:
+a threshold $T$ can be defined between these two modes, then apply a thresholding on the pixels, such that:
 * if the pixel level is lower that $T$, then the pixel is in class 0 (displayed in black in {numref}`F:histogram:threshold`),
 * otherwise the pixel is in class 1 (displayed in white in {numref}`F:histogram:threshold`).
 

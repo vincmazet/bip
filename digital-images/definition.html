@@ -687,16 +687,16 @@ the pixel at coordinates <span class="math notranslate nohighlight">\((0,0)\)</s
 A 3D image, like in MRI, is often called “3D image” or “cube”.
 A 1D image is actually a signal.
 The elements constituting a 2D image are called <em>pixels</em> (for “picture element”),
-and the one constituting a 3D image are called <em>voxels</em> (for “volume element”).</p>
+and the ones constituting a 3D image are called <em>voxels</em> (for “volume element”).</p>
 </div>
 <div class="section" id="dimension-heterogeneity">
 <h3>Dimension heterogeneity<a class="headerlink" href="#dimension-heterogeneity" title="Permalink to this headline">¶</a></h3>
 <p>In common 2D images, the two dimensions are both spatial dimensions.
 But the dimensions may represent another physical domain and be different.
 For example, a video can be seen as a 2D+<span class="math notranslate nohighlight">\(t\)</span> image (two spatial dimensions, one temporal dimension),
-an MRI sequence can be seen as a 3D+<span class="math notranslate nohighlight">\(t\)</span> image (three spatial dimensions, one temporal dimension),
+a functional MRI sequence can be seen as a 3D+<span class="math notranslate nohighlight">\(t\)</span> image (three spatial dimensions, one temporal dimension),
 and a <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperspectral_imaging">hyperspectral image</a>
-is a 3D+<span class="math notranslate nohighlight">\(\lambda\)</span> image (two spatial dimensions, plus a third dimension depending on the wavelength).</p>
+is a 2D+<span class="math notranslate nohighlight">\(\lambda\)</span> image (two spatial dimensions, plus a third dimension depending on the wavelength).</p>
 </div>
 <div class="section" id="element-dimension-b">
 <h3>Element dimension <span class="math notranslate nohighlight">\(B\)</span><a class="headerlink" href="#element-dimension-b" title="Permalink to this headline">¶</a></h3>
@@ -710,7 +710,7 @@ therefore they gather four values (red, green, blue, and infrared).</p>
 <h3>Element intensity set<a class="headerlink" href="#element-intensity-set" title="Permalink to this headline">¶</a></h3>
 <p>Common images have pixel intensities in the range <span class="math notranslate nohighlight">\(\{0,1,\dots,255\}\)</span>,
 but a binary image has values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.
-Often, the intensities are supposed to be real.</p>
+Most of the time, the intensities are supposed to be real.</p>
 <!-- Fig 13 Hubele -> What is? --></div>
 </div>
 </div>

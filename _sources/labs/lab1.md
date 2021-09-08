@@ -120,9 +120,9 @@ The coefficients have been obtained by psychovisual studies and guarantee that $
 
 * Convert the color image to grayscale (`skimage.color.rgb2gray`) then display it.
 
-* Print the intensity of the top-left pixel (which is at position $(0,13)$) by typing `g[0,0]`.
+* Print the intensity of the top-left pixel (which is at position $(0,0)$) by typing `g[0,0]`.
 
-* Print the intensities of pixels of the five first pixels of the second row by typing `g[1,0:5]`,
+* Print the intensities of the five first pixels of the second row by typing `g[1,0:5]`,
   which extract from `g` the pixels at row 1 and columns 0 to 4 (the last index is not reached).
 
 * Print the intensities of all the pixels in the third row by typing `g[2,:]`,
