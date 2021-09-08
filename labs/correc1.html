@@ -115,7 +115,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../digital-images/histogram.html">
-   Definition
+   Histogram
   </a>
  </li>
  <li class="toctree-l1">
@@ -422,6 +422,57 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab4.html">
+   Lab 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc4.html">
+     Correction of lab 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab5.html">
+   Lab 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc5.html">
+     Correction of lab 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab6.html">
+   Lab 6
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc6.html">
+     Correction of lab 6
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -512,9 +563,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/labs/correc1.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/labs/correc1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -537,6 +588,161 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objectives">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-cells">
+     Code cells
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown-cell">
+     Markdown cell
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-a-saved-image">
+   Display a saved image
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modules">
+     Modules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#display-the-color-image">
+     Display the color image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conversion-to-grayscale">
+     Conversion to grayscale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extraction-of-pixels">
+     Extraction of pixels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brightness-profile">
+     Brightness profile
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-simple-image">
+   Create a simple image
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-synthesis">
+     Image synthesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-the-intensity-range">
+   Setting the intensity range
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#display-the-image">
+     Display the image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-a-better-colormap">
+     Choose a better colormap
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#segmentation-by-histogram-thresholding">
+   Segmentation by histogram thresholding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-histogram">
+     Image histogram
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#segmentation-in-2-classes">
+     Segmentation in 2 classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#segmentation-in-3-classes">
+     Segmentation in 3 classes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contrast-enhancement">
+   Contrast enhancement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplication-by-a-real">
+     Multiplication by a real
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram-equalization">
+     Histogram equalization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -546,8 +752,671 @@
               <div>
                 
   <div class="section" id="correction-of-lab-1">
-<h1>Correction of lab 1<a class="headerlink" href="#correction-of-lab-1" title="Permalink to this headline">¶</a></h1>
-<p>xxx</p>
+<span id="correc1"></span><h1>Correction of lab 1<a class="headerlink" href="#correction-of-lab-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="objectives">
+<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>discover and know how to write a Python program</p></li>
+<li><p>discover and know how to use a notebook</p></li>
+<li><p>manipulate variables</p></li>
+</ul>
+</div>
+<div class="section" id="code-cells">
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The two cells containing codes should be:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2021</span>
+<span class="n">course</span> <span class="o">=</span> <span class="s2">&quot;BIP&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">course</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BIP 2021
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="markdown-cell">
+<h3>Markdown cell<a class="headerlink" href="#markdown-cell" title="Permalink to this headline">¶</a></h3>
+<p>The markdown code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  Write **bold**, _italic_ or equations: $\sqrt{2}$.
+</pre></div>
+</div>
+<p>produces:</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-12 docutils">
+<div class="card w-100 border-2 docutils">
+<div class="card-body docutils">
+<p class="card-text">Write <strong>bold</strong>, <em>italic</em> or equations: <span class="math notranslate nohighlight">\(\sqrt{2}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="display-a-saved-image">
+<h2>Display a saved image<a class="headerlink" href="#display-a-saved-image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Objectives<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>use functions and modules</p></li>
+<li><p>know how to load and display an image, and use a colormap</p></li>
+<li><p>display the size of an image</p></li>
+<li><p>convert an image to grayscale</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator</p></li>
+<li><p>understand that an image is also a 2D signal</p></li>
+</ul>
+</div>
+<div class="section" id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h3>
+<p>The use of the function <code class="docutils literal notranslate"><span class="pre">ccc</span></code> available in the submodule <code class="docutils literal notranslate"><span class="pre">bbb</span></code> of the module <code class="docutils literal notranslate"><span class="pre">aaa</span></code> writes <code class="docutils literal notranslate"><span class="pre">aaa.bbb.ccc</span></code>.
+I am sure you agree this is a bit long to write, that is why we usually rename the submodule to something shorter.
+Thus, the following instructions rename <code class="docutils literal notranslate"><span class="pre">skimage.io</span></code> to <code class="docutils literal notranslate"><span class="pre">io</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> to <code class="docutils literal notranslate"><span class="pre">plt</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The three modules used in this course are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.numpy.org/">Numpy</a> (scientific programming),</p></li>
+<li><p><a class="reference external" href="https://scikit-image.org/">Scikit-image</a> (image processing),</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> (display).</p></li>
+</ul>
+<p>Refer to the documentation on these websites to get the syntax of the functions.</p>
+</div>
+<div class="section" id="display-the-color-image">
+<h3>Display the color image<a class="headerlink" href="#display-the-color-image" title="Permalink to this headline">¶</a></h3>
+<p>Now you can load the image mandrill.tiff (I load it directly from the website):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;http://sipi.usc.edu/database/download.php?vol=misc&amp;img=4.2.03&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and display it (I take this opportunity to add a title):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_13_0.png" src="../_images/correc1_13_0.png" />
+</div>
+</div>
+<p>The image dimensions can be read on the displayed image: a little more than 500 pixels per side, and 3 bands since the image is in color.
+A more precise alternative is to use the <code class="docutils literal notranslate"><span class="pre">shape</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So the image if of size 512 × 512, with 3 bands.</p>
+</div>
+<div class="section" id="conversion-to-grayscale">
+<h3>Conversion to grayscale<a class="headerlink" href="#conversion-to-grayscale" title="Permalink to this headline">¶</a></h3>
+<p>We need to import a new module (I am doing this at this point, but it is recommended to import all modules at the beginning of the notebook).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.color</span> <span class="k">as</span> <span class="nn">color</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill (grayscale)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/correc1_18_1.png" src="../_images/correc1_18_1.png" />
+</div>
+</div>
+<p>What’s that weird grayscale image? It’s rather green… 😲</p>
+<p>This actually <em>is</em> a grayscale image (the image has only one band).
+But the default colormap provided with <code class="docutils literal notranslate"><span class="pre">imshow</span></code> is a gradient of blue and green.
+To display it in real gray levels, you must specify the option <code class="docutils literal notranslate"><span class="pre">cmap</span></code> in<code class="docutils literal notranslate"> <span class="pre">imshow</span></code>.
+A large number of palettes are available (see <a class="reference external" href="https://matplotlib.org/examples/color/colormaps_reference.html">catalog</a>);
+here we choose the classic <code class="docutils literal notranslate"><span class="pre">gray</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill (grayscale)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/correc1_20_1.png" src="../_images/correc1_20_1.png" />
+</div>
+</div>
+<p>Phew! 😅</p>
+<p>The grayscale image has intensities in this range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min : 0.0
+Max : 0.9116803921568628
+</pre></div>
+</div>
+</div>
+</div>
+<p>The range of colors can also be redefined by specifying the intensities corresponding to black (<code class="docutils literal notranslate"><span class="pre">vmin</span></code>) and white (<code class="docutils literal notranslate"> <span class="pre">vmax</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Intensity range = [0.0, 0.5]&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_24_0.png" src="../_images/correc1_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="extraction-of-pixels">
+<h3>Extraction of pixels<a class="headerlink" href="#extraction-of-pixels" title="Permalink to this headline">¶</a></h3>
+<p>The syntax <code class="docutils literal notranslate"><span class="pre">g[a:b,</span> <span class="pre">c:d]</span></code> extract pixels located between rows <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code><span class="math notranslate nohighlight">\(-1\)</span> and columns <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code>-1.
+If <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code> is not given, then it is considered to be <span class="math notranslate nohighlight">\(0\)</span>.
+If <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> is not given, then it is considered to be the maximal index in the dimension.</p>
+<p>Then we have the instensity of top-left pixel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5775650980392157
+</pre></div>
+</div>
+</div>
+</div>
+<p>The intensities of the five first pixels of the second row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.46821647, 0.39396314, 0.15052863, 0.27128118, 0.3509451 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the intensities of all the pixels in the third row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.29887137, 0.45405412, 0.17520392, 0.18225216, 0.39513529,
+       0.23370078, 0.23346275, 0.18306275, 0.44279098, 0.42749882,
+       0.19147922, 0.23552588, 0.28236667, 0.14554353, 0.10365373,
+       0.20003569, 0.47681922, 0.41969843, 0.38021059, 0.22593216,
+       0.28821765, 0.20411412, 0.16150392, 0.25885922, 0.3675949 ,
+       0.70087843, 0.80062784, 0.69879137, 0.3542451 , 0.18072471,
+       0.37092039, 0.66425961, 0.62859882, 0.32563176, 0.48865843,
+       0.44584078, 0.43163216, 0.41797137, 0.4346651 , 0.50814902,
+       0.29834   , 0.53164941, 0.52597647, 0.48358314, 0.55389647,
+       0.58781529, 0.5523349 , 0.56919608, 0.32072275, 0.47438745,
+       0.57285569, 0.25036235, 0.34582863, 0.3136149 , 0.38447255,
+       0.37164275, 0.33711451, 0.67537804, 0.59824706, 0.62892549,
+       0.54611451, 0.59752706, 0.40229412, 0.2953298 , 0.64953529,
+       0.65788039, 0.24202118, 0.36884667, 0.49252118, 0.79315843,
+       0.70304157, 0.46462706, 0.42678275, 0.25671647, 0.19072196,
+       0.64614784, 0.66011961, 0.35292157, 0.57037412, 0.50863059,
+       0.29234667, 0.49992588, 0.7499898 , 0.60244275, 0.55461333,
+       0.58998824, 0.47794706, 0.31540235, 0.47809922, 0.24272667,
+       0.52286   , 0.78632667, 0.70392667, 0.3449149 , 0.32193765,
+       0.40283765, 0.33996588, 0.25855725, 0.46996627, 0.56721255,
+       0.66268706, 0.26738078, 0.62769373, 0.57931686, 0.34050745,
+       0.32190706, 0.17445294, 0.29652902, 0.46807725, 0.59419804,
+       0.65354157, 0.55356863, 0.45248588, 0.63711373, 0.78667608,
+       0.78139176, 0.66867098, 0.62541686, 0.64168824, 0.50473098,
+       0.21474   , 0.46951373, 0.80832078, 0.55386   , 0.74174588,
+       0.74282902, 0.42696157, 0.55508784, 0.79211451, 0.65287216,
+       0.30708235, 0.61376431, 0.77478275, 0.34201961, 0.26216392,
+       0.26048941, 0.34937765, 0.32378039, 0.60389686, 0.48542196,
+       0.47154392, 0.53828667, 0.57594   , 0.60560745, 0.56346784,
+       0.4943749 , 0.55253725, 0.49998745, 0.73936353, 0.46750078,
+       0.35117451, 0.64160078, 0.50857294, 0.67457882, 0.28412471,
+       0.31143451, 0.26363176, 0.40436863, 0.20817922, 0.45073765,
+       0.24656078, 0.20288588, 0.44887765, 0.52612471, 0.57509843,
+       0.70517725, 0.31155529, 0.44951725, 0.32749373, 0.45062392,
+       0.22434784, 0.21253137, 0.53796627, 0.58654235, 0.51004549,
+       0.35401255, 0.34762314, 0.52055216, 0.3524502 , 0.20716549,
+       0.55764588, 0.55081412, 0.53530706, 0.73204196, 0.72333333,
+       0.43177686, 0.5625302 , 0.57672157, 0.68679882, 0.49665098,
+       0.32977137, 0.61064471, 0.57949647, 0.71874471, 0.60622392,
+       0.45755961, 0.47033333, 0.6539451 , 0.71454745, 0.61620275,
+       0.59436353, 0.4811651 , 0.40566353, 0.29167176, 0.49708235,
+       0.52531412, 0.33124627, 0.56904824, 0.54893294, 0.44701686,
+       0.42592863, 0.39929843, 0.46948353, 0.26834902, 0.37489725,
+       0.65960863, 0.32994863, 0.29597843, 0.48790157, 0.51648039,
+       0.30926745, 0.40897059, 0.70658431, 0.68584392, 0.31943608,
+       0.51457098, 0.68033098, 0.44309608, 0.21460941, 0.5708051 ,
+       0.30841569, 0.12148471, 0.18900745, 0.23111176, 0.35617373,
+       0.63064078, 0.62157843, 0.4543251 , 0.5868102 , 0.63134549,
+       0.35060667, 0.51869843, 0.23740824, 0.44154902, 0.60687922,
+       0.63498353, 0.25839373, 0.49051725, 0.60004118, 0.68548235,
+       0.55514078, 0.73690902, 0.7019949 , 0.49392235, 0.38955451,
+       0.27914118, 0.4273651 , 0.41536784, 0.25250863, 0.49767843,
+       0.34849373, 0.29043529, 0.27982392, 0.55084627, 0.62948549,
+       0.55583882, 0.27288784, 0.56052235, 0.66894   , 0.38284314,
+       0.43967529, 0.2774502 , 0.26997804, 0.28804706, 0.45563294,
+       0.50055765, 0.74024863, 0.61882902, 0.41892431, 0.56081059,
+       0.60970863, 0.71147412, 0.75721647, 0.61909059, 0.65936275,
+       0.59161608, 0.44407569, 0.39787529, 0.42114314, 0.48729686,
+       0.37464902, 0.30955882, 0.33337961, 0.64318431, 0.51892157,
+       0.58090078, 0.55057686, 0.4523302 , 0.52688392, 0.31417373,
+       0.27305843, 0.43903255, 0.60187137, 0.61762431, 0.42226471,
+       0.31401608, 0.39641686, 0.61858353, 0.53392157, 0.30225922,
+       0.46834196, 0.40980824, 0.37164039, 0.4239549 , 0.37574392,
+       0.51241843, 0.51272314, 0.58368431, 0.59460706, 0.33814078,
+       0.63098902, 0.65416745, 0.50459647, 0.64279059, 0.6570851 ,
+       0.49102588, 0.65684078, 0.50505098, 0.23141804, 0.20387608,
+       0.49046824, 0.27620549, 0.43045922, 0.55709804, 0.74841216,
+       0.64306627, 0.70716745, 0.73133412, 0.36815294, 0.65667098,
+       0.5889549 , 0.61651529, 0.46833451, 0.22244235, 0.28930235,
+       0.42694039, 0.39629882, 0.64588667, 0.3499502 , 0.28574039,
+       0.42263804, 0.29248078, 0.2453702 , 0.36597843, 0.49566784,
+       0.46113333, 0.30190118, 0.42555647, 0.69971176, 0.70840078,
+       0.48582118, 0.2531898 , 0.18831843, 0.40755412, 0.44412275,
+       0.32613882, 0.53831333, 0.42903098, 0.6589251 , 0.72162392,
+       0.5700298 , 0.67195373, 0.71072235, 0.58323725, 0.38245529,
+       0.66597765, 0.62270745, 0.4811502 , 0.64357294, 0.6911302 ,
+       0.46150588, 0.17370039, 0.15491882, 0.28686196, 0.61202824,
+       0.73338157, 0.74530902, 0.65347608, 0.65087098, 0.42826314,
+       0.71725647, 0.7201349 , 0.49603922, 0.37203765, 0.47086471,
+       0.62737216, 0.58209098, 0.68531843, 0.58510431, 0.47664118,
+       0.61493765, 0.59421137, 0.3861098 , 0.38211294, 0.7358498 ,
+       0.41067137, 0.47752078, 0.74665765, 0.70586902, 0.31205961,
+       0.30702824, 0.3080549 , 0.51851961, 0.47489216, 0.53479569,
+       0.53559843, 0.65944471, 0.53486235, 0.52856706, 0.48515569,
+       0.26078157, 0.65548824, 0.5378302 , 0.31735647, 0.4392051 ,
+       0.40995098, 0.48542941, 0.62159569, 0.52709922, 0.35710235,
+       0.6793502 , 0.78834275, 0.77483686, 0.79081216, 0.61601529,
+       0.51214941, 0.51948667, 0.42916549, 0.48015098, 0.44226784,
+       0.54357725, 0.59253137, 0.60061098, 0.42591373, 0.65666078,
+       0.76882392, 0.78575882, 0.60957451, 0.4676651 , 0.60167059,
+       0.80047137, 0.72537804, 0.43510392, 0.62954549, 0.60625098,
+       0.42893529, 0.76703882, 0.82513882, 0.65869098, 0.46839176,
+       0.48753216, 0.5579451 , 0.60944706, 0.75215451, 0.71587137,
+       0.70802667, 0.54521608, 0.35049961, 0.61257843, 0.74617333,
+       0.81649373, 0.74969255, 0.62443255, 0.32151059, 0.65618471,
+       0.66241922, 0.31468392, 0.44372863, 0.63504941, 0.68894196,
+       0.72772   , 0.77370588, 0.60649843, 0.32699569, 0.50390627,
+       0.40383373, 0.24985725, 0.38521412, 0.49977216, 0.68890275,
+       0.69251961, 0.73503176, 0.59991294, 0.69705137, 0.40038588,
+       0.37019922, 0.17809255, 0.19862824, 0.33471961, 0.27111333,
+       0.26034118, 0.5153349 , 0.59366039, 0.37718471, 0.30610902,
+       0.40581451, 0.54923098, 0.49104588, 0.39092235, 0.38469098,
+       0.34957098, 0.31829373])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="brightness-profile">
+<h3>Brightness profile<a class="headerlink" href="#brightness-profile" title="Permalink to this headline">¶</a></h3>
+<p>I choose a horizontal cut on the 200<sup>th</sup> line of the image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">=</span> <span class="mi">200</span>          <span class="c1"># Cut location</span>
+<span class="n">profil</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">cut</span><span class="p">,:]</span>  <span class="c1"># Extract all the pixels of the row &#39;cut&#39; in the image g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can display the brightness profile…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>           <span class="c1"># New figure with specific display size</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># Plot on the left</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">profil</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>                 <span class="c1"># Brightness profile</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Brightness profile&quot;</span><span class="p">)</span>      <span class="c1"># Title</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>                   <span class="c1"># Image on the right</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>           <span class="c1"># Image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">511</span><span class="p">),</span> <span class="p">(</span><span class="n">cut</span><span class="p">,</span><span class="n">cut</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>    <span class="c1"># Cut line in blue</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mandrill&quot;</span><span class="p">)</span>                <span class="c1"># Title</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill&#39;)
+</pre></div>
+</div>
+<img alt="../_images/correc1_34_1.png" src="../_images/correc1_34_1.png" />
+</div>
+</div>
+<p>Do you see on the profile the Mandrill’s nose and the protruding ridges on its sides?</p>
+</div>
+</div>
+<div class="section" id="create-a-simple-image">
+<h2>Create a simple image<a class="headerlink" href="#create-a-simple-image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Objectives<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>synthesize an RGB image (and know, for example, that yellow = green + red)</p></li>
+<li><p>manipulate the value / color correspondence</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator</p></li>
+</ul>
+</div>
+<div class="section" id="image-synthesis">
+<h3>Image synthesis<a class="headerlink" href="#image-synthesis" title="Permalink to this headline">¶</a></h3>
+<p>As usual, do not forget the modules:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The image is composed of blocks of homogeneous color with size 20 × 20 pixels, so as to form an image of 40 × 80 pixels.
+Also, it contains three bands as it is an RGB image.
+Therefore we create an array <code class="docutils literal notranslate"><span class="pre">f</span></code> of size 40 × 80 × 3:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use <a class="reference external" href="https://en.wikipedia.org/wiki/Additive_color">Additive color</a> to create the colors.
+Thus, yellow is obtained by combining green and red.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span> <span class="mi">0</span><span class="p">:</span><span class="mi">20</span> <span class="p">,</span>   <span class="p">:</span>   <span class="p">,</span> <span class="mi">0</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Red band = band 0   (top row: pixels 0 to 19)</span>
+<span class="n">f</span><span class="p">[</span>  <span class="p">:</span>   <span class="p">,</span>  <span class="mi">0</span><span class="p">:</span><span class="mi">40</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Green band = band 1 (the two columns on the left)</span>
+<span class="n">f</span><span class="p">[</span>  <span class="p">:</span>   <span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">60</span> <span class="p">,</span> <span class="mi">2</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># Blue band = band 2  (the two columns at the center)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The bands can be displayed separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Red band&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Green band&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Blue band&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Blue band&#39;)
+</pre></div>
+</div>
+<img alt="../_images/correc1_45_1.png" src="../_images/correc1_45_1.png" />
+</div>
+</div>
+<p>And finally the color image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd260a396a0&gt;
+</pre></div>
+</div>
+<img alt="../_images/correc1_47_1.png" src="../_images/correc1_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setting-the-intensity-range">
+<h2>Setting the intensity range<a class="headerlink" href="#setting-the-intensity-range" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Objectives<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>be aware of the need for a good colormap</p></li>
+<li><p>know how to adjust the colormap to display the objects of interest</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+</div>
+</div>
+<div class="section" id="display-the-image">
+<h3>Display the image<a class="headerlink" href="#display-the-image" title="Permalink to this headline">¶</a></h3>
+<p>Load and display the image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;hdfs.tiff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd2607b5c50&gt;
+</pre></div>
+</div>
+<img alt="../_images/correc1_51_1.png" src="../_images/correc1_51_1.png" />
+</div>
+</div>
+<p>This image corresponds to a portion of the sky in the southern hemisphere called the <a class="reference external" href="http://muse-vlt.eu/science/hdfs-v1-0/"><em>Hubble Deep Field South</em></a>. It was acquired by the <a class="reference external" href="http://muse-vlt.eu/science/">MUSE sensor</a> installed on the VLT in Chile. It is obtained by averaging around 4000 bands of the original image: we speak of a hyperspectral image. (Source: <a class="reference external" href="https://www.aanda.org/articles/aa/abs/2015/03/aa25419-14/aa25419-14.html">Bacon et al., “The MUSE 3D view of the Hubble Deep Field South”, <em>Astronomy &amp; Astrophysics</em>, 2015</a>).</p>
+<p>Although only a small star can be seen, there are many other objects. Since these objects are very distant, they are very faint. In astronomy, as in many other science fields, the pixel intensity is not limited to 256 values. In this case, the intensities lie over the range given below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mininmal intensity: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximal intensity: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mininmal intensity: 625722
+Maximal intensity: 628454834
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="choose-a-better-colormap">
+<h3>Choose a better colormap<a class="headerlink" href="#choose-a-better-colormap" title="Permalink to this headline">¶</a></h3>
+<p>Therefore, to observe the other objects, we will adjust the colormap so that the gray levels will lie between <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code>.
+Intensities less than <code class="docutils literal notranslate"><span class="pre">vmin</span></code> will be displayed in black, and those greater than <code class="docutils literal notranslate"><span class="pre">vmax</span></code> will be in white.
+It’s up to you to find these values to get an image like the one below, where other stars and galaxies are clearly visible
+(and the brightest star is saturated).</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd26071ee80&gt;
+</pre></div>
+</div>
+<img alt="../_images/correc1_56_1.png" src="../_images/correc1_56_1.png" />
+</div>
+</div>
+<p>Another possibility is to use colors to increase the dynamics of the intensities observed. The <code class="docutils literal notranslate"><span class="pre">jet</span></code> colormap is used in the example below, with the the same <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> as before. We observe a few more objects.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd2606a2ef0&gt;
+</pre></div>
+</div>
+<img alt="../_images/correc1_58_1.png" src="../_images/correc1_58_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="segmentation-by-histogram-thresholding">
+<h2>Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Objectives<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>display and manipulate a histogram</p></li>
+<li><p>define a threshold from a histogram</p></li>
+</ul>
+</div>
+<div class="section" id="image-histogram">
+<h3>Image histogram<a class="headerlink" href="#image-histogram" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_62_0.png" src="../_images/correc1_62_0.png" />
+</div>
+</div>
+<p>The histogram is obtained with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code>.
+As this function calculates the image from a vector, it must be used on the vectorized image, and not the image itself.
+The vectorized image is obtained with <code class="docutils literal notranslate"><span class="pre">numpy.ravel</span></code>.
+The pixels in a vectorized image are arrange in one dimension.</p>
+<p>The histogram of the image is not unique: the number of bins must be specified.
+Generally, we choose as many bins as gray levels, but this is not mandatory.
+The following histograms are obtained with 16, 64 and 256 bins.
+Note that the intensities of the image are not between 0 and 255: do you know why (ask the teacher if you cannot get the solution)?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_64_0.png" src="../_images/correc1_64_0.png" />
+<img alt="../_images/correc1_64_1.png" src="../_images/correc1_64_1.png" />
+<img alt="../_images/correc1_64_2.png" src="../_images/correc1_64_2.png" />
+</div>
+</div>
+<p>On the one hand, we easily observe that if the number of bars is low, then the distribution is coarse and some details
+(such as the presence of two modes after 0.5) are not visible.
+On the other hand, if the bin number is high, then we may have too much detail to analyse the result.
+In conclusion, the bin number does not necessarily have to be equal to the number of gray levels in the image,
+it depends on what we are going to do with the histogram!</p>
+</div>
+<div class="section" id="segmentation-in-2-classes">
+<h3>Segmentation in 2 classes<a class="headerlink" href="#segmentation-in-2-classes" title="Permalink to this headline">¶</a></h3>
+<p>The presence of several modes in the histogram implies several possible thresholds.
+The two images below correspond to the thresholds obtained around the three modes of the histogram.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_68_0.png" src="../_images/correc1_68_0.png" />
+<img alt="../_images/correc1_68_1.png" src="../_images/correc1_68_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="segmentation-in-3-classes">
+<h3>Segmentation in 3 classes<a class="headerlink" href="#segmentation-in-3-classes" title="Permalink to this headline">¶</a></h3>
+<p>The histogram is a tool that represents the distribution of the intensities in an image.
+We used it in this exercise to define a threshold on the image, then segmenting the image into two classes.
+Furthermore, we can define several thresholds to obtain a segmentation with more than two classes, as for example in the image below.</p>
+<p>How can you get this result?
+Besides, which modes in the histogram correspond to the three identified zones?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_71_0.png" src="../_images/correc1_71_0.png" />
+</div>
+</div>
+<p>There are methods in the literature that are able to determine automatically the value of the threshold(s), such as Otsu’s method (see <a class="reference internal" href="../segmentation/intensity.html#segmentation"><span class="std std-ref">Intensity-based segmentation</span></a>.</p>
+</div>
+</div>
+<div class="section" id="contrast-enhancement">
+<h2>Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="objective">
+<h3>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Apply histogram transformations</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>The image forest.png has been used in several publications dealing with the problem of removing fog from an image (<em>dehazing</em>).</p>
+<ul class="simple">
+<li><p>K. He, J. Sun, X. Tang,
+« Single image haze removal using dark channel prior »,
+<em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 2011.</p></li>
+<li><p>D. Berman, T. Treibitz, S. Avidan,
+« Non-Local Image Dehazing »,
+CVPR 2016, <a class="reference external" href="http://www.eng.tau.ac.il/~berman/NonLocalDehazing/">website</a>.</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_76_0.png" src="../_images/correc1_76_0.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_77_0.png" src="../_images/correc1_77_0.png" />
+</div>
+</div>
+<p>The original image and its histogram are given above.
+The histogram is mono-modal (it has only one maximum) and uses the full range of intensities quite well.
+However, there are few pixels with low or high intensities, explaining the lack of contrast in the image.</p>
+<p>Thus, what is the effect on this image of a histogram spread?</p>
+</div>
+<div class="section" id="multiplication-by-a-real">
+<h3>Multiplication by a real<a class="headerlink" href="#multiplication-by-a-real" title="Permalink to this headline">¶</a></h3>
+<p>By multiplying the intensities by a coefficient (here: 1.3), the histogram is dilated: low intensities stay weak while high intensities increase.
+Therefore the image is lighter, but the dark areas are little changed.
+As a result, the contrast is better.
+Note that the two images are represented with intensities between 0 (<code class="docutils literal notranslate"><span class="pre">vmin</span></code>) and 1 (<code class="docutils literal notranslate"> <span class="pre">vmax</span></code>).</p>
+<p>Is this observation still valid for other values of the multiplicative coefficient?</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_81_0.png" src="../_images/correc1_81_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="histogram-equalization">
+<h3>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Permalink to this headline">¶</a></h3>
+<p>The histogram equalization gives the result below.
+The image is more contrasted than previously: this is due to the fact that the histogram of the transformed image is (almost) flat.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc1_84_0.png" src="../_images/correc1_84_0.png" />
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

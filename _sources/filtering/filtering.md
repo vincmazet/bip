@@ -16,3 +16,5 @@ Top row: spatial domain, bottom row: amplitude of the DFT.
 
 Example of high-pass filtering: only the high frequencies (i.e. the sudden changes in the intensities) are kept.
 ```
+
+<!-- Filters (low-pass/blur, High-pass/sharp, citer "kernel", lien vers détection de contour) -->

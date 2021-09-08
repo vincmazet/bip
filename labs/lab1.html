@@ -115,7 +115,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../digital-images/histogram.html">
-   Definition
+   Histogram
   </a>
  </li>
  <li class="toctree-l1">
@@ -422,6 +422,57 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab4.html">
+   Lab 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc4.html">
+     Correction of lab 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab5.html">
+   Lab 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc5.html">
+     Correction of lab 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lab6.html">
+   Lab 6
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="correc6.html">
+     Correction of lab 6
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -543,43 +594,33 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operations">
-   Operations
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#histogram">
-   Histogram
+  <a class="reference internal nav-link" href="#display-a-saved-image">
+   Display a saved image
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-1">
-   07/10/2020 (TP 1)
+  <a class="reference internal nav-link" href="#create-a-simple-image">
+   Create a simple image
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-2">
-   14/10/2020 (TP 2)
+  <a class="reference internal nav-link" href="#setting-the-intensity-range">
+   Setting the intensity range
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-3">
-   21/10/2020 (TP 3)
+  <a class="reference internal nav-link" href="#segmentation-by-histogram-thresholding">
+   Segmentation by histogram thresholding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-4-ead">
-   04/11/2020 (TP 4, EAD)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-5-ead">
-   18/11/2020 (TP 5, EAD)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tp-6-ead">
-   25/11/2020 (TP 6, EAD)
+  <a class="reference internal nav-link" href="#contrast-enhancement">
+   Contrast enhancement
   </a>
  </li>
 </ul>
@@ -595,83 +636,204 @@
                 
   <div class="section" id="lab-1">
 <span id="lab1"></span><h1>Lab 1<a class="headerlink" href="#lab-1" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p><strong>Indiquer comment lancer jupyter (Ubuntu &gt; terminal &gt; jupyter lab)</strong></p>
-</div></blockquote>
-<blockquote>
-<div><p><strong>Préciser les versions des modules nécessaires (certains étus ont sur leur PC perso des anciennes versions, valable aussi pour les PC de l’école)</strong></p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Exo supplémentaire : affichage d’une image hyperspectrale.
-L’image hyperspectrale Indian_pines.mat est de taille <span class="math notranslate nohighlight">\(145\times145\)</span> pixels et contient 220 bandes spectrales.
-\item Affichez la dixième bande de l’image.
-\item Créez une composition RVB de l’image et affichez-la.
-Vous pouvez pour cela avoir besoin d’effectuer une moyenne (\syntax{mean})
-et de normaliser les bandes pour forcer leurs intensités à être entre 0 et 1.
-\item Affichez les spectres de quelques pixels, par exemple les pixels (34,106), (47,20) et (91,136).
-Utilisez la fonction \syntax{squeeze} qui permet d’éliminer les dimensions vide d’une matrice 3D.
-L’image hyperspectrale Indian_pines.mat a été capturée en 1992 par le capteur Aviris
-au dessus de champs dans l’Indiana, États-Unis.
-C’est une image de <span class="math notranslate nohighlight">\(145\times145\)</span> pixels et 220 bandes spectrales réparties entre 400 et 2500 nm.</p></li>
+<p>You can refer to the <a class="reference internal" href="correc1.html#correc1"><span class="std std-ref">correction</span></a> after you have completed each exercise.
+Whatever, do not hesitate to ask your colleagues and teachers to get more informations or to discuss about a specific topic.</p>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.python.org/">Python</a> is a very versatile programming language and can especially be used for scientific programming and image processing.
+Python’s syntax is very similar to Matlab’s one.
+Before beginning this lab, you must know <a class="reference internal" href="../appendices/python.html#python"><span class="std std-ref">Installing and using Python</span></a>.
+If you use your personal computer, beware of the <a class="reference internal" href="../appendices/python.html#python-writing-code"><span class="std std-ref">modules version</span></a>.
+We will use <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/index.html">Jupyter Lab</a>, which runs in a web browser, to write programs.
+These programs are saved as <em>notebooks</em>.</p>
+<ul>
+<li><p>First, boot your computer on Ubuntu, then open a terminal by typing <code class="docutils literal notranslate"><span class="pre">terminal</span></code> in the main menu or typing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Alt</span></code> + <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+<li><p>Start Jupyter by typing in a terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">lab</span>
+</pre></div>
+</div>
+</li>
+<li><p>Open a new Python 3 notebook, then rename it from <code class="docutils literal notranslate"><span class="pre">File</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Save Notebook As...</span></code>.
+A notebook is a file with extension .ipynb.</p></li>
+<li><p>In the first cell of the notebook, write</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>and type <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Return</span></code>.
+The code is executed, the result is displayed then a new cell appears below.</p>
+</li>
+<li><p>Like any programming language, the code is written using <em>variables</em> and <em>functions</em>.
+A <em>variable</em>  stores one (or more) values, whether it is numeric or not.
+The name of the variable can contain letters, numbers (except the first character) or underscore.
+Case is important (<em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">A</span></code> are two different variables).
+Type the instructions below in the second cell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2021</span>
+<span class="n">course</span> <span class="o">=</span> <span class="s2">&quot;BIP&quot;</span>
+</pre></div>
+</div>
+<p>and type again <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Return</span></code>.
+Now the value 2021 is stored in the variable <code class="docutils literal notranslate"><span class="pre">year</span></code> and the character string “BIP” in the variable <code class="docutils literal notranslate"><span class="pre">course</span></code>.</p>
+</li>
+<li><p>Modify the previous cell by adding the following statement (<code class="docutils literal notranslate"><span class="pre">print</span></code> is a <em>function</em>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">course</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and type <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Return</span></code> to run again the code.</p>
+</li>
 </ul>
-<div class="section" id="operations">
-<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<p>A notebook is appealing as it is also possible to add text using the <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">markdown language</a>.</p>
+<ul>
+<li><p>Select an empty cell, then click on the drop-down list in the toolbar to select <em>Markdown</em>.
+Then you can write formatted text.
+Try to write:</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-12 docutils">
+<div class="card w-100 border-2 docutils">
+<div class="card-body docutils">
+<p class="card-text">Write <strong>bold</strong>, <em>italic</em> or equations: <span class="math notranslate nohighlight">\(\sqrt{2}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>This can be useful for inserting titles or keeping comments and notes.</p>
+</li>
+</ul>
+<p>Verify your code in the <a class="reference internal" href="correc1.html#correc1"><span class="std std-ref">correction</span></a>.</p>
+</div>
+<div class="section" id="display-a-saved-image">
+<h2>Display a saved image<a class="headerlink" href="#display-a-saved-image" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Open a new notebook.</p></li>
+<li><p>Write the following statements to allow the use of the modules
+<code class="docutils literal notranslate"><span class="pre">skimage.io</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>
+which are renamed, by convention, <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<!-- Exo supplémentaire : affichage d'une image hyperspectrale.
+  L'image hyperspectrale Indian\_pines.mat est de taille $145\times145$ pixels et contient 220 bandes spectrales.
+  \item Affichez la dixième bande de l'image.
+  \item Créez une composition RVB de l'image et affichez-la.
+  Vous pouvez pour cela avoir besoin d'effectuer une moyenne (\syntax{mean})
+  et de normaliser les bandes pour forcer leurs intensités à être entre 0 et 1.
+  \item Affichez les spectres de quelques pixels, par exemple les pixels (34,106), (47,20) et (91,136).
+  Utilisez la fonction \syntax{squeeze} qui permet d'éliminer les dimensions vide d'une matrice 3D.
+  L'image hyperspectrale Indian\_pines.mat a été capturée en 1992 par le capteur Aviris
+  au dessus de champs dans l'Indiana, États-Unis.
+  C'est une image de $145\times145$ pixels et 220 bandes spectrales réparties entre 400 et 2500 nm. -->
+<!-- Exo supplémentaire : addition de plusieurs images pour constater que le bruit diminue -->
+<!-- Exo supplémentaire : représenter l'histogramme d'une image simple 4x4. -->
+<!-- Exo supplémentaire : influence du nb de bins -->
+<ul>
+<li><p>Load the image mandrill.tiff (<a class="reference external" href="http://sipi.usc.edu/database/database.php?volume=misc&amp;image=10">available online</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;mandrill.tiff&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and display it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>What are the dimensions (in pixels) of the image?</p></li>
+</ul>
+<p>The conversion of a color image with pixel values <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(b\)</span> to a grayscale image with pixel intensity <span class="math notranslate nohighlight">\(g\)</span> is made through the transformation</p>
+<div class="math notranslate nohighlight">
+\[
+  g = 0.2125 \, r + 0.7154 \, g + 0.0721 \, b.
+\]</div>
+<p>The coefficients have been obtained by psychovisual studies and guarantee that <span class="math notranslate nohighlight">\(g\in[0,1]\)</span> if <span class="math notranslate nohighlight">\(r,g,b\in[0,1]\)</span>.</p>
 <ul class="simple">
-<li><p>Exo supplémentaire : addition de plusieurs images pour constater que le bruit diminue</p></li>
+<li><p>Convert the color image to grayscale (<code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>) then display it.</p></li>
+<li><p>Print the intensity of the top-left pixel (which is at position <span class="math notranslate nohighlight">\((0,13)\)</span>) by typing <code class="docutils literal notranslate"><span class="pre">g[0,0]</span></code>.</p></li>
+<li><p>Print the intensities of pixels of the five first pixels of the second row by typing <code class="docutils literal notranslate"><span class="pre">g[1,0:5]</span></code>,
+which extract from <code class="docutils literal notranslate"><span class="pre">g</span></code> the pixels at row 1 and columns 0 to 4 (the last index is not reached).</p></li>
+<li><p>Print the intensities of all the pixels in the third row by typing <code class="docutils literal notranslate"><span class="pre">g[2,:]</span></code>,
+which extract from <code class="docutils literal notranslate"><span class="pre">g</span></code> the pixels at row 2 and all the columns.</p></li>
+</ul>
+<p>The natural representation of an image is a two-dimensional display where the intensity of the pixels is given by a color.
+However, an image can also be seen as a three-dimensional curve, opening the way to new interpretations.</p>
+<ul class="simple">
+<li><p>Extract a row or a column of pixels from the image,
+then display this brightness profile as a signal (<code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot</span></code>).
+Do you manage to find in this profile the different areas of the image?</p></li>
 </ul>
 </div>
-<div class="section" id="histogram">
-<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Rajouter un exercice où je demande aux étus de représenter l’histogram d’une image simple 4x4.</p></li>
-<li><p>Exo supplémentaire : influence du nb de bins</p></li>
-</ul>
-<p>===</p>
+<div class="section" id="create-a-simple-image">
+<h2>Create a simple image<a class="headerlink" href="#create-a-simple-image" title="Permalink to this headline">¶</a></h2>
+<p>An RGB image is encoded in the form of a three-dimensional array:
+the first two dimensions are the spatial dimensions of the image, the third corresponds to the bands.</p>
+<ul>
+<li><p>Create the array corresponding to the RGB image <span class="math notranslate nohighlight">\(40 \times 80\)</span> sketched <a class="reference internal" href="#f-lab1-synthimage"><span class="std std-numref">Fig. 21</span></a>:</p>
+<div class="figure align-default" id="f-lab1-synthimage">
+<a class="reference internal image-reference" href="../_images/synthimage.png"><img alt="../_images/synthimage.png" src="../_images/synthimage.png" style="width: 328.0px; height: 167.20000000000002px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">A simple image.</span><a class="headerlink" href="#f-lab1-synthimage" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="tp-1">
-<h2>07/10/2020 (TP 1)<a class="headerlink" href="#tp-1" title="Permalink to this headline">¶</a></h2>
-<p>Indiquer de booter sous Ubuntu. Indiquer comment lancer jupyter (terminal &gt; jupyter lab).</p>
-<p>Gérer le test Moodle en début de séance avec 4 salles infos et les retardataires, c’était sport ! Mais ça s’est passé… Avec l’habitude ça devrait mieux se passer.</p>
-<p>En TP, les étudiants ont à peu près tous terminés “Setting the intensity range”. Pas de difficulté particulière, ni en Python ni en TI.</p>
-<p>Toutefois, il faut prévoir une meilleure intro à Python, Jupyter, le concept de notebook, les cellules. Par exemple en développant le premier exo.</p>
-<p>La syntaxe “f[m1:m2, n1:n2, b] = x” n’est pas clair pour certains étudiants : ils ne comprennent pas que ça permet d’accéder à des pixels, ni comment s’en servir.</p>
-<p>Problèmes :</p>
-<ul class="simple">
-<li><p>contrôle : Delquignies + Brisville</p></li>
-<li><p>retards : de Mathelin + Bannery (médecins tous les deux =&gt; AJ)</p></li>
-<li><p>quelques étudiants sur Zoom mais je n’ai pas communiqué avec eux (coupure wifi de mon côté, et aucun retour de leur part) : PAILLER, ULLMANN?, GIBERT, CLARET</p></li>
-<li><p>C. NIOLA et P. AUDIN m’avait indiqué être à distance, mais ne se sont pas connecté à Zoom.</p></li>
+<p>To do this, create first a black image with the right dimensions
+(<code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> generates an array filled with zeros).
+Then assign the desired value to the elements of the matrix, proceeding band by band, by using for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="n">m1</span><span class="p">:</span><span class="n">m2</span><span class="p">,</span> <span class="n">n1</span><span class="p">:</span><span class="n">n2</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>This statement assigns the value <code class="docutils literal notranslate"><span class="pre">x</span></code> to the pixels of the band <code class="docutils literal notranslate"><span class="pre">b</span></code> located between the rows <code class="docutils literal notranslate"><span class="pre">m1</span></code> and <code class="docutils literal notranslate"><span class="pre">m2</span></code><span class="math notranslate nohighlight">\(-1\)</span> and the columns <code class="docutils literal notranslate"><span class="pre">n1</span></code> and <code class="docutils literal notranslate"><span class="pre">n2</span></code><span class="math notranslate nohighlight">\(-1\)</span>
+(in Python, indices starts at 0).</p>
+</li>
 </ul>
 </div>
-<div class="section" id="tp-2">
-<h2>14/10/2020 (TP 2)<a class="headerlink" href="#tp-2" title="Permalink to this headline">¶</a></h2>
-<p>Le contrôle peut durer moins de 10 min, car beaucoup ont fini à 5 min.</p>
-<p>Harmoniser l’utilisation de numpy.fft plutôt que scipy.fft ?</p>
-<p>Problèmes :</p>
+<div class="section" id="setting-the-intensity-range">
+<h2>Setting the intensity range<a class="headerlink" href="#setting-the-intensity-range" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>contrôle : LODS (cf copie d’écran)</p></li>
+<li><p>Display the image <a href="../_static/data/hdfs.tiff">hdfs.tiff</a>, corresponding to a part of the sky in the southern hemisphere.
+You should only observe a single star.</p></li>
+<li><p>What is the dynamic of this image (<em>i.e.</em> the minimum and maximum values of the intensities)?</p></li>
+<li><p>Adjust the intensity range with the arguments <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> of the function <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code>
+to observe other objects, most of them being galaxies.</p></li>
+<li><p>Try another colormap (argument <code class="docutils literal notranslate"><span class="pre">cmap</span></code>).</p></li>
 </ul>
 </div>
-<div class="section" id="tp-3">
-<h2>21/10/2020 (TP 3)<a class="headerlink" href="#tp-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="segmentation-by-histogram-thresholding">
+<h2>Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Load the image <a href="../_static/data/santamonica.jpg">santamonica.jpg</a> and convert it to grayscale.</p></li>
+<li><p>Display its histogram with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code>,
+after having vectorized the image with <code class="docutils literal notranslate"><span class="pre">numpy.ravel</span></code>.</p></li>
+<li><p>Try different bin number and discuss the result: what do you observe?</p></li>
+<li><p>Choose a suitable threshold to segment the image into two classes.
+To perform thresholding, the easiest way is to display the image</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+</pre></div>
 </div>
-<div class="section" id="tp-4-ead">
-<h2>04/11/2020 (TP 4, EAD)<a class="headerlink" href="#tp-4-ead" title="Permalink to this headline">¶</a></h2>
-<p>J’ai partagé en 44 salles (par binôme), et les 4 intervenants se sont répartis ces salles. Ainsi, on peut aller voir tout le monde (mais c’est rare quand on va voir un binôme 2 fois, par manque de temps).</p>
-<p>Difficultés : calcul du Dice (comment faire l’intersection ? types des images différents, ==, etc.) =&gt; faire un point à un certain moment pour éviter que ce calcul prenne trop de temps.</p>
-<p>Les étus sont arrivés au seuillage adaptatif (donc les premières questions leur prenne du temps !</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">f</span></code> is the image to threshold and <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is, well… the threshold value.</p>
+</li>
+</ul>
 </div>
-<div class="section" id="tp-5-ead">
-<h2>18/11/2020 (TP 5, EAD)<a class="headerlink" href="#tp-5-ead" title="Permalink to this headline">¶</a></h2>
-<p>Les étus n’ont abordé que le débruitage, en général ils implémentent la courbe de l’EQM en fonction du paramètre de la méthode de débruitage. Donc a priori, rien à modifier dans le sujet.</p>
-<p>La partie déconvolution ne sert donc qu’aux meilleurs étudiants qui vont loin.</p>
-<p>À travers le contrôle, je me rends compte qu’un très grand nombre d’étudiants considère que pour régler lambda, il faut minimiser le critère (alors que la minimisation du critère permet d’avoir l’image, et non lambda) : “lambda (paramètre de régularisation) est trouvé en résolvant un problème d’optimisation”. Pour certains, le principe de l’optimisation n’est pas clair : il disent que lambda est réglé à la main avec une procédure d’optimisation. “Lambda est le paramètre de régularisation. Il est choisit par l’utilisateur. C’est un problème d’optimisation. “</p>
-</div>
-<div class="section" id="tp-6-ead">
-<h2>25/11/2020 (TP 6, EAD)<a class="headerlink" href="#tp-6-ead" title="Permalink to this headline">¶</a></h2>
-<p>Les plus rapides sont arrivés jusqu’au tracé des lignes de Hough sur l’image, mais on fait le TP de façon superficielle, en observant l’influence des paramètres sans chercher à comprendre si c’était en accord avec la théorie ou chercher à l’expliquer. Ceux qui ont pris le temps de faire un travail en profondeur, ou les plus lents, abordaient Harris. Donc le TP est plutôt bien calibré, mais il reste à ajouter une “contrainte” pour que les étus se posent des questions.</p>
-<p>Introduire dans le book la prononciation de Houg</p>
-</div>
+<div class="section" id="contrast-enhancement">
+<h2>Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Display the image <a href="../_static/data/forest.png">forest.png</a>, after converting it to grayscale.</p></li>
+<li><p>Display its histogram.
+You will notice that the image is not very contrasted: what does that imply on the histogram?</p></li>
+<li><p>Multiply the image by a positive real: what happens on the image and its histogram?</p></li>
+<li><p>Perform an histogram equalization (<code class="docutils literal notranslate"><span class="pre">skimage.exposure.equalize_hist</span></code>).
+Do you achieve the exercise goal?</p></li>
+</ul>
+<!-- Exo supplémentaire : affichage d'une image hyperspectrale.
+  L'image hyperspectrale Indian\_pines.mat est de taille $145\times145$ pixels et contient 220 bandes spectrales.
+  \item Affichez la dixième bande de l'image.
+  \item Créez une composition RVB de l'image et affichez-la.
+  Vous pouvez pour cela avoir besoin d'effectuer une moyenne (\syntax{mean})
+  et de normaliser les bandes pour forcer leurs intensités à être entre 0 et 1.
+  \item Affichez les spectres de quelques pixels, par exemple les pixels (34,106), (47,20) et (91,136).
+  Utilisez la fonction \syntax{squeeze} qui permet d'éliminer les dimensions vide d'une matrice 3D.
+  L'image hyperspectrale Indian\_pines.mat a été capturée en 1992 par le capteur Aviris
+  au dessus de champs dans l'Indiana, États-Unis.
+  C'est une image de $145\times145$ pixels et 220 bandes spectrales réparties entre 400 et 2500 nm. -->
+<!-- Exo supplémentaire : addition de plusieurs images pour constater que le bruit diminue -->
+<!-- Exo supplémentaire : représenter l'histogramme d'une image simple 4x4. --></div>
 <div class="toctree-wrapper compound">
 </div>
 </div>

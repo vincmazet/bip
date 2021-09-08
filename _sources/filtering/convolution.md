@@ -141,3 +141,5 @@ Sans séparabilité :
   $f_1(x,y) = \sum_m g(x-m,y) h_1(m)$        | $M$       | $M-1$
   $f(x,y) = \sum_n f_1(x,y-n) h_2(n)$        | $N$       | $N-1$
   Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$ -->
+  
+<!--   EVOQUER CONVOLUTION ? -->

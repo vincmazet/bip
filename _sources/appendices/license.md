@@ -25,7 +25,7 @@ E-mail: <a href="mailto:vincent.mazet@unistra.fr">vincent.mazet@unistra.fr</a>.
 **Aldrin**
 &copy; [NASA](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
 NASA content generally are not copyrighted.
-[Original picture](https://www.nasa.gov/mission_pages/apollo/40th/images/apollo_image_12.html)
+[Original picture](https://www.nasa.gov/mission_pages/apollo/40th/images/apollo_image_12.html).
 
 ---
 
@@ -54,6 +54,22 @@ Free license.
 
 ---
 
+```{figure} ../figs/forest.png
+```
+**Forest**
+He, Sun, Tang, "Single image haze removal using dark channel prior", CVPR 2009
+DOI: [10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
+
+---
+
+```{figure} ../figs/hdfs.png
+```
+**HDFS**
+Bacon _et al._, "The MUSE 3D view of the Hubble Deep Field South", A&A, 575 (2015)
+[Original picture](http://muse-vlt.eu/science/hdfs-v1-0/).
+
+---
+
 ```{figure} ../figs/peppers.png
 ```
 **Peppers**
@@ -61,6 +77,14 @@ Free license.
 on [Unsplash](https://unsplash.com/s/photos/pepper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 Free license.
 [Original picture](https://unsplash.com/photos/0PUoXmsCSDQ/).
+
+---
+
+```{figure} ../figs/santamonica.jpg
+```
+**Santa Monica**
+&copy; Vincent Mazet, 2016.
+Public domain.
 
 ---
 
@@ -86,7 +110,8 @@ Public domain.
 
 ---
 
-{figure} ../figs/squirrel.png
+```{figure} ../figs/squirrel.png
+```
 **Squirrel**
 &copy; Vincent Mazet, 2020.
 Public domain.
@@ -118,10 +143,6 @@ Free license.
 
 
 
-{figure} labs/santamonica.jpg
-**SantaMonica**
-&copy; Vincent Mazet, 2016.
-Public domain.
 
 {figure} ../figs/smiley-face.png
 

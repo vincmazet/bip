@@ -99,4 +99,4 @@ Threshold with a threshold set to 0.45.
 ```
 
 Such a thresholding yields a binary image whose pixels have only two values.
-Several methods exist that compute automatically the threshold, such that {ref}`Otsu's method <C:segmentation>`.
+Several methods exist that compute automatically the threshold, such that [Otsu's method](segmentation:otsu).
