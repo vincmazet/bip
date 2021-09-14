@@ -1,4 +1,4 @@
-# Outro
+# Conclusion
 
 Filtering consists in amplifying or attenuating some frequencies in an image.
 It is used sometimes for image processing,
