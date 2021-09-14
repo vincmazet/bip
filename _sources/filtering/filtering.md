@@ -1,8 +1,8 @@
 # Filtering
 
 The operation of filtering consists in selecting some frequencies in the images.
-Especially, we distinguish low-pass filtering which preserves only the low frequencies ({numref}`F:fourier:lowpass`)
-and high-pass filtering which preserves only the high frequencies ({numref}`F:fourier:highpass`).
+Especially, we distinguish low-pass filtering which preserves only the low frequencies ({numref}`F:lowpass`)
+and high-pass filtering which preserves only the high frequencies ({numref}`F:highpass`).
 
 ```{figure} lowpass.svg
 :name: "F:lowpass"

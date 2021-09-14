@@ -93,7 +93,7 @@ Anyway, there is no perfect choice to set the pixels outside the image, and each
 Also, the best way is to make the objects of interest far from the edges.
 
 At last, note that the wrapping hypothesis yields a _circular convolution_.
-This is also the result given by a multiplication in the Fourier domain (see [](C:fourier)).
+This is also the result given by a multiplication in the Fourier domain (see [](fourier)).
 
 ## Separable Convolution
 

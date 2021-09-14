@@ -157,7 +157,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../filtering/outro.html">
-   Outro
+   Conclusion
   </a>
  </li>
 </ul>
@@ -588,6 +588,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principle">
+   Principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-discrete-cosine-transform">
+   The discrete cosine transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-the-dct-of-an-image">
+   Example of the DCT of an image
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-steps-in-jpeg-compression">
+   Other steps in JPEG compression
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -597,7 +625,92 @@
               <div>
                 
   <div class="section" id="lossy-compression">
-<h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h1>
+<span id="lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+<p>The most famous lossy compression format for images is JPEG,
+created in 1992 by the Joint Photographic Experts Group.
+The main idea of JPEG compression is to apply a specific transform to the image
+so that most of the coefficients of the transformed image are very small and can be cancelled out,
+thus gaining storage at the cost of very little visual degradation.
+In addition, this principle is used in lossy compression of audio (MP3) and video (MPEG).</p>
+<p>Most of the energy of usual pictures is concentrated in low frequencies,
+so the <a class="reference internal" href="../filtering/fourier.html#fourier"><span class="std std-ref">discrete Fourier transform</span></a> (DFT) could be a good idea to perform lossy compression.
+It appears though that the so-called <em>discrete cosine transform</em> (DCT) is a better choice for computational reasons.
+Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.</p>
+</div>
+<div class="section" id="the-discrete-cosine-transform">
+<h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Permalink to this headline">¶</a></h2>
+<p>The DCT of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(N \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  F(u,v) = \frac{2}{N} C(u) C(v) \sum_{m=0}^{N-1} \sum_{n=0}^{N-1}
+  f(m, n) \cos\left[\frac{(2m+1)u\pi}{2N} \right] \cos\left[\frac{(2n+1)v\pi}{2N} \right]
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  C(u) =
+  \begin{cases}
+    \frac{1}{\sqrt{2}}  &amp;\text{if}\; u = 0, \\
+    1                   &amp;\text{if}\; u &gt; 0.
+  \end{cases}
+\end{split}\]</div>
+<p>The DCT is similar to <a class="reference internal" href="../filtering/fourier.html#fourier"><span class="std std-ref">Fourier transform</span></a> except that the complex exponentials are replaced by cosines.</p>
+<p>The DCT decomposes an image into 2D cosines of different frequencies.
+Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 20</span></a>.</p>
+<div class="figure align-default" id="f-compression-dct-coefficients">
+<img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" /><p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="example-of-the-dct-of-an-image">
+<h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 21</span></a>,
+which is a crop of size 8 × 8 centered on the squirrel snout.</p>
+<div class="figure align-default" id="f-compression-squirrel-crop">
+<img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">¶</a></p>
+</div>
+<p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 22</span></a>.
+As you can see, the coefficient at the top left, which correspond at the lower frequencies
+(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 20</span></a>) are the largest.</p>
+<div class="figure align-default" id="f-compression-squirrel-coefficients">
+<img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 21</span></a>.
+Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">¶</a></p>
+</div>
+<p>Because the human eye is less sensitive to high frequencies than low frequencies,
+the idea of JPEG compression is to cancel the coefficients at the bottom right in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 22</span></a>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The expression of the inverse DCT is not given here but is similar to what the inverse Fourier transform is for the Fourier transform.</p>
+</div>
+<p>So, we cancel the coefficients stroked with a red cross and reconstruct the image by using the inverse DCT.
+The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 23</span></a> (right).
+As you can see, the result is very similar to the original image, while less than 50 % of the coefficients are kept!
+This small example shows the interest of going into the domain of a transformation and canceling certain coefficients.</p>
+<div class="figure align-default" id="f-compression-squirrel-comparison">
+<img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="other-steps-in-jpeg-compression">
+<h2>Other steps in JPEG compression<a class="headerlink" href="#other-steps-in-jpeg-compression" title="Permalink to this headline">¶</a></h2>
+<p>Computing the DCT of the image and using only the low frequency coefficients for reconstruction
+is at the heart of JPEG compression.
+To gain even more in terms of compression, other steps are added in the actual JPEG compression.
+Here are a few.</p>
+<ul class="simple">
+<li><p>Color images are encoded with three channels, the well-known red-green-blue color space.
+<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_color_spaces_and_their_uses">Numerous color spaces</a> exist aside of the usual RGB one.
+The YCbCr is the one used in JPEG compression
+because the Y channel encodes the brightness of the image and contains important information for the human eye.
+As a result, the other two channels (Cb and Cr) are downsampled to have fewer pixels to store.</p></li>
+<li><p>The image is divided into 8 × 8 sub-images, and a DCT is computed on each sub-image.</p></li>
+<li><p>In the previous section, the high frequency coefficients are canceled.
+In reality, the quantization is done on each coefficient of each DCT,
+but it is finer for low frequency coefficients than for high-frequency ones.</p></li>
+<li><p>The array consisting of the 64 coefficients of each sub-image is compressed with a lossless compression method
+(<a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>).</p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

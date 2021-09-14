@@ -1,4 +1,4 @@
-(C:fourier)=
+(fourier)=
 # Fourier transform
 
 The (2D) Fourier transform is a very classical tool in image processing.
@@ -6,6 +6,7 @@ It is the extension of the well known Fourier transform for signals which decomp
 So, the Fourier transform gives information about the frequency content of the image.
 
 <!-- expliquer ce qu'est le "frequency content" -->
+<!-- Les Topos ne connaissent pas => il faut considérer que c'est une nouvelle notion. Donc, développer un peu plus en commençant plus doucement -->
 
 
 ## Direct Fourier transform
