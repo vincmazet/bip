@@ -633,6 +633,7 @@ When this modification is similar in the entire image <span class="math notransl
 it can be mathematically defined using a second image <span class="math notranslate nohighlight">\(h\)</span> which defines the neighbor relationships.
 This results in a third image <span class="math notranslate nohighlight">\(f\)</span>.
 This is the so-called convolution <a class="reference internal" href="../appendices/refs.html#c-refs"><span class="std std-ref">[Jahne 2005, section 4]</span></a> and it is denoted with <span class="math notranslate nohighlight">\(*\)</span>:</p>
+<!-- dire également que ça modélise l'effet d'un instrument de mesure -->
 <div class="math notranslate nohighlight">
 \[
   f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)
@@ -652,11 +653,13 @@ This is the so-called convolution <a class="reference internal" href="../appendi
 <em>filter</em>, <em>mask</em>, <em>kernel</em>, <em>window</em>, <em>pattern</em> or <em>point spread function</em> (PSF).</p>
 <p>Some convolution examples are shown in <a class="reference internal" href="#f-convolution-example"><span class="std std-numref">Fig. 13</span></a>.</p>
 <div class="figure align-default" id="f-convolution-example">
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Three examples of image convolution.</span><a class="headerlink" href="#f-convolution-example" title="Permalink to this image">¶</a></p>
+<img alt="../_images/conv-examples.svg" src="../_images/conv-examples.svg" /><p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Three examples of image convolution.</span><a class="headerlink" href="#f-convolution-example" title="Permalink to this image">¶</a></p>
 </div>
+<!-- commenter les trois convolutions -->
 </div>
 <div class="section" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p>As a mathematical operation, the convolution has several properties.</p>
 <ul class="simple">
 <li><p>The neutral element of convolution is an image filled with zeros but the pixel at the center equals 1.</p></li>
 <li><p>The convolution is commutative:  
@@ -673,18 +676,18 @@ This is the so-called convolution <a class="reference internal" href="../appendi
 <span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this headline">¶</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
 as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 12</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
-<p>Therefore, one has to assume some hypotheses of the pixel values oputside the image.
-<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 14</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 15</span></a> shows the convolution of the former images by a Gaussian.</p>
+<p>Therefore, one has to assume some hypotheses of the pixel values outside the image.
+<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 14</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 15</span></a> shows the convolution of these images by a Gaussian.</p>
 <div class="figure align-default" id="f-convolution-boundaries-hypotheses">
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Several ways to set the pixels outside the image.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">¶</a></p>
+<img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" /><p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Several ways to set the pixels outside the image.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="f-convolution-boundaries-results">
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">¶</a></p>
+<img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" /><p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">¶</a></p>
 </div>
 <p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 15</span></a> that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
-Also, the best way is to arrange it so that the objects of interest are far from the edges.</p>
+Also, the best way is to make the objects of interest far from the edges.</p>
 <p>At last, note that the wrapping hypothesis yields a <em>circular convolution</em>.
 This is also the result given by a multiplication in the Fourier domain (see <a class="reference internal" href="fourier.html#c-fourier"><span class="std std-ref">Fourier transform</span></a>).</p>
 </div>

@@ -1,14 +1,16 @@
 (C:fourier)=
 # Fourier transform
 
-The Fourier transform is a very classical tool in image processing.
-It is a mathematical transformation that give information about the frequency content of the image.
+The (2D) Fourier transform is a very classical tool in image processing.
+It is the extension of the well known Fourier transform for signals which decomposes a signal into a sum of sinusoids.
+So, the Fourier transform gives information about the frequency content of the image.
+
+<!-- expliquer ce qu'est le "frequency content" -->
 
 
+## Direct Fourier transform
 
-## Definition
-
-The discrete Fourier transform (DFT) of an image $f$ of size $M \times N$ is an image $F$ of same size computed with the following definition:
+The discrete Fourier transform (DFT) of an image $f$ of size $M \times N$ is an image $F$ of same size such that:
 
 $$
   F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(m,n) e^{-j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
@@ -19,16 +21,21 @@ In the sequel, we note $\mathcal{F}$ the DFT so that $\mathcal{F}[f] = F$.
 Because the DFT of an image is possibly complex, it cannot be displayed with a single image.
 That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in {numref}`F:fourier:example`.
 
-```{glue:figure} G:fourier:example
-:name: "F:fourier:example"
-
-DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details (so we have appled an histogram transformation).
+```{figure} fourier-example.svg
+---
+name: F:fourier:example
+---
+DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
+(an histogram transformation has been applied).
 ```
 
 The amplitude and phase represent the distribution of energy in the frequency plane.
 The low frequencies are located in the center of the image, and the high frequencies near the boundaries.
-In the figure above, the gray background is a low frequency area because the intensities of the pixels slowly evolve from one pixel to another.
+In the figure above, the gray background behind the squirrel is a low frequency area because the intensities of the pixels slowly evolve from one pixel to another.
 On the contrary, the tail is a high frequency area because the pixel intensity shows a rapid alternation between the hair and the background.
+
+
+## Inverse Fourier transform
 
 The inverse discrete Fourier transform computes the original image from a Fourier transform:
 
@@ -41,7 +48,7 @@ It is denoted $\mathcal{F}^{-1}$ below.
 
 ## Properties
 
-* The DTF is linear:
+* The DFT is linear:
   
   $$
     \mathcal{F}[af + bg] = aF + bG
@@ -54,13 +61,13 @@ It is denoted $\mathcal{F}^{-1}$ below.
     f * g = \mathcal{F}^{-1}[F \times G]
   $$
 
-* Separability: the 2D DFT can be obtained by computing a 1D DFT on the rows, then a 1D DFT on the columns.
+* The 2D DFT can be obtained by computing a 1D DFT on the rows, then a 1D DFT on the columns
+  (the DFT is separable).
 
-* The DTF is periodic with periods $M$ and $N$:
+* The DFT is periodic with periods $M$ and $N$ ($k, l \in \mathbb{Z}$):
   
   $$
-    F(u,v) = F(u+k_mM,v) = F(u,v+k_nN) = F(u+k_mM,v+k_nN)
-    \qquad\text{where}\; k_m, k_n \in \mathbb{Z}.
+    F(u,v) = F(u+kM,v) = F(u,v+lN) = F(u+kM,v+lN).
   $$
 
 * A translation on the image implies a phase shift on the DFT:
@@ -70,3 +77,5 @@ It is denoted $\mathcal{F}^{-1}$ below.
   $$
 
 * A rotation on the image implies the same rotation on the DFT.
+
+<!-- Illustrer toutes ces propriétés -->

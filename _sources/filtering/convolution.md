@@ -9,6 +9,8 @@ it can be mathematically defined using a second image $h$ which defines the neig
 This results in a third image $f$.
 This is the so-called convolution {ref}`[Jahne 2005, section 4] <C:refs>` and it is denoted with $*$:
 
+<!-- dire également que ça modélise l'effet d'un instrument de mesure -->
+
 $$
   f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)
 $$
@@ -32,14 +34,19 @@ _filter_, _mask_, _kernel_, _window_, _pattern_ or _point spread function_ (PSF)
 
 Some convolution examples are shown in {numref}`F:convolution:example`.
 
-```{glue:figure} G:convolution:example
-:name: "F:convolution:example"
-
+```{figure} conv-examples.svg
+---
+name: F:convolution:example
+---
 Three examples of image convolution.
 ```
 
+<!-- commenter les trois convolutions -->
+
 
 ## Properties
+
+As a mathematical operation, the convolution has several properties.
 
 * The neutral element of convolution is an image filled with zeros but the pixel at the center equals 1.
 
@@ -63,25 +70,27 @@ $h_1*(h_2*h_3) = (h_1*h_2)*h_3$.
 The convolution formula is not defined on the boundaries of the image:
 as an example, computing $f_{1,1}$ in {numref}`F:convolution:sketch` requires the value of $g_{0,0}$ which is not defined.
 
-Therefore, one has to assume some hypotheses of the pixel values oputside the image.
-{numref}`F:convolution:boundaries-hypotheses` shows an image with some possibilities to consider the external pixels, and {numref}`F:convolution:boundaries-results` shows the convolution of the former images by a Gaussian.
+Therefore, one has to assume some hypotheses of the pixel values outside the image.
+{numref}`F:convolution:boundaries-hypotheses` shows an image with some possibilities to consider the external pixels, and {numref}`F:convolution:boundaries-results` shows the convolution of these images by a Gaussian.
 
-```{glue:figure} G:convolution:boundaries-hypotheses
-:name: "F:convolution:boundaries-hypotheses"
-
+```{figure} boundaries-hypotheses.svg
+---
+name: F:convolution:boundaries-hypotheses
+---
 Several ways to set the pixels outside the image.
 ```
 
-```{glue:figure} G:convolution:boundaries-results
-:name: "F:convolution:boundaries-results"
-
+```{figure} boundaries-results.svg
+---
+name: F:convolution:boundaries-results
+---
 Results of the convolution with the same image.
 ```
 
 One can see on the {numref}`F:convolution:boundaries-results` that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
-Also, the best way is to arrange it so that the objects of interest are far from the edges.
+Also, the best way is to make the objects of interest far from the edges.
 
 At last, note that the wrapping hypothesis yields a _circular convolution_.
 This is also the result given by a multiplication in the Fourier domain (see [](C:fourier)).

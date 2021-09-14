@@ -127,8 +127,7 @@ Creative Commons CC-BY.
 
 ````
 
-
-
+Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html.
 
 
 
