@@ -80,6 +80,46 @@ Free license.
 
 ---
 
+```{figure} ../figs/s1.png
+```
+**s1**
+&copy; Vincent Mazet, 2016.
+Public domain.
+
+---
+
+```{figure} ../figs/s2.png
+```
+**s2**
+&copy; Vincent Mazet, 2016.
+Public domain.
+
+---
+
+```{figure} ../figs/s3.png
+```
+**s3**
+&copy; Vincent Mazet, 2016.
+Public domain.
+
+---
+
+```{figure} ../figs/s4.png
+```
+**s4**
+&copy; Vincent Mazet, 2016.
+Public domain.
+
+---
+
+```{figure} ../figs/s5.png
+```
+**s5**
+&copy; Vincent Mazet, 2016.
+Public domain.
+
+---
+
 ```{figure} ../figs/santamonica.jpg
 ```
 **Santa Monica**
@@ -99,6 +139,14 @@ Public domain.
 ```{figure} ../figs/simpsons2.png
 ```
 **Simpsons2**
+
+---
+
+```{figure} ../figs/smiley.png
+```
+**Smiley**
+&copy; Vincent Mazet, 2016.
+Public domain.
 
 ---
 
@@ -143,11 +191,5 @@ Free license.
 
 
 
-{figure} ../figs/smiley-face.png
-
-**Smiley-face**
-&copy; Otakumo, 2013.
-Creative Commons Attribution-Share Alike 3.0.
-[Original picture](https://commons.wikimedia.org/wiki/File:Mistersmileyface.png).
 
 -->

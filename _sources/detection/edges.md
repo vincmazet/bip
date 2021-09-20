@@ -1,3 +1,4 @@
+(edge-detection)=
 # Edge detection
 
 

@@ -588,6 +588,102 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution">
+   Convolution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objectives">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Convolution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-fourier-transform">
+   Properties of the Fourier transform
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-remarks">
+     Some remarks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-aliasing">
+   Filtering aliasing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#downsampling-and-filtering">
+     Downsampling and filtering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lossy-compression">
+   Lossy compression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Objectives
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#images-of-the-dct-basis">
+     Images of the DCT basis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-of-the-jpeg-principle">
+     Application of the JPEG principle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mse-evolution">
+     MSE evolution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compression-on-88-sub-images">
+     Compression on 8×8 sub-images
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -598,6 +694,236 @@
                 
   <div class="section" id="correction-of-lab-2">
 <span id="correc2"></span><h1>Correction of lab 2<a class="headerlink" href="#correction-of-lab-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="convolution">
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="objectives">
+<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>know how to use the function <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> to apply the convolution product</p></li>
+<li><p>be able to identify the kernel applied on a convolved image</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Convolution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Before convolving the image by the different filters, it is interesting to display the filters themselves.
+In case there is no explicit matrix to represent a filter, as with the Gaussian filter <code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>,
+we can simply convolve the filter by an image containing only one non-zero pixel.
+Indeed, this image is equivalent to a Dirac pulse <span class="math notranslate nohighlight">\(\delta\)</span> which is the neutral element of the convolution product.</p>
+<p>The two last kernels are defined with:</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(note the double brackets, so as to get a 2D array) and</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results of the convolutions are shown below, for both the “Dirac pulse” and the smiley.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_13_0.png" src="../_images/correc2_13_0.png" />
+<img alt="../_images/correc2_13_1.png" src="../_images/correc2_13_1.png" />
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code> defines a Gaussian kernel (this is the second image above).
+The result of the function is the convolution product of this Gaussian kernel with the image given as a parameter of the function.</p>
+<p>The “gradient” image brings out the vertical contours of the image.
+We will reuse such a filter in <a class="reference internal" href="../detection/edges.html#edge-detection"><span class="std std-ref">Edge detection</span></a>.</p>
+</div>
+</div>
+<div class="section" id="properties-of-the-fourier-transform">
+<h2>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Objectives<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>manipulation of <code class="docutils literal notranslate"><span class="pre">fft2</span></code> et <code class="docutils literal notranslate"><span class="pre">fftshift</span></code></p></li>
+<li><p>display adequately the magnitude of the Fourier transform to see the details</p></li>
+<li><p>observe the effect of a contraction-dilation</p></li>
+<li><p>observe the effect of a rotation</p></li>
+<li><p>observe the effect of a translation</p></li>
+</ul>
+</div>
+<div class="section" id="some-remarks">
+<h3>Some remarks<a class="headerlink" href="#some-remarks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>After computing the Fourier transform with <code class="docutils literal notranslate"><span class="pre">numpy.fft.fft2</span></code>,
+use the function <code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code> to shift the zero frequencies at the centre of the image.</p></li>
+<li><p>The Fourier transform being complex, its display is not straightforward:
+so one need to show its magnitude (<code class="docutils literal notranslate"><span class="pre">numpy.absolute</span></code>) and argument (<code class="docutils literal notranslate"><span class="pre">numpy.angle</span></code>).</p></li>
+</ul>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_19_0.png" src="../_images/correc2_19_0.png" />
+<img alt="../_images/correc2_19_1.png" src="../_images/correc2_19_1.png" />
+<img alt="../_images/correc2_19_2.png" src="../_images/correc2_19_2.png" />
+<img alt="../_images/correc2_19_3.png" src="../_images/correc2_19_3.png" />
+<img alt="../_images/correc2_19_4.png" src="../_images/correc2_19_4.png" />
+</div>
+</div>
+<p>This exercise highlights some properties of the Fourier transform.</p>
+<ul class="simple">
+<li><p>The images <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> show that a “contraction” in the spatial domain
+(the bands from <code class="docutils literal notranslate"><span class="pre">s1</span></code> to <code class="docutils literal notranslate"><span class="pre">s2</span></code> get closer and narrower) results in “dilation” in the frequency domain
+(the points diverge, even if the pattern remains overall the same, whether on the magnitude and the argument).</p></li>
+<li><p>A rotation in the spatial domain results in an identical rotation in the frequency domain
+(<code class="docutils literal notranslate"><span class="pre">s3</span></code> is a rotation of 90 ° of <code class="docutils literal notranslate"><span class="pre">s2</span></code>).</p></li>
+<li><p>A spatial shift implies a modification on the argument (but not on the magnitude), hence the name of <em>phase shift</em>
+(the white square of the images <code class="docutils literal notranslate"><span class="pre">s4</span></code> and <code class="docutils literal notranslate"><span class="pre">s5</span></code> has been translated).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="filtering-aliasing">
+<h2>Filtering aliasing<a class="headerlink" href="#filtering-aliasing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Objectives<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Define and apply a filter for a real application</p></li>
+<li><p>Discover aliasing in images</p></li>
+</ul>
+<p><strong>Warning</strong>: because Jupyter Lab and Matplotlib show images with a rescaling, the function <code class="docutils literal notranslate"><span class="pre">imshow</span></code> can introduce aliasing,
+even if there is no aliasing in the actual image.
+Therefore, do not use <code class="docutils literal notranslate"><span class="pre">imshow</span></code> in this exercice, but save the image (with <code class="docutils literal notranslate"><span class="pre">skimage.io.imsave</span></code>) and display it by using an external viewer.</p>
+</div>
+<div class="section" id="downsampling-and-filtering">
+<h3>Downsampling and filtering<a class="headerlink" href="#downsampling-and-filtering" title="Permalink to this headline">¶</a></h3>
+<p>Three images are generated:</p>
+<ul class="simple">
+<li><p>the original one, rescaled by a factor <span class="math notranslate nohighlight">\(S\)</span>,</p></li>
+<li><p>the original one, filtered by a Gaussian filter, then rescaled by a factor <span class="math notranslate nohighlight">\(S\)</span>,</p></li>
+<li><p>the original one, filtered by an ideal low-pass filter (defined in the Fourier domain), then rescaled by a factor <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+<p>Note that when using the inverse Fourier transform, you may have to get the real part of the result, if it is complex.</p>
+<p>The mask is of the same size that the Fourier transform <code class="docutils literal notranslate"><span class="pre">X</span></code> of the original image.
+The low frequencies must be 1 and the high frequency 0, as in the image below (the pixels 1 are in the center to manage the use of <code class="docutils literal notranslate"><span class="pre">fftshift</span></code>):</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_32_0.png" src="../_images/correc2_32_0.png" />
+</div>
+</div>
+<p>You should obtain the following results.
+The aliasing is clearly visible on the first image, where no filter has been applied:
+a weird effect is visible on the tiles.
+The Gaussian filter strongly attenuates the effect, and the ideal filter is better.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_34_0.png" src="../_images/correc2_34_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lossy-compression">
+<h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Objectives<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>know how to implement the basic principle of JPEG compression</p></li>
+<li><p>use the discrete cosine transform</p></li>
+<li><p>analyze the effect of compression on visual quality and PSNR</p></li>
+</ul>
+</div>
+<div class="section" id="images-of-the-dct-basis">
+<h3>Images of the DCT basis<a class="headerlink" href="#images-of-the-dct-basis" title="Permalink to this headline">¶</a></h3>
+<p>First of all, it is interesting to view the elements of the DCT basis.</p>
+<p>Since the images of the base correspond to a single non-zero coefficient in the domain of the transform,
+a solution to display these images is to create images that are zero in the domain of the transform, except in a single pixel.
+By using the function <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, we can get the corresponding 2D cosine.
+The low frequencies are at the top left.</p>
+<p>Here are some examples of images of the base (on the first line) and their DCT (on the second line) for a size of 8 × 8 pixels.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_42_0.png" src="../_images/correc2_42_0.png" />
+</div>
+</div>
+<p>It can be seen that the pixels at the top left of the DCT (therefore close to the origin) correspond to a low-frequency
+since the corresponding image is a 2D cosine of low frequency in the spatial domain.
+Conversely, the pixel at the bottom right is the very high frequency component:
+the intensity of the pixels changes very quickly in the image.</p>
+</div>
+<div class="section" id="application-of-the-jpeg-principle">
+<h3>Application of the JPEG principle<a class="headerlink" href="#application-of-the-jpeg-principle" title="Permalink to this headline">¶</a></h3>
+<p>Unlike the Fourier transform which decomposes an image as complex exponentials, the DCT decomposes an image as real cosines.
+Therefore the result is not complex; there is no need to display modulus and phase.
+Yet, the zero frequency coefficient being much greater than the others,
+the contrast of the DCT must be modified (how?) to visualize it.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_46_0.png" src="../_images/correc2_46_0.png" />
+</div>
+</div>
+<p>We can notice (even if it is not obvious) that the low-frequency coefficients are more energetic than the others.
+This means that the image is mostly made up of low frequencies.</p>
+<p>To perform the compression, we choose to cancel the high-frequency pixels using a square mask of side <span class="math notranslate nohighlight">\(C\)</span>.
+The size of the square divided by the image size corresponds to the compression rate.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_50_0.png" src="../_images/correc2_50_0.png" />
+</div>
+</div>
+<p>Note that even with a very high compression rate, the visual result is very good:
+it is very difficult to observe the differences between the two images.
+This observation is also confirmed by the low value of the MSE:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_52_0.png" src="../_images/correc2_52_0.png" />
+</div>
+</div>
+<p>The difference image is interesting because we can see that the errors are mainly located in the areas of high frequencies
+(contours, tail…).
+This makes sense since it is precisely these high frequencies that have been cancelled.</p>
+<p>JPEG compression plays on the fact that the human eye is not sensitive to these high-frequency changes.</p>
+</div>
+<div class="section" id="mse-evolution">
+<h3>MSE evolution<a class="headerlink" href="#mse-evolution" title="Permalink to this headline">¶</a></h3>
+<p>The previous procedure is now used with different size of the mask,
+in order to calculate the MSE between the compressed image and the original image.
+The PSNR is also indicated, it is a measure that we will see in a future course.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_56_0.png" src="../_images/correc2_56_0.png" />
+</div>
+</div>
+<p>The analysis of the curves leads to the following conclusions.</p>
+<ul class="simple">
+<li><p>The larger the PSNR, the better the picture quality:
+so it makes sense that it increases as the compression ratio increases.</p></li>
+<li><p>Conversely, MSE measures the difference between the compressed image and the original image:
+as the compression ratio increases, the difference becomes smaller and smaller.</p></li>
+<li><p>For very large compression ratios, a small variation in the ratio implies a rapid variation in PSNR:
+it drops rapidly. However, their values remain above 80 dB,
+which still corresponds to very good quality.</p></li>
+</ul>
+<p>In classic JPEG compression, the DCT is not directly calculated on the whole image, but on 8 × 8 size thumbnails, as is done below.</p>
+</div>
+<div class="section" id="compression-on-88-sub-images">
+<h3>Compression on 8×8 sub-images<a class="headerlink" href="#compression-on-88-sub-images" title="Permalink to this headline">¶</a></h3>
+<p>The image is divided into blocks of 8×8 pixels, then the DCT is computed on each block,
+and finally, the high frequencies of each DCT are cancelled.
+To highlight the blocking effect that can appear when the compression is too strong,
+the size of the mask is small compared to the size of the sub-images.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/correc2_60_0.png" src="../_images/correc2_60_0.png" />
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

@@ -588,6 +588,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution">
+   Convolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-the-fourier-transform">
+   Properties of the Fourier transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering-aliasing">
+   Filtering aliasing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lossy-compression">
+   Lossy compression
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -597,7 +625,166 @@
               <div>
                 
   <div class="section" id="lab-2">
-<h1>Lab 2<a class="headerlink" href="#lab-2" title="Permalink to this headline">¶</a></h1>
+<span id="lab2"></span><h1>Lab 2<a class="headerlink" href="#lab-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="convolution">
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
+<p>The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
+Before applying the convolutions, you need to convert the image into float (<code class="docutils literal notranslate"><span class="pre">skimage.img_as_float</span></code>)</p>
+<ul>
+<li><p>What does the acronym PSF stand for?</p></li>
+<li><p>Compute the convolution between the image and a Gaussian kernel (<code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>).</p></li>
+<li><p>Compute the convolution between the image and the kernel defined by</p>
+<div class="math notranslate nohighlight">
+\[
+    h = \begin{pmatrix} 1 &amp; -1 \end{pmatrix},
+  \]</div>
+<p>by using <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> and initializing <span class="math notranslate nohighlight">\(h\)</span> with <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>.</p>
+<!--
+  `scipy.ndimage.convolve` est plus adapté que `scipy.signal.convolve2d` pour le traitement d'image.
+  En effet, il n'est pas nécessaire de définir l'option 'same' (le résultat a tout de suite la même taille que l'entrée)
+  et de plus on peut définir l'hypothèse sur les bords.
+ -->
+</li>
+<li><p>Compute the convolution between the image and a kernel defined by an array of 30 elements equal to 1/30
+(<code class="docutils literal notranslate"><span class="pre">numpy.ones</span></code>).</p></li>
+</ul>
+</div>
+<div class="section" id="properties-of-the-fourier-transform">
+<h2>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Load the image <a href="../_static/data/s1.png">s1.png</a>
+and compute its discrete Fourier transform (DFT) with <code class="docutils literal notranslate"><span class="pre">numpy.fft.fft2</span></code>.</p></li>
+<li><p>Show the DFT of the image with low frequencies at the center (<code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code>).
+The magnitude and angle are obtained with <code class="docutils literal notranslate"><span class="pre">numpy.absolute</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.angle</span></code>.</p></li>
+<li><p>Repeat the same operations with images
+<a href="../_static/data/s2.png">s2.png</a>,
+<a href="../_static/data/s3.png">s3.png</a>,
+<a href="../_static/data/s4.png">s4.png</a>, and
+<a href="../_static/data/s5.png">s5.png</a>.
+Analyse the specificities of the images: what can you say about the DFT?</p></li>
+</ul>
+</div>
+<div class="section" id="filtering-aliasing">
+<h2>Filtering aliasing<a class="headerlink" href="#filtering-aliasing" title="Permalink to this headline">¶</a></h2>
+<p>Aliasing (french: <em>crénelage</em>) is a phenomenon that occurs when the image is poorly sampled.
+It can be avoided by applying an anti-aliasing filter (french: <em>filtre anti-repliement</em>) before sampling.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not display the images in the notebook in this exercise!
+Jupyter Lab and Matplotlib can create aliasing on display.
+Instead, save the images with <code class="docutils literal notranslate"><span class="pre">skimage.io.imsave</span></code> and look at them with an external viewer,
+by taking care of using a 100% zoom.</p>
+</div>
+<ul>
+<li><p>Load and display the image <a href="../_static/data/roof.jpg">roof.jpg</a>.
+Then, downsample it (without an anti-aliasing filter) by a factor of three by taking one pixel out of three in the two spatial dimensions,
+which can be done with the instruction</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[::</span><span class="mi">3</span><span class="p">,::</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>How does the phenomenon of aliasing appear visually?</p>
+</li>
+<li><p>Now, apply a Gaussian filter (<code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>) to the original image before downsampling.
+Adjust the filter parameter to minimize aliasing.
+Is the aliasing still visible?</p></li>
+<li><p>Lastly, replace the Gaussian filter with an ideal low-pass filter,
+which completely eliminates frequencies above the cutoff frequency without modifying the frequencies below.
+The process is:</p>
+<ol class="simple">
+<li><p>Compute the DFT of the image,</p></li>
+<li><p>Define the ideal filter as a zero image with a square of 1 in the Fourier domain,</p></li>
+<li><p>Multiply the DFT of the image with the filter (this is equivalent to a convolution in the spatial domain),</p></li>
+<li><p>Compute the inverse DFT of the result (and keep only the real part).</p></li>
+</ol>
+<p>The code below generates a binary square mask of the same size as the image <code class="docutils literal notranslate"><span class="pre">X</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">Mask</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">:</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Choose correctly the coordinates <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> to conserve the low frequencies,
+which are located at the center in the DFT (after applying <code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code>).</p>
+<p>The ideal filter may be defined in the same way as in the exercise <a class="reference internal" href="lab1.html#lab1-synth-image"><span class="std std-ref">Create a simple image</span></a>:
+use the function <code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> and the indexing <code class="docutils literal notranslate"><span class="pre">f[m1:m2,n1:n2]=x</span></code>.
+Choose the cutoff frequency appropriately to reduce aliasing without altering the image.
+Is the aliasing still visible?</p>
+</li>
+</ul>
+</div>
+<div class="section" id="lossy-compression">
+<h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h2>
+<p>The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
+In this exercise, a simplified version of JPEG compression is implemented
+by cancelling the DCT pixels located outside a certain frequency.</p>
+<ul>
+<li><p>Compute and display the DCT (<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.dctn</span></code> with argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>) of the image
+<a href="../_static/data/squirrel.png">squirrel.png</a>.</p></li>
+<li><p>Apply a binary mask to the DCT coefficients to cancel the high frequencies.
+Recall that for DCT, the low frequencies are located at the top left corner of the image.</p></li>
+<li><p>Display the compressed image using reverse DCT
+(<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, always with the argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>).
+What is your opinion about the quality of the compression?</p></li>
+<li><p>Calculate the mean square error (MSE) defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  MSE = \frac{1}{MN} \sum_ {m,n} (f(m,n) - g(m,n))^2
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are respectively the images before and after compression, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> being the dimensions of these images.
+You can use the function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
+</li>
+<li><p>Analyze the evolution of the MSE according to the mask size <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+</ul>
+<!--
+## Magnitude and phase of the Fourier transform
+
+* Load the image [lena.tiff](https://vincmazet.github.io/ftip/_static/data/lena.tiff) and convert it to grayscale.
+
+* Compute its DFT.
+
+* Reconstruct the image by using the inverse DFT, but using a constant magnitude.
+  To do that, you have to define the DFT from the magnitude and the argument, considering that
+  
+  $$
+    X = \rho \exp(j\theta)
+  $$
+  
+  where $X$ is the DFT, $\rho$ the magnitude and $\theta$ the phase.
+  In Python, the exponential is `numpy.exp` and the multiplication is simply `*`.
+  To define a constant magnitude with the same size as the DFT,
+  you can use the code:
+  
+  ```
+  numpy.ones(F.shape)
+  ```
+  
+  It is possible that the image is complex, because of numerical errors.
+  To avoid this, display the real part (`numpy.real`) of the image.
+
+* Same question, but using the initial magnitude but a constant argument.
+
+* What do you conclude?
+-->
+<!-- 
+## convolution et problèmes aux bords
+
+problème aux bords : je donne une image super grande et un filtre.
+Je leur demande d'appliquer le filtre sur l'image et de ne sélectionner/afficher qu'une zone (de 100x100).
+L'application du filtre sur toute l'image n'est pas possible (image trop grande).
+Solution : sélectionner une partie de l'image et y appliquer le filtre.
+Mais à cause du bord, il faut sélectionner une image un peu plus grande que ce qui est demandé.
+-->
+<!--
+## convolution et séparabilité
+-->
+<!--
+ ## retrouver le fond dans une vidéo
+
+une séquence de 10 images dans laquelle quelques objets se déplacent
+comment retrouver le fond (c'est à dire sans les objets) ?
+
+Idée 1 : division entre images deux à deux pour déterminer quels sont les pixels qui ne changent pas, et les enregistrer comme étant le fond
+
+Idée 2 : filtre médian en chaque pixel
+--></div>
 <div class="toctree-wrapper compound">
 </div>
 </div>

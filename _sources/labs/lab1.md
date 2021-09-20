@@ -134,8 +134,9 @@ However, an image can also be seen as a three-dimensional curve, opening the way
 * Extract a row or a column of pixels from the image,
   then display this brightness profile as a signal (`matplotlib.pyplot.plot`).
   Do you manage to find in this profile the different areas of the image?
-  
 
+
+(lab1:synth-image)=
 ## Create a simple image
 
 An RGB image is encoded in the form of a three-dimensional array:
