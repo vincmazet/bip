@@ -249,11 +249,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
@@ -588,6 +583,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-operations">
+   Set operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structuring-element">
+   Structuring element
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -597,7 +610,107 @@
               <div>
                 
   <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<span id="mm-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<!-- Dans le Jahne : quelques exos et interactivités -->
+<p>Mathematical morphology gathers several techniques that apply to binary images,
+the latter result for example from thresholding.
+The pixels in binary images take only two values: 0 or 1, true or false, white or black, etc.
+In this chapter, we consider that the images contain objects (represented by white pixels) on a background (black pixels),
+as in <a class="reference internal" href="#mm-mickey"><span class="std std-numref">Fig. 24</span></a>.</p>
+<div class="figure align-default" id="mm-mickey">
+<img alt="../_images/set-union.png" src="../_images/set-union.png" />
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Example of a binary image composed of an object (a famous mouse head) on a background.</span><a class="headerlink" href="#mm-mickey" title="Permalink to this image">¶</a></p>
+</div>
+<p>The basic operators of mathematical morphology, namely <a class="reference internal" href="basics.html#mm-dilation"><span class="std std-ref">dilation</span></a> and <a class="reference internal" href="basics.html#mm-erosion"><span class="std std-ref">erosion</span></a> are first presented.
+The combination of these two operators allows defining <a class="reference internal" href="composition.html#mm-opening"><span class="std std-ref">opening</span></a>, <a class="reference internal" href="composition.html#mm-closing"><span class="std std-ref">closing</span></a>
+and the <a class="reference internal" href="composition.html#mm-hit-or-miss"><span class="std std-ref">hit-or-miss transform</span></a>.
+A comparison of the operators is then presented.
+At last, we deal with <a class="reference internal" href="measure.html#mm-measure"><span class="std std-ref">measuring the geometric characteristics</span></a> of binary objects.</p>
+<p>Before beginning, we need to introduce two notions.</p>
+<div class="section" id="set-operations">
+<h2>Set operations<a class="headerlink" href="#set-operations" title="Permalink to this headline">¶</a></h2>
+<p>We also consider that the objects in the image define a set of pixels,
+so mathematical morphology can use the usual operations on sets, listed below.
+Consider <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as two sets.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text">Set <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="figure align-default">
+<img alt="../_images/set-A.png" src="../_images/set-A.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text">Set <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="figure align-default">
+<img alt="../_images/set-B.png" src="../_images/set-B.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text">The <strong>complement</strong> of <span class="math notranslate nohighlight">\(A\)</span> is denoted <span class="math notranslate nohighlight">\(A^\mathrm{c}\)</span> and is the set of pixels that are not in <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="figure align-default">
+<img alt="../_images/set-complement.png" src="../_images/set-complement.png" />
+</div>
+<div class="math notranslate nohighlight">
+\[
+A^\mathrm{c} = \{p \notin A \}
+\]</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text">The <strong>union</strong> <span class="math notranslate nohighlight">\(A \cup B \)</span> is the set of pixels present in <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> or both:</p>
+<div class="figure align-default">
+<img alt="../_images/set-union.png" src="../_images/set-union.png" />
+</div>
+<div class="math notranslate nohighlight">
+\[
+A \cup B = \{p \in A \, \mathrm{or} \, p \in B \}
+\]</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-4 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text">The <strong>intersection</strong> <span class="math notranslate nohighlight">\(A \cap B \)</span> is the set of pixels present simultaneously in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.:</p>
+<div class="figure align-default">
+<img alt="../_images/set-intersection.png" src="../_images/set-intersection.png" />
+</div>
+<div class="math notranslate nohighlight">
+\[
+A \cap B = \{p \in A \, \mathrm{and} \, p \in B \}
+\]</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="structuring-element">
+<h2>Structuring element<a class="headerlink" href="#structuring-element" title="Permalink to this headline">¶</a></h2>
+<p>In addition to this, the operators of mathematical morphology need a so-called structuring element (french: <em>élément structurant</em>).
+A structuring element <span class="math notranslate nohighlight">\(E\)</span> is a set of pixels (equivalent to a binary image) associated with an origin.
+Generally, the origin is located at the centre of the structuring element;
+but it may be elsewhere, even outside the pixels of the structuring element.
+In the sequel, we denote by <span class="math notranslate nohighlight">\(E_c\)</span> the structuring element centred on the pixel <span class="math notranslate nohighlight">\(c\)</span>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

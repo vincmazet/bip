@@ -3,6 +3,7 @@
 
 | 🇬🇧 | 🇫🇷 |
 | :--- | ---: |
+| Bounding box | Boîte englobante |
 | Closing | Fermeture |
 | Colormap | Palette de couleurs |
 | Convolution | Convolution |
@@ -17,4 +18,4 @@
 | Mathematical morphology | Morphologie mathématique |
 | Opening | Ouverture |
 | Registration | Recalage |
-| Structuring element | Élément structurant |"
+| Structuring element | Élément structurant |

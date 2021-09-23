@@ -249,11 +249,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
@@ -588,6 +583,43 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dilation">
+   Dilation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties">
+     Properties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erosion">
+   Erosion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Properties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duality">
+   Duality
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -598,6 +630,96 @@
                 
   <div class="section" id="basic-operators">
 <h1>Basic operators<a class="headerlink" href="#basic-operators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dilation">
+<span id="mm-dilation"></span><h2>Dilation<a class="headerlink" href="#dilation" title="Permalink to this headline">¶</a></h2>
+<p>Having an image <span class="math notranslate nohighlight">\(I\)</span> and a structuring element <span class="math notranslate nohighlight">\(E_c\)</span>, the dilation of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \oplus E_c\)</span>.
+The result of the dilation (french: <em>dilatation</em>) is obtained by moving the origin of the structuring element onto the white pixels of the image
+and keeping the set of pixels of each displaced structuring element.</p>
+<p>Mathematically speaking:</p>
+<div class="math notranslate nohighlight">
+\[
+  I \oplus E_c = \{ E_c \mid c \in I \}
+\]</div>
+<div class="figure align-default" id="mm-dilation-toy">
+<img alt="../_images/dilation-toy.svg" src="../_images/dilation-toy.svg" /><p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Example of dilation on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+(with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#mm-dilation-toy" title="Permalink to this image">¶</a></p>
+</div>
+<p>The structuring element is often described with a matrix.
+So, the structuring element in <a class="reference internal" href="#mm-dilation-toy"><span class="std std-numref">Fig. 25</span></a> is written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E =
+\begin{pmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Note that the matrix does not consider the zero pixels surrounding the main part of <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<div class="section" id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Dilation is a binary operation and is not linear.
+Therefore, it cannot be expressed as convolution which is a linear mathematical operator.</p></li>
+<li><p>Dilation is associate, <em>i.e.</em> the application of two consecutive dilations can be done in any order:</p>
+<div class="math notranslate nohighlight">
+\[
+    (I \oplus  E_1 ) \oplus  E_2 = (I \oplus  E_2) \oplus  E_1 = I \oplus  (E_1 \oplus E_2)
+  \]</div>
+<p>(here, the subscripts 1 and 2 means two different structuring elements.)</p>
+</li>
+<li><p>Dilation is a monotonous operation since the relations of inclusions are conserved:</p>
+<div class="math notranslate nohighlight">
+\[
+    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \oplus E_c \subseteq I_2 \oplus E_c
+  \]</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="erosion">
+<span id="mm-erosion"></span><h2>Erosion<a class="headerlink" href="#erosion" title="Permalink to this headline">¶</a></h2>
+<p>The erosion of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \ominus E_c\)</span>.
+The result of the erosion (french: <em>erosion</em>) is obtained by moving the structuring element into the white pixels of the image
+and keeping only the origin of each displaced structuring element.</p>
+<div class="math notranslate nohighlight">
+\[
+  I \ominus E_c = \{ c \mid E_c \subseteq I\}
+\]</div>
+<div class="figure align-default" id="f-mm-erosion-toy">
+<img alt="../_images/erosion-toy.svg" src="../_images/erosion-toy.svg" /><p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Example of erosion on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+(with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-erosion-toy" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id1">
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Erosion has similar properties as dilation as stated below.</p>
+<ul>
+<li><p>Erosion is associative:</p>
+<div class="math notranslate nohighlight">
+\[
+    (I \ominus E_1 ) \ominus E_2 = (I \ominus E_2) \ominus E_1 = I \ominus (E_1 \oplus E_2)
+  \]</div>
+</li>
+<li><p>Erosion is a monotonous operation:</p>
+<div class="math notranslate nohighlight">
+\[
+    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \ominus E \subseteq I_2 \ominus E
+  \]</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="duality">
+<h2>Duality<a class="headerlink" href="#duality" title="Permalink to this headline">¶</a></h2>
+<p>Dilation and erosion are dual operators.
+Considering the background as the object and the object as background (<em>i.e.</em> by working with the complement of the image),
+the dilation is converted to erosion and vice versa:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  I^\mathrm{c} \ominus E = (I \oplus E)^\mathrm{c} \\
+  I^\mathrm{c} \oplus E = (I \ominus E)^\mathrm{c}
+\end{split}\]</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

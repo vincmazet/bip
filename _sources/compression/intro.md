@@ -20,11 +20,11 @@ It is still the mathematical definition for information.
 
 We distinguish two kinds of compression:
 
-* With [](lossless), no information is lost during compression,
+* With [](compression:lossless), no information is lost during compression,
   _i.e._ the original image and the compressed image are perfectly identical.
   It is possible to reach a compression ratio up to 1/10
   (the size in bytes of the compressed image is 1/10 times the original one).
   
-* In [](lossy), we accept to lose information during compression
+* In [](compression:lossy), we accept to lose information during compression
   (while ensuring that the original image remains close to the original one).
   The compression ratio can reach 1/100!

@@ -1,4 +1,4 @@
-(lossy)=
+(compression:lossy)=
 # Lossy compression
 
 ## Principle
@@ -11,7 +11,7 @@ thus gaining storage at the cost of very little visual degradation.
 In addition, this principle is used in lossy compression of audio (MP3) and video (MPEG).
 
 Most of the energy of usual pictures is concentrated in low frequencies,
-so the [discrete Fourier transform](fourier) (DFT) could be a good idea to perform lossy compression.
+so the [discrete Fourier transform](filtering:fourier) (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called _discrete cosine transform_ (DCT) is a better choice for computational reasons.
 Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.
 
@@ -35,7 +35,7 @@ $$
   \end{cases}
 $$
 
-The DCT is similar to [](fourier) except that the complex exponentials are replaced by cosines.
+The DCT is similar to [](filtering:fourier) except that the complex exponentials are replaced by cosines.
 
 The DCT decomposes an image into 2D cosines of different frequencies.
 Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented {numref}`F:compression:dct-coefficients`.

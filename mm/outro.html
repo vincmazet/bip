@@ -249,11 +249,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
@@ -598,6 +593,62 @@
                 
   <div class="section" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>Mathematical morphology gathers operators that work on the form of objects.
+We have studied some operators applied to binary images, but there are extensions of these techniques to grayscale images.
+The results given by the four main operators on binary images are listed in the following table.</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><img alt="../_images/greece1.png" src="../_images/greece1.png" />
+</td>
+<td><p><strong>Original image</strong></p></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/greece-dilation.png" src="../_images/greece-dilation.png" />
+</td>
+<td><p><strong>Dilation</strong> <span class="math notranslate nohighlight">\(\oplus\)</span></p>
+<ul class="simple">
+<li><p>increases the size of objects (<em>e.g.</em> the islands are bigger)</p></li>
+<li><p>fills the small holes (<em>e.g.</em> the <a class="reference external" href="https://en.wikipedia.org/wiki/Gulf_of_Corinth">Gulf of Corinth</a> does not more exist after dilation)</p></li>
+<li><p>welds close objects (<em>e.g.</em> some islands are grouped into a larger island)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/greece-erosion.png" src="../_images/greece-erosion.png" />
+</td>
+<td><p><strong>Erosion</strong> <span class="math notranslate nohighlight">\(\ominus\)</span></p>
+<ul class="simple">
+<li><p>decreases the size of objects (<em>e.g.</em> Crete is smaller)</p></li>
+<li><p>widens the holes (<em>e.g.</em> the Gulf of Corinth is bigger)</p></li>
+<li><p>separates the connected objects by a small bridge (<em>e.g.</em> the Peloponnese and mainland Greece are now disconnected)</p></li>
+<li><p>removes small items (<em>e.g.</em> small islands have disappeared)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/greece-opening.png" src="../_images/greece-opening.png" />
+</td>
+<td><p><strong>Opening</strong> <span class="math notranslate nohighlight">\(\circ\)</span></p>
+<ul class="simple">
+<li><p>conserve the size of the objects (while they can be slightly distorted)</p></li>
+<li><p>removes small objects (<em>e.g.</em> small islands have disappeared)</p></li>
+<li><p>smoothes the contours (<em>e.g.</em> the coasts are no more jagged)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/greece-closing.png" src="../_images/greece-closing.png" />
+</td>
+<td><p><strong>Closing</strong> <span class="math notranslate nohighlight">\(\bullet\)</span></p>
+<ul class="simple">
+<li><p>conserve the size of the objects (while they can be slightly distorted)</p></li>
+<li><p>fills small holes (<em>e.g.</em> gulfs and lakes are removed)</p></li>
+<li><p>welds close shapes (<em>e.g.</em> some separated islands now form only one)</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
     <script type="text/x-thebe-config">

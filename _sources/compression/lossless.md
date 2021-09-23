@@ -1,4 +1,4 @@
-(lossless)=
+(compression:lossless)=
 # Lossless compression
 
 Here are two examples of lossless image compression.

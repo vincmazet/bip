@@ -249,11 +249,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
@@ -588,6 +583,39 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#area">
+   Area
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bounding-box">
+   Bounding box
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#centroid">
+   Centroid
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eccentricity">
+   Eccentricity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solidity">
+   Solidity
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -597,7 +625,39 @@
               <div>
                 
   <div class="section" id="measure">
-<h1>Measure<a class="headerlink" href="#measure" title="Permalink to this headline">¶</a></h1>
+<span id="mm-measure"></span><h1>Measure<a class="headerlink" href="#measure" title="Permalink to this headline">¶</a></h1>
+<p>It is possible to measure geometric characteristics of the objects in a binary image, as the area or position.
+In scikit-image, the most common properties are implemented in <code class="docutils literal notranslate"><span class="pre">skimage.measure</span></code>, especially in the function <code class="docutils literal notranslate"><span class="pre">regionprops</span></code>.
+This section list some of them, as an example of possibilities.</p>
+<div class="section" id="area">
+<h2>Area<a class="headerlink" href="#area" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/prop-area.svg"><img alt="../_images/prop-area.svg" class="align-center" src="../_images/prop-area.svg" width="500px" /></a>
+<p>Area of an object is the number of pixels of this object.
+The larger the object and the fewer holes it contains, the larger the area.</p>
+</div>
+<div class="section" id="bounding-box">
+<h2>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/prop-bbox.svg"><img alt="../_images/prop-bbox.svg" class="align-center" src="../_images/prop-bbox.svg" width="500px" /></a>
+<p>The bounding box (french: <em>boîte englobante</em>) is the smallest rectangle that contains the object.</p>
+</div>
+<div class="section" id="centroid">
+<h2>Centroid<a class="headerlink" href="#centroid" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/prop-centroid.svg"><img alt="../_images/prop-centroid.svg" class="align-center" src="../_images/prop-centroid.svg" width="500px" /></a>
+<p>The centroid is the centre of gravity of the object.
+It can be outside the object.</p>
+</div>
+<div class="section" id="eccentricity">
+<h2>Eccentricity<a class="headerlink" href="#eccentricity" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/prop-eccentricity.svg"><img alt="../_images/prop-eccentricity.svg" class="align-center" src="../_images/prop-eccentricity.svg" width="500px" /></a>
+<p>Eccentricity measures the elongation, or stretching, of the object, as it would be an ellipse.
+It is a positive value, where 0 correspond ot a round object.</p>
+</div>
+<div class="section" id="solidity">
+<h2>Solidity<a class="headerlink" href="#solidity" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/prop-solidity.svg"><img alt="../_images/prop-solidity.svg" class="align-center" src="../_images/prop-solidity.svg" width="500px" /></a>
+<p>Solidity is the ratio of pixels in the objects to pixels of the <a class="reference external" href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> image.
+It gives a measure of the compactness of the object.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

@@ -62,6 +62,15 @@ DOI: [10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
 
 ---
 
+```{figure} ../figs/greece.png
+```
+**Greece**
+&copy; Daniel Seehausen.
+Free license.
+[Original picture](https://pixabay.com/illustrations/greece-map-black-only-greece-1613310/).
+
+---
+
 ```{figure} ../figs/hdfs.png
 ```
 **HDFS**
@@ -176,20 +185,3 @@ Creative Commons CC-BY.
 ````
 
 Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html.
-
-
-
-
-<!-- 
-
-{figure} ../figs/greece.png
-**Greece**
-&copy; Daniel Seehausen.
-Free license.
-[Original picture](https://pixabay.com/illustrations/greece-map-black-only-greece-1613310/).
-
-
-
-
-
--->

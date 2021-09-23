@@ -8,7 +8,7 @@ Each section of the textbook focuses on a specific problem, we were careful to w
 In addition to this, chapter [In a Nutshell](mathematical-optimization) gives some explanation of the tools
 that are used in image processing but not specific to the domain, so we put them apart and are not too detailed.
 
-Several examples and problems are given through programming exercises, gathered in chapter [Labs](lab1).
+Several examples and problems are given through programming exercises, gathered in chapter [Labs](labs:lab1).
 The programming exercises are with Python which is free and now used by many communities (medicine, astronomy, biology...).
 To do the exercises on your personal computer, you must install Python and Jupyter Lab, as explained on page [](python).
 

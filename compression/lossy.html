@@ -249,11 +249,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
@@ -625,7 +620,7 @@
               <div>
                 
   <div class="section" id="lossy-compression">
-<span id="lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h1>
+<span id="compression-lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="principle">
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <p>The most famous lossy compression format for images is JPEG,
@@ -635,7 +630,7 @@ so that most of the coefficients of the transformed image are very small and can
 thus gaining storage at the cost of very little visual degradation.
 In addition, this principle is used in lossy compression of audio (MP3) and video (MPEG).</p>
 <p>Most of the energy of usual pictures is concentrated in low frequencies,
-so the <a class="reference internal" href="../filtering/fourier.html#fourier"><span class="std std-ref">discrete Fourier transform</span></a> (DFT) could be a good idea to perform lossy compression.
+so the <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">discrete Fourier transform</span></a> (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called <em>discrete cosine transform</em> (DCT) is a better choice for computational reasons.
 Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.</p>
 </div>
@@ -656,7 +651,7 @@ Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wav
     1                   &amp;\text{if}\; u &gt; 0.
   \end{cases}
 \end{split}\]</div>
-<p>The DCT is similar to <a class="reference internal" href="../filtering/fourier.html#fourier"><span class="std std-ref">Fourier transform</span></a> except that the complex exponentials are replaced by cosines.</p>
+<p>The DCT is similar to <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a> except that the complex exponentials are replaced by cosines.</p>
 <p>The DCT decomposes an image into 2D cosines of different frequencies.
 Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 20</span></a>.</p>
 <div class="figure align-default" id="f-compression-dct-coefficients">

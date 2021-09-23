@@ -1,4 +1,4 @@
-(fourier)=
+(filtering:fourier)=
 # Fourier transform
 
 The (2D) Fourier transform is a very classical tool in image processing.
