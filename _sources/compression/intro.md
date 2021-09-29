@@ -3,7 +3,7 @@
 <!-- Afficher en sur-impression les images des coefficients de la DCT sur la grille des coefficients. -->
 <!-- Afficher l'image de différence en plus de l'originale et de la transformée. -->
 
-Do you know how bytes are needed to code one second of Full HD video?
+How many bytes are needed to code one second of Full HD video?
 A Full HD video is characterized by images of size 1920 × 1080, each of the three channels (RGB) is coded with 1 byte, and there are 50 frames per second.
 
 ```{dropdown} Solution

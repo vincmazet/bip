@@ -2,7 +2,7 @@
 # References
 
 * [Gonzalez 2010]
-  R.C. Gonzalez, R.E.Woods.
+  R.C. Gonzalez, R.E. Woods.
   _Digital Image Processing_,
   Pearson, 2010.
 

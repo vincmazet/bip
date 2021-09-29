@@ -222,23 +222,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Interpolation
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Registration
  </span>
 </p>
@@ -246,6 +229,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../registration/intro.html">
    Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../registration/registration.html">
+   Registration
   </a>
  </li>
  <li class="toctree-l1">
@@ -583,6 +571,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-morphology">
+   Mathematical Morphology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#registration">
+   Registration
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -592,7 +598,47 @@
               <div>
                 
   <div class="section" id="lab-3">
-<h1>Lab 3<a class="headerlink" href="#lab-3" title="Permalink to this headline">¶</a></h1>
+<span id="labs-lab3"></span><h1>Lab 3<a class="headerlink" href="#lab-3" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mathematical-morphology">
+<h2>Mathematical Morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h2>
+<p>We want to detect and count the number of swimming pools visible in the satellite image <a href="../_static/data/moliets.png">moliets.png</a>.
+Most of the functions to use are in module <code class="docutils literal notranslate"><span class="pre">skimage.morphology</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At first, do not try to find all the pools perfectly:
+implement a first version of the method which gives an approximate result automatically.</p>
+</div>
+<ul class="simple">
+<li><p>Apply a threshold on the image to highlight the pools.
+Ask yourself about which image to use: the original image, the grayscale image, a particular band something else?</p></li>
+<li><p>Apply the four usual morphological operators (erosion, dilation, opening, closing)
+to observe their influence and deduce the one most suited to the problem.</p></li>
+<li><p>By using appropriate measures, classify the regions given in the image to determine the number of pools.</p></li>
+<li><p>Determine the surface of the pools, knowing that the image is of resolution 50 cm.</p></li>
+<li><p>Give a critical discussion about your method by listing its good behaviours and its limits,
+then suggest improvements.</p></li>
+</ul>
+</div>
+<div class="section" id="registration">
+<h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
+<p>Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
+<a href="../_static/data/capitole1.jpg">capitole1.jpg</a> (the reference) and
+<a href="../_static/data/capitole2.jpg">capitole2.jpg</a> (the source).</p>
+<ul class="simple">
+<li><p>Which deformation model is adapted to the problem?</p></li>
+<li><p>Before applying a complete registration processing on the two images,
+we first apply an arbitrary distortion to the source.
+To do this, use the appropriate function of the module <code class="docutils literal notranslate"><span class="pre">skimage.transform</span></code>
+to define an Euclidean transformation of translation <span class="math notranslate nohighlight">\((400,-100)\)</span> and of rotation <span class="math notranslate nohighlight">\(\pi/3\)</span>.
+These parameters are close to the optimal transformation.
+Then apply this transformation on the source with <code class="docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code>.
+Check that the distorted image is close enough to the reference (you can display the difference between the two images).</p></li>
+<li><p>Implement an optimization method to automatically determine the best parameters of the transformation.
+The simplest optimization method (although very long in computing time!)
+consists of using loops to test several values and keep those that minimize the mean squared error
+(defined in <a class="reference internal" href="lab2.html#labs-lab2"><span class="std std-ref">Lab 2</span></a>).</p></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>

@@ -1,4 +1,4 @@
-(lab2)=
+(labs:lab2)=
 # Lab 2
 
 
