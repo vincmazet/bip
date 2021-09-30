@@ -26,7 +26,7 @@ implement a first version of the method which gives an approximate result automa
   then suggest improvements.
 
   
-## Registration
+<!-- ## Registration
 
 Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
 <a href="../_static/data/capitole1.jpg">capitole1.jpg</a> (the reference) and
@@ -45,4 +45,4 @@ Two satellite images of the Capitol in Toulouse are to be registered by using an
 * Implement an optimization method to automatically determine the best parameters of the transformation.
   The simplest optimization method (although very long in computing time!)
   consists of using loops to test several values and keep those that minimize the mean squared error
-  (defined in [](labs:lab2)).
+  (defined in [](labs:lab2)). -->

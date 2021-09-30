@@ -222,28 +222,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Registration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Segmentation
  </span>
 </p>
@@ -581,11 +559,6 @@
    Mathematical Morphology
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#registration">
-   Registration
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -618,27 +591,26 @@ to observe their influence and deduce the one most suited to the problem.</p></l
 <li><p>Give a critical discussion about your method by listing its good behaviours and its limits,
 then suggest improvements.</p></li>
 </ul>
-</div>
-<div class="section" id="registration">
-<h2>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h2>
-<p>Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
+<!-- ## Registration
+
+Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
 <a href="../_static/data/capitole1.jpg">capitole1.jpg</a> (the reference) and
-<a href="../_static/data/capitole2.jpg">capitole2.jpg</a> (the source).</p>
-<ul class="simple">
-<li><p>Which deformation model is adapted to the problem?</p></li>
-<li><p>Before applying a complete registration processing on the two images,
-we first apply an arbitrary distortion to the source.
-To do this, use the appropriate function of the module <code class="docutils literal notranslate"><span class="pre">skimage.transform</span></code>
-to define an Euclidean transformation of translation <span class="math notranslate nohighlight">\((400,-100)\)</span> and of rotation <span class="math notranslate nohighlight">\(\pi/3\)</span>.
-These parameters are close to the optimal transformation.
-Then apply this transformation on the source with <code class="docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code>.
-Check that the distorted image is close enough to the reference (you can display the difference between the two images).</p></li>
-<li><p>Implement an optimization method to automatically determine the best parameters of the transformation.
-The simplest optimization method (although very long in computing time!)
-consists of using loops to test several values and keep those that minimize the mean squared error
-(defined in <a class="reference internal" href="lab2.html#labs-lab2"><span class="std std-ref">Lab 2</span></a>).</p></li>
-</ul>
-</div>
+<a href="../_static/data/capitole2.jpg">capitole2.jpg</a> (the source).
+
+* Which deformation model is adapted to the problem?
+
+* Before applying a complete registration processing on the two images,
+  we first apply an arbitrary distortion to the source.
+  To do this, use the appropriate function of the module `skimage.transform`
+  to define an Euclidean transformation of translation $(400,-100)$ and of rotation $\pi/3$.
+  These parameters are close to the optimal transformation.
+  Then apply this transformation on the source with `skimage.transform.warp`.
+  Check that the distorted image is close enough to the reference (you can display the difference between the two images).
+  
+* Implement an optimization method to automatically determine the best parameters of the transformation.
+  The simplest optimization method (although very long in computing time!)
+  consists of using loops to test several values and keep those that minimize the mean squared error
+  (defined in [](labs:lab2)). --></div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
