@@ -232,13 +232,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="intensity.html">
-   Intensity-based segmentation
+  <a class="reference internal" href="histogram.html">
+   Histogram thresholding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="region.html">
-   Region-based segmentation
+  <a class="reference internal" href="clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="region-growing.html">
+   Region growing
   </a>
  </li>
  <li class="toctree-l1">
@@ -559,6 +564,89 @@
                 
   <div class="section" id="how-to-evaluate-a-segmentation">
 <h1>How to evaluate a segmentation?<a class="headerlink" href="#how-to-evaluate-a-segmentation" title="Permalink to this headline">¶</a></h1>
+<p>This chapter has introduced the usual methods of segmentation, but there are many more!
+No method is the best everywhere: the result depends, among other things, on the image itself.
+Consequently, it is interesting to evaluate, for the type of image to process, the quality of the segmentation.
+For this, different criteria can be used, defined below.
+In addition to the image to be segmented, we also need the expected result, which we call “ground truth” (French: <em>vérité terrain</em>).</p>
+<p>Imagine that the ground truth and the segmentation are the images in <a class="reference internal" href="#f-segmentation-eval-gt-est"><span class="std std-numref">Fig. 42</span></a> (binary segmentation).</p>
+<div class="figure align-default" id="f-segmentation-eval-gt-est">
+<a class="reference internal image-reference" href="../_images/segmentation-eval-gt-est.png"><img alt="../_images/segmentation-eval-gt-est.png" src="../_images/segmentation-eval-gt-est.png" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Ground truth <span class="math notranslate nohighlight">\(f^*\)</span> (left) and segmentation <span class="math notranslate nohighlight">\(f\)</span> (right).</span><a class="headerlink" href="#f-segmentation-eval-gt-est" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each image has two areas: the segmented object (shown in white) and the background (in black).
+So, we can define four types of zones (cf. <a class="reference internal" href="#f-segmentation-eval-zones"><span class="std std-numref">Fig. 43</span></a>):</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In French, we talk with <em>vrai positifs</em>, <em>vrai négatifs</em>, <em>faux positifs</em> and <em>faux négatifs</em>.</p>
+</div>
+<ul class="simple">
+<li><p>the true positives (TP) represent the pixels considered as being in the object and being really in the object,</p></li>
+<li><p>conversely, the true negatives (TN) are the pixels outside the object both in the segmentation and the ground truth,</p></li>
+<li><p>the false positive (FP) are the pixels considered by the segmentation in the object, but which in reality are not part of it,</p></li>
+<li><p>finally, the false negative (FN) are the pixels of the object that the segmentation has classified outside.</p></li>
+</ul>
+<div class="figure align-default" id="f-segmentation-eval-zones">
+<a class="reference internal image-reference" href="../_images/eval-zones.png"><img alt="../_images/eval-zones.png" src="../_images/eval-zones.png" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Definition of true positive (TP), false positive (FP), true negative (VN) and false negative (FN).</span><a class="headerlink" href="#f-segmentation-eval-zones" title="Permalink to this image">¶</a></p>
+</div>
+<p>From these four quantities, one or the other of the criteria below can be used.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Sensibility (<em>sensibilité</em>)</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\frac{\text{TP}}{\text{TP}+\text{FN}}
+\]</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Specificity (<em>spécificité</em>)</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\frac{\text{TN}}{\text{TN}+\text{FP}}
+\]</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Dice coefficient (<em>coefficient de Dice</em>)</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\frac{2\,\text{TP}}{2\,\text{TP}+\text{FP}+\text{FN}} = \frac{2\,|f\, \cap f\,^*|}{|f\,| + |f\,^*|}
+\]</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">Jaccard coefficient (<em>coefficient de Jaccard</em>)</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\frac{\text{TP}}{\text{TP}+\text{FP}+\text{FN}} = \frac{|f\, \cap f\,^*|}{|f\, \cup f\,^*|}
+\]</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

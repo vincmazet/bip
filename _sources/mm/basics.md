@@ -42,7 +42,7 @@ Note that the matrix does not consider the zero pixels surrounding the main part
 * Dilation is a binary operation and is not linear.
   Therefore, it cannot be expressed as convolution which is a linear mathematical operator.
 
-* Dilation is associate, _i.e._ the application of two consecutive dilations can be done in any order:
+* Dilation is associative, _i.e._ the application of two consecutive dilations can be done in any order:
 
   $$
     (I \oplus  E_1 ) \oplus  E_2 = (I \oplus  E_2) \oplus  E_1 = I \oplus  (E_1 \oplus E_2)
@@ -61,7 +61,7 @@ Note that the matrix does not consider the zero pixels surrounding the main part
 ## Erosion
 
 The erosion of $I$ by $E_c$ is noted $I \ominus E_c$.
-The result of the erosion (french: _erosion_) is obtained by moving the structuring element into the white pixels of the image
+The result of the erosion (french: _érosion_) is obtained by moving the structuring element into the white pixels of the image
 and keeping only the origin of each displaced structuring element.
 
 $$
@@ -78,13 +78,18 @@ Example of erosion on a small image $I$ by the structuring element $E_c$
 
 ### Properties
 
-Erosion has similar properties as dilation as stated below.
+Erosion has similar properties as dilation.
+
+* Erosion cannot be expressed as convolution.
 
 * Erosion is associative:
 
   $$
     (I \ominus E_1 ) \ominus E_2 = (I \ominus E_2) \ominus E_1 = I \ominus (E_1 \oplus E_2)
   $$
+  
+  Note that the result of two successive erosions is equivalent to an erosion
+  whose structuring element is the _dilation_ of the two first structuring elements.
 
 * Erosion is a monotonous operation:
 

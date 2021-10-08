@@ -56,7 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Intensity-based segmentation" href="intensity.html" />
+    <link rel="next" title="Histogram thresholding" href="histogram.html" />
     <link rel="prev" title="Conclusion" href="../mm/outro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -232,13 +232,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="intensity.html">
-   Intensity-based segmentation
+  <a class="reference internal" href="histogram.html">
+   Histogram thresholding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="region.html">
-   Region-based segmentation
+  <a class="reference internal" href="clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="region-growing.html">
+   Region growing
   </a>
  </li>
  <li class="toctree-l1">
@@ -559,7 +564,88 @@
                 
   <div class="section" id="introduction">
 <span id="c-segmentation-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Image segmentation consists in partitioning an image <span class="math notranslate nohighlight">\(f\)</span> according to a certain criterion.
+It means that the image is divided into regions <span class="math notranslate nohighlight">\(R_i\)</span>
+which are both disjoint and such that the entire image is covered by all the regions.
+Pixels in one region satisfy the criterion, but pixels in two adjacent regions do not.</p>
+<p>The figures below show several examples of segmentation.</p>
+<div class="figure align-default" id="f-segmentation-example-cells">
+<img alt="../_images/example-cells.png" src="../_images/example-cells.png" />
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Example of segmentation on gray levels
+(left: original image, right:segmentation given as regions).</span><a class="headerlink" href="#f-segmentation-example-cells" title="Permalink to this image">¶</a></p>
 </div>
+<div class="figure align-default" id="f-segmentation-example-daisy">
+<img alt="../_images/example-daisy.png" src="../_images/example-daisy.png" />
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">Example of segmentation on color
+(left: original image, right:segmentation given as regions, the colors of regions is the mean color of the pixels in the original image).</span><a class="headerlink" href="#f-segmentation-example-daisy" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="f-segmentation-example-haity">
+<img alt="../_images/example-haiti.png" src="../_images/example-haiti.png" />
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Example of segmentation on color with a constraint of the region size
+(left: original image, right:segmentation given as borders).</span><a class="headerlink" href="#f-segmentation-example-haity" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="f-segmentation-example-mammo">
+<img alt="../_images/example-mammo.png" src="../_images/example-mammo.png" />
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Example of segmentation on color
+(left: original image, right:segmentation given as regions).</span><a class="headerlink" href="#f-segmentation-example-mammo" title="Permalink to this image">¶</a></p>
+</div>
+<!-- Ajouter un exemple avec comme critère la texture. Cf par ex https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_glcm.html -->
+<p>The result of segmentation is not unique:
+it depends on the criterion, the segmentation method, the initialization of the method, etc.
+There are a lot of diverse segmentation methods and this chapter focuses on the more usual ones.
+Then, we talk about how to measure the quality of segmentation.</p>
+<!--
+  Dire qu'il y a plein de manière de catégoriser les méthodes.
+  Pour ma part, j propose une classification qui m'arrange.
+  Présenter les liens avec une carte mentale ?
+  Renseignements :
+    - https://pequan.lip6.fr/~bereziat/pima/2012/seuillage/sezgin04.pdf
+    - Wikipedia 
+    - webdocs.cs.ualberta.ca/ nray1/CMPUT605/track3_papers/Threshold_survey.pdf
+      "We categorize the thresholding methods in six groups according to the information they are exploiting:
+      1. histogram shape-based methods (eg the peaks, valleys and curvatures of the smoothed histogram are analyzed)
+      2. clustering-based methods (the gray-level samples are clustered in two parts or alternately are modeled as a mixture of two Gaussians)
+      3. entropy-based methods (entropy of the foreground and background regions, cross-entropy between original and binarized image, etc.)
+      4. object attribute-based methods (search a measure of similarity between the gray-level and the binarized images)
+      5. the spatial methods (higher-order probability distribution and/or correlation between pixels)
+      6. local methods (adapt the threshold value on each pixel to the local image characteristics)"
+-->
+<!--
+  Autres méthodes de que je pourrais présenter :
+    - par texture
+    - Mean-shift {Fukunaga75}
+    - SLIC {Achanta12}
+    - Split/merge
+    - Snakes
+-->
+<!-- <hr>
+
+```{note}
+
+La connexité est la façon dont sont définis les voisins d'un pixel.
+En général, on n'utilise que l'une des deux connexités suivantes :
+* la 4-connexité : un pixel possède quatre voisins (en haut, en bas, à gauche, à droite),
+* la 8-connexité : un pixel possède huit voisins (les quatre précédents et ceux sur les diagonales).
+
+figure figs/connexity.png
+name: F:segmentation:connexity
+4-connexité (à gauche) et 8-connexité (à droite). Les pixels en gris sont les voisins du pixel $(m,n)$.
+
+Chaque région $R_i$ de la segmentation est une composante connexe.
+
+Une composante connexe (_connected component_) est un groupe de pixels
+tel qu'on puisse aller d'un pixel de ce groupe à un autre pixel de ce groupe
+en passant par des pixels du même groupe voisins entre eux.
+
+Ainsi, dans la {numref}`F:segmentation:connected-component`,
+le nombre de composantes connexes est égal à 5 si on considère un voisinage en 4-connexité,
+ou à 4 si on considère un voisinage en 8-connexité.
+
+figure figs/connected-component.png
+name: F:segmentation:connected-component
+Le nombre de composantes connexes (entourées d'un trait de couleur) dépend de la connexité considérée.
+
+``` --></div>
 
     <script type="text/x-thebe-config">
     {
@@ -587,7 +673,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../mm/outro.html" title="previous page">Conclusion</a>
-    <a class='right-next' id="next-link" href="intensity.html" title="next page">Intensity-based segmentation</a>
+    <a class='right-next' id="next-link" href="histogram.html" title="next page">Histogram thresholding</a>
 
         </div>
         

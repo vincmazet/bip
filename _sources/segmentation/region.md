@@ -1,3 +1,0 @@
-# Region-based segmentation
-
-

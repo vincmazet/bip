@@ -22,7 +22,6 @@ E-mail: <a href="mailto:vincent.mazet@unistra.fr">vincent.mazet@unistra.fr</a>.
 
 ```{figure} ../figs/aldrin.png
 ```
-**Aldrin**
 &copy; [NASA](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
 NASA content generally are not copyrighted.
 [Original picture](https://www.nasa.gov/mission_pages/apollo/40th/images/apollo_image_12.html).
@@ -31,7 +30,6 @@ NASA content generally are not copyrighted.
 
 ```{figure} ../figs/coins1.png
 ```
-**Coins1**
 &copy; Céline Meillier.
 Public domain.
 
@@ -39,24 +37,13 @@ Public domain.
 
 ```{figure} ../figs/coins2.png
 ```
-**Coins2**
 &copy; Céline Meillier.
 Public domain.
 
 ---
 
-```{figure} ../figs/daisy.png
-```
-**Daisy**
-&copy; GLady.
-Free license.
-[Original picture](https://pixabay.com/photos/floral-daisy-blossom-plant-natural-50157/).
-
----
-
 ```{figure} ../figs/forest.png
 ```
-**Forest**
 He, Sun, Tang, "Single image haze removal using dark channel prior", CVPR 2009
 DOI: [10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
 
@@ -64,7 +51,6 @@ DOI: [10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
 
 ```{figure} ../figs/greece.png
 ```
-**Greece**
 &copy; Daniel Seehausen.
 Free license.
 [Original picture](https://pixabay.com/illustrations/greece-map-black-only-greece-1613310/).
@@ -73,7 +59,6 @@ Free license.
 
 ```{figure} ../figs/hdfs.png
 ```
-**HDFS**
 Bacon _et al._, "The MUSE 3D view of the Hubble Deep Field South", A&A, 575 (2015)
 [Original picture](http://muse-vlt.eu/science/hdfs-v1-0/).
 
@@ -81,7 +66,6 @@ Bacon _et al._, "The MUSE 3D view of the Hubble Deep Field South", A&A, 575 (201
 
 ```{figure} ../figs/peppers.png
 ```
-**Peppers**
 &copy; [Irene Kredenets](https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 on [Unsplash](https://unsplash.com/s/photos/pepper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 Free license.
@@ -91,7 +75,6 @@ Free license.
 
 ```{figure} ../figs/s1.png
 ```
-**s1**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -99,7 +82,6 @@ Public domain.
 
 ```{figure} ../figs/s2.png
 ```
-**s2**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -107,7 +89,6 @@ Public domain.
 
 ```{figure} ../figs/s3.png
 ```
-**s3**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -123,7 +104,6 @@ Public domain.
 
 ```{figure} ../figs/s5.png
 ```
-**s5**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -131,7 +111,6 @@ Public domain.
 
 ```{figure} ../figs/santamonica.jpg
 ```
-**Santa Monica**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -140,20 +119,17 @@ Public domain.
 
 ```{figure} ../figs/simpsons1.png
 ```
-**Simpsons1**
 
 ---
 
 
 ```{figure} ../figs/simpsons2.png
 ```
-**Simpsons2**
 
 ---
 
 ```{figure} ../figs/smiley.png
 ```
-**Smiley**
 &copy; Vincent Mazet, 2016.
 Public domain.
 
@@ -161,7 +137,6 @@ Public domain.
 
 ```{figure} ../figs/spots.png
 ```
-**Spots**
 &copy; Vincent Mazet.
 Public domain.
 
@@ -169,7 +144,6 @@ Public domain.
 
 ```{figure} ../figs/squirrel.png
 ```
-**Squirrel**
 &copy; Vincent Mazet, 2020.
 Public domain.
 
@@ -177,10 +151,38 @@ Public domain.
 
 ```{figure} ../figs/ufo.png
 ```
-**UFO**
 &copy; Mete Eraydın.
 Creative Commons CC-BY.
 [Original picture](https://thenounproject.com/term/ufo/100819/).
+
+---
+
+```{figure} ../figs/27829188.png
+```
+M.-L. Huang, T.-Y. Ling, "Dataset of Breast mammography images with Masses", Mendeley Data, V1 (2020)
+[doi:10.17632/x7bvzv6cvr.1](https://data.mendeley.com/datasets/x7bvzv6cvr/1)
+
+---
+
+```{figure} ../figs/fiche16u_1.tif
+```
+&copy; [ICube/Sertit](https://sertit.unistra.fr/)
+
+---
+
+```{figure} ../figs/PIA17369_hires.jpg
+```
+&copy; [NASA/JPL-Caltech](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
+NASA content generally are not copyrighted.
+[Original picture](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA17369).
+
+---
+
+```{figure} ../figs/flower-gf06a8d9de_1920.jpg
+```
+&copy; GLady.
+Free license.
+[Original picture](https://pixabay.com/photos/floral-daisy-blossom-plant-natural-50157/).
 
 ````
 

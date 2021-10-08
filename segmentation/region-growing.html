@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Region growing &#8212; Basics of Image Processing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Watershed" href="watershed.html" />
+    <link rel="prev" title="Clustering" href="clustering.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Basics of Image Processing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Foreword
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Digital images
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/definition.html">
+   What is a digital image?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/display.html">
+   Displaying an image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/operations.html">
+   Arithmetic operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/histogram.html">
+   Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/transformations.html">
+   Histogram transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Filtering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/convolution.html">
+   Convolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/fourier.html">
+   Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/filtering.html">
+   Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Compression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossless.html">
+   Lossless compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossy.html">
+   Lossy compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Mathematical morphology
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/basics.html">
+   Basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/composition.html">
+   Composition of basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/measure.html">
+   Measure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Segmentation
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="histogram.html">
+   Histogram thresholding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Region growing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="watershed.html">
+   Watershed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaluation.html">
+   How to evaluate a segmentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Restoration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/denoising.html">
+   Denoising
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/deconvolution.html">
+   Deconvolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Feature detection
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/matched-filter.html">
+   Matched filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/pattern.html">
+   Pattern detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/edges.html">
+   Edge detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/corners.html">
+   Corner detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/lines.html">
+   Line detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab1.html">
+   Lab 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc1.html">
+     Correction of lab 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab2.html">
+   Lab 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc2.html">
+     Correction of lab 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab3.html">
+   Lab 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc3.html">
+     Correction of lab 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab4.html">
+   Lab 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc4.html">
+     Correction of lab 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab5.html">
+   Lab 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc5.html">
+     Correction of lab 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab6.html">
+   Lab 6
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc6.html">
+     Correction of lab 6
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In a nutshell
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/optimization.html">
+   Mathematical optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/classification.html">
+   Classification
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://moodle.unistra.fr/course/view.php?id=7653">
+   Moodle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/python.html">
+   Installing and using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/segmentation/region-growing.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="region-growing">
+<h1>Region growing<a class="headerlink" href="#region-growing" title="Permalink to this headline">¶</a></h1>
+<!-- region vs intensity : l'aspect spatiale (voisinage entre pixels) pris en compte
+
+La limite fondamentale des méthodes précédentes est
+de ne pas prendre en compte l'information de voisinage :
+seule l'information de distribution des intensités est utilisée.
+
+À l'inverse, les méthodes basées région sont capables d'agréger des pixels spatialement proches _et_ ayant des intensités similaires.
+Nous allons voir deux méthodes basées régions :
+* la croissance de région
+* la méthode de décomposition/fusion
+
+
+## Croissance de région
+
+Le principe de la croissance de région (_region growing_) est, à partir d'un pixel initial (appelé « germe »),
+d'étendre la région en y ajoutant les pixels du voisinage qui satisfont le critère d'homogénéité,
+comme l'illustre la {numref}`F:segmentation:regiongrowing`.
+
+```{figure} figs/segmentation-regiongrowing.png
+---
+height: 250px
+name: F:segmentation:regiongrowing
+---
+Illustration de la croissance de région (le germe est indiqué par la croix rouge).
+```
+
+Le choix du germe peut se faire manuellement ou automatiquement
+(par exemple en choisissant au hasard un pixel en dehors des zones de fort contraste).
+
+Le critère de similarité est le suivant :
+si un pixel $f(m,n)$ et une région $R$ sont suffisamment similaires, alors ils sont fusionnés ; sinon une nouvelle région est créée.
+On peut utiliser par exemple le critère 
+
+$$
+  \left| f(m,n) - \mu_R \right| < T \sigma_R
+$$
+
+Ainsi, si le paramètre $T$ est élevé, il sera facile d'agréger des nouveaux pixels à la région.
+Au contraire, si $T$ faible alors il sera plus difficile d'agréger des nouveaux pixels à la région. -->
+<!-- Choix de la connexité : 4-voisinage ou 8-voisinage. -->
+<!-- * $R$ : région segmentée, initialisée au germe
+* $S$ : pixels à tester, initialisé au voisinage du germe (file FIFO : \emph{first in, first out})
+Algorithme :
+  \setlength{\fboxsep}{3mm}
+  \colorbox{algobg}{\parbox{.9\textwidth}{
+  tant que $S$ n'est pas vide :
+  \albar $p$ est le premier pixel de la liste $S$
+  \albar $p$ est retiré de $S$
+  \albar si $p$ est homogène avec $R$ :
+  \albar\albar ajout à $R$ de $p$
+  \albar\albar ajout à $S$ des pixels du voisinage de $p$ qui ne sont pas dans
+  \albar\albar\qquad $R$ et qui ne sont pas incompatibles.
+  \albar sinon :
+  \albar\albar $p$ est marqué comme incompatible.
+ -->
+<!-- La croissance de région ne fournit pas directement une partition de l'image,
+mais permet de segmenter une ou plusieurs structures d'intérêt via la sélection de germes adaptés.
+Pour segmenter une image en $K$ classes, il faudra donc $K$ germes. -->
+<!-- Au moins deux points germes sont nécessaires :
+  \imgbox{45mm}{eclairs}{Image originale}\qquad
+  \imgbox{45mm}{eclair1}{Image segmentée} -->
+<!-- Quelle segmentation est obtenue avec la plus grande valeur de $T$ ?
+    \imgbox{40mm}{eclair1}{\only<1>{A}\only<2>{$T$ petit}\phantom{gT}}\qquad
+    \imgbox{40mm}{eclair3}{\only<1>{B}\only<2>{$T$ grand}\phantom{gT}}% -->
+<!-- % TODO : ??? \textcolor{red!70}{Rq : en cas d'utilisation de statistique globale pour le test d'homogénéité, l'ordre de traitement des pixels peut influencer le résultat final.} -->
+<!-- ## Décomposition/fusion
+
+La méthode de décomposition/fusion (_split and merge_) fonctionne en deux étapes :
+1. d'abord, l'image est décomposée successivement en régions
+   si elles ne satisfont pas le critère d'homogénéité.
+   Cela permet d'aboutir à une première partition de l'image ;
+1. ensuite, les régions obtenues sont fusionnées si elles sont adjacentes et qu'elles vérifient le critère d'homogénéité. -->
+<!-- \onslide<4->{Les représentations en arbre et par graphe permettent une représentation haut niveau de l'image.} -->
+<!-- **Décomposition**
+
+La décomposition est une procédure itérative.
+Au départ, il n'y a qu'une seule région qui correspond à l'image toute entière.
+À chaque itération, les régions qui ne vérifient pas le critère d'homogénéité sont divisées en quatre nouvelles régions de taille identique.
+La procédure s'arrête lorsque les régions sont toutes homogènes ;
+au pire, les régions les plus petites sont ainsi des pixels uniques.
+
+On peut utiliser une représentation en quad-arbre (_quad-tree_) de cette décomposition :
+c'est une arborescence dont chaque nœud représente une région et possède quatre fils,
+la racine représente l'image entière. -->
+<!-- 
+```{figure} figs/segmentation-split-merge-quadtree.gif
+---
+height: 300px
+name: F:segmentation:split-merge-quadtree
+---
+Illustration de la décomposition avec représentation en quad-arbre.
+```
+ -->
+<!-- Finalement, la méthode de décomposition par quad-arbre fait apparaître des régions carrées sur l'image segmentée.
+Le problème majeur de cette décomposition provient de la rigidité des divisions réalisées sur l'image,
+mais au moins cela fournit une partition initiale de l'image.
+
+**Fusion**
+
+La partition de l'image obtenue avec la la représentation en quad-arbre
+peut être vue comme un graphe d'adjacence (RAG : _region adjacency graph_).
+C'est une nouvelle représentation, sous forme de graphe, dont :
+* les nœuds correspondent à une région de l'image,
+* les arêtes relient les nœuds correspondants à deux régions adjacentes (ayant une frontière commune).
+La {numref}`F:segmentation:rag` donne un exemple de tel graphe.
+
+```{figure} figs/vincent88.png
+---
+height: 200px
+name: F:segmentation:rag
+---
+Une image segmentée et sa représentation sous forme de graphe d'adjacence.
+```
+
+Donc, à partir de ce graphe d'adjacence, les nœuds $R_1$ et $R_2$ voisins et dont le critère de similarité sur $R_1 \cup R_2$ est respecté
+sont fusionnés (cf. {numref}`F:segmentation:split-merge-rag`).
+
+```{figure} figs/segmentation-split-merge-rag.gif
+---
+height: 300px
+name: F:segmentation:split-merge-rag
+---
+Illustration de la fusion avec représentation en graphe d'adjacence.
+```
+ --></div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./segmentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="clustering.html" title="previous page">Clustering</a>
+    <a class='right-next' id="next-link" href="watershed.html" title="next page">Watershed</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vincent Mazet (University of Strasbourg, France)<br/>
+        
+            &copy; Copyright 2021-2022.<br/>
+          <div class="extra_footer">
+            Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2021 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

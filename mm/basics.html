@@ -232,13 +232,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../segmentation/intensity.html">
-   Intensity-based segmentation
+  <a class="reference internal" href="../segmentation/histogram.html">
+   Histogram thresholding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../segmentation/region.html">
-   Region-based segmentation
+  <a class="reference internal" href="../segmentation/clustering.html">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../segmentation/region-growing.html">
+   Region growing
   </a>
  </li>
  <li class="toctree-l1">
@@ -627,7 +632,7 @@ E =
 <ul>
 <li><p>Dilation is a binary operation and is not linear.
 Therefore, it cannot be expressed as convolution which is a linear mathematical operator.</p></li>
-<li><p>Dilation is associate, <em>i.e.</em> the application of two consecutive dilations can be done in any order:</p>
+<li><p>Dilation is associative, <em>i.e.</em> the application of two consecutive dilations can be done in any order:</p>
 <div class="math notranslate nohighlight">
 \[
     (I \oplus  E_1 ) \oplus  E_2 = (I \oplus  E_2) \oplus  E_1 = I \oplus  (E_1 \oplus E_2)
@@ -646,7 +651,7 @@ Therefore, it cannot be expressed as convolution which is a linear mathematical 
 <div class="section" id="erosion">
 <span id="mm-erosion"></span><h2>Erosion<a class="headerlink" href="#erosion" title="Permalink to this headline">¶</a></h2>
 <p>The erosion of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \ominus E_c\)</span>.
-The result of the erosion (french: <em>erosion</em>) is obtained by moving the structuring element into the white pixels of the image
+The result of the erosion (french: <em>érosion</em>) is obtained by moving the structuring element into the white pixels of the image
 and keeping only the origin of each displaced structuring element.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -658,13 +663,16 @@ and keeping only the origin of each displaced structuring element.</p>
 </div>
 <div class="section" id="id1">
 <h3>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Erosion has similar properties as dilation as stated below.</p>
+<p>Erosion has similar properties as dilation.</p>
 <ul>
+<li><p>Erosion cannot be expressed as convolution.</p></li>
 <li><p>Erosion is associative:</p>
 <div class="math notranslate nohighlight">
 \[
     (I \ominus E_1 ) \ominus E_2 = (I \ominus E_2) \ominus E_1 = I \ominus (E_1 \oplus E_2)
   \]</div>
+<p>Note that the result of two successive erosions is equivalent to an erosion
+whose structuring element is the <em>dilation</em> of the two first structuring elements.</p>
 </li>
 <li><p>Erosion is a monotonous operation:</p>
 <div class="math notranslate nohighlight">

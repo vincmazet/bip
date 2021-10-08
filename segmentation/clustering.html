@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clustering &#8212; Basics of Image Processing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Region growing" href="region-growing.html" />
+    <link rel="prev" title="Histogram thresholding" href="histogram.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Basics of Image Processing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Foreword
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Digital images
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/definition.html">
+   What is a digital image?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/display.html">
+   Displaying an image
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/operations.html">
+   Arithmetic operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/histogram.html">
+   Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/transformations.html">
+   Histogram transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Filtering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/convolution.html">
+   Convolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/fourier.html">
+   Fourier transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/filtering.html">
+   Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Compression
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossless.html">
+   Lossless compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/lossy.html">
+   Lossy compression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../compression/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Mathematical morphology
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/basics.html">
+   Basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/composition.html">
+   Composition of basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/measure.html">
+   Measure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Segmentation
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="histogram.html">
+   Histogram thresholding
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="region-growing.html">
+   Region growing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="watershed.html">
+   Watershed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaluation.html">
+   How to evaluate a segmentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Restoration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/denoising.html">
+   Denoising
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/deconvolution.html">
+   Deconvolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../restoration/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Feature detection
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/matched-filter.html">
+   Matched filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/pattern.html">
+   Pattern detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/edges.html">
+   Edge detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/corners.html">
+   Corner detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/lines.html">
+   Line detection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../detection/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Labs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab1.html">
+   Lab 1
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc1.html">
+     Correction of lab 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab2.html">
+   Lab 2
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc2.html">
+     Correction of lab 2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab3.html">
+   Lab 3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc3.html">
+     Correction of lab 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab4.html">
+   Lab 4
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc4.html">
+     Correction of lab 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab5.html">
+   Lab 5
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc5.html">
+     Correction of lab 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab6.html">
+   Lab 6
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/correc6.html">
+     Correction of lab 6
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  In a nutshell
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/optimization.html">
+   Mathematical optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/classification.html">
+   Classification
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://moodle.unistra.fr/course/view.php?id=7653">
+   Moodle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/python.html">
+   Installing and using Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendices/license.html">
+   License
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/segmentation/clustering.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="clustering">
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<p>Thresholding apply well on a grayscale image, for which it is easy to define a threshold from the modes of the histogram.
+However, this approach cannot be applied on a color or multiband image because there is no histogram.
+Each pixel in a <span class="math notranslate nohighlight">\(B\)</span>-band image can be represented by a point in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.
+By doing so, pixels with similar colors form groups in the space, as illustrated in <a class="reference internal" href="#f-segmentation-clustering"><span class="std std-numref">Fig. 39</span></a>.</p>
+<div class="figure align-default" id="f-segmentation-clustering">
+<a class="reference internal image-reference" href="../_images/segmentation-clustering.png"><img alt="../_images/segmentation-clustering.png" src="../_images/segmentation-clustering.png" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Permalink to this image">¶</a></p>
+</div>
+<p>Clustering methods consists in defining groups of pixels.
+Therefore, all the pixels in the same group define a class in the segmented image.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In French, these methods are called <em>méthodes de classification</em>, although it would be more precise to call them <em>méthode de coalescence</em>.</p>
+</div>
+<p>A classical clustering method for image segmentation is the k-means method (French: <em>k-moyennes</em>).</p>
+<p>The k-means algorithm (Steinhaus 1957, MacQueen 1967) is an iterative method
+that affects every point in the space <span class="math notranslate nohighlight">\(\mathbb{R}^B\)</span> to a group (call cluster).
+The number <span class="math notranslate nohighlight">\(K\)</span> of groups is chosen by the user.
+In the sequel, the centroid defines the center of a group.
+Its coordinates are the mean of the coordinates of the points in the group.</p>
+<p>The algorithm is given below.</p>
+<blockquote>
+<div><p>Initialize (randomly) the <span class="math notranslate nohighlight">\(K\)</span> centroids</p>
+<p>While the centroids vary:</p>
+<ul class="simple">
+<li><p>For each point:</p>
+<ul>
+<li><p>Calculate the distances from the point to all centroids</p></li>
+<li><p>Assign the point to the nearest group</p></li>
+</ul>
+</li>
+<li><p>Calculate the centroid of each group</p></li>
+</ul>
+</div></blockquote>
+<!-- La {numref}`F:segmentation:kmeans-algo` illustre cet algorithme,
+dans le cas simple d'une image à deux bandes (espace à deux dimensions)
+à segmenter en $K=2$ classes (deux couleurs, ici rouge et vert).
+
+```{figure} figs/segmentation-kmeans-algo.gif
+---
+height: 200px
+name: F:segmentation:kmeans-algo
+---
+Illustration de l'algorithme des k-moyennes.
+```
+
+La {numref}`F:segmentation:kmeans-result` donne le résultat de l'algorithme des k-means sur une image.
+
+```{figure} figs/segmentation-kmeans-result.png
+---
+height: 200px
+name: F:segmentation:kmeans-result
+---
+Exemple d'application de l'algorithme des k-means sur l'image de gauche (au centre : $K=2$ classes, à droite : $K=4$ classes).
+``` -->
+<p>The pros and cons of the k-means method for image segmentation are listed below.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">😀 Advantages</p>
+</div>
+<div class="card-body docutils">
+<ul class="simple">
+<li><p class="card-text">simplicity</p></li>
+<li><p class="card-text">easy to implement</p></li>
+<li><p class="card-text">generally fast</p></li>
+<li><p class="card-text">works correctly when the clusters are spherical*</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">☹️ Disadvantages</p>
+</div>
+<div class="card-body docutils">
+<ul class="simple">
+<li><p class="card-text">requires to know the number of classes</p></li>
+<li><p class="card-text">sensitive to initialization</p></li>
+<li><p class="card-text">can be slow in large dimensions</p></li>
+<li><p class="card-text">fails for non-spherical structures*</p></li>
+<li><p class="card-text">sensitive to outliers*</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The characteristics above identified with * are now detailed.
+Because the k-means algorithm performs the grouping with respect to the distance of the points to the centroids,
+it assumes that the groups are sphericals.
+Therefore, the algorithms works well for spherical clusters, but it fails if the clusters are not spherical,
+as depicted in the images below.</p>
+<div class="figure align-default" id="f-segmentati">
+<a class="reference internal image-reference" href="segmentation/.png"><img alt="segmentation/.png" src="segmentation/.png" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">xxxx</span><a class="headerlink" href="#f-segmentati" title="Permalink to this image">¶</a></p>
+</div>
+<p>In addition to this, the centroids is calculated as the mean of the points in the cluster.
+But the mean is not a robust estimation and is sensitive to points located far from the group.</p>
+<div class="figure align-default" id="f-segmentation-k">
+<a class="reference internal image-reference" href="segmentation/.png"><img alt="segmentation/.png" src="segmentation/.png" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">xxx</span><a class="headerlink" href="#f-segmentation-k" title="Permalink to this image">¶</a></p>
+</div>
+<p>Other clustering methods are available to avoid some of the aforementionned limits.
+We can cite for example Gaussian mixture modeling or Mean-shift.</p>
+<!-- ### Modèles paramétriques
+
+
+L'histogramme de l'image est modélisé par un mélange de lois \eng{mixture model} :
+on dispose d'un modèle paramétrique représentatif des classes présentes dans l'image.
+
+  \includegraphics[width=10cm]{vincent52}
+
+* Lois : souvent gaussiennes \eng{GMM : Gaussian mixture model}.
+* Extension possible à plusieurs dimensions
+
+Deux étapes :
+\begin{enumerate}
+* Estimation des paramètres des lois
+  {\color{gray}Poids $\Pi_k$, moyennes $\mu_k$, écart-types $\sigma_k$}
+    \includegraphics[width=6cm]{vincent54}
+* Classification
+  {\color{gray}Associer à chaque intensité la classe la plus représentative}
+\end{enumerate}
+
+\paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}1}}\; Estimation}
+
+$$
+  \forall i,\qquad
+  p(h(i)|\theta) = \sum_{k=1}^K \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(h(i)-\mu_k)^2}{2\sigma_k^2}\right)
+$$
+
+où $K$ est le nombre de classes
+et $\theta$ regroupe les paramètres inconnus des lois :
+$\theta=[\Pi_1,...,\Pi_K,\mu_1,...,\mu_K,\sigma_1,...,\sigma_K]$.
+
+Estimation des paramètres au sens du maximum de vraisemblance :
+
+$$
+  \hat{\theta}^\text{MV} = \arg \max_{\theta} \prod_i p(h(i)|\theta)
+$$
+
+Méthode de résolution : algorithme EM, algorithmes MCMC, ...
+
+\paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}2}}\; Classification}
+
+  \includegraphics[width=6cm]{vincent54}
+
+Chaque pixel est affecté à la classe dont il maximise la loi :
+
+$$
+  f_\text{seg}(m,n) = \arg \max_{k\in\{1,...,K\}}
+    \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(f(m,n)-\mu_k)^2}{2\sigma_k^2}\right)
+$$
+
+\parbox{.45\textwidth}{\paragraph{k-moyennes}}
+\parbox{.45\textwidth}{\paragraph{Mélange de gaussiennes}}
+
+\parbox{.45\textwidth}{Estimation uniquement des $\mu_k$}
+\parbox{.45\textwidth}{Estimation des $\mu_k$ et $\sigma_k$}
+
+\parbox{.45\textwidth}{Sensible à l'initialisation}
+\parbox{.45\textwidth}{Sensible à l'initialisation}
+
+\parbox{.45\textwidth}{Sensible aux minima locaux}
+\parbox{.45\textwidth}{Sensible aux minima locaux}
+
+\parbox{.45\textwidth}{Nécessite de connaître le nombre de classes}
+\parbox{.45\textwidth}{Nécessite de connaître le nombre de classes}
+
+\parbox{.45\textwidth}{\centering\includegraphics[width=4cm]{vincent58-kmeans}}
+\parbox{.45\textwidth}{\centering\includegraphics[width=4cm]{vincent58-gmm}} -->
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./segmentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="histogram.html" title="previous page">Histogram thresholding</a>
+    <a class='right-next' id="next-link" href="region-growing.html" title="next page">Region growing</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Vincent Mazet (University of Strasbourg, France)<br/>
+        
+            &copy; Copyright 2021-2022.<br/>
+          <div class="extra_footer">
+            Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2021 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
