@@ -1,52 +1,31 @@
 (lab4)=
 # Lab 4
 
-<!-- > Difficultés : calcul du Dice (comment faire l'intersection ? types des images différents, ==, etc.) => faire un point à un certain moment pour éviter que ce calcul prenne trop de temps.
+Three methods will be compared to segment the coins on the image <a href="../_static/data/observation.png">observation.png</a>:
+binary thresholding, Otsu's method, and local thresholding.
+The methods will be evaluated through the Dice coefficient,
+by using the ground truth available in image <a href="../_static/data/groundtruth.png">groundtruth.png</a>.
 
-> Les étus sont arrivés au seuillage adaptatif (donc les premières questions leur prenne du temps !
-
-> conserver un TP ouvert avec un objectif (segmenter des pièces, on pourrait tout à la fin utiliser regionprops pour les distinguer et trouver leur valeur fiduciaire)
-
-
-On souhaite segmenter les pièces de monnaie de l'image [coins1.png](https://vincmazet.github.io/ftip/_static/data/coins1.png) en seuillant l'image.
-
-Dans un premier temps, le seuil est choisi visuellement à partir de l'histogramme de l'image.
-
-* Affichez l'histogramme de l'image [coins1.png](https://vincmazet.github.io/ftip/_static/data/coins1.png), et déduisez-en un seuil pour segmenter l'image.
-  L'image seuillée `image2` est obtenue à partir de l'image `image1` et le seuil `s` avec la syntaxe
+* Apply binary thresholding to the image, by choosing manually the threshold value.
+  Compute the Dice coefficient.
   
-  ```
-  image2 = image1>s
-  ```
+  ```{note}
+  Dice coefficient is also known as Sørensen–Dice coefficient or Dice similarity coefficient.
+  Besides, a Dice _dissimilarity_ coefficient also exists: it is equals to $1-d$ where $d$ is the Dice _similarity_ coefficient.
   
-* Calculez le coefficient Dice de la segmentation obtenue
-  en comparant cette dernière à la vérité terrain [coins-groundtruth.png](https://vincmazet.github.io/ftip/_static/data/coins-groundtruth.png).
+  The function `scipy.spatial.distance.dice` computes the Dice _dissimilarity_ coefficient.
+  Also, it works on boolean 1D arrays, not or 2D arrays.
+  Recall that `A.ravel()` returns a vectorized version of the array `A` (see `numpy.ndarray.ravel`).
+  Besides, `A.astype(bool)` returns a boolean version of the array `A` (see `numpy.ndarray.astype`).
+  ```
 
-Dans un deuxième temps, le seuil est déterminé grâce à la méthode de Otsu.
+* Use `skimage.filters.threshold_otsu` to get a threshold value by Otsu's method and apply the thresholding.
+  Compute the Dice coefficient.
+  What differences do you observe between the two first segmentations? How can these differences be explained?
 
-* Utilisez `skimage.filters.threshold_otsu` pour déterminer une valeur de seuil,
-  et affichez la segmentation résultante.
-
-* Qu'observez-vous comme différences entre le résultat de cette segmentation
-  avec le résultat de la segmentation manuelle ?
-  Comment ces différences peuvent-elles s'expliquer ?
-
-Considérons maintenant l'image [coins2.png](https://vincmazet.github.io/ftip/_static/data/coins2.png).
-
-* En quoi cette nouvelle image diffère de la précédente ?
-
-* Segmentez l'image avec le seuil déterminé par la méthode de Otsu sur cette nouvelle image.
-  Qu'observez-vous, et comment cela peut s'expliquer ?
-
-Enfin, un seuil adaptatif est appliqué à l'image [coins2.png](https://vincmazet.github.io/ftip/_static/data/coins2.png).
-Cela consiste à considérer des portions de l'image et à appliquer un seuillage de Otsu sur chacune d'elles.
-
-* Appliquez un seuillage adaptatif pour segmenter l'image.
-
-* Critiquez la méthode implémentée : identifiez les bons résultats de la méthode et ses limites.
-  Proposez des améliorations. -->
-
-<!-- Questions supplémentaires possibles :
-- utiliser la ligne de partage des eaux pour distinguer des pièces qui seraient collées
-- region growing ?
-- contour actifs -->
+* Use `skimage.filters.threshold_local` to perform local thresholding.
+  How works this method?
+  Compute the Dice coefficient.
+  
+* Finally, criticize the three methods: identify the good results and the limitations.
+  Suggest improvements.
