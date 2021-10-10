@@ -1,23 +1,26 @@
 # Conclusion
 
-<!-- En conclusion, nous avons vu que la segmentation consiste à diviser l'image en plusieurs régions homogènes.
-L'homogénéité d'une région est basée sur la couleur, la texture, les contours...
-Les méthodes de segmentation sont très diverses, et nous n'en avons vu que quelques unes.
-Parmi les autres méthodes existantes, citons les contours actifs (_snakes_),
-les ensembles de niveaux (_level sets_), les modèles markoviens, etc.
+We have seen that segmentation consists in dividing an image into several homogeneous regions.
+The homogeneity of a region is based on color, texture, contours, etc.
 
+The methods of segmentation are very diverse, and we have only seen a few of them.
+Other existing methods include active contours or the so-called snakes, level sets, Markovian models, etc.
+In addition to these "model-based" methods, deep learning allowed significant increases in the results.
 
+At last, we list some criteria to evaluate the quality of a segmentation method.
+These criteria are useful to compare different segmentation methods, as presented in [](lab4).
+
+<!--
+ 
 Autres méthodes :
 - par texture
 - Mean-shift {Fukunaga75}
 - SLIC {Achanta12}
 - Split/merge
 - Snakes
-- Deep learning (maintenant il n'y a plus que ça !) -->
+- Deep learning (maintenant il n'y a plus que ça !)
 
-
-
-<!--   \bibitem[Achanta  et coll. 2012]{Achanta12}
+  \bibitem[Achanta  et coll. 2012]{Achanta12}
   R. Achanta, A. Shaji, K. Smith, A. Lucchi, P. Fua, S. Süsstrunk,
   \og{}SLIC Superpixels Compared to State-of-the-art Superpixel Methods \fg{},
   \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 34(11), p. 2274--2282, 2012.
