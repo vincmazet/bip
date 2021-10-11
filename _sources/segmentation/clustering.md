@@ -38,42 +38,27 @@ The algorithm is given below.
 >     - Assign the point to the nearest group
 >   - Calculate the centroid of each group
 
+{numref}`F:segmentation:kmeans-algo` illustrate this algorithm,
+in the simple case of an image with two bands (hence the two-dimensional space)
+segmented into $K=2$ classes (two colors, here red: and green).
 
-
-
-
-
-
-
-
-
-
-
-<!-- La {numref}`F:segmentation:kmeans-algo` illustre cet algorithme,
-dans le cas simple d'une image à deux bandes (espace à deux dimensions)
-à segmenter en $K=2$ classes (deux couleurs, ici rouge et vert).
-
-```{figure} figs/segmentation-kmeans-algo.gif
+```{figure} segmentation-kmeans-algo.gif
 ---
 height: 200px
 name: F:segmentation:kmeans-algo
 ---
-Illustration de l'algorithme des k-moyennes.
+Illustration of the k-means algorithm.
 ```
 
-La {numref}`F:segmentation:kmeans-result` donne le résultat de l'algorithme des k-means sur une image.
+{numref}`F:segmentation:kmeans-result` gives the result of the k-means algorithm on an image.
 
-```{figure} figs/segmentation-kmeans-result.png
+```{figure} segmentation-kmeans-result.png
 ---
 height: 200px
 name: F:segmentation:kmeans-result
 ---
-Exemple d'application de l'algorithme des k-means sur l'image de gauche (au centre : $K=2$ classes, à droite : $K=4$ classes).
-``` -->
-
-
-
-
+Segmentation with the k-means algorithm on the left image (center: $K=2$ classes, right: $K=4$ classes).
+```
 
 The pros and cons of the k-means method for image segmentation are listed below.
 
@@ -102,27 +87,37 @@ The pros and cons of the k-means method for image segmentation are listed below.
 The characteristics above identified with * are now detailed.
 Because the k-means algorithm performs the grouping with respect to the distance of the points to the centroids,
 it assumes that the groups are sphericals.
-Therefore, the algorithms works well for spherical clusters, but it fails if the clusters are not spherical,
+Therefore, the algorithm works well for spherical clusters, but it fails if the clusters are not spherical,
 as depicted in the images below.
 
-```{figure} .png
+```{figure} kmeans-ok.svg
 ---
 height: 200px
-name: F:segmentati
+name: F:segmentatiion:kmeans-ok
 ---
-xxxx
+Spherical clusters: the k-means algorithm works well.
+The points are depicted by $\bullet$ whose color correspond to the class,
+and the centroids are depicted by a black $\times$.
 ```
 
+```{figure} kmeans-croissants.svg
+---
+height: 200px
+name: F:segmentatiion:kmeans-croissants
+---
+Non-spherical clusters: the k-means algorithm fails.
+```
 
 In addition to this, the centroids is calculated as the mean of the points in the cluster.
 But the mean is not a robust estimation and is sensitive to points located far from the group.
+Thus, the algorithm may fail in the presence of outliers (_valeurs aberrantes_).
 
-```{figure} .png
+```{figure} kmeans-outliers.svg
 ---
 height: 200px
-name: F:segmentation:k
+name: F:segmentatiion:kmeans-outliers
 ---
-xxx
+Presence of outliers: the k-means algorithm fails in this example.
 ```
 
 Other clustering methods are available to avoid some of the aforementionned limits.
