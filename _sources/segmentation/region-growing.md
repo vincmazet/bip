@@ -1,5 +1,6 @@
 # Region growing
 
+To do...
 
 
 <!-- region vs intensity : l'aspect spatiale (voisinage entre pixels) pris en compte
