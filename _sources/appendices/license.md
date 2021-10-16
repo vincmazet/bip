@@ -164,7 +164,7 @@ M.-L. Huang, T.-Y. Ling, "Dataset of Breast mammography images with Masses", Men
 
 ---
 
-```{figure} ../figs/fiche16u_1.tif
+```{figure} ../figs/fiche16u_1.jpg
 ```
 &copy; [ICube/Sertit](https://sertit.unistra.fr/)
 
@@ -183,6 +183,36 @@ NASA content generally are not copyrighted.
 &copy; GLady.
 Free license.
 [Original picture](https://pixabay.com/photos/floral-daisy-blossom-plant-natural-50157/).
+
+---
+
+```{figure} ../figs/lo1_m31.jpg
+```
+Lunar Orbiter 1 image of Taruntius crater on the Moon.
+&copy; NASA.
+[Original picture](https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/lo1_m31.html).
+
+---
+
+```{figure} ../figs/budapest.png
+```
+&copy; Céline Meillier.
+
+---
+
+```{figure} ../figs/rosetta.jpg
+```
+Rosetta last image
+&copy; ESA/Rosetta/MPS for OSIRIS Team MPS/UPD/LAM/IAA/SSO/INTA/UPM/DASP/IDA.
+[Original picture](https://www.esa.int/Science_Exploration/Space_Science/Rosetta/Unexpected_surprise_a_final_image_from_Rosetta)
+
+---
+
+```{figure} ../figs/sailboat.png
+```
+Sailboat on lake, from The USC-SIPI Image Database.
+unknown copyright status.
+[Original picture](https://sipi.usc.edu/database/database.php?volume=misc&image=12)
 
 ````
 

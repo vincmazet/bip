@@ -554,6 +554,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inverse-filter">
+   Inverse filter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wiener-filter">
+   Wiener Filter
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -564,6 +582,225 @@
                 
   <div class="section" id="deconvolution">
 <span id="id1"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">¶</a></h1>
+<p>Usually, images acquired by a vision system suffer from degradation that can be modelled as a convolution.
+For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 55</span></a>)
+or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 56</span></a>).
+The goal of deconvolution is to cancel the effect of a convolution.</p>
+<div class="figure align-default" id="f-deconvolution-example-motion">
+<a class="reference internal image-reference" href="../_images/budapest1.png"><img alt="../_images/budapest1.png" src="../_images/budapest1.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Example of motion blur (parliament of Budapest shoot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="f-deconvolution-example-blur">
+<a class="reference internal image-reference" href="../_images/rosetta1.jpg"><img alt="../_images/rosetta1.jpg" src="../_images/rosetta1.jpg" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Example of poor focus blur (Rosetta spacecraft last image).</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">¶</a></p>
+</div>
+<p>The degradation phenomenon is modelled as in <a class="reference internal" href="#f-deconvolution-model"><span class="std std-numref">Fig. 57</span></a>:
+The observed image <span class="math notranslate nohighlight">\(y\)</span> is degraded by the convolution with a PSF <span class="math notranslate nohighlight">\(h\)</span> and, possibly, by a noise <span class="math notranslate nohighlight">\(b\)</span> (considered to be additive).</p>
+<div class="math notranslate nohighlight">
+\[
+y = h*x + b
+\]</div>
+<p>The deconvolution computes a deconvolved image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> from the observation <span class="math notranslate nohighlight">\(y\)</span>.
+We will consider only linear methods, thus deconvolution comes to filtering by <span class="math notranslate nohighlight">\(g\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x} = g*y
+\]</div>
+<div class="figure align-default" id="f-deconvolution-model">
+<a class="reference internal image-reference" href="../_images/model-deconvolution.png"><img alt="../_images/model-deconvolution.png" src="../_images/model-deconvolution.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Deconvoltion model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">¶</a></p>
+</div>
+<p>Deconvolution needs a degradation model, thus having knowledge about both <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<ul>
+<li><p>The PSF <span class="math notranslate nohighlight">\(h\)</span> can be estimated by observation, <em>i.e.</em> by finding in the image some factors to estimate <span class="math notranslate nohighlight">\(h\)</span>.
+For example, a single point object in the image is actually <span class="math notranslate nohighlight">\(h\)</span>.
+The PSF can also be estimated by experimentation by reproducing the observation conditions in a laboratory.
+So, the image of a pulse gives an estimate of <span class="math notranslate nohighlight">\(h\)</span>.
+Finally, it is also possible to estimate the PSF from a mathematical model of the physics of the observation.
+Note also that some deconvolution methods estimate the PSF <span class="math notranslate nohighlight">\(h\)</span> at the same time as <span class="math notranslate nohighlight">\(x\)</span>:
+these are called blind deconvolution methods (French: <em>déconvolution myope</em>).</p>
+<!-- développer le 1er exemple, notamment avec une illustration en astro -->
+<!-- 1er point : déconvolution naïve en l'absence de bruit dans une petite zone, essai--erreur, ..-->
+</li>
+<li><p>Models for the noise have already been presented in chapter <a class="reference internal" href="denoising.html#denoising"><span class="std std-ref">Denoising</span></a>.</p></li>
+</ul>
+<div class="section" id="inverse-filter">
+<h2>Inverse filter<a class="headerlink" href="#inverse-filter" title="Permalink to this headline">¶</a></h2>
+<p>The inverse filter is the simplest deconvolution method.
+Since the degradation is modelled <span class="math notranslate nohighlight">\(y = h*x + b\)</span>, then this equation becomes in the Fourier domain:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = HX + B
+\]</div>
+<p>so we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+X = \frac{Y-B}{H}.
+\]</div>
+<p>We obtain <span class="math notranslate nohighlight">\(x\)</span> by calculating the inverse Fourier transform of the previous expression:</p>
+<div class="math notranslate nohighlight">
+\[
+x = \mathcal{F}^{-1} \left[ \frac{Y-B}{H} \right].
+\]</div>
+<p>As the noise (and therefore its spectrum <span class="math notranslate nohighlight">\(B\)</span>) is unknown,
+we can approximate the expression of <span class="math notranslate nohighlight">\(x\)</span> by cancelling <span class="math notranslate nohighlight">\(B\)</span> in the previous expression,
+and thus get the deconvolved image:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x} = \mathcal{F}^{-1} \left[ \frac{Y}{H} \right]
+\]</div>
+<p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 58</span></a>.
+The result is not usable, and yet the observed image is very little blurred with very little noise!</p>
+<div class="figure align-default" id="f-deconvolution-inverse-filter">
+<img alt="../_images/inverse-filter.svg" src="../_images/inverse-filter.svg" /><p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">¶</a></p>
+</div>
+<p>The catastrophic result of the inverse filter is due to the fact of having considered the noise to be zero.
+Indeed, according to the definition of <span class="math notranslate nohighlight">\(\widehat{x}\)</span> and considering <span class="math notranslate nohighlight">\(Y = HX + B\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x}
+= \mathcal{F}^{-1} \left[ \frac{Y}{H} \right]
+= \mathcal{F}^{-1} \left[ X + \frac{B}{H} \right]
+= x + \mathcal{F}^{-1} \left[ \frac{B}{H} \right]
+\]</div>
+<p>Thus, the deconvolved image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> corresponds to <span class="math notranslate nohighlight">\(x\)</span> with an additional term which is the inverse Fourier transform of <span class="math notranslate nohighlight">\(B/H\)</span>.
+The PSF <span class="math notranslate nohighlight">\(H\)</span> is generally a low-pass filter, so the values of <span class="math notranslate nohighlight">\(H(m,n)\)</span> tend towards <span class="math notranslate nohighlight">\(0\)</span> for high frequencies <span class="math notranslate nohighlight">\((m,n)\)</span>.
+Because <span class="math notranslate nohighlight">\(H\)</span> is in the denominator, this tends to drastically amplify the high frequencies of the noise,
+then the term <span class="math notranslate nohighlight">\(B/H\)</span> quickly dominates <span class="math notranslate nohighlight">\(X\)</span>.
+This explains the result of <code class="xref std std-numref docutils literal notranslate"><span class="pre">F:deconvolution:inverse</span></code>.</p>
+<p>One solution consists in considering only the low frequencies of <span class="math notranslate nohighlight">\(Y/H\)</span>.
+This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
+The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 59</span></a>,
+although the result is still far from perfect (there are many variations in intensity around objects, such as tree trunks)…</p>
+<div class="figure align-default" id="f-deconvolution-truncated-inverse-filter">
+<img alt="../_images/truncated-inverse-filter.svg" src="../_images/truncated-inverse-filter.svg" /><p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Result of the truncated inverse filter.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="wiener-filter">
+<h2>Wiener Filter<a class="headerlink" href="#wiener-filter" title="Permalink to this headline">¶</a></h2>
+<p>Wiener filter, denoted by <span class="math notranslate nohighlight">\(g\)</span> (with Fourier transform <span class="math notranslate nohighlight">\(G\)</span>), applies to the observation <span class="math notranslate nohighlight">\(y\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x} = g * y
+\qquad\Leftrightarrow\qquad
+\widehat{X} = GY.
+\]</div>
+<p>This filter is established in the statistical framework: the image <span class="math notranslate nohighlight">\(x\)</span> and the noise <span class="math notranslate nohighlight">\(b\)</span> are considered to be random variables.
+They are also assumed to be statistically independent.
+As a result, the observation <span class="math notranslate nohighlight">\(y\)</span> and the estimate <span class="math notranslate nohighlight">\(\widehat{x}\)</span> are also random variables.</p>
+<p>The calculations are done in the Fourier domain for simplicity (since convolutions become multiplications).
+The goal of Wiener filter is to find the image <span class="math notranslate nohighlight">\(\widehat{X} = \mathcal{F}[\widehat{x}]\)</span> closest to <span class="math notranslate nohighlight">\(X = \mathcal{F}[x]\)</span>,
+in the sense of the mean squared error <span class="math notranslate nohighlight">\(\mathrm{MSE} = \mathbb{E}\left[(\widehat{X}-X)^2\right]\)</span>.
+Thereby :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{MSE}
+&amp;= \mathbb{E}\left[(\widehat{X}-X)^2\right] \\
+&amp;= \mathbb{E}\left[(GY-X)^2\right] \\
+&amp;= \mathbb{E}\left[\big(G(HX+B)-X\big)^2\right] \\
+&amp;= \mathbb{E}\left[\big((GH-I)X+GB\big)^2\right]
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is an image filled with 1.
+So:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{MSE} = \mathbb{E}\Big[ (GH-I)^*(GH-I)X^*X + (GH-I)^*GX^*B + G^*(GH-I)B^*X + G^*GB^*B \Big]
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\cdot^*\)</span> denotes the conjugate of the variables.
+Since the expectation <span class="math notranslate nohighlight">\(\mathbb{E}\)</span> is linear and only <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are random variables,
+we can decompose the previous expression into four terms:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{MSE}
+= (GH-I)^*(GH-I) \mathbb{E}\big[X^*X\big]
++ (GH-I)^*G \mathbb{E}\big[X^*B\big]
++ G^*(GH-I) \mathbb{E}\big[B^*X\big]
++ G^*G \mathbb{E}\big[B^*B\big].
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent, then the covariances <span class="math notranslate nohighlight">\(\mathbb{E}\big[X^*B\big]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}\big[B^*X\big] \)</span> are zeros.
+Moreover, <span class="math notranslate nohighlight">\(\mathbb{E}\big[X^*X\big]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}\big[B^*B\big]\)</span> are the power spectral densities denoted as <span class="math notranslate nohighlight">\(S_x\)</span> and <span class="math notranslate nohighlight">\(S_b\)</span>
+(remember that the power spectral density is the expectation of the square of the modulus of the Fourier transform).
+So the mean square error simplifies into:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{MSE} = (GH-1)^*(GH-1) S_x + G^*G S_b
+\]</div>
+<p>We look for the filter <span class="math notranslate nohighlight">\(G\)</span> that minimizes the MSE, or equivalently, that cancels the derivative of MSE:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+                       &amp; \frac{\partial \mathrm{MSE}}{\partial G} = (GH-1)^*H S_x + G^* S_b = 0 \\
+  \Leftrightarrow\quad &amp;G^*H^*H S_x - H S_x + G^* S_b = 0  \\
+  \Leftrightarrow\quad &amp;G^* ( H^*H S_x + S_b) = H S_x  \\
+  \Leftrightarrow\quad &amp;G^* = \frac{H S_x}{H^*H S_x + S_b}  \\
+  \Leftrightarrow\quad &amp;G = \frac{H^* S_x}{H^*H S_x + S_b}  \\
+  \Leftrightarrow\quad &amp;G = \frac{H^* S_x}{|H|^2 S_x + S_b}
+\end{split}\]</div>
+<p>Here we are, we get the expression of the Wiener filter <span class="math notranslate nohighlight">\(G\)</span>! 🥳
+Finally, the deconvolved image is the inverse Fourier transform of <span class="math notranslate nohighlight">\(GY\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x} = \mathcal{F}^{-1} \Bigg[\frac{H^* S_x}{|H|^2 S_x + S_b} Y \Bigg]
+\]</div>
+<p>We can consider that the power spectral densities <span class="math notranslate nohighlight">\(S_x\)</span> and <span class="math notranslate nohighlight">\(S_b\)</span> are constant
+(for <span class="math notranslate nohighlight">\(S_b\)</span>, it is necessary to assume white noise).
+Thus, the expression of the Wiener filter can be written</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{x} = \mathcal{F}^{-1} \Bigg[ \frac{H^*}{|H|^2 + S_b/S_x} Y \Bigg]
+\]</div>
+<p>and the term <span class="math notranslate nohighlight">\(S_b/S_x\)</span> is replaced by a constant <span class="math notranslate nohighlight">\(K\)</span>, which becomes the parameter of the method, to be set by the user.</p>
+<p>Two remarks:</p>
+<ul>
+<li><p>where <span class="math notranslate nohighlight">\(H\)</span> vanishes (typically in high frequencies),
+the problem of noise increase is no longer observed as with the inverse filter,
+since the inverse filter tends towards 0,</p></li>
+<li><p>moreover, if the noise in the image is zero, then <span class="math notranslate nohighlight">\(S_b = 0\)</span> and Wiener filter comes back to the inverse filter:</p>
+<div class="math notranslate nohighlight">
+\[
+  \widehat{x}
+  = \mathcal{F}^{-1} \Bigg[ \frac{H^*}{|H|^2} Y \Bigg]
+  = \mathcal{F}^{-1} \Bigg[ \frac{Y}{H} \Bigg]
+  \]</div>
+</li>
+</ul>
+<p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 60</span></a>:
+it is clearly much better than the inverse filter, even its truncated version!</p>
+<div class="figure align-default" id="f-deconvolution-wiener-filter">
+<img alt="../_images/wiener-filter.svg" src="../_images/wiener-filter.svg" /><p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Result of Wiener filter
+(<span class="math notranslate nohighlight">\(\lambda\)</span> is set so that the estimation is the best in terms of MSE).</span><a class="headerlink" href="#f-deconvolution-wiener-filter" title="Permalink to this image">¶</a></p>
+</div>
+<!-- Cela dit, il n'est pas juste de comparer ces deux méthodes sur la {numref}`F:deconvolution:wiener`,
+car les paramètres des méthodes (10% et $K=10^{-5}$) ne sont peut être pas les meilleurs.
+Il se pose donc la question : comment régler le paramètre de chaque méthode ?
+
+```{margin}
+L'EQM dont il est question ici n'est pas au sens statistique, comme ci-avant.
+Il s'agit ici du carré de la différence entre les deux images.
+```
+
+Pour y répondre, la {numref}`F:deconvolution:parametre` représente la qualité du résultat, en termes d'EQM,
+en fonction de ces paramètres.
+On constate que pour le meilleur choix des paramètres (point rouge sur la courbe),
+l'EQM est bien meilleure pour le filtre de Wiener que pour le filtre inverse.
+Le résultat correspondant est représenté {numref}`F:deconvolution:wiener-best`.
+La différence sur cette sous-image est assez faible, mais il n'empêche que le dessin sur la voile est plus net avec le filtre de Wiener.
+
+```{figure} figs/restauration15.png
+---
+width: 600px
+name: F:deconvolution:parametre
+---
+Comparaison de l'EQM en fonction du paramètre de la méthode, pour le filtre inverse tronqué et le filtre de Wiener.
+```
+
+```{figure} figs/restauration16.png
+---
+width: 600px
+name: F:deconvolution:wiener-best
+---
+Résultat du filtre inverse tronquée et du filtre de Wiener pour les meilleurs choix de paramètres.
+``` -->
+</div>
 </div>
 
     <script type="text/x-thebe-config">
