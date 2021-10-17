@@ -554,6 +554,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#denoising">
+   Denoising
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deconvolution">
+   Deconvolution
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -564,6 +582,86 @@
                 
   <div class="section" id="lab-5">
 <span id="lab5"></span><h1>Lab 5<a class="headerlink" href="#lab-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="denoising">
+<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h2>
+<p>This exercise is intended to evaluate the performances of a denoising method of your choice.
+Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).</p>
+<ul>
+<li><p>Load an image of your choice (your favourite pet, your best party or an image of the former labs).
+Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>, therefore you may use convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.
+Besides, it is recommended to use a small image (less than 1000×1000, use <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> to reduce the image size)
+and convert it to grayscale with <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>.</p></li>
+<li><p>We consider the case of an AWGN.
+Express the Gaussian variance <span class="math notranslate nohighlight">\(\sigma^2 \)</span> in terms of SNR.
+Recall that the variance of a Gaussian process <span class="math notranslate nohighlight">\(b\)</span> is very well estimated by its power</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{1}{MN}\sum_{m,n} b(m,n)^2.
+  \]</div>
+</li>
+<li><p>Add noise to the image (<code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>),
+then check that the noise level corresponds to the expected SNR.
+For example, noise should be barely visible above 30 dB,
+on the contrary, the image should be difficult to discern below 0 dB.</p></li>
+</ul>
+<p>Now that you dispose of a noisy image and its noiseless version,
+you can implement the denoising method you have chosen.</p>
+<p>If you choose a mean filter, use <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> to filter by a square PSF of size <code class="docutils literal notranslate"><span class="pre">w</span></code> generated as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">w</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you choose TV regularization, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.denoise_tv_chambolle</span></code>.</p>
+<ul class="simple">
+<li><p>Denoise the image with the chosen method.</p></li>
+<li><p>Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">skimage.metrics.mean_squared_error</span></code>
+to calculate the mean square error (MSE, in French EQM for <em>erreur quadratique moyenne</em>)
+of the denoised image to have a quantitative measure of the denoising quality.</p></li>
+<li><p>Represent the evolution of the MSE according to the parameter, and comment on the result:
+what is the optimal value of this parameter?
+Can you adjust the parameter by knowing the SNR of the image?</p></li>
+<li><p>Compare your method with the one implemented by another student.</p></li>
+</ul>
+</div>
+<div class="section" id="deconvolution">
+<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Load the image <a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=18#top">5.1.13</a>.
+It will be called <span class="math notranslate nohighlight">\(x\)</span> in the sequel.</p></li>
+</ul>
+<!--   and convert it to floating point numbers with the instruction
+  
+  ```
+  x = x.astype(float)
+  ```
+  
+  where `x` is the image and will be called` x` in the following. -->
+<ul>
+<li><p>Generate a circular PSF <span class="math notranslate nohighlight">\(h\)</span> of radius 10 with <code class="docutils literal notranslate"><span class="pre">skimage.morphology.disk</span></code>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The inverse filter works not only if the image is not noisy
+but also if the convolution can be equivalent to a multiplication in the Fourier domain.
+The last condition is true if the convolution is circular,
+that is the image <span class="math notranslate nohighlight">\(x\)</span> is assumed to be periodic (see <a class="reference internal" href="../filtering/convolution.html#c-convolution-boundaries"><span class="std std-ref">Boundaries effects</span></a>).</p>
+</div>
+</li>
+<li><p>Perform the convolution of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(h\)</span> to obtain the image <span class="math notranslate nohighlight">\(y\)</span>.
+To do this, use the function <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.filters.convolve</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">mode=&quot;wrap&quot;</span></code> so that the convolution is circular</p></li>
+<li><p>Apply the inverse filter on <span class="math notranslate nohighlight">\(y\)</span> to get an estimate <span class="math notranslate nohighlight">\(\widehat{x} \)</span> of <span class="math notranslate nohighlight">\(x\)</span>.
+What do you see?</p></li>
+<li><p>Add a small noise to the blurred image, then apply the inverse filter again.
+What do you see?</p></li>
+<li><p>Now replace the inverse filter with Wiener filter (<code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code> with argument <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>).</p></li>
+<li><p>Study the influence of the regularization parameter:
+first by observing the result obtained for some values,
+then by representing the evolution of a restoration quality measure (which one?)
+with respect to the values of the regularization parameter.</p></li>
+<li><p>What is the optimal value of the regularization parameter?
+DO you agree that it is actually the best value when you look at the estimation?</p></li>
+<li><p>Finally, can you conclude on the optimal choice of the regularization parameter, whatever the image?</p></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
