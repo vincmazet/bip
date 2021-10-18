@@ -77,7 +77,7 @@ implying that AWGN becomes a good model of whether enough photons are collected.
 
 ### Salt-and-pepper noise
 
-Salt-and-pepper noise (French: -bruit poivre et sel_), also called less poetically impulse noise, 
+Salt-and-pepper noise (French: _bruit poivre et sel_), also called less poetically impulse noise, 
 models saturated or dead pixels (due to photosites malfunction or saturation).
 
 $$

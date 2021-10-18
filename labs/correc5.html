@@ -588,7 +588,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deconvolution">
-   Déconvolution
+   Deconvolution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -634,17 +634,17 @@
 <li><p>to implement a denoising method</p></li>
 <li><p>to understand the effects of the parameters and set it accordingly to the epexpected solution</p></li>
 </ul>
-<p>Two denoising methods are considerer in this correction: the mean filter and TV regularization.</p>
+<p>Two denoising methods are considered in this correction: the mean filter and TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="original-image-and-noisy-image">
 <h3>Original image and noisy image<a class="headerlink" href="#original-image-and-noisy-image" title="Permalink to this headline">¶</a></h3>
-<p>THe original image:</p>
+<p>The original image:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_7_0.png" src="../_images/correc5_7_0.png" />
+<img alt="../_images/correc5_8_0.png" src="../_images/correc5_8_0.png" />
 </div>
 </div>
 <p>The signal-to-noise ratio (SNR) is defined as the power of the image <span class="math notranslate nohighlight">\(x\)</span> divided by the power of the noise <span class="math notranslate nohighlight">\(b\)</span>.
@@ -674,7 +674,7 @@ Pb = \frac{1}{MN} \sum_{m,n} b(m,n)^2 = \sigma^2
 <p><strong>Warning:</strong> do not forget <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> when using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>, in order to add a true Gaussian noise!</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_11_0.png" src="../_images/correc5_11_0.png" />
+<img alt="../_images/correc5_12_0.png" src="../_images/correc5_12_0.png" />
 </div>
 </div>
 <p>Note that the larger the SNR, the less visible the noise.
@@ -688,30 +688,30 @@ In addition, from 30 dB, the noise becomes almost invisible, while below 0 dB, i
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_16_0.png" src="../_images/correc5_16_0.png" />
+<img alt="../_images/correc5_17_0.png" src="../_images/correc5_17_0.png" />
 </div>
 </div>
 <p>We observe that the mean filter reduces the noise, which is expected (have you tried a filter of size 1×1? What’s going on?).
 On the other hand, the image is more blurry: the contours are less sharp.
 This second observation is explained by the fact that the mean filter is a convolution by a kernel which is not a single pulse:
 so the intensities of the pixels spreads over their neighbourhood.</p>
-<p>The mean square error is an objective measure of the quality of the restoration.
+<p>The mean squared error is an objective measure of the quality of the restoration.
 It is calculated between the denoised image <span class="math notranslate nohighlight">\(\hat{x}\)</span> and the original one <span class="math notranslate nohighlight">\(x\)</span>.
 Therefore, the mean filter helps to decrease the MSE by reducing the noise.
 But at the same time it increases the MSE by introducing blur in the image.
-As a consequence, the MSE evolves with the size <code class="docutils literal notranslate"><span class="pre">w</span></code> of the filter.
-To verify this hypothesis, we plot the values of the MSE with respect to <code class="docutils literal notranslate"><span class="pre">w</span></code>:</p>
+As a consequence, the MSE evolves with the size <span class="math notranslate nohighlight">\(w \times w\)</span> of the filter.
+To verify this hypothesis, we plot the values of the MSE with respect to <span class="math notranslate nohighlight">\(w\)</span>:</p>
 <div class="cell tag_remove-input tag_hide docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.20e+01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.22e+01
 </pre></div>
 </div>
-<img alt="../_images/correc5_18_1.png" src="../_images/correc5_18_1.png" />
+<img alt="../_images/correc5_19_1.png" src="../_images/correc5_19_1.png" />
 </div>
 </div>
 <p>As expected, the MSE change with respect of the filter size.
 A compromise must be made between the noise reduction and the blurring.
-We observe that the curve has a minimum, it corresponds to the best choice for <code class="docutils literal notranslate"><span class="pre">w</span></code> (in terms of MSE).</p>
+We observe that the curve has a minimum, it corresponds to the best choice for <span class="math notranslate nohighlight">\(w\)</span> (in terms of MSE).</p>
 <p>Unfortunately, there is no easy way to know a priori the best size of the mean filter just knowing the SNR.
 The value obtained here depends on the image (try with another image!).</p>
 </div>
@@ -720,7 +720,7 @@ The value obtained here depends on the image (try with another image!).</p>
 <p>With the noisy image at SNR = 10 dB, we now carry out a denoising by TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_22_0.png" src="../_images/correc5_22_0.png" />
+<img alt="../_images/correc5_23_0.png" src="../_images/correc5_23_0.png" />
 </div>
 </div>
 <p>As with the mean filter, we observe that the image is partially denoised (therefore the MSE will be better),
@@ -729,36 +729,26 @@ As previously, it should exist an optimal value of the regularization parameter 
 Let’s see if this denoising technique can surpass the mean filter…</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.46e+01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.42e+01
 </pre></div>
 </div>
-<img alt="../_images/correc5_24_1.png" src="../_images/correc5_24_1.png" />
+<img alt="../_images/correc5_25_1.png" src="../_images/correc5_25_1.png" />
 </div>
 </div>
 <p>The curve has the same behavior as in the case of the mean filter:
 there is an optimal value of the regularization parameter for which the MSE is the best.
 Moreover, we notice that the best MSE is lower than the best MSE obtained with the mean filter.
-So wa want to conclude that TV regularization is more efficient than the mean filter!
+So we want to conclude that TV regularization is more efficient than the mean filter!
 But beware: this conclusion is partial, because it was only obtained on <em>one</em> image with <em>one</em> SNR.</p>
 </div>
 <div class="section" id="comparison-of-the-two-denoising-methods-for-different-snrs">
 <h3>Comparison of the two denoising methods for different SNRs<a class="headerlink" href="#comparison-of-the-two-denoising-methods-for-different-snrs" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to analyze the evolution of the MSE with respect to the noise level by calculating, for several values of SNR,
 the best parameters for the two methods.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/vincent/anaconda3/lib/python3.7/site-packages/skimage/restoration/_denoise.py:358: RuntimeWarning: divide by zero encountered in double_scalars
-  norm *= tau / weight
-/home/vincent/anaconda3/lib/python3.7/site-packages/skimage/restoration/_denoise.py:358: RuntimeWarning: invalid value encountered in multiply
-  norm *= tau / weight
-</pre></div>
-</div>
-</div>
-</div>
 <p>Then we can represent the evolution of the MSE for the two methods:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_30_0.png" src="../_images/correc5_30_0.png" />
+<img alt="../_images/correc5_31_0.png" src="../_images/correc5_31_0.png" />
 </div>
 </div>
 <p>We observe that the MSE decreases with the SNR.
@@ -780,19 +770,19 @@ In fact, neither of the two methods gives a really satisfactory result (see belo
 
 On peut vérifier que ces conclusions sont en accord avec ce qu'on peut observer sur quelques exemples : --><div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_35_0.png" src="../_images/correc5_35_0.png" />
-<img alt="../_images/correc5_35_1.png" src="../_images/correc5_35_1.png" />
-<img alt="../_images/correc5_35_2.png" src="../_images/correc5_35_2.png" />
+<img alt="../_images/correc5_36_0.png" src="../_images/correc5_36_0.png" />
+<img alt="../_images/correc5_36_1.png" src="../_images/correc5_36_1.png" />
+<img alt="../_images/correc5_36_2.png" src="../_images/correc5_36_2.png" />
 </div>
 </div>
 <p>OK, we have the same conclusions as before.</p>
 <p>The comparison between the two methods was only carried out on a single image and a single criterion (the MSE).
-This is undoubtedly a good criterion for comparing two methods, but comparisons exist,
+This is undoubtedly a good criterion for comparing two methods, but other criterions exist,
 such as for example the complexity of the method, the computation time, etc.</p>
 </div>
 </div>
 <div class="section" id="deconvolution">
-<h2>Déconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">¶</a></h2>
+<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">¶</a></h2>
 <p>The objectives of this exercise are:</p>
 <ul class="simple">
 <li><p>know how to apply a specific degradation to an image</p></li>
@@ -805,7 +795,7 @@ such as for example the complexity of the method, the computation time, etc.</p>
 <h3>Original and noisy images<a class="headerlink" href="#original-and-noisy-images" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_42_0.png" src="../_images/correc5_42_0.png" />
+<img alt="../_images/correc5_43_0.png" src="../_images/correc5_43_0.png" />
 </div>
 </div>
 <p>The “USAF 1951” resolution chart is a tool for measuring the resolution of optical instruments.
@@ -819,19 +809,19 @@ Here, it is interesting because once blurred, it is difficult to count the lines
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_46_0.png" src="../_images/correc5_46_0.png" />
+<img alt="../_images/correc5_47_0.png" src="../_images/correc5_47_0.png" />
 </div>
 </div>
-<p>In the absence of noise, the inverse filter works perfectly (except for a translation).</p>
+<p>In the absence of noise, the inverse filter works perfectly (except for a translation, due to the PSF size).</p>
 </div>
 <div class="section" id="inverse-filter-with-noise">
 <h3>Inverse filter with noise<a class="headerlink" href="#inverse-filter-with-noise" title="Permalink to this headline">¶</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_49_0.png" src="../_images/correc5_49_0.png" />
+<img alt="../_images/correc5_50_0.png" src="../_images/correc5_50_0.png" />
 </div>
 </div>
-<p>On the contrary, when the image is noisy (even slightly: here SNR=40 dB), the restoration is not at all acceptable!</p>
+<p>On the contrary, when the image is noisy (even slightly: here SNR equals 40 dB), the restoration is not at all acceptable!</p>
 </div>
 <div class="section" id="wiener-filter-with-noise">
 <h3>Wiener filter with noise<a class="headerlink" href="#wiener-filter-with-noise" title="Permalink to this headline">¶</a></h3>
@@ -839,8 +829,8 @@ Here, it is interesting because once blurred, it is difficult to count the lines
 Instead, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code>, not forgetting to add <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_53_0.png" src="../_images/correc5_53_0.png" />
-<img alt="../_images/correc5_53_1.png" src="../_images/correc5_53_1.png" />
+<img alt="../_images/correc5_54_0.png" src="../_images/correc5_54_0.png" />
+<img alt="../_images/correc5_54_1.png" src="../_images/correc5_54_1.png" />
 </div>
 </div>
 <p>These first results have been obtained for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.
@@ -850,11 +840,11 @@ if <span class="math notranslate nohighlight">\(\lambda\)</span> is too large th
 <p>For a better analysis, we represent the MSE with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/correc5_55_0.png" src="../_images/correc5_55_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 90 and gives MSE = 1332.80.
+<img alt="../_images/correc5_56_0.png" src="../_images/correc5_56_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 90 and gives MSE = 1325.74.
 </pre></div>
 </div>
-<img alt="../_images/correc5_55_2.png" src="../_images/correc5_55_2.png" />
+<img alt="../_images/correc5_56_2.png" src="../_images/correc5_56_2.png" />
 </div>
 </div>
 <p>I find personally that this value of <span class="math notranslate nohighlight">\(\lambda\)</span> gives a less clear picture than for lower values of <span class="math notranslate nohighlight">\(\lambda\)</span> (as presented above).

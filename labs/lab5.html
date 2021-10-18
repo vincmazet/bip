@@ -587,10 +587,16 @@
 <p>This exercise is intended to evaluate the performances of a denoising method of your choice.
 Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).</p>
 <ul>
-<li><p>Load an image of your choice (your favourite pet, your best party or an image of the former labs).
-Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>, therefore you may use convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.
-Besides, it is recommended to use a small image (less than 1000×1000, use <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> to reduce the image size)
-and convert it to grayscale with <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>.</p></li>
+<li><p>Load an image of your choice (your favourite pet, your best party or an image of the former labs).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>. So you may need to convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.</p></li>
+<li><p>For convenience, it is recommended to use an image of size less than 1000×1000. Use <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> to reduce the image size.</p></li>
+<li><p>Also, use a grayscale image (<code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>).</p></li>
+</ul>
+</div>
+</li>
 <li><p>We consider the case of an AWGN.
 Express the Gaussian variance <span class="math notranslate nohighlight">\(\sigma^2 \)</span> in terms of SNR.
 Recall that the variance of a Gaussian process <span class="math notranslate nohighlight">\(b\)</span> is very well estimated by its power</p>
@@ -615,7 +621,7 @@ you can implement the denoising method you have chosen.</p>
 <li><p>Denoise the image with the chosen method.</p></li>
 <li><p>Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">skimage.metrics.mean_squared_error</span></code>
-to calculate the mean square error (MSE, in French EQM for <em>erreur quadratique moyenne</em>)
+to calculate the mean squared error (MSE, in French EQM for <em>erreur quadratique moyenne</em>)
 of the denoised image to have a quantitative measure of the denoising quality.</p></li>
 <li><p>Represent the evolution of the MSE according to the parameter, and comment on the result:
 what is the optimal value of this parameter?
@@ -658,7 +664,7 @@ first by observing the result obtained for some values,
 then by representing the evolution of a restoration quality measure (which one?)
 with respect to the values of the regularization parameter.</p></li>
 <li><p>What is the optimal value of the regularization parameter?
-DO you agree that it is actually the best value when you look at the estimation?</p></li>
+Do you agree that it is actually the best value when you look at the estimation?</p></li>
 <li><p>Finally, can you conclude on the optimal choice of the regularization parameter, whatever the image?</p></li>
 </ul>
 </div>

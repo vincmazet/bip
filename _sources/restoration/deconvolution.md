@@ -177,7 +177,7 @@ $$
 Since $X$ and $B$ are independent, then the covariances $\mathbb{E}\big[X^*B\big]$ and $\mathbb{E}\big[B^*X\big] $ are zeros.
 Moreover, $\mathbb{E}\big[X^*X\big]$ and $\mathbb{E}\big[B^*B\big]$ are the power spectral densities denoted as $S_x$ and $S_b$
 (remember that the power spectral density is the expectation of the square of the modulus of the Fourier transform).
-So the mean square error simplifies into:
+So the mean squared error simplifies into:
 
 $$
 \mathrm{MSE} = (GH-1)^*(GH-1) S_x + G^*G S_b

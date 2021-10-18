@@ -8,9 +8,12 @@ This exercise is intended to evaluate the performances of a denoising method of 
 Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
 
 * Load an image of your choice (your favourite pet, your best party or an image of the former labs).
-  Be careful to work with `floats`, therefore you may use convert your image with `.astype(float)`.
-  Besides, it is recommended to use a small image (less than 1000×1000, use `skimage.transform.rescale` to reduce the image size)
-  and convert it to grayscale with `skimage.color.rgb2gray`.
+
+  ```{note}
+  * Be careful to work with `floats`. So you may need to convert your image with `.astype(float)`.
+  * For convenience, it is recommended to use an image of size less than 1000×1000. Use `skimage.transform.rescale` to reduce the image size.
+  * Also, use a grayscale image (`skimage.color.rgb2gray`).
+  ```
 
 * We consider the case of an AWGN.
   Express the Gaussian variance $\sigma^2 $ in terms of SNR.
@@ -41,7 +44,7 @@ If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
 * Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.
 
 * Use `skimage.metrics.mean_squared_error`
-  to calculate the mean square error (MSE, in French EQM for _erreur quadratique moyenne_)
+  to calculate the mean squared error (MSE, in French EQM for _erreur quadratique moyenne_)
   of the denoised image to have a quantitative measure of the denoising quality.
 
 * Represent the evolution of the MSE according to the parameter, and comment on the result:
@@ -89,6 +92,6 @@ If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
   with respect to the values of the regularization parameter.
 
 * What is the optimal value of the regularization parameter?
-  DO you agree that it is actually the best value when you look at the estimation?
+  Do you agree that it is actually the best value when you look at the estimation?
 
 * Finally, can you conclude on the optimal choice of the regularization parameter, whatever the image?
