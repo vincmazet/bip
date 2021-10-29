@@ -113,7 +113,7 @@ Thus, the deconvolved image $\widehat{x}$ corresponds to $x$ with an additional 
 The PSF $H$ is generally a low-pass filter, so the values of $H(m,n)$ tend towards $0$ for high frequencies $(m,n)$.
 Because $H$ is in the denominator, this tends to drastically amplify the high frequencies of the noise,
 then the term $B/H$ quickly dominates $X$.
-This explains the result of {numref}`F:deconvolution:inverse`.
+This explains the result of {numref}`F:deconvolution:inverse-filter`.
 
 One solution consists in considering only the low frequencies of $Y/H$.
 This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.

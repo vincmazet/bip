@@ -306,11 +306,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pattern.html">
-   Pattern detection
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="edges.html">
    Edge detection
   </a>
@@ -442,23 +437,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  In a nutshell
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/optimization.html">
-   Mathematical optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/classification.html">
-   Classification
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Appendices
  </span>
 </p>
@@ -554,6 +532,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moravec-detector">
+   Moravec detector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-detector">
+   Harris detector
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -564,6 +560,107 @@
                 
   <div class="section" id="corner-detection">
 <h1>Corner detection<a class="headerlink" href="#corner-detection" title="Permalink to this headline">¶</a></h1>
+<p>To detect the corners of objects in an image, one can start by detecting edges then determining where two edges meet.
+There are however other methods, among which:</p>
+<ul class="simple">
+<li><p>the Moravec detector <a class="reference internal" href="../appendices/refs.html#c-refs"><span class="std std-ref">[Moravec 1980]</span></a>,</p></li>
+<li><p>the Harris detector <a class="reference internal" href="../appendices/refs.html#c-refs"><span class="std std-ref">[Harris &amp; Stephens 1988]</span></a>.</p></li>
+</ul>
+<div class="section" id="moravec-detector">
+<h2>Moravec detector<a class="headerlink" href="#moravec-detector" title="Permalink to this headline">¶</a></h2>
+<p>The principle of this detector is to observe if a sub-image, moved around one pixel in all directions, changes significantly.
+If this is the case, then the considered pixel is a corner.</p>
+<div class="figure align-default" id="f-corners-moravec">
+<a class="reference internal image-reference" href="../_images/corners-moravec.png"><img alt="../_images/corners-moravec.png" src="../_images/corners-moravec.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Principle of Moravec detector.
+From left to right :
+on a flat area, small shifts in the sub-image (in red) do not cause any change;
+on a contour, we observe changes in only one direction;
+around a corner there are significant changes in all directions.</span><a class="headerlink" href="#f-corners-moravec" title="Permalink to this image">¶</a></p>
+</div>
+<p>Mathematically, the change is characterized in each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the image by
+<span class="math notranslate nohighlight">\(E_{m,n}(x,y)\)</span> which represents the difference between the sub-images for an offset <span class="math notranslate nohighlight">\((x,y)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \forall m,n,x,y \qquad E_{m,n}(x,y) = \sum_{u,v} w_{m,n}(u,v) \big[f(u+x,v+y)-f(u,v)\big]^2
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> represent the offsets in the four directions: <span class="math notranslate nohighlight">\((x,y) \in \{(1,0),\,(1,1),\,(0,1),\,(-1,1)\}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_{m,n}\)</span> is a rectangular window around pixel <span class="math notranslate nohighlight">\((m,n)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(u+x,v+y)-f(u,v)\)</span> is the difference between the sub-image <span class="math notranslate nohighlight">\(f(u,v)\)</span> and the offset patch <span class="math notranslate nohighlight">\(f(u+x,v+y)\)</span>,</p></li>
+</ul>
+<p>In each pixel <span class="math notranslate nohighlight">\((m,n)\)</span>, the minimum of <span class="math notranslate nohighlight">\(E_{m,n}(x,y)\)</span> in the four directions is kept and denoted <span class="math notranslate nohighlight">\(F_{m,n}\)</span>.
+Finally, the detected corners correspond to the local maxima of <span class="math notranslate nohighlight">\(F_{m,n}\)</span>,
+that is, at pixels <span class="math notranslate nohighlight">\((m,n)\)</span> where the smallest value of <span class="math notranslate nohighlight">\(E_{m,n}(x,y)\)</span> is large.</p>
+<!-- example -->
+<p>It turns out that Moravec detector has several limitations.
+First, <span class="math notranslate nohighlight">\(w\)</span> is a binary window and therefore the detector considers all pixels in the window with the same weight.
+When the noise in the image is high, it can lead to false corner detections.
+Second, only four directions are considered.
+Third, the detector remains very sensitive to edges because only the minimum of <span class="math notranslate nohighlight">\(E\)</span> is considered.
+For these reasons, Harris has proposed a detector to overcome these limitations.</p>
+</div>
+<div class="section" id="harris-detector">
+<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">¶</a></h2>
+<p>To avoid a noisy response, the rectangular window <span class="math notranslate nohighlight">\(w\)</span> of the Moravec detector is replaced by a Gaussian window <span class="math notranslate nohighlight">\(w\)</span>
+in the expression of <span class="math notranslate nohighlight">\(E_{m,n}(x,y)\)</span>.</p>
+<p>To extend the Moravec detector to all directions, not limited to the initial four directions,
+a Taylor series expansion is performed on the shifted sub-image <span class="math notranslate nohighlight">\(f(u+x,v+y)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  f(u+x,v+y) \approx f(u,v) + x \,\partial_x f(u,v) + y \,\partial_y f(u,v).
+\]</div>
+<p>Therefore :</p>
+<div class="math notranslate nohighlight">
+\[
+E_{m,n}(x,y) \approx \sum_{u,v} w_{m,n}(u,v) \big[ x \,\partial_x f(u,v) + y \,\partial_y f(u,v) \big]^2
+\]</div>
+<p>This expression can be written in the following matrix form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E_{m,n}(x,y) \approx
+\begin{pmatrix} x &amp; y \end{pmatrix}
+M
+\begin{pmatrix} x \\ y \end{pmatrix}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+M = \sum_{u,v} w_{m,n}(u,v)
+\begin{pmatrix}
+  (\partial_x f)^2  &amp;  \partial_x f \,\partial_y f \\
+  \partial_x f \,\partial_y f  &amp;  (\partial_y f)^2 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>Finally, the last limit of the Moravec detector can be avoided by considering a new measure of the presence of a corner:
+more information about the intensity change in the window can be obtained
+by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> of the matrix <span class="math notranslate nohighlight">\(M\)</span> (<a class="reference internal" href="#f-corners-eigenvalues"><span class="std std-numref">Fig. 77</span></a>).
+Indeed, the presence of a corner is attested if the derivatives of <span class="math notranslate nohighlight">\(f\)</span> are very large,
+then <span class="math notranslate nohighlight">\(M\)</span> has large coefficients, and its eigenvalues are also very large.</p>
+<div class="figure align-default" id="f-corners-eigenvalues">
+<a class="reference internal image-reference" href="../_images/harris-eigenvalues.png"><img alt="../_images/harris-eigenvalues.png" src="../_images/harris-eigenvalues.png" style="width: 250px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 77 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">¶</a></p>
+</div>
+<p>The calculation of the eigenvalues of <span class="math notranslate nohighlight">\(M\)</span> can be difficult, so an alternative is to calculate:</p>
+<div class="math notranslate nohighlight">
+\[
+R = \mathrm{det}(M) - k (\mathrm{trace}(M))^2 = \lambda_1 \lambda_2 - k(\lambda_1 + \lambda_2)^2
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(0.04 &lt; k &lt; 0.06\)</span>.</p>
+<p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 78</span></a>).</p>
+<div class="figure align-default" id="f-corners-r">
+<a class="reference internal image-reference" href="../_images/harris-R.png"><img alt="../_images/harris-R.png" src="../_images/harris-R.png" style="width: 250px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 78 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">¶</a></p>
+</div>
+<!-- Rajouter l'échelle de couleur sur R -->
+<p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 79</span></a>.</p>
+<div class="figure align-default" id="f-corners-harris">
+<a class="reference internal image-reference" href="../_images/harris-detector.svg"><img alt="../_images/harris-detector.svg" src="../_images/harris-detector.svg" width="100%" /></a>
+<p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">Harris detector.
+The binary images represent the negative (contours), weak (flat areas) and positive (corners) values of the coefficient <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-harris" title="Permalink to this image">¶</a></p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

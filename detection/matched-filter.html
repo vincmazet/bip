@@ -56,7 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pattern detection" href="pattern.html" />
+    <link rel="next" title="Edge detection" href="edges.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -306,11 +306,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pattern.html">
-   Pattern detection
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="edges.html">
    Edge detection
   </a>
@@ -442,23 +437,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  In a nutshell
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/optimization.html">
-   Mathematical optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/classification.html">
-   Classification
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Appendices
  </span>
 </p>
@@ -564,6 +542,38 @@
                 
   <div class="section" id="matched-filter">
 <h1>Matched filter<a class="headerlink" href="#matched-filter" title="Permalink to this headline">¶</a></h1>
+<p>When a pattern (French: <em>motif</em>), perfectly known as a sub-image <span class="math notranslate nohighlight">\(g\)</span>, is searched for in an image <span class="math notranslate nohighlight">\(f\)</span>,
+then the cross-correlation (French: <em>corrélation croisée</em>) between <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> is a very efficient technique.
+This technique is often known as matched filter (French: <em>filtre adapté</em>).
+The cross correlation between <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> gives a new image <span class="math notranslate nohighlight">\(R_{f,g}\)</span> defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  R_{f,g}(u,v) = \sum_{m,n} f(m,n) g(u+m,v+n).
+\]</div>
+<p>The cross-correlation can be calculated as a convolution, hence the term “filter” in the name of this technique.</p>
+<p>Usually, <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are normalized into:</p>
+<div class="math notranslate nohighlight">
+\[
+  \tilde{f}(m,n) = \frac{ f(m,n)-\mu_f }{ \sigma_f } \qquad
+  \tilde{g}(m,n) = \frac{ g(m,n)-\mu_g }{ \sigma_g }
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_f\)</span> and <span class="math notranslate nohighlight">\(\sigma_f\)</span> are respectively the mean and the standard deviation of the image <span class="math notranslate nohighlight">\(f\)</span>.
+This results in the normalized cross-correlation (French: <em>corrélation croisée normalisée</em>) which is insensitive to changes in amplitude:</p>
+<div class="math notranslate nohighlight">
+\[
+  \tilde{R}_{f,g}(u,v) = \sum_{m,n} \tilde{f}(m,n) \tilde{g}(u+m,v+n).
+\]</div>
+<p><a class="reference internal" href="#f-detection-matched-filter1"><span class="std std-numref">Fig. 61</span></a> gives an example of matched filter.</p>
+<div class="figure align-default" id="f-detection-matched-filter1">
+<img alt="../_images/matched-filter-audir8.svg" src="../_images/matched-filter-audir8.svg" /><p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the letter G).</span><a class="headerlink" href="#f-detection-matched-filter1" title="Permalink to this image">¶</a></p>
+</div>
+<p>As seen in <a class="reference internal" href="#f-matched-filter2"><span class="std std-numref">Fig. 62</span></a>, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.</p>
+<div class="figure align-default" id="f-matched-filter2">
+<img alt="../_images/matched-filter-plates.svg" src="../_images/matched-filter-plates.svg" /><p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the digit 0).</span><a class="headerlink" href="#f-matched-filter2" title="Permalink to this image">¶</a></p>
+</div>
+<p>To overcome this limit, one can apply several matched filters, each representative of all the variations of the patterns.
+However, this idea is very time-consuming!</p>
+<!-- Alternative: find characteristics of objects and perform a classification. -->
 </div>
 
     <script type="text/x-thebe-config">
@@ -592,7 +602,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction</a>
-    <a class='right-next' id="next-link" href="pattern.html" title="next page">Pattern detection</a>
+    <a class='right-next' id="next-link" href="edges.html" title="next page">Edge detection</a>
 
         </div>
         

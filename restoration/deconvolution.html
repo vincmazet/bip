@@ -306,11 +306,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../detection/pattern.html">
-   Pattern detection
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../detection/edges.html">
    Edge detection
   </a>
@@ -438,23 +433,6 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  In a nutshell
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/optimization.html">
-   Mathematical optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/classification.html">
-   Classification
-  </a>
  </li>
 </ul>
 <p class="caption">
@@ -667,7 +645,7 @@ Indeed, according to the definition of <span class="math notranslate nohighlight
 The PSF <span class="math notranslate nohighlight">\(H\)</span> is generally a low-pass filter, so the values of <span class="math notranslate nohighlight">\(H(m,n)\)</span> tend towards <span class="math notranslate nohighlight">\(0\)</span> for high frequencies <span class="math notranslate nohighlight">\((m,n)\)</span>.
 Because <span class="math notranslate nohighlight">\(H\)</span> is in the denominator, this tends to drastically amplify the high frequencies of the noise,
 then the term <span class="math notranslate nohighlight">\(B/H\)</span> quickly dominates <span class="math notranslate nohighlight">\(X\)</span>.
-This explains the result of <code class="xref std std-numref docutils literal notranslate"><span class="pre">F:deconvolution:inverse</span></code>.</p>
+This explains the result of <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 58</span></a>.</p>
 <p>One solution consists in considering only the low frequencies of <span class="math notranslate nohighlight">\(Y/H\)</span>.
 This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
 The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 59</span></a>,

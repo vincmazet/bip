@@ -214,6 +214,20 @@ Sailboat on lake, from The USC-SIPI Image Database.
 unknown copyright status.
 [Original picture](https://sipi.usc.edu/database/database.php?volume=misc&image=12)
 
+---
+
+```{figure} ../figs/fiber-optic.png
+```
+Optical Fiber Sensor.
+(c) Sylvain Lecler (ICube/IPP).
+Used with permission.
+
+---
+
+```{figure} ../figs/station-clock.png
+```
+[Original image](https://commons.wikimedia.org/wiki/File:Station_Clock.svg?uselang=fr)
+
 ````
 
 Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html.

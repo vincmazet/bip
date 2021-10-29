@@ -306,11 +306,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="pattern.html">
-   Pattern detection
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="edges.html">
    Edge detection
   </a>
@@ -442,23 +437,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  In a nutshell
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/optimization.html">
-   Mathematical optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../nutshell/classification.html">
-   Classification
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Appendices
  </span>
 </p>
@@ -564,6 +542,15 @@
                 
   <div class="section" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>We have seen in that chapter that methods for finding features are very different and depend on the seeking feature.</p>
+<ul class="simple">
+<li><p>For edges, usual methods are essentially a filtering using the gradient or the Laplacian
+(Roberts or Prewitt filters, Sobel or Canny detectors).</p></li>
+<li><p>For corners, the dedicated methods analyze the variation in intensity in the neighbourhood of the pixels (Moravec and Harris detectors).</p></li>
+<li><p>For lines and circles, the image is represented in the space of the parameters of the geometric shape (Hough transform).</p></li>
+</ul>
+<!-- Parler aussi de classification (dont réseaux de neurones), qui sont utilisées sur des features -->
+<!-- Rajouter ? SIFT, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
 </div>
 
     <script type="text/x-thebe-config">
