@@ -532,6 +532,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
+   Sobel and Canny detectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-detector">
+   Harris detector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hough-transform">
+   Hough transform
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -542,6 +565,47 @@
                 
   <div class="section" id="lab-6">
 <span id="lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this headline">¶</a></h1>
+<p>This lab is devoted to metrology, by detecting features on the image <a href="../_static/data/L.png">L.png</a>.</p>
+<ul class="simple">
+<li><p>Recall what the following detectors can do: Canny, Harris, Hough, Moravec, Prewitt, Roberts, Sobel.</p></li>
+</ul>
+<div class="section" id="sobel-and-canny-detectors">
+<h2>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Display the image gradients with the Sobel detector (<code class="docutils literal notranslate"><span class="pre">skimage.filters.sobel</span></code>).</p></li>
+<li><p>Apply a threshold on the obtained image to perform an edge detection.
+What is the influence of the threshold on the result?</p></li>
+<li><p>Find the optimal threshold, <em>i.e.</em> the one which gives most of the edges of the object while keeping precise locations of the edges.</p></li>
+<li><p>What is the relationship between Sobel and Canny detectors?</p></li>
+<li><p>Display the edges detected by Canny detector (<code class="docutils literal notranslate"><span class="pre">skimage.feature.canny</span></code>).</p></li>
+<li><p>Discuss the influence of the main parameters of the method,
+namely the size of the Gaussian filter and the two thresholds.</p></li>
+<li><p>It is sometimes interesting to compare the studied methods in terms of computation time.
+The computation time can be obtained by calculating the difference
+between the time <span class="math notranslate nohighlight">\(t_2\)</span> measured after executing the method and the time <span class="math notranslate nohighlight">\(t_1\)</span> measured before its execution.
+For that, you can use the function <code class="docutils literal notranslate"><span class="pre">time.time</span></code> which gives the number of seconds elapsed since January 1, 1970.
+What is the fastest method?</p></li>
+</ul>
+</div>
+<div class="section" id="harris-detector">
+<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Apply the Harris detector (with <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_harris</span></code> and <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_peaks</span></code>).</p></li>
+<li><p>Criticize the result: have all the corners been detected?
+Are there any false alarms (<em>i.e.</em> detections that do not correspond to corners)?
+How to explain these errors?</p></li>
+</ul>
+</div>
+<div class="section" id="hough-transform">
+<h2>Hough transform<a class="headerlink" href="#hough-transform" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The Hough transform does not apply directly to the original image: what image should you use?</p></li>
+<li><p>Represent the Hough transform of the image with <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line</span></code>.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line_peaks</span></code> extracts the parameters of the most important lines from the Hough transform.
+Use this function to display the six most important lines of the image.</p></li>
+</ul>
+<!-- exo très long pour les étus (bceaucoup de réglages de params) -->
+<!-- montrer l'influence des paramètres de chaque fonction --></div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
