@@ -14,7 +14,7 @@ So, the Fourier transform gives information about the frequency content of the i
 The discrete Fourier transform (DFT) of an image $f$ of size $M \times N$ is an image $F$ of same size such that:
 
 $$
-  F(u,v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(m,n) e^{-j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
+  F(u,v) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} f(m,n) e^{-j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
 $$
 
 In the sequel, we note $\mathcal{F}$ the DFT so that $\mathcal{F}[f] = F$.
