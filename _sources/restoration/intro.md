@@ -1,7 +1,7 @@
 # Introduction
 
 The principal goal of restoration methods (French: _méthodes de restauration_) is to improve an image by using an objective process
-(contrary to enhancement methods that are mostly heuristic procedures designed to improve an image fo a psychophysical purpose,
+(contrary to enhancement methods that are mostly heuristic procedures designed to improve an image for a psychophysical purpose,
 that is, "to look visually fine").
 Restoration methods need knowledge of the phenomenon that has degraded the image.
 This knowledge gives a mathematical model of the degradation.

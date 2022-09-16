@@ -1,6 +1,13 @@
 (C:segmentation:intro)=
 # Introduction
 
+//// **AUTRE**
+some basic relationship between pixels
+- neigbors of a pixel
+- adjancy, connectivity, regions and boundaries
+- distance measure
+////
+
 Image segmentation consists in partitioning an image $f$ according to a certain criterion.
 It means that the image is divided into regions $R_i$
 which are both disjoint and such that the entire image is covered by all the regions.

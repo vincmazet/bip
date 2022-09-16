@@ -1,5 +1,12 @@
 # Foreword
 
+Image processing is the science of manipulating digital images with computer means.
+This includes methods and algorithms to modify an image (resizing, filtering, registration...),
+improve the visual quality of an image (deblurring, denoising...)
+or
+analyze the information contained in an image (Fourier analysis, contour detection...),
+among other.
+
 This textbook accompanies the course "Basics of image processing" given in the second year of [master IRIV](https://www.master-iriv.fr/),
 at the [University of Strasbourg](https://www.unistra.fr/).
 The goal of the course and this textbook is to provide an overview of the main problems, tools and methods

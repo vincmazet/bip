@@ -1,7 +1,7 @@
 (labs:lab1)=
 # Lab 1
 
-You can refer to the [correction](labs:correc1) after you have completed each exercise.
+You can refer to the [correction](labs:cor1) after you have completed each exercise.
 Whatever, do not hesitate to ask your colleagues and teachers to get more informations or to discuss about a specific topic.
 
 
@@ -65,7 +65,7 @@ A notebook is appealing as it is also possible to add text using the [markdown l
   
   This can be useful for inserting titles or keeping comments and notes.
   
-Verify your code in the [correction](labs:correc1).
+Verify your code in the [correction](labs:cor1).
 
 
 ## Display a saved image

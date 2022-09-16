@@ -10,7 +10,9 @@
 | Closing | Fermeture |
 | Clustering method | Méthode de classification, Méthode de coalescence |
 | Colormap | Palette de couleurs |
+| Cones | Cônes |
 | Convolution | Convolution |
+| Cornea | Cornée |
 | Criterion of goodness | Critère de qualité |
 | Cross-correlation | Corrélation croisée |
 | Data-fit criterion | Critère d'adéquation aux données |
@@ -31,6 +33,7 @@
 | K-means | K-moyennes |
 | Laplacian | Laplacien |
 | Laplacian of Gaussian (LoG) | _(pas d'équivalent)_ |
+| Lens (anatomy) | Cristallin |
 | Low-pass filter | Filtre passe-bas |
 | Matched filter | Filtre adapté |
 | Mathematical morphology | Morphologie mathématique |
@@ -38,14 +41,19 @@
 | Mean squared error (MSE) | Erreur quadratique moyenne (EQM) |
 | Median filter | Filtre médian |
 | Opening | Ouverture |
+| Optical transfer function (OTF) | Fonction de transfert optique |
 | Pattern | Motif |
+| Point spread function (PSF) | Donction d'étalement du point |
 | Poisson noise 🐟 (also called shot noise) | Bruit de Poisson |
 | Registration | Recalage |
 | Regularization | Régularisation |
 | Regularization parameter | Paramètre de régularisation |
 | Restoration | Restauration |
+| Retina | Rétine |
+| Rod | Bâtonnet |
 | Salt-and-pepper noise |  Bruit poivre et sel |
 | Signal-to-noise ratio (SNR) | Rapport signal-sur-bruit (RSB) |
+| Standard deviation | Écart-type |
 | Structuring element | Élément structurant |
 | Threshold | Seuil |
 | True negative | Vrais négatifs |

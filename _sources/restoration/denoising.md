@@ -6,6 +6,7 @@ Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.
 
 
+(denoising:noise-sources)=
 ## Noise sources
 
 The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature ...)

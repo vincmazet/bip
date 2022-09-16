@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="165pt"
+   height="110pt"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="D:\Is seno\My Documents\wiki"
+   sodipodi:docname="photo-diode.svg"
+   version="1.0">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8180051"
+     inkscape:cx="105.01466"
+     inkscape:cy="65.60665"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:guide-points="true"
+     inkscape:window-width="756"
+     inkscape:window-height="540"
+     inkscape:window-x="22"
+     inkscape:window-y="22">
+    <sodipodi:guide
+       orientation="horizontal"
+       position="895.49102"
+       id="guide2225" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="155.67972"
+       id="guide2227" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="96.4682"
+       id="guide2229" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="932.7477"
+       id="guide2231" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="856.90374"
+       id="guide2233" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="27.277215"
+       id="guide2235" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="226.2013"
+       id="guide2237" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path2247"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 51.449961,3.240438 L 80.723071,32.513547 M 78.912571,13.675834 L 81.017121,32.697707 L 62.480912,30.512215" />
+    <path
+       id="path2239"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 3.5526161,94.37116 L 72.743601,94.37116 L 72.743601,132.95844 L 132.5604,94.37116 L 72.743601,57.11448 L 72.743601,94.37116 M 131.95512,57.11448 L 131.95512,132.95844 M 132.62041,94.37116 L 202.4767,94.37116"
+       sodipodi:nodetypes="cccccccccc" />
+    <path
+       id="path2245"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 21.511554,32.475159 L 50.119365,61.74827 M 48.588499,43.37292 L 50.693049,62.39479 L 32.15684,60.2093" />
+  </g>
+</svg>

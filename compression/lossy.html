@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lossy compression &#8212; Basics of Image Processing</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,51 +20,66 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conclusion" href="outro.html" />
     <link rel="prev" title="Lossless compression" href="lossless.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,10 +88,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Basics of Image Processing</h1>
@@ -83,28 +102,44 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   Foreword
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Foreword
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Digital images
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../digital-images/definition.html">
    What is a digital image?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../digital-images/display.html">
+  <a class="reference internal" href="../digital-images/eye.html">
+   Human vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/acquisition.html">
+   Image acquisition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../digital-images/displaying.html">
    Displaying an image
   </a>
  </li>
@@ -114,22 +149,39 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../digital-images/histogram.html">
-   Histogram
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../digital-images/transformations.html">
-   Histogram transformations
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../digital-images/outro.html">
    Conclusion
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Histogram
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../histogram/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../histogram/histogram.html">
+   Histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../histogram/transformations.html">
+   Histogram transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../histogram/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Filtering
  </span>
@@ -151,6 +203,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../filtering/wavelets.html">
+   Wavelets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../filtering/filtering.html">
    Filtering
   </a>
@@ -161,7 +218,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Compression
  </span>
@@ -188,39 +245,73 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Mathematical morphology
+  Registration
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../mm/intro.html">
+  <a class="reference internal" href="../registration/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../mm/basics.html">
-   Basic operators
+  <a class="reference internal" href="../registration/registration.html">
+   Registration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../mm/composition.html">
-   Composition of basic operators
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mm/measure.html">
-   Measure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../mm/outro.html">
+  <a class="reference internal" href="../registration/outro.html">
    Conclusion
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Interpolation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interpolation/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interpolation/interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../interpolation/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Textures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../textures/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../textures/textures.html">
+   Textures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../textures/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Segmentation
  </span>
@@ -262,7 +353,39 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Mathematical morphology
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/basics.html">
+   Basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/composition.html">
+   Composition of basic operators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/measure.html">
+   Measure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mm/outro.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Restoration
  </span>
@@ -289,7 +412,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Feature detection
  </span>
@@ -326,7 +449,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Labs
  </span>
@@ -343,7 +466,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc1.html">
+    <a class="reference internal" href="../labs/cor1.html">
      Correction of lab 1
     </a>
    </li>
@@ -360,7 +483,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc2.html">
+    <a class="reference internal" href="../labs/cor2.html">
      Correction of lab 2
     </a>
    </li>
@@ -377,7 +500,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc3.html">
+    <a class="reference internal" href="../labs/cor3.html">
      Correction of lab 3
     </a>
    </li>
@@ -394,7 +517,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc4.html">
+    <a class="reference internal" href="../labs/cor4.html">
      Correction of lab 4
     </a>
    </li>
@@ -411,7 +534,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc5.html">
+    <a class="reference internal" href="../labs/cor5.html">
      Correction of lab 5
     </a>
    </li>
@@ -428,14 +551,53 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/correc6.html">
+    <a class="reference internal" href="../labs/cor6.html">
      Correction of lab 6
     </a>
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../labs/lab7.html">
+   Lab 7
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor7.html">
+     Correction of lab 7
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  In a nutshell
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/optimization.html">
+   Mathematical optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nutshell/deeplearning.html">
+   Deep learning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -457,11 +619,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendices/refs.html">
-   References
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../appendices/license.html">
    License
   </a>
@@ -469,12 +626,13 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -482,61 +640,117 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/compression/lossy.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/compression/lossy.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#principle">
    Principle
@@ -559,19 +773,57 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lossy compression</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principle">
+   Principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-discrete-cosine-transform">
+   The discrete cosine transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-the-dct-of-an-image">
+   Example of the DCT of an image
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-steps-in-jpeg-compression">
+   Other steps in JPEG compression
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="lossy-compression">
-<span id="compression-lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="principle">
-<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="lossy-compression">
+<span id="compression-lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h1>
+<section id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">#</a></h2>
 <p>The most famous lossy compression format for images is JPEG,
 created in 1992 by the Joint Photographic Experts Group.
 The main idea of JPEG compression is to apply a specific transform to the image
@@ -582,9 +834,9 @@ In addition, this principle is used in lossy compression of audio (MP3) and vide
 so the <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">discrete Fourier transform</span></a> (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called <em>discrete cosine transform</em> (DCT) is a better choice for computational reasons.
 Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.</p>
-</div>
-<div class="section" id="the-discrete-cosine-transform">
-<h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-discrete-cosine-transform">
+<h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Permalink to this headline">#</a></h2>
 <p>The DCT of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(N \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size defined as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,41 +854,49 @@ Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wav
 \end{split}\]</div>
 <p>The DCT is similar to <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a> except that the complex exponentials are replaced by cosines.</p>
 <p>The DCT decomposes an image into 2D cosines of different frequencies.
-Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 20</span></a>.</p>
-<div class="figure align-default" id="f-compression-dct-coefficients">
-<img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" /><p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="example-of-the-dct-of-an-image">
-<h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this headline">¶</a></h2>
-<p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 21</span></a>,
+Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 34</span></a>.</p>
+<figure class="align-default" id="f-compression-dct-coefficients">
+<img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" /><figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="example-of-the-dct-of-an-image">
+<h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this headline">#</a></h2>
+<p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 35</span></a>,
 which is a crop of size 8 × 8 centered on the squirrel snout.</p>
-<div class="figure align-default" id="f-compression-squirrel-crop">
-<img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">¶</a></p>
-</div>
-<p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 22</span></a>.
+<figure class="align-default" id="f-compression-squirrel-crop">
+<img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 36</span></a>.
 As you can see, the coefficient at the top left, which correspond at the lower frequencies
-(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 20</span></a>) are the largest.</p>
-<div class="figure align-default" id="f-compression-squirrel-coefficients">
-<img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 21</span></a>.
-Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">¶</a></p>
-</div>
+(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 34</span></a>) are the largest.</p>
+<figure class="align-default" id="f-compression-squirrel-coefficients">
+<img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 35</span></a>.
+Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Because the human eye is less sensitive to high frequencies than low frequencies,
-the idea of JPEG compression is to cancel the coefficients at the bottom right in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 22</span></a>.</p>
-<div class="margin sidebar">
+the idea of JPEG compression is to cancel the coefficients at the bottom right in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 36</span></a>.</p>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The expression of the inverse DCT is not given here but is similar to what the inverse Fourier transform is for the Fourier transform.</p>
-</div>
+</aside>
 <p>So, we cancel the coefficients stroked with a red cross and reconstruct the image by using the inverse DCT.
-The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 23</span></a> (right).
+The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 37</span></a> (right).
 As you can see, the result is very similar to the original image, while less than 50 % of the coefficients are kept!
 This small example shows the interest of going into the domain of a transformation and canceling certain coefficients.</p>
-<div class="figure align-default" id="f-compression-squirrel-comparison">
-<img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="other-steps-in-jpeg-compression">
-<h2>Other steps in JPEG compression<a class="headerlink" href="#other-steps-in-jpeg-compression" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="f-compression-squirrel-comparison">
+<img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="other-steps-in-jpeg-compression">
+<h2>Other steps in JPEG compression<a class="headerlink" href="#other-steps-in-jpeg-compression" title="Permalink to this headline">#</a></h2>
 <p>Computing the DCT of the image and using only the low frequency coefficients for reconstruction
 is at the heart of JPEG compression.
 To gain even more in terms of compression, other steps are added in the actual JPEG compression.
@@ -654,8 +914,8 @@ but it is finer for low frequency coefficients than for high-frequency ones.</p>
 <li><p>The array consisting of the 64 coefficients of each sub-image is compressed with a lossless compression method
 (<a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>).</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -679,37 +939,51 @@ but it is finer for low frequency coefficients than for high-frequency ones.</p>
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="lossless.html" title="previous page">Lossless compression</a>
-    <a class='right-next' id="next-link" href="outro.html" title="next page">Conclusion</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lossless.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lossless compression</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="outro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusion</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Vincent Mazet (University of Strasbourg, France)<br/>
-        
-            &copy; Copyright 2021-2022.<br/>
-          <div class="extra_footer">
-            Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2021 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
-          </div>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent Mazet (University of Strasbourg, France)<br/>
+  
+      &copy; Copyright 2022-2023.<br/>
+    <div class="extra_footer">
+      Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2023 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

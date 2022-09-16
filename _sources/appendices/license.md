@@ -4,230 +4,363 @@
     
 <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Vincent Mazet</span>,
 "<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Basics of image processing</span>"
-(formerly "Fundamental tools in image processing"),
-University of Strasbourg, 2021.
-
+University of Strasbourg, 2020-2023.
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-
 E-mail: <a href="mailto:vincent.mazet@unistra.fr">vincent.mazet@unistra.fr</a>.
 
 
 
 ## Image credits
 
+::::{grid} 1 2 2 3
+:gutter: 3
 
-````{panels}
-:column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
 
-
-```{figure} ../figs/aldrin.png
-```
+:::{grid-item-card} ![](../_static/figs/aldrin.png)
 &copy; [NASA](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
 NASA content generally are not copyrighted.
 [Original picture](https://www.nasa.gov/mission_pages/apollo/40th/images/apollo_image_12.html).
+:::
 
----
 
-```{figure} ../figs/coins1.png
-```
+:::{grid-item-card} ![](../_static/figs/coins1.png)
 &copy; Céline Meillier.
 Public domain.
+:::
 
----
 
-```{figure} ../figs/coins2.png
-```
+:::{grid-item-card} ![](../_static/figs/coins2.png)
 &copy; Céline Meillier.
 Public domain.
+:::
 
----
 
-```{figure} ../figs/forest.png
-```
+:::{grid-item-card} ![](../_static/figs/haze.png)
 He, Sun, Tang, "Single image haze removal using dark channel prior", CVPR 2009
-DOI: [10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
+[doi:10.1109/CVPR.2009.5206515](https://doi.org/10.1109/CVPR.2009.5206515).
+:::
 
----
 
-```{figure} ../figs/greece.png
-```
+:::{grid-item-card} ![](../_static/figs/greece.png)
 &copy; Daniel Seehausen.
 Free license.
 [Original picture](https://pixabay.com/illustrations/greece-map-black-only-greece-1613310/).
+:::
 
----
 
-```{figure} ../figs/hdfs.png
-```
+:::{grid-item-card} ![](../_static/figs/hdfs.png)
 Bacon _et al._, "The MUSE 3D view of the Hubble Deep Field South", A&A, 575 (2015)
 [Original picture](http://muse-vlt.eu/science/hdfs-v1-0/).
+:::
 
----
 
-```{figure} ../figs/peppers.png
-```
+:::{grid-item-card} ![](../_static/figs/peppers.png)
 &copy; [Irene Kredenets](https://unsplash.com/@ikredenets?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 on [Unsplash](https://unsplash.com/s/photos/pepper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 Free license.
 [Original picture](https://unsplash.com/photos/0PUoXmsCSDQ/).
+:::
 
----
+:::{grid-item-card} ![](../_static/figs/photodiode.svg)
+Knutux (assumed), public domain,
+[Original picture](https://commons.wikimedia.org/wiki/File:Photo-diode.svg)
+:::
 
-```{figure} ../figs/s1.png
-```
+:::{grid-item-card} ![](../_static/figs/bayer-filter.svg)
+en:User:Cburnett - Own work, CC BY-SA 3.0,
+[Original picture](https://commons.wikimedia.org/w/index.php?curid=1496858)
+:::
+
+:::{grid-item-card} ![](../_static/figs/aliasing-moi.jpg)
+&copy; Vincent Mazet, 2021.
+Public domain.
+:::
+
+:::{grid-item-card} ![](../_static/figs/interferometry.jpg)
+&copy; NASA/JPL/CIT.
+[Original picture](https://nisar.jpl.nasa.gov/mission/get-to-know-sar/interferometry/)
+:::
+
+:::{grid-item-card} ![](../_static/figs/x-ray.jpg)
+Ptrump16, CC BY-SA 4.0.
+[Original picture](https://commons.wikimedia.org/wiki/File:Knee_plain_X-ray.jpg)
+:::
+
+:::{grid-item-card} ![](../_static/figs/electron-microscopy.jpg)
+Dartmouth College Electron Microscope Facility, public domain.
+[Original picture](https://en.wikipedia.org/wiki/File:Misc_pollen.jpg)
+:::
+
+:::{grid-item-card} ![](../_static/figs/seismic.jpg)
+Geophysicus, CC BY-SA 4.0.
+[Original picture](https://commons.wikimedia.org/wiki/File:Seismic_from_an_unconformity.jpg)
+:::
+
+:::{grid-item-card} ![](../_static/figs/thermography.jpg)
+Passivhaus Institut, CC BY-SA 3.0.
+[Original picture](https://commons.wikimedia.org/wiki/File:Passivhaus_thermogram_gedaemmt_ungedaemmt.png)
+:::
+
+:::{grid-item-card} ![](../_static/figs/MRI.jpg)
+Johns Hopkins University, Public domain.
+[Original picture](https://commons.wikimedia.org/wiki/File:T1-weighted-MRI.png)
+:::
+
+:::{grid-item-card} ![](../_static/figs/dark-current.jpg)
+Vincent Mazet, Public domain.
+[Original picture](https://commons.wikimedia.org/wiki/File:T1-weighted-MRI.png)
+:::
+
+:::{grid-item-card} ![](../_static/figs/s1.png)
+<!-- &copy; Vincent Mazet, 2016.
+Public domain.
+⛔CODE MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/s2.png)
+<!-- &copy; Vincent Mazet, 2016.
+Public domain.
+⛔CODE MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/s3.png)
+<!-- &copy; Vincent Mazet, 2016.
+Public domain.
+⛔CODE MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/s4.png)
+<!-- &copy; Vincent Mazet, 2016.
+Public domain.
+⛔CODE MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/s5.png)
+<!-- &copy; Vincent Mazet, 2016.
+Public domain.
+⛔CODE MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/santamonica.jpg)
 &copy; Vincent Mazet, 2016.
 Public domain.
+:::
 
----
 
-```{figure} ../figs/s2.png
-```
-&copy; Vincent Mazet, 2016.
+:::{grid-item-card} ![](../_static/figs/simpsons1.png)
+<!-- ⛔ORIGINAL MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/simpsons2.png)
+<!-- ⛔ORIGINAL MANQUANT ! -->
+:::
+
+
+:::{grid-item-card} ![](../_static/figs/smiley.png)
+<!-- &copy; Vincent Mazet, 2016.
 Public domain.
+⛔CODE MANQUANT ! -->
+:::
 
----
-
-```{figure} ../figs/s3.png
-```
-&copy; Vincent Mazet, 2016.
-Public domain.
-
----
-
-```{figure} ../figs/s4.png
-```
-**s4**
-&copy; Vincent Mazet, 2016.
-Public domain.
-
----
-
-```{figure} ../figs/s5.png
-```
-&copy; Vincent Mazet, 2016.
-Public domain.
-
----
-
-```{figure} ../figs/santamonica.jpg
-```
-&copy; Vincent Mazet, 2016.
-Public domain.
-
----
-
-
-```{figure} ../figs/simpsons1.png
-```
-
----
-
-
-```{figure} ../figs/simpsons2.png
-```
-
----
-
-```{figure} ../figs/smiley.png
-```
-&copy; Vincent Mazet, 2016.
-Public domain.
-
----
-
-```{figure} ../figs/spots.png
-```
+:::{grid-item-card} ![](../_static/figs/spots.png)
 &copy; Vincent Mazet.
 Public domain.
+:::
 
----
 
-```{figure} ../figs/squirrel.png
-```
+:::{grid-item-card} ![](../_static/figs/squirrel.png)
 &copy; Vincent Mazet, 2020.
 Public domain.
+:::
 
----
 
-```{figure} ../figs/ufo.png
-```
+:::{grid-item-card} ![](../_static/figs/ufo.png)
 &copy; Mete Eraydın.
 Creative Commons CC-BY.
 [Original picture](https://thenounproject.com/term/ufo/100819/).
+:::
 
----
 
-```{figure} ../figs/27829188.png
-```
+:::{grid-item-card} ![](../_static/figs/mammography.png)
 M.-L. Huang, T.-Y. Ling, "Dataset of Breast mammography images with Masses", Mendeley Data, V1 (2020)
-[doi:10.17632/x7bvzv6cvr.1](https://data.mendeley.com/datasets/x7bvzv6cvr/1)
+[doi:10.17632/x7bvzv6cvr.1](https://data.mendeley.com/datasets/x7bvzv6cvr/1).
+:::
 
----
 
-```{figure} ../figs/fiche16u_1.jpg
-```
-&copy; [ICube/Sertit](https://sertit.unistra.fr/)
+:::{grid-item-card} ![](../_static/figs/haiti.png)
+&copy; [ICube/Sertit](https://sertit.unistra.fr/).
+:::
 
----
 
-```{figure} ../figs/PIA17369_hires.jpg
-```
-&copy; [NASA/JPL-Caltech](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
-NASA content generally are not copyrighted.
-[Original picture](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA17369).
-
----
-
-```{figure} ../figs/flower-gf06a8d9de_1920.jpg
-```
+:::{grid-item-card} ![](../_static/figs/flower-gf06a8d9de_1920.jpg)
 &copy; GLady.
 Free license.
 [Original picture](https://pixabay.com/photos/floral-daisy-blossom-plant-natural-50157/).
+:::
 
----
 
-```{figure} ../figs/lo1_m31.jpg
-```
+:::{grid-item-card} ![](../_static/figs/moon.png)
 Lunar Orbiter 1 image of Taruntius crater on the Moon.
 &copy; NASA.
 [Original picture](https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/lo1_m31.html).
+:::
 
----
 
-```{figure} ../figs/budapest.png
-```
+:::{grid-item-card} ![](../_static/figs/budapest.jpg)
 &copy; Céline Meillier.
+Used with permission.
+:::
 
----
 
-```{figure} ../figs/rosetta.jpg
-```
+:::{grid-item-card} ![](../_static/figs/rosetta.png)
 Rosetta last image
 &copy; ESA/Rosetta/MPS for OSIRIS Team MPS/UPD/LAM/IAA/SSO/INTA/UPM/DASP/IDA.
-[Original picture](https://www.esa.int/Science_Exploration/Space_Science/Rosetta/Unexpected_surprise_a_final_image_from_Rosetta)
+[Original picture](https://www.esa.int/ESA_Multimedia/Images/2016/09/Rosetta_s_last_image).
 
----
+:::
 
-```{figure} ../figs/sailboat.png
-```
+
+:::{grid-item-card} ![](../_static/figs/sailboat.png)
 Sailboat on lake, from The USC-SIPI Image Database.
 unknown copyright status.
 [Original picture](https://sipi.usc.edu/database/database.php?volume=misc&image=12)
+:::
 
----
 
-```{figure} ../figs/fiber-optic.png
-```
+:::{grid-item-card} ![](../_static/figs/fiber-optic.png)
 Optical Fiber Sensor.
-(c) Sylvain Lecler (ICube/IPP).
+&copy; Sylvain Lecler (ICube/IPP).
 Used with permission.
+:::
 
----
 
-```{figure} ../figs/station-clock.png
-```
-[Original image](https://commons.wikimedia.org/wiki/File:Station_Clock.svg?uselang=fr)
+:::{grid-item-card} ![](../_static/figs/station-clock.png)
+travail dérivé: FischX / Station Clock.jpg: JuergenG, AlMare.
+[CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5),
+via Wikimedia Commons.
+:::
 
-````
+:::{grid-item-card} 
+<!-- chat fourier
+⛔ORIGINAL MANQUANT ! -->
+:::
 
-Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html.
+:::{grid-item-card} 
+<!-- pièce fourier
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- 3 gaussiennes fourier
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- registration
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- freiburg
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- fingerprint
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- mickey
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- MM
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- dobble
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- R8
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- moulinsart
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- moravec
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} 
+<!-- hough
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} ![](../_static/figs/mandrill.png)
+Mandrill (a.k.a. Baboon), from The USC-SIPI Image Database.
+[Original image](https://sipi.usc.edu/database/database.php?volume=misc&image=10#top)
+Scan from a magazine picture. Copyright belongs to original publisher or photographer.
+:::
+
+:::{grid-item-card} ![](../_static/figs/moliets.png)
+Aerial view of Moliets-et-Maa, from [Google Earth](https://goo.gl/maps/5Q269sYwyCTmDUY38).
+&copy; Maxar Technologies, 207.
+:::
+
+
+:::{grid-item-card} 
+<!-- coins lab 4
+⛔ORIGINAL MANQUANT ! -->
+:::
+
+:::{grid-item-card} ![](../_static/figs/resolution.png)
+Resolution chart, from The USC-SIPI Image Database.
+[Original image](https://sipi.usc.edu/database/database.php?volume=misc&image=18#top).
+Source and copyright status are unknown.
+:::
+
+:::{grid-item-card} ![](../_static/figs/L.png)
+Industrial part.
+&copy; Ernest Hirsch (ICube/MIV).
+Used with permission.
+:::
+
+:::{grid-item-card} ![](https://upload.wikimedia.org/wikipedia/commons/d/d0/Three_Main_Layers_of_the_Eye.png)
+Holly Fischer.
+[CC BY 3.0](https://creativecommons.org/licenses/by/3.0),
+via Wikimedia Commons.
+:::
+
+:::{grid-item-card} ![](https://upload.wikimedia.org/wikipedia/commons/0/04/Cone-fundamentals-with-srgb-spectrum.svg)
+BenRG.
+Public domain,
+via Wikimedia Commons.
+:::
+
+::::
+
+<!-- Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html. -->
+
+
+ 
+
+<!--{grid-item-card} ![](../_static/figs/PIA17369_hires.jpg)
+&copy; [NASA/JPL-Caltech](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
+NASA content generally are not copyrighted.
+[Original picture](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA17369).
+-->

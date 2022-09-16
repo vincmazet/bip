@@ -1,5 +1,7 @@
 # Introduction
 
+**//// de formation des images de CC, reprendre : Spectral representation : Fourier spectrum, TFD2D, 2D convolution, multiscale representation**
+
 Filtering in image processing is a very precise notion that is different from the filters proposed by some apps or software.
 It consists in amplifying or attenuating some frequencies in the image.
 To study this notion, we need to introduce two mathematical objects, namely the [](filtering:convolution) and the [](filtering:fourier),
