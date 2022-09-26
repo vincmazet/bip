@@ -128,7 +128,7 @@ Two technologies coexist.
   
 <!-- In some applications, the photodiodes in the sensor matrix are not arranged on a rectangular grid -->
 
-An color or multispectral image ($B>1$) is made of as many grayscale image as bands.
+A color or multispectral image ($B>1$) is made of as many grayscale image as bands.
 Therefore, to acquire a traditional RGB image, three grayscale images are acquired,
 each in a differente wavelength.
 The Bayer filter ({numref}`F:digital-images:bayer-filter`) is the widespread technique to generate color images.

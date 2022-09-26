@@ -1,7 +1,7 @@
 (filtering:convolution)=
 # Convolution
 
-**///// -> éléments sur la convolution à ajouter dans la partie convolution (formation des images)**
+<!-- **///// -> éléments sur la convolution à ajouter dans la partie convolution (formation des images)** -->
 
 ## Definition
 

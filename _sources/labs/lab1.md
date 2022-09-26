@@ -5,80 +5,18 @@ You can refer to the [correction](labs:cor1) after you have completed each exerc
 Whatever, do not hesitate to ask your colleagues and teachers to get more informations or to discuss about a specific topic.
 
 
-## Getting started
+<!-- >> En TP (mais aussi parfois en cours) : demander d'afficher systématiquement la colorbar. Cela permet notamment d'éviter de travailler à la fois avec des images en int (0-255) et float (0-1). -->
 
-[Python](https://www.python.org/) is a very versatile programming language and can especially be used for scientific programming and image processing.
-Python's syntax is very similar to Matlab's one.
-Before beginning this lab, you must know [](python).
-If you use your personal computer, beware of the [modules version](python:writing-code).
-We will use [Jupyter Lab](https://jupyterlab.readthedocs.io/en/latest/index.html), which runs in a web browser, to write programs.
-These programs are saved as _notebooks_.
+<!-- >> Profil 3D : utiliser une image plus simple (une somme de gaussienne par exemple) car le profil y est plus clair. -->
 
+<!-- >> Astuce : superposer des points ou une ligne sur une image (en prévision de Harris) (google/stackoverflow...) -->
 
-* First, boot your computer on Ubuntu, then open a terminal by typing `terminal` in the main menu or typing `Ctrl` + `Alt` + `T`.
+<!-- >> Astuce : comparer deux images (par ex : skimage.util.compare_images). Cf https://scikit-image.org/docs/dev/auto_examples/applications/plot_image_comparison.html#sphx-glr-auto-examples-applications-plot-image-comparison-py (google/stackoverflow...) -->
 
-* Start Jupyter by typing in a terminal:
-  ```
-  jupyter lab
-  ```
+<!-- >> 2022-2023 : En TP, demander une conclusion à la fin de chaque séance ou exo, dans le but de leur faire apprendre à synthétiser et de prendre du recul ? Entraîner les étus à la PC et la recherche reproductible : préciser le niveau de détails attendus. -->
 
-* Open a new Python 3 notebook, then rename it from `File` > `Save Notebook As...`.
-  A notebook is a file with extension .ipynb.
+<!-- >> Rajouter, pour l'histogramme, quelle transformation est à faire pour passer de l'histo d'une image à un histo particulier ? (constant => égalisation, linéaire, autre...) -->
 
-* In the first cell of the notebook, write
-  ```
-  40 + 2
-  ```
-  and type `Shift` + `Return`.
-  The code is executed, the result is displayed then a new cell appears below.
-
-* Like any programming language, the code is written using _variables_ and _functions_.
-  A _variable_  stores one (or more) values, whether it is numeric or not.
-  The name of the variable can contain letters, numbers (except the first character) or underscore.
-  Case is important (_i.e._ `a` and `A` are two different variables).
-  Type the instructions below in the second cell:
-  ```
-  year = 2021
-  course = "BIP"
-  ```
-  and type again `Shift` + `Return`.
-  Now the value 2021 is stored in the variable `year` and the character string "BIP" in the variable `course`.
-
-* Modify the previous cell by adding the following statement (`print` is a _function_):
-  ```
-  print(course + " " + str(year))
-  ```
-  and type `Shift` + `Return` to run again the code.
-
-A notebook is appealing as it is also possible to add text using the [markdown language](https://en.wikipedia.org/wiki/Markdown).
-
-* Select an empty cell, then click on the drop-down list in the toolbar to select _Markdown_.
-  Then you can write formatted text.
-  Try to write:
-  
-  ```{panels}
-  :column: col-12
-  :card: border-2
-  
-  Write **bold**, _italic_ or equations: $\sqrt{2}$.
-  ```
-  
-  This can be useful for inserting titles or keeping comments and notes.
-  
-Verify your code in the [correction](labs:cor1).
-
-
-## Display a saved image
-
-* Open a new notebook.
-
-* Write the following statements to allow the use of the modules
-  `skimage.io` and `matplotlib.pyplot`
-  which are renamed, by convention, `io` and `plt`.
-  ```
-  import skimage.io as io
-  import matplotlib.pyplot as plt
-  ```
 <!-- Exo supplémentaire : affichage d'une image hyperspectrale.
   L'image hyperspectrale Indian\_pines.mat est de taille $145\times145$ pixels et contient 220 bandes spectrales.
   \item Affichez la dixième bande de l'image.
@@ -97,7 +35,99 @@ Verify your code in the [correction](labs:cor1).
 
 <!-- Exo supplémentaire : influence du nb de bins -->
 
-* Load the image mandrill.tiff ([available online](http://sipi.usc.edu/database/database.php?volume=misc&image=10)):
+
+
+
+## Getting started
+
+[Python](https://www.python.org/) is a very versatile programming language and can especially be used for scientific programming and image processing.
+Python's syntax is very similar to Matlab's one.
+Before beginning this lab, you may need to know [](python).
+If you use your personal computer, beware of the [module version](python:writing-code).
+We will use [Jupyter Lab](https://jupyterlab.readthedocs.io/en/latest/index.html), which runs in a web browser, to write programs.
+These programs are saved as _notebooks_.
+
+
+* First, boot your computer on Ubuntu, then open a terminal by typing `terminal` in the main menu or typing `Ctrl` + `Alt` + `T`.
+
+* Start Jupyter by typing in a terminal:
+  ```
+  jupyter lab
+  ```
+
+* Open a new Python 3 notebook, then rename it from `File` > `Save Notebook As...`.
+  A notebook is a file with extension .ipynb.
+  
+Now you are ready to write a Python program in the notebook.
+
+* In the first cell of the notebook, write
+  ```
+  40 + 2
+  ```
+  and type `Shift` + `Return`.
+  The code is executed, the result is displayed then a new cell appears below.
+
+* Like any programming language, the code is written using _variables_ and _functions_.
+  A _variable_  stores one (or more) values, whether it is numeric or not.
+  The name of the variable can contain letters, numbers (except the first character) or underscore.
+  Case is important (_i.e._ `a` and `A` are two different variables).
+  Type the instructions below in the second cell:
+  ```
+  year = 2022
+  course = "BIP"
+  ```
+  and type again `Shift` + `Return`.
+  Now the value 2022 is stored in the variable `year`
+  and the character string "BIP" is stored in the variable `course`.
+
+* Modify the previous cell by adding the following statement:
+  ```
+  print(f"{course} {year}")
+  ```
+  `print` is a _function_ and the string in the brackets is an _argument_.
+  Here, this argument is a character string.
+  The `f` at the beginning of the string means that it is
+  a [formatted string](https://he-arc.github.io/livre-python/fstrings/index.html).
+  Type `Shift` + `Return` to run again the code.
+
+A notebook is appealing as it is also possible to add text using the [markdown language](https://en.wikipedia.org/wiki/Markdown).
+
+* Select an empty cell, then click on the drop-down list in the toolbar to select _Markdown_.
+  Then you can write formatted text.
+  Try to write:
+  
+  ::::{grid} 1
+  :gutter: 3
+  
+  :::{grid-item-card}
+  <html><h3>New exercise</h3></html>
+  
+  Write **bold**, _italic_ or equations: $\sqrt{2}$.
+  
+  :::
+  ::::
+  
+  This can be useful for inserting titles or keeping comments and notes.
+  
+Verify your code in the [correction](labs:cor1).
+
+
+## Display a saved image
+
+* Open a new notebook.
+
+* Write the following statements to allow the use of the modules
+  `skimage.io` and `matplotlib.pyplot`
+  which are renamed `io` and `plt`.
+  ```
+  import skimage.io as io
+  import matplotlib.pyplot as plt
+  ```
+  
+  The names `io` and `plt` are conventional names, but you can define other terms!
+  
+* Load the image mandrill.tiff
+  ([available online](http://sipi.usc.edu/database/database.php?volume=misc&image=10)):
   ```
   f = io.imread("mandrill.tiff")
   ```
@@ -118,6 +148,15 @@ $$
 
 The coefficients have been obtained by psychovisual studies and guarantee that $g\in[0,1]$ if $r,g,b\in[0,1]$.
 
+````{margin}
+In `skimage.color.rgb2gray`, `rgb2gray` is a function in the module `skimage.color`.
+So, import the module before using the function, as for example:
+```
+import skimage.color as clr
+clr.rgb2gray(...)
+```
+````
+
 * Convert the color image to grayscale (`skimage.color.rgb2gray`) then display it.
 
 * Print the intensity of the top-left pixel (which is at position $(0,0)$) by typing `g[0,0]`.
@@ -136,6 +175,23 @@ However, an image can also be seen as a three-dimensional curve, opening the way
   Do you manage to find in this profile the different areas of the image?
 
 
+## Dislay several images
+
+* Open a new notebook.
+
+* Download and unzip <a href="../_static/data/flowers.zip">flowers.zip</a> in the same folder as your notebook.
+
+* Create a list with the name of the images contained in flowers.zip.
+  Instead of listing manually the images, you can look for a code on the web, as for example in
+  [Stackoverflow](https://stackoverflow.com/questions/57451177/python3-create-list-of-image-in-a-folder).
+  
+* Print the number of images.
+
+* Define a figure with as many subplots as images with `matplotlib.pyplot.subplots`.
+
+* Show each images onto this figure.
+
+
 (lab1:synth-image)=
 ## Create a simple image
 
@@ -152,7 +208,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   A simple image.
   ```
   
-  To do this, create first a black image with the right dimensions
+  To do this, create first a black image with the correct dimensions
   (`numpy.zeros` generates an array filled with zeros).
   Then assign the desired value to the elements of the matrix, proceeding band by band, by using for example:
   
@@ -195,7 +251,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   
 ## Contrast enhancement
 
-* Display the image <a href="../_static/data/forest.png">forest.png</a>, after converting it to grayscale.
+* Display the image <a href="../_static/data/haze.png">haze.png</a>, after converting it to grayscale.
 
 * Display its histogram.
   You will notice that the image is not very contrasted: what does that imply on the histogram?
