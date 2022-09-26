@@ -1123,9 +1123,7 @@ title="Print to PDF"
 </section>
 <section id="code-cells">
 <h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>The two cells containing codes should be:</p></li>
-</ul>
+<p>The two cells containing codes should be:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
@@ -1155,11 +1153,25 @@ title="Print to PDF"
 </section>
 <section id="markdown-cell">
 <h3>Markdown cell<a class="headerlink" href="#markdown-cell" title="Permalink to this headline">#</a></h3>
-<p>The markdown code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  Write **bold**, _italic_ or equations: $\sqrt{2}$.
+<p>The markdown cell should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## New exercise
+
+Write **bold**, _italic_ or equations: $\sqrt{2}$.
 </pre></div>
 </div>
-<p>produces:</p>
+<p>to get:</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<html><h3>New exercise</h3></html>
+<p class="sd-card-text">Write <strong>bold</strong>, <em>italic</em> or equations: <span class="math notranslate nohighlight">\(\sqrt{2}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="display-a-saved-image">
@@ -1210,14 +1222,16 @@ Thus, the following instructions rename <code class="docutils literal notranslat
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_14_0.png" src="../_images/cor1_14_0.png" />
+<img alt="../_images/cor1_15_0.png" src="../_images/cor1_15_0.png" />
 </div>
 </div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> is the correct way to show the image.</p>
 <p>The image dimensions can be read on the displayed image: a little more than 500 pixels per side, and 3 bands since the image is in color.
 A more precise alternative is to use the <code class="docutils literal notranslate"><span class="pre">shape</span></code> function:</p>
 <div class="cell docutils container">
@@ -1244,14 +1258,12 @@ A more precise alternative is to use the <code class="docutils literal notransla
 <span class="n">g</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill (grayscale)&#39;)
-</pre></div>
-</div>
-<img alt="../_images/cor1_19_1.png" src="../_images/cor1_19_1.png" />
+<img alt="../_images/cor1_21_0.png" src="../_images/cor1_21_0.png" />
 </div>
 </div>
 <p>What’s that weird grayscale image? It’s rather green… 😲</p>
@@ -1264,14 +1276,12 @@ here we choose the classic <code class="docutils literal notranslate"><span clas
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill (grayscale)&#39;)
-</pre></div>
-</div>
-<img alt="../_images/cor1_21_1.png" src="../_images/cor1_21_1.png" />
+<img alt="../_images/cor1_23_0.png" src="../_images/cor1_23_0.png" />
 </div>
 </div>
 <p>Phew! 😅</p>
@@ -1295,11 +1305,12 @@ Max : 0.9116803921568628
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Intensity range = [0.0, 0.5]&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_25_0.png" src="../_images/cor1_25_0.png" />
+<img alt="../_images/cor1_27_0.png" src="../_images/cor1_27_0.png" />
 </div>
 </div>
 </section>
@@ -1474,14 +1485,13 @@ If <code class="docutils literal notranslate"><span class="pre">b</span></code> 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>           <span class="c1"># Image</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">511</span><span class="p">),</span> <span class="p">(</span><span class="n">cut</span><span class="p">,</span><span class="n">cut</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>    <span class="c1"># Cut line in blue</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mandrill&quot;</span><span class="p">)</span>                <span class="c1"># Title</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Mandrill&#39;)
-</pre></div>
-</div>
-<img alt="../_images/cor1_35_1.png" src="../_images/cor1_35_1.png" />
+<img alt="../_images/cor1_37_0.png" src="../_images/cor1_37_0.png" />
 </div>
 </div>
 <p>Do you see on the profile the Mandrill’s nose and the protruding ridges on its sides?</p>
@@ -1537,7 +1547,7 @@ flowers/IMG_5404.JPG
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_43_0.png" src="../_images/cor1_43_0.png" />
+<img alt="../_images/cor1_45_0.png" src="../_images/cor1_45_0.png" />
 </div>
 </div>
 <p>… and change the previous code to show each image in each axe:</p>
@@ -1573,7 +1583,7 @@ flowers/IMG_5404.JPG
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_45_0.png" src="../_images/cor1_45_0.png" />
+<img alt="../_images/cor1_47_0.png" src="../_images/cor1_47_0.png" />
 </div>
 </div>
 </section>
@@ -1636,28 +1646,25 @@ Thus, yellow is obtained by combining green and red.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Blue band&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Blue band&#39;)
-</pre></div>
-</div>
-<img alt="../_images/cor1_55_1.png" src="../_images/cor1_55_1.png" />
+<img alt="../_images/cor1_57_0.png" src="../_images/cor1_57_0.png" />
 </div>
 </div>
 <p>And finally the color image:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa5cc325b20&gt;
-</pre></div>
-</div>
-<img alt="../_images/cor1_57_1.png" src="../_images/cor1_57_1.png" />
+<img alt="../_images/cor1_59_0.png" src="../_images/cor1_59_0.png" />
 </div>
 </div>
 </section>
@@ -1681,14 +1688,12 @@ Thus, yellow is obtained by combining green and red.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;hdfs.tiff&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa5cde81160&gt;
-</pre></div>
-</div>
-<img alt="../_images/cor1_61_1.png" src="../_images/cor1_61_1.png" />
+<img alt="../_images/cor1_63_0.png" src="../_images/cor1_63_0.png" />
 </div>
 </div>
 <p>This image corresponds to a portion of the sky in the southern hemisphere called the <a class="reference external" href="http://muse-vlt.eu/science/hdfs-v1-0/"><em>Hubble Deep Field South</em></a>. It was acquired by the <a class="reference external" href="http://muse-vlt.eu/science/">MUSE sensor</a> installed on the VLT in Chile. It is obtained by averaging around 4000 bands of the original image: we speak of a hyperspectral image. (Source: <a class="reference external" href="https://www.aanda.org/articles/aa/abs/2015/03/aa25419-14/aa25419-14.html">Bacon et al., “The MUSE 3D view of the Hubble Deep Field South”, <em>Astronomy &amp; Astrophysics</em>, 2015</a>).</p>
@@ -1716,19 +1721,13 @@ It’s up to you to find these values to get an image like the one below, where 
 (and the brightest star is saturated).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa5cc1a5f70&gt;
-</pre></div>
-</div>
-<img alt="../_images/cor1_66_1.png" src="../_images/cor1_66_1.png" />
+<img alt="../_images/cor1_68_0.png" src="../_images/cor1_68_0.png" />
 </div>
 </div>
 <p>Another possibility is to use colors to increase the dynamics of the intensities observed. The <code class="docutils literal notranslate"><span class="pre">jet</span></code> colormap is used in the example below, with the the same <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> as before. We observe a few more objects.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa5cc132310&gt;
-</pre></div>
-</div>
-<img alt="../_images/cor1_68_1.png" src="../_images/cor1_68_1.png" />
+<img alt="../_images/cor1_70_0.png" src="../_images/cor1_70_0.png" />
 </div>
 </div>
 </section>
@@ -1748,7 +1747,7 @@ It’s up to you to find these values to get an image like the one below, where 
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_72_0.png" src="../_images/cor1_72_0.png" />
+<img alt="../_images/cor1_74_0.png" src="../_images/cor1_74_0.png" />
 </div>
 </div>
 <p>The histogram is obtained with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code>.
@@ -1761,9 +1760,9 @@ The following histograms are obtained with 16, 64 and 256 bins.
 Note that the intensities of the image are not between 0 and 255: do you know why (ask the teacher if you cannot get the solution)?</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_74_0.png" src="../_images/cor1_74_0.png" />
-<img alt="../_images/cor1_74_1.png" src="../_images/cor1_74_1.png" />
-<img alt="../_images/cor1_74_2.png" src="../_images/cor1_74_2.png" />
+<img alt="../_images/cor1_76_0.png" src="../_images/cor1_76_0.png" />
+<img alt="../_images/cor1_76_1.png" src="../_images/cor1_76_1.png" />
+<img alt="../_images/cor1_76_2.png" src="../_images/cor1_76_2.png" />
 </div>
 </div>
 <p>On the one hand, we easily observe that if the number of bars is low, then the distribution is coarse and some details
@@ -1778,8 +1777,8 @@ it depends on what we are going to do with the histogram!</p>
 The two images below correspond to the thresholds obtained around the three modes of the histogram.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_78_0.png" src="../_images/cor1_78_0.png" />
-<img alt="../_images/cor1_78_1.png" src="../_images/cor1_78_1.png" />
+<img alt="../_images/cor1_80_0.png" src="../_images/cor1_80_0.png" />
+<img alt="../_images/cor1_80_1.png" src="../_images/cor1_80_1.png" />
 </div>
 </div>
 </section>
@@ -1792,10 +1791,10 @@ Furthermore, we can define several thresholds to obtain a segmentation with more
 Besides, which modes in the histogram correspond to the three identified zones?</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_81_0.png" src="../_images/cor1_81_0.png" />
+<img alt="../_images/cor1_83_0.png" src="../_images/cor1_83_0.png" />
 </div>
 </div>
-<p>There are methods in the literature that are able to determine automatically the value of the threshold(s), such as Otsu’s method (see <a class="reference internal" href="../segmentation/intro.html#c-segmentation-intro"><span class="std std-ref">Introduction</span></a>.</p>
+<p>There are methods in the literature that are able to determine automatically the value of the threshold(s), such as <a class="reference internal" href="../segmentation/intro.html#c-segmentation-intro"><span class="std std-ref">Otsu’s method</span></a>.</p>
 </section>
 </section>
 <section id="contrast-enhancement">
@@ -1807,7 +1806,7 @@ Besides, which modes in the histogram correspond to the three identified zones?<
 </ul>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p>The image forest.png has been used in several publications dealing with the problem of removing fog from an image (<em>dehazing</em>).</p>
+<p>The image haze.png has been used in several publications dealing with the problem of removing fog from an image (<em>dehazing</em>).</p>
 <ul class="simple">
 <li><p>K. He, J. Sun, X. Tang,
 « Single image haze removal using dark channel prior »,
@@ -1818,12 +1817,12 @@ CVPR 2016, <a class="reference external" href="http://www.eng.tau.ac.il/~berman/
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_86_0.png" src="../_images/cor1_86_0.png" />
+<img alt="../_images/cor1_88_0.png" src="../_images/cor1_88_0.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_87_0.png" src="../_images/cor1_87_0.png" />
+<img alt="../_images/cor1_89_0.png" src="../_images/cor1_89_0.png" />
 </div>
 </div>
 <p>The original image and its histogram are given above.
@@ -1840,7 +1839,7 @@ Note that the two images are represented with intensities between 0 (<code class
 <p>Is this observation still valid for other values of the multiplicative coefficient?</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_91_0.png" src="../_images/cor1_91_0.png" />
+<img alt="../_images/cor1_93_0.png" src="../_images/cor1_93_0.png" />
 </div>
 </div>
 </section>
@@ -1850,7 +1849,7 @@ Note that the two images are represented with intensities between 0 (<code class
 The image is more contrasted than previously: this is due to the fact that the histogram of the transformed image is (almost) flat.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor1_94_0.png" src="../_images/cor1_94_0.png" />
+<img alt="../_images/cor1_96_0.png" src="../_images/cor1_96_0.png" />
 </div>
 </div>
 </section>
