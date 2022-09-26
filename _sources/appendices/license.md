@@ -108,7 +108,22 @@ Johns Hopkins University, Public domain.
 
 :::{grid-item-card} ![](../_static/figs/dark-current.jpg)
 Vincent Mazet, Public domain.
-[Original picture](https://commons.wikimedia.org/wiki/File:T1-weighted-MRI.png)
+:::
+
+:::{grid-item-card} ![](../_static/figs/IMG_5302.JPG)
+Vincent Mazet, Public domain.
+:::
+
+:::{grid-item-card} ![](../_static/figs/IMG_5367.JPG)
+Vincent Mazet, Public domain.
+:::
+
+:::{grid-item-card} ![](../_static/figs/IMG_5370.JPG)
+Vincent Mazet, Public domain.
+:::
+
+:::{grid-item-card} ![](../_static/figs/IMG_5404.JPG)
+Vincent Mazet, Public domain.
 :::
 
 :::{grid-item-card} ![](../_static/figs/s1.png)

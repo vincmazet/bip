@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Correction of lab 2" href="cor2.html" />
-    <link rel="prev" title="Correction of lab 1" href="cor1.html" />
+    <link rel="prev" title="7 Contrast enhancement" href="cor17.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -466,8 +466,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor1.html">
-     Correction of lab 1
+    <a class="reference internal" href="cor11.html">
+     1 Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor12.html">
+     2 Display a saved image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor13.html">
+     3 Display several images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor14.html">
+     4 Create a simple image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor15.html">
+     5 Setting the intensity range
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor16.html">
+     6 Segmentation by histogram thresholding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor17.html">
+     7 Contrast enhancement
     </a>
    </li>
   </ul>
@@ -899,7 +929,7 @@ The process is:</p>
 </div>
 <p>Choose correctly the coordinates <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> to conserve the low frequencies,
 which are located at the center in the DFT (after applying <code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code>).</p>
-<p>The ideal filter may be defined in the same way as in the exercise <a class="reference internal" href="lab1.html#lab1-synth-image"><span class="std std-ref">Create a simple image</span></a>:
+<p>The ideal filter may be defined in the same way as in the exercise <a class="reference internal" href="lab1.html#lab1-synth-image"><span class="std std-ref">4 Create a simple image</span></a>:
 use the function <code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> and the indexing <code class="docutils literal notranslate"><span class="pre">f[m1:m2,n1:n2]=x</span></code>.
 Choose the cutoff frequency appropriately to reduce aliasing without altering the image.
 Is the aliasing still visible?</p>
@@ -1012,11 +1042,11 @@ Idée 2 : filtre médian en chaque pixel
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cor1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cor17.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Correction of lab 1</p>
+            <p class="prev-next-title">7 Contrast enhancement</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="cor2.html" title="next page">
@@ -1037,7 +1067,7 @@ Idée 2 : filtre médian en chaque pixel
   
       &copy; Copyright 2022-2023.<br/>
     <div class="extra_footer">
-      Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2023 &mdash; <a href='license.html'>CC BY-NC 4.0</a>.
+      Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2023 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
     </div>
 </p>
         </footer>

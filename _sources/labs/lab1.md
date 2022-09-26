@@ -1,7 +1,7 @@
 (labs:lab1)=
 # Lab 1
 
-You can refer to the [correction](labs:cor1) after you have completed each exercise.
+You can refer to the [correction](labs:cor11) after you have completed each exercise.
 Whatever, do not hesitate to ask your colleagues and teachers to get more informations or to discuss about a specific topic.
 
 
@@ -38,7 +38,7 @@ Whatever, do not hesitate to ask your colleagues and teachers to get more inform
 
 
 
-## Getting started
+## 1 Getting started
 
 [Python](https://www.python.org/) is a very versatile programming language and can especially be used for scientific programming and image processing.
 Python's syntax is very similar to Matlab's one.
@@ -109,10 +109,10 @@ A notebook is appealing as it is also possible to add text using the [markdown l
   
   This can be useful for inserting titles or keeping comments and notes.
   
-Verify your code in the [correction](labs:cor1).
+Verify your code in the [correction](labs:cor11).
 
 
-## Display a saved image
+## 2 Display a saved image
 
 * Open a new notebook.
 
@@ -175,7 +175,7 @@ However, an image can also be seen as a three-dimensional curve, opening the way
   Do you manage to find in this profile the different areas of the image?
 
 
-## Dislay several images
+## 3 Dislay several images
 
 * Open a new notebook.
 
@@ -193,7 +193,7 @@ However, an image can also be seen as a three-dimensional curve, opening the way
 
 
 (lab1:synth-image)=
-## Create a simple image
+## 4 Create a simple image
 
 An RGB image is encoded in the form of a three-dimensional array:
 the first two dimensions are the spatial dimensions of the image, the third corresponds to the bands.
@@ -220,7 +220,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   (in Python, indices starts at 0).
   
   
-## Setting the intensity range
+## 5 Setting the intensity range
 
 * Display the image <a href="../_static/data/hdfs.tiff">hdfs.tiff</a>, corresponding to a part of the sky in the southern hemisphere.
   You should only observe a single star.
@@ -233,7 +233,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
 * Try another colormap (argument `cmap`).
 
 
-## Segmentation by histogram thresholding
+## 6 Segmentation by histogram thresholding
 
 * Load the image <a href="../_static/data/santamonica.jpg">santamonica.jpg</a> and convert it to grayscale.
 
@@ -249,7 +249,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   ```
   where `f` is the image to threshold and `threshold` is, well... the threshold value.
   
-## Contrast enhancement
+## 7 Contrast enhancement
 
 * Display the image <a href="../_static/data/haze.png">haze.png</a>, after converting it to grayscale.
 
