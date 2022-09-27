@@ -257,6 +257,7 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   You will notice that the image is not very contrasted: what does that imply on the histogram?
 
 * Multiply the image by a positive real: what happens on the image and its histogram?
+  Adjust the intensity range of the image to be the same as the original image.
 
 * Perform an histogram equalization (`skimage.exposure.equalize_hist`).
   Do you achieve the exercise goal?
