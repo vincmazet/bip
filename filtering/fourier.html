@@ -843,24 +843,26 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="fourier-transform">
 <span id="filtering-fourier"></span><h1>Fourier transform<a class="headerlink" href="#fourier-transform" title="Permalink to this headline">#</a></h1>
 <p>The (2D) Fourier transform is a very classical tool in image processing.
-It is the extension of the well known Fourier transform for signals which decomposes a signal into a sum of sinusoids.
+It is the extension of the well known <a class="reference external" href="https://vincmazet.github.io/signal1/fourier/fourier.html">Fourier transform</a>
+for signals which decomposes a signal into a sum of sinusoids.
 So, the Fourier transform gives information about the frequency content of the image.</p>
 <!-- expliquer ce qu'est le "frequency content" -->
 <!-- Les Topos ne connaissent pas => il faut considérer que c'est une nouvelle notion. Donc, développer un peu plus en commençant plus doucement -->
 <section id="direct-fourier-transform">
 <h2>Direct Fourier transform<a class="headerlink" href="#direct-fourier-transform" title="Permalink to this headline">#</a></h2>
-<p>The discrete Fourier transform (DFT) of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(M \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size such that:</p>
+<p>The discrete Fourier transform (DFT) of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(M \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size defined as:</p>
 <div class="math notranslate nohighlight">
 \[
   F(u,v) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} f(m,n) e^{-j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
 \]</div>
 <p>In the sequel, we note <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> the DFT so that <span class="math notranslate nohighlight">\(\mathcal{F}[f] = F\)</span>.</p>
-<p>Because the DFT of an image is possibly complex, it cannot be displayed with a single image.
+<p>Note that the definition of the Fourier transform uses a complex exponential.
+In consequence, the DFT of an image is possibly complex, so it cannot be displayed with a single image.
 That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in <a class="reference internal" href="#f-fourier-example"><span class="std std-numref">Fig. 30</span></a>.</p>
 <figure class="align-default" id="f-fourier-example">
 <img alt="../_images/fourier-example.svg" src="../_images/fourier-example.svg" /><figcaption>
 <p><span class="caption-number">Fig. 30 </span><span class="caption-text">DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
-(an histogram transformation has been applied).</span><a class="headerlink" href="#f-fourier-example" title="Permalink to this image">#</a></p>
+(an <a class="reference internal" href="../histogram/transformations.html#c-histogram-transformations"><span class="std std-ref">histogram transformation</span></a> has been applied).</span><a class="headerlink" href="#f-fourier-example" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The amplitude and phase represent the distribution of energy in the frequency plane.

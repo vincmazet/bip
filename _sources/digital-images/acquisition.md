@@ -204,7 +204,7 @@ Yet, quantization naturally introduces errors on the intensities.
 If the quantization levels are equally spaced with a distance $d$
 and all gray valeurs are equally probable,
 the standard deviation of the quantification error is lower than $0.3d$
-[[Jähne 1997, p.220]](B:digital-images:Jahne1997).
+[[Jähne 2005, p. 220]](B:digital-images:Jahne2005).
 For common needs, the error is sufficiently low to be acceptable.
 But some applications, like medical imaging or astronomy,
 need a finer resolution and, in consequence, use more than 256 gray levels.

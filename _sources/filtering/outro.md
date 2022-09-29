@@ -32,3 +32,11 @@ Le problème de l'inversion d'un filtre est appelé déconvolution ou filtrage i
 L'analyse de Fourier montrera que la reconstruction est possible pour des PSF très particulières.
 Dans la pratique, la quantification et le bruit rendent la déconvolution encore plus difficile.
 -->
+
+
+## References
+
+* (B:filtering:Jahne2005)=
+  B. Jähne,
+  _Digital Image Processing_,
+  Springer, 2005.

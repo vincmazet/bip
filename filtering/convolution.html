@@ -859,11 +859,11 @@ title="Print to PDF"
 When this modification is similar in the entire image <span class="math notranslate nohighlight">\(g\)</span>,
 it can be mathematically defined using a second image <span class="math notranslate nohighlight">\(h\)</span> which defines the neighbor relationships.
 This results in a third image <span class="math notranslate nohighlight">\(f\)</span>.
-This is the so-called convolution <span class="xref std std-ref">[Jahne 2005, section 4]</span> and it is denoted with <span class="math notranslate nohighlight">\(*\)</span>:</p>
+This is the so-called convolution <a class="reference internal" href="outro.html#b-filtering-jahne2005"><span class="std std-ref">[Jähne 2005, section 4]</span></a> and it is denoted with <span class="math notranslate nohighlight">\(*\)</span>:</p>
 <!-- dire également que ça modélise l'effet d'un instrument de mesure -->
 <div class="math notranslate nohighlight">
 \[
-  f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)
+  f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) \ h(m,n)
 \]</div>
 <p>Intuitively, the convolution “spreads” each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> in <span class="math notranslate nohighlight">\(g\)</span> following <span class="math notranslate nohighlight">\(h\)</span> and proportionally to the intensity <span class="math notranslate nohighlight">\(g(m,n)\)</span>.
 <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 26</span></a> gives an example of the computing of a particular pixel.</p>

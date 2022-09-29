@@ -9,12 +9,12 @@ Many image processing results come from a modification of one pixel with respect
 When this modification is similar in the entire image $g$,
 it can be mathematically defined using a second image $h$ which defines the neighbor relationships.
 This results in a third image $f$.
-This is the so-called convolution {ref}`[Jahne 2005, section 4] <C:refs>` and it is denoted with $*$:
+This is the so-called convolution [[Jähne 2005, section 4]](B:filtering:Jahne2005) and it is denoted with $*$:
 
 <!-- dire également que ça modélise l'effet d'un instrument de mesure -->
 
 $$
-  f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)
+  f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) \ h(m,n)
 $$
 
 Intuitively, the convolution "spreads" each pixel $(m,n)$ in $g$ following $h$ and proportionally to the intensity $g(m,n)$.

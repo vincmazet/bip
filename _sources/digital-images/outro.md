@@ -12,7 +12,7 @@ Some colormaps are very interesting because of their ability to enhance some det
 
 ## References
 
-* (B:digital-images:Jahne1997)=
+* (B:digital-images:Jahne2005)=
   B. Jähne,
   _Digital Image Processing_,
-  Springer, 1997.
+  Springer, 2005.

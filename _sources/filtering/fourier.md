@@ -2,7 +2,8 @@
 # Fourier transform
 
 The (2D) Fourier transform is a very classical tool in image processing.
-It is the extension of the well known Fourier transform for signals which decomposes a signal into a sum of sinusoids.
+It is the extension of the well known [Fourier transform](https://vincmazet.github.io/signal1/fourier/fourier.html)
+for signals which decomposes a signal into a sum of sinusoids.
 So, the Fourier transform gives information about the frequency content of the image.
 
 <!-- expliquer ce qu'est le "frequency content" -->
@@ -11,7 +12,7 @@ So, the Fourier transform gives information about the frequency content of the i
 
 ## Direct Fourier transform
 
-The discrete Fourier transform (DFT) of an image $f$ of size $M \times N$ is an image $F$ of same size such that:
+The discrete Fourier transform (DFT) of an image $f$ of size $M \times N$ is an image $F$ of same size defined as:
 
 $$
   F(u,v) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} f(m,n) e^{-j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
@@ -19,7 +20,8 @@ $$
 
 In the sequel, we note $\mathcal{F}$ the DFT so that $\mathcal{F}[f] = F$.
 
-Because the DFT of an image is possibly complex, it cannot be displayed with a single image.
+Note that the definition of the Fourier transform uses a complex exponential.
+In consequence, the DFT of an image is possibly complex, so it cannot be displayed with a single image.
 That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in {numref}`F:fourier:example`.
 
 ```{figure} fourier-example.svg
@@ -27,7 +29,7 @@ That is why we will show the amplitude (modulus) and phase (argument) of the DFT
 name: F:fourier:example
 ---
 DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
-(an histogram transformation has been applied).
+(an [histogram transformation](C:histogram-transformations) has been applied).
 ```
 
 The amplitude and phase represent the distribution of energy in the frequency plane.
