@@ -127,37 +127,32 @@ Vincent Mazet, Public domain.
 :::
 
 :::{grid-item-card} ![](../_static/figs/s1.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 
 :::{grid-item-card} ![](../_static/figs/s2.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 
 :::{grid-item-card} ![](../_static/figs/s3.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 
 :::{grid-item-card} ![](../_static/figs/s4.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 
 :::{grid-item-card} ![](../_static/figs/s5.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 
@@ -178,9 +173,8 @@ Public domain.
 
 
 :::{grid-item-card} ![](../_static/figs/smiley.png)
-<!-- &copy; Vincent Mazet, 2016.
+&copy; Vincent Mazet, 2016.
 Public domain.
-⛔CODE MANQUANT ! -->
 :::
 
 :::{grid-item-card} ![](../_static/figs/spots.png)

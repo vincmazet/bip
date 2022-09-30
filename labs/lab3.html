@@ -52,10 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correction of lab 3" href="cor3.html" />
-    <link rel="prev" title="Correction of lab 2" href="cor2.html" />
+    <link rel="next" title="Lossy compression" href="cor3.html" />
+    <link rel="prev" title="Filtering aliasing" href="cor23.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -511,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -529,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -546,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -563,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -580,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -597,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -780,8 +792,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-morphology">
-   Mathematical Morphology
+  <a class="reference internal nav-link" href="#lossy-compression">
+   Lossy compression
   </a>
  </li>
 </ul>
@@ -804,8 +816,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-morphology">
-   Mathematical Morphology
+  <a class="reference internal nav-link" href="#lossy-compression">
+   Lossy compression
   </a>
  </li>
 </ul>
@@ -820,45 +832,30 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3">
 <span id="labs-lab3"></span><h1>Lab 3<a class="headerlink" href="#lab-3" title="Permalink to this headline">#</a></h1>
-<section id="mathematical-morphology">
-<h2>Mathematical Morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">#</a></h2>
-<p>We want to detect and count the number of swimming pools visible in the satellite image <a href="../_static/data/moliets.png">moliets.png</a>.
-Most of the functions to use are in module <code class="docutils literal notranslate"><span class="pre">skimage.morphology</span></code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>At first, do not try to find all the pools perfectly:
-implement a first version of the method which gives an approximate result automatically.</p>
-</div>
-<ul class="simple">
-<li><p>Apply a threshold on the image to highlight the pools.
-Ask yourself about which image to use: the original image, the grayscale image, a particular band something else?</p></li>
-<li><p>Apply the four usual morphological operators (erosion, dilation, opening, closing)
-to observe their influence and deduce the one most suited to the problem.</p></li>
-<li><p>By using appropriate measures, classify the regions given in the image to determine the number of pools.</p></li>
-<li><p>Determine the surface of the pools, knowing that the image is of resolution 50 cm.</p></li>
-<li><p>Give a critical discussion about your method by listing its good behaviours and its limits,
-then suggest improvements.</p></li>
+<section id="lossy-compression">
+<h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h2>
+<p>The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
+In this exercise, a simplified version of JPEG compression is implemented
+by cancelling the DCT pixels located outside a certain frequency.</p>
+<ul>
+<li><p>Compute and display the DCT (<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.dctn</span></code> with argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>) of the image
+<a href="../_static/data/squirrel.png">squirrel.png</a>.</p></li>
+<li><p>Apply a binary mask to the DCT coefficients to cancel the high frequencies.
+Recall that for DCT, the low frequencies are located at the top left corner of the image.</p></li>
+<li><p>Display the compressed image using reverse DCT
+(<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, always with the argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>).
+What is your opinion about the quality of the compression?</p></li>
+<li><p>Calculate the mean square error (MSE) defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  MSE = \frac{1}{MN} \sum_ {m,n} (f(m,n) - g(m,n))^2
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are respectively the images before and after compression, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> being the dimensions of these images.
+You can use the function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
+</li>
+<li><p>Analyze the evolution of the MSE according to the mask size <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ul>
-<!-- ## Registration
-
-Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
-<a href="../_static/data/capitole1.jpg">capitole1.jpg</a> (the reference) and
-<a href="../_static/data/capitole2.jpg">capitole2.jpg</a> (the source).
-
-* Which deformation model is adapted to the problem?
-
-* Before applying a complete registration processing on the two images,
-  we first apply an arbitrary distortion to the source.
-  To do this, use the appropriate function of the module `skimage.transform`
-  to define an Euclidean transformation of translation $(400,-100)$ and of rotation $\pi/3$.
-  These parameters are close to the optimal transformation.
-  Then apply this transformation on the source with `skimage.transform.warp`.
-  Check that the distorted image is close enough to the reference (you can display the difference between the two images).
-  
-* Implement an optimization method to automatically determine the best parameters of the transformation.
-  The simplest optimization method (although very long in computing time!)
-  consists of using loops to test several values and keep those that minimize the mean squared error
-  (defined in [](labs:lab2)). --></section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -890,17 +887,17 @@ Two satellite images of the Capitol in Toulouse are to be registered by using an
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cor2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cor23.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Correction of lab 2</p>
+            <p class="prev-next-title">Filtering aliasing</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="cor3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Correction of lab 3</p>
+        <p class="prev-next-title">Lossy compression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

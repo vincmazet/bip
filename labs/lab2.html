@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correction of lab 2" href="cor2.html" />
+    <link rel="next" title="Convolution" href="cor21.html" />
     <link rel="prev" title="7 Contrast enhancement" href="cor17.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -513,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -531,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -548,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -565,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -582,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -599,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -796,11 +806,6 @@ title="Print to PDF"
    Filtering aliasing
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lossy-compression">
-   Lossy compression
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -835,11 +840,6 @@ title="Print to PDF"
    Filtering aliasing
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lossy-compression">
-   Lossy compression
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -855,7 +855,7 @@ title="Print to PDF"
 <section id="convolution">
 <h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h2>
 <p>The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
-Before applying the convolutions, you need to convert the image into float (<code class="docutils literal notranslate"><span class="pre">skimage.img_as_float</span></code>)</p>
+Before applying the convolutions, you need to convert the image into float (<code class="docutils literal notranslate"><span class="pre">skimage.img_as_float</span></code>).</p>
 <ul>
 <li><p>What does the acronym PSF stand for?</p></li>
 <li><p>Compute the convolution between the image and a Gaussian kernel (<code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>).</p></li>
@@ -864,7 +864,8 @@ Before applying the convolutions, you need to convert the image into float (<cod
 \[
     h = \begin{pmatrix} 1 &amp; -1 \end{pmatrix},
   \]</div>
-<p>by using <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> and initializing <span class="math notranslate nohighlight">\(h\)</span> with <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>.</p>
+<p>by using <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> and initializing <span class="math notranslate nohighlight">\(h\)</span> with <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>.
+We stress that <span class="math notranslate nohighlight">\(h\)</span> being an image, it should be defined as a 2D matrix!</p>
 <!--
   `scipy.ndimage.convolve` est plus adapté que `scipy.signal.convolve2d` pour le traitement d'image.
   En effet, il n'est pas nécessaire de définir l'option 'same' (le résultat a tout de suite la même taille que l'entrée)
@@ -882,6 +883,15 @@ Before applying the convolutions, you need to convert the image into float (<cod
 and compute its discrete Fourier transform (DFT) with <code class="docutils literal notranslate"><span class="pre">numpy.fft.fft2</span></code>.</p></li>
 <li><p>Show the DFT of the image with low frequencies at the center (<code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code>).
 The magnitude and angle are obtained with <code class="docutils literal notranslate"><span class="pre">numpy.absolute</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.angle</span></code>.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>You wrote a code that computes and displays the DFT of the first image.
+Instead of repeating five times this code,
+a good practice is to insert the code into a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop
+which iterates over a list of the images.</p>
+</aside>
+<ul class="simple">
 <li><p>Repeat the same operations with images
 <a href="../_static/data/s2.png">s2.png</a>,
 <a href="../_static/data/s3.png">s3.png</a>,
@@ -934,30 +944,6 @@ use the function <code class="docutils literal notranslate"><span class="pre">nu
 Choose the cutoff frequency appropriately to reduce aliasing without altering the image.
 Is the aliasing still visible?</p>
 </li>
-</ul>
-</section>
-<section id="lossy-compression">
-<h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h2>
-<p>The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
-In this exercise, a simplified version of JPEG compression is implemented
-by cancelling the DCT pixels located outside a certain frequency.</p>
-<ul>
-<li><p>Compute and display the DCT (<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.dctn</span></code> with argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>) of the image
-<a href="../_static/data/squirrel.png">squirrel.png</a>.</p></li>
-<li><p>Apply a binary mask to the DCT coefficients to cancel the high frequencies.
-Recall that for DCT, the low frequencies are located at the top left corner of the image.</p></li>
-<li><p>Display the compressed image using reverse DCT
-(<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, always with the argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>).
-What is your opinion about the quality of the compression?</p></li>
-<li><p>Calculate the mean square error (MSE) defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-  MSE = \frac{1}{MN} \sum_ {m,n} (f(m,n) - g(m,n))^2
-  \]</div>
-<p>where <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are respectively the images before and after compression, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> being the dimensions of these images.
-You can use the function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
-</li>
-<li><p>Analyze the evolution of the MSE according to the mask size <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
 </ul>
 <!--
 ## Magnitude and phase of the Fourier transform
@@ -1049,10 +1035,10 @@ Idée 2 : filtre médian en chaque pixel
             <p class="prev-next-title">7 Contrast enhancement</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="cor2.html" title="next page">
+    <a class='right-next' id="next-link" href="cor21.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Correction of lab 2</p>
+        <p class="prev-next-title">Convolution</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

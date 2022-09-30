@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Correction of lab 5 &#8212; Basics of Image Processing</title>
+    <title>Mathematical morphology &#8212; Basics of Image Processing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -513,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -531,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -548,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -565,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -582,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -599,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -793,58 +803,29 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#denoising">
-   Denoising
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#original-image-and-noisy-image">
-     Original image and noisy image
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-filter">
-     Mean filter
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tv-denoising">
-     TV denoising
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-of-the-two-denoising-methods-for-different-snrs">
-     Comparison of the two denoising methods for different SNRs
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deconvolution">
-   Deconvolution
+  <a class="reference internal nav-link" href="#first-processings">
+   First processings
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#original-and-noisy-images">
-     Original and noisy images
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inverse-filter-on-the-non-noisy-image">
-     Inverse filter on the non-noisy image
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inverse-filter-with-noise">
-     Inverse filter with noise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wiener-filter-with-noise">
-     Wiener filter with noise
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#study-of-the-different-operators">
+   Study of the different operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pool-detection">
+   Pool detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
  </li>
 </ul>
 
@@ -855,7 +836,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Correction of lab 5</h1>
+                <h1>Mathematical morphology</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -866,58 +847,29 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#denoising">
-   Denoising
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#original-image-and-noisy-image">
-     Original image and noisy image
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mean-filter">
-     Mean filter
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tv-denoising">
-     TV denoising
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-of-the-two-denoising-methods-for-different-snrs">
-     Comparison of the two denoising methods for different SNRs
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deconvolution">
-   Deconvolution
+  <a class="reference internal nav-link" href="#first-processings">
+   First processings
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#original-and-noisy-images">
-     Original and noisy images
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inverse-filter-on-the-non-noisy-image">
-     Inverse filter on the non-noisy image
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inverse-filter-with-noise">
-     Inverse filter with noise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wiener-filter-with-noise">
-     Wiener filter with noise
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#study-of-the-different-operators">
+   Study of the different operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pool-detection">
+   Pool detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discussion">
+   Discussion
+  </a>
  </li>
 </ul>
 
@@ -929,234 +881,140 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="correction-of-lab-5">
-<span id="cor5"></span><h1>Correction of lab 5<a class="headerlink" href="#correction-of-lab-5" title="Permalink to this headline">#</a></h1>
-<section id="denoising">
-<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h2>
-<p>The objectives of this exercise are:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="mathematical-morphology">
+<span id="labs-cor5"></span><h1>Mathematical morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>to apply a white Gaussian noise with a specific SNR on an image</p></li>
-<li><p>to implement a denoising method</p></li>
-<li><p>to understand the effects of the parameters and set it accordingly to the epexpected solution</p></li>
+<li><p>apply and compare basic operations (erosion, dilation, opening, closing)</p></li>
+<li><p>evaluate of the parameters of these operations</p></li>
+<li><p>use connected components to extract useful information</p></li>
 </ul>
-<p>Two denoising methods are considered in this correction: the mean filter and TV regularization.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<section id="original-image-and-noisy-image">
-<h3>Original image and noisy image<a class="headerlink" href="#original-image-and-noisy-image" title="Permalink to this headline">#</a></h3>
-<p>The original image:</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_8_0.png" src="../_images/cor5_8_0.png" />
-</div>
-</div>
-<p>The signal-to-noise ratio (SNR) is defined as the power of the image <span class="math notranslate nohighlight">\(x\)</span> divided by the power of the noise <span class="math notranslate nohighlight">\(b\)</span>.
-Besides, it is generally given with a logarithmic scale.</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{SNR} = 10 \log_{10} \left(\frac{P_x}{P_b}\right)
-\quad\Leftrightarrow\quad
-10^\frac{\mathrm{SNR}}{10} = \frac{P_x}{P_b}
-\]</div>
-<p>where:</p>
-<div class="math notranslate nohighlight">
-\[
-Px = \frac{1}{MN} \sum_{m,n} x(m,n)^2
-\quad\text{et}\quad
-Pb = \frac{1}{MN} \sum_{m,n} b(m,n)^2 = \sigma^2
-\]</div>
-<p>Then:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-                     &amp;P_b = \frac{P_x}{10^\frac{\mathrm{SNR}}{10}} \\
-\Leftrightarrow\quad &amp;\sigma^2 = P_x \times 10^{-\frac{\mathrm{SNR}}{10}} \\
-\Leftrightarrow\quad &amp;\sigma^2 = \frac{1}{MN} \sum_{m,n} x(m,n)^2 10^{-\frac{\mathrm{SNR}}{10}} \\
-\end{split}\]</div>
-<p>Note that <span class="math notranslate nohighlight">\(\sqrt{\sum_{m,n} x(m,n)^2} \)</span> corresponds to the Frobenius norm of <span class="math notranslate nohighlight">\(x\)</span> and can be calculated with <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
-<p>The figures below represent the image at different noise levels.</p>
-<p><strong>Warning:</strong> do not forget <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> when using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>, in order to add a true Gaussian noise!</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_12_0.png" src="../_images/cor5_12_0.png" />
-</div>
-</div>
-<p>Note that the larger the SNR, the less visible the noise.
-This makes sense since, in the definition of SNR, the noise power is in the denominator.
-In addition, from 30 dB, the noise becomes almost invisible, while below 0 dB, it is very high and the image is hardly visible.</p>
 </section>
-<section id="mean-filter">
-<h3>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">#</a></h3>
-<p>I choose the image whose SNR equals 10 dB, and I apply a mean filter.</p>
+<section id="first-processings">
+<h2>First processings<a class="headerlink" href="#first-processings" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
+<p>The image is a satellite view of a small town in the Landes, France. It is an RGB image of resolution 50 cm.</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_17_0.png" src="../_images/cor5_17_0.png" />
 </div>
-</div>
-<p>We observe that the mean filter reduces the noise, which is expected (have you tried a filter of size 1×1? What’s going on?).
-On the other hand, the image is more blurry: the contours are less sharp.
-This second observation is explained by the fact that the mean filter is a convolution by a kernel which is not a single pulse:
-so the intensities of the pixels spreads over their neighbourhood.</p>
-<p>The mean squared error is an objective measure of the quality of the restoration.
-It is calculated between the denoised image <span class="math notranslate nohighlight">\(\hat{x}\)</span> and the original one <span class="math notranslate nohighlight">\(x\)</span>.
-Therefore, the mean filter helps to decrease the MSE by reducing the noise.
-But at the same time it increases the MSE by introducing blur in the image.
-As a consequence, the MSE evolves with the size <span class="math notranslate nohighlight">\(w \times w\)</span> of the filter.
-To verify this hypothesis, we plot the values of the MSE with respect to <span class="math notranslate nohighlight">\(w\)</span>:</p>
-<div class="cell tag_remove-input tag_hide docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.22e+01
+<p>Since the objects of interest are blue and no other object in the scene is of this color,
+it may be interesting to deal with the blue band of the image.
+Therefore, the pools are bright on the blue band, giving first discrimination between the pools and the rest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue</span> <span class="o">=</span> <span class="n">img</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
-<img alt="../_images/cor5_19_1.png" src="../_images/cor5_19_1.png" />
 </div>
 </div>
-<p>As expected, the MSE change with respect of the filter size.
-A compromise must be made between the noise reduction and the blurring.
-We observe that the curve has a minimum, it corresponds to the best choice for <span class="math notranslate nohighlight">\(w\)</span> (in terms of MSE).</p>
-<p>Unfortunately, there is no easy way to know a priori the best size of the mean filter just knowing the SNR.
-The value obtained here depends on the image (try with another image!).</p>
-</section>
-<section id="tv-denoising">
-<h3>TV denoising<a class="headerlink" href="#tv-denoising" title="Permalink to this headline">#</a></h3>
-<p>With the noisy image at SNR = 10 dB, we now carry out a denoising by TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor5_23_0.png" src="../_images/cor5_23_0.png" />
+<img alt="../_images/cor5_9_0.png" src="../_images/cor5_9_0.png" />
 </div>
 </div>
-<p>As with the mean filter, we observe that the image is partially denoised (therefore the MSE will be better),
-but, again, the contours are less sharp, resulting in a degradation of the MSE.
-As previously, it should exist an optimal value of the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.
-Let’s see if this denoising technique can surpass the mean filter…</p>
+<p>The mathematical morphology operators described in the course work on binary images.
+The blue band can be binarized by applying a threshold to separate the bright pixels from the others.
+By looking at the histogram of the blue band and proceeding by trial and error,
+we choose a threshold equals to 240.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.42e+01
+<img alt="../_images/cor5_11_0.png" src="../_images/cor5_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binarized</span> <span class="o">=</span> <span class="p">(</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">240</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/cor5_25_1.png" src="../_images/cor5_25_1.png" />
 </div>
 </div>
-<p>The curve has the same behavior as in the case of the mean filter:
-there is an optimal value of the regularization parameter for which the MSE is the best.
-Moreover, we notice that the best MSE is lower than the best MSE obtained with the mean filter.
-So we want to conclude that TV regularization is more efficient than the mean filter!
-But beware: this conclusion is partial, because it was only obtained on <em>one</em> image with <em>one</em> SNR.</p>
-</section>
-<section id="comparison-of-the-two-denoising-methods-for-different-snrs">
-<h3>Comparison of the two denoising methods for different SNRs<a class="headerlink" href="#comparison-of-the-two-denoising-methods-for-different-snrs" title="Permalink to this headline">#</a></h3>
-<p>It is possible to analyze the evolution of the MSE with respect to the noise level by calculating, for several values of SNR,
-the best parameters for the two methods.</p>
-<p>Then we can represent the evolution of the MSE for the two methods:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor5_31_0.png" src="../_images/cor5_31_0.png" />
+<img alt="../_images/cor5_13_0.png" src="../_images/cor5_13_0.png" />
 </div>
 </div>
-<p>We observe that the MSE decreases with the SNR.
-The interpretation is easy:
-the more the noise decreases, the more the image resembles the original image, and therefore denoising is less difficult.</p>
-<p>In addition, we observe that:</p>
+</section>
+<section id="study-of-the-different-operators">
+<h2>Study of the different operators<a class="headerlink" href="#study-of-the-different-operators" title="Permalink to this headline">#</a></h2>
+<p>In this part, the mathematical morphology operators are applied to the sub-image marked out by the green square on the image above.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor5_16_0.png" src="../_images/cor5_16_0.png" />
+</div>
+</div>
+<p>First of all, we choose as a structuring element a disk with a radius of 4 pixels.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor5_18_0.png" src="../_images/cor5_18_0.png" />
+</div>
+</div>
+<p>The four basic operators applied to the image produce the results below.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor5_20_0.png" src="../_images/cor5_20_0.png" />
+</div>
+</div>
 <ul class="simple">
-<li><p>for SNRs lower than (approximately) 5 dB, the mean filter is better than TV regularization.
-This seems surprising since the TV regularization is supposed to be better.
-However, an SNR lower than 5 dB is extremely low.
-In fact, neither of the two methods gives a really satisfactory result (see below).</p></li>
-<li><p>for images with SNR greater than 5 dB, TV regularization is better.</p></li>
+<li><p>Which operator(s) tend(s) to plug the holes?</p></li>
+<li><p>On the contrary, which operator(s) tend(s) to remove small objects?</p></li>
+<li><p>Which operator(s) preserve(s) (roughly) the shape of objects?</p></li>
 </ul>
-<!-- Let us now observe the evolution of the values of the best parameters of the two methods, according to the SNR: --><div class="cell tag_remove-input docutils container">
+<p>The same with a 10-pixel radius disk:</p>
+<div class="cell tag_remove-input docutils container">
 </div>
-<!-- Pour les deux méthodes, la valeur du paramètre décroît lorsque le RSB augmente.
-* pour le filtre moyenneur (en bleu), la fenêtre utilisée est donc de plus en plus petite lorsque le bruit diminue. C'est logique : le bruit diminuant, il n'est pas nécessaire de moyenner sur un grand voisinage, ce qui permet de trop flouter l'image.
-* pour la régularisation TV (rouge), le paramètre de régularisation est plus faible lorsque le bruit diminue. C'est également logique : en diminuant, le paramètre de régularisation donne moins de poids à la régularisation qui est là surtout pour compenser le bruit. S'il y a moins de bruit, il y a moins besoin de régulariser !
-
-On peut vérifier que ces conclusions sont en accord avec ce qu'on peut observer sur quelques exemples : --><div class="cell tag_remove-input docutils container">
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor5_36_0.png" src="../_images/cor5_36_0.png" />
-<img alt="../_images/cor5_36_1.png" src="../_images/cor5_36_1.png" />
-<img alt="../_images/cor5_36_2.png" src="../_images/cor5_36_2.png" />
+<img alt="../_images/cor5_24_0.png" src="../_images/cor5_24_0.png" />
 </div>
 </div>
-<p>OK, we have the same conclusions as before.</p>
-<p>The comparison between the two methods was only carried out on a single image and a single criterion (the MSE).
-This is undoubtedly a good criterion for comparing two methods, but other criterions exist,
-such as for example the complexity of the method, the computation time, etc.</p>
+<p>Try other structuring elements to observe their influence!</p>
 </section>
-</section>
-<section id="deconvolution">
-<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h2>
-<p>The objectives of this exercise are:</p>
-<ul class="simple">
-<li><p>know how to apply a specific degradation to an image</p></li>
-<li><p>understand why naive deconvolution does not work</p></li>
-<li><p>implement a Wiener filter</p></li>
-</ul>
-<div class="cell tag_remove-input docutils container">
-</div>
-<section id="original-and-noisy-images">
-<h3>Original and noisy images<a class="headerlink" href="#original-and-noisy-images" title="Permalink to this headline">#</a></h3>
+<section id="pool-detection">
+<h2>Pool detection<a class="headerlink" href="#pool-detection" title="Permalink to this headline">#</a></h2>
+<p>In the following, we consider the result of a closing with a 10-pixel radius disk for structuring element.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">skimage.morphology.label</span></code> returns a labeling of the different connected components,
+and the function <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops</span></code> measure some geometric properties of the connected components,
+such as their surface or their position.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor5_43_0.png" src="../_images/cor5_43_0.png" />
-</div>
-</div>
-<p>The “USAF 1951” resolution chart is a tool for measuring the resolution of optical instruments.
-It was designed by the U.S. Air Force.
-Its interest in image processing is to measure the resolution capacity of methods.
-Here, it is interesting because once blurred, it is difficult to count the lines and read the figures.</p>
-</section>
-<section id="inverse-filter-on-the-non-noisy-image">
-<h3>Inverse filter on the non-noisy image<a class="headerlink" href="#inverse-filter-on-the-non-noisy-image" title="Permalink to this headline">#</a></h3>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_47_0.png" src="../_images/cor5_47_0.png" />
-</div>
-</div>
-<p>In the absence of noise, the inverse filter works perfectly (except for a translation, due to the PSF size).</p>
-</section>
-<section id="inverse-filter-with-noise">
-<h3>Inverse filter with noise<a class="headerlink" href="#inverse-filter-with-noise" title="Permalink to this headline">#</a></h3>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_50_0.png" src="../_images/cor5_50_0.png" />
-</div>
-</div>
-<p>On the contrary, when the image is noisy (even slightly: here SNR equals 40 dB), the restoration is not at all acceptable!</p>
-</section>
-<section id="wiener-filter-with-noise">
-<h3>Wiener filter with noise<a class="headerlink" href="#wiener-filter-with-noise" title="Permalink to this headline">#</a></h3>
-<p>Be careful, there is another <code class="docutils literal notranslate"><span class="pre">wiener</span></code> function (<code class="docutils literal notranslate"><span class="pre">skimage.filters.wiener</span></code>), but it is more tricky.
-Instead, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code>, not forgetting to add <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_54_0.png" src="../_images/cor5_54_0.png" />
-<img alt="../_images/cor5_54_1.png" src="../_images/cor5_54_1.png" />
-</div>
-</div>
-<p>These first results have been obtained for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.
-They show that in terms of MSE, there is a compromise to be made between denoising and deconvolution.
-If <span class="math notranslate nohighlight">\(\lambda\)</span> is too low, the restored image is deconvolved but remains very noisy;
-if <span class="math notranslate nohighlight">\(\lambda\)</span> is too large then the image remains blurry.</p>
-<p>For a better analysis, we represent the MSE with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor5_56_0.png" src="../_images/cor5_56_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 90 and gives MSE = 1325.74.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of connected component (that is, detected pools): 69
 </pre></div>
 </div>
-<img alt="../_images/cor5_56_2.png" src="../_images/cor5_56_2.png" />
 </div>
 </div>
-<p>I find personally that this value of <span class="math notranslate nohighlight">\(\lambda\)</span> gives a less clear picture than for lower values of <span class="math notranslate nohighlight">\(\lambda\)</span> (as presented above).
-This shows that the MSE does not perfectly represent the perceived quality.
-But the perceived quality is subjective and depend on the desired objective, whereas MSE is an objective measure.</p>
-<p>Finally, as for denoising methods, it is very difficult to set a priori the value of the parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The centroids of the connected components are represented in the image below by the red dots.</p>
+<p>Of course, there are fewer pools than red dots, but a lot of connected components are actually
+small groups of pixels that do not correspond to pools.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor5_30_0.png" src="../_images/cor5_30_0.png" />
+</div>
+</div>
+<p>The result can be improved by considering only the connected components whose number of pixels is greater than a certain value.
+So, we have chosen to consider as pools the connected components whose area is greater than 20 pixels.</p>
+<p>Moreover, we know that a pixel represents an area of 0.5<span class="math notranslate nohighlight">\(\times\)</span>0.5 m<sup>2</sup>,
+so it is easy to calculate the average area of the detected pools.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of detected pools: 36
+Average area of the detected pools: 40.89 m²
+</pre></div>
+</div>
+<img alt="../_images/cor5_32_1.png" src="../_images/cor5_32_1.png" />
+</div>
+</div>
 </section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h2>
+<p>The method proposed in this notebook is simple but not robust: swimming pools shaded or partially hidden by a tree are not always detected. Conversely, some objects can be considered as swimming pools because they are very bright in the blue band and large.
+Therefore, some improvements to improve the result are listed below:</p>
+<ul class="simple">
+<li><p>The geometry of the connected components can be considered because the swimming pools are not only blue objects with a sufficiently large area, but they also have a rectangular shape;</p></li>
+<li><p>we choose the threshold for binarization to work well on this image. But nothing guarantees that this value can be applied to another image: it may depend on the sensor resolution, the image brightness, the type of swimming pool, etc. In other words, the robustness of the threshold value has to be studied.</p></li>
+<li><p>the binarization of the image could take into account the binarization of the neighbouring pixels. This principle can be modelled using Markov fields.</p></li>
+<li><p>etc.</p></li>
+</ul>
 </section>
 </section>
 

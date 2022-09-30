@@ -1,5 +1,7 @@
-(lab4)=
+(labs:lab4)=
 # Lab 4
+
+## Segmentation
 
 Three methods will be compared to segment the coins on the image <a href="../_static/data/observation.png">observation.png</a>:
 binary thresholding, Otsu's method, and local thresholding.

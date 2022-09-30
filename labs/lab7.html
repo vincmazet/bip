@@ -52,10 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correction of lab 7" href="cor7.html" />
-    <link rel="prev" title="Correction of lab 6" href="cor6.html" />
+    <link rel="next" title="Sobel and Canny detectors + Harris detector + Hough transform" href="cor7.html" />
+    <link rel="prev" title="Denoising + Deconvolution" href="cor6.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -511,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -529,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -546,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -563,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -580,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -597,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -757,12 +769,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
+   Sobel and Canny detectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-detector">
+   Harris detector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hough-transform">
+   Hough transform
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -774,6 +820,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
+   Sobel and Canny detectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#harris-detector">
+   Harris detector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hough-transform">
+   Hough transform
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -782,7 +851,48 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-7">
-<span id="lab7"></span><h1>Lab 7<a class="headerlink" href="#lab-7" title="Permalink to this headline">#</a></h1>
+<span id="labs-lab7"></span><h1>Lab 7<a class="headerlink" href="#lab-7" title="Permalink to this headline">#</a></h1>
+<p>This lab is devoted to metrology, by detecting features on the image <a href="../_static/data/L.png">L.png</a>.</p>
+<ul class="simple">
+<li><p>Recall what the following detectors can do: Canny, Harris, Hough, Moravec, Prewitt, Roberts, Sobel.</p></li>
+</ul>
+<section id="sobel-and-canny-detectors">
+<h2>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Display the image gradients with the Sobel detector (<code class="docutils literal notranslate"><span class="pre">skimage.filters.sobel</span></code>).</p></li>
+<li><p>Apply a threshold on the obtained image to perform an edge detection.
+What is the influence of the threshold on the result?</p></li>
+<li><p>Find the optimal threshold, <em>i.e.</em> the one which gives most of the edges of the object while keeping precise locations of the edges.</p></li>
+<li><p>What is the relationship between Sobel and Canny detectors?</p></li>
+<li><p>Display the edges detected by Canny detector (<code class="docutils literal notranslate"><span class="pre">skimage.feature.canny</span></code>).</p></li>
+<li><p>Discuss the influence of the main parameters of the method,
+namely the size of the Gaussian filter and the two thresholds.</p></li>
+<li><p>It is sometimes interesting to compare the studied methods in terms of computation time.
+The computation time can be obtained by calculating the difference
+between the time <span class="math notranslate nohighlight">\(t_2\)</span> measured after executing the method and the time <span class="math notranslate nohighlight">\(t_1\)</span> measured before its execution.
+For that, you can use the function <code class="docutils literal notranslate"><span class="pre">time.time</span></code> which gives the number of seconds elapsed since January 1, 1970.
+What is the fastest method?</p></li>
+</ul>
+</section>
+<section id="harris-detector">
+<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Apply the Harris detector (with <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_harris</span></code> and <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_peaks</span></code>).</p></li>
+<li><p>Criticize the result: have all the corners been detected?
+Are there any false alarms (<em>i.e.</em> detections that do not correspond to corners)?
+How to explain these errors?</p></li>
+</ul>
+</section>
+<section id="hough-transform">
+<h2>Hough transform<a class="headerlink" href="#hough-transform" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The Hough transform does not apply directly to the original image: what image should you use?</p></li>
+<li><p>Represent the Hough transform of the image with <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line</span></code>.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line_peaks</span></code> extracts the parameters of the most important lines from the Hough transform.
+Use this function to display the six most important lines of the image.</p></li>
+</ul>
+<!-- exo très long pour les étus (bceaucoup de réglages de params) -->
+<!-- montrer l'influence des paramètres de chaque fonction --></section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -818,13 +928,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Correction of lab 6</p>
+            <p class="prev-next-title">Denoising + Deconvolution</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="cor7.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Correction of lab 7</p>
+        <p class="prev-next-title">Sobel and Canny detectors + Harris detector + Hough transform</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

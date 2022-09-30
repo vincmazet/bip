@@ -1,4 +1,4 @@
-(edge-detection)=
+(C:edge-detection)=
 # Edge detection
 
 

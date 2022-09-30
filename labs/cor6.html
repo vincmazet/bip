@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Correction of lab 6 &#8212; Basics of Image Processing</title>
+    <title>Denoising + Deconvolution &#8212; Basics of Image Processing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -513,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -531,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -548,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -565,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -582,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -599,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -793,36 +803,58 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
-   Sobel and Canny detectors
+  <a class="reference internal nav-link" href="#denoising">
+   Denoising
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sobel-detector">
-     Sobel detector
+    <a class="reference internal nav-link" href="#original-image-and-noisy-image">
+     Original image and noisy image
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#canny-detector">
-     Canny detector
+    <a class="reference internal nav-link" href="#mean-filter">
+     Mean filter
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-of-the-two-methods-in-terms-of-computation-time">
-     Comparison of the two methods in terms of computation time
+    <a class="reference internal nav-link" href="#tv-denoising">
+     TV denoising
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-of-the-two-denoising-methods-for-different-snrs">
+     Comparison of the two denoising methods for different SNRs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harris-detector">
-   Harris detector
+  <a class="reference internal nav-link" href="#deconvolution">
+   Deconvolution
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hough-transform">
-   Hough transform
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#original-and-noisy-images">
+     Original and noisy images
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inverse-filter-on-the-non-noisy-image">
+     Inverse filter on the non-noisy image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inverse-filter-with-noise">
+     Inverse filter with noise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wiener-filter-with-noise">
+     Wiener filter with noise
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -833,7 +865,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Correction of lab 6</h1>
+                <h1>Denoising + Deconvolution</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -844,36 +876,58 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
-   Sobel and Canny detectors
+  <a class="reference internal nav-link" href="#denoising">
+   Denoising
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sobel-detector">
-     Sobel detector
+    <a class="reference internal nav-link" href="#original-image-and-noisy-image">
+     Original image and noisy image
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#canny-detector">
-     Canny detector
+    <a class="reference internal nav-link" href="#mean-filter">
+     Mean filter
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-of-the-two-methods-in-terms-of-computation-time">
-     Comparison of the two methods in terms of computation time
+    <a class="reference internal nav-link" href="#tv-denoising">
+     TV denoising
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-of-the-two-denoising-methods-for-different-snrs">
+     Comparison of the two denoising methods for different SNRs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harris-detector">
-   Harris detector
+  <a class="reference internal nav-link" href="#deconvolution">
+   Deconvolution
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hough-transform">
-   Hough transform
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#original-and-noisy-images">
+     Original and noisy images
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inverse-filter-on-the-non-noisy-image">
+     Inverse filter on the non-noisy image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inverse-filter-with-noise">
+     Inverse filter with noise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wiener-filter-with-noise">
+     Wiener filter with noise
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -885,225 +939,234 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="correction-of-lab-6">
-<span id="cor6"></span><h1>Correction of lab 6<a class="headerlink" href="#correction-of-lab-6" title="Permalink to this headline">#</a></h1>
-<section id="sobel-and-canny-detectors">
-<h2>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this headline">#</a></h2>
-<p>The objectives of this exercise are to:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="denoising-deconvolution">
+<span id="labs-cor6"></span><h1>Denoising + Deconvolution<a class="headerlink" href="#denoising-deconvolution" title="Permalink to this headline">#</a></h1>
+<section id="denoising">
+<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h2>
+<p>The objectives of this exercise are:</p>
 <ul class="simple">
-<li><p>detect edges using Sobel and Canny detectors</p></li>
-<li><p>understand the influence of the parameters of these methods</p></li>
-<li><p>compare these methods in terms of computation time</p></li>
+<li><p>to apply a white Gaussian noise with a specific SNR on an image</p></li>
+<li><p>to implement a denoising method</p></li>
+<li><p>to understand the effects of the parameters and set it accordingly to the epexpected solution</p></li>
 </ul>
+<p>Two denoising methods are considered in this correction: the mean filter and TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor6_5_0.png" src="../_images/cor6_5_0.png" />
 </div>
-</div>
-<section id="sobel-detector">
-<h3>Sobel detector<a class="headerlink" href="#sobel-detector" title="Permalink to this headline">#</a></h3>
-<p>The Sobel detector performs a convolution of the image by two filters,
-each allowing to obtain the gradient of the image in the two dimensions.
-These two gradients can be merged to result in the right image (how are they merged?).</p>
+<section id="original-image-and-noisy-image">
+<h3>Original image and noisy image<a class="headerlink" href="#original-image-and-noisy-image" title="Permalink to this headline">#</a></h3>
+<p>The original image:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/cor6_8_0.png" src="../_images/cor6_8_0.png" />
 </div>
 </div>
-<p>The gradient image can be thresholded to identify major contours.
-The results for three threshold values are given below.</p>
+<p>The signal-to-noise ratio (SNR) is defined as the power of the image <span class="math notranslate nohighlight">\(x\)</span> divided by the power of the noise <span class="math notranslate nohighlight">\(b\)</span>.
+Besides, it is generally given with a logarithmic scale.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{SNR} = 10 \log_{10} \left(\frac{P_x}{P_b}\right)
+\quad\Leftrightarrow\quad
+10^\frac{\mathrm{SNR}}{10} = \frac{P_x}{P_b}
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+Px = \frac{1}{MN} \sum_{m,n} x(m,n)^2
+\quad\text{et}\quad
+Pb = \frac{1}{MN} \sum_{m,n} b(m,n)^2 = \sigma^2
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+                     &amp;P_b = \frac{P_x}{10^\frac{\mathrm{SNR}}{10}} \\
+\Leftrightarrow\quad &amp;\sigma^2 = P_x \times 10^{-\frac{\mathrm{SNR}}{10}} \\
+\Leftrightarrow\quad &amp;\sigma^2 = \frac{1}{MN} \sum_{m,n} x(m,n)^2 10^{-\frac{\mathrm{SNR}}{10}} \\
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\sqrt{\sum_{m,n} x(m,n)^2} \)</span> corresponds to the Frobenius norm of <span class="math notranslate nohighlight">\(x\)</span> and can be calculated with <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
+<p>The figures below represent the image at different noise levels.</p>
+<p><strong>Warning:</strong> do not forget <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> when using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>, in order to add a true Gaussian noise!</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_10_0.png" src="../_images/cor6_10_0.png" />
+<img alt="../_images/cor6_12_0.png" src="../_images/cor6_12_0.png" />
 </div>
 </div>
-<ul class="simple">
-<li><p>We note that the higher the threshold, the fewer contours detected (there are fewer white pixels).
-This is because fewer pixels have a gradient greater than the threshold,
-and therefore will be considered as edges.</p></li>
-<li><p>If the threshold is too low, then edges are detected almost everywhere.
-In particular, the background of the image being (slightly) noisy, edges can be detected there.</p></li>
-<li><p>On the contrary, if the threshold is too high, then there are a lot of non-detections
-even though there are hardly any false alarms left.</p></li>
-<li><p>In addition, even by setting the threshold high enough, some edges are still wide:
-they have a width of several pixels, which implies that the edge, although detected, is not positioned with precision.</p></li>
-</ul>
+<p>Note that the larger the SNR, the less visible the noise.
+This makes sense since, in the definition of SNR, the noise power is in the denominator.
+In addition, from 30 dB, the noise becomes almost invisible, while below 0 dB, it is very high and the image is hardly visible.</p>
 </section>
-<section id="canny-detector">
-<h3>Canny detector<a class="headerlink" href="#canny-detector" title="Permalink to this headline">#</a></h3>
-<p>Canny detector is more complex than a simple filtering.
-It includes in particular a thresholding by hysteresis, <em>i.e.</em> a decision based on two thresholds <span class="math notranslate nohighlight">\(T_{low}\)</span> and <span class="math notranslate nohighlight">\(T_{high}\)</span>:</p>
-<ul class="simple">
-<li><p>the pixels of intensity lower than <span class="math notranslate nohighlight">\(T_{low}\)</span> will not be considered as edges,</p></li>
-<li><p>pixels with an intensity greater than <span class="math notranslate nohighlight">\(T_{high}\)</span> will be considered as edges,</p></li>
-<li><p>pixels with an intensity between <span class="math notranslate nohighlight">\(T_{low}\)</span> and <span class="math notranslate nohighlight">\(T_{high}\)</span> will be detected as edges
-if and only if they are neighbors of pixels whic are edges.</p></li>
-</ul>
-<p><strong>Influence of the Gaussian standard deviation (<code class="docutils literal notranslate"><span class="pre">sigma</span></code>)</strong></p>
+<section id="mean-filter">
+<h3>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">#</a></h3>
+<p>I choose the image whose SNR equals 10 dB, and I apply a mean filter.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_15_0.png" src="../_images/cor6_15_0.png" />
+<img alt="../_images/cor6_17_0.png" src="../_images/cor6_17_0.png" />
 </div>
 </div>
-<p>We observe that if <code class="docutils literal notranslate"><span class="pre">sigma</span></code> increases, then the number of edges detected is lower.
-This can be explained by the fact that the first step of the Canny detector is a filtering of the image by a Gaussian
-(with standard deviation <code class="docutils literal notranslate"><span class="pre">sigma</span></code>) to reduce the noise.
-In consequence, the image is more blurry and therefore the edges are less marked: they are therefore more difficult to detect.</p>
-<p><strong>Influence of <span class="math notranslate nohighlight">\(T_{low}\)</span> (<code class="docutils literal notranslate"><span class="pre">low_threshold</span></code>)</strong></p>
-<div class="cell tag_remove-input docutils container">
+<p>We observe that the mean filter reduces the noise, which is expected (have you tried a filter of size 1×1? What’s going on?).
+On the other hand, the image is more blurry: the contours are less sharp.
+This second observation is explained by the fact that the mean filter is a convolution by a kernel which is not a single pulse:
+so the intensities of the pixels spreads over their neighbourhood.</p>
+<p>The mean squared error is an objective measure of the quality of the restoration.
+It is calculated between the denoised image <span class="math notranslate nohighlight">\(\hat{x}\)</span> and the original one <span class="math notranslate nohighlight">\(x\)</span>.
+Therefore, the mean filter helps to decrease the MSE by reducing the noise.
+But at the same time it increases the MSE by introducing blur in the image.
+As a consequence, the MSE evolves with the size <span class="math notranslate nohighlight">\(w \times w\)</span> of the filter.
+To verify this hypothesis, we plot the values of the MSE with respect to <span class="math notranslate nohighlight">\(w\)</span>:</p>
+<div class="cell tag_remove-input tag_hide docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_18_0.png" src="../_images/cor6_18_0.png" />
-</div>
-</div>
-<p>When the lower threshold increases, the number of detected edges decreases,
-since there are fewer pixels whose gradient value is greater than the lower threshold.</p>
-<p><strong>Influence of <span class="math notranslate nohighlight">\(T_{high}\)</span> (<code class="docutils literal notranslate"><span class="pre">high_threshold</span></code>)</strong></p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor6_21_0.png" src="../_images/cor6_21_0.png" />
-</div>
-</div>
-<p>As before, the more the higher threshold increases, the fewer edges are detected.</p>
-<p>In conclusion, we observe that the number of detected edges decreases with the value of the thresholds, as for the Sobel detector.
-Besides, the Canny detector produces fine and mostly continuous contours: detection is therefore clearer and more precise.</p>
-</section>
-<section id="comparison-of-the-two-methods-in-terms-of-computation-time">
-<h3>Comparison of the two methods in terms of computation time<a class="headerlink" href="#comparison-of-the-two-methods-in-terms-of-computation-time" title="Permalink to this headline">#</a></h3>
-<p>One of the steps of the Canny detector is to apply a Sobel filter.
-So the Canny detector is expected to be slower than the Sobel detector.
-We measure the time required for each method to detect the edges of the image.</p>
-<p>For practical reasons, depending especially on the computer used for the test,
-the results are not perfectly reproducible:
-if you run the comparison twice, the computation times will differ slightly.
-Therefore, it is advised to measure the computation times over many simulations (100 below).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="mi">100</span>           <span class="c1"># Number of simulations</span>
-<span class="n">total_sobel</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># Total time for the I simulations for the Sobel detector</span>
-<span class="n">total_canny</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># Total time for the I simulations for the Canny detector</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">I</span><span class="p">):</span>
-    
-    <span class="c1"># Computation time for the Sobel detector</span>
-    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">sobel</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># Don&#39;t forget to take thresholding into account!</span>
-    <span class="n">tac</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">time_sobel</span> <span class="o">=</span> <span class="n">tac</span><span class="o">-</span><span class="n">tic</span>
-    <span class="n">total_sobel</span> <span class="o">+=</span> <span class="n">time_sobel</span>
-    
-    <span class="c1"># Computation time for the Canny detector</span>
-    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">tac</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">time_canny</span> <span class="o">=</span> <span class="n">tac</span><span class="o">-</span><span class="n">tic</span>
-    <span class="n">total_canny</span> <span class="o">+=</span> <span class="n">time_canny</span>
-    
-    <span class="c1"># Display the computation time of the two methods (for the first 10 simulations only)</span>
-    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sobel : </span><span class="si">{</span><span class="n">time_sobel</span><span class="o">*</span><span class="mf">1e3</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ms     Canny : </span><span class="si">{</span><span class="n">time_canny</span><span class="o">*</span><span class="mf">1e3</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">i</span><span class="o">==</span><span class="mi">10</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;etc.&quot;</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Canny detector is, about </span><span class="si">{</span><span class="n">total_canny</span><span class="o">/</span><span class="n">total_sobel</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> times slower than Sobel detector.&quot;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.22e+01
 </pre></div>
 </div>
+<img alt="../_images/cor6_19_1.png" src="../_images/cor6_19_1.png" />
 </div>
+</div>
+<p>As expected, the MSE change with respect of the filter size.
+A compromise must be made between the noise reduction and the blurring.
+We observe that the curve has a minimum, it corresponds to the best choice for <span class="math notranslate nohighlight">\(w\)</span> (in terms of MSE).</p>
+<p>Unfortunately, there is no easy way to know a priori the best size of the mean filter just knowing the SNR.
+The value obtained here depends on the image (try with another image!).</p>
+</section>
+<section id="tv-denoising">
+<h3>TV denoising<a class="headerlink" href="#tv-denoising" title="Permalink to this headline">#</a></h3>
+<p>With the noisy image at SNR = 10 dB, we now carry out a denoising by TV regularization.</p>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sobel : 2.935 ms     Canny : 16.135 ms
-Sobel : 3.383 ms     Canny : 18.684 ms
-Sobel : 3.484 ms     Canny : 16.753 ms
-Sobel : 3.050 ms     Canny : 14.943 ms
-Sobel : 2.366 ms     Canny : 14.675 ms
-Sobel : 2.423 ms     Canny : 14.041 ms
-Sobel : 2.345 ms     Canny : 13.976 ms
-Sobel : 2.288 ms     Canny : 13.934 ms
-Sobel : 2.286 ms     Canny : 13.968 ms
-Sobel : 2.297 ms     Canny : 14.032 ms
-etc.
-
-Canny detector is, about 6 times slower than Sobel detector.
+<img alt="../_images/cor6_23_0.png" src="../_images/cor6_23_0.png" />
+</div>
+</div>
+<p>As with the mean filter, we observe that the image is partially denoised (therefore the MSE will be better),
+but, again, the contours are less sharp, resulting in a degradation of the MSE.
+As previously, it should exist an optimal value of the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.
+Let’s see if this denoising technique can surpass the mean filter…</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.42e+01
 </pre></div>
 </div>
+<img alt="../_images/cor6_25_1.png" src="../_images/cor6_25_1.png" />
 </div>
 </div>
-<p>We were right: Canny detector is slower than Sobel detector.
-However, the computation time remains very acceptable for images of classic size (around 15 ms),
-so the time difference between the two methods is not detrimental in the majority of applications.</p>
+<p>The curve has the same behavior as in the case of the mean filter:
+there is an optimal value of the regularization parameter for which the MSE is the best.
+Moreover, we notice that the best MSE is lower than the best MSE obtained with the mean filter.
+So we want to conclude that TV regularization is more efficient than the mean filter!
+But beware: this conclusion is partial, because it was only obtained on <em>one</em> image with <em>one</em> SNR.</p>
 </section>
-</section>
-<section id="harris-detector">
-<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">#</a></h2>
-<p>The objective of this exercise is to detect corners using the Harris detector.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<p>The Harris detector can detect corners of an image, based on differences in intensity.</p>
-<p>With the function <code class="docutils literal notranslate"><span class="pre">corner_harris</span></code>, choose <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'k'</span></code> and a value of <span class="math notranslate nohighlight">\(k\)</span> between 0 and 0.2.
-This results in a new image, of the same size as the original image,
-whose intensities are proportional to the presence of a corner.</p>
-<p>In the images below, the intensities are restricted to the interval <span class="math notranslate nohighlight">\([-0.4, 0.4]\)</span> in order to highlight the values of the image.</p>
+<section id="comparison-of-the-two-denoising-methods-for-different-snrs">
+<h3>Comparison of the two denoising methods for different SNRs<a class="headerlink" href="#comparison-of-the-two-denoising-methods-for-different-snrs" title="Permalink to this headline">#</a></h3>
+<p>It is possible to analyze the evolution of the MSE with respect to the noise level by calculating, for several values of SNR,
+the best parameters for the two methods.</p>
+<p>Then we can represent the evolution of the MSE for the two methods:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_33_0.png" src="../_images/cor6_33_0.png" />
+<img alt="../_images/cor6_31_0.png" src="../_images/cor6_31_0.png" />
 </div>
 </div>
-<p>The function <code class="docutils literal notranslate"><span class="pre">corner_peaks</span></code> returns the coordinates of the strong values of the image, which correspond to the corners.
-These coordinates are returned in the form of a matrix, the first column corresponds to the ordinates, the second to the abscissas.</p>
-<div class="cell tag_remove-input docutils container">
+<p>We observe that the MSE decreases with the SNR.
+The interpretation is easy:
+the more the noise decreases, the more the image resembles the original image, and therefore denoising is less difficult.</p>
+<p>In addition, we observe that:</p>
+<ul class="simple">
+<li><p>for SNRs lower than (approximately) 5 dB, the mean filter is better than TV regularization.
+This seems surprising since the TV regularization is supposed to be better.
+However, an SNR lower than 5 dB is extremely low.
+In fact, neither of the two methods gives a really satisfactory result (see below).</p></li>
+<li><p>for images with SNR greater than 5 dB, TV regularization is better.</p></li>
+</ul>
+<!-- Let us now observe the evolution of the values of the best parameters of the two methods, according to the SNR: --><div class="cell tag_remove-input docutils container">
+</div>
+<!-- Pour les deux méthodes, la valeur du paramètre décroît lorsque le RSB augmente.
+* pour le filtre moyenneur (en bleu), la fenêtre utilisée est donc de plus en plus petite lorsque le bruit diminue. C'est logique : le bruit diminuant, il n'est pas nécessaire de moyenner sur un grand voisinage, ce qui permet de trop flouter l'image.
+* pour la régularisation TV (rouge), le paramètre de régularisation est plus faible lorsque le bruit diminue. C'est également logique : en diminuant, le paramètre de régularisation donne moins de poids à la régularisation qui est là surtout pour compenser le bruit. S'il y a moins de bruit, il y a moins besoin de régulariser !
+
+On peut vérifier que ces conclusions sont en accord avec ce qu'on peut observer sur quelques exemples : --><div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_35_0.png" src="../_images/cor6_35_0.png" />
+<img alt="../_images/cor6_36_0.png" src="../_images/cor6_36_0.png" />
+<img alt="../_images/cor6_36_1.png" src="../_images/cor6_36_1.png" />
+<img alt="../_images/cor6_36_2.png" src="../_images/cor6_36_2.png" />
 </div>
 </div>
-<p>The images above correspond to the result obtained for two values of <span class="math notranslate nohighlight">\(k\)</span> (and <code class="docutils literal notranslate"><span class="pre">threshold_rel</span> <span class="pre">=</span> <span class="pre">0.01</span></code>).
-When <span class="math notranslate nohighlight">\(k\)</span> is large, only the sharpest corners are detected: one can see this in the image on the right.</p>
-<p>However, not all corners of are detected: how to improve the result?</p>
-<p>In addition, some points do not correspond to corners.
-They correspond actually to pixels with very different intensity from their neighbors,
-which is the definition of a corner for Harris.</p>
+<p>OK, we have the same conclusions as before.</p>
+<p>The comparison between the two methods was only carried out on a single image and a single criterion (the MSE).
+This is undoubtedly a good criterion for comparing two methods, but other criterions exist,
+such as for example the complexity of the method, the computation time, etc.</p>
 </section>
-<section id="hough-transform">
-<h2>Hough transform<a class="headerlink" href="#hough-transform" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="deconvolution">
+<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h2>
 <p>The objectives of this exercise are:</p>
 <ul class="simple">
-<li><p>to detect lines in an image with the Hough transform</p></li>
-<li><p>to know how to interpret a Hough transform</p></li>
+<li><p>know how to apply a specific degradation to an image</p></li>
+<li><p>understand why naive deconvolution does not work</p></li>
+<li><p>implement a Wiener filter</p></li>
 </ul>
 <div class="cell tag_remove-input docutils container">
 </div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<p>The Hough transform is applied to binary images, which must highlight the lines of the image.
-Also, an edge detection is needed.
-We apply the Canny detector (with the default parameters).</p>
+<section id="original-and-noisy-images">
+<h3>Original and noisy images<a class="headerlink" href="#original-and-noisy-images" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_42_0.png" src="../_images/cor6_42_0.png" />
+<img alt="../_images/cor6_43_0.png" src="../_images/cor6_43_0.png" />
 </div>
 </div>
-<p>The function <code class="docutils literal notranslate"><span class="pre">hough_line</span></code> returns the accumulator and the corresponding x-axis and y-axis.</p>
+<p>The “USAF 1951” resolution chart is a tool for measuring the resolution of optical instruments.
+It was designed by the U.S. Air Force.
+Its interest in image processing is to measure the resolution capacity of methods.
+Here, it is interesting because once blurred, it is difficult to count the lines and read the figures.</p>
+</section>
+<section id="inverse-filter-on-the-non-noisy-image">
+<h3>Inverse filter on the non-noisy image<a class="headerlink" href="#inverse-filter-on-the-non-noisy-image" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_remove-input docutils container">
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_44_0.png" src="../_images/cor6_44_0.png" />
+<img alt="../_images/cor6_47_0.png" src="../_images/cor6_47_0.png" />
 </div>
 </div>
-<p>We can see clearly the sinusoids, each corresponding to a white pixel of the image of the contours
-(actually, we have done an image transformation to bring out the sinusoids).
-When the sinusoids intersect, they increase the intensity of the intersection pixel.
-The brightest pixels of the transform correspond to the main lines of the edges.
-The function <code class="docutils literal notranslate"><span class="pre">hough_line_peak</span></code> brings these pixels:
-the most important are represented by the green circles on the accumulator,
-and correspond to the lines shown in the image below.</p>
+<p>In the absence of noise, the inverse filter works perfectly (except for a translation, due to the PSF size).</p>
+</section>
+<section id="inverse-filter-with-noise">
+<h3>Inverse filter with noise<a class="headerlink" href="#inverse-filter-with-noise" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor6_46_0.png" src="../_images/cor6_46_0.png" />
+<img alt="../_images/cor6_50_0.png" src="../_images/cor6_50_0.png" />
 </div>
 </div>
-<p>Can you identify where the non-detected lines of the image are on the accumulator?</p>
-<p>Try to detect the central circle of the object.</p>
+<p>On the contrary, when the image is noisy (even slightly: here SNR equals 40 dB), the restoration is not at all acceptable!</p>
+</section>
+<section id="wiener-filter-with-noise">
+<h3>Wiener filter with noise<a class="headerlink" href="#wiener-filter-with-noise" title="Permalink to this headline">#</a></h3>
+<p>Be careful, there is another <code class="docutils literal notranslate"><span class="pre">wiener</span></code> function (<code class="docutils literal notranslate"><span class="pre">skimage.filters.wiener</span></code>), but it is more tricky.
+Instead, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code>, not forgetting to add <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor6_54_0.png" src="../_images/cor6_54_0.png" />
+<img alt="../_images/cor6_54_1.png" src="../_images/cor6_54_1.png" />
+</div>
+</div>
+<p>These first results have been obtained for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.
+They show that in terms of MSE, there is a compromise to be made between denoising and deconvolution.
+If <span class="math notranslate nohighlight">\(\lambda\)</span> is too low, the restored image is deconvolved but remains very noisy;
+if <span class="math notranslate nohighlight">\(\lambda\)</span> is too large then the image remains blurry.</p>
+<p>For a better analysis, we represent the MSE with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor6_56_0.png" src="../_images/cor6_56_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 90 and gives MSE = 1325.74.
+</pre></div>
+</div>
+<img alt="../_images/cor6_56_2.png" src="../_images/cor6_56_2.png" />
+</div>
+</div>
+<p>I find personally that this value of <span class="math notranslate nohighlight">\(\lambda\)</span> gives a less clear picture than for lower values of <span class="math notranslate nohighlight">\(\lambda\)</span> (as presented above).
+This shows that the MSE does not perfectly represent the perceived quality.
+But the perceived quality is subjective and depend on the desired objective, whereas MSE is an objective measure.</p>
+<p>Finally, as for denoising methods, it is very difficult to set a priori the value of the parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</section>
 </section>
 </section>
 

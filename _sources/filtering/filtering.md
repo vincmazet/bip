@@ -9,6 +9,7 @@ and high-pass filtering which preserves only the high frequencies ({numref}`F:hi
 
 Example of low-pass filtering: only the low frequencies are kept.
 Top row: spatial domain, bottom row: amplitude of the DFT.
+Only the amplitude of the DFT are shown.
 ```
 
 ```{figure} highpass.svg

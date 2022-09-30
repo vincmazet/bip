@@ -1,53 +1,97 @@
-(lab6)=
+(labs:lab6)=
 # Lab 6
 
 
-This lab is devoted to metrology, by detecting features on the image <a href="../_static/data/L.png">L.png</a>.
+## Denoising
 
-* Recall what the following detectors can do: Canny, Harris, Hough, Moravec, Prewitt, Roberts, Sobel.
+This exercise is intended to evaluate the performances of a denoising method of your choice.
+Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
+
+* Load an image of your choice (your favourite pet, your best party or an image of the former labs).
+
+  ```{note}
+  * Be careful to work with `floats`. So you may need to convert your image with `.astype(float)`.
+  * For convenience, it is recommended to use an image of size less than 1000×1000. Use `skimage.transform.rescale` to reduce the image size.
+  * Also, use a grayscale image (`skimage.color.rgb2gray`).
+  ```
+
+* We consider the case of an AWGN.
+  Express the Gaussian variance $\sigma^2 $ in terms of SNR.
+  Recall that the variance of a Gaussian process $b$ is very well estimated by its power
   
+  $$
+  \frac{1}{MN}\sum_{m,n} b(m,n)^2.
+  $$
 
-## Sobel and Canny detectors
+* Add noise to the image (`skimage.util.random_noise`),
+  then check that the noise level corresponds to the expected SNR.
+  For example, noise should be barely visible above 30 dB,
+  on the contrary, the image should be difficult to discern below 0 dB.
 
-* Display the image gradients with the Sobel detector (`skimage.filters.sobel`).
+Now that you dispose of a noisy image and its noiseless version,
+you can implement the denoising method you have chosen.
 
-* Apply a threshold on the obtained image to perform an edge detection.
-  What is the influence of the threshold on the result?
+If you choose a mean filter, use `scipy.ndimage.convolve` to filter by a square PSF of size `w` generated as follows:
 
-* Find the optimal threshold, _i.e._ the one which gives most of the edges of the object while keeping precise locations of the edges.
+```
+h = np.ones((w,w)) / (w*w)
+```
 
-* What is the relationship between Sobel and Canny detectors?
+If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
 
-* Display the edges detected by Canny detector (`skimage.feature.canny`).
+* Denoise the image with the chosen method.
 
-* Discuss the influence of the main parameters of the method,
-  namely the size of the Gaussian filter and the two thresholds.
+* Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.
 
-* It is sometimes interesting to compare the studied methods in terms of computation time.
-  The computation time can be obtained by calculating the difference
-  between the time $t_2$ measured after executing the method and the time $t_1$ measured before its execution.
-  For that, you can use the function `time.time` which gives the number of seconds elapsed since January 1, 1970.
-  What is the fastest method?
+* Use `skimage.metrics.mean_squared_error`
+  to calculate the mean squared error (MSE, in French EQM for _erreur quadratique moyenne_)
+  of the denoised image to have a quantitative measure of the denoising quality.
+
+* Represent the evolution of the MSE according to the parameter, and comment on the result:
+  what is the optimal value of this parameter?
+  Can you adjust the parameter by knowing the SNR of the image?
+
+* Compare your method with the one implemented by another student.
+
+
+## Deconvolution
+
+* Load the image [5.1.13](https://sipi.usc.edu/database/database.php?volume=misc&image=18#top).
+  It will be called $x$ in the sequel.
+<!--   and convert it to floating point numbers with the instruction
   
-
-## Harris detector
-
-* Apply the Harris detector (with `skimage.feature.corner_harris` and `skimage.feature.corner_peaks`).
-
-* Criticize the result: have all the corners been detected?
-  Are there any false alarms (_i.e._ detections that do not correspond to corners)?
-  How to explain these errors?
+  ```
+  x = x.astype(float)
+  ```
   
+  where `x` is the image and will be called` x` in the following. -->
 
-## Hough transform
+* Generate a circular PSF $h$ of radius 10 with `skimage.morphology.disk`.
 
-* The Hough transform does not apply directly to the original image: what image should you use?
+  ```{margin}
+  The inverse filter works not only if the image is not noisy
+  but also if the convolution can be equivalent to a multiplication in the Fourier domain.
+  The last condition is true if the convolution is circular,
+  that is the image $x$ is assumed to be periodic (see [](C:convolution-boundaries)).
+  ```
+  
+* Perform the convolution of $x$ by $h$ to obtain the image $y$.
+  To do this, use the function `scipy.ndimage.filters.convolve` with the argument `mode="wrap"` so that the convolution is circular
+  
+* Apply the inverse filter on $y$ to get an estimate $\widehat{x} $ of $x$.
+  What do you see?
 
-* Represent the Hough transform of the image with `skimage.transform.hough_line`.
+* Add a small noise to the blurred image, then apply the inverse filter again.
+  What do you see?
 
-* The function `skimage.transform.hough_line_peaks` extracts the parameters of the most important lines from the Hough transform.
-  Use this function to display the six most important lines of the image.
+* Now replace the inverse filter with Wiener filter (`skimage.restoration.wiener` with argument `clip=False`).
 
+* Study the influence of the regularization parameter:
+  first by observing the result obtained for some values,
+  then by representing the evolution of a restoration quality measure (which one?)
+  with respect to the values of the regularization parameter.
 
-<!-- exo très long pour les étus (bceaucoup de réglages de params) -->
-<!-- montrer l'influence des paramètres de chaque fonction -->
+* What is the optimal value of the regularization parameter?
+  Do you agree that it is actually the best value when you look at the estimation?
+
+* Finally, can you conclude on the optimal choice of the regularization parameter, whatever the image?

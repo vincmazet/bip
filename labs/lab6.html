@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correction of lab 6" href="cor6.html" />
-    <link rel="prev" title="Correction of lab 5" href="cor5.html" />
+    <link rel="next" title="Denoising + Deconvolution" href="cor6.html" />
+    <link rel="prev" title="Mathematical morphology" href="cor5.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -513,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -531,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor3.html">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -548,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -565,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -582,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -599,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -782,18 +792,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
-   Sobel and Canny detectors
+  <a class="reference internal nav-link" href="#denoising">
+   Denoising
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harris-detector">
-   Harris detector
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hough-transform">
-   Hough transform
+  <a class="reference internal nav-link" href="#deconvolution">
+   Deconvolution
   </a>
  </li>
 </ul>
@@ -816,18 +821,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sobel-and-canny-detectors">
-   Sobel and Canny detectors
+  <a class="reference internal nav-link" href="#denoising">
+   Denoising
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#harris-detector">
-   Harris detector
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hough-transform">
-   Hough transform
+  <a class="reference internal nav-link" href="#deconvolution">
+   Deconvolution
   </a>
  </li>
 </ul>
@@ -841,48 +841,93 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-6">
-<span id="lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this headline">#</a></h1>
-<p>This lab is devoted to metrology, by detecting features on the image <a href="../_static/data/L.png">L.png</a>.</p>
+<span id="labs-lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this headline">#</a></h1>
+<section id="denoising">
+<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h2>
+<p>This exercise is intended to evaluate the performances of a denoising method of your choice.
+Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).</p>
+<ul>
+<li><p>Load an image of your choice (your favourite pet, your best party or an image of the former labs).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Recall what the following detectors can do: Canny, Harris, Hough, Moravec, Prewitt, Roberts, Sobel.</p></li>
+<li><p>Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>. So you may need to convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.</p></li>
+<li><p>For convenience, it is recommended to use an image of size less than 1000×1000. Use <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> to reduce the image size.</p></li>
+<li><p>Also, use a grayscale image (<code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>).</p></li>
 </ul>
-<section id="sobel-and-canny-detectors">
-<h2>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this headline">#</a></h2>
+</div>
+</li>
+<li><p>We consider the case of an AWGN.
+Express the Gaussian variance <span class="math notranslate nohighlight">\(\sigma^2 \)</span> in terms of SNR.
+Recall that the variance of a Gaussian process <span class="math notranslate nohighlight">\(b\)</span> is very well estimated by its power</p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{1}{MN}\sum_{m,n} b(m,n)^2.
+  \]</div>
+</li>
+<li><p>Add noise to the image (<code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>),
+then check that the noise level corresponds to the expected SNR.
+For example, noise should be barely visible above 30 dB,
+on the contrary, the image should be difficult to discern below 0 dB.</p></li>
+</ul>
+<p>Now that you dispose of a noisy image and its noiseless version,
+you can implement the denoising method you have chosen.</p>
+<p>If you choose a mean filter, use <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> to filter by a square PSF of size <code class="docutils literal notranslate"><span class="pre">w</span></code> generated as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">w</span><span class="p">,</span><span class="n">w</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you choose TV regularization, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.denoise_tv_chambolle</span></code>.</p>
 <ul class="simple">
-<li><p>Display the image gradients with the Sobel detector (<code class="docutils literal notranslate"><span class="pre">skimage.filters.sobel</span></code>).</p></li>
-<li><p>Apply a threshold on the obtained image to perform an edge detection.
-What is the influence of the threshold on the result?</p></li>
-<li><p>Find the optimal threshold, <em>i.e.</em> the one which gives most of the edges of the object while keeping precise locations of the edges.</p></li>
-<li><p>What is the relationship between Sobel and Canny detectors?</p></li>
-<li><p>Display the edges detected by Canny detector (<code class="docutils literal notranslate"><span class="pre">skimage.feature.canny</span></code>).</p></li>
-<li><p>Discuss the influence of the main parameters of the method,
-namely the size of the Gaussian filter and the two thresholds.</p></li>
-<li><p>It is sometimes interesting to compare the studied methods in terms of computation time.
-The computation time can be obtained by calculating the difference
-between the time <span class="math notranslate nohighlight">\(t_2\)</span> measured after executing the method and the time <span class="math notranslate nohighlight">\(t_1\)</span> measured before its execution.
-For that, you can use the function <code class="docutils literal notranslate"><span class="pre">time.time</span></code> which gives the number of seconds elapsed since January 1, 1970.
-What is the fastest method?</p></li>
+<li><p>Denoise the image with the chosen method.</p></li>
+<li><p>Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">skimage.metrics.mean_squared_error</span></code>
+to calculate the mean squared error (MSE, in French EQM for <em>erreur quadratique moyenne</em>)
+of the denoised image to have a quantitative measure of the denoising quality.</p></li>
+<li><p>Represent the evolution of the MSE according to the parameter, and comment on the result:
+what is the optimal value of this parameter?
+Can you adjust the parameter by knowing the SNR of the image?</p></li>
+<li><p>Compare your method with the one implemented by another student.</p></li>
 </ul>
 </section>
-<section id="harris-detector">
-<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">#</a></h2>
+<section id="deconvolution">
+<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Apply the Harris detector (with <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_harris</span></code> and <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner_peaks</span></code>).</p></li>
-<li><p>Criticize the result: have all the corners been detected?
-Are there any false alarms (<em>i.e.</em> detections that do not correspond to corners)?
-How to explain these errors?</p></li>
+<li><p>Load the image <a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=18#top">5.1.13</a>.
+It will be called <span class="math notranslate nohighlight">\(x\)</span> in the sequel.</p></li>
+</ul>
+<!--   and convert it to floating point numbers with the instruction
+  
+  ```
+  x = x.astype(float)
+  ```
+  
+  where `x` is the image and will be called` x` in the following. -->
+<ul>
+<li><p>Generate a circular PSF <span class="math notranslate nohighlight">\(h\)</span> of radius 10 with <code class="docutils literal notranslate"><span class="pre">skimage.morphology.disk</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The inverse filter works not only if the image is not noisy
+but also if the convolution can be equivalent to a multiplication in the Fourier domain.
+The last condition is true if the convolution is circular,
+that is the image <span class="math notranslate nohighlight">\(x\)</span> is assumed to be periodic (see <a class="reference internal" href="../filtering/convolution.html#c-convolution-boundaries"><span class="std std-ref">Boundaries effects</span></a>).</p>
+</aside>
+</li>
+<li><p>Perform the convolution of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(h\)</span> to obtain the image <span class="math notranslate nohighlight">\(y\)</span>.
+To do this, use the function <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.filters.convolve</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">mode=&quot;wrap&quot;</span></code> so that the convolution is circular</p></li>
+<li><p>Apply the inverse filter on <span class="math notranslate nohighlight">\(y\)</span> to get an estimate <span class="math notranslate nohighlight">\(\widehat{x} \)</span> of <span class="math notranslate nohighlight">\(x\)</span>.
+What do you see?</p></li>
+<li><p>Add a small noise to the blurred image, then apply the inverse filter again.
+What do you see?</p></li>
+<li><p>Now replace the inverse filter with Wiener filter (<code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code> with argument <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>).</p></li>
+<li><p>Study the influence of the regularization parameter:
+first by observing the result obtained for some values,
+then by representing the evolution of a restoration quality measure (which one?)
+with respect to the values of the regularization parameter.</p></li>
+<li><p>What is the optimal value of the regularization parameter?
+Do you agree that it is actually the best value when you look at the estimation?</p></li>
+<li><p>Finally, can you conclude on the optimal choice of the regularization parameter, whatever the image?</p></li>
 </ul>
 </section>
-<section id="hough-transform">
-<h2>Hough transform<a class="headerlink" href="#hough-transform" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>The Hough transform does not apply directly to the original image: what image should you use?</p></li>
-<li><p>Represent the Hough transform of the image with <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line</span></code>.</p></li>
-<li><p>The function <code class="docutils literal notranslate"><span class="pre">skimage.transform.hough_line_peaks</span></code> extracts the parameters of the most important lines from the Hough transform.
-Use this function to display the six most important lines of the image.</p></li>
-</ul>
-<!-- exo très long pour les étus (bceaucoup de réglages de params) -->
-<!-- montrer l'influence des paramètres de chaque fonction --></section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -918,13 +963,13 @@ Use this function to display the six most important lines of the image.</p></li>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Correction of lab 5</p>
+            <p class="prev-next-title">Mathematical morphology</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="cor6.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Correction of lab 6</p>
+        <p class="prev-next-title">Denoising + Deconvolution</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

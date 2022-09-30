@@ -40,7 +40,7 @@ On the contrary, the tail is a high frequency area because the pixel intensity s
 
 ## Inverse Fourier transform
 
-The inverse discrete Fourier transform computes the original image from a Fourier transform:
+The inverse discrete Fourier transform computes the original image from its Fourier transform:
 
 $$
   f(m,n) = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} F(u,v) e^{+j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}

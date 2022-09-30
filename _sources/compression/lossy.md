@@ -13,7 +13,7 @@ In addition, this principle is used in lossy compression of audio (MP3) and vide
 Most of the energy of usual pictures is concentrated in low frequencies,
 so the [discrete Fourier transform](filtering:fourier) (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called _discrete cosine transform_ (DCT) is a better choice for computational reasons.
-Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.
+Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a [wavelet transform][C:filtering:wavelets).
 
 
 ## The discrete cosine transform

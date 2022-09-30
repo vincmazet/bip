@@ -1,48 +1,31 @@
 (labs:lab3)=
 # Lab 3
 
+## Lossy compression
 
-## Mathematical Morphology
+The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
+In this exercise, a simplified version of JPEG compression is implemented
+by cancelling the DCT pixels located outside a certain frequency.
 
-We want to detect and count the number of swimming pools visible in the satellite image <a href="../_static/data/moliets.png">moliets.png</a>.
-Most of the functions to use are in module `skimage.morphology`.
+* Compute and display the DCT (`scipy.fftpack.dctn` with argument `norm='ortho'`) of the image
+  <a href="../_static/data/squirrel.png">squirrel.png</a>.
 
-```{note}
-At first, do not try to find all the pools perfectly:
-implement a first version of the method which gives an approximate result automatically.
-```
+* Apply a binary mask to the DCT coefficients to cancel the high frequencies.
+  Recall that for DCT, the low frequencies are located at the top left corner of the image.
 
-* Apply a threshold on the image to highlight the pools.
-  Ask yourself about which image to use: the original image, the grayscale image, a particular band something else?
-
-* Apply the four usual morphological operators (erosion, dilation, opening, closing)
-  to observe their influence and deduce the one most suited to the problem.
-
-* By using appropriate measures, classify the regions given in the image to determine the number of pools.
-
-* Determine the surface of the pools, knowing that the image is of resolution 50 cm.
-
-* Give a critical discussion about your method by listing its good behaviours and its limits,
-  then suggest improvements.
-
+* Display the compressed image using reverse DCT
+  (`scipy.fftpack.idctn`, always with the argument `norm='ortho'`).
+  What is your opinion about the quality of the compression?
   
-<!-- ## Registration
-
-Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:
-<a href="../_static/data/capitole1.jpg">capitole1.jpg</a> (the reference) and
-<a href="../_static/data/capitole2.jpg">capitole2.jpg</a> (the source).
-
-* Which deformation model is adapted to the problem?
-
-* Before applying a complete registration processing on the two images,
-  we first apply an arbitrary distortion to the source.
-  To do this, use the appropriate function of the module `skimage.transform`
-  to define an Euclidean transformation of translation $(400,-100)$ and of rotation $\pi/3$.
-  These parameters are close to the optimal transformation.
-  Then apply this transformation on the source with `skimage.transform.warp`.
-  Check that the distorted image is close enough to the reference (you can display the difference between the two images).
+* Calculate the mean square error (MSE) defined as:
   
-* Implement an optimization method to automatically determine the best parameters of the transformation.
-  The simplest optimization method (although very long in computing time!)
-  consists of using loops to test several values and keep those that minimize the mean squared error
-  (defined in [](labs:lab2)). -->
+  $$
+  MSE = \frac{1}{MN} \sum_ {m,n} (f(m,n) - g(m,n))^2
+  $$
+  
+  where $f$ and $g$ are respectively the images before and after compression, $M$ and $N$ being the dimensions of these images.
+  You can use the function `numpy.linalg.norm`.
+
+* Analyze the evolution of the MSE according to the mask size $C$.
+  
+  

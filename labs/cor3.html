@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Correction of lab 3 &#8212; Basics of Image Processing</title>
+    <title>Lossy compression &#8212; Basics of Image Processing</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -513,8 +513,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor2.html">
-     Correction of lab 2
+    <a class="reference internal" href="cor21.html">
+     Convolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor22.html">
+     Properties of the Fourier transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor23.html">
+     Filtering aliasing
     </a>
    </li>
   </ul>
@@ -531,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Correction of lab 3
+     Lossy compression
     </a>
    </li>
   </ul>
@@ -548,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor4.html">
-     Correction of lab 4
+     Segmentation
     </a>
    </li>
   </ul>
@@ -565,7 +575,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor5.html">
-     Correction of lab 5
+     Mathematical morphology
     </a>
    </li>
   </ul>
@@ -582,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor6.html">
-     Correction of lab 6
+     Denoising + Deconvolution
     </a>
    </li>
   </ul>
@@ -599,7 +609,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cor7.html">
-     Correction of lab 7
+     Sobel and Canny detectors + Harris detector + Hough transform
     </a>
    </li>
   </ul>
@@ -793,36 +803,29 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-morphology">
-   Mathematical morphology
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#objectives">
-     Objectives
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-processings">
-     First processings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#study-of-the-different-operators">
-     Study of the different operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pool-detection">
-     Pool detection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discussion">
-     Discussion
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#images-of-the-dct-basis">
+   Images of the DCT basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-of-the-jpeg-principle">
+   Application of the JPEG principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mse-evolution">
+   MSE evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compression-on-88-sub-images">
+   Compression on 8×8 sub-images
+  </a>
  </li>
 </ul>
 
@@ -833,7 +836,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Correction of lab 3</h1>
+                <h1>Lossy compression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -844,36 +847,29 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-morphology">
-   Mathematical morphology
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#objectives">
-     Objectives
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#first-processings">
-     First processings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#study-of-the-different-operators">
-     Study of the different operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pool-detection">
-     Pool detection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discussion">
-     Discussion
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#images-of-the-dct-basis">
+   Images of the DCT basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-of-the-jpeg-principle">
+   Application of the JPEG principle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mse-evolution">
+   MSE evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compression-on-88-sub-images">
+   Compression on 8×8 sub-images
+  </a>
  </li>
 </ul>
 
@@ -885,143 +881,102 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="correction-of-lab-3">
-<span id="labs-cor3"></span><h1>Correction of lab 3<a class="headerlink" href="#correction-of-lab-3" title="Permalink to this headline">#</a></h1>
-<section id="mathematical-morphology">
-<h2>Mathematical morphology<a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="lossy-compression">
+<span id="labs-cor3"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h1>
 <section id="objectives">
-<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h3>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>apply and compare basic operations (erosion, dilation, opening, closing)</p></li>
-<li><p>evaluate of the parameters of these operations</p></li>
-<li><p>use connected components to extract useful information</p></li>
+<li><p>know how to implement the basic principle of JPEG compression</p></li>
+<li><p>use the discrete cosine transform</p></li>
+<li><p>analyze the effect of compression on visual quality and PSNR</p></li>
 </ul>
 </section>
-<section id="first-processings">
-<h3>First processings<a class="headerlink" href="#first-processings" title="Permalink to this headline">#</a></h3>
-<div class="cell tag_remove-input docutils container">
-</div>
-<p>The image is a satellite view of a small town in the Landes, France. It is an RGB image of resolution 50 cm.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<p>Since the objects of interest are blue and no other object in the scene is of this color,
-it may be interesting to deal with the blue band of the image.
-Therefore, the pools are bright on the blue band, giving first discrimination between the pools and the rest.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blue</span> <span class="o">=</span> <span class="n">img</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="images-of-the-dct-basis">
+<h2>Images of the DCT basis<a class="headerlink" href="#images-of-the-dct-basis" title="Permalink to this headline">#</a></h2>
+<p>First of all, it is interesting to view the elements of the DCT basis.</p>
+<p>Since the images of the base correspond to a single non-zero coefficient in the domain of the transform,
+a solution to display these images is to create images that are zero in the domain of the transform, except in a single pixel.
+By using the function <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, we can get the corresponding 2D cosine.
+The low frequencies are at the top left.</p>
+<p>Here are some examples of images of the base (on the first line) and their DCT (on the second line) for a size of 8 × 8 pixels.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor3_10_0.png" src="../_images/cor3_10_0.png" />
+<img alt="../_images/cor3_9_0.png" src="../_images/cor3_9_0.png" />
 </div>
 </div>
-<p>The mathematical morphology operators described in the course work on binary images.
-The blue band can be binarized by applying a threshold to separate the bright pixels from the others.
-By looking at the histogram of the blue band and proceeding by trial and error,
-we choose a threshold equals to 240.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor3_12_0.png" src="../_images/cor3_12_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binarized</span> <span class="o">=</span> <span class="p">(</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">240</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor3_14_0.png" src="../_images/cor3_14_0.png" />
-</div>
-</div>
+<p>It can be seen that the pixels at the top left of the DCT (therefore close to the origin) correspond to a low-frequency
+since the corresponding image is a 2D cosine of low frequency in the spatial domain.
+Conversely, the pixel at the bottom right is the very high frequency component:
+the intensity of the pixels changes very quickly in the image.</p>
 </section>
-<section id="study-of-the-different-operators">
-<h3>Study of the different operators<a class="headerlink" href="#study-of-the-different-operators" title="Permalink to this headline">#</a></h3>
-<p>In this part, the mathematical morphology operators are applied to the sub-image marked out by the green square on the image above.</p>
+<section id="application-of-the-jpeg-principle">
+<h2>Application of the JPEG principle<a class="headerlink" href="#application-of-the-jpeg-principle" title="Permalink to this headline">#</a></h2>
+<p>Unlike the Fourier transform which decomposes an image as complex exponentials, the DCT decomposes an image as real cosines.
+Therefore the result is not complex; there is no need to display modulus and phase.
+Yet, the zero frequency coefficient being much greater than the others,
+the contrast of the DCT must be modified (how?) to visualize it.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor3_13_0.png" src="../_images/cor3_13_0.png" />
+</div>
+</div>
+<p>We can notice (even if it is not obvious) that the low-frequency coefficients are more energetic than the others.
+This means that the image is mostly made up of low frequencies.</p>
+<p>To perform the compression, we choose to cancel the high-frequency pixels using a square mask of side <span class="math notranslate nohighlight">\(C\)</span>.
+The size of the square divided by the image size corresponds to the compression rate.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/cor3_17_0.png" src="../_images/cor3_17_0.png" />
 </div>
 </div>
-<p>First of all, we choose as a structuring element a disk with a radius of 4 pixels.</p>
+<p>Note that even with a very high compression rate, the visual result is very good:
+it is very difficult to observe the differences between the two images.
+This observation is also confirmed by the low value of the MSE:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/cor3_19_0.png" src="../_images/cor3_19_0.png" />
 </div>
 </div>
-<p>The four basic operators applied to the image produce the results below.</p>
+<p>The difference image is interesting because we can see that the errors are mainly located in the areas of high frequencies
+(contours, tail…).
+This makes sense since it is precisely these high frequencies that have been cancelled.</p>
+<p>JPEG compression plays on the fact that the human eye is not sensitive to these high-frequency changes.</p>
+</section>
+<section id="mse-evolution">
+<h2>MSE evolution<a class="headerlink" href="#mse-evolution" title="Permalink to this headline">#</a></h2>
+<p>The previous procedure is now used with different size of the mask,
+in order to calculate the MSE between the compressed image and the original image.
+The PSNR is also indicated, it is a measure that we will see in a future course.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/cor3_21_0.png" src="../_images/cor3_21_0.png" />
+<img alt="../_images/cor3_23_0.png" src="../_images/cor3_23_0.png" />
 </div>
 </div>
+<p>The analysis of the curves leads to the following conclusions.</p>
 <ul class="simple">
-<li><p>Which operator(s) tend(s) to plug the holes?</p></li>
-<li><p>On the contrary, which operator(s) tend(s) to remove small objects?</p></li>
-<li><p>Which operator(s) preserve(s) (roughly) the shape of objects?</p></li>
+<li><p>The larger the PSNR, the better the picture quality:
+so it makes sense that it increases as the compression ratio increases.</p></li>
+<li><p>Conversely, MSE measures the difference between the compressed image and the original image:
+as the compression ratio increases, the difference becomes smaller and smaller.</p></li>
+<li><p>For very large compression ratios, a small variation in the ratio implies a rapid variation in PSNR:
+it drops rapidly. However, their values remain above 80 dB,
+which still corresponds to very good quality.</p></li>
 </ul>
-<p>The same with a 10-pixel radius disk:</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor3_25_0.png" src="../_images/cor3_25_0.png" />
-</div>
-</div>
-<p>Try other structuring elements to observe their influence!</p>
+<p>In classic JPEG compression, the DCT is not directly calculated on the whole image, but on 8 × 8 size thumbnails, as is done below.</p>
 </section>
-<section id="pool-detection">
-<h3>Pool detection<a class="headerlink" href="#pool-detection" title="Permalink to this headline">#</a></h3>
-<p>In the following, we consider the result of a closing with a 10-pixel radius disk for structuring element.</p>
-<p>The function <code class="docutils literal notranslate"><span class="pre">skimage.morphology.label</span></code> returns a labeling of the different connected components,
-and the function <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops</span></code> measure some geometric properties of the connected components,
-such as their surface or their position.</p>
+<section id="compression-on-88-sub-images">
+<h2>Compression on 8×8 sub-images<a class="headerlink" href="#compression-on-88-sub-images" title="Permalink to this headline">#</a></h2>
+<p>The image is divided into blocks of 8×8 pixels, then the DCT is computed on each block,
+and finally, the high frequencies of each DCT are cancelled.
+To highlight the blocking effect that can appear when the compression is too strong,
+the size of the mask is small compared to the size of the sub-images.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of connected component (that is, detected pools): 69
-</pre></div>
+<img alt="../_images/cor3_27_0.png" src="../_images/cor3_27_0.png" />
 </div>
 </div>
-</div>
-<p>The centroids of the connected components are represented in the image below by the red dots.</p>
-<p>Of course, there are fewer pools than red dots, but a lot of connected components are actually
-small groups of pixels that do not correspond to pools.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/cor3_31_0.png" src="../_images/cor3_31_0.png" />
-</div>
-</div>
-<p>The result can be improved by considering only the connected components whose number of pixels is greater than a certain value.
-So, we have chosen to consider as pools the connected components whose area is greater than 20 pixels.</p>
-<p>Moreover, we know that a pixel represents an area of 0.5<span class="math notranslate nohighlight">\(\times\)</span>0.5 m<sup>2</sup>,
-so it is easy to calculate the average area of the detected pools.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of detected pools: 36
-Average area of the detected pools: 40.89 m²
-</pre></div>
-</div>
-<img alt="../_images/cor3_33_1.png" src="../_images/cor3_33_1.png" />
-</div>
-</div>
-</section>
-<section id="discussion">
-<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">#</a></h3>
-<p>The method proposed in this notebook is simple but not robust: swimming pools shaded or partially hidden by a tree are not always detected. Conversely, some objects can be considered as swimming pools because they are very bright in the blue band and large.
-Therefore, some improvements to improve the result are listed below:</p>
-<ul class="simple">
-<li><p>The geometry of the connected components can be considered because the swimming pools are not only blue objects with a sufficiently large area, but they also have a rectangular shape;</p></li>
-<li><p>we choose the threshold for binarization to work well on this image. But nothing guarantees that this value can be applied to another image: it may depend on the sensor resolution, the image brightness, the type of swimming pool, etc. In other words, the robustness of the threshold value has to be studied.</p></li>
-<li><p>the binarization of the image could take into account the binarization of the neighbouring pixels. This principle can be modelled using Markov fields.</p></li>
-<li><p>etc.</p></li>
-</ul>
-</section>
 </section>
 </section>
 

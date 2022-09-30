@@ -5,7 +5,7 @@
 ## Convolution
 
 The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
-Before applying the convolutions, you need to convert the image into float (`skimage.img_as_float`)
+Before applying the convolutions, you need to convert the image into float (`skimage.img_as_float`).
 
 * What does the acronym PSF stand for?
 
@@ -18,6 +18,7 @@ Before applying the convolutions, you need to convert the image into float (`ski
   $$
   
   by using `scipy.ndimage.convolve` and initializing $h$ with `numpy.array`.
+  We stress that $h$ being an image, it should be defined as a 2D matrix!
   
   <!--
     `scipy.ndimage.convolve` est plus adapté que `scipy.signal.convolve2d` pour le traitement d'image.
@@ -36,6 +37,13 @@ Before applying the convolutions, you need to convert the image into float (`ski
 
 * Show the DFT of the image with low frequencies at the center (`numpy.fft.fftshift`).
   The magnitude and angle are obtained with `numpy.absolute` and `numpy.angle`.
+  
+```{margin}
+You wrote a code that computes and displays the DFT of the first image.
+Instead of repeating five times this code,
+a good practice is to insert the code into a `for` loop
+which iterates over a list of the images.
+```
 
 * Repeat the same operations with images
   <a href="../_static/data/s2.png">s2.png</a>,
@@ -91,34 +99,6 @@ by taking care of using a 100% zoom.
   Is the aliasing still visible?
   
 
-## Lossy compression
-
-The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
-In this exercise, a simplified version of JPEG compression is implemented
-by cancelling the DCT pixels located outside a certain frequency.
-
-* Compute and display the DCT (`scipy.fftpack.dctn` with argument `norm='ortho'`) of the image
-  <a href="../_static/data/squirrel.png">squirrel.png</a>.
-
-* Apply a binary mask to the DCT coefficients to cancel the high frequencies.
-  Recall that for DCT, the low frequencies are located at the top left corner of the image.
-
-* Display the compressed image using reverse DCT
-  (`scipy.fftpack.idctn`, always with the argument `norm='ortho'`).
-  What is your opinion about the quality of the compression?
-  
-* Calculate the mean square error (MSE) defined as:
-  
-  $$
-  MSE = \frac{1}{MN} \sum_ {m,n} (f(m,n) - g(m,n))^2
-  $$
-  
-  where $f$ and $g$ are respectively the images before and after compression, $M$ and $N$ being the dimensions of these images.
-  You can use the function `numpy.linalg.norm`.
-
-* Analyze the evolution of the MSE according to the mask size $C$.
-  
-  
   
 <!--
 ## Magnitude and phase of the Fourier transform

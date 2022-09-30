@@ -7,7 +7,7 @@ Here are two examples of lossless image compression.
 
 RLE (run-length encoding) replaces a sequence of pixels of the same color with the number of pixels in that sequence.
 Therefore, the image {numref}`F:compression:rle` needs 9 bytes to be stored without any compression.
-The bytes are:
+By reading the image column after column, the bytes are:
 
 $$
   \begin{pmatrix} 0 & 0 & 0 & 255 & 255 & 255 & 255 & 128 & 128 \end{pmatrix}.
@@ -21,7 +21,7 @@ name: F:compression:rle
 A 3 × 3 image.
 ```
 
-By reading the image column after column, we see 3 pixels with intensity 0, 4 pixels with intensity 255, and 2 pixels with intensity 128.
+We see 3 pixels with intensity 0, 4 pixels with intensity 255, and 2 pixels with intensity 128.
 Thus the image is encoded in RLE with only 6 bytes:
 
 $$
