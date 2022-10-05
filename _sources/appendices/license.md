@@ -131,6 +131,11 @@ Vincent Mazet, Public domain.
 Public domain.
 :::
 
+:::{grid-item-card} ![](../_static/figs/roof.jpg)
+&copy; Vincent Mazet, 2008.
+Public domain.
+:::
+
 
 :::{grid-item-card} ![](../_static/figs/s2.png)
 &copy; Vincent Mazet, 2016.
