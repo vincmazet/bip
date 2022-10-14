@@ -247,45 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Registration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Interpolation
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../interpolation/interpolation.html">
    Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/outro.html">
-   Conclusion
   </a>
  </li>
 </ul>
@@ -540,8 +508,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/cor3.html">
+    <a class="reference internal" href="../labs/cor31.html">
      Lossy compression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor32.html">
+     Interpolation
     </a>
    </li>
   </ul>
@@ -843,22 +816,22 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="deconvolution">
 <span id="id1"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h1>
 <p>Usually, images acquired by a vision system suffer from degradation that can be modelled as a convolution.
-For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 69</span></a>)
-or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 70</span></a>).
+For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 73</span></a>)
+or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 74</span></a>).
 The goal of deconvolution is to cancel the effect of a convolution.</p>
 <figure class="align-default" id="f-deconvolution-example-motion">
 <a class="reference internal image-reference" href="restoration/budapest.png"><img alt="restoration/budapest.png" src="restoration/budapest.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Example of motion blur (parliament of Budapest shoot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Example of motion blur (parliament of Budapest shoot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-deconvolution-example-blur">
 <a class="reference internal image-reference" href="../_images/rosetta.jpg"><img alt="../_images/rosetta.jpg" src="../_images/rosetta.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Example of poor focus blur (Rosetta spacecraft last image).</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Example of poor focus blur (Rosetta spacecraft last image).</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The degradation phenomenon is modelled as in <a class="reference internal" href="#f-deconvolution-model"><span class="std std-numref">Fig. 71</span></a>:
+<p>The degradation phenomenon is modelled as in <a class="reference internal" href="#f-deconvolution-model"><span class="std std-numref">Fig. 75</span></a>:
 The observed image <span class="math notranslate nohighlight">\(y\)</span> is degraded by the convolution with a PSF <span class="math notranslate nohighlight">\(h\)</span> and, possibly, by a noise <span class="math notranslate nohighlight">\(b\)</span> (considered to be additive).</p>
 <div class="math notranslate nohighlight">
 \[
@@ -873,7 +846,7 @@ We will consider only linear methods, thus deconvolution comes to filtering by <
 <figure class="align-default" id="f-deconvolution-model">
 <a class="reference internal image-reference" href="../_images/model-deconvolution.png"><img alt="../_images/model-deconvolution.png" src="../_images/model-deconvolution.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Deconvoltion model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Deconvoltion model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Deconvolution needs a degradation model, thus having knowledge about both <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
@@ -915,11 +888,11 @@ and thus get the deconvolved image:</p>
 \[
 \widehat{x} = \mathcal{F}^{-1} \left[ \frac{Y}{H} \right]
 \]</div>
-<p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 72</span></a>.
+<p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 76</span></a>.
 The result is not usable, and yet the observed image is very little blurred with very little noise!</p>
 <figure class="align-default" id="f-deconvolution-inverse-filter">
 <img alt="../_images/inverse-filter.svg" src="../_images/inverse-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The catastrophic result of the inverse filter is due to the fact of having considered the noise to be zero.
@@ -935,14 +908,14 @@ Indeed, according to the definition of <span class="math notranslate nohighlight
 The PSF <span class="math notranslate nohighlight">\(H\)</span> is generally a low-pass filter, so the values of <span class="math notranslate nohighlight">\(H(m,n)\)</span> tend towards <span class="math notranslate nohighlight">\(0\)</span> for high frequencies <span class="math notranslate nohighlight">\((m,n)\)</span>.
 Because <span class="math notranslate nohighlight">\(H\)</span> is in the denominator, this tends to drastically amplify the high frequencies of the noise,
 then the term <span class="math notranslate nohighlight">\(B/H\)</span> quickly dominates <span class="math notranslate nohighlight">\(X\)</span>.
-This explains the result of <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 72</span></a>.</p>
+This explains the result of <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 76</span></a>.</p>
 <p>One solution consists in considering only the low frequencies of <span class="math notranslate nohighlight">\(Y/H\)</span>.
 This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
-The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 73</span></a>,
+The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 77</span></a>,
 although the result is still far from perfect (there are many variations in intensity around objects, such as tree trunks)…</p>
 <figure class="align-default" id="f-deconvolution-truncated-inverse-filter">
 <img alt="../_images/truncated-inverse-filter.svg" src="../_images/truncated-inverse-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Result of the truncated inverse filter.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Result of the truncated inverse filter.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1033,11 +1006,11 @@ since the inverse filter tends towards 0,</p></li>
   \]</div>
 </li>
 </ul>
-<p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 74</span></a>:
+<p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 78</span></a>:
 it is clearly much better than the inverse filter, even its truncated version!</p>
 <figure class="align-default" id="f-deconvolution-wiener-filter">
 <img alt="../_images/wiener-filter.svg" src="../_images/wiener-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Result of Wiener filter
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Result of Wiener filter
 (<span class="math notranslate nohighlight">\(\lambda\)</span> is set so that the estimation is the best in terms of MSE).</span><a class="headerlink" href="#f-deconvolution-wiener-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

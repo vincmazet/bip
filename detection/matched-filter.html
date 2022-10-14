@@ -247,45 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Registration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Interpolation
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../interpolation/interpolation.html">
    Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/outro.html">
-   Conclusion
   </a>
  </li>
 </ul>
@@ -540,8 +508,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/cor3.html">
+    <a class="reference internal" href="../labs/cor31.html">
      Lossy compression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor32.html">
+     Interpolation
     </a>
    </li>
   </ul>
@@ -816,16 +789,16 @@ This results in the normalized cross-correlation (French: <em>corrélation crois
 \[
   \tilde{R}_{f,g}(u,v) = \sum_{m,n} \tilde{f}(m,n) \tilde{g}(u+m,v+n).
 \]</div>
-<p><a class="reference internal" href="#f-detection-matched-filter1"><span class="std std-numref">Fig. 75</span></a> gives an example of matched filter.</p>
+<p><a class="reference internal" href="#f-detection-matched-filter1"><span class="std std-numref">Fig. 79</span></a> gives an example of matched filter.</p>
 <figure class="align-default" id="f-detection-matched-filter1">
 <img alt="detection/figs/matched-filter-audir8.svg" src="detection/figs/matched-filter-audir8.svg" /><figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the letter G).</span><a class="headerlink" href="#f-detection-matched-filter1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the letter G).</span><a class="headerlink" href="#f-detection-matched-filter1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As seen in <a class="reference internal" href="#f-matched-filter2"><span class="std std-numref">Fig. 76</span></a>, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.</p>
+<p>As seen in <a class="reference internal" href="#f-matched-filter2"><span class="std std-numref">Fig. 80</span></a>, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.</p>
 <figure class="align-default" id="f-matched-filter2">
 <img alt="detection/figs/matched-filter-plates.svg" src="detection/figs/matched-filter-plates.svg" /><figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the digit 0).</span><a class="headerlink" href="#f-matched-filter2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the digit 0).</span><a class="headerlink" href="#f-matched-filter2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To overcome this limit, one can apply several matched filters, each representative of all the variations of the patterns.

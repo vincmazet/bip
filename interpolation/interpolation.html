@@ -52,10 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Conclusion" href="outro.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="next" title="Introduction" href="../textures/intro.html" />
+    <link rel="prev" title="Conclusion" href="../compression/outro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -245,45 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Registration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Interpolation
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="outro.html">
-   Conclusion
   </a>
  </li>
 </ul>
@@ -538,8 +508,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/cor3.html">
+    <a class="reference internal" href="../labs/cor31.html">
      Lossy compression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor32.html">
+     Interpolation
     </a>
    </li>
   </ul>
@@ -767,12 +742,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nearest-neighbour-interpolation">
+   Nearest neighbour interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bi-linear-interpolation">
+   (Bi)linear interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-interpolation">
+   Polynomial Interpolation
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -784,6 +793,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nearest-neighbour-interpolation">
+   Nearest neighbour interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bi-linear-interpolation">
+   (Bi)linear interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-interpolation">
+   Polynomial Interpolation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -793,10 +825,148 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
 <h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
-<p>🏗️ To do…</p>
-<!-- cf GW  sectyion 2.4.4
-cf Formation des images 
-PPV, bilinéaire, etc. + partir de l'image résultat --></section>
+<p>Image interpolation is a basic tool used extensively in tasks such as
+rescaling, translating, shrinking or rotating an image.
+These tasks are geometric transformations that map an image into a predefined geometry,
+for example in remote sensing to return a cartographic reference,
+or in medical imaging to align images on anatomical references.
+The consequence of a geometric transformation is that the transformed grid points of the input image
+no longer coincide with the grid points of the output image and vice-versa.</p>
+<p>The basic idea of interpolation is quite simple:
+first, reconstruct a “continuous” image from the discrete input image,
+then sample this image onto the grid of the output image.
+Interpolation methods differ from the way the “continuous” image is reconstructed.</p>
+<figure class="align-default" id="f-interpolation-principle">
+<a class="reference internal image-reference" href="../_images/interpolation.png"><img alt="../_images/interpolation.png" src="../_images/interpolation.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Principle of interpolation.
+The green image is the continuous image.
+The blue and red grid schematize the input and ouput grids, respectively.
+The question is: how to compute the intensity of the pixels of the red grid from the one of the blue grid?</span><a class="headerlink" href="#f-interpolation-principle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
+<section id="nearest-neighbour-interpolation">
+<h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this headline">#</a></h2>
+<p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
+The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
+<p><a class="reference internal" href="#f-interpolation-0-order"><span class="std std-numref">Fig. 39</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
+<figure class="align-default" id="f-interpolation-0-order">
+<a class="reference internal image-reference" href="../_images/interp-0.png"><img alt="../_images/interp-0.png" src="../_images/interp-0.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Nearest neighbour interpolation.
+The blue dots represent the input image pixels,
+the red cross represent the output image pixels.
+The gray lines are the continuous image reconstructed from the input image.</span><a class="headerlink" href="#f-interpolation-0-order" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bi-linear-interpolation">
+<h2>(Bi)linear interpolation<a class="headerlink" href="#bi-linear-interpolation" title="Permalink to this headline">#</a></h2>
+<p>With linear interpolation (French: <em>interpolation linéaire</em>),
+the interpolated points lie on pieces of straight lines connecting neighbouring grid points.
+Because images are in 2D, this method is called bilinear interpolation.
+This generally gives better results that nearest neighbour interpolation, but structures with high frequencies are not correctly interpolated.</p>
+<figure class="align-default" id="f-interpolation-1-order">
+<a class="reference internal image-reference" href="../_images/interp-1.png"><img alt="../_images/interp-1.png" src="../_images/interp-1.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Linear interpolation.</span><a class="headerlink" href="#f-interpolation-1-order" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="polynomial-interpolation">
+<h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">#</a></h2>
+<p>The basic principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
+In the same way, we can use a polynomial of degree <span class="math notranslate nohighlight">\(P\)</span> that must pass through <span class="math notranslate nohighlight">\(P+1\)</span> grid points.
+Besides its limited accuracy, polynomial interpolation has another signiﬁcant disadvantage.
+The interpolated curve is not continuous at the grid points already in its ﬁrst derivative.
+This is because for each interval between grid points another polynomial is taken.
+Thus, only the interpolated function is continuous at the grid points but not the derivatives.</p>
+<figure class="align-default" id="f-interpolation-3-order">
+<a class="reference internal image-reference" href="../_images/interp-3.png"><img alt="../_images/interp-3.png" src="../_images/interp-3.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Polynomial interpolation.</span><a class="headerlink" href="#f-interpolation-3-order" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- ## Spline-Based Interpolation
+
+Splines avoid the disadvantage of polynomial interpolation by additional constraints for the continuity of derivatives at the grid points.
+Especially, B-splines are separable.
+It is sufficient to discuss the properties of 1-D B-splines.
+From the background of image processing, the easiest access to B-splines is their convolution property.
+The kernel of a P-order B-spline curve is generated by convolving the box function $P+1$ times with itself.
+
+**eq jahne 10.51**
+
+**illustration 1D**
+ -->
+<!-- ## Ideal interpolation
+
+The ideal interpolation function in Eq. (10.34) is separable. Therefore,
+interpolation can as easily be formulated for higher-dimensional images.
+We can expect that all solutions to the interpolation problem will also
+be separable. Consequently, we need only discuss the 1-D interpolation
+problem. Once it is solved, we also have a solution for the n-dimensional
+interpolation problem.
+
+Interpolation reduces to a simple operation in the Fourier domain.
+As shown by **Eq. (10.36)**, the transfer function of an ideal interpolation kernel is a rectangular (box) function
+which is zero outside the wave numbers that can be represented.
+This basic fact suggests the following interpolation procedure in Fourier space:
+
+1. Enlarge the matrix of the Fourier transformed image.
+   If an $M \times M$ matrix is increased to an $M' \times M'$ matrix,
+   the image in the spatial domain is also increased to an $M' \times M'$ image.
+   Because of the reciprocity of the Fourier transform, the image size remains unchanged.
+   Only the spacing between pixels is decreased,
+   resulting in a higher spatial resolution.
+
+2. Fill the padded area in the Fourier space with zeroes
+   and compute an inverse Fourier transform.
+
+Theoretically, this procedure results in a perfectly interpolated image.
+Unfortunately, it has three drawbacks.
+
+1. The Fourier transform of a ﬁnite image
+   implies a cyclic repetition of the image in the spatial and Fourier domain.
+   Thus, the convolution performed by the Fourier transform is cyclic.
+   This means that at the edge of the image,
+   convolution continues with the image on the opposite side.
+   As the real world is not periodic and interpolation masks are large,
+   this may lead to signiﬁcant distortions of the interpolation
+   even at quite large distances from the edges of the image.
+
+2. The Fourier transform can be computed eﬃciently
+   only for a specified number of values for $M'$.
+   Best known are the fast radix-2 algorithms that can be applied
+   only to images of the size $M' = 2^{N'}$.
+   Therefore, the Fourier transform-based interpolation is slow for numbers $M'$ 
+   that cannot be expressed as a product of many small factors.
+   
+3. As the Fourier transform is a global transform, it can be applied only to scaling.
+   According to the generalized similarity theorem,
+   it could also be applied to rotation and affine transforms.
+   But then the interpolation problem is only shifted
+   from the spatial domain to the wave number domain.
+ -->
+<!-- then this continuous image is filtered so as to give an image whose spectrum is compatible with the new sampling that we wish t carry out,
+
+The basis of interpolation is the sampling theorem (Section 9.2.2).
+This theorem states that the digital image completely represents the
+continuous image provided the sampling conditions are met. In short
+it means that each periodic structure that occurs in the image must be
+sampled at least twice per wavelength.
+
+These resampling operations rely on mathematical bases of the Shannon samling theory.
+
+The fact that interpolation is a convolution operation and thus can
+be described by a transfer function in Fourier space Eq. (10.36) gives
+us a handy tool to rate the errors associated with an interpolation tech-
+nique.
+
+ -->
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -825,17 +995,17 @@ PPV, bilinéaire, etc. + partir de l'image résultat --></section>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../compression/outro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Conclusion</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="outro.html" title="next page">
+    <a class='right-next' id="next-link" href="../textures/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conclusion</p>
+        <p class="prev-next-title">Introduction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -247,45 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Registration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/registration.html">
-   Registration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../registration/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Interpolation
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../interpolation/interpolation.html">
    Interpolation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../interpolation/outro.html">
-   Conclusion
   </a>
  </li>
 </ul>
@@ -879,7 +847,7 @@ The low frequencies must be 1 and the high frequency 0, as in the image below (t
 <img alt="../_images/cor23_13_0.png" src="../_images/cor23_13_0.png" />
 </div>
 </div>
-<p>Note that the cutoff frequency equals <span class="math notranslate nohighlight">\(1/S\)</span>.</p>
+<p>Note that the cutoff frequency equals <span class="math notranslate nohighlight">\(1/S\)</span> to avod aliasing.</p>
 <p>You should obtain the following results.
 The aliasing is clearly visible on the first image, where no filter has been applied:
 a weird effect is visible on the tiles.
@@ -887,6 +855,11 @@ The Gaussian filter strongly attenuates the effect, and the ideal filter is bett
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/cor23_16_0.png" src="../_images/cor23_16_0.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor23_17_0.png" src="../_images/cor23_17_0.png" />
 </div>
 </div>
 </section>
