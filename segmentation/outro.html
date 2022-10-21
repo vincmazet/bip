@@ -257,28 +257,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Textures
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/textures.html">
-   Textures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Segmentation
  </span>
 </p>
@@ -506,8 +484,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/cor3.html">
+    <a class="reference internal" href="../labs/cor31.html">
      Lossy compression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor32.html">
+     Interpolation
     </a>
    </li>
   </ul>
@@ -735,12 +718,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -752,6 +759,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -767,7 +787,26 @@ The homogeneity of a region is based on color, texture, contours, etc.</p>
 Other existing methods include active contours or the so-called snakes, level sets, Markovian models, etc.
 In addition to these “model-based” methods, deep learning allowed significant increases in the results.</p>
 <p>At last, we list some criteria to evaluate the quality of a segmentation method.
-These criteria are useful to compare different segmentation methods, as presented in <span class="xref myst"></span>.</p>
+These criteria are useful to compare different segmentation methods, as presented in <a class="reference internal" href="../labs/lab4.html#labs-lab4"><span class="std std-ref">Lab 4</span></a>.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p id="b-segmentation-macqueen1967">J.B. MacQueen,
+“Some Methods for classification and Analysis of Multivariate Observations”,
+<em>Proceedings of 5th Berkeley Symposium on Mathematical Statistics and Probability</em>,
+vol. 1, p. 281–297, 1967</p>
+</li>
+<li><p id="b-segmentation-otsu1979">N. Otsu,
+“A threshold selection method from gray-level histograms”,
+<em>IEEE Transactions on Systems, Man, and Cybernetics</em>,
+vol. 9, no 1, p. 62-66, 1979.</p>
+</li>
+<li><p id="b-segmentation-steinhaus1957">H. Steinhaus,
+“Sur la division des corps matériels en parties”,
+<em>Bull. Acad. Polon. Sci.</em>,
+vol. 4, no 12, p. 801-804, 1957.</p>
+</li>
+</ul>
 <!--
  
 Autres méthodes :
@@ -808,6 +847,7 @@ Autres méthodes :
   \og{}Sur la division des corps matériels en parties\fg{}
   \emph{Bulletin de l'Académie Polonaise des Sciences}, 4(12) p. 801--804, 1957.
  -->
+</section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -259,28 +259,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Textures
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/textures.html">
-   Textures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Segmentation
  </span>
 </p>
@@ -773,44 +751,57 @@ However, this approach cannot be applied on a color or multiband image because t
 Each pixel in a <span class="math notranslate nohighlight">\(B\)</span>-band image can be represented by a point in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.
 By doing so, pixels with similar colors form groups in the space, as illustrated in <a class="reference internal" href="#f-segmentation-clustering"><span class="std std-numref">Fig. 51</span></a>.</p>
 <figure class="align-default" id="f-segmentation-clustering">
-<a class="reference internal image-reference" href="../_images/segmentation-clustering.png"><img alt="../_images/segmentation-clustering.png" src="../_images/segmentation-clustering.png" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/3d-space.svg"><img alt="../_images/3d-space.svg" src="../_images/3d-space.svg" width="100%" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 51 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Clustering methods consists in defining groups of pixels.
-Therefore, all the pixels in the same group define a class in the segmented image.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>In French, these methods are called <em>méthodes de classification</em>, although it would be more precise to call them <em>méthode de coalescence</em>.</p>
 </aside>
+<p>Clustering methods consists in defining groups of pixels.
+Therefore, all the pixels in the same group define a class in the segmented image.</p>
 <p>A classical clustering method for image segmentation is the k-means method (French: <em>k-moyennes</em>).</p>
-<p>The k-means algorithm (Steinhaus 1957, MacQueen 1967) is an iterative method
-that affects every point in the space <span class="math notranslate nohighlight">\(\mathbb{R}^B\)</span> to a group (call cluster).
+<p>The k-means algorithm [<a class="reference internal" href="outro.html#b-segmentation-steinhaus1957"><span class="std std-ref">Steinhaus 1957</span></a>, <a class="reference internal" href="outro.html#b-segmentation-macqueen1967"><span class="std std-ref">MacQueen 1967</span></a>]
+is an iterative method that affects every point in the space <span class="math notranslate nohighlight">\(\mathbb{R}^B\)</span> to a group (called cluster).
 The number <span class="math notranslate nohighlight">\(K\)</span> of groups is chosen by the user.
 In the sequel, the centroid defines the center of a group.
 Its coordinates are the mean of the coordinates of the points in the group.</p>
 <p>The algorithm is given below.</p>
-<blockquote>
-<div><p>Initialize (randomly) the <span class="math notranslate nohighlight">\(K\)</span> centroids</p>
-<p>While the centroids vary:</p>
-<ul class="simple">
-<li><p>For each point:</p>
-<ul>
-<li><p>Calculate the distances from the point to all centroids</p></li>
-<li><p>Assign the point to the nearest group</p></li>
-</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Algorithm: K-Means</div>
+<ol class="simple">
+<li><p class="sd-card-text">Initialize (randomly) the <span class="math notranslate nohighlight">\(K\)</span> centroids</p></li>
+<li><p class="sd-card-text">While the centroids vary:</p>
+<ol class="simple">
+<li><p class="sd-card-text"><span class="sd-sphinx-override sd-badge sd-outline-info sd-text-info">STEP A</span> For each point:</p>
+<ol class="simple">
+<li><p class="sd-card-text">Calculate the distances from the point to all centroids</p></li>
+<li><p class="sd-card-text">Assign the point to the nearest group</p></li>
+</ol>
 </li>
-<li><p>Calculate the centroid of each group</p></li>
-</ul>
-</div></blockquote>
+<li><p class="sd-card-text"><span class="sd-sphinx-override sd-badge sd-outline-info sd-text-info">STEP B</span> Calculate the centroid of each group</p></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p><a class="reference internal" href="#f-segmentation-kmeans-algo"><span class="std std-numref">Fig. 52</span></a> illustrate this algorithm,
 in the simple case of an image with two bands (hence the two-dimensional space)
-segmented into <span class="math notranslate nohighlight">\(K=2\)</span> classes (two colors, here red: and green).</p>
+segmented into <span class="math notranslate nohighlight">\(K=2\)</span> classes.</p>
 <figure class="align-default" id="f-segmentation-kmeans-algo">
-<a class="reference internal image-reference" href="../_images/segmentation-kmeans-algo.gif"><img alt="../_images/segmentation-kmeans-algo.gif" src="../_images/segmentation-kmeans-algo.gif" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/k-means-algorithm.svg"><img alt="../_images/k-means-algorithm.svg" src="../_images/k-means-algorithm.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Illustration of the k-means algorithm.</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Illustration of the k-means algorithm (click to enlarge).</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#f-segmentation-kmeans-result"><span class="std std-numref">Fig. 53</span></a> gives the result of the k-means algorithm on an image.</p>
@@ -821,32 +812,65 @@ segmented into <span class="math notranslate nohighlight">\(K=2\)</span> classes
 </figcaption>
 </figure>
 <p>The pros and cons of the k-means method for image segmentation are listed below.</p>
-<p>The characteristics above identified with * are now detailed.
-Because the k-means algorithm performs the grouping with respect to the distance of the points to the centroids,
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+😀 Advantages</div>
+<ul class="simple">
+<li><p class="sd-card-text">simplicity</p></li>
+<li><p class="sd-card-text">easy to implement</p></li>
+<li><p class="sd-card-text">generally fast</p></li>
+<li><p class="sd-card-text">works correctly when the clusters are spherical*</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+☹️ Disadvantages</div>
+<ul class="simple">
+<li><p class="sd-card-text">requires to know the number of classes</p></li>
+<li><p class="sd-card-text">sensitive to initialization</p></li>
+<li><p class="sd-card-text">can be slow in large dimensions</p></li>
+<li><p class="sd-card-text">fails for non-spherical structures*</p></li>
+<li><p class="sd-card-text">sensitive to outliers*</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The characteristics above identified with * are now detailed.</p>
+<p>Because the k-means algorithm performs the grouping with respect to the distance of the points to the centroids,
 it assumes that the groups are sphericals.
 Therefore, the algorithm works well for spherical clusters, but it fails if the clusters are not spherical,
 as depicted in the images below.</p>
-<figure class="align-default" id="f-segmentatiion-kmeans-ok">
+<figure class="align-default" id="f-segmentation-kmeans-ok">
 <a class="reference internal image-reference" href="../_images/kmeans-ok.svg"><img alt="../_images/kmeans-ok.svg" height="200px" src="../_images/kmeans-ok.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Spherical clusters: the k-means algorithm works well.
 The points are depicted by <span class="math notranslate nohighlight">\(\bullet\)</span> whose color correspond to the class,
-and the centroids are depicted by a black <span class="math notranslate nohighlight">\(\times\)</span>.</span><a class="headerlink" href="#f-segmentatiion-kmeans-ok" title="Permalink to this image">#</a></p>
+and the centroids are depicted by a black <span class="math notranslate nohighlight">\(\times\)</span>.</span><a class="headerlink" href="#f-segmentation-kmeans-ok" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="f-segmentatiion-kmeans-croissants">
+<figure class="align-default" id="f-segmentation-kmeans-croissants">
 <a class="reference internal image-reference" href="../_images/kmeans-croissants.svg"><img alt="../_images/kmeans-croissants.svg" height="200px" src="../_images/kmeans-croissants.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentatiion-kmeans-croissants" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentation-kmeans-croissants" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In addition to this, the centroids is calculated as the mean of the points in the cluster.
+<p>In addition to this, the centroids are calculated as the mean of the points in the cluster.
 But the mean is not a robust estimation and is sensitive to points located far from the group.
 Thus, the algorithm may fail in the presence of outliers (<em>valeurs aberrantes</em>).</p>
-<figure class="align-default" id="f-segmentatiion-kmeans-outliers">
+<figure class="align-default" id="f-segmentation-kmeans-outliers">
 <a class="reference internal image-reference" href="../_images/kmeans-outliers.svg"><img alt="../_images/kmeans-outliers.svg" height="200px" src="../_images/kmeans-outliers.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentatiion-kmeans-outliers" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentation-kmeans-outliers" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Other clustering methods are available to avoid some of the aforementionned limits.

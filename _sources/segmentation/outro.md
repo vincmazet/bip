@@ -8,7 +8,27 @@ Other existing methods include active contours or the so-called snakes, level se
 In addition to these "model-based" methods, deep learning allowed significant increases in the results.
 
 At last, we list some criteria to evaluate the quality of a segmentation method.
-These criteria are useful to compare different segmentation methods, as presented in [](lab4).
+These criteria are useful to compare different segmentation methods, as presented in [](labs:lab4).
+
+## References
+
+* (B:segmentation:MacQueen1967)=
+  J.B. MacQueen,
+  "Some Methods for classification and Analysis of Multivariate Observations",
+  _Proceedings of 5th Berkeley Symposium on Mathematical Statistics and Probability_,
+  vol. 1, p. 281--297, 1967
+
+* (B:segmentation:Otsu1979)=
+  N. Otsu,
+  "A threshold selection method from gray-level histograms",
+  _IEEE Transactions on Systems, Man, and Cybernetics_,
+  vol. 9, no 1, p. 62-66, 1979.
+
+* (B:segmentation:Steinhaus1957)=
+  H. Steinhaus,
+  "Sur la division des corps matériels en parties",
+  _Bull. Acad. Polon. Sci._,
+  vol. 4, no 12, p. 801-804, 1957.
 
 <!--
  

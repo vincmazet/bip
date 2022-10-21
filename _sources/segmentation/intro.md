@@ -9,9 +9,9 @@ some basic relationship between pixels
 //// -->
 
 Image segmentation consists in partitioning an image $f$ according to a certain criterion.
-It means that the image is divided into regions $R_i$
+This means that the image is divided into regions $R_i$
 which are both disjoint and such that the entire image is covered by all the regions.
-Pixels in one region satisfy the criterion, but pixels in two adjacent regions do not.
+Two pixels in the same region satisfy the criterion, but two pixels in two adjacent regions do not.
 
 The figures below show several examples of segmentation.
 
@@ -20,7 +20,7 @@ The figures below show several examples of segmentation.
 name: F:segmentation:example-cells
 ---
 Example of segmentation on gray levels
-(left: original image, right:segmentation given as regions).
+(left: original image, right: segmentation given as regions).
 ```
 
 ```{figure} example-daisy.png
@@ -28,7 +28,8 @@ Example of segmentation on gray levels
 name: F:segmentation:example-daisy
 ---
 Example of segmentation on color
-(left: original image, right:segmentation given as regions, the colors of regions is the mean color of the pixels in the original image).
+(left: original image, right: segmentation given as regions,
+the colors of regions is the mean color of the pixels in the original image).
 ```
 
 ```{figure} example-haiti.png
@@ -36,7 +37,7 @@ Example of segmentation on color
 name: F:segmentation:example-haity
 ---
 Example of segmentation on color with a constraint of the region size
-(left: original image, right:segmentation given as borders).
+(left: original image, right: segmentation given as borders).
 ```
 
 ```{figure} example-mammo.png
@@ -44,7 +45,7 @@ Example of segmentation on color with a constraint of the region size
 name: F:segmentation:example-mammo
 ---
 Example of segmentation on color
-(left: original image, right:segmentation given as regions).
+(left: original image, right: segmentation given as regions).
 ```
 
 <!-- Ajouter un exemple avec comme critère la texture. Cf par ex https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_glcm.html -->
@@ -52,7 +53,7 @@ Example of segmentation on color
 The result of segmentation is not unique:
 it depends on the criterion, the segmentation method, the initialization of the method, etc.
 There are a lot of diverse segmentation methods and this chapter focuses on the more usual ones.
-Then, we talk about how to measure the quality of segmentation.
+Finally, we talk about how to measure the quality of segmentation.
 
 <!--
   Dire qu'il y a plein de manière de catégoriser les méthodes.

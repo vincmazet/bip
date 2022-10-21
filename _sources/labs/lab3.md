@@ -31,7 +31,7 @@ by cancelling the DCT pixels located outside a certain frequency.
 ## Interpolation
 
 The difference between different interpolation methods will be observed by applying successive rotations on the image <a href="../_static/data/chess.png">chess.png</a>.
-The rotations will be made by using `skimage.transform.rotate`, which permits to choose different polynomial interpolation
+The rotations will be made by using `skimage.transform.rotate`, which permits to choose different polynomial interpolations
 (however, it is not possible to use a B-spline interpolation).
 
 * Perform four successive rotations of 90° of the image, and observe the effect of the rotation at each step.

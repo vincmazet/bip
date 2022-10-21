@@ -1,9 +1,9 @@
 # How to evaluate a segmentation?
 
 This chapter has introduced the usual methods of segmentation, but there are many more!
-No method is the best everywhere: the result depends, among other things, on the image itself.
+No method is the best because the result depends, among other things, on the image itself.
 Consequently, it is interesting to evaluate, for the type of image to process, the quality of the segmentation.
-For this, different criteria can be used, defined below.
+To do that, different criteria can be used, defined below.
 In addition to the image to be segmented, we also need the expected result, which we call "ground truth" (French: _vérité terrain_).
 
 Imagine that the ground truth and the segmentation are the images in {numref}`F:segmentation:eval:gt-est` (binary segmentation).
@@ -38,37 +38,31 @@ Definition of true positive (TP), false positive (FP), true negative (VN) and fa
 
 From these four quantities, one or the other of the criteria below can be used.
 
-```{panels}
-:column: col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2
+::::{grid} 1 1 2 2
+:gutter: 3
 
-Sensibility (_sensibilité_)
-^^^
+:::{grid-item-card} Sensibility (_sensibilité_)
 $$
 \frac{\text{TP}}{\text{TP}+\text{FN}}
 $$
+:::
 
----
-  
-Specificity (_spécificité_)
-^^^
+:::{grid-item-card} Specificity (_spécificité_)
 $$
 \frac{\text{TN}}{\text{TN}+\text{FP}}
 $$
+:::
 
----
-  
-Dice coefficient (_coefficient de Dice_)
-^^^
+:::{grid-item-card} Dice coefficient (_coefficient de Dice_)
 $$
 \frac{2\,\text{TP}}{2\,\text{TP}+\text{FP}+\text{FN}} = \frac{2\,|f\, \cap f\,^*|}{|f\,| + |f\,^*|}
 $$
+:::
 
----
-  
-Jaccard coefficient (_coefficient de Jaccard_)
-^^^
+:::{grid-item-card} Jaccard coefficient (_coefficient de Jaccard_)
 $$
 \frac{\text{TP}}{\text{TP}+\text{FP}+\text{FN}} = \frac{|f\, \cap f\,^*|}{|f\, \cup f\,^*|}
 $$
-  
-```
+:::
+
+::::

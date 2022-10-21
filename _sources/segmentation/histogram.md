@@ -4,7 +4,7 @@
 ## Binary thresholding
 
 A very simple method of segmentation consists in associating with each pixel of the image $f$
-a binary number which depends on the intensity of the pixels and on a threshold (french: _seuil_) $T$:
+a binary number which depends on the intensity of the pixels and on a threshold (French: _seuil_) $T$:
 
 $$
   g(m,n) =
@@ -14,7 +14,7 @@ $$
   \end{cases}
 $$
 
-This method is called "binarization" (french: _binarisation_).
+This method is called "binarization" (French: _binarisation_).
 It gives a segmentation into two classes, depending on the intensity of the pixels of a grayscale image
 ({numref}`F:segmentation:binarization`).
 
@@ -39,7 +39,7 @@ name: F:segmentation:binarization-histogram
 Histogram of {numref}`F:segmentation:binarization` with the two thresholds.
 ```
 
-Now, it would be useful to have an automatic process to define the threshold, whatever the image to segment.
+It would be useful to have an automatic process to define the threshold, whatever the image to segment.
 Otsu's method is the most famous automatic method for histogram thresholding.
 
 
@@ -55,8 +55,9 @@ name: F:segmentation:otsu-histogram
 An histogram and a threshold $T$.
 ```
 
-Each group has a number of pixel $w_i(T)$ with mean $\mu_i(T)$ and variance $\sigma_i^2(T)$.
-Otsu's method (1979) computes the threshold $T$ which minimizes the intra-class variance $\sigma_w^2(T)$
+Each group has a number of pixel $w_i(T)$ with mean $\mu_i(T)$ and variance $\sigma_i^2(T)$,
+where $i$ is the group index (0 or 1).
+Otsu's method [[Otsu 1979](B:segmentation:Otsu1979)] computes the threshold $T$ which minimizes the intra-class variance $\sigma_w^2(T)$
 (also known as the within-class variance),
 defined as the weighted mean of the variances of each class:
 
@@ -66,29 +67,30 @@ $$
 
 Considering the intensities to lie in $\{0,\dots,L-1\}$ and $h$ the histogram, the variables are defined as below.
 
+::::{grid} 1 1 1 1
+:gutter: 3
 
-````{panels}
-:column: col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2
+:::{grid-item-card} Class 1
 
-Class 1
-^^^
 $\displaystyle w_0(T) = \sum_{i = 0}^{T} h(i)$
 
 $\displaystyle \mu_0(T) = \frac{1}{w_0(T)} \sum_{i = 0}^{T} i h(i)$
 
 $\displaystyle \sigma^2_0(T) = \frac{1}{w_0(T)} \sum_{i = 0}^{T}(i-\mu_0(T))^2 h(i)$
 
----
+:::
 
-Class 2
-^^^
+:::{grid-item-card} Class 2
+
 $\displaystyle w_1(T) = \sum_{i = T+1}^{L-1} h(i)$
 
 $\displaystyle \mu_1(T) = \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1} i h(i)$
 
 $\displaystyle \sigma^2_1(T) = \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1}(i-\mu_1(T))^2 h(i)$
 
-````
+:::
+
+::::
 
 The algorithm to determine the value of $T$ that minimize $\sigma_w^2(T)$ is simple:
 the intra-class variance $\sigma_w^2(T)$ is calculated for all the thresholds $T=\{0,\dots,L-1\}$,
@@ -105,7 +107,7 @@ Result of Otsu's segmentation.
 ```
 
 
-## Multiple threshold
+## Multiple thresholds
 
 An image can be segmented in more than two classes by defining or computing several thresholds (see {numref}`F:segmentation:multiple-thresholds`).
 In particular, Otsu's method can be extended to several thresholds,

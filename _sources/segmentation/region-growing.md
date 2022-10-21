@@ -1,6 +1,6 @@
 # Region growing
 
-To do...
+🏗️ To do for next year...
 
 
 <!-- region vs intensity : l'aspect spatiale (voisinage entre pixels) pris en compte

@@ -259,28 +259,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Textures
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/textures.html">
-   Textures
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../textures/outro.html">
-   Conclusion
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Segmentation
  </span>
 </p>
@@ -775,8 +753,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-threshold">
-   Multiple threshold
+  <a class="reference internal nav-link" href="#multiple-thresholds">
+   Multiple thresholds
   </a>
  </li>
 </ul>
@@ -809,8 +787,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiple-threshold">
-   Multiple threshold
+  <a class="reference internal nav-link" href="#multiple-thresholds">
+   Multiple thresholds
   </a>
  </li>
 </ul>
@@ -828,7 +806,7 @@ title="Print to PDF"
 <section id="binary-thresholding">
 <h2>Binary thresholding<a class="headerlink" href="#binary-thresholding" title="Permalink to this headline">#</a></h2>
 <p>A very simple method of segmentation consists in associating with each pixel of the image <span class="math notranslate nohighlight">\(f\)</span>
-a binary number which depends on the intensity of the pixels and on a threshold (french: <em>seuil</em>) <span class="math notranslate nohighlight">\(T\)</span>:</p>
+a binary number which depends on the intensity of the pixels and on a threshold (French: <em>seuil</em>) <span class="math notranslate nohighlight">\(T\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   g(m,n) =
@@ -837,7 +815,7 @@ a binary number which depends on the intensity of the pixels and on a threshold 
     0 &amp; \text{if}\, f(m,n)&lt;T
   \end{cases}
 \end{split}\]</div>
-<p>This method is called “binarization” (french: <em>binarisation</em>).
+<p>This method is called “binarization” (French: <em>binarisation</em>).
 It gives a segmentation into two classes, depending on the intensity of the pixels of a grayscale image
 (<a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 46</span></a>).</p>
 <figure class="align-default" id="f-segmentation-binarization">
@@ -854,7 +832,7 @@ As an example, <a class="reference internal" href="#f-segmentation-binarization-
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">Histogram of <a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 46</span></a> with the two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Now, it would be useful to have an automatic process to define the threshold, whatever the image to segment.
+<p>It would be useful to have an automatic process to define the threshold, whatever the image to segment.
 Otsu’s method is the most famous automatic method for histogram thresholding.</p>
 </section>
 <section id="otsu-s-method">
@@ -865,8 +843,9 @@ Otsu’s method is the most famous automatic method for histogram thresholding.<
 <p><span class="caption-number">Fig. 48 </span><span class="caption-text">An histogram and a threshold <span class="math notranslate nohighlight">\(T\)</span>.</span><a class="headerlink" href="#f-segmentation-otsu-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Each group has a number of pixel <span class="math notranslate nohighlight">\(w_i(T)\)</span> with mean <span class="math notranslate nohighlight">\(\mu_i(T)\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_i^2(T)\)</span>.
-Otsu’s method (1979) computes the threshold <span class="math notranslate nohighlight">\(T\)</span> which minimizes the intra-class variance <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span>
+<p>Each group has a number of pixel <span class="math notranslate nohighlight">\(w_i(T)\)</span> with mean <span class="math notranslate nohighlight">\(\mu_i(T)\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_i^2(T)\)</span>,
+where <span class="math notranslate nohighlight">\(i\)</span> is the group index (0 or 1).
+Otsu’s method [<a class="reference internal" href="outro.html#b-segmentation-otsu1979"><span class="std std-ref">Otsu 1979</span></a>] computes the threshold <span class="math notranslate nohighlight">\(T\)</span> which minimizes the intra-class variance <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span>
 (also known as the within-class variance),
 defined as the weighted mean of the variances of each class:</p>
 <div class="math notranslate nohighlight">
@@ -874,6 +853,32 @@ defined as the weighted mean of the variances of each class:</p>
   \sigma_w^2(T) = w_0(T)\sigma_0^2(T) + w_1(T)\sigma_1^2(T).
 \]</div>
 <p>Considering the intensities to lie in <span class="math notranslate nohighlight">\(\{0,\dots,L-1\}\)</span> and <span class="math notranslate nohighlight">\(h\)</span> the histogram, the variables are defined as below.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Class 1</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle w_0(T) = \sum_{i = 0}^{T} h(i)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle \mu_0(T) = \frac{1}{w_0(T)} \sum_{i = 0}^{T} i h(i)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle \sigma^2_0(T) = \frac{1}{w_0(T)} \sum_{i = 0}^{T}(i-\mu_0(T))^2 h(i)\)</span></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Class 2</div>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle w_1(T) = \sum_{i = T+1}^{L-1} h(i)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle \mu_1(T) = \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1} i h(i)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\displaystyle \sigma^2_1(T) = \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1}(i-\mu_1(T))^2 h(i)\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>The algorithm to determine the value of <span class="math notranslate nohighlight">\(T\)</span> that minimize <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is simple:
 the intra-class variance <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is calculated for all the thresholds <span class="math notranslate nohighlight">\(T=\{0,\dots,L-1\}\)</span>,
 and the one that gives the lowest value for <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is returned.</p>
@@ -885,8 +890,8 @@ and the one that gives the lowest value for <span class="math notranslate nohigh
 </figcaption>
 </figure>
 </section>
-<section id="multiple-threshold">
-<h2>Multiple threshold<a class="headerlink" href="#multiple-threshold" title="Permalink to this headline">#</a></h2>
+<section id="multiple-thresholds">
+<h2>Multiple thresholds<a class="headerlink" href="#multiple-thresholds" title="Permalink to this headline">#</a></h2>
 <p>An image can be segmented in more than two classes by defining or computing several thresholds (see <a class="reference internal" href="#f-segmentation-multiple-thresholds"><span class="std std-numref">Fig. 50</span></a>).
 In particular, Otsu’s method can be extended to several thresholds,
 but the computational complexity (hence the computation time) increases greatly with the number of classes!</p>
