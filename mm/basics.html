@@ -833,8 +833,9 @@ title="Print to PDF"
 <h1>Basic operators<a class="headerlink" href="#basic-operators" title="Permalink to this headline">#</a></h1>
 <section id="dilation">
 <span id="mm-dilation"></span><h2>Dilation<a class="headerlink" href="#dilation" title="Permalink to this headline">#</a></h2>
-<p>Having an image <span class="math notranslate nohighlight">\(I\)</span> and a structuring element <span class="math notranslate nohighlight">\(E_c\)</span>, the dilation of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \oplus E_c\)</span>.
-The result of the dilation (french: <em>dilatation</em>) is obtained by moving the origin of the structuring element onto the white pixels of the image
+<p>Having an image <span class="math notranslate nohighlight">\(I\)</span> and a structuring element <span class="math notranslate nohighlight">\(E_c\)</span>, the dilation (french: <em>dilatation</em>)
+of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \oplus E_c\)</span>.
+The result of the dilation is obtained by moving the origin of the structuring element onto the white pixels of the image
 and keeping the set of pixels of each displaced structuring element.</p>
 <p>Mathematically speaking:</p>
 <div class="math notranslate nohighlight">
@@ -869,12 +870,12 @@ Therefore, it cannot be expressed as convolution which is a linear mathematical 
 \[
     (I \oplus  E_1 ) \oplus  E_2 = (I \oplus  E_2) \oplus  E_1 = I \oplus  (E_1 \oplus E_2)
   \]</div>
-<p>(here, the subscripts 1 and 2 means two different structuring elements.)</p>
+<p>(here, the subscripts 1 and 2 mean two different structuring elements.)</p>
 </li>
 <li><p>Dilation is a monotonous operation since the relations of inclusions are conserved:</p>
 <div class="math notranslate nohighlight">
 \[
-    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \oplus E_c \subseteq I_2 \oplus E_c
+    I_1 \subseteq I_2  \quad\Rightarrow\quad  I_1 \oplus E_c \subseteq I_2 \oplus E_c
   \]</div>
 </li>
 </ul>
@@ -882,8 +883,8 @@ Therefore, it cannot be expressed as convolution which is a linear mathematical 
 </section>
 <section id="erosion">
 <span id="mm-erosion"></span><h2>Erosion<a class="headerlink" href="#erosion" title="Permalink to this headline">#</a></h2>
-<p>The erosion of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \ominus E_c\)</span>.
-The result of the erosion (french: <em>érosion</em>) is obtained by moving the structuring element into the white pixels of the image
+<p>The erosion (french: <em>érosion</em>) of <span class="math notranslate nohighlight">\(I\)</span> by <span class="math notranslate nohighlight">\(E_c\)</span> is noted <span class="math notranslate nohighlight">\(I \ominus E_c\)</span>.
+The result of the erosion is obtained by moving the structuring element into the white pixels of the image
 and keeping only the origin of each displaced structuring element.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -911,7 +912,7 @@ whose structuring element is the <em>dilation</em> of the two first structuring 
 <li><p>Erosion is a monotonous operation:</p>
 <div class="math notranslate nohighlight">
 \[
-    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \ominus E \subseteq I_2 \ominus E
+    I_1 \subseteq I_2  \quad\Rightarrow\quad  I_1 \ominus E \subseteq I_2 \ominus E
   \]</div>
 </li>
 </ul>

@@ -33,7 +33,7 @@ The algorithm is given below.
 ::::{grid} 1 1 1 1
 :gutter: 3
 
-:::{grid-item-card} Algorithm: K-Means
+:::{grid-item-card} Algorithm: K-means
 1. Initialize (randomly) the $K$ centroids
 1. While the centroids vary:
    1. {bdg-info-line}`STEP A` For each point:
@@ -43,6 +43,10 @@ The algorithm is given below.
 :::
 
 ::::
+
+```{margin}
+[A funny illustration of the K-means algorithm](https://allisonhorst.com/k-means-clustering).
+```
 
 {numref}`F:segmentation:kmeans-algo` illustrate this algorithm,
 in the simple case of an image with two bands (hence the two-dimensional space)

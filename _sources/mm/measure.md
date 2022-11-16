@@ -1,7 +1,8 @@
 (mm:measure)=
 # Measure
 
-It is possible to measure geometric characteristics of the objects in a binary image, as the area or position.
+It is possible to measure the geometric characteristics of the objects in a binary image,
+such as the area or position.
 In scikit-image, the most common properties are implemented in `skimage.measure`, especially in the function `regionprops`.
 This section list some of them, as an example of possibilities.
 
@@ -11,6 +12,7 @@ This section list some of them, as an example of possibilities.
 :width: 500px
 :align: center
 ```
+<br />
 
 Area of an object is the number of pixels of this object.
 The larger the object and the fewer holes it contains, the larger the area.
@@ -21,6 +23,7 @@ The larger the object and the fewer holes it contains, the larger the area.
 :width: 500px
 :align: center
 ```
+<br />
 
 The bounding box (french: _boîte englobante_) is the smallest rectangle that contains the object.
 
@@ -30,6 +33,7 @@ The bounding box (french: _boîte englobante_) is the smallest rectangle that co
 :width: 500px
 :align: center
 ```
+<br />
 
 The centroid is the centre of gravity of the object.
 It can be outside the object.
@@ -40,9 +44,10 @@ It can be outside the object.
 :width: 500px
 :align: center
 ```
+<br />
 
 Eccentricity measures the elongation, or stretching, of the object, as it would be an ellipse.
-It is a positive value, where 0 correspond ot a round object.
+It is a positive value, where 0 corresponds ot a round object.
 
 ## Solidity
 
@@ -50,6 +55,7 @@ It is a positive value, where 0 correspond ot a round object.
 :width: 500px
 :align: center
 ```
+<br />
 
 Solidity is the ratio of pixels in the objects to pixels of the [convex hull](https://en.wikipedia.org/wiki/Convex_hull) image.
 It gives a measure of the compactness of the object.

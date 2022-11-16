@@ -806,7 +806,7 @@ as in <a class="reference internal" href="#mm-mickey"><span class="std std-numre
 </figcaption>
 </figure>
 <p>The basic operators of mathematical morphology, namely <a class="reference internal" href="basics.html#mm-dilation"><span class="std std-ref">dilation</span></a> and <a class="reference internal" href="basics.html#mm-erosion"><span class="std std-ref">erosion</span></a> are first presented.
-The combination of these two operators allows defining <a class="reference internal" href="composition.html#mm-opening"><span class="std std-ref">opening</span></a>, <a class="reference internal" href="composition.html#mm-closing"><span class="std std-ref">closing</span></a>
+The combination of these two operators allows the definition of new operators, namely <a class="reference internal" href="composition.html#mm-opening"><span class="std std-ref">opening</span></a>, <a class="reference internal" href="composition.html#mm-closing"><span class="std std-ref">closing</span></a>
 and the <a class="reference internal" href="composition.html#mm-hit-or-miss"><span class="std std-ref">hit-or-miss transform</span></a>.
 A comparison of the operators is then presented.
 At last, we deal with <a class="reference internal" href="measure.html#mm-measure"><span class="std std-ref">measuring the geometric characteristics</span></a> of binary objects.</p>
@@ -816,6 +816,40 @@ At last, we deal with <a class="reference internal" href="measure.html#mm-measur
 <p>We also consider that the objects in the image define a set of pixels,
 so mathematical morphology can use the usual operations on sets, listed below.
 Consider <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as two sets.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>Set <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<figure class="align-default">
+<img alt="../_images/set-A.png" src="../_images/set-A.png" />
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>Set <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<figure class="align-default">
+<img alt="../_images/set-B.png" src="../_images/set-B.png" />
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>complement</strong> of <span class="math notranslate nohighlight">\(A\)</span> is denoted <span class="math notranslate nohighlight">\(A^\mathrm{c}\)</span> and is the set of pixels that are not in <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[A^\mathrm{c} = \{p \notin A \}\]</div>
+<figure class="align-default">
+<img alt="../_images/set-complement.png" src="../_images/set-complement.png" />
+</figure>
+<p>The <strong>union</strong> <span class="math notranslate nohighlight">\(A \cup B\)</span> is the set of pixels present in <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> or both:</p>
+<div class="math notranslate nohighlight">
+\[A \cup B = \{p \in A \, \mathrm{or} \, p \in B \}\]</div>
+<figure class="align-default">
+<img alt="../_images/set-union.png" src="../_images/set-union.png" />
+</figure>
+<p>The <strong>intersection</strong> <span class="math notranslate nohighlight">\(A \cap B\)</span> is the set of pixels present simultaneously in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[A \cap B = \{p \in A \, \mathrm{and} \, p \in B \}\]</div>
+<figure class="align-default">
+<img alt="../_images/set-intersection.png" src="../_images/set-intersection.png" />
+</figure>
 </section>
 <section id="structuring-element">
 <h2>Structuring element<a class="headerlink" href="#structuring-element" title="Permalink to this headline">#</a></h2>

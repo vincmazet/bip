@@ -13,12 +13,13 @@ implement a first version of the method which gives an approximate result automa
 ```
 
 * Apply a threshold on the image to highlight the pools.
-  Ask yourself about which image to use: the original image, the grayscale image, a particular band something else?
+  Ask yourself about which image to use: the original image, the grayscale image, a particular band or something else?
 
 * Apply the four usual morphological operators (erosion, dilation, opening, closing)
   to observe their influence and deduce the one most suited to the problem.
 
-* By using appropriate measures, classify the regions given in the image to determine the number of pools.
+* By using appropriate measures, identify the objects in the binary images which should correspond to pools,
+  and count them.
 
 * Determine the surface of the pools, knowing that the image is of resolution 50 cm.
 

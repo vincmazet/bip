@@ -4,8 +4,9 @@
 (mm:dilation)=
 ## Dilation
 
-Having an image $I$ and a structuring element $E_c$, the dilation of $I$ by $E_c$ is noted $I \oplus E_c$.
-The result of the dilation (french: _dilatation_) is obtained by moving the origin of the structuring element onto the white pixels of the image
+Having an image $I$ and a structuring element $E_c$, the dilation (french: _dilatation_)
+of $I$ by $E_c$ is noted $I \oplus E_c$.
+The result of the dilation is obtained by moving the origin of the structuring element onto the white pixels of the image
 and keeping the set of pixels of each displaced structuring element.
 
 Mathematically speaking:
@@ -48,20 +49,20 @@ Note that the matrix does not consider the zero pixels surrounding the main part
     (I \oplus  E_1 ) \oplus  E_2 = (I \oplus  E_2) \oplus  E_1 = I \oplus  (E_1 \oplus E_2)
   $$
   
-  (here, the subscripts 1 and 2 means two different structuring elements.)
+  (here, the subscripts 1 and 2 mean two different structuring elements.)
 
 * Dilation is a monotonous operation since the relations of inclusions are conserved:
 
   $$
-    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \oplus E_c \subseteq I_2 \oplus E_c
+    I_1 \subseteq I_2  \quad\Rightarrow\quad  I_1 \oplus E_c \subseteq I_2 \oplus E_c
   $$
 
 
 (mm:erosion)=
 ## Erosion
 
-The erosion of $I$ by $E_c$ is noted $I \ominus E_c$.
-The result of the erosion (french: _érosion_) is obtained by moving the structuring element into the white pixels of the image
+The erosion (french: _érosion_) of $I$ by $E_c$ is noted $I \ominus E_c$.
+The result of the erosion is obtained by moving the structuring element into the white pixels of the image
 and keeping only the origin of each displaced structuring element.
 
 $$
@@ -94,7 +95,7 @@ Erosion has similar properties as dilation.
 * Erosion is a monotonous operation:
 
   $$
-    I_1 \subseteq I_2  \;\Rightarrow\;  I_1 \ominus E \subseteq I_2 \ominus E
+    I_1 \subseteq I_2  \quad\Rightarrow\quad  I_1 \ominus E \subseteq I_2 \ominus E
   $$
 
 

@@ -67,6 +67,8 @@ It is the intersection of the two sets given by:
 
 with $E_1 \cap E_2 = \varnothing$ (the structuring elements must be disjointed).
 
+The hit-or-miss transform by the two structuring elements $E_1$ and $E_2$ is noted $I \otimes (E_1, E_2)$:
+
 $$
    I \otimes (E_1, E_2)
    &= (I \ominus E_1) \cap (I^\mathrm{c} \ominus E_2) \\
@@ -77,8 +79,8 @@ $$
 ---
 name: hit-or-miss
 ---
-Example of a hit-or-miss transform applied on image $I$ by the structuring elements $E_1$ and $E_2$.
-The origins of the structuring elements are marked by a blue dot.
+Example of a hit-or-miss transform applied on the image $I$ by the structuring elements $E_1$ and $E_2$.
+The origins of the structuring elements are marked by the blue and green dots.
 ```
 
 Sometimes, the two structuring elements are combined into a single structuring element whose pixels have the following values:

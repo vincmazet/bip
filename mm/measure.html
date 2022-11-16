@@ -821,35 +821,41 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="measure">
 <span id="mm-measure"></span><h1>Measure<a class="headerlink" href="#measure" title="Permalink to this headline">#</a></h1>
-<p>It is possible to measure geometric characteristics of the objects in a binary image, as the area or position.
+<p>It is possible to measure the geometric characteristics of the objects in a binary image,
+such as the area or position.
 In scikit-image, the most common properties are implemented in <code class="docutils literal notranslate"><span class="pre">skimage.measure</span></code>, especially in the function <code class="docutils literal notranslate"><span class="pre">regionprops</span></code>.
 This section list some of them, as an example of possibilities.</p>
 <section id="area">
 <h2>Area<a class="headerlink" href="#area" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/prop-area.svg"><img alt="../_images/prop-area.svg" class="align-center" src="../_images/prop-area.svg" width="500px" /></a>
+<br />
 <p>Area of an object is the number of pixels of this object.
 The larger the object and the fewer holes it contains, the larger the area.</p>
 </section>
 <section id="bounding-box">
 <h2>Bounding box<a class="headerlink" href="#bounding-box" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/prop-bbox.svg"><img alt="../_images/prop-bbox.svg" class="align-center" src="../_images/prop-bbox.svg" width="500px" /></a>
+<br />
 <p>The bounding box (french: <em>boîte englobante</em>) is the smallest rectangle that contains the object.</p>
 </section>
 <section id="centroid">
 <h2>Centroid<a class="headerlink" href="#centroid" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/prop-centroid.svg"><img alt="../_images/prop-centroid.svg" class="align-center" src="../_images/prop-centroid.svg" width="500px" /></a>
+<br />
 <p>The centroid is the centre of gravity of the object.
 It can be outside the object.</p>
 </section>
 <section id="eccentricity">
 <h2>Eccentricity<a class="headerlink" href="#eccentricity" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/prop-eccentricity.svg"><img alt="../_images/prop-eccentricity.svg" class="align-center" src="../_images/prop-eccentricity.svg" width="500px" /></a>
+<br />
 <p>Eccentricity measures the elongation, or stretching, of the object, as it would be an ellipse.
-It is a positive value, where 0 correspond ot a round object.</p>
+It is a positive value, where 0 corresponds ot a round object.</p>
 </section>
 <section id="solidity">
 <h2>Solidity<a class="headerlink" href="#solidity" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/prop-solidity.svg"><img alt="../_images/prop-solidity.svg" class="align-center" src="../_images/prop-solidity.svg" width="500px" /></a>
+<br />
 <p>Solidity is the ratio of pixels in the objects to pixels of the <a class="reference external" href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a> image.
 It gives a measure of the compactness of the object.</p>
 </section>
