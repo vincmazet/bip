@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Denoising + Deconvolution" href="cor6.html" />
+    <link rel="next" title="Denoising" href="cor61.html" />
     <link rel="prev" title="Mathematical morphology" href="cor5.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -542,8 +542,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="cor6.html">
-     Denoising + Deconvolution
+    <a class="reference internal" href="cor61.html">
+     Denoising
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cor62.html">
+     Deconvolution
     </a>
    </li>
   </ul>
@@ -746,6 +751,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#denoising">
    Denoising
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-noisy-image">
+     Creation of a noisy image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoising-the-noisy-image">
+     Denoising the noisy image
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deconvolution">
@@ -775,6 +792,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#denoising">
    Denoising
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-a-noisy-image">
+     Creation of a noisy image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#denoising-the-noisy-image">
+     Denoising the noisy image
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deconvolution">
@@ -795,32 +824,34 @@ title="Print to PDF"
 <span id="labs-lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this headline">#</a></h1>
 <section id="denoising">
 <h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h2>
-<p>This exercise is intended to evaluate the performances of a denoising method of your choice.
-Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).</p>
+<p>This exercise is intended to evaluate the performances of the denoising method of your choice.
+Therefore it is first essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
+Then, the denoising method will be evaluated.</p>
+<section id="creation-of-a-noisy-image">
+<h3>Creation of a noisy image<a class="headerlink" href="#creation-of-a-noisy-image" title="Permalink to this headline">#</a></h3>
 <ul>
-<li><p>Load an image of your choice (your favourite pet, your best party or an image of the former labs).</p>
+<li><p>Recall the mathematical definition of SNR.</p></li>
+<li><p>Express the power of the noise in terms of SNR.</p></li>
+<li><p>In the case of an AWGN,
+the power of the noise is a good estimation of the variance of the Gaussian.
+Express the Gaussian variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> in terms of SNR.</p></li>
+<li><p>Add noise to the image of your choice then check that the noise level corresponds to the expected SNR.
+For example, noise should be barely visible above 30 dB.
+On the contrary, the image should be difficult to discern below 0 dB.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>. So you may need to convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.</p></li>
+<li><p>Be careful to work with <code class="docutils literal notranslate"><span class="pre">floats</span></code>. You may need to convert your image with <code class="docutils literal notranslate"><span class="pre">.astype(float)</span></code>.</p></li>
 <li><p>For convenience, it is recommended to use an image of size less than 1000×1000. Use <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> to reduce the image size.</p></li>
-<li><p>Also, use a grayscale image (<code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>).</p></li>
+<li><p>Use a grayscale image (<code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>).</p></li>
+<li><p>the noise can be created by using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code> with parameter <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> to get a real Gaussian noise.</p></li>
 </ul>
 </div>
 </li>
-<li><p>We consider the case of an AWGN.
-Express the Gaussian variance <span class="math notranslate nohighlight">\(\sigma^2 \)</span> in terms of SNR.
-Recall that the variance of a Gaussian process <span class="math notranslate nohighlight">\(b\)</span> is very well estimated by its power</p>
-<div class="math notranslate nohighlight">
-\[
-  \frac{1}{MN}\sum_{m,n} b(m,n)^2.
-  \]</div>
-</li>
-<li><p>Add noise to the image (<code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>),
-then check that the noise level corresponds to the expected SNR.
-For example, noise should be barely visible above 30 dB,
-on the contrary, the image should be difficult to discern below 0 dB.</p></li>
 </ul>
+</section>
+<section id="denoising-the-noisy-image">
+<h3>Denoising the noisy image<a class="headerlink" href="#denoising-the-noisy-image" title="Permalink to this headline">#</a></h3>
 <p>Now that you dispose of a noisy image and its noiseless version,
 you can implement the denoising method you have chosen.</p>
 <p>If you choose a mean filter, use <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> to filter by a square PSF of size <code class="docutils literal notranslate"><span class="pre">w</span></code> generated as follows:</p>
@@ -839,6 +870,7 @@ what is the optimal value of this parameter?
 Can you adjust the parameter by knowing the SNR of the image?</p></li>
 <li><p>Compare your method with the one implemented by another student.</p></li>
 </ul>
+</section>
 </section>
 <section id="deconvolution">
 <h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h2>
@@ -864,7 +896,7 @@ that is the image <span class="math notranslate nohighlight">\(x\)</span> is ass
 </aside>
 </li>
 <li><p>Perform the convolution of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(h\)</span> to obtain the image <span class="math notranslate nohighlight">\(y\)</span>.
-To do this, use the function <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.filters.convolve</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">mode=&quot;wrap&quot;</span></code> so that the convolution is circular</p></li>
+To do this, use the function <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.filters.convolve</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">mode=&quot;wrap&quot;</span></code> so that the convolution is circular.</p></li>
 <li><p>Apply the inverse filter on <span class="math notranslate nohighlight">\(y\)</span> to get an estimate <span class="math notranslate nohighlight">\(\widehat{x} \)</span> of <span class="math notranslate nohighlight">\(x\)</span>.
 What do you see?</p></li>
 <li><p>Add a small noise to the blurred image, then apply the inverse filter again.
@@ -917,10 +949,10 @@ Do you agree that it is actually the best value when you look at the estimation?
             <p class="prev-next-title">Mathematical morphology</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="cor6.html" title="next page">
+    <a class='right-next' id="next-link" href="cor61.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Denoising + Deconvolution</p>
+        <p class="prev-next-title">Denoising</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -718,12 +718,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -735,6 +759,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -753,14 +790,44 @@ the most common model (because the simplest) being additive white Gaussian noise
 <li><p>the filtering of certain areas of the spectrum in the case of periodic noise.</p></li>
 </ul>
 <p>Many other methods exist, for example, regularization (we have seen the TV regularization, but others are possible),
-wavelet approaches, statistical approaches, non-local means [Buades et al. 2005]
+wavelet approaches, statistical approaches, non-local means [<a class="reference internal" href="#b-segmentation-buades2005"><span class="std std-ref">Buades et al. 2005</span></a>]
 or deep learning methods.
 These methods are more complex than the usual denoising approach detailed in this chapter but are more efficient.</p>
 <p>Besides, deconvolution consists of inverting the (generally low-pass) filtering of an observed image.
 The inverse filter generally does not work because it tends to increase the noise present in the image.
 Wiener filter remains the simplest deconvolution method and can give an acceptable result.
-Many other methods have been developed, such as the Richardson-Lucy algorithm [Richardson 1972, Lucy 1974] or Bayesian methods.</p>
-<!-- MAP Contrained least squares --></section>
+Many other methods have been developed, such as the Richardson-Lucy algorithm
+[<a class="reference internal" href="#b-segmentation-richardson1972"><span class="std std-ref">Richardson 1972</span></a>, <a class="reference internal" href="#b-segmentation-lucy1974"><span class="std std-ref">Lucy 1974</span></a>]
+or Bayesian methods.</p>
+<!-- MAP Contrained least squares -->
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p id="b-segmentation-buades2005">A. Buades, B. Coll, J.-M. Morel,
+“A non-local algorithm for image denoising”,
+CVPR, 2005.</p>
+</li>
+<li><p id="b-segmentation-chambolle2004">A. Chambolle,
+“An Algorithm for Total Variation Minimization and Applications”,
+<em>Journal of Mathematical Imaging and Vision</em>,
+vol. 20, p. 89–97, 2004.</p>
+</li>
+<li><p id="b-segmentation-lucy1974">L.B. Lucy,
+“An iterative technique for the rectification of observed distributions”,
+<em>Astronomical Journal</em>, vol. 79, no 6, p. 745–754, 1974.</p>
+</li>
+<li><p id="b-segmentation-richardson1972">W.H. Richardson,
+“Bayesian-based iterative method of image restoration”,
+<em>Journal of the Optical Society of America</em>, vol. 62, no 1, p. 55–59, 1972.</p>
+</li>
+<li><p id="b-segmentation-rudin1992">L.I. Rudin, S. Osher, E. Fatemi,
+“Nonlinear total variation based noise removal algorithms”,
+<em>Physica D</em>,
+vol. 60, no. 1–4, p. 259–268, 1992.</p>
+</li>
+</ul>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

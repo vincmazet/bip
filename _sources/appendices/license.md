@@ -48,6 +48,13 @@ Free license.
 :::
 
 
+:::{grid-item-card} ![](../_static/figs/ganymede.png)
+&copy; [NASA](https://www.nasa.gov/multimedia/guidelines/index.html), 2021.
+NASA content generally are not copyrighted.
+[Original picture](https://hubblesite.org/contents/media/images/2021/033/01FAK2DXF2Q733DN8JYEFZQZTF?Topic=101-solar-system).
+:::
+
+
 :::{grid-item-card} ![](../_static/figs/hdfs.png)
 Bacon _et al._, "The MUSE 3D view of the Hubble Deep Field South", A&A, 575 (2015)
 [Original picture](http://muse-vlt.eu/science/hdfs-v1-0/).

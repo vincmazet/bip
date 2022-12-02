@@ -9,7 +9,7 @@ We start this section by listing the most common noise models, then we present s
 (denoising:noise-sources)=
 ## Noise sources
 
-The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature ...)
+The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature...)
 or during any transmission (echoes and atmospheric distortions in wireless communication).
 In some cases, noise is also considered to model the inaccuracies in the mathematical model of image formation,
 the latter being necessarily different compared to reality, like any physical model!
@@ -70,7 +70,8 @@ Poisson distribution for three values of $\lambda$.
 The mean and variance of the Poisson distribution are both equal $\lambda$, which depends on the number of incident photons.
 So, the noise $b$ depends on the noiseless image $x$.
 Moreover, when $\lambda$ increases, the Poisson distribution tends towards a Gaussian distribution,
-implying that AWGN becomes a good model of whether enough photons are collected.
+implying that AWGN becomes a good model of Poisson noise,
+provided that enough photons are collected.
 ````
 
 <!-- speckle noise (different from a fish noise) -->
@@ -78,7 +79,7 @@ implying that AWGN becomes a good model of whether enough photons are collected.
 
 ### Salt-and-pepper noise
 
-Salt-and-pepper noise (French: _bruit poivre et sel_), also called less poetically impulse noise, 
+Salt-and-pepper noise (French: _bruit poivre et sel_), also called less poetically _impulse noise_, 
 models saturated or dead pixels (due to photosites malfunction or saturation).
 
 $$
@@ -134,7 +135,7 @@ $$
 <!-- TODO : pourquoi introduire le PSNR ? -->
 
 {numref}`F:denoising:snr-psnr` represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
-As you can see, when the RSB or the PSNR increases, then the noise decreases!
+As you can see, when the RSB or the PSNR increases, the noise decreases!
 
 ```{figure} snr-psnr.svg
 ---
@@ -146,7 +147,7 @@ Noisy image at different RSB and PSNR.
 
 ## Mean filter
 
-The mean filter (French: _filtre moyenneur_) is a very simple method.
+The mean filter (French: _filtre moyenneur_) is a very simple denoising method.
 Each pixel $(m,n)$ of the denoised image $\widehat{x}$ is the average of the pixels of the noisy image $y$ around $(m,n)$:
 
 $$
@@ -155,7 +156,7 @@ $$
 $$
 
 where
-* $V_{m,n}$ is the neighborhood, that is the set of pixels are around $(m,n)$;
+* $V_{m,n}$ is the neighborhood, that is the set of pixels around $(m,n)$;
 * $|V_{m,n}| $ is the cardinality of $V_{m,n}$, that is, the number of pixels in the neighborhood.
 
 {numref}`F:denoising:mean-filter-size` illustrates the effect of the mean filter for different sizes of the neighbourhood.
@@ -254,7 +255,8 @@ the image is cleaned of periodic image artifacts.
 
 From a certain point of view, the goal of denoising is to obtain an image $\widehat{x}$
 not only with small variations in intensity between pixels but also close to the observation $y$.
-TV regularization (_total variation_, French: _variation totale_) [Rudin et al. 1992, Chambolle 2004]
+TV regularization (_total variation_, French: _variation totale_)
+[[Rudin et al. 1992](B:segmentation:Rudin1992), [Chambolle 2004](B:segmentation:Chambolle2004)]
 is a denoising method that describes these two objectives by mathematical functions (the so-called "criteria").
 
 * The wish to have a denoised image $\widehat{x}$ close to the observation $y$ results in a "data-fit" criterion
@@ -264,6 +266,9 @@ is a denoising method that describes these two objectives by mathematical functi
   $$
   E(x,y) = \sum_{m,n} \left(y(m,n)-x(m,n)\right)^2
   $$
+  
+  Indeed, for $E$ to decrease, we must find an image $x$ close to $y$.
+  <br />
 
 * The desire to have an image with small variations in intensity results in
   a "regularization" criterion (French: _critère de régularisation_)
@@ -273,6 +278,9 @@ is a denoising method that describes these two objectives by mathematical functi
   $$
   R(x) = \sum_{m,n} \left|x(m+1,n)-x(m,n)\right| + \sum_{m,n} \left|x(m,n+1)-x(m,n)\right|
   $$
+  
+  So, for $R$ to decrease, the difference between two consecutive pixels, whether there are in row or in column, must be small.
+  This implies the image $x$ to be nearly constant in intensity.
 
 The goal is then to find the image $x$ which minimizes both the data-fit and the regularization.
 Mathematically, one look for the image $x$ which minimizes $E(x,y) + \lambda R(x)$,

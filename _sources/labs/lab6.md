@@ -4,29 +4,32 @@
 
 ## Denoising
 
-This exercise is intended to evaluate the performances of a denoising method of your choice.
-Therefore it is essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
+This exercise is intended to evaluate the performances of the denoising method of your choice.
+Therefore it is first essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
+Then, the denoising method will be evaluated.
 
-* Load an image of your choice (your favourite pet, your best party or an image of the former labs).
+### Creation of a noisy image
+  
+* Recall the mathematical definition of SNR.
+
+* Express the power of the noise in terms of SNR.
+  
+* In the case of an AWGN,
+  the power of the noise is a good estimation of the variance of the Gaussian.
+  Express the Gaussian variance $\sigma^2$ in terms of SNR.
+
+* Add noise to the image of your choice then check that the noise level corresponds to the expected SNR.
+  For example, noise should be barely visible above 30 dB.
+  On the contrary, the image should be difficult to discern below 0 dB.
 
   ```{note}
-  * Be careful to work with `floats`. So you may need to convert your image with `.astype(float)`.
+  * Be careful to work with `floats`. You may need to convert your image with `.astype(float)`.
   * For convenience, it is recommended to use an image of size less than 1000×1000. Use `skimage.transform.rescale` to reduce the image size.
-  * Also, use a grayscale image (`skimage.color.rgb2gray`).
+  * Use a grayscale image (`skimage.color.rgb2gray`).
+  * the noise can be created by using `skimage.util.random_noise` with parameter `clip=False` to get a real Gaussian noise.
   ```
 
-* We consider the case of an AWGN.
-  Express the Gaussian variance $\sigma^2 $ in terms of SNR.
-  Recall that the variance of a Gaussian process $b$ is very well estimated by its power
-  
-  $$
-  \frac{1}{MN}\sum_{m,n} b(m,n)^2.
-  $$
-
-* Add noise to the image (`skimage.util.random_noise`),
-  then check that the noise level corresponds to the expected SNR.
-  For example, noise should be barely visible above 30 dB,
-  on the contrary, the image should be difficult to discern below 0 dB.
+### Denoising the noisy image
 
 Now that you dispose of a noisy image and its noiseless version,
 you can implement the denoising method you have chosen.
@@ -76,7 +79,7 @@ If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
   ```
   
 * Perform the convolution of $x$ by $h$ to obtain the image $y$.
-  To do this, use the function `scipy.ndimage.filters.convolve` with the argument `mode="wrap"` so that the convolution is circular
+  To do this, use the function `scipy.ndimage.filters.convolve` with the argument `mode="wrap"` so that the convolution is circular.
   
 * Apply the inverse filter on $y$ to get an estimate $\widehat{x} $ of $x$.
   What do you see?

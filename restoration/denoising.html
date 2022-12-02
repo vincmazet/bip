@@ -872,7 +872,7 @@ Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.</p>
 <section id="noise-sources">
 <span id="denoising-noise-sources"></span><h2>Noise sources<a class="headerlink" href="#noise-sources" title="Permalink to this headline">#</a></h2>
-<p>The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature …)
+<p>The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature…)
 or during any transmission (echoes and atmospheric distortions in wireless communication).
 In some cases, noise is also considered to model the inaccuracies in the mathematical model of image formation,
 the latter being necessarily different compared to reality, like any physical model!</p>
@@ -920,13 +920,14 @@ The intensity of each pixel <span class="math notranslate nohighlight">\((m,n)\)
 <p>The mean and variance of the Poisson distribution are both equal <span class="math notranslate nohighlight">\(\lambda\)</span>, which depends on the number of incident photons.
 So, the noise <span class="math notranslate nohighlight">\(b\)</span> depends on the noiseless image <span class="math notranslate nohighlight">\(x\)</span>.
 Moreover, when <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the Poisson distribution tends towards a Gaussian distribution,
-implying that AWGN becomes a good model of whether enough photons are collected.</p>
+implying that AWGN becomes a good model of Poisson noise,
+provided that enough photons are collected.</p>
 </div>
 <!-- speckle noise (different from a fish noise) -->
 </section>
 <section id="salt-and-pepper-noise">
 <h3>Salt-and-pepper noise<a class="headerlink" href="#salt-and-pepper-noise" title="Permalink to this headline">#</a></h3>
-<p>Salt-and-pepper noise (French: <em>bruit poivre et sel</em>), also called less poetically impulse noise,
+<p>Salt-and-pepper noise (French: <em>bruit poivre et sel</em>), also called less poetically <em>impulse noise</em>,
 models saturated or dead pixels (due to photosites malfunction or saturation).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -975,7 +976,7 @@ the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of th
 \]</div>
 <!-- TODO : pourquoi introduire le PSNR ? -->
 <p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 67</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
-As you can see, when the RSB or the PSNR increases, then the noise decreases!</p>
+As you can see, when the RSB or the PSNR increases, the noise decreases!</p>
 <figure class="align-default" id="f-denoising-snr-psnr">
 <img alt="../_images/snr-psnr.svg" src="../_images/snr-psnr.svg" /><figcaption>
 <p><span class="caption-number">Fig. 67 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
@@ -985,7 +986,7 @@ As you can see, when the RSB or the PSNR increases, then the noise decreases!</p
 </section>
 <section id="mean-filter">
 <h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">#</a></h2>
-<p>The mean filter (French: <em>filtre moyenneur</em>) is a very simple method.
+<p>The mean filter (French: <em>filtre moyenneur</em>) is a very simple denoising method.
 Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the denoised image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> is the average of the pixels of the noisy image <span class="math notranslate nohighlight">\(y\)</span> around <span class="math notranslate nohighlight">\((m,n)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -994,7 +995,7 @@ Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the de
 \]</div>
 <p>where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(V_{m,n}\)</span> is the neighborhood, that is the set of pixels are around <span class="math notranslate nohighlight">\((m,n)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{m,n}\)</span> is the neighborhood, that is the set of pixels around <span class="math notranslate nohighlight">\((m,n)\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(|V_{m,n}| \)</span> is the cardinality of <span class="math notranslate nohighlight">\(V_{m,n}\)</span>, that is, the number of pixels in the neighborhood.</p></li>
 </ul>
 <p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 68</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
@@ -1077,7 +1078,8 @@ the image is cleaned of periodic image artifacts.</span><a class="headerlink" hr
 <h2>TV regularization<a class="headerlink" href="#tv-regularization" title="Permalink to this headline">#</a></h2>
 <p>From a certain point of view, the goal of denoising is to obtain an image <span class="math notranslate nohighlight">\(\widehat{x}\)</span>
 not only with small variations in intensity between pixels but also close to the observation <span class="math notranslate nohighlight">\(y\)</span>.
-TV regularization (<em>total variation</em>, French: <em>variation totale</em>) [Rudin et al. 1992, Chambolle 2004]
+TV regularization (<em>total variation</em>, French: <em>variation totale</em>)
+[<a class="reference internal" href="outro.html#b-segmentation-rudin1992"><span class="std std-ref">Rudin et al. 1992</span></a>, <a class="reference internal" href="outro.html#b-segmentation-chambolle2004"><span class="std std-ref">Chambolle 2004</span></a>]
 is a denoising method that describes these two objectives by mathematical functions (the so-called “criteria”).</p>
 <ul>
 <li><p>The wish to have a denoised image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> close to the observation <span class="math notranslate nohighlight">\(y\)</span> results in a “data-fit” criterion
@@ -1087,6 +1089,8 @@ A classic choice to measure this difference is the least-squares criterion:</p>
 \[
   E(x,y) = \sum_{m,n} \left(y(m,n)-x(m,n)\right)^2
   \]</div>
+<p>Indeed, for <span class="math notranslate nohighlight">\(E\)</span> to decrease, we must find an image <span class="math notranslate nohighlight">\(x\)</span> close to <span class="math notranslate nohighlight">\(y\)</span>.
+<br /></p>
 </li>
 <li><p>The desire to have an image with small variations in intensity results in
 a “regularization” criterion (French: <em>critère de régularisation</em>)
@@ -1096,6 +1100,8 @@ A simple choice is the “total variation”:</p>
 \[
   R(x) = \sum_{m,n} \left|x(m+1,n)-x(m,n)\right| + \sum_{m,n} \left|x(m,n+1)-x(m,n)\right|
   \]</div>
+<p>So, for <span class="math notranslate nohighlight">\(R\)</span> to decrease, the difference between two consecutive pixels, whether there are in row or in column, must be small.
+This implies the image <span class="math notranslate nohighlight">\(x\)</span> to be nearly constant in intensity.</p>
 </li>
 </ul>
 <p>The goal is then to find the image <span class="math notranslate nohighlight">\(x\)</span> which minimizes both the data-fit and the regularization.

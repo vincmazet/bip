@@ -6,7 +6,7 @@ For example, some images present a camera shake effect ({numref}`F:deconvolution
 or a blur due to poor focus ({numref}`F:deconvolution:example-blur`).
 The goal of deconvolution is to cancel the effect of a convolution.
 
-```{figure} budapest.png
+```{figure} budapest.jpg
 ---
 width: 400px
 name: F:deconvolution:example-motion
@@ -14,13 +14,15 @@ name: F:deconvolution:example-motion
 Example of motion blur (parliament of Budapest shoot by a camera).
 ```
 
-```{figure} rosetta.jpg
+```{figure} ganymede.png
 ---
 width: 300px
 name: F:deconvolution:example-blur
 ---
-Example of poor focus blur (Rosetta spacecraft last image).
+Hubble's view of Ganymede in 1996.
 ```
+
+<!-- rosetta.jpg / Example of poor focus blur (Rosetta spacecraft last image). -->
 
 The degradation phenomenon is modelled as in {numref}`F:deconvolution:model`:
 The observed image $y$ is degraded by the convolution with a PSF $h$ and, possibly, by a noise $b$ (considered to be additive).
@@ -41,7 +43,7 @@ $$
 width: 500px
 name: F:deconvolution:model
 ---
-Deconvoltion model.
+Deconvolution model.
 ```
 
 Deconvolution needs a degradation model, thus having knowledge about both $h$ and $b$.
@@ -124,7 +126,7 @@ although the result is still far from perfect (there are many variations in inte
 ---
 name: F:deconvolution:truncated-inverse-filter
 ---
-Result of the truncated inverse filter.
+Result of the truncated inverse filter with a tiny bit noise.
 ```
 
 
@@ -168,15 +170,15 @@ we can decompose the previous expression into four terms:
 
 $$
 \mathrm{MSE}
-= (GH-I)^*(GH-I) \mathbb{E}\big[X^*X\big]
-+ (GH-I)^*G \mathbb{E}\big[X^*B\big]
-+ G^*(GH-I) \mathbb{E}\big[B^*X\big]
-+ G^*G \mathbb{E}\big[B^*B\big].
+= &   (GH-I)^*(GH-I) \,\mathbb{E}\big[X^*X\big]\\
+  & + (GH-I)^*G      \,\mathbb{E}\big[X^*B\big]\\
+  & + G^*(GH-I)      \,\mathbb{E}\big[B^*X\big]\\
+  & + G^*G           \,\mathbb{E}\big[B^*B\big].
 $$
 
 Since $X$ and $B$ are independent, then the covariances $\mathbb{E}\big[X^*B\big]$ and $\mathbb{E}\big[B^*X\big] $ are zeros.
 Moreover, $\mathbb{E}\big[X^*X\big]$ and $\mathbb{E}\big[B^*B\big]$ are the power spectral densities denoted as $S_x$ and $S_b$
-(remember that the power spectral density is the expectation of the square of the modulus of the Fourier transform).
+(the power spectral density is the expectation of the square of the modulus of the Fourier transform).
 So the mean squared error simplifies into:
 
 $$
