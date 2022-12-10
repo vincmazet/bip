@@ -3,7 +3,7 @@
 When a pattern (French: _motif_), perfectly known as a sub-image $g$, is searched for in an image $f$,
 then the cross-correlation (French: _corrélation croisée_) between $f$ and $g$ is a very efficient technique.
 This technique is often known as matched filter (French: _filtre adapté_).
-The cross correlation between $f$ and $g$ gives a new image $R_{f,g}$ defined as:
+The cross-correlation between $f$ and $g$ gives a new image $R_{f,g}$ defined as:
 
 $$
   R_{f,g}(u,v) = \sum_{m,n} f(m,n) g(u+m,v+n).
@@ -27,7 +27,7 @@ $$
 
 {numref}`F:detection:matched-filter1` gives an example of matched filter.
 
-```{figure} figs/matched-filter-audir8.svg
+```{figure} matched-filter-audir8.svg
 ---
 name: F:detection:matched-filter1
 ---
@@ -37,7 +37,7 @@ Normalized cross-correlation with the pattern shown top-left (the letter G).
 As seen in {numref}`F:matched-filter2`, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.
 
 
-```{figure} figs/matched-filter-plates.svg
+```{figure} matched-filter-plates.svg
 ---
 name: F:matched-filter2
 ---

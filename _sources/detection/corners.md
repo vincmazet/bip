@@ -2,8 +2,8 @@
 
 To detect the corners of objects in an image, one can start by detecting edges then determining where two edges meet.
 There are however other methods, among which:
-* the Moravec detector [[Moravec 1980]](C:refs),
-* the Harris detector [[Harris & Stephens 1988]](C:refs).
+* the Moravec detector [[Moravec 1980](B:detection:Moravec1980)],
+* the Harris detector [[Harris & Stephens 1988](B:detection:Harris1988)].
 
 
 ## Moravec detector
@@ -11,7 +11,7 @@ There are however other methods, among which:
 The principle of this detector is to observe if a sub-image, moved around one pixel in all directions, changes significantly.
 If this is the case, then the considered pixel is a corner.
 
-```{figure} figs/corners-moravec.png
+```{figure} corners-moravec.png
 ---
 width: 80%
 name: F:corners:moravec
@@ -95,7 +95,7 @@ by analyzing the eigenvalues $\lambda_1$ and $\lambda_2$ of the matrix $M$ ({num
 Indeed, the presence of a corner is attested if the derivatives of $f$ are very large,
 then $M$ has large coefficients, and its eigenvalues are also very large.
 
-```{figure} figs/harris-eigenvalues.png
+```{figure} harris-eigenvalues.png
 ---
 width: 250px
 name: F:corners:eigenvalues
@@ -113,7 +113,7 @@ with $0.04 < k < 0.06$.
 
 Thus, the values of $R$ are low in a flat region, negative on an edge, and positive on a corner ({numref}`F:corners:R`).
 
-```{figure} figs/harris-R.png
+```{figure} harris-R.png
 ---
 width: 250px
 name: F:corners:R
@@ -121,11 +121,9 @@ name: F:corners:R
 Decision to be taken in function of $R$.
 ```
 
-<!-- Rajouter l'échelle de couleur sur R -->
-
 The Harris detector is illustrated on the example of {numref}`F:corners:harris`.
 
-```{figure} figs/harris-detector.svg
+```{figure} harris-detector.svg
 ---
 width: 100%
 name: F:corners:harris

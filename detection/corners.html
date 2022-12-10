@@ -801,15 +801,15 @@ title="Print to PDF"
 <p>To detect the corners of objects in an image, one can start by detecting edges then determining where two edges meet.
 There are however other methods, among which:</p>
 <ul class="simple">
-<li><p>the Moravec detector <span class="xref myst">[Moravec 1980]</span>,</p></li>
-<li><p>the Harris detector <span class="xref myst">[Harris &amp; Stephens 1988]</span>.</p></li>
+<li><p>the Moravec detector [<a class="reference internal" href="outro.html#b-detection-moravec1980"><span class="std std-ref">Moravec 1980</span></a>],</p></li>
+<li><p>the Harris detector [<a class="reference internal" href="outro.html#b-detection-harris1988"><span class="std std-ref">Harris &amp; Stephens 1988</span></a>].</p></li>
 </ul>
 <section id="moravec-detector">
 <h2>Moravec detector<a class="headerlink" href="#moravec-detector" title="Permalink to this headline">#</a></h2>
 <p>The principle of this detector is to observe if a sub-image, moved around one pixel in all directions, changes significantly.
 If this is the case, then the considered pixel is a corner.</p>
 <figure class="align-default" id="f-corners-moravec">
-<a class="reference internal image-reference" href="detection/figs/corners-moravec.png"><img alt="detection/figs/corners-moravec.png" src="detection/figs/corners-moravec.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/corners-moravec.png"><img alt="../_images/corners-moravec.png" src="../_images/corners-moravec.png" style="width: 80%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 93 </span><span class="caption-text">Principle of Moravec detector.
 From left to right :
@@ -879,7 +879,7 @@ by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambd
 Indeed, the presence of a corner is attested if the derivatives of <span class="math notranslate nohighlight">\(f\)</span> are very large,
 then <span class="math notranslate nohighlight">\(M\)</span> has large coefficients, and its eigenvalues are also very large.</p>
 <figure class="align-default" id="f-corners-eigenvalues">
-<a class="reference internal image-reference" href="detection/figs/harris-eigenvalues.png"><img alt="detection/figs/harris-eigenvalues.png" src="detection/figs/harris-eigenvalues.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/harris-eigenvalues.png"><img alt="../_images/harris-eigenvalues.png" src="../_images/harris-eigenvalues.png" style="width: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 94 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -892,15 +892,14 @@ R = \mathrm{det}(M) - k (\mathrm{trace}(M))^2 = \lambda_1 \lambda_2 - k(\lambda_
 <p>with <span class="math notranslate nohighlight">\(0.04 &lt; k &lt; 0.06\)</span>.</p>
 <p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 95</span></a>).</p>
 <figure class="align-default" id="f-corners-r">
-<a class="reference internal image-reference" href="detection/figs/harris-R.png"><img alt="detection/figs/harris-R.png" src="detection/figs/harris-R.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/harris-R.png"><img alt="../_images/harris-R.png" src="../_images/harris-R.png" style="width: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 95 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- Rajouter l'échelle de couleur sur R -->
 <p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 96</span></a>.</p>
 <figure class="align-default" id="f-corners-harris">
-<a class="reference internal image-reference" href="detection/figs/harris-detector.svg"><img alt="detection/figs/harris-detector.svg" src="detection/figs/harris-detector.svg" width="100%" /></a>
+<a class="reference internal image-reference" href="../_images/harris-detector.svg"><img alt="../_images/harris-detector.svg" src="../_images/harris-detector.svg" width="100%" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 96 </span><span class="caption-text">Harris detector.
 The binary images represent the negative (contours), weak (flat areas) and positive (corners) values of the coefficient <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-harris" title="Permalink to this image">#</a></p>

@@ -914,7 +914,7 @@ Therefore, edge detection is useful for identifying or measuring objects, or seg
 <a class="reference internal" href="#f-detection-profile"><span class="std std-numref">Fig. 81</span></a> represents the brightness profile along a horizontal line in the image.
 One clearly see that the outline of the industrial piece shows a sudden decrease in the brightness of the pixels.</p>
 <figure class="align-default" id="f-detection-profile">
-<a class="reference internal image-reference" href="detection/figs/edges-profile.svg"><img alt="detection/figs/edges-profile.svg" src="detection/figs/edges-profile.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/edges-profile.svg"><img alt="../_images/edges-profile.svg" src="../_images/edges-profile.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 81 </span><span class="caption-text">An image and the luminosity profile on it.</span><a class="headerlink" href="#f-detection-profile" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -924,7 +924,7 @@ an edge can be detected by analyzing the first derivative of the intensity profi
 taken perpendicular to the edge.
 Similarly, an edge can be detected by determining the zero crossing of the second derivative.</p>
 <figure class="align-default" id="f-detection-derivatives">
-<a class="reference internal image-reference" href="detection/figs/edges-derivatives.svg"><img alt="detection/figs/edges-derivatives.svg" src="detection/figs/edges-derivatives.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/edges-derivatives.svg"><img alt="../_images/edges-derivatives.svg" src="../_images/edges-derivatives.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">The profile of <a class="reference internal" href="#f-detection-profile"><span class="std std-numref">Fig. 81</span></a> and its derivatives.</span><a class="headerlink" href="#f-detection-derivatives" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -987,7 +987,7 @@ h_y =
 <p>Introducing a column of 0 in <span class="math notranslate nohighlight">\(h_x\)</span> and a row of 0 in <span class="math notranslate nohighlight">\(h_y\)</span> allows having kernels of the same size.</p>
 <section id="roberts-operators">
 <h3>Roberts operators<a class="headerlink" href="#roberts-operators" title="Permalink to this headline">#</a></h3>
-<p>These two kernels constitute the Roberts operators <span class="xref myst">[Roberts 1965]</span>:</p>
+<p>These two kernels constitute the Roberts operators [<a class="reference internal" href="outro.html#b-detection-roberts1965"><span class="std std-ref">Roberts 1965</span></a>]:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   h_x=
@@ -1005,7 +1005,7 @@ h_y =
 </section>
 <section id="prewitt-operators">
 <h3>Prewitt operators<a class="headerlink" href="#prewitt-operators" title="Permalink to this headline">#</a></h3>
-<p>A variant of these filters are the Prewitt operators <span class="xref myst">[Prewitt 1970]</span>
+<p>A variant of these filters are the Prewitt operators [<a class="reference internal" href="outro.html#b-detection-prewitt1970"><span class="std std-ref">Prewitt 1970</span></a>]
 which allow to centre the Roberts operators and to deal with a kernel with an odd size</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1026,7 +1026,7 @@ which allow to centre the Roberts operators and to deal with a kernel with an od
 </section>
 <section id="sobel-operators">
 <h3>Sobel operators<a class="headerlink" href="#sobel-operators" title="Permalink to this headline">#</a></h3>
-<p>Finally, the Sobel operators <span class="xref myst">[Sobel 1968]</span> are a smoothed version of the Prewitt operators.
+<p>Finally, the Sobel operators [<a class="reference internal" href="outro.html#b-detection-sobel1968"><span class="std std-ref">Sobel 1968</span></a>] are a smoothed version of the Prewitt operators.
 Indeed, the coefficients reproduce a convolution by a Gaussian filter,
 which tends to play the role of a mean filter to attenuate noise:</p>
 <div class="math notranslate nohighlight">
@@ -1052,7 +1052,7 @@ The top edge is white because it corresponds to an edge from black to white.
 On the contrary, the bottom edge is black.
 On the other side, <span class="math notranslate nohighlight">\(h_y\)</span> detects vertical edges.</p>
 <figure class="align-default" id="f-detection-sobel-h-v">
-<a class="reference internal image-reference" href="detection/figs/sobel-h-v.svg"><img alt="detection/figs/sobel-h-v.svg" src="detection/figs/sobel-h-v.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-h-v.svg"><img alt="../_images/sobel-h-v.svg" src="../_images/sobel-h-v.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 83 </span><span class="caption-text">Horizontal and vertical Sobel operators.</span><a class="headerlink" href="#f-detection-sobel-h-v" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1079,7 +1079,7 @@ For example, an angle of <span class="math notranslate nohighlight">\(0\)</span>
 </li>
 </ul>
 <figure class="align-default" id="f-detection-sobel-magnitude-angle">
-<a class="reference internal image-reference" href="detection/figs/sobel-magnitude-angle.svg"><img alt="detection/figs/sobel-magnitude-angle.svg" src="detection/figs/sobel-magnitude-angle.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-magnitude-angle.svg"><img alt="../_images/sobel-magnitude-angle.svg" src="../_images/sobel-magnitude-angle.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 84 </span><span class="caption-text">Magnitude and angle of the Sobel operator.</span><a class="headerlink" href="#f-detection-sobel-magnitude-angle" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1092,7 +1092,7 @@ To do that, one can threshold the magnitude to keep only the large values of the
 As you can see in <a class="reference internal" href="#f-detection-sobel-magnitude-threshold"><span class="std std-numref">Fig. 85</span></a>, the threshold makes the second hand disappear.
 Indeed, the magnitude is lower than other parts of the image because the second hand is gray and not black.</p>
 <figure class="align-default" id="f-detection-sobel-magnitude-threshold">
-<a class="reference internal image-reference" href="detection/figs/sobel-magnitude-threshold.svg"><img alt="detection/figs/sobel-magnitude-threshold.svg" src="detection/figs/sobel-magnitude-threshold.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-magnitude-threshold.svg"><img alt="../_images/sobel-magnitude-threshold.svg" src="../_images/sobel-magnitude-threshold.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 85 </span><span class="caption-text">Thresholding the magnitude of the Sobel operator makes the second hands disappear!</span><a class="headerlink" href="#f-detection-sobel-magnitude-threshold" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1107,16 +1107,16 @@ Then it may be useful to denoise the image before edge detection.
 In figure <a class="reference internal" href="#f-detection-edges-sobel-noise"><span class="std std-numref">Fig. 87</span></a>, a small mean filter is used before the Sobel filter:
 the result is much cleaner than without the use of the mean filter.</p>
 <figure class="align-default" id="f-detection-edges-derivatives-noise">
-<a class="reference internal image-reference" href="detection/figs/edges-derivatives-noise.svg"><img alt="detection/figs/edges-derivatives-noise.svg" src="detection/figs/edges-derivatives-noise.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/edges-derivatives-noise.svg"><img alt="../_images/edges-derivatives-noise.svg" src="../_images/edges-derivatives-noise.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 86 </span><span class="caption-text">Consequence of noise on the brightness profile and its derivatives
 (orange: non-noisy profiles, blue: noisy profiles).</span><a class="headerlink" href="#f-detection-edges-derivatives-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-detection-edges-sobel-noise">
-<a class="reference internal image-reference" href="detection/figs/edges-sobel-noise.svg"><img alt="detection/figs/edges-sobel-noise.svg" src="detection/figs/edges-sobel-noise.svg" width="600px" /></a>
+<a class="reference internal image-reference" href="../_images/edges-sobel-noise.svg"><img alt="../_images/edges-sobel-noise.svg" src="../_images/edges-sobel-noise.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Left: original image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a <span class="math notranslate nohighlight">\(3\times3\)</span> mean filter.</span><a class="headerlink" href="#f-detection-edges-sobel-noise" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Left: noisy image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a <span class="math notranslate nohighlight">\(3\times3\)</span> mean filter.</span><a class="headerlink" href="#f-detection-edges-sobel-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1126,8 +1126,8 @@ the result is much cleaner than without the use of the mean filter.</p>
 <p>Following the gradient operators, new methods have been proposed to improve edge detection
 by taking into account the noise and the nature of the edges:</p>
 <ul class="simple">
-<li><p>the Marr-Hildreth detector <span class="xref myst">[Marr &amp; Hildreth 1980]</span>,</p></li>
-<li><p>the Canny detector <span class="xref myst">[Canny 1986]</span>.</p></li>
+<li><p>the Marr-Hildreth detector [<a class="reference internal" href="outro.html#b-detection-marr1980"><span class="std std-ref">Marr &amp; Hildreth 1980</span></a>],</p></li>
+<li><p>the Canny detector [<a class="reference internal" href="outro.html#b-detection-canny1986"><span class="std std-ref">Canny 1986</span></a>].</p></li>
 </ul>
 <section id="marr-hildreth-detector">
 <h3>Marr-Hildreth Detector<a class="headerlink" href="#marr-hildreth-detector" title="Permalink to this headline">#</a></h3>
@@ -1151,7 +1151,7 @@ Hence, the filter <span class="math notranslate nohighlight">\(\ell*g\)</span> i
 <p>The filter <span class="math notranslate nohighlight">\(\ell*g\)</span> is represented <a class="reference internal" href="#f-detection-log"><span class="std std-numref">Fig. 88</span></a>.
 It is also called “LoG” for Laplacian of Gaussian (no French equivalent) or Mexican hat (for the resemblance to a sombrero).</p>
 <figure class="align-default" id="f-detection-log">
-<a class="reference internal image-reference" href="detection/figs/log.svg"><img alt="detection/figs/log.svg" src="detection/figs/log.svg" width="500px" /></a>
+<a class="reference internal image-reference" href="../_images/log.svg"><img alt="../_images/log.svg" src="../_images/log.svg" width="500px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 88 </span><span class="caption-text">Laplacian of Gaussian (left: as an image, right: profile along an axis).</span><a class="headerlink" href="#f-detection-log" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1160,12 +1160,15 @@ It is also called “LoG” for Laplacian of Gaussian (no French equivalent) or 
 <p>The zero-crossings in the image resulting from the LoG convolution are given by searching for changes of sign in the intensity of two pixels.
 <a class="reference internal" href="#f-detection-marr-hildreth"><span class="std std-numref">Fig. 89</span></a> gives an example.</p>
 <figure class="align-default" id="f-detection-marr-hildreth">
-<img alt="detection/figs/moulinsart-marr-hildreth.svg" src="detection/figs/moulinsart-marr-hildreth.svg" /><figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Marr-Hildreth Detector.</span><a class="headerlink" href="#f-detection-marr-hildreth" title="Permalink to this image">#</a></p>
+<img alt="../_images/moulinsart-marr-hildreth.svg" src="../_images/moulinsart-marr-hildreth.svg" /><figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Marr-Hildreth Detector.
+Left: original image,
+center: result of the LoG filter,
+right: detection of the eros crossings.</span><a class="headerlink" href="#f-detection-marr-hildreth" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-detection-caramba">
-<a class="reference internal image-reference" href="detection/figs/caramba-marr-hildreth.svg"><img alt="detection/figs/caramba-marr-hildreth.svg" src="detection/figs/caramba-marr-hildreth.svg" width="3px" /></a>
+<a class="reference internal image-reference" href="../_images/caramba-marr-hildreth.svg"><img alt="../_images/caramba-marr-hildreth.svg" src="../_images/caramba-marr-hildreth.svg" width="3px" /></a>
 </figure>
 </section>
 <section id="canny-detector">
@@ -1194,29 +1197,51 @@ This is done by using a convolution with a Gaussian kernel <span class="math not
 <li><p>Non-maxima are removed from the amplitude.
 This means that excessively large outlines in <span class="math notranslate nohighlight">\(M\)</span> are replaced by thinner outlines.
 For this, we apply the algorithm below:</p>
-<blockquote>
-<div><p>For each pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in <span class="math notranslate nohighlight">\(M\)</span>:</p>
-<ul class="simple">
-<li><p>Choose the direction (vertical, horizontal or one of the two diagonals) the closest to <span class="math notranslate nohighlight">\(A(x,y)\)</span></p></li>
-<li><p>If <span class="math notranslate nohighlight">\(M(x,y)\)</span> is lower than one of its neighbors in the chosen direction then cancel the gradient: <span class="math notranslate nohighlight">\(M(x,y)=0\)</span></p></li>
-</ul>
-</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<ol class="simple">
+<li><p class="sd-card-text">For each pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in <span class="math notranslate nohighlight">\(M\)</span>:</p>
+<ol class="simple">
+<li><p class="sd-card-text">Choose the direction (vertical, horizontal or one of the two diagonals) the closest to <span class="math notranslate nohighlight">\(A(x,y)\)</span></p></li>
+<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(M(x,y)\)</span> is lower than one of its neighbors in the chosen direction then cancel the gradient: <span class="math notranslate nohighlight">\(M(x,y)=0\)</span></p></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 </li>
 <li><p>The last step consists of thresholding by hysteresis for the bad edges.
 Two thresholds are therefore defined (<span class="math notranslate nohighlight">\(T_\text{high} &gt; T_\text{low}\)</span>) and the algorithm below is applied:</p>
-<blockquote>
-<div><p>For each pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in <span class="math notranslate nohighlight">\(M\)</span>:</p>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(M(x,y) &gt; T_\text{high}\)</span>                 then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(T_\text{high} &lt; M(x,y) &lt; T_\text{high}\)</span> then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge if and only if it is neighbor of an edge pixel</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(M(x,y) &lt; T_\text{low}\)</span>                  then <span class="math notranslate nohighlight">\((x,y)\)</span> is not an edge</p></li>
-</ul>
-</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<ol class="simple">
+<li><p class="sd-card-text">For each pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in <span class="math notranslate nohighlight">\(M\)</span>:</p>
+<ol class="simple">
+<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(M(x,y) &gt; T_\text{high}\)</span>                 then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge</p></li>
+<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(T_\text{high} &lt; M(x,y) &lt; T_\text{high}\)</span> then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge if and only if it is neighbor of an edge pixel</p></li>
+<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(M(x,y) &lt; T_\text{low}\)</span>                  then <span class="math notranslate nohighlight">\((x,y)\)</span> is not an edge</p></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 </li>
 </ol>
 <p><a class="reference internal" href="#f-detection-canny"><span class="std std-numref">Fig. 90</span></a> gives an example of Canny edge detection.</p>
 <figure class="align-default" id="f-detection-canny">
-<a class="reference internal image-reference" href="detection/figs/moulinsart-canny.svg"><img alt="detection/figs/moulinsart-canny.svg" src="detection/figs/moulinsart-canny.svg" width="500px" /></a>
+<a class="reference internal image-reference" href="../_images/moulinsart-canny.svg"><img alt="../_images/moulinsart-canny.svg" src="../_images/moulinsart-canny.svg" width="500px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 90 </span><span class="caption-text">Canny Detector.</span><a class="headerlink" href="#f-detection-canny" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1226,14 +1251,14 @@ Two thresholds are therefore defined (<span class="math notranslate nohighlight"
 <h3>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">#</a></h3>
 <p><a class="reference internal" href="#f-detection-sobel-marr-hildreth-canny"><span class="std std-numref">Fig. 91</span></a> shows the results of the Sobel, Marr-Hildreth and Canny detectors on an image.</p>
 <figure class="align-default" id="f-detection-sobel-marr-hildreth-canny">
-<img alt="detection/figs/sobel-marr-hildreth-canny.svg" src="detection/figs/sobel-marr-hildreth-canny.svg" /><figcaption>
+<img alt="../_images/sobel-marr-hildreth-canny.svg" src="../_images/sobel-marr-hildreth-canny.svg" /><figcaption>
 <p><span class="caption-number">Fig. 91 </span><span class="caption-text">Comparison of Sobel, Marr-Hildreth and Canny detectors.</span><a class="headerlink" href="#f-detection-sobel-marr-hildreth-canny" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In <a class="reference internal" href="#f-detection-marr-hildreth-canny"><span class="std std-numref">Fig. 92</span></a>, which compares Marr-Hildreth and Canny detectors,
 one can see that the edges detected with Canny detector are better localized.</p>
 <figure class="align-default" id="f-detection-marr-hildreth-canny">
-<img alt="detection/figs/marr-hildreth-canny.svg" src="detection/figs/marr-hildreth-canny.svg" /><figcaption>
+<img alt="../_images/marr-hildreth-canny.svg" src="../_images/marr-hildreth-canny.svg" /><figcaption>
 <p><span class="caption-number">Fig. 92 </span><span class="caption-text">Comparison between Marr-Hildreth and Canny detectors (zoom).
 The edges are shown in green.</span><a class="headerlink" href="#f-detection-marr-hildreth-canny" title="Permalink to this image">#</a></p>
 </figcaption>

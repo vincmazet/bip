@@ -804,7 +804,7 @@ title="Print to PDF"
 (see <a class="reference external" href="https://groups.google.com/g/sci.image.processing/c/yvgEDLPcQww?pli=1">discussion</a>).</p>
 </aside>
 <p>Line detection consists of detecting alignments of points on an image of contours.
-The usual method for line detection is the Hough transform <span class="xref myst">[Hough 1962]</span>.
+The usual method for line detection is the Hough transform [<a class="reference internal" href="outro.html#b-detection-hough1962"><span class="std std-ref">Hough 1962</span></a>].
 Like the Fourier transform, it transposes the image from the spatial domain to another domain,
 where the information of interest is represented differently.
 In this case, the lines in the spatial domain are transformed into points in the Hough domain.</p>
@@ -821,23 +821,23 @@ y = a x + b.
 This is Hough’s idea: each line of the image can be represented by a point in the Hough domain <span class="math notranslate nohighlight">\((a,b)\)</span>.
 The Hough domain is also called the parameter space.</p>
 <figure class="align-default" id="f-lines-hough-1">
-<a class="reference internal image-reference" href="detection/figs/hough-1.png"><img alt="detection/figs/hough-1.png" src="detection/figs/hough-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-1.png"><img alt="../_images/hough-1.png" src="../_images/hough-1.png" style="width: 450px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 97 </span><span class="caption-text">The Hough transform transforms a line in the image into a point in the parameter space.</span><a class="headerlink" href="#f-lines-hough-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Conversely, a point in the image is represented by a line in the parameter space (which has the equation <span class="math notranslate nohighlight">\(b = \alpha a + \beta\)</span>).</p>
 <figure class="align-default" id="f-lines-hough-2">
-<a class="reference internal image-reference" href="detection/figs/hough-2.png"><img alt="detection/figs/hough-2.png" src="detection/figs/hough-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-2.png"><img alt="../_images/hough-2.png" src="../_images/hough-2.png" style="width: 450px;" /></a>
 </figure>
 <p>In particular, a constant line <span class="math notranslate nohighlight">\(b=\beta\)</span> in the parameter space corresponds to a point of abscissa <span class="math notranslate nohighlight">\(x=0\)</span> in the image.</p>
 <figure class="align-default" id="f-lines-hough-3">
-<a class="reference internal image-reference" href="detection/figs/hough-3.png"><img alt="detection/figs/hough-3.png" src="detection/figs/hough-3.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-3.png"><img alt="../_images/hough-3.png" src="../_images/hough-3.png" style="width: 450px;" /></a>
 </figure>
 <p>Finally, if several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
 which defines the equation of the line connecting them.</p>
 <figure class="align-default" id="f-lines-hough-5">
-<a class="reference internal image-reference" href="detection/figs/hough-5.png"><img alt="detection/figs/hough-5.png" src="detection/figs/hough-5.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-5.png"><img alt="../_images/hough-5.png" src="../_images/hough-5.png" style="width: 450px;" /></a>
 </figure>
 <p>On a computer, the parameter space is finite and discretized (it is called an “accumulator”).
 Consequently, certain lines of the image cannot be represented there (<em>e.g.</em> a vertical line for which <span class="math notranslate nohighlight">\(a=\infty\)</span>).
@@ -852,7 +852,7 @@ In consequence, another parameterization of lines needs to be used in practice.<
 </ul>
 <p>Each line of the image is therefore parameterized by the pair <span class="math notranslate nohighlight">\((\theta,d)\)</span> which corresponds to a point in the parameter space <span class="math notranslate nohighlight">\((\theta,d)\)</span>.</p>
 <figure class="align-default" id="f-lines-houghnew">
-<a class="reference internal image-reference" href="detection/figs/hough-50.png"><img alt="detection/figs/hough-50.png" src="detection/figs/hough-50.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-50.png"><img alt="../_images/hough-50.png" src="../_images/hough-50.png" style="width: 450px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 98 </span><span class="caption-text">New parameterization of the Hough transform.</span><a class="headerlink" href="#f-lines-houghnew" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -862,20 +862,33 @@ In consequence, another parameterization of lines needs to be used in practice.<
 is associated in the space <span class="math notranslate nohighlight">\((\theta,d)\)</span>.
 The sinusoids corresponding to the points of the same line intersect at the point <span class="math notranslate nohighlight">\((\theta^*,d^*)\)</span> parameterizing this line.</p>
 <p>The Hough transform algorithm is as follows:</p>
-<blockquote>
-<div><p>Get the result of an edge detection</p>
-<p>Initialize an accumulator (as the discrete space of the parameters)</p>
-<p>For each pixel in the edges:</p>
-<ul class="simple">
-<li><p>Determine the sinusoid corresponding to the points</p></li>
-<li><p>Increment the accumulator along this sinusoid
-Search for the maxima in the accumulator</p></li>
-</ul>
-<p>Deduce the line parameters</p>
-</div></blockquote>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Algorithm: Hough transform</div>
+<ol class="simple">
+<li><p class="sd-card-text">Get the result of an edge detection</p></li>
+<li><p class="sd-card-text">Initialize an accumulator (as the discrete space of the parameters)</p></li>
+<li><p class="sd-card-text">For each pixel in the edges:</p>
+<ol class="simple">
+<li><p class="sd-card-text">Determine the sinusoid corresponding to the points</p></li>
+<li><p class="sd-card-text">Increment the accumulator along this sinusoid</p></li>
+</ol>
+</li>
+<li><p class="sd-card-text">Search for the maxima in the accumulator</p></li>
+<li><p class="sd-card-text">Deduce the line parameters</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p><a class="reference internal" href="#f-lines-example"><span class="std std-numref">Fig. 99</span></a> gives an example of a Hough transform on an image representing a square.</p>
 <figure class="align-default" id="f-lines-example">
-<img alt="detection/figs/hough-example.svg" src="detection/figs/hough-example.svg" /><figcaption>
+<img alt="../_images/hough-example.svg" src="../_images/hough-example.svg" /><figcaption>
 <p><span class="caption-number">Fig. 99 </span><span class="caption-text">Hough transform associated with the image on the left.
 The sinusoids intersect at four (very bright) points, each one is associated with the line with the same letter.</span><a class="headerlink" href="#f-lines-example" title="Permalink to this image">#</a></p>
 </figcaption>

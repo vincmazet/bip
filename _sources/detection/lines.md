@@ -7,7 +7,7 @@ Pronounce Hough as "[huff](https://www.google.com/search?q=pronounce+hough+trans
 ```
 
 Line detection consists of detecting alignments of points on an image of contours.
-The usual method for line detection is the Hough transform [[Hough 1962]](C:refs).
+The usual method for line detection is the Hough transform [[Hough 1962](B:detection:Hough1962)].
 Like the Fourier transform, it transposes the image from the spatial domain to another domain,
 where the information of interest is represented differently.
 In this case, the lines in the spatial domain are transformed into points in the Hough domain.
@@ -28,7 +28,7 @@ Thus, any line can be represented by the pair $(a,b)$.
 This is Hough's idea: each line of the image can be represented by a point in the Hough domain $(a,b)$.
 The Hough domain is also called the parameter space.
 
-```{figure} figs/hough-1.png
+```{figure} hough-1.png
 ---
 width: 450px
 name: F:lines:hough-1
@@ -38,7 +38,7 @@ The Hough transform transforms a line in the image into a point in the parameter
 
 Conversely, a point in the image is represented by a line in the parameter space (which has the equation $b = \alpha a + \beta$).
 
-```{figure} figs/hough-2.png
+```{figure} hough-2.png
 ---
 width: 450px
 name: F:lines:hough-2
@@ -46,7 +46,7 @@ name: F:lines:hough-2
 ```
 In particular, a constant line $b=\beta$ in the parameter space corresponds to a point of abscissa $x=0$ in the image.
 
-```{figure} figs/hough-3.png
+```{figure} hough-3.png
 ---
 width: 450px
 name: F:lines:hough-3
@@ -55,7 +55,7 @@ name: F:lines:hough-3
 Finally, if several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
 which defines the equation of the line connecting them.
 
-```{figure} figs/hough-5.png
+```{figure} hough-5.png
 ---
 width: 450px
 name: F:lines:hough-5
@@ -74,7 +74,7 @@ To avoid the aforementioned problem of the parameterization space $(a,b)$, the l
 
 Each line of the image is therefore parameterized by the pair $(\theta,d)$ which corresponds to a point in the parameter space $(\theta,d)$.
 
-```{figure} figs/hough-50.png
+```{figure} hough-50.png
 ---
 width: 450px
 name: F:lines:houghnew
@@ -90,20 +90,24 @@ The sinusoids corresponding to the points of the same line intersect at the poin
 
 The Hough transform algorithm is as follows:
 
-> Get the result of an edge detection
->
-> Initialize an accumulator (as the discrete space of the parameters)
->
-> For each pixel in the edges:
-> - Determine the sinusoid corresponding to the points
-> - Increment the accumulator along this sinusoid
-> Search for the maxima in the accumulator
->
-> Deduce the line parameters
+::::{grid} 1 1 1 1
+:gutter: 3
+
+:::{grid-item-card} Algorithm: Hough transform
+1. Get the result of an edge detection
+1. Initialize an accumulator (as the discrete space of the parameters)
+1. For each pixel in the edges:
+   1. Determine the sinusoid corresponding to the points
+   1. Increment the accumulator along this sinusoid
+1. Search for the maxima in the accumulator
+1. Deduce the line parameters
+:::
+
+::::
 
 {numref}`F:lines:example` gives an example of a Hough transform on an image representing a square.
 
-```{figure} figs/hough-example.svg
+```{figure} hough-example.svg
 ---
 name: F:lines:example
 ---

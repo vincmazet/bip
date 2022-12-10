@@ -4,67 +4,66 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; Basics of Image Processing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Harris detector &#8212; Basics of Image Processing</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/jbvinc.css" />
-    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-  
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hough transform" href="cor73.html" />
+    <link rel="prev" title="Sobel and Canny detectors" href="cor71.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
     
-
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -93,14 +92,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
       
       
       <h1 class="site-logo" id="site-title">Basics of Image Processing</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="#" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -108,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
+                <a class="reference internal" href="../index.html">
                     Foreword
                 </a>
             </li>
@@ -120,37 +119,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/intro.html">
+  <a class="reference internal" href="../digital-images/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/definition.html">
+  <a class="reference internal" href="../digital-images/definition.html">
    What is a digital image?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/eye.html">
+  <a class="reference internal" href="../digital-images/eye.html">
    Human vision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/acquisition.html">
+  <a class="reference internal" href="../digital-images/acquisition.html">
    Image acquisition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/displaying.html">
+  <a class="reference internal" href="../digital-images/displaying.html">
    Displaying an image
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/operations.html">
+  <a class="reference internal" href="../digital-images/operations.html">
    Arithmetic operations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="digital-images/outro.html">
+  <a class="reference internal" href="../digital-images/outro.html">
    Conclusion
   </a>
  </li>
@@ -162,22 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="histogram/intro.html">
+  <a class="reference internal" href="../histogram/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="histogram/histogram.html">
+  <a class="reference internal" href="../histogram/histogram.html">
    Histogram
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="histogram/transformations.html">
+  <a class="reference internal" href="../histogram/transformations.html">
    Histogram transformations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="histogram/outro.html">
+  <a class="reference internal" href="../histogram/outro.html">
    Conclusion
   </a>
  </li>
@@ -189,32 +188,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/intro.html">
+  <a class="reference internal" href="../filtering/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/convolution.html">
+  <a class="reference internal" href="../filtering/convolution.html">
    Convolution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/fourier.html">
+  <a class="reference internal" href="../filtering/fourier.html">
    Fourier transform
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/wavelets.html">
+  <a class="reference internal" href="../filtering/wavelets.html">
    Wavelets
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/filtering.html">
+  <a class="reference internal" href="../filtering/filtering.html">
    Filtering
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="filtering/outro.html">
+  <a class="reference internal" href="../filtering/outro.html">
    Conclusion
   </a>
  </li>
@@ -226,22 +225,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="compression/intro.html">
+  <a class="reference internal" href="../compression/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="compression/lossless.html">
+  <a class="reference internal" href="../compression/lossless.html">
    Lossless compression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="compression/lossy.html">
+  <a class="reference internal" href="../compression/lossy.html">
    Lossy compression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="compression/outro.html">
+  <a class="reference internal" href="../compression/outro.html">
    Conclusion
   </a>
  </li>
@@ -253,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="interpolation/interpolation.html">
+  <a class="reference internal" href="../interpolation/interpolation.html">
    Interpolation
   </a>
  </li>
@@ -265,37 +264,37 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/intro.html">
+  <a class="reference internal" href="../segmentation/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/histogram.html">
+  <a class="reference internal" href="../segmentation/histogram.html">
    Histogram thresholding
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/clustering.html">
+  <a class="reference internal" href="../segmentation/clustering.html">
    Clustering
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/region-growing.html">
+  <a class="reference internal" href="../segmentation/region-growing.html">
    Region growing
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/watershed.html">
+  <a class="reference internal" href="../segmentation/watershed.html">
    Watershed
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/evaluation.html">
+  <a class="reference internal" href="../segmentation/evaluation.html">
    How to evaluate a segmentation?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="segmentation/outro.html">
+  <a class="reference internal" href="../segmentation/outro.html">
    Conclusion
   </a>
  </li>
@@ -307,27 +306,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="mm/intro.html">
+  <a class="reference internal" href="../mm/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mm/basics.html">
+  <a class="reference internal" href="../mm/basics.html">
    Basic operators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mm/composition.html">
+  <a class="reference internal" href="../mm/composition.html">
    Composition of basic operators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mm/measure.html">
+  <a class="reference internal" href="../mm/measure.html">
    Measure
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mm/outro.html">
+  <a class="reference internal" href="../mm/outro.html">
    Conclusion
   </a>
  </li>
@@ -339,22 +338,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="restoration/intro.html">
+  <a class="reference internal" href="../restoration/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="restoration/denoising.html">
+  <a class="reference internal" href="../restoration/denoising.html">
    Denoising
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="restoration/deconvolution.html">
+  <a class="reference internal" href="../restoration/deconvolution.html">
    Deconvolution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="restoration/outro.html">
+  <a class="reference internal" href="../restoration/outro.html">
    Conclusion
   </a>
  </li>
@@ -366,32 +365,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/intro.html">
+  <a class="reference internal" href="../detection/intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/matched-filter.html">
+  <a class="reference internal" href="../detection/matched-filter.html">
    Matched filter
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/edges.html">
+  <a class="reference internal" href="../detection/edges.html">
    Edge detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/corners.html">
+  <a class="reference internal" href="../detection/corners.html">
    Corner detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/lines.html">
+  <a class="reference internal" href="../detection/lines.html">
    Line detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="detection/outro.html">
+  <a class="reference internal" href="../detection/outro.html">
    Conclusion
   </a>
  </li>
@@ -401,9 +400,9 @@ const thebe_selector_output = ".output, .cell_output"
   Labs
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab1.html">
+  <a class="reference internal" href="lab1.html">
    Lab 1
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -413,44 +412,44 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor11.html">
+    <a class="reference internal" href="cor11.html">
      1 Getting started
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor12.html">
+    <a class="reference internal" href="cor12.html">
      2 Display a saved image
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor13.html">
+    <a class="reference internal" href="cor13.html">
      3 Display several images
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor14.html">
+    <a class="reference internal" href="cor14.html">
      4 Create a simple image
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor15.html">
+    <a class="reference internal" href="cor15.html">
      5 Setting the intensity range
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor16.html">
+    <a class="reference internal" href="cor16.html">
      6 Segmentation by histogram thresholding
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor17.html">
+    <a class="reference internal" href="cor17.html">
      7 Contrast enhancement
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab2.html">
+  <a class="reference internal" href="lab2.html">
    Lab 2
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -460,24 +459,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor21.html">
+    <a class="reference internal" href="cor21.html">
      Convolution
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor22.html">
+    <a class="reference internal" href="cor22.html">
      Properties of the Fourier transform
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor23.html">
+    <a class="reference internal" href="cor23.html">
      Filtering aliasing
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab3.html">
+  <a class="reference internal" href="lab3.html">
    Lab 3
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -487,19 +486,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor31.html">
+    <a class="reference internal" href="cor31.html">
      Lossy compression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor32.html">
+    <a class="reference internal" href="cor32.html">
      Interpolation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab4.html">
+  <a class="reference internal" href="lab4.html">
    Lab 4
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -509,14 +508,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor4.html">
+    <a class="reference internal" href="cor4.html">
      Segmentation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab5.html">
+  <a class="reference internal" href="lab5.html">
    Lab 5
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -526,14 +525,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor5.html">
+    <a class="reference internal" href="cor5.html">
      Mathematical morphology
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab6.html">
+  <a class="reference internal" href="lab6.html">
    Lab 6
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -543,39 +542,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor61.html">
+    <a class="reference internal" href="cor61.html">
      Denoising
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor62.html">
+    <a class="reference internal" href="cor62.html">
      Deconvolution
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="labs/lab7.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="lab7.html">
    Lab 7
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor71.html">
+    <a class="reference internal" href="cor71.html">
      Sobel and Canny detectors
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor72.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Harris detector
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="labs/cor73.html">
+    <a class="reference internal" href="cor73.html">
      Hough transform
     </a>
    </li>
@@ -589,17 +588,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="nutshell/optimization.html">
+  <a class="reference internal" href="../nutshell/optimization.html">
    Mathematical optimization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nutshell/classification.html">
+  <a class="reference internal" href="../nutshell/classification.html">
    Classification
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nutshell/deeplearning.html">
+  <a class="reference internal" href="../nutshell/deeplearning.html">
    Deep learning
   </a>
  </li>
@@ -616,17 +615,17 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="appendices/python.html">
+  <a class="reference internal" href="../appendices/python.html">
    Installing and using Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="appendices/glossary.html">
+  <a class="reference internal" href="../appendices/glossary.html">
    Glossary
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="appendices/license.html">
+  <a class="reference internal" href="../appendices/license.html">
    License
   </a>
  </li>
@@ -677,6 +676,17 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -691,6 +701,52 @@ title="Fullscreen mode"
 
 </button>
 
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/labs/cor72.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
@@ -702,7 +758,7 @@ title="Fullscreen mode"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>Harris detector</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -714,36 +770,57 @@ title="Fullscreen mode"
                 
               <div>
                 
-  <h1 id="search-documentation">Search</h1>
-  
-  <noscript>
-  <div class="admonition warning">
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  </noscript>
-  
-  
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  
-  
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  
-  
-  <div id="search-results">
-  
-  </div>
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="harris-detector">
+<span id="labs-cor72"></span><h1>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">#</a></h1>
+<p>The objective of this exercise is to detect corners using the Harris detector.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>The Harris detector can detect corners of an image, based on differences in intensity.</p>
+<p>With the function <code class="docutils literal notranslate"><span class="pre">corner_harris</span></code>, choose <code class="docutils literal notranslate"><span class="pre">method='k'</span></code> and a value of <span class="math notranslate nohighlight">\(k\)</span> between 0 and 0.2.
+This results in a new image, of the same size as the original image,
+whose intensities are proportional to the presence of a corner.</p>
+<p>In the images below, the intensities are restricted to the interval <span class="math notranslate nohighlight">\([-0.4, 0.4]\)</span> in order to highlight the values of the image.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor72_5_0.png" src="../_images/cor72_5_0.png" />
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">corner_peaks</span></code> returns the coordinates of the strong values of the image, which correspond to the corners.
+These coordinates are returned in the form of a matrix, the first column corresponds to the ordinates, the second to the abscissas.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/cor72_7_0.png" src="../_images/cor72_7_0.png" />
+</div>
+</div>
+<p>The images above correspond to the result obtained for two values of <span class="math notranslate nohighlight">\(k\)</span> (and <code class="docutils literal notranslate"><span class="pre">threshold_rel=0.01</span></code>).
+When <span class="math notranslate nohighlight">\(k\)</span> is large, only the sharpest corners are detected: one can see this in the image on the right.</p>
+<p>However, not all corners of are detected: how to improve the result?</p>
+<p>In addition, some points do not correspond to corners.
+They correspond actually to pixels with very different intensity from their neighbors,
+which is the definition of a corner for Harris.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -752,6 +829,20 @@ title="Fullscreen mode"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cor71.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sobel and Canny detectors</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cor73.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hough transform</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -776,7 +867,7 @@ title="Fullscreen mode"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>

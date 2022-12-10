@@ -12,7 +12,7 @@ Edges are characterized by a rapid variation in the intensity of the pixels.
 {numref}`F:detection:profile` represents the brightness profile along a horizontal line in the image.
 One clearly see that the outline of the industrial piece shows a sudden decrease in the brightness of the pixels.
 
-```{figure} figs/edges-profile.svg
+```{figure} edges-profile.svg
 ---
 width: 600px
 name: F:detection:profile
@@ -25,7 +25,7 @@ an edge can be detected by analyzing the first derivative of the intensity profi
 taken perpendicular to the edge.
 Similarly, an edge can be detected by determining the zero crossing of the second derivative.
 
-```{figure} figs/edges-derivatives.svg
+```{figure} edges-derivatives.svg
 ---
 width: 600px
 name: F:detection:derivatives
@@ -99,7 +99,7 @@ Introducing a column of 0 in $h_x$ and a row of 0 in $h_y$ allows having kernels
 
 ### Roberts operators
 
-These two kernels constitute the Roberts operators [[Roberts 1965]](C:refs):
+These two kernels constitute the Roberts operators [[Roberts 1965](B:detection:Roberts1965)]:
 
 $$
   h_x=
@@ -118,7 +118,7 @@ $$
 
 ### Prewitt operators
 
-A variant of these filters are the Prewitt operators [[Prewitt 1970]](C:refs)
+A variant of these filters are the Prewitt operators [[Prewitt 1970](B:detection:Prewitt1970)]
 which allow to centre the Roberts operators and to deal with a kernel with an odd size
 
 $$
@@ -140,7 +140,7 @@ $$
 
 ### Sobel operators
 
-Finally, the Sobel operators [[Sobel 1968]](C:refs) are a smoothed version of the Prewitt operators.
+Finally, the Sobel operators [[Sobel 1968](B:detection:Sobel1968)] are a smoothed version of the Prewitt operators.
 Indeed, the coefficients reproduce a convolution by a Gaussian filter,
 which tends to play the role of a mean filter to attenuate noise:
 
@@ -168,7 +168,7 @@ The top edge is white because it corresponds to an edge from black to white.
 On the contrary, the bottom edge is black.
 On the other side, $h_y$ detects vertical edges.
 
-```{figure} figs/sobel-h-v.svg
+```{figure} sobel-h-v.svg
 ---
 width: 600px
 name: F:detection:sobel-h-v
@@ -198,7 +198,7 @@ From the operators above, we also define:
   In {numref}`F:detection:sobel-magnitude-angle`, the color of the edges corresponds to the angle.
   For example, an angle of $0$ is red, and an angle of $\pi/2$ is blue.
 
-```{figure} figs/sobel-magnitude-angle.svg
+```{figure} sobel-magnitude-angle.svg
 ---
 width: 600px
 name: F:detection:sobel-magnitude-angle
@@ -214,7 +214,7 @@ To do that, one can threshold the magnitude to keep only the large values of the
 As you can see in {numref}`F:detection:sobel-magnitude-threshold`, the threshold makes the second hand disappear.
 Indeed, the magnitude is lower than other parts of the image because the second hand is gray and not black.
 
-```{figure} figs/sobel-magnitude-threshold.svg
+```{figure} sobel-magnitude-threshold.svg
 ---
 width: 600px
 name: F:detection:sobel-magnitude-threshold
@@ -232,7 +232,7 @@ Then it may be useful to denoise the image before edge detection.
 In figure {numref}`F:detection:edges-sobel-noise`, a small mean filter is used before the Sobel filter:
 the result is much cleaner than without the use of the mean filter.
 
-```{figure} figs/edges-derivatives-noise.svg
+```{figure} edges-derivatives-noise.svg
 ---
 width: 600px
 name: F:detection:edges-derivatives-noise
@@ -241,20 +241,20 @@ Consequence of noise on the brightness profile and its derivatives
 (orange: non-noisy profiles, blue: noisy profiles).
 ```
 
-```{figure} figs/edges-sobel-noise.svg
+```{figure} edges-sobel-noise.svg
 ---
 width: 600px
 name: F:detection:edges-sobel-noise
 ---
-Left: original image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a $3\times3$ mean filter.
+Left: noisy image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a $3\times3$ mean filter.
 ```
 
 ## Advanced methods
 
 Following the gradient operators, new methods have been proposed to improve edge detection
 by taking into account the noise and the nature of the edges:
-* the Marr-Hildreth detector [[Marr & Hildreth 1980]](C:refs),
-* the Canny detector [[Canny 1986]](C:refs).
+* the Marr-Hildreth detector [[Marr & Hildreth 1980](B:detection:Marr1980)],
+* the Canny detector [[Canny 1986](B:detection:Canny1986)].
 
 
 ### Marr-Hildreth Detector
@@ -280,7 +280,7 @@ $$
 The filter $\ell*g$ is represented {numref}`F:detection:log`.
 It is also called "LoG" for Laplacian of Gaussian (no French equivalent) or Mexican hat (for the resemblance to a sombrero).
 
-```{figure} figs/log.svg
+```{figure} log.svg
 ---
 width: 500px
 name: F:detection:log
@@ -293,14 +293,17 @@ Laplacian of Gaussian (left: as an image, right: profile along an axis).
 The zero-crossings in the image resulting from the LoG convolution are given by searching for changes of sign in the intensity of two pixels.
 {numref}`F:detection:marr-hildreth` gives an example.
 
-```{figure} figs/moulinsart-marr-hildreth.svg
+```{figure} moulinsart-marr-hildreth.svg
 ---
 name: F:detection:marr-hildreth
 ---
 Marr-Hildreth Detector.
+Left: original image,
+center: result of the LoG filter,
+right: detection of the eros crossings.
 ```
 
-```{figure} figs/caramba-marr-hildreth.svg
+```{figure} caramba-marr-hildreth.svg
 ---
 width: 3px
 name: F:detection:caramba
@@ -335,21 +338,35 @@ The Canny detector algorithm follows the four steps detailed below.
    This means that excessively large outlines in $M$ are replaced by thinner outlines.
    For this, we apply the algorithm below:
    
-   > For each pixel $(x,y)$ in $M$:
-   > - Choose the direction (vertical, horizontal or one of the two diagonals) the closest to $A(x,y)$
-   > - If $M(x,y)$ is lower than one of its neighbors in the chosen direction then cancel the gradient: $M(x,y)=0$
+    ::::{grid} 1 1 1 1
+    :gutter: 3
+
+    :::{grid-item-card}
+    1. For each pixel $(x,y)$ in $M$:
+       1. Choose the direction (vertical, horizontal or one of the two diagonals) the closest to $A(x,y)$
+       1. If $M(x,y)$ is lower than one of its neighbors in the chosen direction then cancel the gradient: $M(x,y)=0$
+    :::
+
+    ::::
 
 4. The last step consists of thresholding by hysteresis for the bad edges.
    Two thresholds are therefore defined ($T_\text{high} > T_\text{low}$) and the algorithm below is applied:
-    
-   > For each pixel $(x,y)$ in $M$:
-   > - If $M(x,y) > T_\text{high}$                 then $(x,y)$ is an edge
-   > - If $T_\text{high} < M(x,y) < T_\text{high}$ then $(x,y)$ is an edge if and only if it is neighbor of an edge pixel 
-   > - If $M(x,y) < T_\text{low}$                  then $(x,y)$ is not an edge
+      
+    ::::{grid} 1 1 1 1
+    :gutter: 3
+
+    :::{grid-item-card}
+    1. For each pixel $(x,y)$ in $M$:
+       1. If $M(x,y) > T_\text{high}$                 then $(x,y)$ is an edge
+       1. If $T_\text{high} < M(x,y) < T_\text{high}$ then $(x,y)$ is an edge if and only if it is neighbor of an edge pixel 
+       1. If $M(x,y) < T_\text{low}$                  then $(x,y)$ is not an edge
+    :::
+
+    ::::
    
 {numref}`F:detection:canny` gives an example of Canny edge detection.
 
-```{figure} figs/moulinsart-canny.svg
+```{figure} moulinsart-canny.svg
 ---
 width: 500px
 name: F:detection:canny
@@ -362,7 +379,7 @@ Canny Detector.
 
 {numref}`F:detection:sobel-marr-hildreth-canny` shows the results of the Sobel, Marr-Hildreth and Canny detectors on an image.
 
-```{figure} figs/sobel-marr-hildreth-canny.svg
+```{figure} sobel-marr-hildreth-canny.svg
 ---
 name: F:detection:sobel-marr-hildreth-canny
 ---
@@ -372,7 +389,7 @@ Comparison of Sobel, Marr-Hildreth and Canny detectors.
 In {numref}`F:detection:marr-hildreth-canny`, which compares Marr-Hildreth and Canny detectors,
 one can see that the edges detected with Canny detector are better localized.
 
-```{figure} figs/marr-hildreth-canny.svg
+```{figure} marr-hildreth-canny.svg
 ---
 name: F:detection:marr-hildreth-canny
 ---
