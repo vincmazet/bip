@@ -358,7 +358,7 @@ The Canny detector algorithm follows the four steps detailed below.
     :::{grid-item-card}
     1. For each pixel $(x,y)$ in $M$:
        1. If $M(x,y) > T_\text{high}$                 then $(x,y)$ is an edge
-       1. If $T_\text{high} < M(x,y) < T_\text{high}$ then $(x,y)$ is an edge if and only if it is neighbor of an edge pixel 
+       1. If $T_\text{low} < M(x,y) < T_\text{high}$  then $(x,y)$ is an edge if and only if it is neighbor of an edge pixel 
        1. If $M(x,y) < T_\text{low}$                  then $(x,y)$ is not an edge
     :::
 

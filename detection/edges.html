@@ -564,8 +564,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../labs/cor7.html">
-     Sobel and Canny detectors + Harris detector + Hough transform
+    <a class="reference internal" href="../labs/cor71.html">
+     Sobel and Canny detectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor72.html">
+     Harris detector
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../labs/cor73.html">
+     Hough transform
     </a>
    </li>
   </ul>
@@ -1227,7 +1237,7 @@ Two thresholds are therefore defined (<span class="math notranslate nohighlight"
 <li><p class="sd-card-text">For each pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in <span class="math notranslate nohighlight">\(M\)</span>:</p>
 <ol class="simple">
 <li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(M(x,y) &gt; T_\text{high}\)</span>                 then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge</p></li>
-<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(T_\text{high} &lt; M(x,y) &lt; T_\text{high}\)</span> then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge if and only if it is neighbor of an edge pixel</p></li>
+<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(T_\text{low} &lt; M(x,y) &lt; T_\text{high}\)</span>  then <span class="math notranslate nohighlight">\((x,y)\)</span> is an edge if and only if it is neighbor of an edge pixel</p></li>
 <li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(M(x,y) &lt; T_\text{low}\)</span>                  then <span class="math notranslate nohighlight">\((x,y)\)</span> is not an edge</p></li>
 </ol>
 </li>
