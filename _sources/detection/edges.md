@@ -10,7 +10,7 @@ Therefore, edge detection is useful for identifying or measuring objects, or seg
 
 Edges are characterized by a rapid variation in the intensity of the pixels.
 {numref}`F:detection:profile` represents the brightness profile along a horizontal line in the image.
-One clearly see that the outline of the industrial piece shows a sudden decrease in the brightness of the pixels.
+One clearly sees that the outline of the industrial piece shows a sudden decrease in the brightness of the pixels.
 
 ```{figure} edges-profile.svg
 ---
@@ -300,7 +300,7 @@ name: F:detection:marr-hildreth
 Marr-Hildreth Detector.
 Left: original image,
 center: result of the LoG filter,
-right: detection of the eros crossings.
+right: detection of the zeros crossings.
 ```
 
 ```{figure} caramba-marr-hildreth.svg
