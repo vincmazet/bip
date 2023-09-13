@@ -1,0 +1,898 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2 Display a saved image &#8212; Basics of Image Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor12';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3 Display several images" href="cor13.html" />
+    <link rel="prev" title="1 Getting started" href="cor11.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basics of Image Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Foreword
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/eye.html">Human vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/displaying.html">Displaying an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Histogram</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../histogram/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../histogram/histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../histogram/transformations.html">Histogram transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../histogram/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Filtering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/fourier.html">Fourier transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/wavelets.html">Wavelets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compression</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compression/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossless.html">Lossless compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossy.html">Lossy compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/region-growing.html">Region growing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical morphology</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mm/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mm/basics.html">Basic operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mm/composition.html">Composition of basic operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mm/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mm/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../restoration/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/denoising.html">Denoising</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature detection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../detection/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/matched-filter.html">Matched filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/edges.html">Edge detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/corners.html">Corner detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/lines.html">Line detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="lab1.html">Lab 1</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cor11.html">1 Getting started</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2 Display a saved image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor13.html">3 Display several images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor14.html">4 Create a simple image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor15.html">5 Setting the intensity range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor16.html">6 Segmentation by histogram thresholding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor17.html">7 Contrast enhancement</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab2.html">Lab 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor21.html">Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor22.html">Properties of the Fourier transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor23.html">Filtering aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab3.html">Lab 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor31.html">Lossy compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor32.html">Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor4.html">Segmentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab5.html">Lab 5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor5.html">Mathematical morphology</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab6.html">Lab 6</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor61.html">Denoising</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor62.html">Deconvolution</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lab7.html">Lab 7</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cor71.html">Sobel and Canny detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor72.html">Harris detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor73.html">Hough transform</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">In a nutshell</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nutshell/optimization.html">Mathematical optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nutshell/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nutshell/deeplearning.html">Deep learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://moodle.unistra.fr/course/view.php?id=7653">Moodle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/python.html">Installing and using Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/labs/cor12.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2 Display a saved image</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-color-image">Display the color image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-to-grayscale">Conversion to grayscale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extraction-of-pixels">Extraction of pixels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brightness-profile">Brightness profile</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="display-a-saved-image">
+<span id="labs-cor12"></span><h1>2 Display a saved image<a class="headerlink" href="#display-a-saved-image" title="Permalink to this headline">#</a></h1>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>use functions and modules</p></li>
+<li><p>know how to load and display an image, and use a colormap</p></li>
+<li><p>display the size of an image</p></li>
+<li><p>convert an image to grayscale</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">:</span></code> operator</p></li>
+<li><p>understand that an image is also a 2D signal</p></li>
+</ul>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
+<p>The use of the function <code class="docutils literal notranslate"><span class="pre">ccc</span></code> available in the submodule <code class="docutils literal notranslate"><span class="pre">bbb</span></code> of the module <code class="docutils literal notranslate"><span class="pre">aaa</span></code> writes <code class="docutils literal notranslate"><span class="pre">aaa.bbb.ccc</span></code>.
+I am sure you agree this is a bit long to write, that is why we usually rename the submodule to something shorter.
+Thus, the following instructions rename <code class="docutils literal notranslate"><span class="pre">skimage.io</span></code> to <code class="docutils literal notranslate"><span class="pre">io</span></code>, and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> to <code class="docutils literal notranslate"><span class="pre">plt</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The three modules used in this course are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.numpy.org/">Numpy</a> (scientific programming),</p></li>
+<li><p><a class="reference external" href="https://scikit-image.org/">Scikit-image</a> (image processing),</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> (display).</p></li>
+</ul>
+<p>Refer to the documentation on these websites to get the syntax of the functions.</p>
+</section>
+<section id="display-the-color-image">
+<h2>Display the color image<a class="headerlink" href="#display-the-color-image" title="Permalink to this headline">#</a></h2>
+<p>Now you can load the image 4.2.03.tiff (I load it directly from the website):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;http://sipi.usc.edu/database/download.php?vol=misc&amp;img=4.2.03&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and display it (I take this opportunity to add a title):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;4.2.03.tiff (Mandrill)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f7946e9cc0c4e01b445c64011434362c6b252ee48081ca9ce71b4d5d7532cdd.png" src="../_images/8f7946e9cc0c4e01b445c64011434362c6b252ee48081ca9ce71b4d5d7532cdd.png" />
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> is the correct way to show the image.</p>
+<p>The image dimensions can be read on the displayed image: a little more than 500 pixels per side, and 3 bands since the image is in color.
+A more precise alternative is to use the <code class="docutils literal notranslate"><span class="pre">shape</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So the image if of size 512 × 512, with 3 bands.</p>
+</section>
+<section id="conversion-to-grayscale">
+<h2>Conversion to grayscale<a class="headerlink" href="#conversion-to-grayscale" title="Permalink to this headline">#</a></h2>
+<p>We need to import a new module (I am doing this at this point, but it is recommended to import all modules at the beginning of the notebook).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">skimage.color</span> <span class="k">as</span> <span class="nn">color</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2671b61405dfe543fabdf824fc1baf510aac2f9b6bbf990f9605940d55c5c1a2.png" src="../_images/2671b61405dfe543fabdf824fc1baf510aac2f9b6bbf990f9605940d55c5c1a2.png" />
+</div>
+</div>
+<p>What’s that weird grayscale image? It’s rather green… 😲</p>
+<p>This actually <em>is</em> a grayscale image (the image has only one band).
+But the default colormap provided with <code class="docutils literal notranslate"><span class="pre">imshow</span></code> is a gradient of blue and green.
+To display it in real gray levels, you must specify the option <code class="docutils literal notranslate"><span class="pre">cmap</span></code> in <code class="docutils literal notranslate"><span class="pre">imshow</span></code>.
+A large number of palettes are available (see <a class="reference external" href="https://matplotlib.org/stable/gallery/color/colormap_reference.html">catalog</a>);
+here we choose the classic <code class="docutils literal notranslate"><span class="pre">gray</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mandrill (grayscale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f208136b96be03cd3b172e6bf744acd6722edd394681a328619bd9688048378a.png" src="../_images/f208136b96be03cd3b172e6bf744acd6722edd394681a328619bd9688048378a.png" />
+</div>
+</div>
+<p>Phew! 😅</p>
+<p>The grayscale image has intensities in this range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min : </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max : </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min : 0.0
+Max : 0.9116803921568628
+</pre></div>
+</div>
+</div>
+</div>
+<p>The range of colors can also be redefined by specifying the intensities corresponding to black (<code class="docutils literal notranslate"><span class="pre">vmin</span></code>) and white (<code class="docutils literal notranslate"><span class="pre">vmax</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Intensity range = [0.0, 0.5]&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c2fd0d44cf22fbe1f9ab1f90d540880e5edfdd363bcd8a6c5b9a435835e12d85.png" src="../_images/c2fd0d44cf22fbe1f9ab1f90d540880e5edfdd363bcd8a6c5b9a435835e12d85.png" />
+</div>
+</div>
+</section>
+<section id="extraction-of-pixels">
+<h2>Extraction of pixels<a class="headerlink" href="#extraction-of-pixels" title="Permalink to this headline">#</a></h2>
+<p>The syntax <code class="docutils literal notranslate"><span class="pre">g[a:b,c:d]</span></code> extract pixels located between rows <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>–1 and columns <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code>–1.
+If <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">c</span></code> is not given, then it is considered to be <span class="math notranslate nohighlight">\(0\)</span>.
+If <code class="docutils literal notranslate"><span class="pre">b</span></code> or <code class="docutils literal notranslate"><span class="pre">d</span></code> is not given, then it is considered to be the maximal index in the dimension.</p>
+<p>Then we have the instensity of top-left pixel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5775650980392157
+</pre></div>
+</div>
+</div>
+</div>
+<p>The intensities of the five first pixels of the second row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.46821647, 0.39396314, 0.15052863, 0.27128118, 0.3509451 ])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the intensities of all the pixels in the third row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.29887137, 0.45405412, 0.17520392, 0.18225216, 0.39513529,
+       0.23370078, 0.23346275, 0.18306275, 0.44279098, 0.42749882,
+       0.19147922, 0.23552588, 0.28236667, 0.14554353, 0.10365373,
+       0.20003569, 0.47681922, 0.41969843, 0.38021059, 0.22593216,
+       0.28821765, 0.20411412, 0.16150392, 0.25885922, 0.3675949 ,
+       0.70087843, 0.80062784, 0.69879137, 0.3542451 , 0.18072471,
+       0.37092039, 0.66425961, 0.62859882, 0.32563176, 0.48865843,
+       0.44584078, 0.43163216, 0.41797137, 0.4346651 , 0.50814902,
+       0.29834   , 0.53164941, 0.52597647, 0.48358314, 0.55389647,
+       0.58781529, 0.5523349 , 0.56919608, 0.32072275, 0.47438745,
+       0.57285569, 0.25036235, 0.34582863, 0.3136149 , 0.38447255,
+       0.37164275, 0.33711451, 0.67537804, 0.59824706, 0.62892549,
+       0.54611451, 0.59752706, 0.40229412, 0.2953298 , 0.64953529,
+       0.65788039, 0.24202118, 0.36884667, 0.49252118, 0.79315843,
+       0.70304157, 0.46462706, 0.42678275, 0.25671647, 0.19072196,
+       0.64614784, 0.66011961, 0.35292157, 0.57037412, 0.50863059,
+       0.29234667, 0.49992588, 0.7499898 , 0.60244275, 0.55461333,
+       0.58998824, 0.47794706, 0.31540235, 0.47809922, 0.24272667,
+       0.52286   , 0.78632667, 0.70392667, 0.3449149 , 0.32193765,
+       0.40283765, 0.33996588, 0.25855725, 0.46996627, 0.56721255,
+       0.66268706, 0.26738078, 0.62769373, 0.57931686, 0.34050745,
+       0.32190706, 0.17445294, 0.29652902, 0.46807725, 0.59419804,
+       0.65354157, 0.55356863, 0.45248588, 0.63711373, 0.78667608,
+       0.78139176, 0.66867098, 0.62541686, 0.64168824, 0.50473098,
+       0.21474   , 0.46951373, 0.80832078, 0.55386   , 0.74174588,
+       0.74282902, 0.42696157, 0.55508784, 0.79211451, 0.65287216,
+       0.30708235, 0.61376431, 0.77478275, 0.34201961, 0.26216392,
+       0.26048941, 0.34937765, 0.32378039, 0.60389686, 0.48542196,
+       0.47154392, 0.53828667, 0.57594   , 0.60560745, 0.56346784,
+       0.4943749 , 0.55253725, 0.49998745, 0.73936353, 0.46750078,
+       0.35117451, 0.64160078, 0.50857294, 0.67457882, 0.28412471,
+       0.31143451, 0.26363176, 0.40436863, 0.20817922, 0.45073765,
+       0.24656078, 0.20288588, 0.44887765, 0.52612471, 0.57509843,
+       0.70517725, 0.31155529, 0.44951725, 0.32749373, 0.45062392,
+       0.22434784, 0.21253137, 0.53796627, 0.58654235, 0.51004549,
+       0.35401255, 0.34762314, 0.52055216, 0.3524502 , 0.20716549,
+       0.55764588, 0.55081412, 0.53530706, 0.73204196, 0.72333333,
+       0.43177686, 0.5625302 , 0.57672157, 0.68679882, 0.49665098,
+       0.32977137, 0.61064471, 0.57949647, 0.71874471, 0.60622392,
+       0.45755961, 0.47033333, 0.6539451 , 0.71454745, 0.61620275,
+       0.59436353, 0.4811651 , 0.40566353, 0.29167176, 0.49708235,
+       0.52531412, 0.33124627, 0.56904824, 0.54893294, 0.44701686,
+       0.42592863, 0.39929843, 0.46948353, 0.26834902, 0.37489725,
+       0.65960863, 0.32994863, 0.29597843, 0.48790157, 0.51648039,
+       0.30926745, 0.40897059, 0.70658431, 0.68584392, 0.31943608,
+       0.51457098, 0.68033098, 0.44309608, 0.21460941, 0.5708051 ,
+       0.30841569, 0.12148471, 0.18900745, 0.23111176, 0.35617373,
+       0.63064078, 0.62157843, 0.4543251 , 0.5868102 , 0.63134549,
+       0.35060667, 0.51869843, 0.23740824, 0.44154902, 0.60687922,
+       0.63498353, 0.25839373, 0.49051725, 0.60004118, 0.68548235,
+       0.55514078, 0.73690902, 0.7019949 , 0.49392235, 0.38955451,
+       0.27914118, 0.4273651 , 0.41536784, 0.25250863, 0.49767843,
+       0.34849373, 0.29043529, 0.27982392, 0.55084627, 0.62948549,
+       0.55583882, 0.27288784, 0.56052235, 0.66894   , 0.38284314,
+       0.43967529, 0.2774502 , 0.26997804, 0.28804706, 0.45563294,
+       0.50055765, 0.74024863, 0.61882902, 0.41892431, 0.56081059,
+       0.60970863, 0.71147412, 0.75721647, 0.61909059, 0.65936275,
+       0.59161608, 0.44407569, 0.39787529, 0.42114314, 0.48729686,
+       0.37464902, 0.30955882, 0.33337961, 0.64318431, 0.51892157,
+       0.58090078, 0.55057686, 0.4523302 , 0.52688392, 0.31417373,
+       0.27305843, 0.43903255, 0.60187137, 0.61762431, 0.42226471,
+       0.31401608, 0.39641686, 0.61858353, 0.53392157, 0.30225922,
+       0.46834196, 0.40980824, 0.37164039, 0.4239549 , 0.37574392,
+       0.51241843, 0.51272314, 0.58368431, 0.59460706, 0.33814078,
+       0.63098902, 0.65416745, 0.50459647, 0.64279059, 0.6570851 ,
+       0.49102588, 0.65684078, 0.50505098, 0.23141804, 0.20387608,
+       0.49046824, 0.27620549, 0.43045922, 0.55709804, 0.74841216,
+       0.64306627, 0.70716745, 0.73133412, 0.36815294, 0.65667098,
+       0.5889549 , 0.61651529, 0.46833451, 0.22244235, 0.28930235,
+       0.42694039, 0.39629882, 0.64588667, 0.3499502 , 0.28574039,
+       0.42263804, 0.29248078, 0.2453702 , 0.36597843, 0.49566784,
+       0.46113333, 0.30190118, 0.42555647, 0.69971176, 0.70840078,
+       0.48582118, 0.2531898 , 0.18831843, 0.40755412, 0.44412275,
+       0.32613882, 0.53831333, 0.42903098, 0.6589251 , 0.72162392,
+       0.5700298 , 0.67195373, 0.71072235, 0.58323725, 0.38245529,
+       0.66597765, 0.62270745, 0.4811502 , 0.64357294, 0.6911302 ,
+       0.46150588, 0.17370039, 0.15491882, 0.28686196, 0.61202824,
+       0.73338157, 0.74530902, 0.65347608, 0.65087098, 0.42826314,
+       0.71725647, 0.7201349 , 0.49603922, 0.37203765, 0.47086471,
+       0.62737216, 0.58209098, 0.68531843, 0.58510431, 0.47664118,
+       0.61493765, 0.59421137, 0.3861098 , 0.38211294, 0.7358498 ,
+       0.41067137, 0.47752078, 0.74665765, 0.70586902, 0.31205961,
+       0.30702824, 0.3080549 , 0.51851961, 0.47489216, 0.53479569,
+       0.53559843, 0.65944471, 0.53486235, 0.52856706, 0.48515569,
+       0.26078157, 0.65548824, 0.5378302 , 0.31735647, 0.4392051 ,
+       0.40995098, 0.48542941, 0.62159569, 0.52709922, 0.35710235,
+       0.6793502 , 0.78834275, 0.77483686, 0.79081216, 0.61601529,
+       0.51214941, 0.51948667, 0.42916549, 0.48015098, 0.44226784,
+       0.54357725, 0.59253137, 0.60061098, 0.42591373, 0.65666078,
+       0.76882392, 0.78575882, 0.60957451, 0.4676651 , 0.60167059,
+       0.80047137, 0.72537804, 0.43510392, 0.62954549, 0.60625098,
+       0.42893529, 0.76703882, 0.82513882, 0.65869098, 0.46839176,
+       0.48753216, 0.5579451 , 0.60944706, 0.75215451, 0.71587137,
+       0.70802667, 0.54521608, 0.35049961, 0.61257843, 0.74617333,
+       0.81649373, 0.74969255, 0.62443255, 0.32151059, 0.65618471,
+       0.66241922, 0.31468392, 0.44372863, 0.63504941, 0.68894196,
+       0.72772   , 0.77370588, 0.60649843, 0.32699569, 0.50390627,
+       0.40383373, 0.24985725, 0.38521412, 0.49977216, 0.68890275,
+       0.69251961, 0.73503176, 0.59991294, 0.69705137, 0.40038588,
+       0.37019922, 0.17809255, 0.19862824, 0.33471961, 0.27111333,
+       0.26034118, 0.5153349 , 0.59366039, 0.37718471, 0.30610902,
+       0.40581451, 0.54923098, 0.49104588, 0.39092235, 0.38469098,
+       0.34957098, 0.31829373])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="brightness-profile">
+<h2>Brightness profile<a class="headerlink" href="#brightness-profile" title="Permalink to this headline">#</a></h2>
+<p>I choose a horizontal cut on the 200<sup>th</sup> line of the image:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">=</span> <span class="mi">200</span>          <span class="c1"># Cut location</span>
+<span class="n">profil</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">cut</span><span class="p">,:]</span>  <span class="c1"># Extract all the pixels of the row &#39;cut&#39; in the image g</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can display the brightness profile…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>           <span class="c1"># New figure with specific display size</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># Plot on the left</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">profil</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>                 <span class="c1"># Brightness profile</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Brightness profile&quot;</span><span class="p">)</span>      <span class="c1"># Title</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>                   <span class="c1"># Image on the right</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>           <span class="c1"># Image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">511</span><span class="p">),</span> <span class="p">(</span><span class="n">cut</span><span class="p">,</span><span class="n">cut</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>    <span class="c1"># Cut line in blue</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mandrill&quot;</span><span class="p">)</span>                <span class="c1"># Title</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b4958e1d785ef75be4ddc85ddf1c68bbab571fcefc5ace181d3af22e861b60fa.png" src="../_images/b4958e1d785ef75be4ddc85ddf1c68bbab571fcefc5ace181d3af22e861b60fa.png" />
+</div>
+</div>
+<p>Do you see on the profile the Mandrill’s nose and the protruding ridges on its sides?</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cor11.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1 Getting started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cor13.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3 Display several images</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-color-image">Display the color image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-to-grayscale">Conversion to grayscale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extraction-of-pixels">Extraction of pixels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brightness-profile">Brightness profile</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Vincent Mazet (University of Strasbourg, France)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023-2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2024 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

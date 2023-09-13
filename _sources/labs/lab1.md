@@ -1,8 +1,9 @@
 (labs:lab1)=
 # Lab 1
 
-You can refer to the [correction](labs:cor11) after you have completed each exercise.
-Whatever, do not hesitate to ask your colleagues and teachers to get more informations or to discuss about a specific topic.
+After completing each exercise, you can refer to the [correction](labs:cor11).
+Furthermore, do not hesitate to ask your colleagues and teachers for additional information
+or to discuss specific topics.
 
 
 <!-- >> En TP (mais aussi parfois en cours) : demander d'afficher systématiquement la colorbar. Cela permet notamment d'éviter de travailler à la fois avec des images en int (0-255) et float (0-1). -->
@@ -54,8 +55,12 @@ These programs are saved as _notebooks_.
   ```
   jupyter lab
   ```
+  or
+  ```
+  jupyter-lab
+  ```
 
-* Open a new Python 3 notebook, then rename it from `File` > `Save Notebook As...`.
+* In Jupyter Lab, open a new Python 3 notebook and rename it from `File` > `Save Notebook As...`.
   A notebook is a file with extension .ipynb.
   
 Now you are ready to write a Python program in the notebook.
@@ -73,11 +78,11 @@ Now you are ready to write a Python program in the notebook.
   Case is important (_i.e._ `a` and `A` are two different variables).
   Type the instructions below in the second cell:
   ```
-  year = 2022
+  year = 2023
   course = "BIP"
   ```
   and type again `Shift` + `Return`.
-  Now the value 2022 is stored in the variable `year`
+  Now the value 2023 is stored in the variable `year`
   and the character string "BIP" is stored in the variable `course`.
 
 * Modify the previous cell by adding the following statement:
@@ -100,7 +105,7 @@ A notebook is appealing as it is also possible to add text using the [markdown l
   :gutter: 3
   
   :::{grid-item-card}
-  <html><h3>New exercise</h3></html>
+  <html><h2 style="margin-top:0ex">New exercise</h2></html>
   
   Write **bold**, _italic_ or equations: $\sqrt{2}$.
   
@@ -116,7 +121,11 @@ Verify your code in the [correction](labs:cor11).
 
 * Open a new notebook.
 
-* Write the following statements to allow the use of the modules
+* Download the image 4.2.03.tiff
+  ([available online](http://sipi.usc.edu/database/database.php?volume=misc&image=10))
+  _in the same folder as your notebook_.
+
+* Write in the notebook the following statements to allow the use of the modules
   `skimage.io` and `matplotlib.pyplot`
   which are renamed `io` and `plt`.
   ```
@@ -124,12 +133,11 @@ Verify your code in the [correction](labs:cor11).
   import matplotlib.pyplot as plt
   ```
   
-  The names `io` and `plt` are conventional names, but you can define other terms!
+  The names `io` and `plt` are conventional names, but you can define other terms.
   
-* Load the image mandrill.tiff
-  ([available online](http://sipi.usc.edu/database/database.php?volume=misc&image=10)):
+* Load :
   ```
-  f = io.imread("mandrill.tiff")
+  f = io.imread("4.2.03.tiff")
   ```
   
   and display it:
@@ -175,7 +183,7 @@ However, an image can also be seen as a three-dimensional curve, opening the way
   Do you manage to find in this profile the different areas of the image?
 
 
-## 3 Dislay several images
+## 3 Display several images
 
 * Open a new notebook.
 
