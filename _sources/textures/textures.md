@@ -1,3 +1,0 @@
-# Textures
-
-🏗️ To do...

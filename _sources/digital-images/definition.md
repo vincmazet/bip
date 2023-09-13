@@ -59,35 +59,34 @@ Coordinate system generally used in image processing.
 
 ## Diversity of images
 
-Digital images can be differentiated in several ways.
+Digital images can be categorized in various ways.
 
 ### Dimension number $d$
 
-Common images (like photography) are 2D (2-dimensional) images whereas some other images lie in more than two dimensions.
-A 3D image, like in MRI, is often called "3D image" or "cube".
-A 1D image is actually a signal.
-The elements constituting a 2D image are called _pixels_ (for "picture element"),
-and the ones constituting a 3D image are called _voxels_ (for "volume element").
+Common images, such as photographs, are 2D (2-dimensional) images while other images lie in more than two dimensions.
+A 3D image, as seen in MRI scans, is often referred to as a "3D image" or "cube".
+A 1D image is essentially a signal.
+The elements constituting a 2D image are called _pixels_ ("picture element"),
+and those constituting a 3D image are called _voxels_ ("volume element").
 
 ### Dimension heterogeneity
 
-In common 2D images, the two dimensions are both spatial dimensions.
-But the dimensions may represent another physical domain and be different.
-For example, a video can be seen as a 2D+$t$ image (two spatial dimensions, one temporal dimension),
-a functional MRI sequence can be seen as a 3D+$t$ image (three spatial dimensions, one temporal dimension),
+In common 2D images, the two dimensions are spatial dimensions.
+However, the dimensions can represent another physical domain and be different.
+For instance, a video can be seen as a 2D+$t$ image (two spatial dimensions, one temporal dimension);
+a functional MRI sequence can be seen as a 3D+$t$ image (three spatial dimensions, one temporal dimension);
 and a [hyperspectral image](https://en.wikipedia.org/wiki/Hyperspectral_imaging)
 is a 2D+$\lambda$ image (two spatial dimensions, plus a third dimension depending on the wavelength).
 
 ### Element dimension $B$
 
-Each element of an image can be scalar or vector.
-For example, the pixels in a 2D grayscale image gather only one value (the gray intensity).
-The pixels in photography gather three values (the intensity of red, green and blue).
-The images from the [Pléiades constellation](https://en.wikipedia.org/wiki/Pleiades_(satellite)) are RVB--IR,
-therefore they gather four values (red, green, blue, and infrared).
+Each element within an image can be scalar or vector.
+For instance, pixels in a 2D grayscale image gather only one value: the gray intensity.
+Pixels in photography gather three values (the intensity of red, green and blue).
+Images from the [Pléiades constellation](https://en.wikipedia.org/wiki/Pleiades_(satellite)) are RVB--IR: they gather four values (red, green, blue, and infrared).
 
 ### Element intensity set
 
-Common images have pixel intensities in the range $\{0,1,\dots,255\}$,
-but a binary image has values in $\{0,1\}$.
-Most of the time, the intensities are supposed to be real.
+Common images have pixel intensities within the range $\{0,1,\dots,255\}$,
+but binary images have values in $\{0,1\}$.
+Most of the time, the intensities are assumed to be real numbers.
