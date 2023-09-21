@@ -7,6 +7,21 @@
 The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
 Before applying the convolutions, you need to convert the image into float (`skimage.img_as_float`).
 
+````{note}
+It can be very useful for analyzing the results to display the colorbar alongside each image.
+You can follow the code below
+(`img` is the image to show):
+
+```
+import matplotlib.pyplot as plt
+
+plt.figure()
+im = plt.imshow(img, "gray")
+plt.colorbar(im)
+plt.show()
+```
+````
+
 * What does the acronym PSF stand for?
 
 * Compute the convolution between the image and a Gaussian kernel (`skimage.filters.gaussian`).

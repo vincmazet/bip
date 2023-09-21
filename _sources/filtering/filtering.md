@@ -1,6 +1,14 @@
+(filtering:filtering)=
 # Filtering
 
 The operation of filtering consists in selecting some frequencies in the images.
+Filtering an image is performed through convolution of the image with a PSF that represents the filter.
+Similarly, it can be achieved by multiplying the DFT of the image and the PSF.
+In the example below, the first row in the images is in the spatial domain:
+the filtered image is the convolution of the original image and the kernel (PSF).
+The second row shows the same information in the Fourier domain,
+thus the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the kernel.
+
 Especially, we distinguish low-pass filtering which preserves only the low frequencies ({numref}`F:lowpass`)
 and high-pass filtering which preserves only the high frequencies ({numref}`F:highpass`).
 
@@ -8,8 +16,8 @@ and high-pass filtering which preserves only the high frequencies ({numref}`F:hi
 :name: "F:lowpass"
 
 Example of low-pass filtering: only the low frequencies are kept.
-Top row: spatial domain, bottom row: amplitude of the DFT.
-Only the amplitude of the DFT are shown.
+Top row: spatial domain, bottom row: amplitude of the DFT
+(the phase is not shown here).
 ```
 
 ```{figure} highpass.svg
@@ -17,10 +25,5 @@ Only the amplitude of the DFT are shown.
 
 Example of high-pass filtering: only the high frequencies (i.e. the sudden changes in the intensities) are kept.
 ```
-
-In these examples, the first row shows the image in the spatial domain,
-thus the filtered image is the convolution of the original image and the kernel.
-The second row shows the same information in the Fourier domain,
-thus the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the kernel.
 
 <!-- Filters (low-pass/blur, High-pass/sharp, citer "kernel", lien vers détection de contour) -->

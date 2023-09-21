@@ -1,14 +1,14 @@
 # Conclusion
 
-Filtering consists in amplifying or attenuating some frequencies in an image.
-It is used sometimes for image processing,
-and this is what happens when an image is acquired.
-Indeed, a blurred photo is a (low-pass) filtered version of the actual scene.
+Filtering involves the manipulation of frequencies within an image, either by enhancing or attenuating them.
+It finds application in several image processing tasks,
+such as image acquisition,
+where a blurred photo is a (low-pass) filtered version of the original scene.
 
-In this chapter, we have seen two mathematical objects used to filter images and analyze their properties.
-The first one is convolution which is the mathematical operation used to compute the result of filtering in the usual spatial domain.
-The second one is the Fourier transform which gives the representation of an image in the frequency domain.
-So, the operation of filtering comes to multiplication in this domain.
+In this chapter, we have seen two mathematical tools used to filter images and analyze their properties.
+The first one is convolution, which is the mathematical operation used to compute the result of filtering in the usual spatial domain.
+The second one is the Fourier transform, which gives an image's representation in the frequency domain.
+Filtering in this domaine comes to a multiplication.
 Besides, the Fourier transform is used to analyze the frequency content of an image,
 as we will see in [](denoising) and [](deconvolution).
 

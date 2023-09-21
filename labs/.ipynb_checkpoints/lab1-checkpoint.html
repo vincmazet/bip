@@ -572,12 +572,12 @@ which are renamed <code class="docutils literal notranslate"><span class="pre">i
 </li>
 <li><p>What are the dimensions (in pixels) of the image?</p></li>
 </ul>
-<p>The conversion of a color image with pixel values <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(b\)</span> to a grayscale image with pixel intensity <span class="math notranslate nohighlight">\(x\)</span> is made through the transformation</p>
+<p>The conversion of a color image with pixel values <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(b\)</span> to a grayscale image with pixel intensity <span class="math notranslate nohighlight">\(g\)</span> is made through the transformation</p>
 <div class="math notranslate nohighlight">
 \[
-  x = 0.2125 \, r + 0.7154 \, g + 0.0721 \, b.
+  g = 0.2125 \, r + 0.7154 \, g + 0.0721 \, b.
 \]</div>
-<p>The coefficients have been obtained by psychovisual studies and guarantee that <span class="math notranslate nohighlight">\(x\in[0,1]\)</span> if <span class="math notranslate nohighlight">\(r,g,b\in[0,1]\)</span>.</p>
+<p>The coefficients have been obtained by psychovisual studies and guarantee that <span class="math notranslate nohighlight">\(g\in[0,1]\)</span> if <span class="math notranslate nohighlight">\(r,g,b\in[0,1]\)</span>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>In <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code>, <code class="docutils literal notranslate"><span class="pre">rgb2gray</span></code> is a function in the module <code class="docutils literal notranslate"><span class="pre">skimage.color</span></code>.
@@ -621,11 +621,11 @@ Instead of listing manually the images, you can look for a code on the web, as f
 <p>An RGB image is encoded in the form of a three-dimensional array:
 the first two dimensions are the spatial dimensions of the image, the third corresponds to the bands.</p>
 <ul>
-<li><p>Create the array corresponding to the RGB image <span class="math notranslate nohighlight">\(40 \times 80\)</span> sketched <a class="reference internal" href="#f-lab1-synthimage"><span class="std std-numref">Fig. 103</span></a>:</p>
+<li><p>Create the array corresponding to the RGB image <span class="math notranslate nohighlight">\(40 \times 80\)</span> sketched <a class="reference internal" href="#f-lab1-synthimage"><span class="std std-numref">Fig. 100</span></a>:</p>
 <figure class="align-default" id="f-lab1-synthimage">
 <a class="reference internal image-reference" href="../_images/synthimage.png"><img alt="../_images/synthimage.png" src="../_images/synthimage.png" style="width: 328.0px; height: 167.20000000000002px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">A simple image.</span><a class="headerlink" href="#f-lab1-synthimage" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">A simple image.</span><a class="headerlink" href="#f-lab1-synthimage" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To do this, create first a black image with the correct dimensions

@@ -3,11 +3,21 @@
 
 The (2D) Fourier transform is a very classical tool in image processing.
 It is the extension of the well known [Fourier transform](https://vincmazet.github.io/signal1/fourier/fourier.html)
-for signals which decomposes a signal into a sum of sinusoids.
-So, the Fourier transform gives information about the frequency content of the image.
+for signals which decomposes a signal into a sum of complex oscillations (actually, complex exponential).
+In image processing, the complex oscillations always come by pair because the pixels have real intensities.
 
-<!-- expliquer ce qu'est le "frequency content" -->
-<!-- Les Topos ne connaissent pas => il faut considérer que c'est une nouvelle notion. Donc, développer un peu plus en commençant plus doucement -->
+{numref}`F:fourier:decomposition` shows the decomposition of a synthetic image into oscillations.
+In this toy-example, the image is simple enough to be decomposed by using only three oscillations.
+We will see further that usual images need much more oscillations.
+The Fourier transform gives information about the frequency content of the image.
+
+```{figure} fourier-decomposition.svg
+---
+name: F:fourier:decomposition
+---
+A synthetic image and the three oscillations (frequencies)
+that compose the image.
+```
 
 
 ## Direct Fourier transform
@@ -34,8 +44,9 @@ DFT of the squirrel. The amplitude is shown with a logarithmic scale to distingu
 
 The amplitude and phase represent the distribution of energy in the frequency plane.
 The low frequencies are located in the center of the image, and the high frequencies near the boundaries.
+
 In the figure above, the gray background behind the squirrel is a low frequency area because the intensities of the pixels slowly evolve from one pixel to another.
-On the contrary, the tail is a high frequency area because the pixel intensity shows a rapid alternation between the hair and the background.
+On the contrary, the tail is a high frequency area because the intensities of the pixels show a rapid alternation between the hair and the background.
 
 
 ## Inverse Fourier transform
@@ -58,14 +69,14 @@ It is denoted $\mathcal{F}^{-1}$ below.
     \qquad\text{where}\; a,b\in\mathbb{C}.
   $$
   
-* The convolution of two images is equivalent to the multiplication of the DFT of the images:
+* The convolution of two images is equivalent to the multiplication of the DFT of the images,
+  provided that the convolution is circular (wrapping hypothesis on the edges):
 
   $$
     f * g = \mathcal{F}^{-1}[F \times G]
   $$
 
-* The 2D DFT can be obtained by computing a 1D DFT on the rows, then a 1D DFT on the columns
-  (the DFT is separable).
+* The DFT is separable: it can be obtained by computing a 1D DFT on the rows, then a 1D DFT on the columns.
 
 * The DFT is periodic with periods $M$ and $N$ ($k, l \in \mathbb{Z}$):
   

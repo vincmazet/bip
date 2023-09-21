@@ -442,7 +442,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolution">
 <span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h1>
-<!-- **///// -> éléments sur la convolution à ajouter dans la partie convolution (formation des images)** -->
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <p>Many image processing results come from a modification of one pixel with respect to its neighbors.
@@ -470,13 +469,51 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 </ul>
 <p>The image <span class="math notranslate nohighlight">\(h\)</span> is called by different names, depending on the context:
 <em>filter</em>, <em>mask</em>, <em>kernel</em>, <em>window</em>, <em>pattern</em> or <em>point spread function</em> (PSF).</p>
-<p>Some convolution examples are shown in <a class="reference internal" href="#f-convolution-example"><span class="std std-numref">Fig. 27</span></a>.</p>
-<figure class="align-default" id="f-convolution-example">
-<img alt="../_images/conv-examples.svg" src="../_images/conv-examples.svg" /><figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Three examples of image convolution.</span><a class="headerlink" href="#f-convolution-example" title="Permalink to this image">#</a></p>
+<p>Some convolution examples are shown above.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Example 1</label><div class="sd-tab-content docutils">
+<figure class="align-default" id="f-convolution-example1">
+<img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- commenter les trois convolutions -->
+<p><span class="math notranslate nohighlight">\(g\)</span> is an image composed of only four non-zero pixels.
+<span class="math notranslate nohighlight">\(h\)</span> is a blurry spot.
+The convolution of <span class="math notranslate nohighlight">\(g\)</span> by <span class="math notranslate nohighlight">\(h\)</span> clearly shows the “spreading” effect:
+the result <span class="math notranslate nohighlight">\(f\)</span> corresponds to each of the four pixels of <span class="math notranslate nohighlight">\(g\)</span>,
+at the same position as on <span class="math notranslate nohighlight">\(g\)</span>,
+spreading according to the pattern shown on <span class="math notranslate nohighlight">\(h\)</span>.
+Notice that the “spreading” of the two nearby pixels adds up, thus giving a very bright area.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Example 2</label><div class="sd-tab-content docutils">
+<figure class="align-default" id="f-convolution-example2">
+<img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
+Each of these pixels spreads over the result <span class="math notranslate nohighlight">\(f\)</span> following the pattern <span class="math notranslate nohighlight">\(f\)</span>.
+This results in a blurry image.
+We will see in <a class="reference internal" href="filtering.html#filtering-filtering"><span class="std std-ref">Filtering</span></a> that we have applied here a low pass filter on the image <span class="math notranslate nohighlight">\(g\)</span>.</p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Example 3</label><div class="sd-tab-content docutils">
+<figure class="align-default" id="f-convolution-example3">
+<img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" /><figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here, each pixel of <span class="math notranslate nohighlight">\(g\)</span> appears twice in <span class="math notranslate nohighlight">\(f\)</span>:
+the result <span class="math notranslate nohighlight">\(g\)</span> then becomes the image <span class="math notranslate nohighlight">\(f\)</span> which also appears twice.
+Another interpretation can be done:
+the result corresponds to the two unique pixels of <span class="math notranslate nohighlight">\(h\)</span> which smear while reproducing the pattern <span class="math notranslate nohighlight">\(g\)</span>.</p>
+</div>
+</div>
 </section>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h2>
@@ -498,21 +535,22 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 <p>The convolution formula is not defined on the boundaries of the image:
 as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 26</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
 <p>Therefore, one has to assume some hypotheses of the pixel values outside the image.
-<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 28</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 29</span></a> shows the convolution of these images by a Gaussian.</p>
+<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 30</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 31</span></a> shows the convolution of these images by a Gaussian.</p>
 <figure class="align-default" id="f-convolution-boundaries-hypotheses">
 <img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" /><figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Several ways to set the pixels outside the image.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Several ways to assume the pixels outside the image.
+The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-convolution-boundaries-results">
 <img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" /><figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 29</span></a> that the three convolutions are basically identical:
+<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 31</span></a> that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
-Also, the best way is to make the objects of interest far from the edges.</p>
+Also, the best thing is to ensure when acquiring the image that the objects of interest are far from the edges</p>
 <p>At last, note that the wrapping hypothesis yields a <em>circular convolution</em>.
 This is also the result given by a multiplication in the Fourier domain (see <a class="reference internal" href="fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>).</p>
 </section>
@@ -568,7 +606,26 @@ Sans séparabilité :
   $f_1(x,y) = \sum_m g(x-m,y) h_1(m)$        | $M$       | $M-1$
   $f(x,y) = \sum_n f_1(x,y-n) h_2(n)$        | $N$       | $N-1$
   Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$ -->
-<!--   EVOQUER CONVOLUTION ? --></section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Proof<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Consider two images <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> of size <span class="math notranslate nohighlight">\(M \times N\)</span>.</p>
+<ul class="simple">
+<li><p class="sd-card-text">On the one side, the computation of one pixel by using the 2D convolution
+needs <span class="math notranslate nohighlight">\(MN\)</span> multiplications and <span class="math notranslate nohighlight">\(MN-1\)</span> additions.
+Therefore, computing the convoluted image needs <span class="math notranslate nohighlight">\((MN+MN-1) \times MN\)</span> operations.</p></li>
+<li><p class="sd-card-text">On the other side, each element of a 1D convolution along one column needs <span class="math notranslate nohighlight">\(M\)</span> multiplications and <span class="math notranslate nohighlight">\(M-1\)</span> additions.
+Similarly, each element of a 1D convolution along one row needs <span class="math notranslate nohighlight">\(N\)</span> multiplications and <span class="math notranslate nohighlight">\(N-1\)</span> additions.
+Therefore, computing the convoluted image needs <span class="math notranslate nohighlight">\(2(M+N-1) \times MN\)</span> operations.</p></li>
+</ul>
+<p class="sd-card-text">It is easy to see that <span class="math notranslate nohighlight">\(2(M+N-1) \times MN &lt; (MN+MN-1) \times MN\)</span> operations,
+highlighting the efficiency of the separability.</p>
+</div>
+</details></section>
 </section>
 
     <script type="text/x-thebe-config">

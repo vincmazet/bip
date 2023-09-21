@@ -454,7 +454,7 @@ document.write(`
 In case there is no explicit matrix to represent a filter, as with the Gaussian filter <code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>,
 we can simply convolve the filter by an image containing only one non-zero pixel.
 Indeed, this image is equivalent to a Dirac pulse <span class="math notranslate nohighlight">\(\delta\)</span> which is the neutral element of the convolution product.</p>
-<p>The two last kernels are defined with:</p>
+<p>The two last kernels are defined with (note the double brackets, so as to get a 2D array):</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
@@ -462,7 +462,7 @@ Indeed, this image is equivalent to a Dirac pulse <span class="math notranslate 
 </div>
 </div>
 </div>
-<p>(note the double brackets, so as to get a 2D array) and</p>
+<p>and</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
@@ -481,14 +481,32 @@ Indeed, this image is equivalent to a Dirac pulse <span class="math notranslate 
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/18f33a2a1d0257d3480066118d616fc66ae79ac7e56ff78f4cebf76eaae6c9eb.png" src="../_images/18f33a2a1d0257d3480066118d616fc66ae79ac7e56ff78f4cebf76eaae6c9eb.png" />
-<img alt="../_images/40d345b73a4bb0ab5d87e661ca8a83b80e5615ffd01df58f9ad29f7b9894d071.png" src="../_images/40d345b73a4bb0ab5d87e661ca8a83b80e5615ffd01df58f9ad29f7b9894d071.png" />
+<img alt="../_images/5456ce53852d2fef4ac16ba16aaabf03bf49297c15822b336d558f54271123d3.png" src="../_images/5456ce53852d2fef4ac16ba16aaabf03bf49297c15822b336d558f54271123d3.png" />
+<img alt="../_images/676291b1ec9c8eb470d1e5dd3403da6cd75c477f05a08a998ac2ce012cd3603f.png" src="../_images/676291b1ec9c8eb470d1e5dd3403da6cd75c477f05a08a998ac2ce012cd3603f.png" />
 </div>
 </div>
 <p>The function <code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code> defines a Gaussian kernel (this is the second image above).
 The result of the function is the convolution product of this Gaussian kernel with the image given as a parameter of the function.</p>
-<p>The “gradient” image brings out the vertical contours of the image.
-We will reuse such a filter in <a class="reference internal" href="../detection/edges.html#c-edge-detection"><span class="std std-ref">Edge detection</span></a>.</p>
+<p>The “gradient” image (third image) brings out the vertical contours of the image.
+We will reuse this filter in <a class="reference internal" href="../detection/edges.html#c-edge-detection"><span class="std std-ref">Edge detection</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span><span class="o">/</span><span class="mi">100</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/00a4b9c86cf2d1d8ad59e69d5a7f1da36c3cf3e355f2e6dc9c41e5e42caf5821.png" src="../_images/00a4b9c86cf2d1d8ad59e69d5a7f1da36c3cf3e355f2e6dc9c41e5e42caf5821.png" />
+</div>
+</div>
 </section>
 </section>
 

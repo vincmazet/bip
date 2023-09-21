@@ -455,7 +455,7 @@ Interpolation methods differ from the way the “continuous” image is reconstr
 <figure class="align-default" id="f-interpolation-principle">
 <a class="reference internal image-reference" href="../_images/interpolation.png"><img alt="../_images/interpolation.png" src="../_images/interpolation.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Principle of interpolation.
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Principle of interpolation.
 The green image is the continuous image.
 The blue and red grid schematize the input and ouput grids, respectively.
 The question is: how to compute the intensity of the pixels of the red grid from the one of the blue grid?</span><a class="headerlink" href="#f-interpolation-principle" title="Permalink to this image">#</a></p>
@@ -466,11 +466,11 @@ The question is: how to compute the intensity of the pixels of the red grid from
 <h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this headline">#</a></h2>
 <p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
 The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
-<p><a class="reference internal" href="#f-interpolation-0-order"><span class="std std-numref">Fig. 39</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
+<p><a class="reference internal" href="#f-interpolation-0-order"><span class="std std-numref">Fig. 42</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
 <figure class="align-default" id="f-interpolation-0-order">
 <a class="reference internal image-reference" href="../_images/interp-0.png"><img alt="../_images/interp-0.png" src="../_images/interp-0.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Nearest neighbour interpolation.
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Nearest neighbour interpolation.
 The blue dots represent the input image pixels,
 the red cross represent the output image pixels.
 The gray lines are the continuous image reconstructed from the input image.</span><a class="headerlink" href="#f-interpolation-0-order" title="Permalink to this image">#</a></p>
@@ -486,7 +486,7 @@ This generally gives better results that nearest neighbour interpolation, but st
 <figure class="align-default" id="f-interpolation-1-order">
 <a class="reference internal image-reference" href="../_images/interp-1.png"><img alt="../_images/interp-1.png" src="../_images/interp-1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Linear interpolation.</span><a class="headerlink" href="#f-interpolation-1-order" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Linear interpolation.</span><a class="headerlink" href="#f-interpolation-1-order" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -501,7 +501,7 @@ Thus, only the interpolated function is continuous at the grid points but not th
 <figure class="align-default" id="f-interpolation-3-order">
 <a class="reference internal image-reference" href="../_images/interp-3.png"><img alt="../_images/interp-3.png" src="../_images/interp-3.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Polynomial interpolation.</span><a class="headerlink" href="#f-interpolation-3-order" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Polynomial interpolation.</span><a class="headerlink" href="#f-interpolation-3-order" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ## Spline-Based Interpolation

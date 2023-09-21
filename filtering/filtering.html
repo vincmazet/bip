@@ -426,26 +426,28 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="filtering">
-<h1>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h1>
+<span id="filtering-filtering"></span><h1>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h1>
 <p>The operation of filtering consists in selecting some frequencies in the images.
-Especially, we distinguish low-pass filtering which preserves only the low frequencies (<a class="reference internal" href="#f-lowpass"><span class="std std-numref">Fig. 31</span></a>)
-and high-pass filtering which preserves only the high frequencies (<a class="reference internal" href="#f-highpass"><span class="std std-numref">Fig. 32</span></a>).</p>
+Filtering an image is performed through convolution of the image with a PSF that represents the filter.
+Similarly, it can be achieved by multiplying the DFT of the image and the PSF.
+In the example below, the first row in the images is in the spatial domain:
+the filtered image is the convolution of the original image and the kernel (PSF).
+The second row shows the same information in the Fourier domain,
+thus the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the kernel.</p>
+<p>Especially, we distinguish low-pass filtering which preserves only the low frequencies (<a class="reference internal" href="#f-lowpass"><span class="std std-numref">Fig. 34</span></a>)
+and high-pass filtering which preserves only the high frequencies (<a class="reference internal" href="#f-highpass"><span class="std std-numref">Fig. 35</span></a>).</p>
 <figure class="align-default" id="f-lowpass">
 <img alt="../_images/lowpass.svg" src="../_images/lowpass.svg" /><figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Example of low-pass filtering: only the low frequencies are kept.
-Top row: spatial domain, bottom row: amplitude of the DFT.
-Only the amplitude of the DFT are shown.</span><a class="headerlink" href="#f-lowpass" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Example of low-pass filtering: only the low frequencies are kept.
+Top row: spatial domain, bottom row: amplitude of the DFT
+(the phase is not shown here).</span><a class="headerlink" href="#f-lowpass" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-highpass">
 <img alt="../_images/highpass.svg" src="../_images/highpass.svg" /><figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Example of high-pass filtering: only the high frequencies (i.e. the sudden changes in the intensities) are kept.</span><a class="headerlink" href="#f-highpass" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Example of high-pass filtering: only the high frequencies (i.e. the sudden changes in the intensities) are kept.</span><a class="headerlink" href="#f-highpass" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In these examples, the first row shows the image in the spatial domain,
-thus the filtered image is the convolution of the original image and the kernel.
-The second row shows the same information in the Fourier domain,
-thus the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the kernel.</p>
 <!-- Filters (low-pass/blur, High-pass/sharp, citer "kernel", lien vers détection de contour) --></section>
 
     <script type="text/x-thebe-config">

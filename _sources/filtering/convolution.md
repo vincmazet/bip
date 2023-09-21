@@ -1,7 +1,6 @@
 (filtering:convolution)=
 # Convolution
 
-<!-- **///// -> éléments sur la convolution à ajouter dans la partie convolution (formation des images)** -->
 
 ## Definition
 
@@ -34,16 +33,53 @@ For the sake of simplicity, the image $h$ is often:
 The image $h$ is called by different names, depending on the context:
 _filter_, _mask_, _kernel_, _window_, _pattern_ or _point spread function_ (PSF).
 
-Some convolution examples are shown in {numref}`F:convolution:example`.
+Some convolution examples are shown above.
 
-```{figure} conv-examples.svg
+`````{tab-set}
+
+````{tab-item} Example 1
+```{figure} conv-example1.svg
 ---
-name: F:convolution:example
+name: F:convolution:example1
 ---
-Three examples of image convolution.
+The image to the left is the convolution of the other two images.
 ```
+$g$ is an image composed of only four non-zero pixels.
+$h$ is a blurry spot.
+The convolution of $g$ by $h$ clearly shows the "spreading" effect:
+the result $f$ corresponds to each of the four pixels of $g$,
+at the same position as on $g$,
+spreading according to the pattern shown on $h$.
+Notice that the "spreading" of the two nearby pixels adds up, thus giving a very bright area.
+````
 
-<!-- commenter les trois convolutions -->
+````{tab-item} Example 2
+```{figure} conv-example2.svg
+---
+name: F:convolution:example2
+---
+The image to the left is the convolution of the other two images.
+```
+$g$ is an image made up of pixels of different intensities.
+Each of these pixels spreads over the result $f$ following the pattern $f$.
+This results in a blurry image.
+We will see in [](filtering:filtering) that we have applied here a low pass filter on the image $g$.
+````
+
+````{tab-item} Example 3
+```{figure} conv-example3.svg
+---
+name: F:convolution:example3
+---
+The image to the left is the convolution of the other two images.
+```
+Here, each pixel of $g$ appears twice in $f$:
+the result $g$ then becomes the image $f$ which also appears twice.
+Another interpretation can be done:
+the result corresponds to the two unique pixels of $h$ which smear while reproducing the pattern $g$.
+````
+
+`````
 
 
 ## Properties
@@ -79,7 +115,8 @@ Therefore, one has to assume some hypotheses of the pixel values outside the ima
 ---
 name: F:convolution:boundaries-hypotheses
 ---
-Several ways to set the pixels outside the image.
+Several ways to assume the pixels outside the image.
+The image is delimited by the green edge.
 ```
 
 ```{figure} boundaries-results.svg
@@ -92,7 +129,7 @@ Results of the convolution with the same image.
 One can see on the {numref}`F:convolution:boundaries-results` that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
-Also, the best way is to make the objects of interest far from the edges.
+Also, the best thing is to ensure when acquiring the image that the objects of interest are far from the edges
 
 At last, note that the wrapping hypothesis yields a _circular convolution_.
 This is also the result given by a multiplication in the Fourier domain (see [](filtering:fourier)).
@@ -152,5 +189,21 @@ Sans séparabilité :
   $f_1(x,y) = \sum_m g(x-m,y) h_1(m)$        | $M$       | $M-1$
   $f(x,y) = \sum_n f_1(x,y-n) h_2(n)$        | $N$       | $N-1$
   Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$ -->
-  
-<!--   EVOQUER CONVOLUTION ? -->
+
+
+```{dropdown} Proof
+
+Consider two images $g$ and $h$ of size $M \times N$.
+
+* On the one side, the computation of one pixel by using the 2D convolution
+  needs $MN$ multiplications and $MN-1$ additions.
+  Therefore, computing the convoluted image needs $(MN+MN-1) \times MN$ operations.
+
+* On the other side, each element of a 1D convolution along one column needs $M$ multiplications and $M-1$ additions.
+  Similarly, each element of a 1D convolution along one row needs $N$ multiplications and $N-1$ additions.
+  Therefore, computing the convoluted image needs $2(M+N-1) \times MN$ operations.
+
+It is easy to see that $2(M+N-1) \times MN < (MN+MN-1) \times MN$ operations,
+highlighting the efficiency of the separability.
+
+```

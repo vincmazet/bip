@@ -148,13 +148,13 @@ Verify your code in the [correction](labs:cor11).
 
 * What are the dimensions (in pixels) of the image?
 
-The conversion of a color image with pixel values $r$, $g$, $b$ to a grayscale image with pixel intensity $g$ is made through the transformation
+The conversion of a color image with pixel values $r$, $g$, $b$ to a grayscale image with pixel intensity $x$ is made through the transformation
 
 $$
-  g = 0.2125 \, r + 0.7154 \, g + 0.0721 \, b.
+  x = 0.2125 \, r + 0.7154 \, g + 0.0721 \, b.
 $$
 
-The coefficients have been obtained by psychovisual studies and guarantee that $g\in[0,1]$ if $r,g,b\in[0,1]$.
+The coefficients have been obtained by psychovisual studies and guarantee that $x\in[0,1]$ if $r,g,b\in[0,1]$.
 
 ````{margin}
 In `skimage.color.rgb2gray`, `rgb2gray` is a function in the module `skimage.color`.

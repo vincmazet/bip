@@ -445,6 +445,20 @@ document.write(`
 <h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h2>
 <p>The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
 Before applying the convolutions, you need to convert the image into float (<code class="docutils literal notranslate"><span class="pre">skimage.img_as_float</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It can be very useful for analyzing the results to display the colorbar alongside each image.
+You can follow the code below
+(<code class="docutils literal notranslate"><span class="pre">img</span></code> is the image to show):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 <ul>
 <li><p>What does the acronym PSF stand for?</p></li>
 <li><p>Compute the convolution between the image and a Gaussian kernel (<code class="docutils literal notranslate"><span class="pre">skimage.filters.gaussian</span></code>).</p></li>
