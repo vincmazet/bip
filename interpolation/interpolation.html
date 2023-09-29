@@ -450,7 +450,7 @@ The consequence of a geometric transformation is that the transformed grid point
 no longer coincide with the grid points of the output image and vice-versa.</p>
 <p>The basic idea of interpolation is quite simple:
 first, reconstruct a “continuous” image from the discrete input image,
-then sample this image onto the grid of the output image.
+then sample this “continuous” image onto the grid of the output image.
 Interpolation methods differ from the way the “continuous” image is reconstructed.</p>
 <figure class="align-default" id="f-interpolation-principle">
 <a class="reference internal image-reference" href="../_images/interpolation.png"><img alt="../_images/interpolation.png" src="../_images/interpolation.png" style="width: 100%;" /></a>
@@ -462,18 +462,27 @@ The question is: how to compute the intensity of the pixels of the red grid from
 </figcaption>
 </figure>
 <!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
+<p>It is more simple to understand image (2D) interpolation by considering 1D interpolation.
+Thus the sequel of this section illustrates some interpolation methods in the 1D domain.</p>
 <section id="nearest-neighbour-interpolation">
 <h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this headline">#</a></h2>
 <p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
 The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
-<p><a class="reference internal" href="#f-interpolation-0-order"><span class="std std-numref">Fig. 42</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
-<figure class="align-default" id="f-interpolation-0-order">
-<a class="reference internal image-reference" href="../_images/interp-0.png"><img alt="../_images/interp-0.png" src="../_images/interp-0.png" style="width: 300px;" /></a>
+<p><a class="reference internal" href="#f-interpolation-nearest-1d"><span class="std std-numref">Fig. 42</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
+<figure class="align-default" id="f-interpolation-nearest-1d">
+<a class="reference internal image-reference" href="../_images/interp-nearest-1d.svg"><img alt="../_images/interp-nearest-1d.svg" src="../_images/interp-nearest-1d.svg" width="450px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Nearest neighbour interpolation.
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Nearest neighbour interpolation on a 1D example.
 The blue dots represent the input image pixels,
-the red cross represent the output image pixels.
-The gray lines are the continuous image reconstructed from the input image.</span><a class="headerlink" href="#f-interpolation-0-order" title="Permalink to this image">#</a></p>
+the red dots represent the output image pixels.
+The gray line is the continuous image reconstructed from the input image.</span><a class="headerlink" href="#f-interpolation-nearest-1d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-interpolation-nearest-2d">
+<a class="reference internal image-reference" href="../_images/interp-nearest-2d.svg"><img alt="../_images/interp-nearest-2d.svg" src="../_images/interp-nearest-2d.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Nearest neighbour interpolation on an image with one row
+(the pixel intensities have the same intensities as the data in <a class="reference internal" href="#f-interpolation-nearest-1d"><span class="std std-numref">Fig. 42</span></a>).</span><a class="headerlink" href="#f-interpolation-nearest-2d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -481,27 +490,38 @@ The gray lines are the continuous image reconstructed from the input image.</spa
 <h2>(Bi)linear interpolation<a class="headerlink" href="#bi-linear-interpolation" title="Permalink to this headline">#</a></h2>
 <p>With linear interpolation (French: <em>interpolation linéaire</em>),
 the interpolated points lie on pieces of straight lines connecting neighbouring grid points.
-Because images are in 2D, this method is called bilinear interpolation.
+Because images are in 2D, this method is called <i>bi</i>linear interpolation.
 This generally gives better results that nearest neighbour interpolation, but structures with high frequencies are not correctly interpolated.</p>
-<figure class="align-default" id="f-interpolation-1-order">
-<a class="reference internal image-reference" href="../_images/interp-1.png"><img alt="../_images/interp-1.png" src="../_images/interp-1.png" style="width: 300px;" /></a>
+<figure class="align-default" id="f-interpolation-linear-1d">
+<a class="reference internal image-reference" href="../_images/interp-linear-1d.svg"><img alt="../_images/interp-linear-1d.svg" src="../_images/interp-linear-1d.svg" width="450px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Linear interpolation.</span><a class="headerlink" href="#f-interpolation-1-order" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Linear interpolation on a 1D example.</span><a class="headerlink" href="#f-interpolation-linear-1d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-interpolation-linear-2d">
+<a class="reference internal image-reference" href="../_images/interp-linear-2d.svg"><img alt="../_images/interp-linear-2d.svg" src="../_images/interp-linear-2d.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Linear interpolation on an image.</span><a class="headerlink" href="#f-interpolation-linear-2d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="polynomial-interpolation">
 <h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">#</a></h2>
 <p>The basic principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
-In the same way, we can use a polynomial of degree <span class="math notranslate nohighlight">\(P\)</span> that must pass through <span class="math notranslate nohighlight">\(P+1\)</span> grid points.
-Besides its limited accuracy, polynomial interpolation has another signiﬁcant disadvantage.
-The interpolated curve is not continuous at the grid points already in its ﬁrst derivative.
-This is because for each interval between grid points another polynomial is taken.
-Thus, only the interpolated function is continuous at the grid points but not the derivatives.</p>
-<figure class="align-default" id="f-interpolation-3-order">
-<a class="reference internal image-reference" href="../_images/interp-3.png"><img alt="../_images/interp-3.png" src="../_images/interp-3.png" style="width: 300px;" /></a>
+Besides its porr behavior to interpolate high frequencies,
+polynomial interpolation has another signiﬁcant disadvantage:
+the interpolated curve is not continuous at the grid points already in its ﬁrst derivative.</p>
+<p>Therefore, an alternative is to use a polynomial of degree <span class="math notranslate nohighlight">\(P\)</span> that must pass through <span class="math notranslate nohighlight">\(P+1\)</span> grid points.</p>
+<figure class="align-default" id="f-interpolation-cubic-1d">
+<a class="reference internal image-reference" href="../_images/interp-cubic-1d.svg"><img alt="../_images/interp-cubic-1d.svg" src="../_images/interp-cubic-1d.svg" width="450px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Polynomial interpolation.</span><a class="headerlink" href="#f-interpolation-3-order" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Polynomial interpolation on a 1D example.</span><a class="headerlink" href="#f-interpolation-cubic-1d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-interpolation-cubic-2d">
+<a class="reference internal image-reference" href="../_images/interp-cubic-2d.svg"><img alt="../_images/interp-cubic-2d.svg" src="../_images/interp-cubic-2d.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Polynomial interpolation on an image.</span><a class="headerlink" href="#f-interpolation-cubic-2d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ## Spline-Based Interpolation

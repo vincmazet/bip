@@ -453,7 +453,7 @@ In addition, this principle is used in lossy compression of audio (MP3) and vide
 <p>Most of the energy of usual pictures is concentrated in low frequencies,
 so the <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">discrete Fourier transform</span></a> (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called <em>discrete cosine transform</em> (DCT) is a better choice for computational reasons.
-Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a [wavelet transform][C:filtering:wavelets).</p>
+Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.</p>
 </section>
 <section id="the-discrete-cosine-transform">
 <h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Permalink to this headline">#</a></h2>
@@ -484,31 +484,34 @@ Considering an image of size 8 × 8, the 64 possible cosines of the DCT are repr
 <section id="example-of-the-dct-of-an-image">
 <h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this headline">#</a></h2>
 <p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 38</span></a>,
-which is a crop of size 8 × 8 centered on the squirrel snout.</p>
+which is a crop of size 8 × 8 centered on the squirrel’s snout.</p>
 <figure class="align-default" id="f-compression-squirrel-crop">
 <img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><figcaption>
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 39</span></a>.
-As you can see, the coefficient at the top left, which correspond at the lower frequencies
-(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 37</span></a>) are the largest.</p>
+As you can see, the coefficients in the top left corner, which correspond to the lower frequencies
+(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 37</span></a>) are the largest in magnitude.</p>
 <figure class="align-default" id="f-compression-squirrel-coefficients">
 <img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><figcaption>
 <p><span class="caption-number">Fig. 39 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 38</span></a>.
 Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Because the human eye is less sensitive to high frequencies than low frequencies,
-the idea of JPEG compression is to cancel the coefficients at the bottom right in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 39</span></a>.</p>
+<p>The next step of JPEG compression involves quantizing these coefficients.
+Since the human eye is less sensitive to high-frequencies components than low-frequencies components,
+the idea of JPEG compression is to quantize roughly the coefficients primarily located in the bottom-right corner of <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 39</span></a>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The expression of the inverse DCT is not given here but is similar to what the inverse Fourier transform is for the Fourier transform.</p>
 </aside>
-<p>So, we cancel the coefficients stroked with a red cross and reconstruct the image by using the inverse DCT.
+<p>To illustrate simply the process, here we cancel the coefficients marked with a red cross and reconstruct the image by using the inverse DCT.
 The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 40</span></a> (right).
-As you can see, the result is very similar to the original image, while less than 50 % of the coefficients are kept!
-This small example shows the interest of going into the domain of a transformation and canceling certain coefficients.</p>
+As you can see, the result is very similar to the original image,
+even though less than 50 % of the coefficients are kept!
+This small example shows the interest of going into the domain of a transformation
+and “canceling” certain coefficients.</p>
 <figure class="align-default" id="f-compression-squirrel-comparison">
 <img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><figcaption>
 <p><span class="caption-number">Fig. 40 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">#</a></p>
@@ -530,7 +533,7 @@ As a result, the other two channels (Cb and Cr) are downsampled to have fewer pi
 <li><p>The image is divided into 8 × 8 sub-images, and a DCT is computed on each sub-image.</p></li>
 <li><p>In the previous section, the high frequency coefficients are canceled.
 In reality, the quantization is done on each coefficient of each DCT,
-but it is finer for low frequency coefficients than for high-frequency ones.</p></li>
+but it is finer for low-frequency coefficients than for high-frequency ones.</p></li>
 <li><p>The array consisting of the 64 coefficients of each sub-image is compressed with a lossless compression method
 (<a class="reference external" href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>).</p></li>
 </ul>

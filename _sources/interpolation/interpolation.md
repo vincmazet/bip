@@ -10,7 +10,7 @@ no longer coincide with the grid points of the output image and vice-versa.
 
 The basic idea of interpolation is quite simple:
 first, reconstruct a "continuous" image from the discrete input image,
-then sample this image onto the grid of the output image.
+then sample this "continuous" image onto the grid of the output image.
 Interpolation methods differ from the way the "continuous" image is reconstructed.
 
 ```{figure} interpolation.png
@@ -26,55 +26,87 @@ The question is: how to compute the intensity of the pixels of the red grid from
 
 <!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
 
+It is more simple to understand image (2D) interpolation by considering 1D interpolation.
+Thus the sequel of this section illustrates some interpolation methods in the 1D domain.
+
+
 ## Nearest neighbour interpolation
 
 Nearest neighbour interpolation (French: _interpolation au plus proche voisin_) is the simplest method.
 The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.
 
-{numref}`F:interpolation:0-order` illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.
+{numref}`F:interpolation:nearest-1d` illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.
 
-```{figure} interp-0.png
+```{figure} interp-nearest-1d.svg
 ---
-width: 300px
-name: F:interpolation:0-order
+width: 450px
+name: F:interpolation:nearest-1d
 ---
-Nearest neighbour interpolation.
+Nearest neighbour interpolation on a 1D example.
 The blue dots represent the input image pixels,
-the red cross represent the output image pixels.
-The gray lines are the continuous image reconstructed from the input image.
+the red dots represent the output image pixels.
+The gray line is the continuous image reconstructed from the input image.
+```
+
+```{figure} interp-nearest-2d.svg
+---
+width: 100%
+name: F:interpolation:nearest-2d
+---
+Nearest neighbour interpolation on an image with one row
+(the pixel intensities have the same intensities as the data in {numref}`F:interpolation:nearest-1d`).
 ```
 
 ## (Bi)linear interpolation
 
 With linear interpolation (French: _interpolation linéaire_),
 the interpolated points lie on pieces of straight lines connecting neighbouring grid points.
-Because images are in 2D, this method is called bilinear interpolation.
+Because images are in 2D, this method is called <i>bi</i>linear interpolation.
 This generally gives better results that nearest neighbour interpolation, but structures with high frequencies are not correctly interpolated.
 
-```{figure} interp-1.png
+```{figure} interp-linear-1d.svg
 ---
-width: 300px
-name: F:interpolation:1-order
+width: 450px
+name: F:interpolation:linear-1d
 ---
-Linear interpolation.
+Linear interpolation on a 1D example.
+```
+
+```{figure} interp-linear-2d.svg
+---
+width: 100%
+name: F:interpolation:linear-2d
+---
+Linear interpolation on an image.
 ```
 
 ## Polynomial Interpolation
 
 The basic principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
-In the same way, we can use a polynomial of degree $P$ that must pass through $P+1$ grid points.
-Besides its limited accuracy, polynomial interpolation has another signiﬁcant disadvantage.
-The interpolated curve is not continuous at the grid points already in its ﬁrst derivative.
-This is because for each interval between grid points another polynomial is taken.
-Thus, only the interpolated function is continuous at the grid points but not the derivatives.
+Besides its porr behavior to interpolate high frequencies,
+polynomial interpolation has another signiﬁcant disadvantage:
+the interpolated curve is not continuous at the grid points already in its ﬁrst derivative.
 
-```{figure} interp-3.png
+Therefore, an alternative is to use a polynomial of degree $P$ that must pass through $P+1$ grid points.
+
+```{figure} interp-cubic-1d.svg
 ---
-width: 300px
-name: F:interpolation:3-order
+width: 450px
+name: F:interpolation:cubic-1d
 ---
-Polynomial interpolation.
+Polynomial interpolation on a 1D example.
 ```
+
+```{figure} interp-cubic-2d.svg
+---
+width: 100%
+name: F:interpolation:cubic-2d
+---
+Polynomial interpolation on an image.
+```
+
+
+
 
 <!-- ## Spline-Based Interpolation
 

@@ -432,11 +432,11 @@ document.write(`
 <p>Thresholding apply well on a grayscale image, for which it is easy to define a threshold from the modes of the histogram.
 However, this approach cannot be applied on a color or multiband image because there is no histogram.
 Each pixel in a <span class="math notranslate nohighlight">\(B\)</span>-band image can be represented by a point in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.
-By doing so, pixels with similar colors form groups in the space, as illustrated in <a class="reference internal" href="#f-segmentation-clustering"><span class="std std-numref">Fig. 54</span></a>.</p>
+By doing so, pixels with similar colors form groups in the space, as illustrated in <a class="reference internal" href="#f-segmentation-clustering"><span class="std std-numref">Fig. 57</span></a>.</p>
 <figure class="align-default" id="f-segmentation-clustering">
 <a class="reference internal image-reference" href="../_images/3d-space.svg"><img alt="../_images/3d-space.svg" src="../_images/3d-space.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <aside class="margin sidebar">
@@ -482,20 +482,20 @@ Algorithm: K-means</div>
 <p class="sidebar-title"></p>
 <p><a class="reference external" href="https://allisonhorst.com/k-means-clustering">A funny illustration of the K-means algorithm</a>.</p>
 </aside>
-<p><a class="reference internal" href="#f-segmentation-kmeans-algo"><span class="std std-numref">Fig. 55</span></a> illustrate this algorithm,
+<p><a class="reference internal" href="#f-segmentation-kmeans-algo"><span class="std std-numref">Fig. 58</span></a> illustrate this algorithm,
 in the simple case of an image with two bands (hence the two-dimensional space)
 segmented into <span class="math notranslate nohighlight">\(K=2\)</span> classes.</p>
 <figure class="align-default" id="f-segmentation-kmeans-algo">
 <a class="reference internal image-reference" href="../_images/k-means-algorithm.svg"><img alt="../_images/k-means-algorithm.svg" src="../_images/k-means-algorithm.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Illustration of the k-means algorithm (click to enlarge).</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Illustration of the k-means algorithm (click to enlarge).</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><a class="reference internal" href="#f-segmentation-kmeans-result"><span class="std std-numref">Fig. 56</span></a> gives the result of the k-means algorithm on an image.</p>
+<p><a class="reference internal" href="#f-segmentation-kmeans-result"><span class="std std-numref">Fig. 59</span></a> gives the result of the k-means algorithm on an image.</p>
 <figure class="align-default" id="f-segmentation-kmeans-result">
 <a class="reference internal image-reference" href="../_images/segmentation-kmeans-result.png"><img alt="../_images/segmentation-kmeans-result.png" src="../_images/segmentation-kmeans-result.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Segmentation with the k-means algorithm on the left image (center: <span class="math notranslate nohighlight">\(K=2\)</span> classes, right: <span class="math notranslate nohighlight">\(K=4\)</span> classes).</span><a class="headerlink" href="#f-segmentation-kmeans-result" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Segmentation with the k-means algorithm on the left image (center: <span class="math notranslate nohighlight">\(K=2\)</span> classes, right: <span class="math notranslate nohighlight">\(K=4\)</span> classes).</span><a class="headerlink" href="#f-segmentation-kmeans-result" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The pros and cons of the k-means method for image segmentation are listed below.</p>
@@ -540,7 +540,7 @@ as depicted in the images below.</p>
 <figure class="align-default" id="f-segmentation-kmeans-ok">
 <a class="reference internal image-reference" href="../_images/kmeans-ok.svg"><img alt="../_images/kmeans-ok.svg" height="200px" src="../_images/kmeans-ok.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Spherical clusters: the k-means algorithm works well.
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Spherical clusters: the k-means algorithm works well.
 The points are depicted by <span class="math notranslate nohighlight">\(\bullet\)</span> whose color correspond to the class,
 and the centroids are depicted by a black <span class="math notranslate nohighlight">\(\times\)</span>.</span><a class="headerlink" href="#f-segmentation-kmeans-ok" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -548,7 +548,7 @@ and the centroids are depicted by a black <span class="math notranslate nohighli
 <figure class="align-default" id="f-segmentation-kmeans-croissants">
 <a class="reference internal image-reference" href="../_images/kmeans-croissants.svg"><img alt="../_images/kmeans-croissants.svg" height="200px" src="../_images/kmeans-croissants.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentation-kmeans-croissants" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentation-kmeans-croissants" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In addition to this, the centroids are calculated as the mean of the points in the cluster.
@@ -557,7 +557,7 @@ Thus, the algorithm may fail in the presence of outliers (<em>valeurs aberrantes
 <figure class="align-default" id="f-segmentation-kmeans-outliers">
 <a class="reference internal image-reference" href="../_images/kmeans-outliers.svg"><img alt="../_images/kmeans-outliers.svg" height="200px" src="../_images/kmeans-outliers.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentation-kmeans-outliers" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentation-kmeans-outliers" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Other clustering methods are available to avoid some of the aforementionned limits.

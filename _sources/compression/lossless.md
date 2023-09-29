@@ -37,7 +37,7 @@ In computers, the BMP format is based on RLE compression.
 The LZW algorithm (Lempel-Ziv-Welch, 1984) is an improvement of the LZ78 algorithm (1978).
 It is used in format like GIF or TIFF.
 Briefly speaking, the principle is to build a dictionary where the "words" are groups of pixels and to assign a code to each group.
-The dictionary is build during the compression stage and depend on the image.
+The dictionary is build during the compression stage and depends on the image.
 
 <!--
  The algorithm is the following one:

@@ -13,7 +13,7 @@ In addition, this principle is used in lossy compression of audio (MP3) and vide
 Most of the energy of usual pictures is concentrated in low frequencies,
 so the [discrete Fourier transform](filtering:fourier) (DFT) could be a good idea to perform lossy compression.
 It appears though that the so-called _discrete cosine transform_ (DCT) is a better choice for computational reasons.
-Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a [wavelet transform][C:filtering:wavelets).
+Note that JPEG2000 (which is a newer but rarely used version of JPEG) used a wavelet transform.
 
 
 ## The discrete cosine transform
@@ -50,7 +50,7 @@ The 64 coefficients of a DCT of size 8 × 8.
 ## Example of the DCT of an image
 
 To illustrate the DCT applied to an image, consider the image given in {numref}`F:compression:squirrel-crop`,
-which is a crop of size 8 × 8 centered on the squirrel snout.
+which is a crop of size 8 × 8 centered on the squirrel's snout.
 
 ```{figure} squirrel-crop.svg
 ---
@@ -60,8 +60,8 @@ The 8 × 8 image to be transformed with DCT (right).
 ```
 
 The 64 coefficients of the DCT of the crop are shown in {numref}`F:compression:squirrel-coefficients`.
-As you can see, the coefficient at the top left, which correspond at the lower frequencies
-(see {numref}`F:compression:dct-coefficients`) are the largest.
+As you can see, the coefficients in the top left corner, which correspond to the lower frequencies
+(see {numref}`F:compression:dct-coefficients`) are the largest in magnitude.
 
 ```{figure} squirrel-coefficients.svg
 ---
@@ -71,17 +71,20 @@ The 64 coefficients of the DCT applied to {numref}`F:compression:squirrel-crop`.
 Those which are cancelled are stroked out with a red cross.
 ```
 
-Because the human eye is less sensitive to high frequencies than low frequencies,
-the idea of JPEG compression is to cancel the coefficients at the bottom right in {numref}`F:compression:squirrel-coefficients`.
+The next step of JPEG compression involves quantizing these coefficients.
+Since the human eye is less sensitive to high-frequencies components than low-frequencies components,
+the idea of JPEG compression is to quantize roughly the coefficients primarily located in the bottom-right corner of {numref}`F:compression:squirrel-coefficients`.
 
 ```{margin}
 The expression of the inverse DCT is not given here but is similar to what the inverse Fourier transform is for the Fourier transform.
 ```
 
-So, we cancel the coefficients stroked with a red cross and reconstruct the image by using the inverse DCT.
+To illustrate simply the process, here we cancel the coefficients marked with a red cross and reconstruct the image by using the inverse DCT.
 The reconstructed image with only 28 coefficients (over 64) is shown in {numref}`F:compression:squirrel-comparison` (right).
-As you can see, the result is very similar to the original image, while less than 50 % of the coefficients are kept!
-This small example shows the interest of going into the domain of a transformation and canceling certain coefficients.
+As you can see, the result is very similar to the original image,
+even though less than 50 % of the coefficients are kept!
+This small example shows the interest of going into the domain of a transformation
+and "canceling" certain coefficients.
 
 ```{figure} squirrel-comparison.svg
 ---
@@ -107,7 +110,7 @@ Here are a few.
 
 * In the previous section, the high frequency coefficients are canceled.
   In reality, the quantization is done on each coefficient of each DCT,
-  but it is finer for low frequency coefficients than for high-frequency ones.
+  but it is finer for low-frequency coefficients than for high-frequency ones.
 
 * The array consisting of the 64 coefficients of each sub-image is compressed with a lossless compression method
   ([Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding)).

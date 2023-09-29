@@ -429,8 +429,7 @@ document.write(`
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <!-- Afficher en sur-impression les images des coefficients de la DCT sur la grille des coefficients. -->
 <!-- Afficher l'image de différence en plus de l'originale et de la transformée. -->
-<p>How many bytes are needed to code one second of Full HD video?
-A Full HD video is characterized by images of size 1920 × 1080, each of the three channels (RGB) is coded with 1 byte, and there are 50 frames per second.</p>
+<p>How many bytes are needed to code one second of Full HD video?</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 Solution<div class="sd-summary-down docutils">
@@ -438,13 +437,14 @@ Solution<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">A Full HD video is characterized by images of size 1920 × 1080, each of the three channels (RGB) is coded with 1 byte, and there are 50 frames per second.</p>
 <p class="sd-card-text">One second contains 1920 × 1080 × 3 × 50 = 311 040 000 bytes, or around 311 Mb.
 Thus, a DVD (4,7 Gb) can store only 15 seconds of a movie… 😲
-You would need more than 600 DVDs to watch <em>Harry Potter and the philosopher’s stone</em>…</p>
+You would need more than 600 DVDs to watch a movie…</p>
 </div>
 </details><p>This example shows the need for image compression!
-The purpose of image compression is to encode the <em>information</em> contained in the image with fewer bytes than the original image.
-OK, but how to quantify information?
+The purpose of image compression is to encode the <em>information</em> contained in the image with fewer bytes than the original image.</p>
+<p>OK, but how to quantify information?
 In 1948, <a class="reference external" href="https://en.wikipedia.org/wiki/Claude_Shannon">Claude Shannon</a> proposed to consider that an image or a message is very informative if it is unlikely.
 It is still the mathematical definition for information.</p>
 <p>We distinguish two kinds of compression:</p>
