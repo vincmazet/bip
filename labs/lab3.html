@@ -442,7 +442,7 @@ document.write(`
 <span id="labs-lab3"></span><h1>Lab 3<a class="headerlink" href="#lab-3" title="Permalink to this headline">#</a></h1>
 <section id="lossy-compression">
 <h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h2>
-<p>The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
+<p>The heart of JPEG compression is to save the high-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
 In this exercise, a simplified version of JPEG compression is implemented
 by cancelling the DCT pixels located outside a certain frequency.</p>
 <ul>
@@ -461,7 +461,7 @@ What is your opinion about the quality of the compression?</p></li>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are respectively the images before and after compression, <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> being the dimensions of these images.
 You can use the function <code class="docutils literal notranslate"><span class="pre">numpy.linalg.norm</span></code>.</p>
 </li>
-<li><p>Analyze the evolution of the MSE according to the mask size <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p>Analyze the evolution of the MSE according to the mask size.</p></li>
 </ul>
 </section>
 <section id="interpolation">

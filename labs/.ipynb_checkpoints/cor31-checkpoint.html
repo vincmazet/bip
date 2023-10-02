@@ -461,7 +461,7 @@ The low frequencies are at the top left.</p>
 <p>Here are some examples of images of the base (on the first line) and their DCT (on the second line) for a size of 8 × 8 pixels.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/ce4ec5a1e7bdd27a1369935bc3f962fca4e2cee7b9967e61c633b7c62a11d07a.png" src="../_images/ce4ec5a1e7bdd27a1369935bc3f962fca4e2cee7b9967e61c633b7c62a11d07a.png" />
+<img alt="../_images/a5a659d9987b03ea88400f7116acbb0df37acf659a9e5dad265bab2fbf82e183.png" src="../_images/a5a659d9987b03ea88400f7116acbb0df37acf659a9e5dad265bab2fbf82e183.png" />
 </div>
 </div>
 <p>It can be seen that the pixels at the top left of the DCT (therefore close to the origin) correspond to a low-frequency
@@ -483,7 +483,7 @@ the contrast of the DCT must be modified (how?) to visualize it.</p>
 <p>We can notice (even if it is not obvious) that the low-frequency coefficients are more energetic than the others.
 This means that the image is mostly made up of low frequencies.</p>
 <p>To perform the compression, we choose to cancel the high-frequency pixels using a square mask of side <span class="math notranslate nohighlight">\(C\)</span>.
-The size of the square divided by the image size corresponds to the compression ratio.</p>
+The size of the square divided by the image size corresponds to the compression rate.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -491,7 +491,7 @@ The size of the square divided by the image size corresponds to the compression 
 <img alt="../_images/e38e72eb95f9c12efcac17b7be69ebea67d4643b2046ff1df6e2036401fc4280.png" src="../_images/e38e72eb95f9c12efcac17b7be69ebea67d4643b2046ff1df6e2036401fc4280.png" />
 </div>
 </div>
-<p>Note that even with a low compression ratio, the visual result is very good:
+<p>Note that even with a very high compression rate, the visual result is very good:
 it is very difficult to observe the differences between the two images.
 This observation is also confirmed by the low value of the MSE:</p>
 <div class="cell tag_remove-input docutils container">
@@ -511,7 +511,7 @@ in order to calculate the MSE between the compressed image and the original imag
 The PSNR is also indicated, it is a measure that we will see in a future course.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/0f15ade924463515faa66312974aa16877e64352cc5312c512090179357f5c9f.png" src="../_images/0f15ade924463515faa66312974aa16877e64352cc5312c512090179357f5c9f.png" />
+<img alt="../_images/947d667dc43cd6fef2d789892a163159e9c45a87f256e34e30944e7c76c6ff41.png" src="../_images/947d667dc43cd6fef2d789892a163159e9c45a87f256e34e30944e7c76c6ff41.png" />
 </div>
 </div>
 <p>The analysis of the curves leads to the following conclusions.</p>
@@ -519,8 +519,10 @@ The PSNR is also indicated, it is a measure that we will see in a future course.
 <li><p>The larger the PSNR, the better the picture quality:
 so it makes sense that it increases as the compression ratio increases.</p></li>
 <li><p>Conversely, MSE measures the difference between the compressed image and the original image:
-as the compression ratio increases, the difference becomes smaller and smaller,
-so the MSE decreases.</p></li>
+as the compression ratio increases, the difference becomes smaller and smaller.</p></li>
+<li><p>For very large compression ratios, a small variation in the ratio implies a rapid variation in PSNR:
+it drops rapidly. However, their values remain above 80 dB,
+which still corresponds to very good quality.</p></li>
 </ul>
 <p>In classic JPEG compression, the DCT is not directly calculated on the whole image, but on 8 × 8 size thumbnails, as is done below.</p>
 </section>
@@ -528,7 +530,8 @@ so the MSE decreases.</p></li>
 <h2>Compression on 8×8 sub-images<a class="headerlink" href="#compression-on-88-sub-images" title="Permalink to this headline">#</a></h2>
 <p>The image is divided into blocks of 8×8 pixels, then the DCT is computed on each block,
 and finally, the high frequencies of each DCT are cancelled.
-The blocking effect is clearly visible when the compression is too strong.</p>
+To highlight the blocking effect that can appear when the compression is too strong,
+the size of the mask is small compared to the size of the sub-images.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/c378431ac036d14494f82428331ff7e0e1b9475ee988b6a2a098699a03dc275e.png" src="../_images/c378431ac036d14494f82428331ff7e0e1b9475ee988b6a2a098699a03dc275e.png" />

@@ -3,7 +3,7 @@
 
 ## Lossy compression
 
-The heart of JPEG compression is to cancel out weak coefficients of the discrete cosine transform (DCT) of the image.
+The heart of JPEG compression is to save the high-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
 In this exercise, a simplified version of JPEG compression is implemented
 by cancelling the DCT pixels located outside a certain frequency.
 
@@ -26,7 +26,7 @@ by cancelling the DCT pixels located outside a certain frequency.
   where $f$ and $g$ are respectively the images before and after compression, $M$ and $N$ being the dimensions of these images.
   You can use the function `numpy.linalg.norm`.
 
-* Analyze the evolution of the MSE according to the mask size $C$.
+* Analyze the evolution of the MSE according to the mask size.
 
 ## Interpolation
 

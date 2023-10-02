@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lossy compression &#8212; Basics of Image Processing</title>
+    <title>Interpolation &#8212; Basics of Image Processing</title>
   
   
   
@@ -62,13 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor31';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor32';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interpolation" href="cor32.html" />
-    <link rel="prev" title="Lab 3" href="lab3.html" />
+    <link rel="next" title="Lab 4" href="lab4.html" />
+    <link rel="prev" title="Lossy compression" href="cor31.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -243,8 +241,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="lab3.html">Lab 3</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lossy compression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cor32.html">Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cor31.html">Lossy compression</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Interpolation</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -333,7 +331,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/labs/cor31.ipynb" target="_blank"
+      <li><a href="../_sources/labs/cor32.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Télécharger le fichier source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,9 +400,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -415,23 +411,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lossy compression</h1>
+    <h1>Interpolation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contenu </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-the-dct-basis">Images of the DCT basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-jpeg-principle">Application of the JPEG principle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-evolution">MSE evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-on-88-sub-images">Compression on 8×8 sub-images</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -441,100 +425,42 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lossy-compression">
-<span id="labs-cor3"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this headline">#</a></h1>
-<section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>know how to implement the basic principle of JPEG compression</p></li>
-<li><p>use the discrete cosine transform</p></li>
-<li><p>analyze the effect of compression on visual quality and PSNR</p></li>
-</ul>
-</section>
-<section id="images-of-the-dct-basis">
-<h2>Images of the DCT basis<a class="headerlink" href="#images-of-the-dct-basis" title="Permalink to this headline">#</a></h2>
-<p>First of all, it is interesting to view the elements of the DCT basis.</p>
-<p>Since the images of the base correspond to a single non-zero coefficient in the domain of the transform,
-a solution to display these images is to create images that are zero in the domain of the transform, except in a single pixel.
-By using the function <code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, we can get the corresponding 2D cosine.
-The low frequencies are at the top left.</p>
-<p>Here are some examples of images of the base (on the first line) and their DCT (on the second line) for a size of 8 × 8 pixels.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
+<span id="labs-cor32"></span><h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>First, make rotations of angle 90° with a 0-order (nearest neighbour) interpolation.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/ce4ec5a1e7bdd27a1369935bc3f962fca4e2cee7b9967e61c633b7c62a11d07a.png" src="../_images/ce4ec5a1e7bdd27a1369935bc3f962fca4e2cee7b9967e61c633b7c62a11d07a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation with rotations of angle 90° and 0-order interpolation, MSE = 0.000:
+</pre></div>
+</div>
+<img alt="../_images/15dd252423595ba6f2afdbeba0d7e5f14e9f8cbd9ca18da293e394eb8715597e.png" src="../_images/15dd252423595ba6f2afdbeba0d7e5f14e9f8cbd9ca18da293e394eb8715597e.png" />
 </div>
 </div>
-<p>It can be seen that the pixels at the top left of the DCT (therefore close to the origin) correspond to a low-frequency
-since the corresponding image is a 2D cosine of low frequency in the spatial domain.
-Conversely, the pixel at the bottom right is the very high frequency component:
-the intensity of the pixels changes very quickly in the image.</p>
-</section>
-<section id="application-of-the-jpeg-principle">
-<h2>Application of the JPEG principle<a class="headerlink" href="#application-of-the-jpeg-principle" title="Permalink to this headline">#</a></h2>
-<p>Unlike the Fourier transform which decomposes an image as complex exponentials, the DCT decomposes an image as real cosines.
-Therefore the result is not complex; there is no need to display modulus and phase.
-Yet, the zero frequency coefficient being much greater than the others,
-the contrast of the DCT must be modified (how?) to visualize it.</p>
+<p>In this configuration, the mean square error (MSE) is zero, meaning that the interpolations made along the sequence of rotation are perfect,
+<em>i.e.</em> the image is not changed.</p>
+<p>Now, make rotations of angle 40°, with different interpolations (nearest neigbour, bilinear and bicubic).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/d6623f7d539da90fd5a49f9456ffd65069cc23350cd03e517816ce955a264e59.png" src="../_images/d6623f7d539da90fd5a49f9456ffd65069cc23350cd03e517816ce955a264e59.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation with rotations of angle 40° and 0-order interpolation, MSE = 0.325:
+</pre></div>
+</div>
+<img alt="../_images/72d21c8342618e1ed46a9b1c0393df157ef51edc0311d9ad7fbc97f42ce4e0ef.png" src="../_images/72d21c8342618e1ed46a9b1c0393df157ef51edc0311d9ad7fbc97f42ce4e0ef.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation with rotations of angle 40° and 1-order interpolation, MSE = 0.184:
+</pre></div>
+</div>
+<img alt="../_images/b71162d0ed13ac755f410d4f4c4daa18f20493432a4eb60bb9448682caf7a134.png" src="../_images/b71162d0ed13ac755f410d4f4c4daa18f20493432a4eb60bb9448682caf7a134.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation with rotations of angle 40° and 3-order interpolation, MSE = 0.137:
+</pre></div>
+</div>
+<img alt="../_images/309e551a568a6896d17c1cab5cd37db306d6661492393f1759b39566d5ef38ba.png" src="../_images/309e551a568a6896d17c1cab5cd37db306d6661492393f1759b39566d5ef38ba.png" />
 </div>
 </div>
-<p>We can notice (even if it is not obvious) that the low-frequency coefficients are more energetic than the others.
-This means that the image is mostly made up of low frequencies.</p>
-<p>To perform the compression, we choose to cancel the high-frequency pixels using a square mask of side <span class="math notranslate nohighlight">\(C\)</span>.
-The size of the square divided by the image size corresponds to the compression ratio.</p>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/e38e72eb95f9c12efcac17b7be69ebea67d4643b2046ff1df6e2036401fc4280.png" src="../_images/e38e72eb95f9c12efcac17b7be69ebea67d4643b2046ff1df6e2036401fc4280.png" />
-</div>
-</div>
-<p>Note that even with a low compression ratio, the visual result is very good:
-it is very difficult to observe the differences between the two images.
-This observation is also confirmed by the low value of the MSE:</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/81c88d5d98f894b1f75f259758e4a1f690819574c896fa1e1f474959772d1d4d.png" src="../_images/81c88d5d98f894b1f75f259758e4a1f690819574c896fa1e1f474959772d1d4d.png" />
-</div>
-</div>
-<p>The difference image is interesting because we can see that the errors are mainly located in the areas of high frequencies
-(contours, tail…).
-This makes sense since it is precisely these high frequencies that have been cancelled.</p>
-<p>JPEG compression plays on the fact that the human eye is not sensitive to these high-frequency changes.</p>
-</section>
-<section id="mse-evolution">
-<h2>MSE evolution<a class="headerlink" href="#mse-evolution" title="Permalink to this headline">#</a></h2>
-<p>The previous procedure is now used with different size of the mask,
-in order to calculate the MSE between the compressed image and the original image.
-The PSNR is also indicated, it is a measure that we will see in a future course.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/0f15ade924463515faa66312974aa16877e64352cc5312c512090179357f5c9f.png" src="../_images/0f15ade924463515faa66312974aa16877e64352cc5312c512090179357f5c9f.png" />
-</div>
-</div>
-<p>The analysis of the curves leads to the following conclusions.</p>
-<ul class="simple">
-<li><p>The larger the PSNR, the better the picture quality:
-so it makes sense that it increases as the compression ratio increases.</p></li>
-<li><p>Conversely, MSE measures the difference between the compressed image and the original image:
-as the compression ratio increases, the difference becomes smaller and smaller,
-so the MSE decreases.</p></li>
-</ul>
-<p>In classic JPEG compression, the DCT is not directly calculated on the whole image, but on 8 × 8 size thumbnails, as is done below.</p>
-</section>
-<section id="compression-on-88-sub-images">
-<h2>Compression on 8×8 sub-images<a class="headerlink" href="#compression-on-88-sub-images" title="Permalink to this headline">#</a></h2>
-<p>The image is divided into blocks of 8×8 pixels, then the DCT is computed on each block,
-and finally, the high frequencies of each DCT are cancelled.
-The blocking effect is clearly visible when the compression is too strong.</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/c378431ac036d14494f82428331ff7e0e1b9475ee988b6a2a098699a03dc275e.png" src="../_images/c378431ac036d14494f82428331ff7e0e1b9475ee988b6a2a098699a03dc275e.png" />
-</div>
-</div>
-</section>
+<p>In this example, a visual inspection of the result (last image) clearly shows that the nearest-neigbour interpolation is not satisfactory.
+This is confirmed by the MSE which is not the best MSE among the different results given by the interpolations.</p>
+<p>In this example, the best interpolation is given by the bicubic interpolation.</p>
+<p>Try to compare the results for different step angles, and different images!</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -569,20 +495,20 @@ The blocking effect is clearly visible when the compression is too strong.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lab3.html"
+       href="cor31.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 3</p>
+        <p class="prev-next-title">Lossy compression</p>
       </div>
     </a>
     <a class="right-next"
-       href="cor32.html"
+       href="lab4.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interpolation</p>
+        <p class="prev-next-title">Lab 4</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -595,24 +521,6 @@ The blocking effect is clearly visible when the compression is too strong.</p>
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-the-dct-basis">Images of the DCT basis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-the-jpeg-principle">Application of the JPEG principle</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-evolution">MSE evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-on-88-sub-images">Compression on 8×8 sub-images</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
