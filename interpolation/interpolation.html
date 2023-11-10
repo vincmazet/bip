@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Interpolation &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/interpolation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction" href="../segmentation/intro.html" />
     <link rel="prev" title="Conclusion" href="../compression/outro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/interpolation/interpolation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -440,7 +441,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interpolation">
-<h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h1>
+<h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this heading">#</a></h1>
 <p>Image interpolation is a basic tool used extensively in tasks such as
 rescaling, translating, shrinking or rotating an image.
 These tasks are geometric transformations that map an image into a predefined geometry,
@@ -465,7 +466,7 @@ The question is: how to compute the intensity of the pixels of the red grid from
 <p>It is more simple to understand image (2D) interpolation by considering 1D interpolation.
 Thus the sequel of this section illustrates some interpolation methods in the 1D domain.</p>
 <section id="nearest-neighbour-interpolation">
-<h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this headline">#</a></h2>
+<h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this heading">#</a></h2>
 <p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
 The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
 <p><a class="reference internal" href="#f-interpolation-nearest-1d"><span class="std std-numref">Fig. 42</span></a> illustrates the principle of nearest neighbour interpolation in a 1-dimensional context.</p>
@@ -487,7 +488,7 @@ The gray line is the continuous image reconstructed from the input image.</span>
 </figure>
 </section>
 <section id="bi-linear-interpolation">
-<h2>(Bi)linear interpolation<a class="headerlink" href="#bi-linear-interpolation" title="Permalink to this headline">#</a></h2>
+<h2>(Bi)linear interpolation<a class="headerlink" href="#bi-linear-interpolation" title="Permalink to this heading">#</a></h2>
 <p>With linear interpolation (French: <em>interpolation linéaire</em>),
 the interpolated points lie on pieces of straight lines connecting neighbouring grid points.
 Because images are in 2D, this method is called <i>bi</i>linear interpolation.
@@ -506,7 +507,7 @@ This generally gives better results that nearest neighbour interpolation, but st
 </figure>
 </section>
 <section id="polynomial-interpolation">
-<h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this headline">#</a></h2>
+<h2>Polynomial Interpolation<a class="headerlink" href="#polynomial-interpolation" title="Permalink to this heading">#</a></h2>
 <p>The basic principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
 Besides its porr behavior to interpolate high frequencies,
 polynomial interpolation has another signiﬁcant disadvantage:
@@ -667,7 +668,7 @@ nique.
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -688,7 +689,7 @@ nique.
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

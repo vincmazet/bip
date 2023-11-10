@@ -9,7 +9,7 @@ Three simple denoising methods have been presented, and have to be chosen depend
 * the median filter in the case of salt-and-pepper noise,
 * the filtering of certain areas of the spectrum in the case of periodic noise.
 
-Many other methods exist, for example, regularization (we have seen the TV regularization, but others are possible),
+Many other methods exist, for example, regularization (we have seen TV regularization, but others are possible),
 wavelet approaches, statistical approaches, non-local means [[Buades et al. 2005](B:segmentation:Buades2005)]
 or deep learning methods.
 These methods are more complex than the usual denoising approach detailed in this chapter but are more efficient.

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Sobel and Canny detectors &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor71';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Harris detector" href="cor72.html" />
     <link rel="prev" title="Lab 7" href="lab7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor71.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -445,7 +446,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sobel-and-canny-detectors">
-<span id="labs-cor71"></span><h1>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor71"></span><h1>Sobel and Canny detectors<a class="headerlink" href="#sobel-and-canny-detectors" title="Permalink to this heading">#</a></h1>
 <p>The objectives of this exercise are to:</p>
 <ul class="simple">
 <li><p>detect edges using Sobel and Canny detectors</p></li>
@@ -460,7 +461,7 @@ document.write(`
 </div>
 </div>
 <section id="sobel-detector">
-<h2>Sobel detector<a class="headerlink" href="#sobel-detector" title="Permalink to this headline">#</a></h2>
+<h2>Sobel detector<a class="headerlink" href="#sobel-detector" title="Permalink to this heading">#</a></h2>
 <p>The Sobel detector performs a convolution of the image by two filters,
 each allowing to obtain the gradient of the image in the two dimensions.
 These two gradients can be merged to result in the right image (how are they merged?).</p>
@@ -489,7 +490,7 @@ they have a width of several pixels, which implies that the edge, although detec
 </ul>
 </section>
 <section id="canny-detector">
-<h2>Canny detector<a class="headerlink" href="#canny-detector" title="Permalink to this headline">#</a></h2>
+<h2>Canny detector<a class="headerlink" href="#canny-detector" title="Permalink to this heading">#</a></h2>
 <p>Canny detector is more complex than a simple filtering.
 It includes in particular a thresholding by hysteresis, <em>i.e.</em> a decision based on two thresholds <span class="math notranslate nohighlight">\(T_{low}\)</span> and <span class="math notranslate nohighlight">\(T_{high}\)</span>:</p>
 <ul class="simple">
@@ -499,7 +500,7 @@ It includes in particular a thresholding by hysteresis, <em>i.e.</em> a decision
 if and only if they are neighbors of pixels whic are edges.</p></li>
 </ul>
 <section id="influence-of-the-gaussian-standard-deviation-sigma">
-<h3>Influence of the Gaussian standard deviation (<code class="docutils literal notranslate"><span class="pre">sigma</span></code>)<a class="headerlink" href="#influence-of-the-gaussian-standard-deviation-sigma" title="Permalink to this headline">#</a></h3>
+<h3>Influence of the Gaussian standard deviation (<code class="docutils literal notranslate"><span class="pre">sigma</span></code>)<a class="headerlink" href="#influence-of-the-gaussian-standard-deviation-sigma" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/cea2f38d25d57883ed01885f48a7a6e6f9f92180e82d278d20dc9d1d2a526cd6.png" src="../_images/cea2f38d25d57883ed01885f48a7a6e6f9f92180e82d278d20dc9d1d2a526cd6.png" />
@@ -511,7 +512,7 @@ This can be explained by the fact that the first step of the Canny detector is a
 In consequence, the image is more blurry and therefore the edges are less marked: they are therefore more difficult to detect.</p>
 </section>
 <section id="influence-of-t-low-low-threshold">
-<h3>Influence of <span class="math notranslate nohighlight">\(T_{low}\)</span> (<code class="docutils literal notranslate"><span class="pre">low_threshold</span></code>)<a class="headerlink" href="#influence-of-t-low-low-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Influence of <span class="math notranslate nohighlight">\(T_{low}\)</span> (<code class="docutils literal notranslate"><span class="pre">low_threshold</span></code>)<a class="headerlink" href="#influence-of-t-low-low-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/e17c89efeefb0e5b04a38336f7fb3412340be40e70b6fe5040fcbe70d0ea934e.png" src="../_images/e17c89efeefb0e5b04a38336f7fb3412340be40e70b6fe5040fcbe70d0ea934e.png" />
@@ -521,7 +522,7 @@ In consequence, the image is more blurry and therefore the edges are less marked
 since there are fewer pixels whose gradient value is greater than the lower threshold.</p>
 </section>
 <section id="influence-of-t-high-high-threshold">
-<h3>Influence of <span class="math notranslate nohighlight">\(T_{high}\)</span> (<code class="docutils literal notranslate"><span class="pre">high_threshold</span></code>)<a class="headerlink" href="#influence-of-t-high-high-threshold" title="Permalink to this headline">#</a></h3>
+<h3>Influence of <span class="math notranslate nohighlight">\(T_{high}\)</span> (<code class="docutils literal notranslate"><span class="pre">high_threshold</span></code>)<a class="headerlink" href="#influence-of-t-high-high-threshold" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/119f3e052882b9ce8a9cfd509ddb686879a44e11323404e62af6ac2b1cc4720f.png" src="../_images/119f3e052882b9ce8a9cfd509ddb686879a44e11323404e62af6ac2b1cc4720f.png" />
@@ -533,7 +534,7 @@ Besides, the Canny detector produces fine and mostly continuous contours: detect
 </section>
 </section>
 <section id="comparison-of-the-two-methods-in-terms-of-computation-time">
-<h2>Comparison of the two methods in terms of computation time<a class="headerlink" href="#comparison-of-the-two-methods-in-terms-of-computation-time" title="Permalink to this headline">#</a></h2>
+<h2>Comparison of the two methods in terms of computation time<a class="headerlink" href="#comparison-of-the-two-methods-in-terms-of-computation-time" title="Permalink to this heading">#</a></h2>
 <p>One of the steps of the Canny detector is to apply a Sobel filter.
 So the Canny detector is expected to be slower than the Sobel detector.
 We measure the time required for each method to detect the edges of the image.</p>
@@ -661,7 +662,7 @@ so the time difference between the two methods is not detrimental in the majorit
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -687,7 +688,7 @@ so the time difference between the two methods is not detrimental in the majorit
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

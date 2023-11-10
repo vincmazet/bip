@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Denoising &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'restoration/denoising';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deconvolution" href="deconvolution.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/restoration/denoising.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -448,20 +449,20 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="denoising">
-<span id="id1"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h1>
-<p>Denoising (French: <em>débruitage</em>) consists of reducing noise in an image.
+<span id="id1"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Permalink to this heading">#</a></h1>
+<p>Denoising (French: <em>débruitage</em>) consists in reducing noise in an image.
 Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.</p>
 <section id="noise-sources">
-<span id="denoising-noise-sources"></span><h2>Noise sources<a class="headerlink" href="#noise-sources" title="Permalink to this headline">#</a></h2>
+<span id="denoising-noise-sources"></span><h2>Noise sources<a class="headerlink" href="#noise-sources" title="Permalink to this heading">#</a></h2>
 <p>The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature…)
 or during any transmission (echoes and atmospheric distortions in wireless communication).
 In some cases, noise is also considered to model the inaccuracies in the mathematical model of image formation,
 the latter being necessarily different compared to reality, like any physical model!</p>
-<p>The noise being by nature a random phenomenon, it is modelled by a probability density which represents the intensity distribution of the noise.</p>
+<p>The noise is by nature a random phenomenon, it is modelled by a probability density which represents the intensity distribution of the noise.</p>
 <p>In the following, we denote by <span class="math notranslate nohighlight">\(y\)</span> the observed (and noisy) image, <span class="math notranslate nohighlight">\(b\)</span> the noise and <span class="math notranslate nohighlight">\(x\)</span> the non-noisy image.</p>
 <section id="additive-gaussian-white-noise">
-<h3>Additive Gaussian white noise<a class="headerlink" href="#additive-gaussian-white-noise" title="Permalink to this headline">#</a></h3>
+<h3>Additive Gaussian white noise<a class="headerlink" href="#additive-gaussian-white-noise" title="Permalink to this heading">#</a></h3>
 <p>Additive white Gaussian noise (AWGN, in French: <em>bruit blanc gaussien additif</em>) models each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the observation <span class="math notranslate nohighlight">\(y\)</span>
 by the sum of the pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the noiseless image <span class="math notranslate nohighlight">\(x\)</span> and of a pixel of the noise <span class="math notranslate nohighlight">\(b\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -474,7 +475,7 @@ by the sum of the pixel <span class="math notranslate nohighlight">\((m,n)\)</sp
 It is used in most applications, including photography.</p>
 </section>
 <section id="poisson-noise">
-<h3>Poisson Noise<a class="headerlink" href="#poisson-noise" title="Permalink to this headline">#</a></h3>
+<h3>Poisson Noise<a class="headerlink" href="#poisson-noise" title="Permalink to this heading">#</a></h3>
 <!-- Jahne 3.4.1 -->
 <p>Poisson noise (also called <em>shot noise</em>, in French: <em>bruit de Poisson</em>) models the acquisition of photons on a photosite.
 The number of photons is random and depends on the illumination.
@@ -493,10 +494,10 @@ The intensity of each pixel <span class="math notranslate nohighlight">\((m,n)\)
 \[
   p(k)=\frac{\lambda^k}{k\,!} e^{-\lambda}
 \]</div>
-<p><a class="reference internal" href="#f-denoising-poisson-distribution"><span class="std std-numref">Fig. 71</span></a> represents the Poisson distribution for three values of parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p><a class="reference internal" href="#f-denoising-poisson-distribution"><span class="std std-numref">Fig. 73</span></a> represents the Poisson distribution for three values of parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <figure class="align-default" id="f-denoising-poisson-distribution">
 <img alt="../_images/poisson-distribution.svg" src="../_images/poisson-distribution.svg" /><figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean and variance of the Poisson distribution are both equal <span class="math notranslate nohighlight">\(\lambda\)</span>, which depends on the number of incident photons.
@@ -508,9 +509,9 @@ provided that enough photons are collected.</p>
 <!-- speckle noise (different from a fish noise) -->
 </section>
 <section id="salt-and-pepper-noise">
-<h3>Salt-and-pepper noise<a class="headerlink" href="#salt-and-pepper-noise" title="Permalink to this headline">#</a></h3>
+<h3>Salt-and-pepper noise<a class="headerlink" href="#salt-and-pepper-noise" title="Permalink to this heading">#</a></h3>
 <p>Salt-and-pepper noise (French: <em>bruit poivre et sel</em>), also called less poetically <em>impulse noise</em>,
-models saturated or dead pixels (due to photosites malfunction or saturation).</p>
+models saturated or dead pixels (due to photosite malfunction or saturation).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   \forall\, m,n \quad
@@ -524,9 +525,9 @@ models saturated or dead pixels (due to photosites malfunction or saturation).</
 <p>where <span class="math notranslate nohighlight">\(x_\mathrm{min}\)</span> and <span class="math notranslate nohighlight">\(x_\mathrm{max}\)</span> are the intensity minimum and maximum.</p>
 </section>
 <section id="noise-power">
-<h3>Noise power<a class="headerlink" href="#noise-power" title="Permalink to this headline">#</a></h3>
-<p><a class="reference internal" href="#f-denoising-three-noises"><span class="std std-numref">Fig. 72</span></a> illustrates the effect of the previous noises on the same image.
-On can observe that:</p>
+<h3>Noise power<a class="headerlink" href="#noise-power" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#f-denoising-three-noises"><span class="std std-numref">Fig. 74</span></a> illustrates the effect of the previous noises on the same image.
+One can observe that:</p>
 <ul class="simple">
 <li><p>for Gaussian noise, the whole image is affected in the same way by the noise,</p></li>
 <li><p>for Poisson noise, the lighter parts are noisier than the dark parts,</p></li>
@@ -534,7 +535,7 @@ On can observe that:</p>
 </ul>
 <figure class="align-default" id="f-denoising-three-noises">
 <img alt="../_images/three-noises.svg" src="../_images/three-noises.svg" /><figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Signal-to-noise ratio (SNR, in French: RSB for <em>rapport signal-sur-bruit</em>) is a measure of the noise level.
@@ -544,7 +545,7 @@ where the power of an image <span class="math notranslate nohighlight">\(x\)</sp
 \[
   P_x = \frac{1}{M \times N} \sum_{m,n} x(m,n)^2
 \]</div>
-<p>Because SNR is most often expressed on a logarithmic scale (unit: decibel), it is:</p>
+<p>Because SNR is most often expressed on a logarithmic scale (unit: decibel), it is also defined as:</p>
 <div class="math notranslate nohighlight">
 \[
   \text{SNR} = 10 \log_{10} \left( \frac{\sum_{m,n} x(m,n)^2}{\sum_{m,n} b(m,n)^2} \right)
@@ -557,17 +558,17 @@ the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of th
   \text{PSNR} = 10 \log_{10} \left( \frac{\Delta x^{\;2}}{\frac{1}{M \times N} \sum_{m,n} b(m,n)^2} \right)
 \]</div>
 <!-- TODO : pourquoi introduire le PSNR ? -->
-<p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 73</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
+<p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 75</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
 As you can see, when the RSB or the PSNR increases, the noise decreases!</p>
 <figure class="align-default" id="f-denoising-snr-psnr">
 <img alt="../_images/snr-psnr.svg" src="../_images/snr-psnr.svg" /><figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="mean-filter">
-<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">#</a></h2>
+<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this heading">#</a></h2>
 <p>The mean filter (French: <em>filtre moyenneur</em>) is a very simple denoising method.
 Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the denoised image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> is the average of the pixels of the noisy image <span class="math notranslate nohighlight">\(y\)</span> around <span class="math notranslate nohighlight">\((m,n)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -577,18 +578,18 @@ Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the de
 \]</div>
 <p>where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(V_{m,n}\)</span> is the neighborhood, that is the set of pixels around <span class="math notranslate nohighlight">\((m,n)\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(|V_{m,n}| \)</span> is the cardinality of <span class="math notranslate nohighlight">\(V_{m,n}\)</span>, that is, the number of pixels in the neighborhood.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{m,n}\)</span> is the neighbourhood, that is the set of pixels around <span class="math notranslate nohighlight">\((m,n)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(|V_{m,n}| \)</span> is the cardinality of <span class="math notranslate nohighlight">\(V_{m,n}\)</span>, that is, the number of pixels in the neighbourhood.</p></li>
 </ul>
-<p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 74</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
+<p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 76</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
 If the neighbourhood grows, then the noise decreases but at the same time the image becomes more blurry.</p>
 <figure class="align-default" id="f-denoising-mean-filter-size">
 <img alt="../_images/mean-filter-size.svg" src="../_images/mean-filter-size.svg" /><figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean filter can be expressed with a convolution product.
-Indeed, consider the case where the neighborhood is a square of size <span class="math notranslate nohighlight">\(N\times N \)</span> pixels,
+Indeed, consider the case where the neighbourhood is a square of size <span class="math notranslate nohighlight">\(N\times N \)</span> pixels,
 then the definition of the mean filter gives:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -606,10 +607,10 @@ g(u,v) =
 \end{cases}
 \end{split}\]</div>
 <p>This definition can be extended to any type of kernel <span class="math notranslate nohighlight">\(g\)</span>!
-For example, <a class="reference internal" href="#f-denoising-mean-filter-kernels"><span class="std std-numref">Fig. 75</span></a> gives the result for two different kernels.</p>
+For example, <a class="reference internal" href="#f-denoising-mean-filter-kernels"><span class="std std-numref">Fig. 77</span></a> gives the result for two different kernels.</p>
 <figure class="align-default" id="f-denoising-mean-filter-kernels">
 <img alt="../_images/mean-filter-kernels.svg" src="../_images/mean-filter-kernels.svg" /><figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In summary:</p>
@@ -620,7 +621,7 @@ For example, <a class="reference internal" href="#f-denoising-mean-filter-kernel
 </ul>
 </section>
 <section id="median-filter">
-<h2>Median filter<a class="headerlink" href="#median-filter" title="Permalink to this headline">#</a></h2>
+<h2>Median filter<a class="headerlink" href="#median-filter" title="Permalink to this heading">#</a></h2>
 <p>The median of a set of numbers is the element <span class="math notranslate nohighlight">\(m\)</span> of the set
 such that there are as many numbers smaller than <span class="math notranslate nohighlight">\(m\)</span> as there are numbers larger than <span class="math notranslate nohighlight">\(m\)</span>.
 For example, the median of <span class="math notranslate nohighlight">\(\{1,\,2,\,4,\,8,\,16\}\)</span> is <span class="math notranslate nohighlight">\(4\)</span>.</p>
@@ -636,19 +637,19 @@ because it does not blur the image, as a mean filter would do.</p>
 Therefore it cannot be written as a convolution.</p>
 <figure class="align-default" id="f-denoising-median-vs-mean">
 <img alt="../_images/median-vs-mean.svg" src="../_images/median-vs-mean.svg" /><figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="periodic-noise-filtering">
-<h2>Periodic noise filtering<a class="headerlink" href="#periodic-noise-filtering" title="Permalink to this headline">#</a></h2>
+<h2>Periodic noise filtering<a class="headerlink" href="#periodic-noise-filtering" title="Permalink to this heading">#</a></h2>
 <p>Periodic noises are characterized by structures in the Fourier transform.
 These structures can be removed in the Fourier domain by cancelling the coefficients using a mask.
 The denoised image is then obtained by an inverse Fourier transform.</p>
 <figure class="align-default" id="f-denoising-periodic-noise">
 <img alt="../_images/periodic-noise.svg" src="../_images/periodic-noise.svg" /><figcaption>
-<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Filtering a periodic noise on a photograph of the Moon:
-the image is cleaned of periodic image artifacts.</span><a class="headerlink" href="#f-denoising-periodic-noise" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Filtering a periodic noise on a photograph of the Moon:
+the image is cleaned of periodic image artefacts.</span><a class="headerlink" href="#f-denoising-periodic-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Estimer les paramètres du bruit
@@ -657,7 +658,7 @@ the image is cleaned of periodic image artifacts.</span><a class="headerlink" hr
 - travailler sur une zone noire ou une zone ou la moyenne est connue -->
 </section>
 <section id="tv-regularization">
-<h2>TV regularization<a class="headerlink" href="#tv-regularization" title="Permalink to this headline">#</a></h2>
+<h2>TV regularization<a class="headerlink" href="#tv-regularization" title="Permalink to this heading">#</a></h2>
 <p>From a certain point of view, the goal of denoising is to obtain an image <span class="math notranslate nohighlight">\(\widehat{x}\)</span>
 not only with small variations in intensity between pixels but also close to the observation <span class="math notranslate nohighlight">\(y\)</span>.
 TV regularization (<em>total variation</em>, French: <em>variation totale</em>)
@@ -682,7 +683,7 @@ A simple choice is the “total variation”:</p>
 \[
   R(x) = \sum_{m,n} \left|x(m+1,n)-x(m,n)\right| + \sum_{m,n} \left|x(m,n+1)-x(m,n)\right|
   \]</div>
-<p>So, for <span class="math notranslate nohighlight">\(R\)</span> to decrease, the difference between two consecutive pixels, whether there are in row or in column, must be small.
+<p>So, for <span class="math notranslate nohighlight">\(R\)</span> to decrease, the difference between two consecutive pixels, whether they are in a row or column, must be small.
 This implies the image <span class="math notranslate nohighlight">\(x\)</span> to be nearly constant in intensity.</p>
 </li>
 </ul>
@@ -700,7 +701,7 @@ Mathematically, we write:</p>
 The choice and description of these algorithms are beyond the scope of the course.</p>
 <figure class="align-default" id="f-denoising-tv">
 <img alt="../_images/tv-denoising.svg" src="../_images/tv-denoising.svg" /><figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -769,7 +770,7 @@ The choice and description of these algorithms are beyond the scope of the cours
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -798,7 +799,7 @@ The choice and description of these algorithms are beyond the scope of the cours
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

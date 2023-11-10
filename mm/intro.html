@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mm/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Basic operators" href="basics.html" />
     <link rel="prev" title="Conclusion" href="../segmentation/outro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/mm/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,11 +422,12 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-operations">Set operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neighborhood-and-connectivity">Neighborhood and connectivity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-element">Structuring element</a></li>
 </ul>
             </nav>
@@ -439,7 +441,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<span id="mm-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<span id="mm-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <!-- Dans le Jahne : quelques exos et interactivités -->
 <p>Mathematical morphology gathers several techniques that apply to binary images,
 the latter result for example from thresholding.
@@ -457,9 +459,9 @@ The combination of these two operators allows the definition of new operators, n
 and the <a class="reference internal" href="composition.html#mm-hit-or-miss"><span class="std std-ref">hit-or-miss transform</span></a>.
 A comparison of the operators is then presented.
 At last, we deal with <a class="reference internal" href="measure.html#mm-measure"><span class="std std-ref">measuring the geometric characteristics</span></a> of binary objects.</p>
-<p>Before beginning, we need to introduce two notions.</p>
+<p>Before beginning, we need to introduce some basic notions.</p>
 <section id="set-operations">
-<h2>Set operations<a class="headerlink" href="#set-operations" title="Permalink to this headline">#</a></h2>
+<h2>Set operations<a class="headerlink" href="#set-operations" title="Permalink to this heading">#</a></h2>
 <p>We also consider that the objects in the image define a set of pixels,
 so mathematical morphology can use the usual operations on sets, listed below.
 Consider <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as two sets.</p>
@@ -498,8 +500,49 @@ Consider <span class="math notranslate nohighlight">\(A\)</span> and <span class
 <img alt="../_images/set-intersection.png" src="../_images/set-intersection.png" />
 </figure>
 </section>
+<section id="neighborhood-and-connectivity">
+<h2>Neighborhood and connectivity<a class="headerlink" href="#neighborhood-and-connectivity" title="Permalink to this heading">#</a></h2>
+<p>In a usual image, a pixel at coordinates <span class="math notranslate nohighlight">\((m,n)\)</span> has four horizontal and vertical neighbors
+whose coordinates are given by</p>
+<div class="math notranslate nohighlight">
+\[
+(m+1,n),\quad
+(m-1,n),\quad
+(m,n+1),\quad
+(m,n-1).
+\]</div>
+<p>Considering these 4 neighbors, we speak of 4-connectivity (french: <em>4-connexité</em>).</p>
+<p>Besides, there exists also four diagonal pixels with coordinates</p>
+<div class="math notranslate nohighlight">
+\[
+(m+1,n+1),\quad
+(m+1,n-1),\quad
+(m-1,n+1),\quad
+(m-1,n-1).
+\]</div>
+<p>These pixels, together with the 4-neighbors, are the 8 neighbors in 8-connectivity (french: <em>8-connexité</em>).</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/neighborhood.svg"><img alt="../_images/neighborhood.svg" src="../_images/neighborhood.svg" width="400px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">The neighbors of the green pixel are represented in red,
+with 4-connectivity (left) and 8-connectivity (right).</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A path between two pixels with coordinates <span class="math notranslate nohighlight">\((m_1,n_1)\)</span> and <span class="math notranslate nohighlight">\((m_N,n_N)\)</span> is a sequence of pixels
+such that two consecutive pixels are neighbors in the considered connectivity.</p>
+<p>Let <span class="math notranslate nohighlight">\(S\)</span> represent a set of pixels in an image.
+Two pixels are said to be connected if there exists a path between them consisting entirely of pixels in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>The set of pixels that are connected is called a connected component (french: <em>composante connexe</em>).</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/connectivity.svg"><img alt="../_images/connectivity.svg" src="../_images/connectivity.svg" width="200px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">In this image, there are 2 connected components with 4-connectivity,
+but only 1 connected component with 8-connectivity.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="structuring-element">
-<h2>Structuring element<a class="headerlink" href="#structuring-element" title="Permalink to this headline">#</a></h2>
+<h2>Structuring element<a class="headerlink" href="#structuring-element" title="Permalink to this heading">#</a></h2>
 <p>In addition to this, the operators of mathematical morphology need a so-called structuring element (french: <em>élément structurant</em>).
 A structuring element <span class="math notranslate nohighlight">\(E\)</span> is a set of pixels (equivalent to a binary image) associated with an origin.
 Generally, the origin is located at the centre of the structuring element;
@@ -571,11 +614,12 @@ In the sequel, we denote by <span class="math notranslate nohighlight">\(E_c\)</
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-operations">Set operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neighborhood-and-connectivity">Neighborhood and connectivity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-element">Structuring element</a></li>
 </ul>
   </nav></div>
@@ -591,7 +635,7 @@ In the sequel, we denote by <span class="math notranslate nohighlight">\(E_c\)</
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

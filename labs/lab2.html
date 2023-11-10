@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 2 &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Convolution" href="cor21.html" />
     <link rel="prev" title="7 Contrast enhancement" href="cor17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/lab2.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -440,9 +441,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2">
-<span id="labs-lab2"></span><h1>Lab 2<a class="headerlink" href="#lab-2" title="Permalink to this headline">#</a></h1>
+<span id="labs-lab2"></span><h1>Lab 2<a class="headerlink" href="#lab-2" title="Permalink to this heading">#</a></h1>
 <section id="convolution">
-<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h2>
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h2>
 <p>The image <a href="../_static/data/smiley.png">smiley.png</a> will be convolved with several PSF.
 Before applying the convolutions, you need to convert the image into float (<code class="docutils literal notranslate"><span class="pre">skimage.img_as_float</span></code>).</p>
 <div class="admonition note">
@@ -480,7 +481,7 @@ We stress that <span class="math notranslate nohighlight">\(h\)</span> being an 
 </ul>
 </section>
 <section id="properties-of-the-fourier-transform">
-<h2>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">#</a></h2>
+<h2>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Load the image <a href="../_static/data/s1.png">s1.png</a>
 and compute its discrete Fourier transform (DFT) with <code class="docutils literal notranslate"><span class="pre">numpy.fft.fft2</span></code>.</p></li>
@@ -504,7 +505,7 @@ Analyse the specificities of the images: what can you say about the DFT?</p></li
 </ul>
 </section>
 <section id="filtering-aliasing">
-<h2>Filtering aliasing<a class="headerlink" href="#filtering-aliasing" title="Permalink to this headline">#</a></h2>
+<h2>Filtering aliasing<a class="headerlink" href="#filtering-aliasing" title="Permalink to this heading">#</a></h2>
 <p>Aliasing (french: <em>crénelage</em>) is a phenomenon that occurs when the image is poorly sampled.
 It can be avoided by applying an anti-aliasing filter (french: <em>filtre anti-repliement</em>) before sampling.</p>
 <div class="admonition warning">
@@ -667,7 +668,7 @@ Idée 2 : filtre médian en chaque pixel
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -688,7 +689,7 @@ Idée 2 : filtre médian en chaque pixel
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

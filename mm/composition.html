@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Composition of basic operators &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mm/composition';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Measure" href="measure.html" />
     <link rel="prev" title="Basic operators" href="basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/mm/composition.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -446,9 +447,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="composition-of-basic-operators">
-<h1>Composition of basic operators<a class="headerlink" href="#composition-of-basic-operators" title="Permalink to this headline">#</a></h1>
+<h1>Composition of basic operators<a class="headerlink" href="#composition-of-basic-operators" title="Permalink to this heading">#</a></h1>
 <section id="opening">
-<span id="mm-opening"></span><h2>Opening<a class="headerlink" href="#opening" title="Permalink to this headline">#</a></h2>
+<span id="mm-opening"></span><h2>Opening<a class="headerlink" href="#opening" title="Permalink to this heading">#</a></h2>
 <p>Opening (french: <em>ouverture</em>) consists of an erosion followed by a dilation.
 The erosion removes small objects but also decreases the size of bigger objects.
 To avoid this, the result is dilated with the same structuring element.</p>
@@ -458,12 +459,12 @@ To avoid this, the result is dilated with the same structuring element.</p>
 \]</div>
 <figure class="align-default" id="f-mm-opening-toy">
 <img alt="../_images/opening-toy.svg" src="../_images/opening-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Example of an opening on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Example of an opening on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-opening-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="property">
-<h3>Property<a class="headerlink" href="#property" title="Permalink to this headline">#</a></h3>
+<h3>Property<a class="headerlink" href="#property" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>Opening is an idempotent operation, that is to say, applying twice the same opening gives the same result as only one opening:</p>
 <div class="math notranslate nohighlight">
@@ -475,7 +476,7 @@ To avoid this, the result is dilated with the same structuring element.</p>
 </section>
 </section>
 <section id="closing">
-<span id="mm-closing"></span><h2>Closing<a class="headerlink" href="#closing" title="Permalink to this headline">#</a></h2>
+<span id="mm-closing"></span><h2>Closing<a class="headerlink" href="#closing" title="Permalink to this heading">#</a></h2>
 <p>Contrary to opening, closing (french: <em>fermeture</em>) is firstly a dilation, then an erosion.
 Indeed, expansion closes holes but enlarges objects.
 To avoid the widening of the objects, an erosion can be applied with the same structuring element.</p>
@@ -485,12 +486,12 @@ To avoid the widening of the objects, an erosion can be applied with the same st
 \]</div>
 <figure class="align-default" id="f-mm-closing-toy">
 <img alt="../_images/closing-toy.svg" src="../_images/closing-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Example of closing on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Example of closing on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-closing-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>Similarly to opening, closing is an idempotent operation:</p>
 <div class="math notranslate nohighlight">
@@ -502,7 +503,7 @@ To avoid the widening of the objects, an erosion can be applied with the same st
 </section>
 </section>
 <section id="hit-or-miss-transform">
-<span id="mm-hit-or-miss"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Permalink to this headline">#</a></h2>
+<span id="mm-hit-or-miss"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Permalink to this heading">#</a></h2>
 <p>The hit-or-miss transform (french: <em>transformée tout-ou-rien</em>) is used to detect objects of a particular shape.
 It is the intersection of the two sets given by:</p>
 <ul class="simple">
@@ -519,7 +520,7 @@ It is the intersection of the two sets given by:</p>
 \end{split}\]</div>
 <figure class="align-default" id="hit-or-miss">
 <img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
 The origins of the structuring elements are marked by the blue and green dots.</span><a class="headerlink" href="#hit-or-miss" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -529,7 +530,7 @@ The origins of the structuring elements are marked by the blue and green dots.</
 <li><p><span class="math notranslate nohighlight">\(-1\)</span>: pixels that do not belong to the object to detect (<em>i.e</em> pixels of the background),</p></li>
 <li><p><span class="math notranslate nohighlight">\(0\)</span>: unused pixels (also called “don’t care pixels”).</p></li>
 </ul>
-<p>With this notation, the structuring element of the hit-or-miss transform in <a class="reference internal" href="#hit-or-miss"><span class="std std-numref">Fig. 70</span></a> writes</p>
+<p>With this notation, the structuring element of the hit-or-miss transform in <a class="reference internal" href="#hit-or-miss"><span class="std std-numref">Fig. 72</span></a> writes</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   (E_1, E_2) =
@@ -605,7 +606,7 @@ The origins of the structuring elements are marked by the blue and green dots.</
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -632,7 +633,7 @@ The origins of the structuring elements are marked by the blue and green dots.</
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

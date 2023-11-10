@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 1 &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1 Getting started" href="cor11.html" />
     <link rel="prev" title="Conclusion" href="../detection/outro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/lab1.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -444,7 +445,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1">
-<span id="labs-lab1"></span><h1>Lab 1<a class="headerlink" href="#lab-1" title="Permalink to this headline">#</a></h1>
+<span id="labs-lab1"></span><h1>Lab 1<a class="headerlink" href="#lab-1" title="Permalink to this heading">#</a></h1>
 <p>After completing each exercise, you can refer to the <a class="reference internal" href="cor11.html#labs-cor11"><span class="std std-ref">correction</span></a>.
 Furthermore, do not hesitate to ask your colleagues and teachers for additional information
 or to discuss specific topics.</p>
@@ -469,7 +470,7 @@ or to discuss specific topics.</p>
 <!-- Exo supplémentaire : représenter l'histogramme d'une image simple 4x4. -->
 <!-- Exo supplémentaire : influence du nb de bins -->
 <section id="getting-started">
-<h2>1 Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
+<h2>1 Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.python.org/">Python</a> is a very versatile programming language and can especially be used for scientific programming and image processing.
 Python’s syntax is very similar to Matlab’s one.
 Before beginning this lab, you may need to know <a class="reference internal" href="../appendices/python.html#python"><span class="std std-ref">Installing and using Python</span></a>.
@@ -546,7 +547,7 @@ Try to write:</p>
 <p>Verify your code in the <a class="reference internal" href="cor11.html#labs-cor11"><span class="std std-ref">correction</span></a>.</p>
 </section>
 <section id="display-a-saved-image">
-<h2>2 Display a saved image<a class="headerlink" href="#display-a-saved-image" title="Permalink to this headline">#</a></h2>
+<h2>2 Display a saved image<a class="headerlink" href="#display-a-saved-image" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Open a new notebook.</p></li>
 <li><p>Download the image 4.2.03.tiff
@@ -604,7 +605,7 @@ Do you manage to find in this profile the different areas of the image?</p></li>
 </ul>
 </section>
 <section id="display-several-images">
-<h2>3 Display several images<a class="headerlink" href="#display-several-images" title="Permalink to this headline">#</a></h2>
+<h2>3 Display several images<a class="headerlink" href="#display-several-images" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Open a new notebook.</p></li>
 <li><p>Download and unzip <a href="../_static/data/flowers.zip">flowers.zip</a> in the same folder as your notebook.</p></li>
@@ -617,15 +618,15 @@ Instead of listing manually the images, you can look for a code on the web, as f
 </ul>
 </section>
 <section id="create-a-simple-image">
-<span id="lab1-synth-image"></span><h2>4 Create a simple image<a class="headerlink" href="#create-a-simple-image" title="Permalink to this headline">#</a></h2>
+<span id="lab1-synth-image"></span><h2>4 Create a simple image<a class="headerlink" href="#create-a-simple-image" title="Permalink to this heading">#</a></h2>
 <p>An RGB image is encoded in the form of a three-dimensional array:
 the first two dimensions are the spatial dimensions of the image, the third corresponds to the bands.</p>
 <ul>
-<li><p>Create the array corresponding to the RGB image <span class="math notranslate nohighlight">\(40 \times 80\)</span> sketched <a class="reference internal" href="#f-lab1-synthimage"><span class="std std-numref">Fig. 106</span></a>:</p>
+<li><p>Create the array corresponding to the RGB image <span class="math notranslate nohighlight">\(40 \times 80\)</span> sketched <a class="reference internal" href="#f-lab1-synthimage"><span class="std std-numref">Fig. 108</span></a>:</p>
 <figure class="align-default" id="f-lab1-synthimage">
 <a class="reference internal image-reference" href="../_images/synthimage.png"><img alt="../_images/synthimage.png" src="../_images/synthimage.png" style="width: 328.0px; height: 167.20000000000002px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">A simple image.</span><a class="headerlink" href="#f-lab1-synthimage" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">A simple image.</span><a class="headerlink" href="#f-lab1-synthimage" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To do this, create first a black image with the correct dimensions
@@ -640,7 +641,7 @@ Then assign the desired value to the elements of the matrix, proceeding band by 
 </ul>
 </section>
 <section id="setting-the-intensity-range">
-<h2>5 Setting the intensity range<a class="headerlink" href="#setting-the-intensity-range" title="Permalink to this headline">#</a></h2>
+<h2>5 Setting the intensity range<a class="headerlink" href="#setting-the-intensity-range" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Display the image <a href="../_static/data/hdfs.tiff">hdfs.tiff</a>, corresponding to a part of the sky in the southern hemisphere.
 You should only observe a single star.</p></li>
@@ -651,7 +652,7 @@ to observe other objects, most of them being galaxies.</p></li>
 </ul>
 </section>
 <section id="segmentation-by-histogram-thresholding">
-<h2>6 Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this headline">#</a></h2>
+<h2>6 Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Load the image <a href="../_static/data/santamonica.jpg">santamonica.jpg</a> and convert it to grayscale.</p></li>
 <li><p>Display its histogram with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code>,
@@ -667,7 +668,7 @@ To perform thresholding, the easiest way is to display the image</p>
 </ul>
 </section>
 <section id="contrast-enhancement">
-<h2>7 Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this headline">#</a></h2>
+<h2>7 Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Display the image <a href="../_static/data/haze.png">haze.png</a>, after converting it to grayscale.</p></li>
 <li><p>Display its histogram.
@@ -757,7 +758,7 @@ Do you achieve the exercise goal?</p></li>
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -782,7 +783,7 @@ Do you achieve the exercise goal?</p></li>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

@@ -10,7 +10,7 @@ some basic relationship between pixels
 
 Image segmentation consists in partitioning an image $f$ according to a certain criterion.
 This means that the image is divided into regions $R_i$
-which are both disjoint and such that the entire image is covered by all the regions.
+that are both mutually disjoint and collectively cover the entire image.
 Two pixels in the same region satisfy the criterion, but two pixels in two adjacent regions do not.
 
 The figures below show several examples of segmentation.

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Installing and using Python &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/python';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Glossary" href="glossary.html" />
     <link rel="prev" title="Deep learning" href="../nutshell/deeplearning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/appendices/python.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -451,7 +452,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installing-and-using-python">
-<span id="python"></span><h1>Installing and using Python<a class="headerlink" href="#installing-and-using-python" title="Permalink to this headline">#</a></h1>
+<span id="python"></span><h1>Installing and using Python<a class="headerlink" href="#installing-and-using-python" title="Permalink to this heading">#</a></h1>
 <p>Python is a modern high-level language with a lot of functions dedicated to image processing.
 On this page, you will find how to:</p>
 <ul class="simple">
@@ -460,7 +461,7 @@ On this page, you will find how to:</p>
 <li><p>start programming and import specific functions.</p></li>
 </ul>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>Anaconda is a Python distribution specialized in data science and machine learning.
 For individual use, it is free and sufficient to perform the image processing exercises.
 <a class="reference external" href="https://www.anaconda.com/products/individual">Download</a> and install Anaconda if Python is not already present on your computer.
@@ -472,12 +473,12 @@ Be careful, choose version 3 (or higher) of Python!</p>
 <p>Anaconda contains a computational environment for creating Python programs,
 namely <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/index.html">Jupyter Lab</a>.
 This is an open-source software for interactive computing and it provides a modern interface to write notebooks.</p>
-<p><a class="reference internal" href="#f-python-jupyterlab"><span class="std std-numref">Fig. 107</span></a> shows the interface of Jupyter Lab.
+<p><a class="reference internal" href="#f-python-jupyterlab"><span class="std std-numref">Fig. 109</span></a> shows the interface of Jupyter Lab.
 The interface is quite intuitive, but you can read <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/user/interface.html">this page</a> to learn more.</p>
 <figure class="align-default" id="f-python-jupyterlab">
 <img alt="https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png" src="https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Jupyter Lab.</span><a class="headerlink" href="#f-python-jupyterlab" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Jupyter Lab.</span><a class="headerlink" href="#f-python-jupyterlab" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jupyter Lab should be included in the Anaconda installation.
@@ -492,7 +493,7 @@ But if not, you will find instructions for installing Jupyter Lab <a class="refe
 </div>
 </section>
 <section id="writing-a-notebook">
-<span id="python-notebook"></span><h2>Writing a notebook<a class="headerlink" href="#writing-a-notebook" title="Permalink to this headline">#</a></h2>
+<span id="python-notebook"></span><h2>Writing a notebook<a class="headerlink" href="#writing-a-notebook" title="Permalink to this heading">#</a></h2>
 <p>After installing Python and Jupyter Lab, you are now able to write and execute Python notebooks!
 A <a class="reference external" href="https://jupyterlab.readthedocs.io/en/latest/user/notebook.html">notebook</a> is a file that contains code, but also the results produced by the code (such as numerical values or images) and comments.
 A notebook is divided into <em>cells</em> which are either “code” cells or “markdown” cells.
@@ -500,7 +501,7 @@ By pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+Re
 <p>You need specialized software to view and use a notebook, such as Jupyter Lab.
 A description of this software is given below.</p>
 <section id="code-cells">
-<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">#</a></h3>
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this heading">#</a></h3>
 <p>By default, cells are expected to contain code.
 They are divided between an input (with Python instructions) and an output (the result).</p>
 <p>For example the following input:</p>
@@ -516,7 +517,7 @@ They are divided between an input (with Python instructions) and an output (the 
 </div>
 </section>
 <section id="markdown-cells">
-<h3>Markdown cells<a class="headerlink" href="#markdown-cells" title="Permalink to this headline">#</a></h3>
+<h3>Markdown cells<a class="headerlink" href="#markdown-cells" title="Permalink to this heading">#</a></h3>
 <p>You can change a code cell to a markdown cell by choosing <em>Markdown</em> from the drop-down list in the toolbar.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> is a very simple language to format text (e.g. writing titles, lists or equations).
 This will be useful not only for adding notes and comments in your code, but also to write the project report at the end of the course.</p>
@@ -548,7 +549,7 @@ $$
 </section>
 </section>
 <section id="writing-code">
-<span id="python-writing-code"></span><h2>Writing code<a class="headerlink" href="#writing-code" title="Permalink to this headline">#</a></h2>
+<span id="python-writing-code"></span><h2>Writing code<a class="headerlink" href="#writing-code" title="Permalink to this heading">#</a></h2>
 <p>The core of Python does not have functions for scientific computing, so you have to import modules.
 Generally, we will use the three following modules:</p>
 <ul class="simple">
@@ -602,12 +603,12 @@ If this is not the case, read the documentation given above to get help.</p>
 </div>
 </section>
 <section id="for-matlab-users">
-<h2>For Matlab users<a class="headerlink" href="#for-matlab-users" title="Permalink to this headline">#</a></h2>
+<h2>For Matlab users<a class="headerlink" href="#for-matlab-users" title="Permalink to this heading">#</a></h2>
 <p>Python, with the use of the module Numpy, is very similar to Matlab.
 Both work with scripts, and the functions are very similar.
 However, some major differences exist.</p>
 <section id="modules">
-<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h3>
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h3>
 <p>Python is intended to be a general-purpose programming language.
 Thus, scientific functions are not included into its core, contrary to Matlab.
 These functions must be loaded through modules like Matplotlib or Numpy.
@@ -618,13 +619,13 @@ Fora example, Numpy is loaded with:</p>
 <p>The functions in Numpy are then accessible with <code class="docutils literal notranslate"><span class="pre">np.name_of_the_function</span></code>.</p>
 </section>
 <section id="vectors-and-matrices">
-<h3>Vectors and matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this headline">#</a></h3>
+<h3>Vectors and matrices<a class="headerlink" href="#vectors-and-matrices" title="Permalink to this heading">#</a></h3>
 <p>While Matlab uses round brackets in vectors and matrix, Python uses square brackets.
 In Matlab, the first element has index 1, while it has index 0 in Python.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Matlab</p></th>
-<th class="text-right head"><p>Python</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Matlab</p></th>
+<th class="head text-right"><p>Python</p></th>
 </tr>
 </thead>
 <tbody>
@@ -638,11 +639,11 @@ In Matlab, the first element has index 1, while it has index 0 in Python.</p>
 </table>
 </section>
 <section id="semicolon">
-<h3>Semicolon<a class="headerlink" href="#semicolon" title="Permalink to this headline">#</a></h3>
+<h3>Semicolon<a class="headerlink" href="#semicolon" title="Permalink to this heading">#</a></h3>
 <p>There is no semicolon (;) at the end of the instructions with Python.</p>
 </section>
 <section id="to-go-further">
-<h3>To go further…<a class="headerlink" href="#to-go-further" title="Permalink to this headline">#</a></h3>
+<h3>To go further…<a class="headerlink" href="#to-go-further" title="Permalink to this heading">#</a></h3>
 <p>To go further, you can read <a class="reference external" href="http://mathesaurus.sourceforge.net/matlab-numpy.html">this cheatsheet</a>
 or read <a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">this article on Numpy</a>.</p>
 </section>
@@ -712,7 +713,7 @@ or read <a class="reference external" href="https://numpy.org/doc/stable/user/nu
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -744,7 +745,7 @@ or read <a class="reference external" href="https://numpy.org/doc/stable/user/nu
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

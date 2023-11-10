@@ -1,7 +1,7 @@
 (denoising)=
 # Denoising
 
-Denoising (French: _débruitage_) consists of reducing noise in an image.
+Denoising (French: _débruitage_) consists in reducing noise in an image.
 Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.
 
@@ -14,7 +14,7 @@ or during any transmission (echoes and atmospheric distortions in wireless commu
 In some cases, noise is also considered to model the inaccuracies in the mathematical model of image formation,
 the latter being necessarily different compared to reality, like any physical model!
 
-The noise being by nature a random phenomenon, it is modelled by a probability density which represents the intensity distribution of the noise.
+The noise is by nature a random phenomenon, it is modelled by a probability density which represents the intensity distribution of the noise.
 
 In the following, we denote by $y$ the observed (and noisy) image, $b$ the noise and $x$ the non-noisy image.
 
@@ -80,7 +80,7 @@ provided that enough photons are collected.
 ### Salt-and-pepper noise
 
 Salt-and-pepper noise (French: _bruit poivre et sel_), also called less poetically _impulse noise_, 
-models saturated or dead pixels (due to photosites malfunction or saturation).
+models saturated or dead pixels (due to photosite malfunction or saturation).
 
 $$
   \forall\, m,n \quad
@@ -98,7 +98,7 @@ where $x_\mathrm{min}$ and $x_\mathrm{max}$ are the intensity minimum and maximu
 ### Noise power
 
 {numref}`F:denoising:three-noises` illustrates the effect of the previous noises on the same image.
-On can observe that:
+One can observe that:
 * for Gaussian noise, the whole image is affected in the same way by the noise,
 * for Poisson noise, the lighter parts are noisier than the dark parts,
 * for impulse noise, only a few pixels are modified and they are replaced by black or white pixels.
@@ -118,7 +118,7 @@ $$
   P_x = \frac{1}{M \times N} \sum_{m,n} x(m,n)^2
 $$
 
-Because SNR is most often expressed on a logarithmic scale (unit: decibel), it is:
+Because SNR is most often expressed on a logarithmic scale (unit: decibel), it is also defined as:
 
 $$
   \text{SNR} = 10 \log_{10} \left( \frac{\sum_{m,n} x(m,n)^2}{\sum_{m,n} b(m,n)^2} \right)
@@ -156,8 +156,8 @@ $$
 $$
 
 where
-* $V_{m,n}$ is the neighborhood, that is the set of pixels around $(m,n)$;
-* $|V_{m,n}| $ is the cardinality of $V_{m,n}$, that is, the number of pixels in the neighborhood.
+* $V_{m,n}$ is the neighbourhood, that is the set of pixels around $(m,n)$;
+* $|V_{m,n}| $ is the cardinality of $V_{m,n}$, that is, the number of pixels in the neighbourhood.
 
 {numref}`F:denoising:mean-filter-size` illustrates the effect of the mean filter for different sizes of the neighbourhood.
 If the neighbourhood grows, then the noise decreases but at the same time the image becomes more blurry.
@@ -170,7 +170,7 @@ Effect of the size of the mean filter.
 ```
 
 The mean filter can be expressed with a convolution product.
-Indeed, consider the case where the neighborhood is a square of size $N\times N $ pixels,
+Indeed, consider the case where the neighbourhood is a square of size $N\times N $ pixels,
 then the definition of the mean filter gives:
 
 $$
@@ -243,7 +243,7 @@ The denoised image is then obtained by an inverse Fourier transform.
 name: F:denoising:periodic-noise
 ---
 Filtering a periodic noise on a photograph of the Moon:
-the image is cleaned of periodic image artifacts.
+the image is cleaned of periodic image artefacts.
 ```
 
 <!-- Estimer les paramètres du bruit
@@ -279,7 +279,7 @@ is a denoising method that describes these two objectives by mathematical functi
   R(x) = \sum_{m,n} \left|x(m+1,n)-x(m,n)\right| + \sum_{m,n} \left|x(m,n+1)-x(m,n)\right|
   $$
   
-  So, for $R$ to decrease, the difference between two consecutive pixels, whether there are in row or in column, must be small.
+  So, for $R$ to decrease, the difference between two consecutive pixels, whether they are in a row or column, must be small.
   This implies the image $x$ to be nearly constant in intensity.
 
 The goal is then to find the image $x$ which minimizes both the data-fit and the regularization.

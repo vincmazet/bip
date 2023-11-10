@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>What is a digital image? &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/definition';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Human vision" href="eye.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/digital-images/definition.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -445,9 +446,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-digital-image">
-<span id="c-digital-images-definition"></span><h1>What is a digital image?<a class="headerlink" href="#what-is-a-digital-image" title="Permalink to this headline">#</a></h1>
+<span id="c-digital-images-definition"></span><h1>What is a digital image?<a class="headerlink" href="#what-is-a-digital-image" title="Permalink to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>In very specific applications, the images may have a non-rectangular geometry.
@@ -497,10 +498,10 @@ the pixel at coordinates <span class="math notranslate nohighlight">\((0,0)\)</s
 </figure>
 </section>
 <section id="diversity-of-images">
-<h2>Diversity of images<a class="headerlink" href="#diversity-of-images" title="Permalink to this headline">#</a></h2>
+<h2>Diversity of images<a class="headerlink" href="#diversity-of-images" title="Permalink to this heading">#</a></h2>
 <p>Digital images can be categorized in various ways.</p>
 <section id="dimension-number-d">
-<h3>Dimension number <span class="math notranslate nohighlight">\(d\)</span><a class="headerlink" href="#dimension-number-d" title="Permalink to this headline">#</a></h3>
+<h3>Dimension number <span class="math notranslate nohighlight">\(d\)</span><a class="headerlink" href="#dimension-number-d" title="Permalink to this heading">#</a></h3>
 <p>Common images, such as photographs, are 2D (2-dimensional) images while other images lie in more than two dimensions.
 A 3D image, as seen in MRI scans, is often referred to as a “3D image” or “cube”.
 A 1D image is essentially a signal.
@@ -508,7 +509,7 @@ The elements constituting a 2D image are called <em>pixels</em> (“picture elem
 and those constituting a 3D image are called <em>voxels</em> (“volume element”).</p>
 </section>
 <section id="dimension-heterogeneity">
-<h3>Dimension heterogeneity<a class="headerlink" href="#dimension-heterogeneity" title="Permalink to this headline">#</a></h3>
+<h3>Dimension heterogeneity<a class="headerlink" href="#dimension-heterogeneity" title="Permalink to this heading">#</a></h3>
 <p>In common 2D images, the two dimensions are spatial dimensions.
 However, the dimensions can represent another physical domain and be different.
 For instance, a video can be seen as a 2D+<span class="math notranslate nohighlight">\(t\)</span> image (two spatial dimensions, one temporal dimension);
@@ -517,14 +518,14 @@ and a <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperspe
 is a 2D+<span class="math notranslate nohighlight">\(\lambda\)</span> image (two spatial dimensions, plus a third dimension depending on the wavelength).</p>
 </section>
 <section id="element-dimension-b">
-<h3>Element dimension <span class="math notranslate nohighlight">\(B\)</span><a class="headerlink" href="#element-dimension-b" title="Permalink to this headline">#</a></h3>
+<h3>Element dimension <span class="math notranslate nohighlight">\(B\)</span><a class="headerlink" href="#element-dimension-b" title="Permalink to this heading">#</a></h3>
 <p>Each element within an image can be scalar or vector.
 For instance, pixels in a 2D grayscale image gather only one value: the gray intensity.
 Pixels in photography gather three values (the intensity of red, green and blue).
 Images from the <a class="reference external" href="https://en.wikipedia.org/wiki/Pleiades_(satellite)">Pléiades constellation</a> are RVB–IR: they gather four values (red, green, blue, and infrared).</p>
 </section>
 <section id="element-intensity-set">
-<h3>Element intensity set<a class="headerlink" href="#element-intensity-set" title="Permalink to this headline">#</a></h3>
+<h3>Element intensity set<a class="headerlink" href="#element-intensity-set" title="Permalink to this heading">#</a></h3>
 <p>Common images have pixel intensities within the range <span class="math notranslate nohighlight">\(\{0,1,\dots,255\}\)</span>,
 but binary images have values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.
 Most of the time, the intensities are assumed to be real numbers.</p>
@@ -595,7 +596,7 @@ Most of the time, the intensities are assumed to be real numbers.</p>
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -621,7 +622,7 @@ Most of the time, the intensities are assumed to be real numbers.</p>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

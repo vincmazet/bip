@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Displaying an image &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/displaying';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Arithmetic operations" href="operations.html" />
     <link rel="prev" title="Image acquisition" href="acquisition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/digital-images/displaying.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -440,7 +441,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="displaying-an-image">
-<span id="c-digital-images-displaying"></span><h1>Displaying an image<a class="headerlink" href="#displaying-an-image" title="Permalink to this headline">#</a></h1>
+<span id="c-digital-images-displaying"></span><h1>Displaying an image<a class="headerlink" href="#displaying-an-image" title="Permalink to this heading">#</a></h1>
 <p>Displaying an image needs to convert the pixel intensities <span class="math notranslate nohighlight">\(\{i_1,\dots,i_B\}\)</span> into gray levels or colors.
 Screens are basically a matrix of pixels, each composed of red, green and blue luminophores
 (the shape, size and number of luminophore depends of the technology).
@@ -449,7 +450,7 @@ thanks to the principles of <a class="reference external" href="https://en.wikip
 The correspondance between the numerical value of the intensities and colors on the screen
 is visually reprensented by a <em>colormap</em>.</p>
 <section id="displaying-a-2d-grayscale-image">
-<h2>Displaying a 2D grayscale image<a class="headerlink" href="#displaying-a-2d-grayscale-image" title="Permalink to this headline">#</a></h2>
+<h2>Displaying a 2D grayscale image<a class="headerlink" href="#displaying-a-2d-grayscale-image" title="Permalink to this heading">#</a></h2>
 <p>A 2D grayscale image is an array with <span class="math notranslate nohighlight">\(d=2\)</span> dimensions where each pixel contains a scalar (<span class="math notranslate nohighlight">\(B=1\)</span>).
 Therefore, each pixel is displayed with a specific gray level.
 <a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 16</span></a> shows the same image with different colormaps.
@@ -501,7 +502,7 @@ Also, displaying the logarithm of the image helps to make the spots visible (see
 </div>
 </section>
 <section id="displaying-a-2d-color-image">
-<h2>Displaying a 2D color image<a class="headerlink" href="#displaying-a-2d-color-image" title="Permalink to this headline">#</a></h2>
+<h2>Displaying a 2D color image<a class="headerlink" href="#displaying-a-2d-color-image" title="Permalink to this heading">#</a></h2>
 <p>As we have seen in <a class="reference internal" href="eye.html#c-digital-images-eye"><span class="std std-ref">Human vision</span></a>, the retina of human eye contains three kinds of cone cells
 which are basically sensitive to blue, green and red light.
 So, a color image is simply a composition of the intensities of this three wavelength, so that <span class="math notranslate nohighlight">\(B=3\)</span>.
@@ -510,7 +511,7 @@ This is why digital screens are made of red, green and blue luminophores,
 which are small dots composing the pixels.</p>
 </section>
 <section id="displaying-other-types-of-images">
-<h2>Displaying other types of images<a class="headerlink" href="#displaying-other-types-of-images" title="Permalink to this headline">#</a></h2>
+<h2>Displaying other types of images<a class="headerlink" href="#displaying-other-types-of-images" title="Permalink to this heading">#</a></h2>
 <p>There is no easy way to display an image which is not a 2D grayscale or RGB image.
 Such image are either not displayed, or displayed by using a specific representation.
 For example, only three bands can be selected and displayed as an RGB image.
@@ -582,7 +583,7 @@ with these means becomint the three bands of a standard RGB image.</p>
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -603,7 +604,7 @@ with these means becomint the three bands of a standard RGB image.</p>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

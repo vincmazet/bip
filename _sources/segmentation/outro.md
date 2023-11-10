@@ -5,7 +5,7 @@ The homogeneity of a region is based on color, texture, contours, etc.
 
 The methods of segmentation are very diverse, and we have only seen a few of them.
 Other existing methods include active contours or the so-called snakes, level sets, Markovian models, etc.
-In addition to these "model-based" methods, deep learning allowed significant increases in the results.
+In addition to these "model-based" methods, deep learning allows significant increases in the results.
 
 At last, we list some criteria to evaluate the quality of a segmentation method.
 These criteria are useful to compare different segmentation methods, as presented in [](labs:lab4).

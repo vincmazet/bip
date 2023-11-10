@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lab 6 &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab6';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Denoising" href="cor61.html" />
     <link rel="prev" title="Mathematical morphology" href="cor5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/lab6.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -443,14 +444,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-6">
-<span id="labs-lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this headline">#</a></h1>
+<span id="labs-lab6"></span><h1>Lab 6<a class="headerlink" href="#lab-6" title="Permalink to this heading">#</a></h1>
 <section id="denoising">
-<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h2>
+<h2>Denoising<a class="headerlink" href="#denoising" title="Permalink to this heading">#</a></h2>
 <p>This exercise is intended to evaluate the performances of the denoising method of your choice.
 Therefore it is first essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
 Then, the denoising method will be evaluated.</p>
 <section id="creation-of-a-noisy-image">
-<h3>Creation of a noisy image<a class="headerlink" href="#creation-of-a-noisy-image" title="Permalink to this headline">#</a></h3>
+<h3>Creation of a noisy image<a class="headerlink" href="#creation-of-a-noisy-image" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>Recall the mathematical definition of SNR.</p></li>
 <li><p>Express the power of the noise in terms of SNR.</p></li>
@@ -473,7 +474,7 @@ On the contrary, the image should be difficult to discern below 0 dB.</p>
 </ul>
 </section>
 <section id="denoising-the-noisy-image">
-<h3>Denoising the noisy image<a class="headerlink" href="#denoising-the-noisy-image" title="Permalink to this headline">#</a></h3>
+<h3>Denoising the noisy image<a class="headerlink" href="#denoising-the-noisy-image" title="Permalink to this heading">#</a></h3>
 <p>Now that you dispose of a noisy image and its noiseless version,
 you can implement the denoising method you have chosen.</p>
 <p>If you choose a mean filter, use <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code> to filter by a square PSF of size <code class="docutils literal notranslate"><span class="pre">w</span></code> generated as follows:</p>
@@ -495,7 +496,7 @@ Can you adjust the parameter by knowing the SNR of the image?</p></li>
 </section>
 </section>
 <section id="deconvolution">
-<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h2>
+<h2>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Load the image <a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=18#top">5.1.13</a>.
 It will be called <span class="math notranslate nohighlight">\(x\)</span> in the sequel.</p></li>
@@ -600,7 +601,7 @@ Do you agree that it is actually the best value when you look at the estimation?
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -624,7 +625,7 @@ Do you agree that it is actually the best value when you look at the estimation?
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

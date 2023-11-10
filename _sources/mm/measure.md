@@ -4,7 +4,7 @@
 It is possible to measure the geometric characteristics of the objects in a binary image,
 such as the area or position.
 In scikit-image, the most common properties are implemented in `skimage.measure`, especially in the function `regionprops`.
-This section list some of them, as an example of possibilities.
+This section lists some of them, as an example of possibilities.
 
 ## Area
 
@@ -58,5 +58,6 @@ It is a positive value, where 0 corresponds ot a round object.
 <br />
 
 Solidity is the ratio of pixels in the objects to pixels of the [convex hull](https://en.wikipedia.org/wiki/Convex_hull) image.
+For clarity, the convex hull of the objects is represented in dark gray into the images.
 It gives a measure of the compactness of the object.
 

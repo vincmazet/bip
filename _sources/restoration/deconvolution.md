@@ -11,7 +11,7 @@ The goal of deconvolution is to cancel the effect of a convolution.
 width: 400px
 name: F:deconvolution:example-motion
 ---
-Example of motion blur (parliament of Budapest shoot by a camera).
+An example of motion blur (the parliament of Budapest shot by a camera).
 ```
 
 ```{figure} ganymede.png
@@ -49,7 +49,7 @@ Deconvolution model.
 Deconvolution needs a degradation model, thus having knowledge about both $h$ and $b$.
 
 * The PSF $h$ can be estimated by observation, _i.e._ by finding in the image some factors to estimate $h$.
-  For example, a single point object in the image is actually $h$.
+  For example, a single point object in the image is $h$.
   The PSF can also be estimated by experimentation by reproducing the observation conditions in a laboratory.
   So, the image of a pulse gives an estimate of $h$.
   Finally, it is also possible to estimate the PSF from a mathematical model of the physics of the observation.
@@ -114,11 +114,11 @@ $$
 Thus, the deconvolved image $\widehat{x}$ corresponds to $x$ with an additional term which is the inverse Fourier transform of $B/H$.
 The PSF $H$ is generally a low-pass filter, so the values of $H(m,n)$ tend towards $0$ for high frequencies $(m,n)$.
 Because $H$ is in the denominator, this tends to drastically amplify the high frequencies of the noise,
-then the term $B/H$ quickly dominates $X$.
+and then the term $B/H$ quickly dominates $X$.
 This explains the result of {numref}`F:deconvolution:inverse-filter`.
 
 One solution consists in considering only the low frequencies of $Y/H$.
-This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
+This is equivalent to truncating the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
 The result of the deconvolution is much more acceptable, as shown by {numref}`F:deconvolution:truncated-inverse-filter`,
 although the result is still far from perfect (there are many variations in intensity around objects, such as tree trunks)...
 
@@ -126,7 +126,7 @@ although the result is still far from perfect (there are many variations in inte
 ---
 name: F:deconvolution:truncated-inverse-filter
 ---
-Result of the truncated inverse filter with a tiny bit noise.
+Result of the truncated inverse filter with very small noise.
 ```
 
 

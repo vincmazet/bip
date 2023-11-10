@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Image acquisition &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/acquisition';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Displaying an image" href="displaying.html" />
     <link rel="prev" title="Human vision" href="eye.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/digital-images/acquisition.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -448,7 +449,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="image-acquisition">
-<span id="c-digital-images-acquisition"></span><h1>Image acquisition<a class="headerlink" href="#image-acquisition" title="Permalink to this headline">#</a></h1>
+<span id="c-digital-images-acquisition"></span><h1>Image acquisition<a class="headerlink" href="#image-acquisition" title="Permalink to this heading">#</a></h1>
 <!--
 Évoquer dans chaque section les particularités liées aux différents types d'images :
 - niveau de gris, multispectral/hyperspectal
@@ -521,7 +522,7 @@ Examples of image modalities<div class="sd-summary-down docutils">
 </div>
 </details><p>In the sequel, we focus on electromagnetic imaging.</p>
 <section id="sensor">
-<h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this headline">#</a></h2>
+<h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this heading">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Photodiode">photodiode</a> is the most common and basic sensor for image acquisition.
 It is contructed of silicon materials so that its output voltage is proportional to incoming light.</p>
 <figure class="align-default" id="f-digital-images-photodiode">
@@ -582,12 +583,12 @@ For example, look and play with <a class="reference external" href="https://www.
 <!-- faire une animation JS soi même qui soit intégrée au book et plus simple d'utilisation-->
 </section>
 <section id="sampling-and-quantization">
-<h2>Sampling and quantization<a class="headerlink" href="#sampling-and-quantization" title="Permalink to this headline">#</a></h2>
+<h2>Sampling and quantization<a class="headerlink" href="#sampling-and-quantization" title="Permalink to this heading">#</a></h2>
 <!-- compressive sensing -->
 <p>The final step of digital image formation is digitization,
 which is both the samling and quantization of the observed scene.</p>
 <section id="sampling">
-<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">#</a></h3>
+<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h3>
 <p>Sampling corresponds to mapping a continuous scene onto a discrete grid.
 This is naturally done by the matrix of pixels.
 Sampling a continuous image leads to a loss of information.
@@ -612,7 +613,7 @@ In practice, one prefer to put an optical low-pass filter before the sensor
 to vanish the high frequencies responsible of the moiré effect.</p>
 </section>
 <section id="quantization">
-<h3>Quantization<a class="headerlink" href="#quantization" title="Permalink to this headline">#</a></h3>
+<h3>Quantization<a class="headerlink" href="#quantization" title="Permalink to this heading">#</a></h3>
 <p>Quantization correspond to mapping the continuous light intensities to a finite set of number.
 Typically, image are quantized into 256 gray values; then, each pixel then occupies one byte (8 bits).
 The reason for assigning 256 gray values to each pixel is
@@ -637,12 +638,12 @@ require a finer resolution and, in consequence, use more than 256 gray levels.</
 </section>
 </section>
 <section id="distortions">
-<h2>Distortions<a class="headerlink" href="#distortions" title="Permalink to this headline">#</a></h2>
+<h2>Distortions<a class="headerlink" href="#distortions" title="Permalink to this heading">#</a></h2>
 <p>In addition to the moiré effect and quantization noise,
 other distortions can affect the image acquisition.
 The two main distortions are noise and blurring.</p>
 <section id="noise">
-<h3>Noise<a class="headerlink" href="#noise" title="Permalink to this headline">#</a></h3>
+<h3>Noise<a class="headerlink" href="#noise" title="Permalink to this heading">#</a></h3>
 <p>Noise introduces erroneous intensities in the digital image.
 Sources of noise are multiple, from electronic noise due to the imaging system itself
 to the acquisition conditions (low-light-level for example).
@@ -660,7 +661,7 @@ and is called speckle noise.</p>
 <!-- dark current -->
 </section>
 <section id="point-spread-function">
-<h3>Point spread function<a class="headerlink" href="#point-spread-function" title="Permalink to this headline">#</a></h3>
+<h3>Point spread function<a class="headerlink" href="#point-spread-function" title="Permalink to this heading">#</a></h3>
 <p>Despite the high quality of an imaging system,
 a point in the observed scene is not imaged onto a point in the image space,
 but onto a more or less extended area with varying intensities.
@@ -744,7 +745,7 @@ and it is called optical transfer function, or OTF (in French: <em>fonction de t
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -773,7 +774,7 @@ and it is called optical transfer function, or OTF (in French: <em>fonction de t
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

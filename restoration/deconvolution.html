@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Deconvolution &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'restoration/deconvolution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conclusion" href="outro.html" />
     <link rel="prev" title="Denoising" href="denoising.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/restoration/deconvolution.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -439,25 +440,25 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="deconvolution">
-<span id="id1"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this heading">#</a></h1>
 <p>Usually, images acquired by a vision system suffer from degradation that can be modelled as a convolution.
-For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 79</span></a>)
-or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 80</span></a>).
+For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 81</span></a>)
+or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 82</span></a>).
 The goal of deconvolution is to cancel the effect of a convolution.</p>
 <figure class="align-default" id="f-deconvolution-example-motion">
 <a class="reference internal image-reference" href="../_images/budapest2.jpg"><img alt="../_images/budapest2.jpg" src="../_images/budapest2.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Example of motion blur (parliament of Budapest shoot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">An example of motion blur (the parliament of Budapest shot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-deconvolution-example-blur">
 <a class="reference internal image-reference" href="../_images/ganymede1.png"><img alt="../_images/ganymede1.png" src="../_images/ganymede1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Hubble’s view of Ganymede in 1996.</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Hubble’s view of Ganymede in 1996.</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- rosetta.jpg / Example of poor focus blur (Rosetta spacecraft last image). -->
-<p>The degradation phenomenon is modelled as in <a class="reference internal" href="#f-deconvolution-model"><span class="std std-numref">Fig. 81</span></a>:
+<p>The degradation phenomenon is modelled as in <a class="reference internal" href="#f-deconvolution-model"><span class="std std-numref">Fig. 83</span></a>:
 The observed image <span class="math notranslate nohighlight">\(y\)</span> is degraded by the convolution with a PSF <span class="math notranslate nohighlight">\(h\)</span> and, possibly, by a noise <span class="math notranslate nohighlight">\(b\)</span> (considered to be additive).</p>
 <div class="math notranslate nohighlight">
 \[
@@ -472,13 +473,13 @@ We will consider only linear methods, thus deconvolution comes to filtering by <
 <figure class="align-default" id="f-deconvolution-model">
 <a class="reference internal image-reference" href="../_images/model-deconvolution.png"><img alt="../_images/model-deconvolution.png" src="../_images/model-deconvolution.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Deconvolution model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Deconvolution model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Deconvolution needs a degradation model, thus having knowledge about both <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <ul>
 <li><p>The PSF <span class="math notranslate nohighlight">\(h\)</span> can be estimated by observation, <em>i.e.</em> by finding in the image some factors to estimate <span class="math notranslate nohighlight">\(h\)</span>.
-For example, a single point object in the image is actually <span class="math notranslate nohighlight">\(h\)</span>.
+For example, a single point object in the image is <span class="math notranslate nohighlight">\(h\)</span>.
 The PSF can also be estimated by experimentation by reproducing the observation conditions in a laboratory.
 So, the image of a pulse gives an estimate of <span class="math notranslate nohighlight">\(h\)</span>.
 Finally, it is also possible to estimate the PSF from a mathematical model of the physics of the observation.
@@ -490,7 +491,7 @@ these are called blind deconvolution methods (French: <em>déconvolution myope</
 <li><p>Models for the noise have already been presented in chapter <a class="reference internal" href="denoising.html#denoising"><span class="std std-ref">Denoising</span></a>.</p></li>
 </ul>
 <section id="inverse-filter">
-<h2>Inverse filter<a class="headerlink" href="#inverse-filter" title="Permalink to this headline">#</a></h2>
+<h2>Inverse filter<a class="headerlink" href="#inverse-filter" title="Permalink to this heading">#</a></h2>
 <p>The inverse filter is the simplest deconvolution method.
 Since the degradation is modelled <span class="math notranslate nohighlight">\(y = h*x + b\)</span>, then this equation becomes in the Fourier domain:</p>
 <div class="math notranslate nohighlight">
@@ -514,11 +515,11 @@ and thus get the deconvolved image:</p>
 \[
 \widehat{x} = \mathcal{F}^{-1} \left[ \frac{Y}{H} \right]
 \]</div>
-<p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 82</span></a>.
+<p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 84</span></a>.
 The result is not usable, and yet the observed image is very little blurred with very little noise!</p>
 <figure class="align-default" id="f-deconvolution-inverse-filter">
 <img alt="../_images/inverse-filter.svg" src="../_images/inverse-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The catastrophic result of the inverse filter is due to the fact of having considered the noise to be zero.
@@ -533,20 +534,20 @@ Indeed, according to the definition of <span class="math notranslate nohighlight
 <p>Thus, the deconvolved image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> corresponds to <span class="math notranslate nohighlight">\(x\)</span> with an additional term which is the inverse Fourier transform of <span class="math notranslate nohighlight">\(B/H\)</span>.
 The PSF <span class="math notranslate nohighlight">\(H\)</span> is generally a low-pass filter, so the values of <span class="math notranslate nohighlight">\(H(m,n)\)</span> tend towards <span class="math notranslate nohighlight">\(0\)</span> for high frequencies <span class="math notranslate nohighlight">\((m,n)\)</span>.
 Because <span class="math notranslate nohighlight">\(H\)</span> is in the denominator, this tends to drastically amplify the high frequencies of the noise,
-then the term <span class="math notranslate nohighlight">\(B/H\)</span> quickly dominates <span class="math notranslate nohighlight">\(X\)</span>.
-This explains the result of <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 82</span></a>.</p>
+and then the term <span class="math notranslate nohighlight">\(B/H\)</span> quickly dominates <span class="math notranslate nohighlight">\(X\)</span>.
+This explains the result of <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 84</span></a>.</p>
 <p>One solution consists in considering only the low frequencies of <span class="math notranslate nohighlight">\(Y/H\)</span>.
-This is equivalent to truncate the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
-The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 83</span></a>,
+This is equivalent to truncating the result given by the inverse filter by cancelling the high frequencies before calculating the inverse Fourier transform.
+The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 85</span></a>,
 although the result is still far from perfect (there are many variations in intensity around objects, such as tree trunks)…</p>
 <figure class="align-default" id="f-deconvolution-truncated-inverse-filter">
 <img alt="../_images/truncated-inverse-filter.svg" src="../_images/truncated-inverse-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Result of the truncated inverse filter with a tiny bit noise.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Result of the truncated inverse filter with very small noise.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="wiener-filter">
-<h2>Wiener Filter<a class="headerlink" href="#wiener-filter" title="Permalink to this headline">#</a></h2>
+<h2>Wiener Filter<a class="headerlink" href="#wiener-filter" title="Permalink to this heading">#</a></h2>
 <p>Wiener filter, denoted by <span class="math notranslate nohighlight">\(g\)</span> (with Fourier transform <span class="math notranslate nohighlight">\(G\)</span>), applies to the observation <span class="math notranslate nohighlight">\(y\)</span> such that:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -632,11 +633,11 @@ since the inverse filter tends towards 0,</p></li>
   \]</div>
 </li>
 </ul>
-<p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 84</span></a>:
+<p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 86</span></a>:
 it is clearly much better than the inverse filter, even its truncated version!</p>
 <figure class="align-default" id="f-deconvolution-wiener-filter">
 <img alt="../_images/wiener-filter.svg" src="../_images/wiener-filter.svg" /><figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Result of Wiener filter
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Result of Wiener filter
 (<span class="math notranslate nohighlight">\(\lambda\)</span> is set so that the estimation is the best in terms of MSE).</span><a class="headerlink" href="#f-deconvolution-wiener-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -737,7 +738,7 @@ Résultat du filtre inverse tronquée et du filtre de Wiener pour les meilleurs 
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -757,7 +758,7 @@ Résultat du filtre inverse tronquée et du filtre de Wiener pour les meilleurs 
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

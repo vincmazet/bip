@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Denoising &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor61';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deconvolution" href="cor62.html" />
     <link rel="prev" title="Lab 6" href="lab6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor61.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -441,7 +442,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="denoising">
-<span id="labs-cor61"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor61"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Permalink to this heading">#</a></h1>
 <p>The objectives of this exercise are:</p>
 <ul class="simple">
 <li><p>to apply a white Gaussian noise with a specific SNR on an image</p></li>
@@ -454,7 +455,7 @@ document.write(`
 <div class="cell tag_remove-input docutils container">
 </div>
 <section id="original-image-and-noisy-image">
-<h2>Original image and noisy image<a class="headerlink" href="#original-image-and-noisy-image" title="Permalink to this headline">#</a></h2>
+<h2>Original image and noisy image<a class="headerlink" href="#original-image-and-noisy-image" title="Permalink to this heading">#</a></h2>
 <p>The original image:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -488,19 +489,7 @@ Pb = \frac{1}{MN} \sum_{m,n} b(m,n)^2 = \sigma^2
 <p><strong>Warning:</strong> do not forget <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> when using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>, in order to add a true Gaussian noise!</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.0 213.0
--2201.4086009119915 2275.6137247051365
-23.0 213.0
--539.5441760226183 793.2017908525348
-23.0 213.0
--161.18279009761866 382.7151133738539
-23.0 213.0
--17.39143319852075 249.57106653935236
-23.0 213.0
-12.994998976891438 219.12697502227738
-</pre></div>
-</div>
-<img alt="../_images/0f99bbbdfe6c18adb6041177f3934fa62f93432d890f12c289e7a37032701578.png" src="../_images/0f99bbbdfe6c18adb6041177f3934fa62f93432d890f12c289e7a37032701578.png" />
+<img alt="../_images/0572185c785f69d2e001e3fa6661d39357f1108abf7da2f2bcd51343fe9e019e.png" src="../_images/0572185c785f69d2e001e3fa6661d39357f1108abf7da2f2bcd51343fe9e019e.png" />
 </div>
 </div>
 <p>Note that the larger the SNR, the less visible the noise.
@@ -508,13 +497,13 @@ This makes sense since, in the definition of SNR, the noise power is in the deno
 In addition, the noise becomes almost invisible beyond 30 dB, while it is very high and the image is hardly visible below 0 dB.</p>
 </section>
 <section id="mean-filter">
-<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this headline">#</a></h2>
+<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this heading">#</a></h2>
 <p>I choose the image whose SNR equals 10 dB, and I apply a mean filter.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/fd7fa782ebc2407f3586141f88397944a3f7f01db3e03b9eb5ef650857ebf6b0.png" src="../_images/fd7fa782ebc2407f3586141f88397944a3f7f01db3e03b9eb5ef650857ebf6b0.png" />
+<img alt="../_images/fc075976c28978c6c3fd2c665d677f345142adc79a18230df712bc60d3f19160.png" src="../_images/fc075976c28978c6c3fd2c665d677f345142adc79a18230df712bc60d3f19160.png" />
 </div>
 </div>
 <p>We observe that the mean filter reduces the noise, which is expected (have you tried a filter of size 1×1? What’s going on?).
@@ -529,7 +518,7 @@ As a consequence, the MSE evolves with the size <span class="math notranslate no
 To verify this hypothesis, we plot the values of the MSE with respect to <span class="math notranslate nohighlight">\(w\)</span>:</p>
 <div class="cell tag_remove-input tag_hide docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b84dd32cfad1c70c961e3fc89e9b7dc79c5903270057f3bb4c67bc032c964c44.png" src="../_images/b84dd32cfad1c70c961e3fc89e9b7dc79c5903270057f3bb4c67bc032c964c44.png" />
+<img alt="../_images/1620be68ed4686f31b4a0ab030d07b9376742109c54ebd09045a033838ae3a3d.png" src="../_images/1620be68ed4686f31b4a0ab030d07b9376742109c54ebd09045a033838ae3a3d.png" />
 </div>
 </div>
 <p>As expected, the MSE change with respect of the filter size.
@@ -537,7 +526,7 @@ A compromise must be made between the noise reduction and the blurring.
 We observe that the curve has a minimum, it corresponds to the best choice for <span class="math notranslate nohighlight">\(w\)</span> (in terms of MSE).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.35e+01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.23e+01
 </pre></div>
 </div>
 </div>
@@ -546,11 +535,11 @@ We observe that the curve has a minimum, it corresponds to the best choice for <
 The value obtained here depends on the image (try with another image!).</p>
 </section>
 <section id="tv-denoising">
-<h2>TV denoising<a class="headerlink" href="#tv-denoising" title="Permalink to this headline">#</a></h2>
+<h2>TV denoising<a class="headerlink" href="#tv-denoising" title="Permalink to this heading">#</a></h2>
 <p>With the noisy image at SNR = 10 dB, we now carry out a denoising by TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/788b336b546617e5acb0eaae4486756bce9bbc1f2877f7cbf0250bc58cb596d9.png" src="../_images/788b336b546617e5acb0eaae4486756bce9bbc1f2877f7cbf0250bc58cb596d9.png" />
+<img alt="../_images/205d741be23b7c1b3f50cad7d6fafa8a58f8bcd60bb2f77ac27ad0205c0825ce.png" src="../_images/205d741be23b7c1b3f50cad7d6fafa8a58f8bcd60bb2f77ac27ad0205c0825ce.png" />
 </div>
 </div>
 <p>As with the mean filter, we observe that the image is partially denoised (therefore the MSE will be better),
@@ -559,8 +548,8 @@ As previously, it should exist an optimal value of the regularization parameter 
 Let’s see if this denoising technique can surpass the mean filter…</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/c77ab72622cbf3478093594750d633c7a8215882eaecb8af056a4b30d4846d37.png" src="../_images/c77ab72622cbf3478093594750d633c7a8215882eaecb8af056a4b30d4846d37.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 25 and get an MSE = 4.01e+01
+<img alt="../_images/f323741aab19d201f16634d7a92715e0d562a249b0ea4da587378b5cb1fbadbe.png" src="../_images/f323741aab19d201f16634d7a92715e0d562a249b0ea4da587378b5cb1fbadbe.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.54e+01
 </pre></div>
 </div>
 </div>
@@ -572,13 +561,13 @@ So we want to conclude that TV regularization is more efficient than the mean fi
 But beware: this conclusion is partial, because it was only obtained on <em>one</em> image with <em>one</em> SNR.</p>
 </section>
 <section id="comparison-of-the-two-denoising-methods-for-different-snrs">
-<h2>Comparison of the two denoising methods for different SNRs<a class="headerlink" href="#comparison-of-the-two-denoising-methods-for-different-snrs" title="Permalink to this headline">#</a></h2>
+<h2>Comparison of the two denoising methods for different SNRs<a class="headerlink" href="#comparison-of-the-two-denoising-methods-for-different-snrs" title="Permalink to this heading">#</a></h2>
 <p>It is possible to analyze the evolution of the MSE with respect to the noise level by calculating, for several values of SNR,
 the best parameters for the two methods.</p>
 <p>Then we can represent the evolution of the MSE for the two methods:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/518dfb560eb2b997f4e7599257de9ac9190825275394cce4600b82b23fb7e8d2.png" src="../_images/518dfb560eb2b997f4e7599257de9ac9190825275394cce4600b82b23fb7e8d2.png" />
+<img alt="../_images/04e2ed0e752764145aa3a32646dfa10505829838abbc0c9c0ddf2ce9cf8cd4c4.png" src="../_images/04e2ed0e752764145aa3a32646dfa10505829838abbc0c9c0ddf2ce9cf8cd4c4.png" />
 </div>
 </div>
 <p>We observe that the MSE decreases with the SNR.
@@ -601,9 +590,9 @@ In fact, neither of the two methods gives a really satisfactory result (see belo
 
 On peut vérifier que ces conclusions sont en accord avec ce qu'on peut observer sur quelques exemples : --><div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/6599b9245357640dafc51941ac688e83d7165bb2e7d91d4ff42f12a6ddcc0f7e.png" src="../_images/6599b9245357640dafc51941ac688e83d7165bb2e7d91d4ff42f12a6ddcc0f7e.png" />
-<img alt="../_images/3ca7d90b032f8c7a32f79ffd3df0e3de04247a32d03b45924026f2405475a0b9.png" src="../_images/3ca7d90b032f8c7a32f79ffd3df0e3de04247a32d03b45924026f2405475a0b9.png" />
-<img alt="../_images/c181c23c3e4ee831354c3076b7e5f338edd5d31cb589bb3b4eb7f8da494d5986.png" src="../_images/c181c23c3e4ee831354c3076b7e5f338edd5d31cb589bb3b4eb7f8da494d5986.png" />
+<img alt="../_images/67b619be627eb5f39ed66a4cbd7a1bd5216a2c40f1e0721796cfeb4893e22e8a.png" src="../_images/67b619be627eb5f39ed66a4cbd7a1bd5216a2c40f1e0721796cfeb4893e22e8a.png" />
+<img alt="../_images/39d1bc8507684cff7b89f5d727a93f9c78207c1773674918218bbd180de140ee.png" src="../_images/39d1bc8507684cff7b89f5d727a93f9c78207c1773674918218bbd180de140ee.png" />
+<img alt="../_images/9407b5b81e1737bd4bf7895598c0025cccd18b0f37a367b71034b0a4399612cb.png" src="../_images/9407b5b81e1737bd4bf7895598c0025cccd18b0f37a367b71034b0a4399612cb.png" />
 </div>
 </div>
 <p>OK, we have the same conclusions as before.</p>
@@ -676,7 +665,7 @@ such as for example the complexity of the method, the computation time, etc.</p>
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -698,7 +687,7 @@ such as for example the complexity of the method, the computation time, etc.</p>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

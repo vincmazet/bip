@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Corner detection &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'detection/corners';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Line detection" href="lines.html" />
     <link rel="prev" title="Edge detection" href="edges.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/detection/corners.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -439,7 +440,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="corner-detection">
-<h1>Corner detection<a class="headerlink" href="#corner-detection" title="Permalink to this headline">#</a></h1>
+<h1>Corner detection<a class="headerlink" href="#corner-detection" title="Permalink to this heading">#</a></h1>
 <p>To detect the corners of objects in an image, one can start by detecting edges then determining where two edges meet.
 There are however other methods, among which:</p>
 <ul class="simple">
@@ -447,13 +448,13 @@ There are however other methods, among which:</p>
 <li><p>the Harris detector [<a class="reference internal" href="outro.html#b-detection-harris1988"><span class="std std-ref">Harris &amp; Stephens 1988</span></a>].</p></li>
 </ul>
 <section id="moravec-detector">
-<h2>Moravec detector<a class="headerlink" href="#moravec-detector" title="Permalink to this headline">#</a></h2>
+<h2>Moravec detector<a class="headerlink" href="#moravec-detector" title="Permalink to this heading">#</a></h2>
 <p>The principle of this detector is to observe if a sub-image, moved around one pixel in all directions, changes significantly.
 If this is the case, then the considered pixel is a corner.</p>
 <figure class="align-default" id="f-corners-moravec">
 <a class="reference internal image-reference" href="../_images/corners-moravec.png"><img alt="../_images/corners-moravec.png" src="../_images/corners-moravec.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Principle of Moravec detector.
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Principle of Moravec detector.
 From left to right :
 on a flat area, small shifts in the sub-image (in red) do not cause any change;
 on a contour, we observe changes in only one direction;
@@ -484,7 +485,7 @@ Third, the detector remains very sensitive to edges because only the minimum of 
 For these reasons, Harris has proposed a detector to overcome these limitations.</p>
 </section>
 <section id="harris-detector">
-<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this headline">#</a></h2>
+<h2>Harris detector<a class="headerlink" href="#harris-detector" title="Permalink to this heading">#</a></h2>
 <p>To avoid a noisy response, the rectangular window <span class="math notranslate nohighlight">\(w\)</span> of the Moravec detector is replaced by a Gaussian window <span class="math notranslate nohighlight">\(w\)</span>
 in the expression of <span class="math notranslate nohighlight">\(E_{m,n}(x,y)\)</span>.</p>
 <p>To extend the Moravec detector to all directions, not limited to the initial four directions,
@@ -517,13 +518,13 @@ M = \sum_{u,v} w_{m,n}(u,v)
 \end{split}\]</div>
 <p>Finally, the last limit of the Moravec detector can be avoided by considering a new measure of the presence of a corner:
 more information about the intensity change in the window can be obtained
-by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> of the matrix <span class="math notranslate nohighlight">\(M\)</span> (<a class="reference internal" href="#f-corners-eigenvalues"><span class="std std-numref">Fig. 100</span></a>).
+by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> of the matrix <span class="math notranslate nohighlight">\(M\)</span> (<a class="reference internal" href="#f-corners-eigenvalues"><span class="std std-numref">Fig. 102</span></a>).
 Indeed, the presence of a corner is attested if the derivatives of <span class="math notranslate nohighlight">\(f\)</span> are very large,
 then <span class="math notranslate nohighlight">\(M\)</span> has large coefficients, and its eigenvalues are also very large.</p>
 <figure class="align-default" id="f-corners-eigenvalues">
 <a class="reference internal image-reference" href="../_images/harris-eigenvalues.png"><img alt="../_images/harris-eigenvalues.png" src="../_images/harris-eigenvalues.png" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The calculation of the eigenvalues of <span class="math notranslate nohighlight">\(M\)</span> can be difficult, so an alternative is to calculate:</p>
@@ -532,18 +533,18 @@ then <span class="math notranslate nohighlight">\(M\)</span> has large coefficie
 R = \mathrm{det}(M) - k (\mathrm{trace}(M))^2 = \lambda_1 \lambda_2 - k(\lambda_1 + \lambda_2)^2
 \]</div>
 <p>with <span class="math notranslate nohighlight">\(0.04 &lt; k &lt; 0.06\)</span>.</p>
-<p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 101</span></a>).</p>
+<p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 103</span></a>).</p>
 <figure class="align-default" id="f-corners-r">
 <a class="reference internal image-reference" href="../_images/harris-R.png"><img alt="../_images/harris-R.png" src="../_images/harris-R.png" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 102</span></a>.</p>
+<p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 104</span></a>.</p>
 <figure class="align-default" id="f-corners-harris">
 <a class="reference internal image-reference" href="../_images/harris-detector.svg"><img alt="../_images/harris-detector.svg" src="../_images/harris-detector.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Harris detector.
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Harris detector.
 The binary images represent the negative (contours), weak (flat areas) and positive (corners) values of the coefficient <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-harris" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -613,7 +614,7 @@ The binary images represent the negative (contours), weak (flat areas) and posit
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -633,7 +634,7 @@ The binary images represent the negative (contours), weak (flat areas) and posit
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

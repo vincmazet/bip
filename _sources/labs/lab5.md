@@ -26,7 +26,9 @@ implement a first version of the method which gives an approximate result automa
 * Give a critical discussion about your method by listing its good behaviours and its limits,
   then suggest improvements.
 
-  
+* You can also apply your detection method on <a href="../_static/data/pools.zip">other images</a>.
+
+
 <!-- ## Registration
 
 Two satellite images of the Capitol in Toulouse are to be registered by using an iconic approach:

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Histogram transformations &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'histogram/transformations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conclusion" href="outro.html" />
     <link rel="prev" title="Histogram" href="histogram.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/histogram/transformations.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -442,7 +443,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="histogram-transformations">
-<span id="c-histogram-transformations"></span><h1>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Permalink to this headline">#</a></h1>
+<span id="c-histogram-transformations"></span><h1>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Permalink to this heading">#</a></h1>
 <p>An histogram transformation consists in applying a mathematical function to the intensity distribution.
 Generally, the transformations are useful to improve the visual quality of an image,
 but are rarely needed inside an automatic processing.</p>
@@ -453,7 +454,7 @@ but are rarely needed inside an automatic processing.</p>
 As a consequence, the histogram of the new image differs from the histogram of the original image.</p>
 <p>Below are some common transformations (we suppose the pixel intensities to lie in <span class="math notranslate nohighlight">\([0,1]\)</span>).</p>
 <section id="negative-image">
-<h2>Negative image<a class="headerlink" href="#negative-image" title="Permalink to this headline">#</a></h2>
+<h2>Negative image<a class="headerlink" href="#negative-image" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[T(i) = 1-i\]</div>
 <figure class="align-default" id="f-histogram-negative">
@@ -463,7 +464,7 @@ As a consequence, the histogram of the new image differs from the histogram of t
 </figure>
 </section>
 <section id="gamma-correction">
-<h2>Gamma correction<a class="headerlink" href="#gamma-correction" title="Permalink to this headline">#</a></h2>
+<h2>Gamma correction<a class="headerlink" href="#gamma-correction" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[T(i) = i^\gamma\]</div>
 <figure class="align-default" id="f-histogram-gamma">
@@ -475,7 +476,7 @@ Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a 
 </figure>
 </section>
 <section id="histogram-spreading">
-<h2>Histogram spreading<a class="headerlink" href="#histogram-spreading" title="Permalink to this headline">#</a></h2>
+<h2>Histogram spreading<a class="headerlink" href="#histogram-spreading" title="Permalink to this heading">#</a></h2>
 <p>(french: <em>étalement d’histogramme</em>)</p>
 <div class="math notranslate nohighlight">
 \[T(i) = \frac{i-i_\text{min}}{i_\text{max}-i_\text{min}}\]</div>
@@ -487,7 +488,7 @@ Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a 
 </figure>
 </section>
 <section id="histogram-equalization">
-<h2>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Permalink to this headline">#</a></h2>
+<h2>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Permalink to this heading">#</a></h2>
 <p>(french: <em>égalisation d’histogramme</em>)</p>
 <div class="math notranslate nohighlight">
 \[T(i) = \frac{1}{MN} \sum_{k=0}^i n_k\]</div>
@@ -504,7 +505,7 @@ The demonstration of this equation is available in
 </figure>
 </section>
 <section id="thresholding">
-<h2>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this headline">#</a></h2>
+<h2>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this heading">#</a></h2>
 <p>The histogram is sometimes very useful to segment the image in two classes,
 that is to distinguish the objects in the image with respect to their gray level.
 Indeed, if the histogram shows clearly two modes (<em>i.e.</em> two “bumps”),
@@ -586,7 +587,7 @@ Several methods exist that compute automatically the threshold, such that <a cla
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -609,7 +610,7 @@ Several methods exist that compute automatically the threshold, such that <a cla
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

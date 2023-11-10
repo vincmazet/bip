@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Properties of the Fourier transform &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Filtering aliasing" href="cor23.html" />
     <link rel="prev" title="Convolution" href="cor21.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -324,7 +325,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -333,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor22.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -351,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -371,7 +372,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -419,7 +420,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -438,9 +439,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="properties-of-the-fourier-transform">
-<span id="labs-cor22"></span><h1>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor22"></span><h1>Properties of the Fourier transform<a class="headerlink" href="#properties-of-the-fourier-transform" title="Permalink to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>manipulate the functions <code class="docutils literal notranslate"><span class="pre">fft2</span></code> and <code class="docutils literal notranslate"><span class="pre">fftshift</span></code></p></li>
 <li><p>display adequately the magnitude of the Fourier transform to see the details</p></li>
@@ -449,7 +450,7 @@ document.write(`
 </ul>
 </section>
 <section id="some-remarks">
-<h2>Some remarks<a class="headerlink" href="#some-remarks" title="Permalink to this headline">#</a></h2>
+<h2>Some remarks<a class="headerlink" href="#some-remarks" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>After computing the Fourier transform with <code class="docutils literal notranslate"><span class="pre">numpy.fft.fft2</span></code>,
 use the function <code class="docutils literal notranslate"><span class="pre">numpy.fft.fftshift</span></code> to shift the zero frequencies at the centre of the image.</p></li>
@@ -458,7 +459,7 @@ so one need to show its magnitude (<code class="docutils literal notranslate"><s
 </ul>
 </section>
 <section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h2>
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/340fd25006ad0ada0812ba03b760ece4cc3796d075335fe02f22d6d8fcdc5c7b.png" src="../_images/340fd25006ad0ada0812ba03b760ece4cc3796d075335fe02f22d6d8fcdc5c7b.png" />
@@ -544,7 +545,7 @@ so one need to show its magnitude (<code class="docutils literal notranslate"><s
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -565,7 +566,7 @@ so one need to show its magnitude (<code class="docutils literal notranslate"><s
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

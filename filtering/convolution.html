@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Convolution &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filtering/convolution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fourier transform" href="fourier.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/filtering/convolution.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -441,9 +442,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolution">
-<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">#</a></h1>
+<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
 <p>Many image processing results come from a modification of one pixel with respect to its neighbors.
 When this modification is similar in the entire image <span class="math notranslate nohighlight">\(g\)</span>,
 it can be mathematically defined using a second image <span class="math notranslate nohighlight">\(h\)</span> which defines the neighbor relationships.
@@ -516,7 +517,7 @@ the result corresponds to the two unique pixels of <span class="math notranslate
 </div>
 </section>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
 <p>As a mathematical operation, the convolution has several properties.</p>
 <ul class="simple">
 <li><p>The neutral element of convolution is an image filled with zeros but the pixel at the center equals 1.</p></li>
@@ -531,7 +532,7 @@ the result corresponds to the two unique pixels of <span class="math notranslate
 </ul>
 </section>
 <section id="boundaries-effects">
-<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this headline">#</a></h2>
+<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this heading">#</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
 as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 26</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
 <p>Therefore, one has to assume some hypotheses of the pixel values outside the image.
@@ -555,7 +556,7 @@ Also, the best thing is to ensure when acquiring the image that the objects of i
 This is also the result given by a multiplication in the Fourier domain (see <a class="reference internal" href="fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>).</p>
 </section>
 <section id="separable-convolution">
-<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Permalink to this headline">#</a></h2>
+<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Permalink to this heading">#</a></h2>
 <p>A separable convolution is when the convolution kernel <span class="math notranslate nohighlight">\(h\)</span> can be written as the convolution of two 1D filters (say <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>) defined along the two axes.
 Let’s give an example:</p>
 <div class="math notranslate nohighlight">
@@ -691,7 +692,7 @@ highlighting the efficiency of the separability.</p>
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -713,7 +714,7 @@ highlighting the efficiency of the separability.</p>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

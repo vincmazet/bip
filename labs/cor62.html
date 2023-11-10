@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Deconvolution &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/cor62';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lab 7" href="lab7.html" />
     <link rel="prev" title="Denoising" href="cor61.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor62.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -421,7 +422,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -441,7 +442,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="deconvolution">
-<span id="labs-cor6"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor6"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this heading">#</a></h1>
 <p>The objectives of this exercise are:</p>
 <ul class="simple">
 <li><p>know how to apply a specific degradation to an image</p></li>
@@ -451,10 +452,10 @@ document.write(`
 <div class="cell tag_remove-input docutils container">
 </div>
 <section id="original-and-noisy-images">
-<h2>Original and noisy images<a class="headerlink" href="#original-and-noisy-images" title="Permalink to this headline">#</a></h2>
+<h2>Original and noisy images<a class="headerlink" href="#original-and-noisy-images" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/a7b1c47dae81d51a33589af5d8f442e464681f1a7a76c93971692ae2acdd21e7.png" src="../_images/a7b1c47dae81d51a33589af5d8f442e464681f1a7a76c93971692ae2acdd21e7.png" />
+<img alt="../_images/27c9fbfaa060a4e8f2bb7d58ae5d8e8b97ad2a4ee0e7d637bed0dc953b476080.png" src="../_images/27c9fbfaa060a4e8f2bb7d58ae5d8e8b97ad2a4ee0e7d637bed0dc953b476080.png" />
 </div>
 </div>
 <p>The “USAF 1951” resolution chart is a tool for measuring the resolution of optical instruments.
@@ -463,33 +464,43 @@ Its interest in image processing is to measure the resolution capacity of method
 Here, it is interesting because once blurred, it is difficult to count the lines and read the figures.</p>
 </section>
 <section id="inverse-filter-on-the-non-noisy-image">
-<h2>Inverse filter on the non-noisy image<a class="headerlink" href="#inverse-filter-on-the-non-noisy-image" title="Permalink to this headline">#</a></h2>
+<h2>Inverse filter on the non-noisy image<a class="headerlink" href="#inverse-filter-on-the-non-noisy-image" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b41d100ba79280262f94e0f493dc1a997947d54bc1b8c3dd49669e6b6c23f335.png" src="../_images/b41d100ba79280262f94e0f493dc1a997947d54bc1b8c3dd49669e6b6c23f335.png" />
+<img alt="../_images/b1d96140f701b827777b0fe56ce0d3e512d236a6370fb875807a6a12d4bfe626.png" src="../_images/b1d96140f701b827777b0fe56ce0d3e512d236a6370fb875807a6a12d4bfe626.png" />
 </div>
 </div>
 <p>In the absence of noise, the inverse filter works perfectly (except for a translation, due to the PSF size).</p>
 </section>
 <section id="inverse-filter-with-noise">
-<h2>Inverse filter with noise<a class="headerlink" href="#inverse-filter-with-noise" title="Permalink to this headline">#</a></h2>
+<h2>Inverse filter with noise<a class="headerlink" href="#inverse-filter-with-noise" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcul de la variance d&#39;un bruit blanc gaussien pour un RSB donné</span>
+<span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="n">snr</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">M</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">return</span> <span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">snr</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/8a1026e70329d48a760ad03e29b9c16a4e0bff03b3bb189eb36884e735a8ba0a.png" src="../_images/8a1026e70329d48a760ad03e29b9c16a4e0bff03b3bb189eb36884e735a8ba0a.png" />
+<img alt="../_images/0e8e8efb132757973283df0cdd019c31cd6a80cb4632d55eea9b846b8824ef5a.png" src="../_images/0e8e8efb132757973283df0cdd019c31cd6a80cb4632d55eea9b846b8824ef5a.png" />
 </div>
 </div>
 <p>On the contrary, when the image is noisy (even slightly: here SNR equals 40 dB), the restoration is not at all acceptable!</p>
 </section>
 <section id="wiener-filter-with-noise">
-<h2>Wiener filter with noise<a class="headerlink" href="#wiener-filter-with-noise" title="Permalink to this headline">#</a></h2>
+<h2>Wiener filter with noise<a class="headerlink" href="#wiener-filter-with-noise" title="Permalink to this heading">#</a></h2>
 <p>Be careful, there is another <code class="docutils literal notranslate"><span class="pre">wiener</span></code> function (<code class="docutils literal notranslate"><span class="pre">skimage.filters.wiener</span></code>), but it is more tricky.
 Instead, use <code class="docutils literal notranslate"><span class="pre">skimage.restoration.wiener</span></code>, not forgetting to add <code class="docutils literal notranslate"><span class="pre">clip=False</span></code>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/28ea791f26d4ac2b6530476cf11683f98f35cbb9a9cef6f5cff325088e89ee8a.png" src="../_images/28ea791f26d4ac2b6530476cf11683f98f35cbb9a9cef6f5cff325088e89ee8a.png" />
-<img alt="../_images/14ac8a2397ebfccbcaea06df7e262660005fec07e0c19578ebf8bdc64ec82634.png" src="../_images/14ac8a2397ebfccbcaea06df7e262660005fec07e0c19578ebf8bdc64ec82634.png" />
+<img alt="../_images/0f99ddcd32974702fadc1332ec025cc9571364e777c1a55e460dbee6a88e033a.png" src="../_images/0f99ddcd32974702fadc1332ec025cc9571364e777c1a55e460dbee6a88e033a.png" />
+<img alt="../_images/e6e095d96eb5cf39602e8eb76affef95d7d0a8e4de566ce9dd3e081da5e1c4ad.png" src="../_images/e6e095d96eb5cf39602e8eb76affef95d7d0a8e4de566ce9dd3e081da5e1c4ad.png" />
 </div>
 </div>
 <p>These first results have been obtained for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.
@@ -499,11 +510,11 @@ if <span class="math notranslate nohighlight">\(\lambda\)</span> is too large th
 <p>For a better analysis, we represent the MSE with respect to <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/6099e5994515760228c0b154475eaa3cec5a8906116ab5d6f18af54b3d85a79b.png" src="../_images/6099e5994515760228c0b154475eaa3cec5a8906116ab5d6f18af54b3d85a79b.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 90 and gives MSE = 1325.74.
+<img alt="../_images/642db5b974ab8d96091e5ad9d265e9294eaa9442144a6ab6efe980e03dcf3c1b.png" src="../_images/642db5b974ab8d96091e5ad9d265e9294eaa9442144a6ab6efe980e03dcf3c1b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 80 and gives MSE = 1327.96.
 </pre></div>
 </div>
-<img alt="../_images/9c07637ca4fe9555d43fb4be89d97b8609cd4c9ee8ebf18dc143f5efeedb5c46.png" src="../_images/9c07637ca4fe9555d43fb4be89d97b8609cd4c9ee8ebf18dc143f5efeedb5c46.png" />
+<img alt="../_images/c09592f9daaf502e61c899da63bdfee4d184591fe782a85b4e07113b693b27ba.png" src="../_images/c09592f9daaf502e61c899da63bdfee4d184591fe782a85b4e07113b693b27ba.png" />
 </div>
 </div>
 <p>I find personally that this value of <span class="math notranslate nohighlight">\(\lambda\)</span> gives a less clear picture than for lower values of <span class="math notranslate nohighlight">\(\lambda\)</span> (as presented above).
@@ -576,7 +587,7 @@ But the perceived quality is subjective and depend on the desired objective, whe
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -598,7 +609,7 @@ But the perceived quality is subjective and depend on the desired objective, whe
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

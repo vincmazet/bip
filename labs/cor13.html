@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3 Display several images &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4 Create a simple image" href="cor14.html" />
     <link rel="prev" title="2 Display a saved image" href="cor12.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -324,7 +325,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -333,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor13.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -351,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -371,7 +372,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -419,7 +420,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -438,16 +439,16 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="display-several-images">
-<span id="labs-cor13"></span><h1>3 Display several images<a class="headerlink" href="#display-several-images" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor13"></span><h1>3 Display several images<a class="headerlink" href="#display-several-images" title="Permalink to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Load several images by using a loop</p></li>
 <li><p>Display several images on the same figure</p></li>
 </ul>
 </section>
 <section id="list-the-images">
-<h2>List the images<a class="headerlink" href="#list-the-images" title="Permalink to this headline">#</a></h2>
+<h2>List the images<a class="headerlink" href="#list-the-images" title="Permalink to this heading">#</a></h2>
 <p>Suppose the images are stored in the folder “flowers”.</p>
 <p>From <a class="reference external" href="https://stackoverflow.com/questions/57451177/python3-create-list-of-image-in-a-folder">this page</a>,
 a code to list the files with extension JPG are given by:</p>
@@ -480,7 +481,7 @@ flowers/IMG_5367.JPG
 </div>
 </section>
 <section id="display-the-images">
-<h2>Display the images<a class="headerlink" href="#display-the-images" title="Permalink to this headline">#</a></h2>
+<h2>Display the images<a class="headerlink" href="#display-the-images" title="Permalink to this heading">#</a></h2>
 <p>Now we can create a figure with as many axes as images in the list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,7 +598,7 @@ flowers/IMG_5367.JPG
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -618,7 +619,7 @@ flowers/IMG_5367.JPG
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

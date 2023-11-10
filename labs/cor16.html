@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6 Segmentation by histogram thresholding &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="7 Contrast enhancement" href="cor17.html" />
     <link rel="prev" title="5 Setting the intensity range" href="cor15.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -324,7 +325,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -333,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/labs/cor16.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -351,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -371,7 +372,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -419,7 +420,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contenu </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -439,16 +440,16 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="segmentation-by-histogram-thresholding">
-<span id="labs-cor16"></span><h1>6 Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this headline">#</a></h1>
+<span id="labs-cor16"></span><h1>6 Segmentation by histogram thresholding<a class="headerlink" href="#segmentation-by-histogram-thresholding" title="Permalink to this heading">#</a></h1>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>display and manipulate a histogram</p></li>
 <li><p>define a threshold from a histogram</p></li>
 </ul>
 </section>
 <section id="image-histogram">
-<h2>Image histogram<a class="headerlink" href="#image-histogram" title="Permalink to this headline">#</a></h2>
+<h2>Image histogram<a class="headerlink" href="#image-histogram" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -479,7 +480,7 @@ In conclusion, the bin number does not necessarily have to be equal to the numbe
 it depends on what we are going to do with the histogram!</p>
 </section>
 <section id="segmentation-in-2-classes">
-<h2>Segmentation in 2 classes<a class="headerlink" href="#segmentation-in-2-classes" title="Permalink to this headline">#</a></h2>
+<h2>Segmentation in 2 classes<a class="headerlink" href="#segmentation-in-2-classes" title="Permalink to this heading">#</a></h2>
 <p>The presence of several modes in the histogram implies several possible thresholds.
 The two images below correspond to the thresholds obtained around the three modes of the histogram.</p>
 <div class="cell tag_remove-input docutils container">
@@ -490,7 +491,7 @@ The two images below correspond to the thresholds obtained around the three mode
 </div>
 </section>
 <section id="segmentation-in-3-classes">
-<h2>Segmentation in 3 classes<a class="headerlink" href="#segmentation-in-3-classes" title="Permalink to this headline">#</a></h2>
+<h2>Segmentation in 3 classes<a class="headerlink" href="#segmentation-in-3-classes" title="Permalink to this heading">#</a></h2>
 <p>The histogram is a tool that represents the distribution of the intensities in an image.
 We used it in this exercise to define a threshold on the image, then segmenting the image into two classes.
 Furthermore, we can define several thresholds to obtain a segmentation with more than two classes, as for example in the image below.</p>
@@ -568,7 +569,7 @@ Besides, which modes in the histogram correspond to the three identified zones?<
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -590,7 +591,7 @@ Besides, which modes in the histogram correspond to the three identified zones?<
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>

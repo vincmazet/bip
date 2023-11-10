@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Matched filter &#8212; Basics of Image Processing</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -62,15 +63,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'detection/matched-filter';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Edge detection" href="edges.html" />
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -326,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -335,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/detection/matched-filter.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Télécharger le fichier source"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -353,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimer au format PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -373,7 +374,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Mode plein écran"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -428,7 +429,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matched-filter">
-<h1>Matched filter<a class="headerlink" href="#matched-filter" title="Permalink to this headline">#</a></h1>
+<h1>Matched filter<a class="headerlink" href="#matched-filter" title="Permalink to this heading">#</a></h1>
 <p>When a pattern (French: <em>motif</em>), perfectly known as a sub-image <span class="math notranslate nohighlight">\(g\)</span>, is searched for in an image <span class="math notranslate nohighlight">\(f\)</span>,
 then the cross-correlation (French: <em>corrélation croisée</em>) between <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> is a very efficient technique.
 This technique is often known as matched filter (French: <em>filtre adapté</em>).
@@ -450,16 +451,16 @@ This results in the normalized cross-correlation (French: <em>corrélation crois
 \[
   \tilde{R}_{f,g}(u,v) = \sum_{m,n} \tilde{f}(m,n) \tilde{g}(u+m,v+n).
 \]</div>
-<p><a class="reference internal" href="#f-detection-matched-filter1"><span class="std std-numref">Fig. 85</span></a> gives an example of matched filter.</p>
+<p><a class="reference internal" href="#f-detection-matched-filter1"><span class="std std-numref">Fig. 87</span></a> gives an example of matched filter.</p>
 <figure class="align-default" id="f-detection-matched-filter1">
 <img alt="../_images/matched-filter-audir8.svg" src="../_images/matched-filter-audir8.svg" /><figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the letter G).</span><a class="headerlink" href="#f-detection-matched-filter1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the letter G).</span><a class="headerlink" href="#f-detection-matched-filter1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As seen in <a class="reference internal" href="#f-matched-filter2"><span class="std std-numref">Fig. 86</span></a>, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.</p>
+<p>As seen in <a class="reference internal" href="#f-matched-filter2"><span class="std std-numref">Fig. 88</span></a>, the major limit of the matched filter is that it is sensitive to variations in orientation, size, etc.</p>
 <figure class="align-default" id="f-matched-filter2">
 <img alt="../_images/matched-filter-plates.svg" src="../_images/matched-filter-plates.svg" /><figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the digit 0).</span><a class="headerlink" href="#f-matched-filter2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Normalized cross-correlation with the pattern shown top-left (the digit 0).</span><a class="headerlink" href="#f-matched-filter2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To overcome this limit, one can apply several matched filters, each representative of all the variations of the patterns.
@@ -535,7 +536,7 @@ However, this idea is very time-consuming!</p>
   <div class="footer-item">
     
 <p class="component-author">
-Par Vincent Mazet (University of Strasbourg, France)
+By Vincent Mazet (University of Strasbourg, France)
 </p>
 
   </div>
