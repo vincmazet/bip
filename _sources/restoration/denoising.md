@@ -125,7 +125,7 @@ $$
 $$
 
 For additive noise, another measure exists:
-the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of the noisy image
+the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of the non-noisy image
 (difference between maximum intensity and minimum intensity) to the power of the noise:
 
 $$
