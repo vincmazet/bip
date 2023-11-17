@@ -373,6 +373,12 @@ Public domain,
 via Wikimedia Commons.
 :::
 
+:::{grid-item-card} ![](https://upload.wikimedia.org/wikipedia/commons/d/da/Luxembourg%2C_road_marking_%28110j_passage_pour_pi%C3%A9tons_-_vue_pi%C3%A9tons%29.jpg)
+GilPe.
+Public domain,
+via Wikimedia Commons.
+:::
+
 ::::
 
 <!-- Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html. -->

@@ -105,14 +105,23 @@ The Hough transform algorithm is as follows:
 
 ::::
 
-{numref}`F:lines:example` gives an example of a Hough transform on an image representing a square.
+{numref}`F:lines:toy-example` gives an example of a Hough transform on an image representing a square.
+
+```{figure} hough-toy-example.svg
+---
+name: F:lines:toy-example
+---
+Hough transform associated with the image on the left.
+The sinusoids intersect at four (very bright) points, each one is associated with the line with the same letter.
+```
+
+{numref}`F:lines:example` gives an example of a Hough transform on an real photograph.
 
 ```{figure} hough-example.svg
 ---
 name: F:lines:example
 ---
 Hough transform associated with the image on the left.
-The sinusoids intersect at four (very bright) points, each one is associated with the line with the same letter.
 ```
 
 <!-- Autre exemple : Léo Letouzey + Thomas Chabrier 2008 http://gepasud.upf.pf/images/documents/Letouzey/perso/hough.pdf -->
