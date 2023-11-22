@@ -80,8 +80,8 @@ Thus, the kernel $h_x$ is:
 $$
 h_x =
 \begin{pmatrix}
-  0 & +1 \\
-  0 & -1 \\
+  +1 & -1 \\
+  0  & 0 \\
 \end{pmatrix}
 $$
 
@@ -90,50 +90,52 @@ Similarly, the first derivative along the $y$ axis is written as the convolution
 $$
 h_y =
 \begin{pmatrix}
-  0 &  0 \\
-  +1 & -1 \\
+  +1 & 0 \\
+  -1 & 0 \\
 \end{pmatrix}
 $$
 
-Introducing a column of 0 in $h_x$ and a row of 0 in $h_y$ allows having kernels of the same size.
+Note that the row of 0 in $h_x$ and the column of 0 in $h_y$ allows having kernels of the same size.
+These two kernels are very the very basic gradient operators
+and, in practice, variants of them are used.
 
 ### Roberts operators
 
-These two kernels constitute the Roberts operators [[Roberts 1965](B:detection:Roberts1965)]:
+The Roberts operators are along the diagonals [[Roberts 1965](B:detection:Roberts1965)]:
 
 $$
   h_x=
   \begin{pmatrix}
-    0 & +1 \\
+    +1 & 0 \\
     0 & -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    0 & 0 \\
-    +1 & -1 \\
+    0 & +1 \\
+    -1 & 0 \\
   \end{pmatrix}
 $$
 
 
 ### Prewitt operators
 
-A variant of these filters are the Prewitt operators [[Prewitt 1970](B:detection:Prewitt1970)]
-which allow to centre the Roberts operators and to deal with a kernel with an odd size
+Another variant are the Prewitt operators [[Prewitt 1970](B:detection:Prewitt1970)]
+which deal with a kernel with an odd size:
 
 $$
   h_x=
   \begin{pmatrix}
-    +1 & +1 & +1 \\
-    0 & 0 & 0 \\
-    -1 & -1 & -1 \\
+    +1 & 0 & -1 \\
+    +1 & 0 & -1 \\
+    +1 & 0 & -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    +1 & 0 & -1 \\
-    +1 & 0 & -1 \\
-    +1 & 0 & -1 \\
+    +1 & +1 & +1 \\
+    0 & 0 & 0 \\
+    -1 & -1 & -1 \\
   \end{pmatrix}
 $$
 
@@ -147,16 +149,16 @@ which tends to play the role of a mean filter to attenuate noise:
 $$
   h_x=
   \begin{pmatrix}
-    +1 & +2 & +1 \\
-    0 & 0 & 0 \\
-    -1 & -2 & -1 \\
+    +1 & 0 & -1 \\
+    +2 & 0 & -2 \\
+    +1 & 0 & -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    +1 & 0 & -1 \\
-    +2 & 0 & -2 \\
-    +1 & 0 & -1 \\
+    +1 & +2 & +1 \\
+    0 & 0 & 0 \\
+    -1 & -2 & -1 \\
   \end{pmatrix}
 $$
 

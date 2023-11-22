@@ -520,8 +520,8 @@ f(x+1,y) - f(x,y) = \sum_m \sum_n h_x(m,n) f(x-m,y-n)
 \[\begin{split}
 h_x =
 \begin{pmatrix}
-  0 &amp; +1 \\
-  0 &amp; -1 \\
+  +1 &amp; -1 \\
+  0  &amp; 0 \\
 \end{pmatrix}
 \end{split}\]</div>
 <p>Similarly, the first derivative along the <span class="math notranslate nohighlight">\(y\)</span> axis is written as the convolution of <span class="math notranslate nohighlight">\(f\)</span> with the kernel <span class="math notranslate nohighlight">\(h_y\)</span>:</p>
@@ -529,47 +529,49 @@ h_x =
 \[\begin{split}
 h_y =
 \begin{pmatrix}
-  0 &amp;  0 \\
-  +1 &amp; -1 \\
+  +1 &amp; 0 \\
+  -1 &amp; 0 \\
 \end{pmatrix}
 \end{split}\]</div>
-<p>Introducing a column of 0 in <span class="math notranslate nohighlight">\(h_x\)</span> and a row of 0 in <span class="math notranslate nohighlight">\(h_y\)</span> allows having kernels of the same size.</p>
+<p>Note that the row of 0 in <span class="math notranslate nohighlight">\(h_x\)</span> and the column of 0 in <span class="math notranslate nohighlight">\(h_y\)</span> allows having kernels of the same size.
+These two kernels are very the very basic gradient operators
+and, in practice, variants of them are used.</p>
 <section id="roberts-operators">
 <h3>Roberts operators<a class="headerlink" href="#roberts-operators" title="Permalink to this heading">#</a></h3>
-<p>These two kernels constitute the Roberts operators [<a class="reference internal" href="outro.html#b-detection-roberts1965"><span class="std std-ref">Roberts 1965</span></a>]:</p>
+<p>The Roberts operators are along the diagonals [<a class="reference internal" href="outro.html#b-detection-roberts1965"><span class="std std-ref">Roberts 1965</span></a>]:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   h_x=
   \begin{pmatrix}
-    0 &amp; +1 \\
+    +1 &amp; 0 \\
     0 &amp; -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    0 &amp; 0 \\
-    +1 &amp; -1 \\
+    0 &amp; +1 \\
+    -1 &amp; 0 \\
   \end{pmatrix}
 \end{split}\]</div>
 </section>
 <section id="prewitt-operators">
 <h3>Prewitt operators<a class="headerlink" href="#prewitt-operators" title="Permalink to this heading">#</a></h3>
-<p>A variant of these filters are the Prewitt operators [<a class="reference internal" href="outro.html#b-detection-prewitt1970"><span class="std std-ref">Prewitt 1970</span></a>]
-which allow to centre the Roberts operators and to deal with a kernel with an odd size</p>
+<p>Another variant are the Prewitt operators [<a class="reference internal" href="outro.html#b-detection-prewitt1970"><span class="std std-ref">Prewitt 1970</span></a>]
+which deal with a kernel with an odd size:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   h_x=
   \begin{pmatrix}
-    +1 &amp; +1 &amp; +1 \\
-    0 &amp; 0 &amp; 0 \\
-    -1 &amp; -1 &amp; -1 \\
+    +1 &amp; 0 &amp; -1 \\
+    +1 &amp; 0 &amp; -1 \\
+    +1 &amp; 0 &amp; -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    +1 &amp; 0 &amp; -1 \\
-    +1 &amp; 0 &amp; -1 \\
-    +1 &amp; 0 &amp; -1 \\
+    +1 &amp; +1 &amp; +1 \\
+    0 &amp; 0 &amp; 0 \\
+    -1 &amp; -1 &amp; -1 \\
   \end{pmatrix}
 \end{split}\]</div>
 </section>
@@ -582,16 +584,16 @@ which tends to play the role of a mean filter to attenuate noise:</p>
 \[\begin{split}
   h_x=
   \begin{pmatrix}
-    +1 &amp; +2 &amp; +1 \\
-    0 &amp; 0 &amp; 0 \\
-    -1 &amp; -2 &amp; -1 \\
+    +1 &amp; 0 &amp; -1 \\
+    +2 &amp; 0 &amp; -2 \\
+    +1 &amp; 0 &amp; -1 \\
   \end{pmatrix}
   \quad
   h_y=
   \begin{pmatrix}
-    +1 &amp; 0 &amp; -1 \\
-    +2 &amp; 0 &amp; -2 \\
-    +1 &amp; 0 &amp; -1 \\
+    +1 &amp; +2 &amp; +1 \\
+    0 &amp; 0 &amp; 0 \\
+    -1 &amp; -2 &amp; -1 \\
   \end{pmatrix}
 \end{split}\]</div>
 <p>Note that the sum of the elements is zero, as the Roberts and Prewitt operators.</p>
