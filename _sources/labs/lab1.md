@@ -1,6 +1,8 @@
 (labs:lab1)=
 # Lab 1
 
+<!-- En gros, les étus sont arrivés jusqu'aux exos 4/5. Bien sûr, certains sont plus en retard et d'autres plus en avance. -->
+
 After completing each exercise, you can refer to the [correction](labs:cor11).
 Furthermore, do not hesitate to ask your colleagues and teachers for additional information
 or to discuss specific topics.
@@ -78,7 +80,7 @@ Now you are ready to write a Python program in the notebook.
   Case is important (_i.e._ `a` and `A` are two different variables).
   Type the instructions below in the second cell:
   ```
-  year = 2023
+  year = 2024
   course = "BIP"
   ```
   and type again `Shift` + `Return`.
@@ -185,6 +187,8 @@ However, an image can also be seen as a three-dimensional curve, opening the way
 
 ## 3 Display several images
 
+<!-- beaucoup d'étus n'automatisent pas les choses, c'est-à-dire qu'ils créent à la main la liste avec les noms des images, et qu'il écrivent 4 fois subplot pour les afficher. Comment les forcer à automatiser tout ça ? De plus, plusieurs font un subplots avec  plusieurs ligne et plusieurs colonne, ce qui complique la tâche : donc leur dire de ne faire qu'une ligne de subplots (ou alors d'afficher les images dans des figures différentes). -->
+
 * Open a new notebook.
 
 * Download and unzip <a href="../_static/data/flowers.zip">flowers.zip</a> in the same folder as your notebook.
@@ -197,7 +201,8 @@ However, an image can also be seen as a three-dimensional curve, opening the way
 
 * Define a figure with as many subplots as images with `matplotlib.pyplot.subplots`.
 
-* Show each images onto this figure.
+* Dispaly each images in a specific subplot.
+  Use an automatic way by using a for loop on the list creater earlier.  
 
 
 (lab1:synth-image)=
@@ -234,6 +239,8 @@ the first two dimensions are the spatial dimensions of the image, the third corr
   You should only observe a single star.
 
 * What is the dynamic of this image (_i.e._ the minimum and maximum values of the intensities)?
+
+* Sketch (on a paper) how would be the histogram of the image.
 
 * Adjust the intensity range with the arguments `vmin` and `vmax` of the function `matplotlib.pyplot.imshow`
   to observe other objects, most of them being galaxies.

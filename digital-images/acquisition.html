@@ -1,24 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VFHC8CBJQK');
-</script>
-    
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Image acquisition &#8212; Basics of Image Processing</title>
   
@@ -26,61 +14,59 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/acquisition';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Displaying an image" href="displaying.html" />
-    <link rel="prev" title="Human vision" href="eye.html" />
+    <link rel="next" title="What is a digital image?" href="definition.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -90,19 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +114,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -152,10 +153,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Basics of Image Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -168,21 +181,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="definition.html">What is a digital image?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eye.html">Human vision</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="color-models.html">Color models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="displaying.html">Displaying an image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="histogram.html">Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Histogram</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../histogram/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/histogram.html">Histogram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/transformations.html">Histogram transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/outro.html">Conclusion</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Filtering</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
@@ -200,7 +207,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
@@ -212,13 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical morphology</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mm/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/basics.html">Basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/composition.html">Composition of basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/measure.html">Measure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/outro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
 <ul class="nav bd-sidenav">
@@ -238,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor11.html">1 Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor12.html">2 Display a saved image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor13.html">3 Display several images</a></li>
@@ -246,44 +256,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor15.html">5 Setting the intensity range</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor16.html">6 Segmentation by histogram thresholding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor17.html">7 Contrast enhancement</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor21.html">Convolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor22.html">Properties of the Fourier transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor23.html">Filtering aliasing</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor31.html">Lossy compression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor32.html">Interpolation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor4.html">Segmentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor5.html">Mathematical morphology</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor61.html">Denoising</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor62.html">Deconvolution</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor71.html">Sobel and Canny detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor72.html">Harris detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor73.html">Hough transform</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">In a nutshell</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/optimization.html">Mathematical optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/deeplearning.html">Deep learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -306,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -315,14 +319,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -345,7 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/digital-images/acquisition.md" target="_blank"
+      <li><a href="../_sources/digital-images/acquisition.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +359,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -397,26 +401,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -437,7 +443,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor">Sensor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-vision">Human vision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-acqusition">Image acqusition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor-electromagnetic-imaging">Sensor (electromagnetic imaging)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-quantization">Sampling and quantization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization">Quantization</a></li>
@@ -457,22 +465,45 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="image-acquisition">
-<span id="c-digital-images-acquisition"></span><h1>Image acquisition<a class="headerlink" href="#image-acquisition" title="Permalink to this heading">#</a></h1>
-<!--
-Évoquer dans chaque section les particularités liées aux différents types d'images :
-- niveau de gris, multispectral/hyperspectal
-- visible, IR ou même non électromagnétique
-- tomographie, PET, IRM, scanner
-- Computational photography (New cameras do not capture photons;they compute pictures)
-  + flutter shutter
-- interférométrie
-- SKA (utile aussi pour la fabrication d'une image avec un capteur non classique)
-- radar
-- Example on Acoustic Images
--->
+<span id="c-digital-images-acquisition"></span><h1>Image acquisition<a class="headerlink" href="#image-acquisition" title="Link to this heading">#</a></h1>
+<section id="human-vision">
+<h2>Human vision<a class="headerlink" href="#human-vision" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#f-digital-images-eye"><span class="std std-numref">Fig. 1</span></a> shows a simplified cross section of the human eye.</p>
+<figure class="align-default" id="f-digital-images-eye">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/d/d0/Three_Main_Layers_of_the_Eye.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/d/d0/Three_Main_Layers_of_the_Eye.png" src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Three_Main_Layers_of_the_Eye.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Simplified diagram of the human eye.</span><a class="headerlink" href="#f-digital-images-eye" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The eye is basically composed of:</p>
+<ul class="simple">
+<li><p>the cornea (French: <em>cornée</em>), a transparent tissue that covers the surface of the eye,</p></li>
+<li><p>the lens (French: <em>cristallin</em>), a second transparent tissue that refracts light onto the retina by changing its shape,</p></li>
+<li><p>the retina (French: <em>rétine</em>) which lines the inside of the posterior portion of the eye.
+The light from an object is imaged on the retina when the eye is properly focused.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><a class="reference external" href="https://youtu.be/FvbNrwjIrNU">A nice video</a>.</p>
+</aside>
+<p>The human eye’s retina contains two kinds of receptors.
+The rods (French: <em>bâtonnets</em>) provide an overall picture of the field of view and are sensitive to low levels of illumination.
+The cones (French: <em>cônes</em>) allow color vision.
+There are three types of cones which are sensitive to short (S), medium (M) and longer (M) wavelength of the visible light (see <a class="reference internal" href="#f-digital-images-cone-responsivity"><span class="std std-numref">Fig. 2</span></a>).
+Basically, they are sensitive to blue, green and red light.
+Rods and cones are connected to the brain by nerves, which proceeds to the image analysis.</p>
+<figure class="align-default" id="f-digital-images-cone-responsivity">
+<img alt="https://upload.wikimedia.org/wikipedia/commons/0/04/Cone-fundamentals-with-srgb-spectrum.svg" src="https://upload.wikimedia.org/wikipedia/commons/0/04/Cone-fundamentals-with-srgb-spectrum.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Responsivity of the three kinds of cones, compared to electromagnetic spectrum.</span><a class="headerlink" href="#f-digital-images-cone-responsivity" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="image-acqusition">
+<h2>Image acqusition<a class="headerlink" href="#image-acqusition" title="Link to this heading">#</a></h2>
 <p>The principal phenomenon at the origin of the acquisition of an image is the electromagnetic spectrum.
 Images based on radiation from the electromagnetic spectrum are the most familiar,
 especially images from visible light, as photography.
@@ -489,57 +520,56 @@ electron microscopy,
 and synthetic (computer-generated) imaging.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Examples of image modalities<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Examples of image modalities</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/interferometry1.jpg"><img alt="../_images/interferometry1.jpg" src="../_images/interferometry1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Interferometry.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Interferometry.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/x-ray1.jpg"><img alt="../_images/x-ray1.jpg" src="../_images/x-ray1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Radiograph of the right knee.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Radiograph of the right knee.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/thermography1.jpg"><img alt="../_images/thermography1.jpg" src="../_images/thermography1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Thermogram of a passive building, with traditional building in the background.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Thermogram of a passive building, with traditional building in the background.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/MRI1.jpg"><img alt="../_images/MRI1.jpg" src="../_images/MRI1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">MRI of the brain (axial section) showing white matter and grey matter folds.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">MRI of the brain (axial section) showing white matter and grey matter folds.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/seismic1.jpg"><img alt="../_images/seismic1.jpg" src="../_images/seismic1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Seismic reflection image.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Seismic reflection image.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/electron-microscopy1.jpg"><img alt="../_images/electron-microscopy1.jpg" src="../_images/electron-microscopy1.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Image of pollen grains taken on a electron microscope.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Image of pollen grains taken on a electron microscope.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-</details><p>In the sequel, we focus on electromagnetic imaging.</p>
-<section id="sensor">
-<h2>Sensor<a class="headerlink" href="#sensor" title="Permalink to this heading">#</a></h2>
-<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Photodiode">photodiode</a> is the most common and basic sensor for image acquisition.
+</details><p>In the sequel, we focus mainly on electromagnetic imaging, especially through visible light.</p>
+</section>
+<section id="sensor-electromagnetic-imaging">
+<h2>Sensor (electromagnetic imaging)<a class="headerlink" href="#sensor-electromagnetic-imaging" title="Link to this heading">#</a></h2>
+<!-- détailler, en particulier sur les aspects géométriques.
+FH propose de rajouter dans BIP : formation des images caméra optique classique (géométrique, photométrique, bruits, il y avait des TP avant sur les caméras rapides, projection perspective, CCD, CMOS. cf avec Adlane par ex), modalité d'imagerie très différentes (impossible de tout couvrir) -->
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Photodiode">photodiode</a> is the most common and basic sensor for image acquisition with visible light.
 It is contructed of silicon materials so that its output voltage is proportional to incoming light.</p>
 <figure class="align-default" id="f-digital-images-photodiode">
-<a class="reference internal image-reference" href="../_images/photodiode1.svg"><img alt="../_images/photodiode1.svg" src="../_images/photodiode1.svg" width="100" /></a>
+<a class="reference internal image-reference" href="../_images/photodiode1.svg"><img alt="../_images/photodiode1.svg" src="../_images/photodiode1.svg" style="width: 100px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Electronic symbol of a photodiode.</span><a class="headerlink" href="#f-digital-images-photodiode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Electronic symbol of a photodiode.</span><a class="headerlink" href="#f-digital-images-photodiode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <aside class="margin sidebar">
@@ -549,15 +579,13 @@ by using mirrors, etc.</p>
 </aside>
 <p>To acquire a 2D digital image, the typical system is by using a matrix of single sensors.
 Two technologies coexist.</p>
-<ul>
+<ul class="simple">
 <li><p>The prevailing technology to read the output voltage of each single sensor is the CMOS
 (complementary metal oxide semi-conductor) approach:
 each single sensor is coupling with its own analog-to-digital conversion circuit.
 This simple counting process makes CMOS technology cheap and low energy.
 However, it may be less sensitive and can produce distortions
-in case of rapid movings in the field of view.</p>
-<!-- illustration du CMOS -->
-</li>
+in case of rapid movings in the field of view.</p></li>
 <li><p>On the other hand, the CCD (charge coupled device) approach has narrowed since the 2010s.
 The fundamental idea of the CCD is the use of a unique conversion circuit.
 The potential of each sensor is moved pixel by pixel: the potentials are shifted by one column,
@@ -565,41 +593,45 @@ then those at the last column are counted by a unique circuit.
 CCD progressively disapears because of several reasons:
 moving potentials is not instantaneous and consumes energy,
 and it sometimes creates undesirable side effects,
-such as <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/0/01/Blooming_example.jpg">blooming</a>.</p>
-<!-- illustration du CCD -->
-</li>
+such as <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/0/01/Blooming_example.jpg">blooming</a>.</p></li>
 </ul>
-<!-- In some applications, the photodiodes in the sensor matrix are not arranged on a rectangular grid -->
-<p>A color or multispectral image (<span class="math notranslate nohighlight">\(B&gt;1\)</span>) is made of as many grayscale image as bands.
-Therefore, to acquire a traditional RGB image, three grayscale images are acquired,
-each at a different wavelength.
-The Bayer filter (<a class="reference internal" href="#f-digital-images-bayer-filter"><span class="std std-numref">Fig. 11</span></a>) is the widely used technique
+<p>To reproduce the colored human vision, the acquisition mimics the three kind of cones by using three kind of filters in front of the sensors.
+Then, three images are actually acquired, corresponding to the short (blue), medium (green) and long (red) wavelengths.
+The Bayer filter (<a class="reference internal" href="#f-digital-images-bayer-filter"><span class="std std-numref">Fig. 10</span></a>) is the widely used technique
 for generating color images.
 It is a mosaic of red, green and blue filters on a square grid of photosensors.
 Note that the filter pattern is half green, one quarter red and one quarter blue.
-The reason for having twice green filter than the other colors is to mimic human vision
-which is naturally more sensitive to green light.</p>
+The reason for having twice green filter than the other colors is because the human vision is naturally more sensitive to green light.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Rarely, the photodiodes in the sensor matrix are not arranged on a rectangular grid.
+For example in astronomy, the sensors can be disposed on an hexagonal grid.</p>
+</aside>
 <figure class="align-default" id="f-digital-images-bayer-filter">
-<a class="reference internal image-reference" href="../_images/bayer-filter1.svg"><img alt="../_images/bayer-filter1.svg" src="../_images/bayer-filter1.svg" width="70%" /></a>
+<a class="reference internal image-reference" href="../_images/bayer-filter1.svg"><img alt="../_images/bayer-filter1.svg" src="../_images/bayer-filter1.svg" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The Bayer filter on an image sensor.</span><a class="headerlink" href="#f-digital-images-bayer-filter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The Bayer filter on an image sensor.</span><a class="headerlink" href="#f-digital-images-bayer-filter" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Several websites give a tool for generating a colour from the proportion of red, green and blue,
-or, on the contrary, to give the proportion of red, green and blue from a specific color.
-For example, look and play with <a class="reference external" href="https://www.w3schools.com/colors/colors_rgb.asp">this one</a>!</p>
-</div>
-<!-- faire une animation JS soi même qui soit intégrée au book et plus simple d'utilisation-->
-</section>
+<!--
+Évoquer dans chaque section les particularités liées aux différents types d'images :
+- niveau de gris, multispectral/hyperspectal
+- visible, IR ou même non électromagnétique
+- tomographie, PET, IRM, scanner
+- Computational photography (New cameras do not capture photons;they compute pictures)
+  + flutter shutter
+- interférométrie
+- SKA (utile aussi pour la fabrication d'une image avec un capteur non classique)
+- radar
+- Example on Acoustic Images
+--></section>
 <section id="sampling-and-quantization">
-<h2>Sampling and quantization<a class="headerlink" href="#sampling-and-quantization" title="Permalink to this heading">#</a></h2>
+<h2>Sampling and quantization<a class="headerlink" href="#sampling-and-quantization" title="Link to this heading">#</a></h2>
 <!-- compressive sensing -->
 <p>The final step of digital image formation is digitization,
-which is both the samling and quantization of the observed scene.</p>
+which is both the sampling and quantization of the observed scene.</p>
 <section id="sampling">
-<h3>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h3>
+<h3>Sampling<a class="headerlink" href="#sampling" title="Link to this heading">#</a></h3>
 <p>Sampling corresponds to mapping a continuous scene onto a discrete grid.
 This is naturally done by the matrix of pixels.
 Sampling a continuous image leads to a loss of information.
@@ -607,13 +639,13 @@ Intuitively, it is clear that sampling reduces resolution:
 structures of about the scale of the sampling distance and finer will be lost.
 Thus the number of pixels on the sensor, directly related to the sampling, is crucial.
 Besides, significant distortions occur when sampling an image with fine structures,
-as seen in <a class="reference internal" href="#f-digital-images-moire"><span class="std std-numref">Fig. 12</span></a>.</p>
+as seen in <a class="reference internal" href="#f-digital-images-moire"><span class="std std-numref">Fig. 11</span></a>.</p>
 <figure class="align-default" id="f-digital-images-moire">
 <a class="reference internal image-reference" href="../_images/moire.jpg"><img alt="../_images/moire.jpg" src="../_images/moire.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Me with my favourite moiré shirt.
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Me with my favourite moiré shirt.
 Left: image of size 1000×1000,
-right: image of size 595×595.</span><a class="headerlink" href="#f-digital-images-moire" title="Permalink to this image">#</a></p>
+right: image of size 595×595.</span><a class="headerlink" href="#f-digital-images-moire" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This kind of distortion is called the moiré effect.
@@ -624,7 +656,7 @@ In practice, one prefer to put an optical low-pass filter before the sensor
 to vanish the high frequencies responsible of the moiré effect.</p>
 </section>
 <section id="quantization">
-<h3>Quantization<a class="headerlink" href="#quantization" title="Permalink to this heading">#</a></h3>
+<h3>Quantization<a class="headerlink" href="#quantization" title="Link to this heading">#</a></h3>
 <p>Quantization correspond to mapping the continuous light intensities to a finite set of number.
 Typically, image are quantized into 256 gray values; then, each pixel then occupies one byte (8 bits).
 The reason for assigning 256 gray values to each pixel is
@@ -634,8 +666,8 @@ the illusion of a continuous change in gray values.</p>
 <figure class="align-default" id="f-digital-images-quantization">
 <a class="reference internal image-reference" href="../_images/quantization.png"><img alt="../_images/quantization.png" src="../_images/quantization.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Quantization of the same image with (from left to right)
-256, 16, 4, and 2 gray levels.</span><a class="headerlink" href="#f-digital-images-quantization" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Quantization of the same image with (from left to right)
+256, 16, 4, and 2 gray levels.</span><a class="headerlink" href="#f-digital-images-quantization" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>However, quantization naturally introduces errors on the intensities.
@@ -649,16 +681,16 @@ require a finer resolution and, in consequence, use more than 256 gray levels.</
 </section>
 </section>
 <section id="distortions">
-<h2>Distortions<a class="headerlink" href="#distortions" title="Permalink to this heading">#</a></h2>
+<h2>Distortions<a class="headerlink" href="#distortions" title="Link to this heading">#</a></h2>
 <p>In addition to the moiré effect and quantization noise,
 other distortions can affect the image acquisition.
 The two main distortions are noise and blurring.</p>
 <section id="noise">
-<h3>Noise<a class="headerlink" href="#noise" title="Permalink to this heading">#</a></h3>
+<h3>Noise<a class="headerlink" href="#noise" title="Link to this heading">#</a></h3>
 <p>Noise introduces erroneous intensities in the digital image.
 Sources of noise are multiple, from electronic noise due to the imaging system itself
 to the acquisition conditions (low-light-level for example).
-The main noise models are desribed in [denoising:noise-sources]:
+The main noise models are desribed in <a class="reference internal" href="../restoration/denoising.html#c-denoising-noise-sources"><span class="std std-ref">Noise sources</span></a>:
 Gaussian noise, Poisson noise and salt-and-pepper noise.
 In specific imaging systems, other noise can be encountered.
 For example, in radar imaging systems the noise is considered to be multiplicative
@@ -666,27 +698,26 @@ and is called speckle noise.</p>
 <figure class="align-default" id="f-digital-image-dark-current">
 <a class="reference internal image-reference" href="../_images/dark-current1.jpg"><img alt="../_images/dark-current1.jpg" src="../_images/dark-current1.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Noise on a photograph taken in a dark room (this noise is called ``dark current’’).</span><a class="headerlink" href="#f-digital-image-dark-current" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Noise on a photograph taken in a dark room (this noise is called “dark current”).</span><a class="headerlink" href="#f-digital-image-dark-current" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- dark current -->
 </section>
 <section id="point-spread-function">
-<h3>Point spread function<a class="headerlink" href="#point-spread-function" title="Permalink to this heading">#</a></h3>
+<h3>Point spread function<a class="headerlink" href="#point-spread-function" title="Link to this heading">#</a></h3>
 <p>Despite the high quality of an imaging system,
 a point in the observed scene is not imaged onto a point in the image space,
 but onto a more or less extended area with varying intensities.
-The function that describes the imaging of a point is an essential feature of the imaging system and is called the point spread function or PSF (in French: <em>fonction d’étalement du point</em>).
+The function that describes the imaging of a point is an essential feature of the imaging system and is called the point spread function or PSF (French: <em>fonction d’étalement du point</em>).
 Generally, the PSF is assuming to be independent of the position.
 Then, the imaging system can be treated as a linear shift-invariant system,
 which is mathematically described as a convolution (see the <a class="reference internal" href="../filtering/convolution.html#filtering-convolution"><span class="std std-ref">dedicated chapter</span></a>).
 Sometimes, an imaging system is described not by its PSF
 but by its <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>,
-and it is called optical transfer function, or OTF (in French: <em>fonction de transfert optique</em>).</p>
+and it is called optical transfer function, or OTF (French: <em>fonction de transfert optique</em>).</p>
 <figure class="align-default" id="f-digital-image-example-motion">
 <a class="reference internal image-reference" href="../_images/budapest1.jpg"><img alt="../_images/budapest1.jpg" src="../_images/budapest1.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Example of blur (parliament of Budapest shoot by a camera).</span><a class="headerlink" href="#f-digital-image-example-motion" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Example of blur (parliament of Budapest).</span><a class="headerlink" href="#f-digital-image-example-motion" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -718,34 +749,30 @@ and it is called optical transfer function, or OTF (in French: <em>fonction de t
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="eye.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Human vision</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
-       href="displaying.html"
+       href="definition.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Displaying an image</p>
+        <p class="prev-next-title">What is a digital image?</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -754,13 +781,16 @@ and it is called optical transfer function, or OTF (in French: <em>fonction de t
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor">Sensor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-vision">Human vision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-acqusition">Image acqusition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensor-electromagnetic-imaging">Sensor (electromagnetic imaging)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-quantization">Sampling and quantization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization">Quantization</a></li>
@@ -792,9 +822,10 @@ By Vincent Mazet (University of Strasbourg, France)
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023-2024.
+      © Copyright 2024-2025.
       <br/>
     
   </p>
@@ -808,7 +839,7 @@ By Vincent Mazet (University of Strasbourg, France)
   <div class="footer-item">
     
 <div class="extra_footer">
-  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2024 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2025 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
 </div>
   </div>
   
@@ -821,8 +852,8 @@ By Vincent Mazet (University of Strasbourg, France)
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -29,13 +29,13 @@ h3 {
 }
 
 span.pre {
-  background-color: #eee;
-  padding: 1px 5px;
-  border: 0;
-  color: #000;
-  font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-  font-size: inherit;
-  line-height: 1.3077
+  /* background-color: #eee; */
+  /* padding: 1px 5px; */
+  /* border: 0; */
+  color: var(--pst-color-text-base);
+  /* font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; */
+  /* font-size: inherit; */
+  /* line-height: 1.3077 */
 }
 
 /* Légendes */
@@ -51,9 +51,9 @@ figure span.caption-number {
 
 /* Hack pour faire disparaître le bouton "launch" */
 
-.menu-dropdown.menu-dropdown-launch-buttons {
+/* .menu-dropdown.menu-dropdown-launch-buttons {
     display: none;
-}
+} */
 
 /* Hack pour faire disparaître le footer (et mettre le mien à la place) */
 
@@ -64,3 +64,7 @@ figure span.caption-number {
 /* Tableaux */
 
 table p { margin-bottom: 0 }
+
+/* Liens */
+
+a {text-decoration: none;}

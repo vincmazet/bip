@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Color models &#8212; Basics of Image Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/color-models';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Displaying an image" href="displaying.html" />
+    <link rel="prev" title="What is a digital image?" href="definition.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basics of Image Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Foreword
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">What is a digital image?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Color models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying.html">Displaying an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/fourier.html">Fourier transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/wavelets.html">Wavelets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compression</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compression/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossless.html">Lossless compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossy.html">Lossy compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/region-growing.html">Region growing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../restoration/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/denoising.html">Denoising</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature detection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../detection/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/matched-filter.html">Matched filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/edges.html">Edge detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/corners.html">Corner detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/lines.html">Line detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor11.html">1 Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor12.html">2 Display a saved image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor13.html">3 Display several images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor14.html">4 Create a simple image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor15.html">5 Setting the intensity range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor16.html">6 Segmentation by histogram thresholding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor17.html">7 Contrast enhancement</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor21.html">Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor22.html">Properties of the Fourier transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor23.html">Filtering aliasing</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor31.html">Lossy compression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor32.html">Interpolation</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor4.html">Segmentation</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor5.html">Mathematical morphology</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor61.html">Denoising</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor62.html">Deconvolution</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor71.html">Sobel and Canny detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor72.html">Harris detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../labs/cor73.html">Hough transform</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://moodle.unistra.fr/course/view.php?id=7653">Moodle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/python.html">Installing and using Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/digital-images/color-models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Color models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rgb-color-model">The RGB color model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hsv-color-model">The HSV color model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-color-generator">A color generator</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="color-models">
+<span id="c-digital-images-color-models"></span><h1>Color models<a class="headerlink" href="#color-models" title="Link to this heading">#</a></h1>
+<!-- Rajouter YCbCr ?--><p>A <em>color model</em>, or <em>color space</em>, is a mean to represent colors as points within a specific space.
+Several color model exist, some with multiple variations.
+This section focus on the most common color spaces.</p>
+<section id="the-rgb-color-model">
+<h2>The RGB color model<a class="headerlink" href="#the-rgb-color-model" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>A “dual” color model is the CMY (cyan, magenta, yellow) color model.
+It is not designed to be used in image processing but rather for color printing since adding pigments on a white surface removes light:
+this explained why it uses subtractive color mixing rather than additive color mixing.</p>
+</aside>
+<p>The RGB (red, green, blue) color model uses additive color mixing,
+where every colors can be made by combining primary colors (red, green, blue) with the appropriate intensity
+(<a class="reference internal" href="#f-digital-images-additive-mixing"><span class="std std-numref">Fig. 16</span></a>).
+The RGB color model is used by screens, and, as a consequence, ubiquitous in image processing.</p>
+<figure class="align-default" id="f-digital-images-additive-mixing">
+<a class="reference internal image-reference" href="../_images/additive-mixing.svg"><img alt="../_images/additive-mixing.svg" src="../_images/additive-mixing.svg" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Additive color mixing.</span><a class="headerlink" href="#f-digital-images-additive-mixing" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The RGB model is based on a 3D Cartesian coordinate system, as seen below.
+By convention, the values <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are assumed to be in <span class="math notranslate nohighlight">\([0,1]\)</span>.
+Nevertheless, digital images are generally quantized on 8 bits per band,
+thus giving values <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(G\)</span>, and <span class="math notranslate nohighlight">\(B\)</span> to lie on <span class="math notranslate nohighlight">\(2^8=256\)</span> values in <span class="math notranslate nohighlight">\(\{0,\dots,255\}\)</span>.
+Therefore a total of <span class="math notranslate nohighlight">\(256^3=16\,777\,216\)</span> colors can be generated.</p>
+<figure class="align-default" id="f-digital-images-rgb">
+<a class="reference internal image-reference" href="../_images/model-rgb.svg"><img alt="../_images/model-rgb.svg" src="../_images/model-rgb.svg" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The RGB color space.</span><a class="headerlink" href="#f-digital-images-rgb" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- ## The CMY color model
+
+```{margin}
+In practive, combining the three primary colors C, M, Y for printing produces a muddy-looking black.
+Thus, black is often added as a fourth color to produce deep black, giving rise to the CMYK color model (K meaning black).
+```
+
+The CMY (cyan, magenta, yellow) color model uses subtractive color mixing
+({numref}`F:digital-images:subtractive-mixing`).
+The CMY color model is used for color printing,
+which is a subtractive color system since adding pigments on a white surface removes light.
+It is rarely used in image processing.
+
+```{figure} subtractive-mixing.svg
+---
+name: F:digital-images:subtractive-mixing
+width: 30%
+---
+Subtractive color mixing.
+```
+
+The conversion from RGB color model to CMY color model is performed using the following simple operation,
+assuming the six coordinates to be in the range $[0,1]$:
+
+$$
+  C &= 1 - R, \\
+  M &= 1 - G, \\
+  Y &= 1 - B. \\
+$$ --></section>
+<section id="the-hsv-color-model">
+<h2>The HSV color model<a class="headerlink" href="#the-hsv-color-model" title="Link to this heading">#</a></h2>
+<p>The RGB and CMY models do not directly relate to the human sense of color.
+Instead, the HSV (hue, saturation, value) color model corresponds closely with the way humans describe and interpret color.
+Indeed, hue corresponds to the type of color (such as orange, cyan or blue),
+saturation corresponds to the purity of color,
+and value corresponds to the brightness.
+In addition to this, the HSV model has the advantage to extract the grayscale information from a color image thanks to the value band,
+making it suitable for some grayscale techniques.</p>
+<p>The HSV color model is represented by the cylinder, as seen below.</p>
+<figure class="align-default" id="f-digital-images-hsv">
+<a class="reference internal image-reference" href="../_images/model-hsv.svg"><img alt="../_images/model-hsv.svg" src="../_images/model-hsv.svg" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The HSV color space.</span><a class="headerlink" href="#f-digital-images-hsv" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The conversion from RGB color model to HSV color model is performed using the following operations,
+assuming that the RGB values have been normalised in the range <span class="math notranslate nohighlight">\([0,1]\)</span>, hue is in the range <span class="math notranslate nohighlight">\([0,360^{\circ}]\)</span>, saturation and value are in the range <span class="math notranslate nohighlight">\([0,1]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  H &amp;= H' \,\mathrm{mod}\, 360
+  \quad\text{where}\quad
+  H' &amp;=
+  \begin{cases}
+    60 \, (G - B)/\delta               &amp;\text{if } R=V, \\
+    60 \, (B - R)/\delta + 120 &amp;\text{if } G=V, \\
+    60 \, (R - G)/\delta + 240 &amp;\text{if } B=V, \\
+  \end{cases}\\
+  S &amp;= \frac{\delta}{V}, \\
+  V &amp;= \mathrm{max}(R, G, B),
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(\delta = \mathrm{max}(R, G, B) - \mathrm{min}(R, G, B)\)</span>.</p>
+<p>The HSV color model has not to be confused with
+the HSI (hue, saturation, intensity) and HSL (hue, saturation, luminance) color models
+which mainly differ from the HSV color model in the third band.</p>
+</section>
+<section id="a-color-generator">
+<h2>A color generator<a class="headerlink" href="#a-color-generator" title="Link to this heading">#</a></h2>
+<p>Below you can use the sliders to combine the different bands of the previous color models,
+and perceive the effect on the color.</p>
+<div id="color-generator">
+  <div class="box" id="droplet">
+  </div>
+  <div class="box">
+    <span class="label">R:</span><input type="range" min="0" max="255" value="0" id="RSliderx"><br>
+    <span class="label">G:</span><input type="range" min="0" max="255" value="0" id="GSliderx"><br>
+    <span class="label">B:</span><input type="range" min="0" max="255" value="0" id="BSliderx"><br>
+    <p id="rgb-code" class="code"></p>
+  </div>
+  <div class="box">
+    <span class="label">H:</span><input type="range" min="0" max="359" value="0" id="HSliderx"><br>
+    <span class="label">S:</span><input type="range" min="0" max="100" value="0" id="SSliderx"><br>
+    <span class="label">V:</span><input type="range" min="0" max="100" value="0" id="VSliderx"><br>
+    <p id="hsv-code" class="code"></p>
+  </div>
+</div>
+<style>
+  input { width:200px; }
+  .box { margin:10px; }
+  .label { display: inline-block; width:30px; }
+  .code { margin: 5px 0; }
+  #droplet {width: 100px; height: 100px; border: 1px solid black;}
+  #color-generator {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+  }
+  @media (max-width: 700px) {
+    #color-generator {
+      flex-direction:column;
+    }
+  }
+</style>
+<script>
+
+    const RSlider = document.getElementById('RSliderx');
+    const GSlider = document.getElementById('GSliderx');
+    const BSlider = document.getElementById('BSliderx');
+    const RGBCode = document.getElementById('rgb-code');
+    const HSlider = document.getElementById('HSliderx');
+    const SSlider = document.getElementById('SSliderx');
+    const VSlider = document.getElementById('VSliderx');
+    const HSVCode = document.getElementById('hsv-code');
+    const Droplet = document.getElementById('droplet');
+
+    function update(R, G, B, H, S, V)
+    {
+      // Update controls
+
+      // Convert to int
+      R = parseInt(R);
+      G = parseInt(G);
+      B = parseInt(B);
+      H = parseInt(H);
+      S = parseInt(S);
+      V = parseInt(V);
+
+      // Droplet color
+      Droplet.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
+
+      // Codes
+      RGBCode.innerText = `RGB = (${R}, ${G}, ${B})`;
+      HSVCode.innerText = `HSV = (${H}, ${S}, ${V})`;
+    }
+
+    function updateRGBColor()
+    {
+      // Convert color (RGB -> HSV and update controls
+
+      // Read sliders
+      const R = parseInt(RSlider.value);
+      const G = parseInt(GSlider.value);
+      const B = parseInt(BSlider.value);
+
+      // Conversion
+      const [H, S, V] = rgb2hsv(R, G, B);
+
+      // Update HSV sliders
+      HSlider.value = H;
+      SSlider.value = S;
+      VSlider.value = V;
+
+      // Update controls
+      update(R, G, B, H, S, V);
+    }
+
+    function updateHSVColor()
+    {
+      // Convert color (HSV -> RGB and update controls
+
+      // Read sliders
+      const H = parseInt(HSlider.value);
+      const S = parseInt(SSlider.value);
+      const V = parseInt(VSlider.value);
+
+      // Conversion
+      const [R, G, B] = hsv2rgb(H, S, V);
+
+      // Update HSV sliders
+      RSlider.value = R;
+      GSlider.value = G;
+      BSlider.value = B;
+
+      // Update controls
+      update(R, G, B, H, S, V);
+    }
+
+    function rgb2hsv(R, G, B)
+    {
+      // RGB to HSV
+      // Source : https://github.com/scikit-image/scikit-image/blob/v0.22.0/skimage/color/colorconv.py#L242-L329
+
+      let r = R/255;
+      let g = G/255;
+      let b = B/255;
+
+      let v = Math.max(r,g,b);
+
+      let delta = Math.max(r,g,b) - Math.min(r,g,b);
+
+      let s;
+      if (v==0) {
+        s = 0;
+      } else {
+        s = delta/v;
+      }
+
+      let  h;
+      if (r == v) { h = 60 * (g - b) / delta; console.log(1); }
+      if (g == v) { h = 60 * (b - r) / delta + 120; console.log(2); }
+      if (b == v) { h = 60 * (r - g) / delta + 240; console.log(3); }
+      if (delta == 0) { h = 0; }
+      h = (360+h) % 360;
+
+      return [h, s*100, v*100];
+    }
+
+    function hsv2rgb(H, S, V)
+    {
+      // HSV to RGB
+      // Source : https://github.com/scikit-image/scikit-image/blob/v0.22.0/skimage/color/colorconv.py#L332-L392
+
+      let s = S / 100;
+      let v = V / 100;
+      let hi = Math.floor(H/60);
+      let f = H/60 - hi;
+      let p = v * (1 - s);
+      let q = v * (1 - f * s);
+      let t = v * (1 - (1 - f) * s);
+
+      let r, g, b;
+      if ((0<=hi) && (hi<1)) {r = v; g = t; b = p; }
+      if ((1<=hi) && (hi<2)) {r = q; g = v; b = p; }
+      if ((2<=hi) && (hi<3)) {r = p; g = v; b = t; }
+      if ((3<=hi) && (hi<4)) {r = p; g = q; b = v; }
+      if ((4<=hi) && (hi<5)) {r = t; g = p; b = v; }
+      if ((5<=hi) && (hi<6)) {r = v; g = p; b = q; }
+
+      return [r*255, g*255, b*255];
+    }
+
+    // Events on sliders
+    RSlider.addEventListener('input', updateRGBColor);
+    GSlider.addEventListener('input', updateRGBColor);
+    BSlider.addEventListener('input', updateRGBColor);
+    HSlider.addEventListener('input', updateHSVColor);
+    SSlider.addEventListener('input', updateHSVColor);
+    VSlider.addEventListener('input', updateHSVColor);
+
+    // Initial update
+    updateRGBColor();
+
+</script>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./digital-images"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="definition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">What is a digital image?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="displaying.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Displaying an image</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rgb-color-model">The RGB color model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hsv-color-model">The HSV color model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-color-generator">A color generator</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vincent Mazet (University of Strasbourg, France)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2025 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

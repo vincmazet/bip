@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>License &#8212; Basics of Image Processing</title>
   
@@ -15,55 +14,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/license';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Glossary" href="glossary.html" />
@@ -76,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -138,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Basics of Image Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -154,21 +178,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../digital-images/eye.html">Human vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/color-models.html">Color models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/displaying.html">Displaying an image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/histogram.html">Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Histogram</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../histogram/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/histogram.html">Histogram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/transformations.html">Histogram transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/outro.html">Conclusion</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Filtering</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
@@ -186,7 +204,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
@@ -198,13 +218,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical morphology</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mm/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/basics.html">Basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/composition.html">Composition of basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/measure.html">Measure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/outro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
 <ul class="nav bd-sidenav">
@@ -224,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor11.html">1 Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor12.html">2 Display a saved image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor13.html">3 Display several images</a></li>
@@ -232,44 +253,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor15.html">5 Setting the intensity range</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor16.html">6 Segmentation by histogram thresholding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor17.html">7 Contrast enhancement</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor21.html">Convolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor22.html">Properties of the Fourier transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor23.html">Filtering aliasing</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor31.html">Lossy compression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor32.html">Interpolation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor4.html">Segmentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor5.html">Mathematical morphology</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor61.html">Denoising</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor62.html">Deconvolution</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor71.html">Sobel and Canny detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor72.html">Harris detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor73.html">Hough transform</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">In a nutshell</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/optimization.html">Mathematical optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/deeplearning.html">Deep learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
@@ -292,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -301,14 +316,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -383,26 +398,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -433,20 +450,48 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h1>
+<h1>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
+<!-- Add licence for:
+chat convolution
+pièce convolution
+3 gaussiennes fourier
+registration
+freiburg
+fingerprint
+mickey
+MM
+dobble
+R8
+moulinsart
+moravec
+hough
+coins lab 4
+simpsons1
+simpsons2
+-->
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a></p>
 <p><span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Vincent Mazet</span>,
 “<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Basics of image processing</span>”
-University of Strasbourg, 2020-2023.
+University of Strasbourg, 2020-2025.
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 E-mail: <a href="mailto:vincent.mazet@unistra.fr">vincent.mazet&#64;unistra.fr</a>.</p>
 <section id="image-credits">
-<h2>Image credits<a class="headerlink" href="#image-credits" title="Permalink to this heading">#</a></h2>
+<h2>Image credits<a class="headerlink" href="#image-credits" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<img alt="" src="../_images/additive-mixing1.svg" /></div>
+<p class="sd-card-text">Quark67 (Modified color by Monami), CC BY-SA 3.0
+<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/0/05/AdditiveColorMixing.svg">Original picture</a>.</p>
+</div>
+</div>
+</div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
@@ -514,7 +559,7 @@ NASA content generally are not copyrighted.
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<img alt="" src="_static/figs/hdfs.png" /></div>
+<img alt="" src="../_images/hdfs.png" /></div>
 <p class="sd-card-text">Bacon <em>et al.</em>, “The MUSE 3D view of the Hubble Deep Field South”, A&amp;A, 575 (2015)
 <a class="reference external" href="http://muse-vlt.eu/science/hdfs-v1-0/">Original picture</a>.</p>
 </div>
@@ -525,8 +570,8 @@ NASA content generally are not copyrighted.
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <img alt="" src="../_images/peppers.png" /></div>
-<p class="sd-card-text">© <a class="reference external" href="https://unsplash.com/&#64;ikredenets?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Irene Kredenets</a>
-on <a class="reference external" href="https://unsplash.com/s/photos/pepper?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.
+<p class="sd-card-text">© <a class="reference external" href="https://unsplash.com/&#64;ikredenets?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText">Irene Kredenets</a>
+on <a class="reference external" href="https://unsplash.com/s/photos/pepper?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText">Unsplash</a>.
 Free license.
 <a class="reference external" href="https://unsplash.com/photos/0PUoXmsCSDQ/">Original picture</a>.</p>
 </div>
@@ -741,24 +786,6 @@ Public domain.</p>
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<img alt="" src="_static/figs/simpsons1.png" /></div>
-<!-- ⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<img alt="" src="_static/figs/simpsons2.png" /></div>
-<!-- ⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
 <img alt="" src="../_images/smiley.png" /></div>
 <p class="sd-card-text">© Vincent Mazet, 2016.
 Public domain.</p>
@@ -819,7 +846,7 @@ Creative Commons CC-BY.
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<img alt="" src="_static/figs/flower-gf06a8d9de_1920.jpg" /></div>
+<img alt="" src="../_images/daisy.png" /></div>
 <p class="sd-card-text">© GLady.
 Free license.
 <a class="reference external" href="https://pixabay.com/photos/floral-daisy-blossom-plant-natural-50157/">Original picture</a>.</p>
@@ -865,7 +892,7 @@ Used with permission.</p>
 <img alt="" src="../_images/sailboat.png" /></div>
 <p class="sd-card-text">Sailboat on lake, from The USC-SIPI Image Database.
 unknown copyright status.
-<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=12">Original picture</a></p>
+<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;amp;image=12">Original picture</a></p>
 </div>
 </div>
 </div>
@@ -894,114 +921,10 @@ via Wikimedia Commons.</p>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
-<!-- chat fourier
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- pièce fourier
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- 3 gaussiennes fourier
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- registration
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- freiburg
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- fingerprint
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- mickey
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- MM
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- dobble
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- R8
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- moulinsart
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- moravec
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<!-- hough
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <img alt="" src="../_images/mandrill.png" /></div>
 <p class="sd-card-text">Mandrill (a.k.a. Baboon), from The USC-SIPI Image Database.
-<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=10#top">Original image</a>
+<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;amp;image=10#top">Original image</a>
 Scan from a magazine picture. Copyright belongs to original publisher or photographer.</p>
 </div>
 </div>
@@ -1019,18 +942,10 @@ Scan from a magazine picture. Copyright belongs to original publisher or photogr
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
-<!-- coins lab 4
-⛔ORIGINAL MANQUANT ! -->
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 <img alt="" src="../_images/resolution.png" /></div>
 <p class="sd-card-text">Resolution chart, from The USC-SIPI Image Database.
-<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;image=18#top">Original image</a>.
+<a class="reference external" href="https://sipi.usc.edu/database/database.php?volume=misc&amp;amp;image=18#top">Original image</a>.
 Source and copyright status are unknown.</p>
 </div>
 </div>
@@ -1079,14 +994,21 @@ via Wikimedia Commons.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<!-- Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html. -->
-<!--{grid-item-card} ![](../_static/figs/PIA17369_hires.jpg)
-&copy; [NASA/JPL-Caltech](https://www.nasa.gov/multimedia/guidelines/index.html), 2018.
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<img alt="" src="../_images/PIA17369_hires.jpg" /></div>
+<p class="sd-card-text">© <a class="reference external" href="https://www.nasa.gov/multimedia/guidelines/index.html">NASA/JPL-Caltech</a>, 2018.
 NASA content generally are not copyrighted.
-[Original picture](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA17369).
---></section>
+<a class="reference external" href="https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA17369">Original picture</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Other images from <a class="reference external" href="https://scikit-image.org/docs/dev/api/skimage.data.html">scikit-image</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1114,11 +1036,10 @@ NASA content generally are not copyrighted.
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="glossary.html"
@@ -1129,10 +1050,7 @@ NASA content generally are not copyrighted.
         <p class="prev-next-title">Glossary</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1140,6 +1058,7 @@ NASA content generally are not copyrighted.
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1169,9 +1088,10 @@ By Vincent Mazet (University of Strasbourg, France)
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023-2024.
+      © Copyright 2024-2025.
       <br/>
     
   </p>
@@ -1185,7 +1105,7 @@ By Vincent Mazet (University of Strasbourg, France)
   <div class="footer-item">
     
 <div class="extra_footer">
-  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2024 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2025 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
 </div>
   </div>
   
@@ -1198,8 +1118,8 @@ By Vincent Mazet (University of Strasbourg, France)
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

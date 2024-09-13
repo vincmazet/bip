@@ -1,24 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VFHC8CBJQK');
-</script>
-    
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Displaying an image &#8212; Basics of Image Processing</title>
   
@@ -26,61 +14,59 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/displaying';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Arithmetic operations" href="operations.html" />
-    <link rel="prev" title="Image acquisition" href="acquisition.html" />
+    <link rel="prev" title="Color models" href="color-models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -90,19 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +114,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -152,10 +153,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Basics of Image Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -168,21 +181,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="definition.html">What is a digital image?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eye.html">Human vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="color-models.html">Color models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Displaying an image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="histogram.html">Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Histogram</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../histogram/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/histogram.html">Histogram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/transformations.html">Histogram transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/outro.html">Conclusion</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Filtering</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
@@ -200,7 +207,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
@@ -212,13 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical morphology</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mm/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/basics.html">Basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/composition.html">Composition of basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/measure.html">Measure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/outro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
 <ul class="nav bd-sidenav">
@@ -238,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor11.html">1 Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor12.html">2 Display a saved image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor13.html">3 Display several images</a></li>
@@ -246,44 +256,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor15.html">5 Setting the intensity range</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor16.html">6 Segmentation by histogram thresholding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor17.html">7 Contrast enhancement</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor21.html">Convolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor22.html">Properties of the Fourier transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor23.html">Filtering aliasing</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor31.html">Lossy compression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor32.html">Interpolation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor4.html">Segmentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor5.html">Mathematical morphology</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor61.html">Denoising</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor62.html">Deconvolution</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor71.html">Sobel and Canny detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor72.html">Harris detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor73.html">Hough transform</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">In a nutshell</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/optimization.html">Mathematical optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/deeplearning.html">Deep learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -306,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -315,14 +319,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -397,26 +401,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -449,34 +455,36 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="displaying-an-image">
-<span id="c-digital-images-displaying"></span><h1>Displaying an image<a class="headerlink" href="#displaying-an-image" title="Permalink to this heading">#</a></h1>
+<span id="c-digital-images-displaying"></span><h1>Displaying an image<a class="headerlink" href="#displaying-an-image" title="Link to this heading">#</a></h1>
 <p>Displaying an image needs to convert the pixel intensities <span class="math notranslate nohighlight">\(\{i_1,\dots,i_B\}\)</span> into gray levels or colors.
 Screens are basically a matrix of pixels, each composed of red, green and blue luminophores
-(the shape, size and number of luminophore depends of the technology).
-Colors can be recreated by tuning the luminophore intensities,
-thanks to the principles of <a class="reference external" href="https://en.wikipedia.org/wiki/Additive_color">additive color</a>.
+(the shape, size and number of luminophores depends of the technology).
+Colors can be recreated by adjusting the luminophore intensities,
+thanks to the principles of additive color mixing (see <a class="reference internal" href="color-models.html#f-digital-images-additive-mixing"><span class="std std-numref">Fig. 16</span></a>).
 The correspondance between the numerical value of the intensities and colors on the screen
 is visually reprensented by a <em>colormap</em>.</p>
 <section id="displaying-a-2d-grayscale-image">
-<h2>Displaying a 2D grayscale image<a class="headerlink" href="#displaying-a-2d-grayscale-image" title="Permalink to this heading">#</a></h2>
+<h2>Displaying a 2D grayscale image<a class="headerlink" href="#displaying-a-2d-grayscale-image" title="Link to this heading">#</a></h2>
 <p>A 2D grayscale image is an array with <span class="math notranslate nohighlight">\(d=2\)</span> dimensions where each pixel contains a scalar (<span class="math notranslate nohighlight">\(B=1\)</span>).
 Therefore, each pixel is displayed with a specific gray level.
-<a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 16</span></a> shows the same image with different colormaps.
+<a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 19</span></a> shows the same image with different colormaps.
 As you can see, the choice of the colormap changes the perception of the colors,
 even though the information contained by the pixels remains unchanged.</p>
 <figure class="align-default" id="f-intro-colormap">
-<img alt="../_images/colormaps.svg" src="../_images/colormaps.svg" /><figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">An image showing Buzz Aldrin displayed with the colormaps given below the images.</span><a class="headerlink" href="#f-intro-colormap" title="Permalink to this image">#</a></p>
+<img alt="../_images/colormaps.svg" src="../_images/colormaps.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">An image showing Buzz Aldrin displayed with the colormaps given below the images.</span><a class="headerlink" href="#f-intro-colormap" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Note that the 3 images in <a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 19</span></a> are all grayscale images, even if one is displayed with colors.</p>
 <p>Colormaps are sometimes useful to bring out dark objects in an image with poor contrast.
 The code below shows an image with one bright spot, clearly visible on the first image,
 along four faint spots which are not visible with the usual colormap “gray”.
 However, the socalled “jet” colormap makes the faint spots visible.
-Also, displaying the logarithm of the image helps to make the spots visible (see <a class="reference internal" href="../histogram/transformations.html#c-histogram-transformations"><span class="std std-ref">Histogram transformations</span></a>).</p>
+Also, displaying the logarithm of the image helps to make the spots visible (see <a class="reference internal" href="#C:histogram-transformations"><span class="xref myst">Histogram transformations</span></a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -487,20 +495,26 @@ Also, displaying the logarithm of the image helps to make the spots visible (see
 <span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../_static/figs/spots.png&quot;</span><span class="p">)</span>
 
 <span class="c1"># Prepare the figure with three images</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Arguments for colorbar</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;orientation&quot;</span><span class="p">:</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="s2">&quot;pad&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">1.0</span> <span class="p">}</span>
 
 <span class="c1"># Display the image with colormap gray</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Colormap &#39;gray&#39;&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c1"># Display the image with colormap jet</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span> <span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span> <span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Colormap &#39;jet&#39;&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c1"># Display the logarithm of the image</span>
 <span class="n">img_log</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">img</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_log</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_log</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Logarithm with colormap &#39;gray&#39;&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c1"># Show the figure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -508,26 +522,25 @@ Also, displaying the logarithm of the image helps to make the spots visible (see
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/35974d11b9b3442a6142b3ee77aa8224be8b0708ebdd08e0f1a030da8ef68c99.png" src="../_images/35974d11b9b3442a6142b3ee77aa8224be8b0708ebdd08e0f1a030da8ef68c99.png" />
+<img alt="../_images/06e7c664dda8be8782cfcb0ff703ec3c30ee770435762dac369ef8a507f95e11.png" src="../_images/06e7c664dda8be8782cfcb0ff703ec3c30ee770435762dac369ef8a507f95e11.png" />
 </div>
 </div>
 </section>
 <section id="displaying-a-2d-color-image">
-<h2>Displaying a 2D color image<a class="headerlink" href="#displaying-a-2d-color-image" title="Permalink to this heading">#</a></h2>
-<p>As we have seen in <a class="reference internal" href="eye.html#c-digital-images-eye"><span class="std std-ref">Human vision</span></a>, the retina of human eye contains three kinds of cone cells
+<h2>Displaying a 2D color image<a class="headerlink" href="#displaying-a-2d-color-image" title="Link to this heading">#</a></h2>
+<p>As we have seen in <a class="reference internal" href="acquisition.html#c-digital-images-acquisition"><span class="std std-ref">Image acquisition</span></a>, the retina of human eye contains three kinds of cone cells
 which are basically sensitive to blue, green and red light.
-So, a color image is simply a composition of the intensities of this three wavelength, so that <span class="math notranslate nohighlight">\(B=3\)</span>.
-Each of this three bands codes the intensity of red, green and blue lights of the image, hence the name RGB (red, green, blue).
-This is why digital screens are made of red, green and blue luminophores,
-which are small dots composing the pixels.</p>
+So, a color image is simply a composition of the intensities of these three wavelengths, so that <span class="math notranslate nohighlight">\(B=3\)</span>.
+Each of these three bands codes the intensity of red, green and blue lights of the image, hence the name RGB (red, green, blue).
+This is why digital screens are made of red, green and blue luminophores.</p>
 </section>
 <section id="displaying-other-types-of-images">
-<h2>Displaying other types of images<a class="headerlink" href="#displaying-other-types-of-images" title="Permalink to this heading">#</a></h2>
-<p>There is no easy way to display an image which is not a 2D grayscale or RGB image.
+<h2>Displaying other types of images<a class="headerlink" href="#displaying-other-types-of-images" title="Link to this heading">#</a></h2>
+<p>There is not a straightforward way to display an image which is neither a 2D grayscale nor RGB image.
 Such image are either not displayed, or displayed by using a specific representation.
 For example, only three bands can be selected and displayed as an RGB image.
 Another possibility is to gather the bands into three groups and compute the means within each group,
-with these means becomint the three bands of a standard RGB image.</p>
+these means becoming the three bands of a standard RGB image.</p>
 <!-- niveau gris, images en fausses couleurs --></section>
 </section>
 
@@ -556,19 +569,18 @@ with these means becomint the three bands of a standard RGB image.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="acquisition.html"
+       href="color-models.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Image acquisition</p>
+        <p class="prev-next-title">Color models</p>
       </div>
     </a>
     <a class="right-next"
@@ -580,10 +592,7 @@ with these means becomint the three bands of a standard RGB image.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -591,6 +600,7 @@ with these means becomint the three bands of a standard RGB image.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -622,9 +632,10 @@ By Vincent Mazet (University of Strasbourg, France)
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023-2024.
+      © Copyright 2024-2025.
       <br/>
     
   </p>
@@ -638,7 +649,7 @@ By Vincent Mazet (University of Strasbourg, France)
   <div class="footer-item">
     
 <div class="extra_footer">
-  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2024 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2025 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
 </div>
   </div>
   
@@ -651,8 +662,8 @@ By Vincent Mazet (University of Strasbourg, France)
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

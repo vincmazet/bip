@@ -1,4 +1,4 @@
-(denoising)=
+(C:denoising)=
 # Denoising
 
 Denoising (French: _débruitage_) consists in reducing noise in an image.
@@ -6,7 +6,7 @@ Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.
 
 
-(denoising:noise-sources)=
+(C:denoising:noise-sources)=
 ## Noise sources
 
 The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature...)
@@ -231,7 +231,7 @@ name: F:denoising:median-vs-mean
 Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.
 ```
 
-
+(C:denoising:periodic-noise-filtering)=
 ## Periodic noise filtering
 
 Periodic noises are characterized by structures in the Fourier transform.

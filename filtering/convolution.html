@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Convolution &#8212; Basics of Image Processing</title>
   
@@ -15,57 +14,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filtering/convolution';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fourier transform" href="fourier.html" />
@@ -79,19 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,12 +114,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -133,6 +142,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -141,10 +153,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Basics of Image Processing</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -157,21 +181,15 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../digital-images/eye.html">Human vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/color-models.html">Color models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/displaying.html">Displaying an image</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/histogram.html">Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../digital-images/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Histogram</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../histogram/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/histogram.html">Histogram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/transformations.html">Histogram transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../histogram/outro.html">Conclusion</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Filtering</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Convolution</a></li>
@@ -189,7 +207,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
@@ -201,13 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical morphology</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mm/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/basics.html">Basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/composition.html">Composition of basic operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/measure.html">Measure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mm/outro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
 <ul class="nav bd-sidenav">
@@ -227,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab1.html">Lab 1</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor11.html">1 Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor12.html">2 Display a saved image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor13.html">3 Display several images</a></li>
@@ -235,44 +256,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor15.html">5 Setting the intensity range</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor16.html">6 Segmentation by histogram thresholding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor17.html">7 Contrast enhancement</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab2.html">Lab 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor21.html">Convolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor22.html">Properties of the Fourier transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor23.html">Filtering aliasing</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab3.html">Lab 3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor31.html">Lossy compression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor32.html">Interpolation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab4.html">Lab 4</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor4.html">Segmentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab5.html">Lab 5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor5.html">Mathematical morphology</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab6.html">Lab 6</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor61.html">Denoising</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor62.html">Deconvolution</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../labs/lab7.html">Lab 7</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor71.html">Sobel and Canny detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor72.html">Harris detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../labs/cor73.html">Hough transform</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">In a nutshell</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/optimization.html">Mathematical optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nutshell/deeplearning.html">Deep learning</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -295,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -304,14 +319,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -334,7 +349,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/filtering/convolution.md" target="_blank"
+      <li><a href="../_sources/filtering/convolution.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -344,7 +359,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -386,26 +401,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -439,12 +456,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolution">
-<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h1>
+<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
 <p>Many image processing results come from a modification of one pixel with respect to its neighbors.
 When this modification is similar in the entire image <span class="math notranslate nohighlight">\(g\)</span>,
 it can be mathematically defined using a second image <span class="math notranslate nohighlight">\(h\)</span> which defines the neighbor relationships.
@@ -456,11 +473,11 @@ This is the so-called convolution <a class="reference internal" href="outro.html
   f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) \ h(m,n)
 \]</div>
 <p>Intuitively, the convolution “spreads” each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> in <span class="math notranslate nohighlight">\(g\)</span> following <span class="math notranslate nohighlight">\(h\)</span> and proportionally to the intensity <span class="math notranslate nohighlight">\(g(m,n)\)</span>.
-<a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 26</span></a> gives an example of the computing of a particular pixel.</p>
+<a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> gives an example of the computing of a particular pixel.</p>
 <figure class="align-default" id="f-convolution-sketch">
 <img alt="../_images/convolution.png" src="../_images/convolution.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For the sake of simplicity, the image <span class="math notranslate nohighlight">\(h\)</span> is often:</p>
@@ -473,11 +490,12 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 <p>Some convolution examples are shown above.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+<label class="sd-tab-label" for="sd-tab-item-0">
 Example 1</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example1">
-<img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" /><figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Permalink to this image">#</a></p>
+<img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image composed of only four non-zero pixels.
@@ -489,35 +507,37 @@ spreading according to the pattern shown on <span class="math notranslate nohigh
 Notice that the “spreading” of the two nearby pixels adds up, thus giving a very bright area.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+<label class="sd-tab-label" for="sd-tab-item-1">
 Example 2</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example2">
-<img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" /><figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
-Each of these pixels spreads over the result <span class="math notranslate nohighlight">\(f\)</span> following the pattern <span class="math notranslate nohighlight">\(f\)</span>.
-This results in a blurry image.
-We will see in <a class="reference internal" href="filtering.html#filtering-filtering"><span class="std std-ref">Filtering</span></a> that we have applied here a low pass filter on the image <span class="math notranslate nohighlight">\(g\)</span>.</p>
-</div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Example 3</label><div class="sd-tab-content docutils">
-<figure class="align-default" id="f-convolution-example3">
-<img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" /><figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Permalink to this image">#</a></p>
+<img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here, each pixel of <span class="math notranslate nohighlight">\(g\)</span> appears twice in <span class="math notranslate nohighlight">\(f\)</span>:
 the result <span class="math notranslate nohighlight">\(g\)</span> then becomes the image <span class="math notranslate nohighlight">\(f\)</span> which also appears twice.
 Another interpretation can be done:
-the result corresponds to the two unique pixels of <span class="math notranslate nohighlight">\(h\)</span> which smear while reproducing the pattern <span class="math notranslate nohighlight">\(g\)</span>.</p>
+the result corresponds to the two unique pixels of <span class="math notranslate nohighlight">\(h\)</span> which smear while reproducing the pattern <span class="math notranslate nohighlight">\(g\)</span></p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Example 3</label><div class="sd-tab-content docutils">
+<figure class="align-default" id="f-convolution-example3">
+<img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
+Each of these pixels spreads over the result <span class="math notranslate nohighlight">\(f\)</span> following the pattern <span class="math notranslate nohighlight">\(f\)</span>.
+This results in a blurry image.
+We will see in <a class="reference internal" href="filtering.html#filtering-filtering"><span class="std std-ref">Filtering</span></a> that we have applied here a low pass filter on the image <span class="math notranslate nohighlight">\(g\)</span>..</p>
 </div>
 </div>
 </section>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
 <p>As a mathematical operation, the convolution has several properties.</p>
 <ul class="simple">
 <li><p>The neutral element of convolution is an image filled with zeros but the pixel at the center equals 1.</p></li>
@@ -532,23 +552,25 @@ the result corresponds to the two unique pixels of <span class="math notranslate
 </ul>
 </section>
 <section id="boundaries-effects">
-<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this heading">#</a></h2>
+<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Link to this heading">#</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
-as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 26</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
+as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
 <p>Therefore, one has to assume some hypotheses of the pixel values outside the image.
-<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 30</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 31</span></a> shows the convolution of these images by a Gaussian.</p>
+<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 33</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> shows the convolution of these images by a Gaussian.</p>
 <figure class="align-default" id="f-convolution-boundaries-hypotheses">
-<img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" /><figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Several ways to assume the pixels outside the image.
-The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">#</a></p>
+<img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Several ways to assume the pixels outside the image.
+The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-convolution-boundaries-results">
-<img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" /><figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
+<img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 31</span></a> that the three convolutions are basically identical:
+<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
 Also, the best thing is to ensure when acquiring the image that the objects of interest are far from the edges</p>
@@ -556,7 +578,7 @@ Also, the best thing is to ensure when acquiring the image that the objects of i
 This is also the result given by a multiplication in the Fourier domain (see <a class="reference internal" href="fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>).</p>
 </section>
 <section id="separable-convolution">
-<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Permalink to this heading">#</a></h2>
+<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Link to this heading">#</a></h2>
 <p>A separable convolution is when the convolution kernel <span class="math notranslate nohighlight">\(h\)</span> can be written as the convolution of two 1D filters (say <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>) defined along the two axes.
 Let’s give an example:</p>
 <div class="math notranslate nohighlight">
@@ -609,11 +631,7 @@ Sans séparabilité :
   Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$ -->
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Proof<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Proof</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Consider two images <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> of size <span class="math notranslate nohighlight">\(M \times N\)</span>.</p>
 <ul class="simple">
 <li><p class="sd-card-text">On the one side, the computation of one pixel by using the 2D convolution
@@ -654,11 +672,10 @@ highlighting the efficiency of the separability.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="intro.html"
@@ -678,10 +695,7 @@ highlighting the efficiency of the separability.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -689,6 +703,7 @@ highlighting the efficiency of the separability.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -721,9 +736,10 @@ By Vincent Mazet (University of Strasbourg, France)
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023-2024.
+      © Copyright 2024-2025.
       <br/>
     
   </p>
@@ -737,7 +753,7 @@ By Vincent Mazet (University of Strasbourg, France)
   <div class="footer-item">
     
 <div class="extra_footer">
-  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2024 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2025 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
 </div>
   </div>
   
@@ -750,8 +766,8 @@ By Vincent Mazet (University of Strasbourg, France)
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
