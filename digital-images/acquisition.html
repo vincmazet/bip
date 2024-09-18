@@ -492,7 +492,7 @@ The light from an object is imaged on the retina when the eye is properly focuse
 <p>The human eye’s retina contains two kinds of receptors.
 The rods (French: <em>bâtonnets</em>) provide an overall picture of the field of view and are sensitive to low levels of illumination.
 The cones (French: <em>cônes</em>) allow color vision.
-There are three types of cones which are sensitive to short (S), medium (M) and longer (M) wavelength of the visible light (see <a class="reference internal" href="#f-digital-images-cone-responsivity"><span class="std std-numref">Fig. 2</span></a>).
+There are three types of cones which are sensitive to short (S), medium (M) and long (M) wavelength of the visible light (see <a class="reference internal" href="#f-digital-images-cone-responsivity"><span class="std std-numref">Fig. 2</span></a>).
 Basically, they are sensitive to blue, green and red light.
 Rods and cones are connected to the brain by nerves, which proceeds to the image analysis.</p>
 <figure class="align-default" id="f-digital-images-cone-responsivity">
@@ -558,14 +558,14 @@ and synthetic (computer-generated) imaging.</p>
 </figcaption>
 </figure>
 </div>
-</details><p>In the sequel, we focus mainly on electromagnetic imaging, especially through visible light.</p>
+</details><p>In the following, we focus mainly on electromagnetic imaging, especially through visible light.</p>
 </section>
 <section id="sensor-electromagnetic-imaging">
 <h2>Sensor (electromagnetic imaging)<a class="headerlink" href="#sensor-electromagnetic-imaging" title="Link to this heading">#</a></h2>
 <!-- détailler, en particulier sur les aspects géométriques.
 FH propose de rajouter dans BIP : formation des images caméra optique classique (géométrique, photométrique, bruits, il y avait des TP avant sur les caméras rapides, projection perspective, CCD, CMOS. cf avec Adlane par ex), modalité d'imagerie très différentes (impossible de tout couvrir) -->
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Photodiode">photodiode</a> is the most common and basic sensor for image acquisition with visible light.
-It is contructed of silicon materials so that its output voltage is proportional to incoming light.</p>
+It is constructed of silicon materials so that its output voltage is proportional to incoming light.</p>
 <figure class="align-default" id="f-digital-images-photodiode">
 <a class="reference internal image-reference" href="../_images/photodiode1.svg"><img alt="../_images/photodiode1.svg" src="../_images/photodiode1.svg" style="width: 100px;" /></a>
 <figcaption>
@@ -574,28 +574,28 @@ It is contructed of silicon materials so that its output voltage is proportional
 </figure>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>In addition to this, other systems exists by moving a line of single sensors (as in photocopiers),
+<p>In addition to this, other systems exist by moving a line of single sensors (as in photocopiers),
 by using mirrors, etc.</p>
 </aside>
-<p>To acquire a 2D digital image, the typical system is by using a matrix of single sensors.
+<p>To acquire a 2D digital image, the typical system involves using a matrix of single sensors.
 Two technologies coexist.</p>
 <ul class="simple">
 <li><p>The prevailing technology to read the output voltage of each single sensor is the CMOS
 (complementary metal oxide semi-conductor) approach:
-each single sensor is coupling with its own analog-to-digital conversion circuit.
+each single sensor is coupled with its own analog-to-digital conversion circuit.
 This simple counting process makes CMOS technology cheap and low energy.
 However, it may be less sensitive and can produce distortions
-in case of rapid movings in the field of view.</p></li>
-<li><p>On the other hand, the CCD (charge coupled device) approach has narrowed since the 2010s.
+in case of rapid movements in the field of view.</p></li>
+<li><p>On the other hand, the CCD (charge coupled device) approach has declined since the 2010s.
 The fundamental idea of the CCD is the use of a unique conversion circuit.
 The potential of each sensor is moved pixel by pixel: the potentials are shifted by one column,
 then those at the last column are counted by a unique circuit.
-CCD progressively disapears because of several reasons:
+CCD is progressively disappearing because of several reasons:
 moving potentials is not instantaneous and consumes energy,
 and it sometimes creates undesirable side effects,
 such as <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/0/01/Blooming_example.jpg">blooming</a>.</p></li>
 </ul>
-<p>To reproduce the colored human vision, the acquisition mimics the three kind of cones by using three kind of filters in front of the sensors.
+<p>To reproduce human color vision, the acquisition mimics the three kind of cones by using three kind of filters in front of the sensors.
 Then, three images are actually acquired, corresponding to the short (blue), medium (green) and long (red) wavelengths.
 The Bayer filter (<a class="reference internal" href="#f-digital-images-bayer-filter"><span class="std std-numref">Fig. 10</span></a>) is the widely used technique
 for generating color images.
@@ -605,7 +605,7 @@ The reason for having twice green filter than the other colors is because the hu
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Rarely, the photodiodes in the sensor matrix are not arranged on a rectangular grid.
-For example in astronomy, the sensors can be disposed on an hexagonal grid.</p>
+For example in astronomy, the sensors can be arranged on an hexagonal grid.</p>
 </aside>
 <figure class="align-default" id="f-digital-images-bayer-filter">
 <a class="reference internal image-reference" href="../_images/bayer-filter1.svg"><img alt="../_images/bayer-filter1.svg" src="../_images/bayer-filter1.svg" style="width: 70%;" /></a>
@@ -636,7 +636,7 @@ which is both the sampling and quantization of the observed scene.</p>
 This is naturally done by the matrix of pixels.
 Sampling a continuous image leads to a loss of information.
 Intuitively, it is clear that sampling reduces resolution:
-structures of about the scale of the sampling distance and finer will be lost.
+structures at about the scale of the sampling distance and finer will be lost.
 Thus the number of pixels on the sensor, directly related to the sampling, is crucial.
 Besides, significant distortions occur when sampling an image with fine structures,
 as seen in <a class="reference internal" href="#f-digital-images-moire"><span class="std std-numref">Fig. 11</span></a>.</p>
@@ -652,12 +652,12 @@ right: image of size 595×595.</span><a class="headerlink" href="#f-digital-imag
 The same phenomenon exists in signal processing and is called aliasing.
 To avoid the moiré effect, one has to satisfy the sampling theorem
 which imposes a maximal sampling step in function of the frequencies present in the image.
-In practice, one prefer to put an optical low-pass filter before the sensor
-to vanish the high frequencies responsible of the moiré effect.</p>
+In practice, one prefers to put an optical low-pass filter before the sensor
+to vanish the high frequencies responsible for the moiré effect.</p>
 </section>
 <section id="quantization">
 <h3>Quantization<a class="headerlink" href="#quantization" title="Link to this heading">#</a></h3>
-<p>Quantization correspond to mapping the continuous light intensities to a finite set of number.
+<p>Quantization corresponds to mapping the continuous light intensities to a finite set of numbers.
 Typically, image are quantized into 256 gray values; then, each pixel then occupies one byte (8 bits).
 The reason for assigning 256 gray values to each pixel is
 not only because it is well adapted to the architecture of computers,
@@ -674,7 +674,7 @@ the illusion of a continuous change in gray values.</p>
 If the quantization levels are equally spaced with a distance <span class="math notranslate nohighlight">\(d\)</span>
 and all gray values are equally probable,
 the standard deviation of the quantification error is lower than <span class="math notranslate nohighlight">\(0.3d\)</span>
-<a class="reference internal" href="outro.html#b-digital-images-jahne2005"><span class="std std-ref">[Jähne 2005, p. 253]</span></a>.
+<a class="reference internal" href="outro.html#b-digital-images-jahne2005"><span class="std std-ref">[Jähne 2005, p. 243]</span></a>.
 For most common applications, the error is sufficiently low to be acceptable.
 But some applications, such as medical imaging or astronomy,
 require a finer resolution and, in consequence, use more than 256 gray levels.</p>
@@ -708,7 +708,7 @@ and is called speckle noise.</p>
 a point in the observed scene is not imaged onto a point in the image space,
 but onto a more or less extended area with varying intensities.
 The function that describes the imaging of a point is an essential feature of the imaging system and is called the point spread function or PSF (French: <em>fonction d’étalement du point</em>).
-Generally, the PSF is assuming to be independent of the position.
+Generally, the PSF is assumed to be independent of the position.
 Then, the imaging system can be treated as a linear shift-invariant system,
 which is mathematically described as a convolution (see the <a class="reference internal" href="../filtering/convolution.html#filtering-convolution"><span class="std std-ref">dedicated chapter</span></a>).
 Sometimes, an imaging system is described not by its PSF

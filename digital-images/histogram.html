@@ -470,7 +470,7 @@ document.write(`
 <span id="c-digital-images-histogram"></span><h1>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
-<p>The histogram (French: <em>histogramme</em>) may be the simplest tool for image processing; it can be seen on cameras and even some smartphone, when shooting.
+<p>The histogram (French: <em>histogramme</em>) may be the simplest tool for image processing; it can be seen on cameras and even some smartphones, when shooting.
 It depicts how the intensities of the pixels are distributed.
 It is the discrete function <span class="math notranslate nohighlight">\(h\)</span> such that</p>
 <div class="math notranslate nohighlight">
@@ -539,7 +539,7 @@ then it can be seen as a discrete probability density function <span class="math
   p(i) = \frac{n_i}{M \times N}
   \]</div>
 </li>
-<li><p>The histogram gives a global information about the pixel intensities of an image but looses the spatial information in the image.
+<li><p>The histogram gives a global information about the pixel intensities of an image but loses the spatial information in the image.
 In consequence, two different images can have the same histogram (cf. <a class="reference internal" href="#f-histogram-daisy-sorted"><span class="std std-numref">Fig. 23</span></a>).</p>
 <figure class="align-default" id="f-histogram-daisy-sorted">
 <img alt="../_images/daisy-sorted.svg" src="../_images/daisy-sorted.svg" />
@@ -554,15 +554,15 @@ The image on the right actually corresponds to the pixels of the image on the le
 </section>
 <section id="histogram-transformations">
 <h2>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Link to this heading">#</a></h2>
-<p>An histogram transformation consists in applying a mathematical function to the intensity distribution.
+<p>A histogram transformation consists of applying a mathematical function to the intensity distribution.
 Generally, the transformations are useful to improve the visual quality of an image,
 but are rarely needed inside an automatic processing.</p>
-<p>The transform, denoted <span class="math notranslate nohighlight">\(T\)</span>, is applied on the pixel intensities to change their values:</p>
+<p>The transform, denoted <span class="math notranslate nohighlight">\(T\)</span>, is applied to the pixel intensities to change their values:</p>
 <div class="math notranslate nohighlight">
 \[j = T(i)\]</div>
 <p>where <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(i\)</span> are respectively the intensities of the new and the original image.
 As a consequence, the histogram of the new image differs from the histogram of the original image.</p>
-<p>Below are some common transformations (we suppose the pixel intensities to lie in <span class="math notranslate nohighlight">\([0,1]\)</span>).</p>
+<p>Below are some common transformations (we assume the pixel intensities to lie in <span class="math notranslate nohighlight">\([0,1]\)</span>).</p>
 <section id="negative-image">
 <h3>Negative image<a class="headerlink" href="#negative-image" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
@@ -581,7 +581,7 @@ As a consequence, the histogram of the new image differs from the histogram of t
 <figure class="align-default" id="f-histogram-gamma">
 <img alt="../_images/gamma.svg" src="../_images/gamma.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Gamma correction modifies the coulours of an image acquired by an electronic system,
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Gamma correction modifies the coulors of an image acquired by an electronic system,
 it is used to take into account the non-linear sensibility of human eyes to the light.
 Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a class="headerlink" href="#f-histogram-gamma" title="Link to this image">#</a></p>
 </figcaption>
@@ -607,14 +607,14 @@ Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a 
 \[T(i) = \frac{1}{MN} \sum_{k=0}^i n_k\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are the image size and <span class="math notranslate nohighlight">\(n_k\)</span> is the number of pixels with intensity <span class="math notranslate nohighlight">\(k\)</span>.
 This transformation aims to spread the histogram over the entire intensity range, and to make the histogram as flat as possible.
-A consequence is an increasing of the image contrast.
+A consequence is an increase of the image contrast.
 It is a fully automatic method that does not require any parameters to be set.
 The demonstration of this equation is available in
 <a class="reference internal" href="outro.html#b-histogram-gonzalez2010"><span class="std std-ref">[Gonzalez 2010, section 3.3.1]</span></a>.</p>
 <figure class="align-default" id="f-histogram-equalization">
 <img alt="../_images/equalization.svg" src="../_images/equalization.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tend to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tends to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -626,7 +626,7 @@ Indeed, if the histogram shows clearly two modes (<em>i.e.</em> two “bumps”)
 a threshold <span class="math notranslate nohighlight">\(T\)</span> can be defined between these two modes, then apply a thresholding on the pixels, such that:</p>
 <ul class="simple">
 <li><p>if the pixel level is lower that <span class="math notranslate nohighlight">\(T\)</span>, then the pixel is in class 0 (displayed in black in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>),</p></li>
-<li><p>otherwise the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>).</p></li>
+<li><p>otherwise, the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>).</p></li>
 </ul>
 <figure class="align-default" id="f-histogram-threshold">
 <img alt="../_images/thresholding.svg" src="../_images/thresholding.svg" />
@@ -635,7 +635,7 @@ a threshold <span class="math notranslate nohighlight">\(T\)</span> can be defin
 </figcaption>
 </figure>
 <p>Such a thresholding yields a binary image whose pixels have only two values.
-Several methods exist that compute automatically the threshold, such that <a class="reference internal" href="../segmentation/histogram.html#segmentation-otsu"><span class="std std-ref">Otsu’s method</span></a>.</p>
+Several methods exist that compute the threshold automatically, such as <a class="reference internal" href="../segmentation/histogram.html#segmentation-otsu"><span class="std std-ref">Otsu’s method</span></a>.</p>
 </section>
 </section>
 </section>

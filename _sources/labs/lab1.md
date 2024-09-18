@@ -84,7 +84,7 @@ Now you are ready to write a Python program in the notebook.
   course = "BIP"
   ```
   and type again `Shift` + `Return`.
-  Now the value 2023 is stored in the variable `year`
+  Now the value 2024 is stored in the variable `year`
   and the character string "BIP" is stored in the variable `course`.
 
 * Modify the previous cell by adding the following statement:
@@ -201,7 +201,7 @@ However, an image can also be seen as a three-dimensional curve, opening the way
 
 * Define a figure with as many subplots as images with `matplotlib.pyplot.subplots`.
 
-* Dispaly each images in a specific subplot.
+* Display each images in a specific subplot.
   Use an automatic way by using a for loop on the list creater earlier.  
 
 
