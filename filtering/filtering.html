@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conclusion" href="outro.html" />
-    <link rel="prev" title="Wavelets" href="wavelets.html" />
+    <link rel="prev" title="Fourier transform" href="fourier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,7 +194,6 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fourier.html">Fourier transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wavelets.html">Wavelets</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Filtering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
@@ -461,26 +460,28 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="filtering">
 <span id="filtering-filtering"></span><h1>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h1>
-<p>The operation of filtering consists in applying a convolution with a specific PSF on an image
+<p>The operation of filtering consists of applying a convolution with a specific PSF on an image
 so as to modify the image, or to enhance some features, or to reduce some frequencies.</p>
-<p>In this section we will see some example of filters.
+<p>In this section we will see some examples of filters.
 First, we begin with common filters (blur, edge detection and sharpening) that are defined from an analysis in the image domain.
 Then, we continue with two important families of filters: low-pass and high-pass filters,
-which are defined from consideration in the Fourier domain.</p>
+which are defined from considerations in the Fourier domain.</p>
 <section id="blur-filtering">
-<h2>Blur filtering<a class="headerlink" href="#blur-filtering" title="Link to this heading">#</a></h2>
+<span id="c-filtering-blur-filter"></span><h2>Blur filtering<a class="headerlink" href="#blur-filtering" title="Link to this heading">#</a></h2>
 <p>An example of blur filtering is given in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a>.
 Each pixel of the output image is a mean of the pixel intensities in a window in the original image.
 The PSF in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a> is very simple:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 h = \begin{bmatrix}
-1 &amp; 1 &amp; 1 \\
-1 &amp; 1 &amp; 1 \\
-1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>Other size, shape, and coefficients can be used in the PSF as long as it define a (possibly weighted) mean.</p>
+<p>Other size, shape, and coefficients can be used in the PSF as long as it defines a (possibly weighted) mean.</p>
 <figure class="align-default" id="f-blur-filtering">
 <a class="reference internal image-reference" href="../_images/blur-filtering.svg"><img alt="../_images/blur-filtering.svg" src="../_images/blur-filtering.svg" style="height: 200px;" /></a>
 <figcaption>
@@ -489,10 +490,10 @@ h = \begin{bmatrix}
 </figure>
 </section>
 <section id="edge-detection-filtering">
-<h2>Edge detection filtering<a class="headerlink" href="#edge-detection-filtering" title="Link to this heading">#</a></h2>
-<p>Edge detection consists in highlighting the borders of the “objects” in the image.
-Mathematically, one can compute the discrete derivatives of a pixel with its four neighbors,
-so that a specific pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in the output <span class="math notranslate nohighlight">\(f\)</span> is defined as:</p>
+<span id="c-filtering-edge-filter"></span><h2>Edge detection filtering<a class="headerlink" href="#edge-detection-filtering" title="Link to this heading">#</a></h2>
+<p>Edge detection consists of highlighting the borders of the “objects” in the image.
+This corresponds to compute the discrete derivatives of a pixel with its four neighbors,
+so that a specific pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in the output image <span class="math notranslate nohighlight">\(f\)</span> is defined as (<span class="math notranslate nohighlight">\(g\)</span> is the original image):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 f(x,y)
@@ -521,7 +522,7 @@ h = \begin{bmatrix}
 </section>
 <section id="sharp-filtering">
 <h2>Sharp filtering<a class="headerlink" href="#sharp-filtering" title="Link to this heading">#</a></h2>
-<p>As a third example, one can cite sharp filtering which strenghten the border in the image.
+<p>Sharp filtering strenghtens the border in the image.
 Then it can be computed as the sum of the original image with an edge detection.
 This yields the following PSF and the output given in <a class="reference internal" href="#f-sharp-filtering"><span class="std std-numref">Fig. 39</span></a>.</p>
 <div class="math notranslate nohighlight">
@@ -548,7 +549,7 @@ Then it becomes possible to define the filter in the Fourier domain instead of t
 The first row shows the filtering as a convolution in the spatial domain,
 the second row shows the same information in the Fourier domain,
 where the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the PSF.</p>
-<p>Low-pass filtering preserves only the low frequencies, yielding in a blurred image.</p>
+<p>Low-pass filtering preserves only the low frequencies, yielding a blurred image.</p>
 <figure class="align-default" id="f-lowpass-filtering">
 <a class="reference internal image-reference" href="../_images/lowpass-filtering.svg"><img alt="../_images/lowpass-filtering.svg" src="../_images/lowpass-filtering.svg" style="height: 400px;" /></a>
 <figcaption>
@@ -557,14 +558,12 @@ Top row: spatial domain, bottom row: amplitude of the DFT
 (the phase is not shown for brevity).</span><a class="headerlink" href="#f-lowpass-filtering" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Similarly, the blur filter defined above is also a low-pass filter.</p>
+<p>Similarly, the <a class="reference internal" href="#c-filtering-blur-filter"><span class="std std-ref">blur filter</span></a> defined above is also a low-pass filter.</p>
 </section>
 <section id="high-pass-filtering">
 <h2>High-pass filtering<a class="headerlink" href="#high-pass-filtering" title="Link to this heading">#</a></h2>
 <p>Contrary to low-pass filtering, high-pass filtering preserves only the high frequencies,
-i.e. the sudden changes in the intensities (<a class="reference internal" href="#f-highpass-filtering"><span class="std std-numref">Fig. 41</span></a>).
-In the spatial domain, the difference with low-pass filtering is hard to see,
-but the difference is clearly visible in the DFT.</p>
+i.e. the sudden changes in the intensities (<a class="reference internal" href="#f-highpass-filtering"><span class="std std-numref">Fig. 41</span></a>).</p>
 <figure class="align-default" id="f-highpass-filtering">
 <a class="reference internal image-reference" href="../_images/highpass-filtering.svg"><img alt="../_images/highpass-filtering.svg" src="../_images/highpass-filtering.svg" style="height: 400px;" /></a>
 <figcaption>
@@ -573,7 +572,7 @@ Top row: spatial domain, bottom row: amplitude of the DFT
 (the phase is not shown for brevity).</span><a class="headerlink" href="#f-highpass-filtering" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Similarly, the edge detection filter defined above is also a high-pass filter.</p>
+<p>Similarly, the <a class="reference internal" href="#c-filtering-edge-filter"><span class="std std-ref">edge detection</span></a> filter defined above is also a high-pass filter.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>To go further, it is possible to define filters when only specific frequencies are discarded.
@@ -614,12 +613,12 @@ like the ones given by periodic noises (see <a class="reference internal" href="
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="wavelets.html"
+       href="fourier.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Wavelets</p>
+        <p class="prev-next-title">Fourier transform</p>
       </div>
     </a>
     <a class="right-next"

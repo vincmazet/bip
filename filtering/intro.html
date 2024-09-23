@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -192,7 +192,6 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fourier.html">Fourier transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wavelets.html">Wavelets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
@@ -445,19 +444,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<!-- de formation des images de CC, reprendre : Spectral representation : Fourier spectrum, TFD2D, 2D convolution, multiscale representation -->
-<!-- Filtering in image processing is a very precise notion that differs from the filters proposed by some apps or softwares.
-In image processing, filtering consists in amplifying or attenuating some frequencies in the image.
-To study this notion, we need to introduce two mathematical objects, namely the [](filtering:convolution) and the [](filtering:fourier),
-thus we will consider both the usual spatial domain of the images, but also the frequency domain.
-The Fourier transform is the tool to pass from a domain to the other.
-To know more about the Fourier transform in signal processing,
-you can read this very
-[excellent course](https://vincmazet.github.io/signal1/fourier/fourier.html) (in French).
-
-
-
-Le filtrage d'une image consiste à y appliquer un filtre : c'est un opérateur linéaire qui s'applique sur chaque pixel d'une image pour en modifier son intensité. Chaque pixel est modifié selon la même règle et sa nouvelle intensité dépend de l'intensité originale et de l'intensité des pixels voisins. Ainsi, le filtre s'exprime comme une matrice ou, de façon similaire, à une image. Pour étudier en détail la notion de filtrage, il est indispensable de commencer par introduire deux outils mathémariques. Le premier est le produit de convolution, qui permet de calculer l'effet d'un filtre sur une image. Le second est la transformée de Fourier, qui transforme l'image pour la représenter dans le domaine des fréquences : on introduira alors cette notion de fréquence dans une image et cela permettra d'identifier notamment des filtres passe-bas et passe-haut (qui conserve uniquement certaines fréquences de l'image). Nous en profiterons pour évoquer une autre transformée courante en traitement d'images : la transformée en ondelettes. [Note dans la marge : Aucun rapport avec un filtre snapchat qui est une transformation non linéaire d'une image et donc ne s'exprime pas par un produit de convolution.] -->
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Filtering in image processing is a very precise notion
+that differs from the filters proposed by some apps or software
+(a Snapchat filter is a non-linear transformation of an image and cannot be written
+as a convolution product).</p>
+</aside>
+<p>Filtering an image consists of applying a filter
+which is a linear operator that is applied to each pixel of an image to modify its intensity.
+The new intensity depends on the original intensity and the intensity of neighboring pixels.
+Thus, the filter is expressed as a matrix or, similarly, as an image.
+To study the concept of filtering,
+it is essential to start by introducing two mathematical tools.</p>
+<p>The first tool is <a class="reference internal" href="convolution.html#filtering-convolution"><span class="std std-ref">convolution</span></a>,
+which is the mathematical operation to calculate the effect of a filter on an image.
+The second tool is the <a class="reference internal" href="fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>,
+which represents the image in the frequency domain.
+Thus we need to introduce the notion of “frequency” in an image
+and this will allow us to deal about low-pass and high-pass filters
+which only keep certain frequencies of the image.</p>
 </section>
 
     <script type="text/x-thebe-config">

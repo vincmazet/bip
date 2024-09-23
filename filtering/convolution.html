@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -194,7 +194,6 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Convolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fourier.html">Fourier transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wavelets.html">Wavelets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
@@ -518,7 +517,7 @@ Example 2</label><div class="sd-tab-content docutils">
 <p>Here, each pixel of <span class="math notranslate nohighlight">\(g\)</span> appears twice in <span class="math notranslate nohighlight">\(f\)</span>:
 the result <span class="math notranslate nohighlight">\(g\)</span> then becomes the image <span class="math notranslate nohighlight">\(f\)</span> which also appears twice.
 Another interpretation can be done:
-the result corresponds to the two unique pixels of <span class="math notranslate nohighlight">\(h\)</span> which smear while reproducing the pattern <span class="math notranslate nohighlight">\(g\)</span></p>
+the result corresponds to the two unique pixels of <span class="math notranslate nohighlight">\(h\)</span> which spread while reproducing the pattern <span class="math notranslate nohighlight">\(g\)</span>.</p>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-2">
@@ -532,7 +531,7 @@ Example 3</label><div class="sd-tab-content docutils">
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
 Each of these pixels spreads over the result <span class="math notranslate nohighlight">\(f\)</span> following the pattern <span class="math notranslate nohighlight">\(f\)</span>.
 This results in a blurry image.
-We will see in <a class="reference internal" href="filtering.html#filtering-filtering"><span class="std std-ref">Filtering</span></a> that we have applied here a low pass filter on the image <span class="math notranslate nohighlight">\(g\)</span>..</p>
+We will see in <a class="reference internal" href="filtering.html#filtering-filtering"><span class="std std-ref">Filtering</span></a> that we have applied here a low pass filter on the image <span class="math notranslate nohighlight">\(g\)</span>.</p>
 </div>
 </div>
 </section>
@@ -555,7 +554,7 @@ We will see in <a class="reference internal" href="filtering.html#filtering-filt
 <span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Link to this heading">#</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
 as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
-<p>Therefore, one has to assume some hypotheses of the pixel values outside the image.
+<p>Therefore, one has to make assumptions about the pixel values outside the image.
 <a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 33</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> shows the convolution of these images by a Gaussian.</p>
 <figure class="align-default" id="f-convolution-boundaries-hypotheses">
 <img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" />

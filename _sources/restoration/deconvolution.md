@@ -1,4 +1,4 @@
-(deconvolution)=
+(C:deconvolution)=
 # Deconvolution
 
 Usually, images acquired by a vision system suffer from degradation that can be modelled as a convolution.

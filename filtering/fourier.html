@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -65,7 +65,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Wavelets" href="wavelets.html" />
+    <link rel="next" title="Filtering" href="filtering.html" />
     <link rel="prev" title="Convolution" href="convolution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,7 +194,6 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Fourier transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wavelets.html">Wavelets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filtering.html">Filtering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
@@ -460,14 +459,15 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="fourier-transform">
 <span id="filtering-fourier"></span><h1>Fourier transform<a class="headerlink" href="#fourier-transform" title="Link to this heading">#</a></h1>
 <p>The (2D) Fourier transform is a very classical tool in image processing.
-It is the extension of the well known <a class="reference external" href="https://vincmazet.github.io/signal1/fourier/fourier.html">Fourier transform</a>
+It is the extension of the <a class="reference external" href="https://vincmazet.github.io/signal1/fourier/fourier.html">Fourier transform</a>
 for signals which decomposes a signal into a sum of complex oscillations (actually, complex exponential).
-In image processing, the complex oscillations always come by pair because the pixels have real intensities.</p>
-<p><a class="reference internal" href="#f-fourier-decomposition"><span class="std std-numref">Fig. 35</span></a> shows the decomposition of a synthetic image into oscillations.
+In image processing, the Fourier transform decomposes an image into a sum of oscillations with different frequencies, phase and orientation.
+Note that the oscillations are not complex exponential if the the pixels are real values.</p>
+<p>So, the Fourier transform gives information about the frequency content of the image,
+<em>i.e.</em> how the intensities in the image are distributed through different frequencies.
+<a class="reference internal" href="#f-fourier-decomposition"><span class="std std-numref">Fig. 35</span></a> shows the decomposition of a synthetic image into oscillations.
 In this toy-example, the image is simple enough to be decomposed by using only three oscillations.
-We will see further that usual images need much more oscillations.
-The Fourier transform gives information about the frequency content of the image,
-<em>i.e.</em> how the intensities in the image are distributed through different frequencies.</p>
+We will see further that usual images need much more oscillations.</p>
 <figure class="align-default" id="f-fourier-decomposition">
 <img alt="../_images/fourier-decomposition.svg" src="../_images/fourier-decomposition.svg" />
 <figcaption>
@@ -496,8 +496,8 @@ That is why we will show the amplitude (modulus) and phase (argument) of the DFT
 </figure>
 <p>The amplitude and phase represent the distribution of energy in the frequency plane.
 The intensities of the low frequencies are located in the center of the image, and the intensities of the high frequencies near the boundaries.</p>
-<p>In the figure above, the gray background behind the squirrel is a low frequency area because the intensities of the pixels slowly evolve from one pixel to another.
-On the contrary, the tail is a high frequency area because the intensities of the pixels show a rapid alternation between the hair and the background.</p>
+<p>In the figure above, the gray background behind the squirrel “contains” mainly low frequencies because the intensities of the pixels slowly evolve from one pixel to another.
+On the contrary, high frequencies are needed in the tail to show the rapid alternation between the hair and the background.</p>
 </section>
 <section id="inverse-fourier-transform">
 <h2>Inverse Fourier transform<a class="headerlink" href="#inverse-fourier-transform" title="Link to this heading">#</a></h2>
@@ -583,11 +583,11 @@ provided that the convolution is circular (wrapping hypothesis on the edges):</p
       </div>
     </a>
     <a class="right-next"
-       href="wavelets.html"
+       href="filtering.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wavelets</p>
+        <p class="prev-next-title">Filtering</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
