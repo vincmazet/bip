@@ -464,15 +464,15 @@ No method is the best because the result depends, among other things, on the ima
 Consequently, it is interesting to evaluate, for the type of image to process, the quality of the segmentation.
 To do that, different criteria can be used, defined below.
 In addition to the image to be segmented, we also need the expected result, which we call “ground truth” (French: <em>vérité terrain</em>).</p>
-<p>Imagine that the ground truth and the segmentation are the images in <a class="reference internal" href="#f-segmentation-eval-gt-est"><span class="std std-numref">Fig. 71</span></a> (binary segmentation).</p>
+<p>Imagine that the ground truth and the segmentation are the images in <a class="reference internal" href="#f-segmentation-eval-gt-est"><span class="std std-numref">Fig. 73</span></a> (binary segmentation).</p>
 <figure class="align-default" id="f-segmentation-eval-gt-est">
 <a class="reference internal image-reference" href="../_images/segmentation-eval-gt-est.png"><img alt="../_images/segmentation-eval-gt-est.png" src="../_images/segmentation-eval-gt-est.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Ground truth <span class="math notranslate nohighlight">\(f^*\)</span> (left) and segmentation <span class="math notranslate nohighlight">\(f\)</span> (right).</span><a class="headerlink" href="#f-segmentation-eval-gt-est" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Ground truth <span class="math notranslate nohighlight">\(f^*\)</span> (left) and segmentation <span class="math notranslate nohighlight">\(f\)</span> (right).</span><a class="headerlink" href="#f-segmentation-eval-gt-est" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Each image has two areas: the segmented object (shown in white) and the background (in black).
-So, we can define four types of zones (cf. <a class="reference internal" href="#f-segmentation-eval-zones"><span class="std std-numref">Fig. 72</span></a>):</p>
+So, we can define four types of zones (cf. <a class="reference internal" href="#f-segmentation-eval-zones"><span class="std std-numref">Fig. 74</span></a>):</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>In French, we talk with <em>vrai positifs</em>, <em>vrai négatifs</em>, <em>faux positifs</em> and <em>faux négatifs</em>.</p>
@@ -486,7 +486,7 @@ So, we can define four types of zones (cf. <a class="reference internal" href="#
 <figure class="align-default" id="f-segmentation-eval-zones">
 <a class="reference internal image-reference" href="../_images/eval-zones.png"><img alt="../_images/eval-zones.png" src="../_images/eval-zones.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Definition of true positive (TP), false positive (FP), true negative (VN) and false negative (FN).</span><a class="headerlink" href="#f-segmentation-eval-zones" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Definition of true positive (TP), false positive (FP), true negative (VN) and false negative (FN).</span><a class="headerlink" href="#f-segmentation-eval-zones" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From these four quantities, one or the other of the criteria below can be used.</p>

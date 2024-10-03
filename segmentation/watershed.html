@@ -459,26 +459,40 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="watershed">
 <h1>Watershed<a class="headerlink" href="#watershed" title="Link to this heading">#</a></h1>
-<p>The watershed considers the image as a topographic map/surface where:</p>
-<ul class="simple">
-<li><p>the regions of the segmentation are the valleys</p></li>
-<li><p>the boundaries between regions are the ridges</p></li>
-</ul>
-<p>Thus the <a class="reference internal" href="#f-segmentation-watershed-moon"><span class="std std-numref">Fig. 69</span></a> shows, for an image of the Moon, what the corresponding topographic map should be.
-This map is in fact the 3D view of the gradient norm of the image.</p>
-<figure class="align-default" id="f-segmentation-watershed-moon">
-<a class="reference internal image-reference" href="segmentation/figs/segmentation-watershed-moon.png"><img alt="segmentation/figs/segmentation-watershed-moon.png" src="segmentation/figs/segmentation-watershed-moon.png" style="height: 200px;" /></a>
+<p>The concept of watershed considers the image as a topographic map:
+high intensities in the image are the moutains and low intensities are the valleys.
+The principal objectives of the watershed segmentation method
+is to find the crest lines of the topographic map,
+where a drop of water placed on one of this crest lines
+would be equally likely to fall on one side or the other of the line.</p>
+<figure class="align-default" id="f-segmentation-watershed-concept">
+<a class="reference internal image-reference" href="../_images/watershed-concept.svg"><img alt="../_images/watershed-concept.svg" src="../_images/watershed-concept.svg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">An image and its gradient (seen as an image and as a 3D signal, showing the relief).</span><a class="headerlink" href="#f-segmentation-watershed-moon" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
+The crest line is the top of the moutain in the shape of a “b”.</span><a class="headerlink" href="#f-segmentation-watershed-concept" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The principle of the watershed line is therefore:</p>
-<ol class="arabic simple">
-<li><p>to construct the elevation map,</p></li>
-<li><p>to gradually fill each watershed with water: the water appears at the very bottom of the relief,</p></li>
-<li><p>to raise the water level,</p></li>
-<li><p>when two basins meet, the watershed line is marked as a border.</p></li>
-</ol>
+<p>The basic idea of watershed segmentation is to flood the topographic map
+and letting water rise through the valleys at a uniform rate.
+When the rising water of two distinct valleys is about to merge,
+a dam is built to prevent the merging.
+When water covers the entire surface of the image,
+the dams correspond to the segmentation boundaries.</p>
+<figure class="align-default" id="f-segmentation-watershed-animation">
+<a class="reference internal image-reference" href="../_images/watershed-animation.svg"><img alt="../_images/watershed-animation.svg" src="../_images/watershed-animation.svg" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 71</span></a>).
+The number corresponds to the water level,
+the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-watershed-animation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-segmentation-watershed-cut">
+<a class="reference internal image-reference" href="../_images/watershed-cut.svg"><img alt="../_images/watershed-cut.svg" src="../_images/watershed-cut.svg" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
+The cut considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 70</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Principle of the flood algorithm
 The flood algorithm simulates a rise in water from the local minima of the surface, each defining
 a watershed. When two watersheds meet during this rise, a dam is erected: this is
@@ -487,11 +501,11 @@ The local minima are represented by red dots, initializing the watersheds. Two b
 A second watershed is delimited. The last watershed is delimited.
 Figure 1 – Principle of the flood algorithm.
 Note: several algorithms exist, which lead to slightly different results.</p>
-<p>The <a class="reference internal" href="#f-segmentation-watershed-algo"><span class="std std-numref">Fig. 70</span></a> schematizes this algorithm on a section of the image.</p>
+<p>The <a class="reference internal" href="#f-segmentation-watershed-algo"><span class="std std-numref">Fig. 72</span></a> schematizes this algorithm on a section of the image.</p>
 <figure class="align-default" id="f-segmentation-watershed-algo">
 <a class="reference internal image-reference" href="segmentation/figs/segmentation-watershed-algo.gif"><img alt="segmentation/figs/segmentation-watershed-algo.gif" src="segmentation/figs/segmentation-watershed-algo.gif" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Schematization of the watershed algorithm.</span><a class="headerlink" href="#f-segmentation-watershed-algo" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Schematization of the watershed algorithm.</span><a class="headerlink" href="#f-segmentation-watershed-algo" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Algorithm:</p>
