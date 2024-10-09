@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -497,15 +497,14 @@ You can use the function <code class="docutils literal notranslate"><span class=
 <section id="interpolation">
 <h2>Interpolation<a class="headerlink" href="#interpolation" title="Link to this heading">#</a></h2>
 <p>The difference between different interpolation methods will be observed by applying successive rotations on the image <a href="../_static/data/chess.png">chess.png</a>.
-The rotations will be made by using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code>, which permits to choose different polynomial interpolations
-(however, it is not possible to use a B-spline interpolation).</p>
+The rotations will be made by using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code>, which permits to choose different polynomial interpolations.</p>
 <ul class="simple">
 <li><p>Perform four successive rotations of 90° of the image, and observe the effect of the rotation at each step.
 Use the default value for each parameter.</p></li>
 <li><p>Compare the resulting image with the original one, both visually and using the MSE.</p></li>
 <li><p>Now perform nine rotations of 40° and compare with the original image.
 What do you observe?</p></li>
-<li><p>Compare the preceding result with other interpolation methods.</p></li>
+<li><p>Compare the previous result with other interpolation methods.</p></li>
 </ul>
 </section>
 <div class="toctree-wrapper compound">
