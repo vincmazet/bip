@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -468,7 +468,7 @@ would be equally likely to fall on one side or the other of the line.</p>
 <figure class="align-default" id="f-segmentation-watershed-concept">
 <a class="reference internal image-reference" href="../_images/watershed-concept.svg"><img alt="../_images/watershed-concept.svg" src="../_images/watershed-concept.svg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
 The crest line is the top of the moutain in the shape of a “b”.</span><a class="headerlink" href="#f-segmentation-watershed-concept" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
@@ -481,7 +481,7 @@ the dams correspond to the segmentation boundaries.</p>
 <figure class="align-default" id="f-segmentation-watershed-animation">
 <a class="reference internal image-reference" href="../_images/watershed-animation.svg"><img alt="../_images/watershed-animation.svg" src="../_images/watershed-animation.svg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 71</span></a>).
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 74</span></a>).
 The number corresponds to the water level,
 the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-watershed-animation" title="Link to this image">#</a></p>
 </figcaption>
@@ -489,8 +489,8 @@ the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-wat
 <figure class="align-default" id="f-segmentation-watershed-cut">
 <a class="reference internal image-reference" href="../_images/watershed-cut.svg"><img alt="../_images/watershed-cut.svg" src="../_images/watershed-cut.svg" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
-The cut considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 70</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
+The cut considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 73</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Principle of the flood algorithm
@@ -501,11 +501,11 @@ The local minima are represented by red dots, initializing the watersheds. Two b
 A second watershed is delimited. The last watershed is delimited.
 Figure 1 – Principle of the flood algorithm.
 Note: several algorithms exist, which lead to slightly different results.</p>
-<p>The <a class="reference internal" href="#f-segmentation-watershed-algo"><span class="std std-numref">Fig. 72</span></a> schematizes this algorithm on a section of the image.</p>
+<p>The <a class="reference internal" href="#f-segmentation-watershed-algo"><span class="std std-numref">Fig. 75</span></a> schematizes this algorithm on a section of the image.</p>
 <figure class="align-default" id="f-segmentation-watershed-algo">
 <a class="reference internal image-reference" href="segmentation/figs/segmentation-watershed-algo.gif"><img alt="segmentation/figs/segmentation-watershed-algo.gif" src="segmentation/figs/segmentation-watershed-algo.gif" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Schematization of the watershed algorithm.</span><a class="headerlink" href="#f-segmentation-watershed-algo" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Schematization of the watershed algorithm.</span><a class="headerlink" href="#f-segmentation-watershed-algo" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Algorithm:</p>

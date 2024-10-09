@@ -77,7 +77,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction" href="../segmentation/intro.html" />
-    <link rel="prev" title="Interpolation" href="interpolation.html" />
+    <link rel="prev" title="Interpolation Methods" href="interpolation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -218,7 +218,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation Methods</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -457,7 +457,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
-<!-- Nous avons vu dans ce chapitre plusieurs méthodes pour définir l'intensité des pixels qui apparaissent dans une image suite à une modification de la géométrie de celle-ci. Quand il n'existe aucune information sur les pixels inexistants, il faut définir un modèle qui va apporter l'information manquante. Ainsi, l'interpolation au plus proche voisin revient à fixer comme intensité d'un pixel la même intensité que le pixel le plus proche. L'interpolation bilinéaire revient à affecter au pixel la valeur d'une surface qui passe par les quatre voisins les plus proches du pixel et qui est linéaire dans les deux dimensions. L'interpolation polynomiale fait de même mais utilise plus de voisins, permettant ainsi de considérer que la surface est un polynôme dans les deux dimanensions. [bicubique] --></section>
+<p>In this chapter, we have seen three methods for calculating the intensity of pixels that appear in an image following a modification of the image’s geometry.
+Without any information on the non-existent pixels, it is necessary to define a model that provides the missing information.</p>
+<p>Nearest neighbor interpolation assigns the intensity of a pixel to the same intensity as the nearest pixel.
+Bilinear interpolation assigns to the new pixel the value of a surface that passes through the four nearest neighbors of the pixel and that is linear in both dimensions.
+Bicubic interpolation does the same but uses more neighbors, thus making it possible to consider that the surface is a cubic polynomial in both dimensions.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -495,7 +500,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Interpolation</p>
+        <p class="prev-next-title">Interpolation Methods</p>
       </div>
     </a>
     <a class="right-next"
