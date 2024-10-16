@@ -472,13 +472,13 @@ document.write(`
 <span id="labs-lab3"></span><h1>Lab 3<a class="headerlink" href="#lab-3" title="Link to this heading">#</a></h1>
 <section id="lossy-compression">
 <h2>Lossy compression<a class="headerlink" href="#lossy-compression" title="Link to this heading">#</a></h2>
-<p>The heart of JPEG compression is to save the high-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
+<p>The heart of JPEG compression is to save the low-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
 In this exercise, a simplified version of JPEG compression is implemented
 by cancelling the DCT pixels located outside a certain frequency.</p>
 <ul>
 <li><p>Compute and display the DCT (<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.dctn</span></code> with argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>) of the image
 <a href="../_static/data/squirrel.png">squirrel.png</a>.</p></li>
-<li><p>Apply a binary mask to the DCT coefficients to cancel the high frequencies.
+<li><p>Apply a binary mask to the DCT coefficients to cancel the high frequencies.The
 Recall that for DCT, the low frequencies are located at the top left corner of the image.</p></li>
 <li><p>Display the compressed image using reverse DCT
 (<code class="docutils literal notranslate"><span class="pre">scipy.fftpack.idctn</span></code>, always with the argument <code class="docutils literal notranslate"><span class="pre">norm='ortho'</span></code>).
@@ -497,7 +497,7 @@ You can use the function <code class="docutils literal notranslate"><span class=
 <section id="interpolation">
 <h2>Interpolation<a class="headerlink" href="#interpolation" title="Link to this heading">#</a></h2>
 <p>The difference between different interpolation methods will be observed by applying successive rotations on the image <a href="../_static/data/chess.png">chess.png</a>.
-The rotations will be made by using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code>, which permits to choose different polynomial interpolations.</p>
+The rotations will be made by using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code>, which permits to choose different interpolation approaches.</p>
 <ul class="simple">
 <li><p>Perform four <em>successive</em> rotations of 90° of the image, and observe the effect of the rotation at each step.
 Use the default value for each parameter.</p></li>

@@ -3,14 +3,14 @@
 
 ## Lossy compression
 
-The heart of JPEG compression is to save the high-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
+The heart of JPEG compression is to save the low-frequency coefficients of the discrete cosine transform (DCT) of the image with low precision.
 In this exercise, a simplified version of JPEG compression is implemented
 by cancelling the DCT pixels located outside a certain frequency.
 
 * Compute and display the DCT (`scipy.fftpack.dctn` with argument `norm='ortho'`) of the image
   <a href="../_static/data/squirrel.png">squirrel.png</a>.
 
-* Apply a binary mask to the DCT coefficients to cancel the high frequencies.
+* Apply a binary mask to the DCT coefficients to cancel the high frequencies.The
   Recall that for DCT, the low frequencies are located at the top left corner of the image.
 
 * Display the compressed image using reverse DCT
@@ -31,7 +31,7 @@ by cancelling the DCT pixels located outside a certain frequency.
 ## Interpolation
 
 The difference between different interpolation methods will be observed by applying successive rotations on the image <a href="../_static/data/chess.png">chess.png</a>.
-The rotations will be made by using `skimage.transform.rotate`, which permits to choose different polynomial interpolations.
+The rotations will be made by using `skimage.transform.rotate`, which permits to choose different interpolation approaches.
 
 * Perform four _successive_ rotations of 90° of the image, and observe the effect of the rotation at each step.
   Use the default value for each parameter.
