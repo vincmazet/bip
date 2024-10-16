@@ -72,14 +72,12 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'segmentation/watershed';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="How to evaluate a segmentation?" href="evaluation.html" />
-    <link rel="prev" title="Region growing" href="region-growing.html" />
+    <link rel="prev" title="Clustering" href="clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -228,7 +226,6 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="histogram.html">Histogram thresholding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="region-growing.html">Region growing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Watershed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
@@ -432,7 +429,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -448,6 +447,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle">Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-an-image">Application to an image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -459,17 +468,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="watershed">
 <h1>Watershed<a class="headerlink" href="#watershed" title="Link to this heading">#</a></h1>
+<section id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Link to this heading">#</a></h2>
 <p>The concept of watershed considers the image as a topographic map:
-high intensities in the image are the moutains and low intensities are the valleys.
+high intensities in the image are the mountains and low intensities are the valleys.
 The principal objectives of the watershed segmentation method
 is to find the crest lines of the topographic map,
-where a drop of water placed on one of this crest lines
+where a drop of water placed on one of these crest lines
 would be equally likely to fall on one side or the other of the line.</p>
 <figure class="align-default" id="f-segmentation-watershed-concept">
-<a class="reference internal image-reference" href="../_images/watershed-concept.svg"><img alt="../_images/watershed-concept.svg" src="../_images/watershed-concept.svg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/watershed-concept.svg"><img alt="../_images/watershed-concept.svg" src="../_images/watershed-concept.svg" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 72 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
-The crest line is the top of the moutain in the shape of a “b”.</span><a class="headerlink" href="#f-segmentation-watershed-concept" title="Link to this image">#</a></p>
+The crest line is the top of the mountain in the shape of a “b”.</span><a class="headerlink" href="#f-segmentation-watershed-concept" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The basic idea of watershed segmentation is to flood the topographic map
@@ -479,7 +490,7 @@ a dam is built to prevent the merging.
 When water covers the entire surface of the image,
 the dams correspond to the segmentation boundaries.</p>
 <figure class="align-default" id="f-segmentation-watershed-animation">
-<a class="reference internal image-reference" href="../_images/watershed-animation.svg"><img alt="../_images/watershed-animation.svg" src="../_images/watershed-animation.svg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/watershed-animation.svg"><img alt="../_images/watershed-animation.svg" src="../_images/watershed-animation.svg" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 74</span></a>).
 The number corresponds to the water level,
@@ -490,110 +501,78 @@ the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-wat
 <a class="reference internal image-reference" href="../_images/watershed-cut.svg"><img alt="../_images/watershed-cut.svg" src="../_images/watershed-cut.svg" style="width: 250px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 74 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
-The cut considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 73</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Link to this image">#</a></p>
+The profile considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 73</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Principle of the flood algorithm
-The flood algorithm simulates a rise in water from the local minima of the surface, each defining
-a watershed. When two watersheds meet during this rise, a dam is erected: this is
-the watershed line, illustrated on an intensity profile Fig.1.
-The local minima are represented by red dots, initializing the watersheds. Two basins meet and delimit a first watershed line.
-A second watershed is delimited. The last watershed is delimited.
-Figure 1 – Principle of the flood algorithm.
-Note: several algorithms exist, which lead to slightly different results.</p>
-<p>The <a class="reference internal" href="#f-segmentation-watershed-algo"><span class="std std-numref">Fig. 75</span></a> schematizes this algorithm on a section of the image.</p>
-<figure class="align-default" id="f-segmentation-watershed-algo">
-<a class="reference internal image-reference" href="segmentation/figs/segmentation-watershed-algo.gif"><img alt="segmentation/figs/segmentation-watershed-algo.gif" src="segmentation/figs/segmentation-watershed-algo.gif" style="height: 200px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Schematization of the watershed algorithm.</span><a class="headerlink" href="#f-segmentation-watershed-algo" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Algorithm:</p>
-<ul class="simple">
-<li><p>Calculate the gradient (or Laplacian) of the image.</p></li>
-<li><p>The pixels with the lowest intensity form the initial watersheds.</p></li>
-<li><p>For each intensity level <span class="math notranslate nohighlight">\(i\)</span> :</p></li>
-<li><p>For each group of pixels of intensity <span class="math notranslate nohighlight">\(i\)</span> :</p></li>
-<li><p>If adjacent to exactly one existing region: add these pixels in this region.</p></li>
-<li><p>If adjacent to several regions simultaneously: mark as watershed.</p></li>
-<li><p>Otherwise, start a new region.</p></li>
-</ul>
-<p>One of the limitations of this method appears when there are many local minima in the gradient.
-In other words, there are too many very small watersheds, which are then as many regions in the segmentation.</p>
-<p>The watershed generally leads to over-segmentation because the initial points are the (a priori
-very numerous) local minima of the image. In addition, this algorithm is generally applied to the gradient of the image.</p>
-<p>To limit this number, we can:</p>
-<ul class="simple">
-<li><p>smooth (with a low-pass filter) the gradient before applying the algorithm,</p></li>
-<li><p>manually choose the watersheds of interest with markers,</p></li>
-<li><p>or merge the local minima.</p></li>
-</ul>
 <!-- 
-La ligne de partage des eaux (_watershed_) considère l'image comme un carte/surface topographique où :
-* les régions de la segmentation sont les vallées
-* les frontières entre régions sont les crêtes
-
-
-Ainsi la {numref}`F:segmentation:watershed-moon` montre, pour une image de la Lune, ce que devrait être la carte topographique correspondante.
-Cette carte est en fait la vue 3D de la norme du gradient de l'image.
-
-```{figure} figs/segmentation-watershed-moon.png
----
-height: 200px
-name: F:segmentation:watershed-moon
----
-Une image et son gradient (vu comme une image et comme un signal 3D, faisant apparaître le relief).
-```
-
 Le principe de la ligne de partage des eaux est donc :
 1. de construire la carte d'élévation,
 1. de remplir progressivement d'eau chaque bassin versant : l'eau apparaît tout en bas du relief,
 1. de faire monter le niveau de l'eau,
 1. lorsque deux bassins se rejoignent, la ligne de partage des eaux est marquée comme frontière.
 
+Algorithm:
+* Calculate the gradient (or Laplacian) of the image.
+* The pixels with the lowest intensity form the initial watersheds.
+* For each intensity level $i$ :
+* For each group of pixels of intensity $i$ :
+* If adjacent to exactly one existing region: add these pixels in this region.
+* If adjacent to several regions simultaneously: mark as watershed.
+* Otherwise, start a new region.
 
-Principe de l’algorithme par inondation
-L’algorithme par inondation simule une montée des eaux depuis les minima locaux de la surface, définissant chacun
-un bassin versant. Lors de la rencontre de deux bassins versants au cours de cette montée, un barrage est érigé : c’est
-la ligne de partage des eaux, illustrée sur un profil d’intensités Fig.1.
-Les minima locaux sont représentés par des points rouges, initia-
-lisant les bassins versants.Deux bassins se rejoignent et délimitent une première ligne de
-partage des eaux.
-Une seconde ligne de partage des eaux est délimitée.La dernière ligne de partage des eaux est délimitée.
-Figure 1 – Principe de l’algorithme par inondation.
-Remarque : plusieurs algorithmes existent, qui conduisent à des résultats légèrement différents.
-
-
-La {numref}`F:segmentation:watershed-algo` schématise cet algorithme sur une coupe de l'image.
-
-```{figure} figs/segmentation-watershed-algo.gif
----
-height: 200px
-name: F:segmentation:watershed-algo
----
-Schématisation de l'algorithme de ligne de partage des eaux.
-```
-
-Algorithme :
-* Calculer le gradient (ou le Laplacien) de l'image.
-* Les pixels ayant l'intensité la plus faible forment les bassins versants initiaux.
-* Pour chaque niveau d'intensité $i$ :
-  * Pour chaque groupe de pixels d'intensité $i$ :
-    * Si adjacent à exactement une région existante : ajouter ces pixels dans cette région.
-    * Si adjacent à plusieurs régions simultanément : marquer comme ligne de partage des eaux.
-    * Sinon, commencer une nouvelle région.
-
-Une des limites de cette méthode apparaît lorsqu'il y a beaucoup de minima locaux dans le gradient.
-Dit autrement, il y a trop de bassins versants très petits, qui sont alors autant de régions dans la segmentation.
-
-La ligne de partage des eaux conduit généralement à une sur-segmentation car les points initiaux sont les (a priori
-très nombreux) minima locaux de l’image. De plus, cet algorithme est appliqué en général sur le gradient de l’image.
-
-Pour limiter ce nombre, on peut :
-* lisser (avec un filtre passe-bas) le gradient avant d'appliquer l'algorithme,
-* choisir manuellement les bassins versants d'intérêt avec des marqueurs,
-* ou fusionner les minima locaux.
- --></section>
+Note: several algorithms exist, which lead to slightly different results.
+-->
+</section>
+<section id="application-to-an-image">
+<h2>Application to an image<a class="headerlink" href="#application-to-an-image" title="Link to this heading">#</a></h2>
+<p>Generally, the contours of the objects do not correspond to the crest lines,
+so the watershed has to be applied to the gradient of the image (see <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a>).</p>
+<figure class="align-default" id="f-segmentation-watershed-ok">
+<a class="reference internal image-reference" href="../_images/cells-watershed-ok.svg"><img alt="../_images/cells-watershed-ok.svg" src="../_images/cells-watershed-ok.svg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">An image (left), its gradient (center), and the result given by the watershed.
+The contours are computed by using the <a class="reference internal" href="../detection/edges.html#c-detection-sobel"><span class="std std-ref">Sobel filter</span></a>.</span><a class="headerlink" href="#f-segmentation-watershed-ok" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
+<p>One of the limitations of the watershed method appears when there are many local minima in the image:
+the watershed leads to over-segmentation because each local minimum will produce a segment.
+This phenomenon is illustrated <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a>
+where the image is the same as in <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a>
+but degraded by additive noise and JPEG.
+Therefore the image gradient now presents some small local minima.</p>
+<figure class="align-default" id="f-segmentation-watershed-oversegmentation">
+<a class="reference internal image-reference" href="../_images/cells-watershed-oversegmentation.svg"><img alt="../_images/cells-watershed-oversegmentation.svg" src="../_images/cells-watershed-oversegmentation.svg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Degraded version of <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a> (left),
+its gradient (center), and the result given by the watershed (right).
+Clearly, the result is not satisfactory.</span><a class="headerlink" href="#f-segmentation-watershed-oversegmentation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To reduce the number of segments, one can:</p>
+<ul class="simple">
+<li><p>manually choose the watersheds of interest with markers (<a class="reference internal" href="#f-segmentation-watershed-markers"><span class="std std-numref">Fig. 77</span></a>),</p></li>
+<li><p>smooth (with a low-pass filter) the gradient before applying the algorithm (<a class="reference internal" href="#f-segmentation-watershed-smooth"><span class="std std-numref">Fig. 78</span></a>),</p></li>
+<li><p>merge the local minima.</p></li>
+</ul>
+<figure class="align-default" id="f-segmentation-watershed-markers">
+<a class="reference internal image-reference" href="../_images/cells-watershed-markers.svg"><img alt="../_images/cells-watershed-markers.svg" src="../_images/cells-watershed-markers.svg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a> (left),
+its gradient and the chosen markers (center), and the result given by the watershed (right).</span><a class="headerlink" href="#f-segmentation-watershed-markers" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-segmentation-watershed-smooth">
+<a class="reference internal image-reference" href="../_images/cells-watershed-smooth.svg"><img alt="../_images/cells-watershed-smooth.svg" src="../_images/cells-watershed-smooth.svg" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a> (left),
+the gradient of a smoothed version of the image (center), and the result given by the watershed (right).</span><a class="headerlink" href="#f-segmentation-watershed-smooth" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -626,12 +605,12 @@ Pour limiter ce nombre, on peut :
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="region-growing.html"
+       href="clustering.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Region growing</p>
+        <p class="prev-next-title">Clustering</p>
       </div>
     </a>
     <a class="right-next"
@@ -649,6 +628,23 @@ Pour limiter ce nombre, on peut :
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle">Principle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-an-image">Application to an image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

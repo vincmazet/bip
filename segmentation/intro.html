@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -228,7 +228,6 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="histogram.html">Histogram thresholding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="region-growing.html">Region growing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="watershed.html">Watershed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
@@ -465,7 +464,7 @@ some basic relationship between pixels
 - adjancy, connectivity, regions and boundaries
 - distance measure
 //// -->
-<p>Image segmentation consists in partitioning an image <span class="math notranslate nohighlight">\(f\)</span> according to a certain criterion.
+<p>Image segmentation consists of partitioning an image <span class="math notranslate nohighlight">\(f\)</span> according to a certain criterion.
 This means that the image is divided into regions <span class="math notranslate nohighlight">\(R_i\)</span>
 that are both mutually disjoint and collectively cover the entire image.
 Two pixels in the same region satisfy the criterion, but two pixels in two adjacent regions do not.</p>
@@ -502,7 +501,7 @@ the colors of regions is the mean color of the pixels in the original image).</s
 <!-- Ajouter un exemple avec comme critère la texture. Cf par ex https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_glcm.html -->
 <p>The result of segmentation is not unique:
 it depends on the criterion, the segmentation method, the initialization of the method, etc.
-There are a lot of diverse segmentation methods and this chapter focuses on the more usual ones.
+There are many different segmentation methods and this chapter focuses on the more usual ones.
 Finally, we talk about how to measure the quality of segmentation.</p>
 <!--
   Dire qu'il y a plein de manière de catégoriser les méthodes.

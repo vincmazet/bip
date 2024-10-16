@@ -140,6 +140,7 @@ $$
 $$
 
 
+(C:detection:sobel)=
 ### Sobel operators
 
 Finally, the Sobel operators [[Sobel 1968](B:detection:Sobel1968)] are a smoothed version of the Prewitt operators.

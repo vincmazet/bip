@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -228,7 +228,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../segmentation/region-growing.html">Region growing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
@@ -494,7 +493,7 @@ There are two dual top-hat transforms:</p>
   \]</div>
 </li>
 </ul>
-<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 84</span></a> shows the effect
+<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 87</span></a> shows the effect
 of a white top-hat transform (only the white objects narrower than the structuring element are kept)
 and a black top-hat transform (only the black objects narrower than the structuring element are kept).
 Look that the structuring element, present in the original image, is not kept because it is not narrower as itself.
@@ -502,7 +501,7 @@ The results also show lots of very small artifacts that can be easily removed by
 <figure class="align-default" id="f-binary-top-hat">
 <a class="reference internal image-reference" href="../_images/top-hat.svg"><img alt="../_images/top-hat.svg" src="../_images/top-hat.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk or radius 3 pixels as structuring element
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk or radius 3 pixels as structuring element
 (the latter is visible in the bottom-right corner in the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
@@ -514,18 +513,18 @@ It consists of successive openings of an image <span class="math notranslate noh
 (usually, <span class="math notranslate nohighlight">\(E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}\)</span>) where <span class="math notranslate nohighlight">\(E\)</span> is a disk).</p>
 <p>At each stage of opening, the finer details are successively eliminated, and the are of the image is reduced
 (the area is the total number of pixels in the objects.).</p>
-<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 86</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 85</span></a> by openings with a disk of different sizes.
+<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 89</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 88</span></a> by openings with a disk of different sizes.
 When the size of the opening corresponds to the characteristic size of most objects, a jump appears in the curve.</p>
 <figure class="align-default" id="f-binary-granulometry-images">
 <a class="reference internal image-reference" href="../_images/granulometry-images.svg"><img alt="../_images/granulometry-images.svg" src="../_images/granulometry-images.svg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-binary-granulometry-plot">
 <a class="reference internal image-reference" href="../_images/granulometry-plot.svg"><img alt="../_images/granulometry-plot.svg" src="../_images/granulometry-plot.svg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -550,7 +549,7 @@ Thus the structuring element <span class="math notranslate nohighlight">\(E\)</s
 <figure class="align-default" id="f-binary-hit-or-miss">
 <img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
 The origin of the structuring elements are marked by the blue dot.</span><a class="headerlink" href="#f-binary-hit-or-miss" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
@@ -618,7 +617,7 @@ S(I) = \bigcup_{k \in \mathbb{N}^*}
 <figure class="align-default" id="f-binary-skeleton">
 <img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> Skeleton.</span><a class="headerlink" href="#f-binary-skeleton" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> Skeleton.</span><a class="headerlink" href="#f-binary-skeleton" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

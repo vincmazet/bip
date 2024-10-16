@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -228,7 +228,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../segmentation/region-growing.html">Region growing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
@@ -496,7 +495,7 @@ even though the information contained by the pixels remains unchanged.</p>
 The code below shows an image with one bright spot, clearly visible on the first image,
 along four faint spots which are not visible with the usual colormap “gray”.
 However, the socalled “jet” colormap makes the faint spots visible.
-Also, displaying the logarithm of the image helps to make the spots visible (see <a class="reference internal" href="#C:histogram-transformations"><span class="xref myst">Histogram transformations</span></a>).</p>
+Also, displaying the logarithm of the image helps to make the spots visible (see <a class="reference internal" href="histogram.html#c-histogram-transformations"><span class="std std-ref">Histogram transformations</span></a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

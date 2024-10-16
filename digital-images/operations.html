@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -220,7 +220,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -228,7 +228,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../segmentation/region-growing.html">Region growing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
@@ -484,7 +483,7 @@ whose pixels are the sum of the pixels in the original images:</p>
 h(m,n) = f(m,n) + g(m,n).
 \]</div>
 <p><a class="reference internal" href="#f-intro-addition"><span class="std std-numref">Fig. 20</span></a> gives an example of image addition to produce an artistic effect.
-Addition can also be used to <a class="reference internal" href="#denoising"><span class="xref myst">denoise a series of images</span></a>.</p>
+Addition can also be used to <a class="reference internal" href="../restoration/denoising.html#c-denoising"><span class="std std-ref">denoise a series of images</span></a>.</p>
 <figure class="align-default" id="f-intro-addition">
 <img alt="../_images/addition.svg" src="../_images/addition.svg" />
 <figcaption>
