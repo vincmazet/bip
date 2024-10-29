@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -471,69 +471,69 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="applications">
 <span id="binary-applications"></span><h1>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h1>
-<p>The four morphological tool seen above are the elementary operations for more complex processings.
-In this section, we just focus on some specific processings,
+<p>The four morphological tools seen above are the elementary operations for more complex processing.
+In this section, we focus on some specific processings,
 others are given by <a class="reference internal" href="outro.html#b-binary-bloch2005"><span class="std std-ref">[Bloch 2005, chapter 6]</span></a>.</p>
 <section id="top-hat-transform">
-<h2>Top-hat transform<a class="headerlink" href="#top-hat-transform" title="Link to this heading">#</a></h2>
+<span id="c-binary-top-hat-transform"></span><h2>Top-hat transform<a class="headerlink" href="#top-hat-transform" title="Link to this heading">#</a></h2>
 <p>The top-hat transformation (French: <em>transformée du chapeau haut-de-forme</em>) keeps in the image only the objects that are narrower than the structuring element.
 There are two dual top-hat transforms:</p>
 <ul>
-<li><p>the white top-hat transform is defined as the difference between the image <span class="math notranslate nohighlight">\(I\)</span> and its opening by the structuring element <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<li><p>The white top-hat transform is defined as the difference between the image <span class="math notranslate nohighlight">\(I\)</span> and its opening by the structuring element <span class="math notranslate nohighlight">\(E\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
   T_w = I \setminus I \circ E
   \]</div>
 <p>(where <span class="math notranslate nohighlight">\(\setminus\)</span> is the set subtraction).</p>
 </li>
-<li><p>the black top-hat transform is defined as the difference between the closing by the structuring element <span class="math notranslate nohighlight">\(E\)</span> and the image:</p>
+<li><p>The black top-hat transform is defined as the difference between the closing by the structuring element <span class="math notranslate nohighlight">\(E\)</span> and the image:</p>
 <div class="math notranslate nohighlight">
 \[
   T_b = I \bullet E - I.
   \]</div>
 </li>
 </ul>
-<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 87</span></a> shows the effect
+<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 88</span></a> shows the effect
 of a white top-hat transform (only the white objects narrower than the structuring element are kept)
 and a black top-hat transform (only the black objects narrower than the structuring element are kept).
-Look that the structuring element, present in the original image, is not kept because it is not narrower as itself.
-The results also show lots of very small artifacts that can be easily removed by discarding the objects whose size is lower than a predefined threshold.</p>
+Note that the structuring element, present in the original image, is not kept because it is not narrower than itself.
+The results also show many of very small artifacts that can be easily removed by discarding the objects whose size is smaller than a predefined threshold.</p>
 <figure class="align-default" id="f-binary-top-hat">
 <a class="reference internal image-reference" href="../_images/top-hat.svg"><img alt="../_images/top-hat.svg" src="../_images/top-hat.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk or radius 3 pixels as structuring element
-(the latter is visible in the bottom-right corner in the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk of radius 3 pixels as structuring element
+(the latter is visible in the bottom-right corner of the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="granulometry">
-<h2>Granulometry<a class="headerlink" href="#granulometry" title="Link to this heading">#</a></h2>
-<p>Granulometry (French: <em>granulométrie</em>) is an approach that successively select particles of given increasing sizes in a binary image.
+<span id="c-binary-granulometry"></span><h2>Granulometry<a class="headerlink" href="#granulometry" title="Link to this heading">#</a></h2>
+<p>Granulometry (French: <em>granulométrie</em>) is an approach that successively selects particles of increasing sizes in a binary image.
 It consists of successive openings of an image <span class="math notranslate nohighlight">\(I\)</span> by a sequence of structural elements <span class="math notranslate nohighlight">\(E_k\)</span> of increasing size
 (usually, <span class="math notranslate nohighlight">\(E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}\)</span>) where <span class="math notranslate nohighlight">\(E\)</span> is a disk).</p>
-<p>At each stage of opening, the finer details are successively eliminated, and the are of the image is reduced
+<p>At each stage of opening, the finer details are successively eliminated, and the area of the image is reduced
 (the area is the total number of pixels in the objects.).</p>
-<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 89</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 88</span></a> by openings with a disk of different sizes.
+<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 90</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 89</span></a> by openings with a disk of different sizes.
 When the size of the opening corresponds to the characteristic size of most objects, a jump appears in the curve.</p>
 <figure class="align-default" id="f-binary-granulometry-images">
 <a class="reference internal image-reference" href="../_images/granulometry-images.svg"><img alt="../_images/granulometry-images.svg" src="../_images/granulometry-images.svg" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-binary-granulometry-plot">
 <a class="reference internal image-reference" href="../_images/granulometry-plot.svg"><img alt="../_images/granulometry-plot.svg" src="../_images/granulometry-plot.svg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="hit-or-miss-transform">
-<span id="mm-hit-or-miss"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Link to this heading">#</a></h2>
+<span id="c-binary-hit-or-miss-transform"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Link to this heading">#</a></h2>
 <p>The hit-or-miss transform (French: <em>transformée tout-ou-rien</em>) is used to detect objects of a particular shape.
-Contrary to the transformations seen so far, the hi-or-miss transform examines configurations where certain pixels verify a relationship with the object
+Contrary to the transformations seen so far, the hit-or-miss transform examines configurations where certain pixels verify a relationship with the object
 and others verify a relationship with the complement of the object.
-Thus the structuring element <span class="math notranslate nohighlight">\(E\)</span> of this transformation is composed of two elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> (disjointed but with same origin).</p>
+Thus the structuring element <span class="math notranslate nohighlight">\(E\)</span> of this transformation is composed of two elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> (disjoint but with the same origin).</p>
 <p>The result of the hit-or-miss transform is the intersection of the two sets given by:</p>
 <ul class="simple">
 <li><p>the erosion of the image by <span class="math notranslate nohighlight">\(E_1\)</span>: <span class="math notranslate nohighlight">\(I \ominus E_1\)</span>,</p></li>
@@ -549,7 +549,7 @@ Thus the structuring element <span class="math notranslate nohighlight">\(E\)</s
 <figure class="align-default" id="f-binary-hit-or-miss">
 <img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
 The origin of the structuring elements are marked by the blue dot.</span><a class="headerlink" href="#f-binary-hit-or-miss" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
@@ -567,7 +567,31 @@ $$
     -1 &  1 &  1 & -1 \\
     -1 & -1 & -1 & -1
   \end{pmatrix}
-$$ --><!-- ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:
+$$ --></section>
+<section id="skeleton">
+<span id="c-binary-skeleton"></span><h2>Skeleton<a class="headerlink" href="#skeleton" title="Link to this heading">#</a></h2>
+<p>The skeleton (French: <em>squelette</em>) is a useful notion in pattern recognition:
+it is a “compact” form of the objects (thin lines centered within the objects),
+with the same number of connected components and the same number of holes.</p>
+<p>From a structuring element <span class="math notranslate nohighlight">\(E\)</span>, let us define <span class="math notranslate nohighlight">\(\forall k \in \mathbb{N}^*\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}
+\]</div>
+<!-- Lantuéjoul's formula -->
+<p>The skeleton <span class="math notranslate nohighlight">\(S(I)\)</span> of image <span class="math notranslate nohighlight">\(I\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+S(I) = \bigcup_{k \in \mathbb{N}^*}
+(I \ominus E_k) \setminus (I \ominus E_k) \circ E.
+\]</div>
+<figure class="align-default" id="f-binary-skeleton">
+<img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Skeleton of the image <span class="math notranslate nohighlight">\(I\)</span>.</span><a class="headerlink" href="#f-binary-skeleton" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:
 
 The thinning of $X$ by the structuring element $T=(T_1,T_2)$ is defined by:
 
@@ -597,30 +621,6 @@ There is a whole "alphabet" of structuring elements, called the Golay alphabet i
 – etc.
 
 We will see later that particular configurations make it possible to extract the skeleton of an object by thinning. --></section>
-<section id="skeleton">
-<h2>Skeleton<a class="headerlink" href="#skeleton" title="Link to this heading">#</a></h2>
-<p>The skeleton (French: <em>squelette</em>) is a useful notion in pattern recognition:
-it is a “compact” form of the objects (thin lines centered in the objects),
-with the same number of connected components and same number of holes.</p>
-<p>From a structuring element <span class="math notranslate nohighlight">\(E\)</span>, let define <span class="math notranslate nohighlight">\(\forall k \in \mathbb{N}^*\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}
-\]</div>
-<!-- Lantuéjoul's formula -->
-<p>The skeleton <span class="math notranslate nohighlight">\(S(I)\)</span> of image <span class="math notranslate nohighlight">\(I\)</span> is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-S(I) = \bigcup_{k \in \mathbb{N}^*}
-(I \ominus E_k) \setminus (I \ominus E_k) \circ E.
-\]</div>
-<figure class="align-default" id="f-binary-skeleton">
-<img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> Skeleton.</span><a class="headerlink" href="#f-binary-skeleton" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
 </section>
 
     <script type="text/x-thebe-config">

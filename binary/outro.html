@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -72,6 +72,8 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'binary/outro';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -466,53 +468,68 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <span id="binry-conclusion"></span><h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
-<!-- top-hat : intéressant en nv de gris pour identifier des objets sur fond non uniforme (cf https://en.wikipedia.org/wiki/Top-hat_transform) -->
-<!-- Mathematical morphology gathers operators that work on the form of objects.
-We have studied some operators applied to binary images, but there are extensions of these techniques to grayscale images.
-
-The results given by the four main operators on binary images are listed in the following table.
-
-````{list-table}
-:header-rows: 0
-:widths: 10 30
-
-* - ```{image} greece.png
-    ```
-  - **Original image**
-
-* - ```{image} greece-dilation.png
-    ```
-  - **Dilation** $\oplus$
-    * increases the size of objects (_e.g._ the islands are bigger)
-    * fills the small holes (_e.g._ the Gulf of Corinth
-      does not more exist after dilation)
-    * welds close objects (_e.g._ some islands are grouped into a larger island)
-
-* - ```{image} greece-erosion.png
-    ```
-  - **Erosion** $\ominus$
-    * decreases the size of objects (_e.g._ Crete is smaller)
-    * widens the holes (_e.g._ the Gulf of Corinth is bigger)
-    * separates the connected objects by a small bridge
-      (_e.g._ the Peloponnese and mainland Greece are now disconnected)
-    * removes small items (_e.g._ small islands have disappeared)
-
-* - ```{image} greece-opening.png
-    ```
-  - **Opening** $\circ$
-    * conserve the size of the objects (while they can be slightly distorted)
-    * removes small objects (_e.g._ small islands have disappeared)
-    * smoothes the contours (_e.g._ the coasts are no more jagged)
-
-* - ```{image} greece-closing.png
-    ```
-  - **Closing** $\bullet$
-    * conserve the size of the objects (while they can be slightly distorted)
-    * fills small holes (_e.g._ gulfs and lakes are removed)
-    * welds close shapes (_e.g._ some separated islands now form only one)
-````
-
-**En morphologie mathématique, les images sont binaires et vues comme des ensembles constitués d'un fond (représenté en noir) sur lequel se trouvent des objets (représentés en blanc).  Nous avons introduit la notion de connexité et de voisinage de pixel. Les opérations élémentaires de la morphologie mathématiques effectuent des opérations sur une image binaire à partir d'un élément structurant (qui correspond également à une image binaire, souvent de petite taille). Ces opérations sont l'érosion et la dilatation, qui, une fois combinée, crée deux autres opérations : l'ouverture et la fermeture. Enfin, des opérateurs plus complexes peuvent être créés : [lister les outils vus en cours]. Il existe des adaptations de la morphologie mathématique aux images à niveau de gris [donner réfs].** -->
+<p>Mathematical morphology is a collection of operators that deal with the shapes of objects.
+This chapter focused on some operators that apply to binary images, but there are extensions of these techniques to grayscale images.</p>
+<p>Binary images are seen as sets forming objects (represented in white) on a background (represented in black).
+We have introduced the notion of connectivity and pixel neighborhood.
+The four basic operators of mathematical morphology perform operations by using a (often small) binary image called structuring element.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><img alt="../_images/greece1.png" src="../_images/greece1.png" />
+</td>
+<td><p><strong>Original image</strong></p></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/greece-dilation.png" src="../_images/greece-dilation.png" />
+</td>
+<td><p><strong>Dilation</strong> <span class="math notranslate nohighlight">\(\oplus\)</span></p>
+<ul class="simple">
+<li><p>increases the size of objects (<em>e.g.</em> the islands are bigger)</p></li>
+<li><p>fills the small holes (<em>e.g.</em> the Gulf of Corinth
+no longer exist after dilation)</p></li>
+<li><p>welds close objects (<em>e.g.</em> some islands are grouped into a larger island)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/greece-erosion.png" src="../_images/greece-erosion.png" />
+</td>
+<td><p><strong>Erosion</strong> <span class="math notranslate nohighlight">\(\ominus\)</span></p>
+<ul class="simple">
+<li><p>decreases the size of objects (<em>e.g.</em> Crete is smaller)</p></li>
+<li><p>widens the holes (<em>e.g.</em> the Gulf of Corinth is bigger)</p></li>
+<li><p>separates the connected objects by a small bridge
+(<em>e.g.</em> the Peloponnese and mainland Greece are now disconnected)</p></li>
+<li><p>removes small items (<em>e.g.</em> small islands have disappeared)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/greece-opening.png" src="../_images/greece-opening.png" />
+</td>
+<td><p><strong>Opening</strong> <span class="math notranslate nohighlight">\(\circ\)</span></p>
+<ul class="simple">
+<li><p>conserve the size of the objects (while they can be slightly distorted)</p></li>
+<li><p>removes small objects (<em>e.g.</em> small islands have disappeared)</p></li>
+<li><p>smoothes the contours (<em>e.g.</em> the coasts are no more jagged)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/greece-closing.png" src="../_images/greece-closing.png" />
+</td>
+<td><p><strong>Closing</strong> <span class="math notranslate nohighlight">\(\bullet\)</span></p>
+<ul class="simple">
+<li><p>conserve the size of the objects (while they can be slightly distorted)</p></li>
+<li><p>fills small holes (<em>e.g.</em> gulfs and lakes are removed)</p></li>
+<li><p>welds close shapes (<em>e.g.</em> some separated islands now form only one)</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>By combining the basic operators, powerful tools can be defined.</p>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">

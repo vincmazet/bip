@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -456,38 +456,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <span id="binary-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<!-- ❌
-Image binaire = image avec des pixels blancs et noirs, notés 0 et 1.
-Notez que c'est parfois le résultat d'une segmentation, donc ce qu'on va voir ici ce sont aussi des techniques pour améliorer le résultat d'une segmentation.
-- il y a la MM qui va modifier l'image binaire en considérant celle-ci comme un des objets blancs sur un fond noir
-- des méthodes de calcul des objets (centroïde, aire, eccentricité...), [expliquer l'intérêt]
-- le calcul des moments, [expliquer l'intérêt]
-- 
-mais avant [le dire avant ?] on va définir des voisinages entre objets-->
-<!-- Dans le Jahne : quelques exos et interactivités -->
-<!-- 
-Mathematical morphology gathers several techniques that apply to binary images,
-the latter result for example from thresholding.
-The pixels in binary images take only two values: 0 or 1, true or false, white or black, etc.
-In this chapter, we consider that the images contain objects (represented by white pixels) on a background (black pixels),
-as in {numref}`mm:mickey`.
-
-```{figure} set-union.png
----
-name: mm:mickey
----
-Example of a binary image composed of an object (a famous mouse head) on a background.
-```
-
-The basic operators of mathematical morphology, namely [dilation](mm:dilation) and [erosion](mm:erosion) are first presented.
-The combination of these two operators allows the definition of new operators, namely [opening](mm:opening), [closing](mm:closing)
-and the [hit-or-miss transform](mm:hit-or-miss).
-A comparison of the operators is then presented.
-At last, we deal with [measuring the geometric characteristics](mm:measure) of binary objects.
-
-Before beginning, we need to introduce some basic notions.
-
-**Ce chapitre est un peu différent des autres cas il ne traite pas d'un problème de traitement d'images mais d'un outil. La morphologie mathématique est  [définition et historique]. Dans ce chapitre, nous commençons par présenter les deux opérations de base : l'érosion et la dilatation, et les opérations qui en découlent : l'ouverture et la fermeture. Nous terminons le chapitre sur des outils plus complexes, comme la transformée tout-ou-rien [continuer la liste si je rajoute des choses, comme la granulométrie, le squelette, l'aminicissement et l'épaississement, évt fonction distance...]** -->
+<p>A binary image is an image whose pixels take only two values, typically 0 and 1
+(but ​​it can be 0 or 255, False or True, black or white, etc.).
+A binary image can result from a segmentation, and the techniques presented in this chapter can help to improve the result.</p>
+<p>So, we consider that the images contain objects (represented by white pixels) on a background (black pixels),
+as in <a class="reference internal" href="#mm-mickey"><span class="std std-numref">Fig. 81</span></a>.</p>
+<figure class="align-default" id="mm-mickey">
+<img alt="../_images/set-union.png" src="../_images/set-union.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Example of a binary image composed of an object (a famous mouse head) on a background.</span><a class="headerlink" href="#mm-mickey" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>After a short section introducing the concepts of <a class="reference internal" href="neighborhood.html#c-binary-neighborhood"><span class="std std-ref">neighborhood and connectivity</span></a>,
+the basic operators of mathematical morphology (<a class="reference internal" href="mm.html#c-binary-dilation"><span class="std std-ref">dilation</span></a> and <a class="reference internal" href="mm.html#c-binary-erosion"><span class="std std-ref">erosion</span></a>,
+and their combination <a class="reference internal" href="mm.html#c-binary-opening"><span class="std std-ref">opening</span></a> and <a class="reference internal" href="mm.html#c-binary-closing"><span class="std std-ref">closing</span></a>) are presented.
+Multiple tools have been created from these operators, we focus on four of these tools:
+<a class="reference internal" href="applications.html#c-binary-top-hat-transform"><span class="std std-ref">top-hat transform</span></a>
+<a class="reference internal" href="applications.html#c-binary-granulometry"><span class="std std-ref">granulometry</span></a>
+<a class="reference internal" href="applications.html#c-binary-hit-or-miss-transform"><span class="std std-ref">hit-or-miss transform</span></a>
+and <a class="reference internal" href="applications.html#c-binary-skeleton"><span class="std std-ref">skeleton</span></a>.
+Finally, we deal with <a class="reference internal" href="#mm:measure"><span class="xref myst">measuring the geometric characteristics</span></a> of binary objects.</p>
 </section>
 
     <script type="text/x-thebe-config">
