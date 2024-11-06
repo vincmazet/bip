@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=59379676" />
@@ -487,9 +487,6 @@ document.write(`
 <p>The original image:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fd6a07a3c40&gt;
-</pre></div>
-</div>
 <img alt="../_images/a18b370c34ebdbc4adc50de6040d19747d8840d4479f0411eaf5588630d78747.png" src="../_images/a18b370c34ebdbc4adc50de6040d19747d8840d4479f0411eaf5588630d78747.png" />
 </div>
 </div>
@@ -520,7 +517,7 @@ Pb = \frac{1}{MN} \sum_{m,n} b(m,n)^2 = \sigma^2
 <p><strong>Warning:</strong> do not forget <code class="docutils literal notranslate"><span class="pre">clip=False</span></code> when using <code class="docutils literal notranslate"><span class="pre">skimage.util.random_noise</span></code>, in order to add a true Gaussian noise!</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/12f0b41af7e1264f6dd5ae76d23a50659ef01e1ecca8a99cb6d5e3b710e4cb2e.png" src="../_images/12f0b41af7e1264f6dd5ae76d23a50659ef01e1ecca8a99cb6d5e3b710e4cb2e.png" />
+<img alt="../_images/73766770bc8e6014d75de7c4ef4d8a8b7670478f5b712a181901803a19b8347a.png" src="../_images/73766770bc8e6014d75de7c4ef4d8a8b7670478f5b712a181901803a19b8347a.png" />
 </div>
 </div>
 <p>Note that the larger the SNR, the less visible the noise.
@@ -534,7 +531,7 @@ In addition, the noise becomes almost invisible beyond 30 dB, while it is very h
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/fc075976c28978c6c3fd2c665d677f345142adc79a18230df712bc60d3f19160.png" src="../_images/fc075976c28978c6c3fd2c665d677f345142adc79a18230df712bc60d3f19160.png" />
+<img alt="../_images/91996dd18f410f6f17bc8cfff6ad6b23763badd8ba0401c0739353e471087a94.png" src="../_images/91996dd18f410f6f17bc8cfff6ad6b23763badd8ba0401c0739353e471087a94.png" />
 </div>
 </div>
 <p>We observe that the mean filter reduces the noise, which is expected (have you tried a filter of size 1×1? What’s going on?).
@@ -549,7 +546,7 @@ As a consequence, the MSE evolves with the size <span class="math notranslate no
 To verify this hypothesis, we plot the values of the MSE with respect to <span class="math notranslate nohighlight">\(w\)</span>:</p>
 <div class="cell tag_remove-input tag_hide docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/1620be68ed4686f31b4a0ab030d07b9376742109c54ebd09045a033838ae3a3d.png" src="../_images/1620be68ed4686f31b4a0ab030d07b9376742109c54ebd09045a033838ae3a3d.png" />
+<img alt="../_images/4e073085a87f888ac2be65a585bd3168b9f7a5965f1af7e867fd0193f58ecb0b.png" src="../_images/4e073085a87f888ac2be65a585bd3168b9f7a5965f1af7e867fd0193f58ecb0b.png" />
 </div>
 </div>
 <p>As expected, the MSE change with respect of the filter size.
@@ -557,7 +554,7 @@ A compromise must be made between the noise reduction and the blurring.
 We observe that the curve has a minimum, it corresponds to the best choice for <span class="math notranslate nohighlight">\(w\)</span> (in terms of MSE).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.23e+01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for w = 9 and get an MSE = 8.21e+01
 </pre></div>
 </div>
 </div>
@@ -570,7 +567,7 @@ The value obtained here depends on the image (try with another image!).</p>
 <p>With the noisy image at SNR = 10 dB, we now carry out a denoising by TV regularization.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/205d741be23b7c1b3f50cad7d6fafa8a58f8bcd60bb2f77ac27ad0205c0825ce.png" src="../_images/205d741be23b7c1b3f50cad7d6fafa8a58f8bcd60bb2f77ac27ad0205c0825ce.png" />
+<img alt="../_images/e0aa386e48fee9666031556a4ba732d1276c8d4f1da2223e26eb3f8eafc3c201.png" src="../_images/e0aa386e48fee9666031556a4ba732d1276c8d4f1da2223e26eb3f8eafc3c201.png" />
 </div>
 </div>
 <p>As with the mean filter, we observe that the image is partially denoised (therefore the MSE will be better),
@@ -579,8 +576,8 @@ As previously, it should exist an optimal value of the regularization parameter 
 Let’s see if this denoising technique can surpass the mean filter…</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/f323741aab19d201f16634d7a92715e0d562a249b0ea4da587378b5cb1fbadbe.png" src="../_images/f323741aab19d201f16634d7a92715e0d562a249b0ea4da587378b5cb1fbadbe.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.54e+01
+<img alt="../_images/ce0afdb1fdf26b97e016a1ef427de7a0be74dc6a31c837019ffddc5a36c3d078.png" src="../_images/ce0afdb1fdf26b97e016a1ef427de7a0be74dc6a31c837019ffddc5a36c3d078.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best restoration is obtained for lambda = 45 and get an MSE = 6.51e+01
 </pre></div>
 </div>
 </div>
@@ -598,7 +595,7 @@ the best parameters for the two methods.</p>
 <p>Then we can represent the evolution of the MSE for the two methods:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/04e2ed0e752764145aa3a32646dfa10505829838abbc0c9c0ddf2ce9cf8cd4c4.png" src="../_images/04e2ed0e752764145aa3a32646dfa10505829838abbc0c9c0ddf2ce9cf8cd4c4.png" />
+<img alt="../_images/ebe617d35afc6c6e1f75afcba8e66f965c95ea047bfd985b089097d172b67501.png" src="../_images/ebe617d35afc6c6e1f75afcba8e66f965c95ea047bfd985b089097d172b67501.png" />
 </div>
 </div>
 <p>We observe that the MSE decreases with the SNR.
@@ -621,9 +618,9 @@ In fact, neither of the two methods gives a really satisfactory result (see belo
 
 On peut vérifier que ces conclusions sont en accord avec ce qu'on peut observer sur quelques exemples : --><div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/67b619be627eb5f39ed66a4cbd7a1bd5216a2c40f1e0721796cfeb4893e22e8a.png" src="../_images/67b619be627eb5f39ed66a4cbd7a1bd5216a2c40f1e0721796cfeb4893e22e8a.png" />
-<img alt="../_images/39d1bc8507684cff7b89f5d727a93f9c78207c1773674918218bbd180de140ee.png" src="../_images/39d1bc8507684cff7b89f5d727a93f9c78207c1773674918218bbd180de140ee.png" />
-<img alt="../_images/9407b5b81e1737bd4bf7895598c0025cccd18b0f37a367b71034b0a4399612cb.png" src="../_images/9407b5b81e1737bd4bf7895598c0025cccd18b0f37a367b71034b0a4399612cb.png" />
+<img alt="../_images/add4485e022cf8c99f97c26e0891cc1a972409742d5e7817f0eb209932d22a07.png" src="../_images/add4485e022cf8c99f97c26e0891cc1a972409742d5e7817f0eb209932d22a07.png" />
+<img alt="../_images/398d3f77f8187b37c2a9b162969f8c2efdcd6cecfa0c6aaf0e885ae05521d4c9.png" src="../_images/398d3f77f8187b37c2a9b162969f8c2efdcd6cecfa0c6aaf0e885ae05521d4c9.png" />
+<img alt="../_images/f877fd74d0dab91784efc8d3515182672ec14a55f20fbdd5a4c9d9d592e51954.png" src="../_images/f877fd74d0dab91784efc8d3515182672ec14a55f20fbdd5a4c9d9d592e51954.png" />
 </div>
 </div>
 <p>OK, we have the same conclusions as before.</p>

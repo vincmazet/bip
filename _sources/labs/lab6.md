@@ -5,8 +5,8 @@
 ## Denoising
 
 This exercise is intended to evaluate the performances of the denoising method of your choice.
-Therefore it is first essential to have an image corrupted by noise and the same image without noise (to compare the denoising method with the actual image).
-Then, the denoising method will be evaluated.
+Therefore it is essential to have an image corrupted by noise and the same image without noise
+to be able to compare the denoising method with the actual image.
 
 ### Creation of a noisy image
   
@@ -18,31 +18,31 @@ Then, the denoising method will be evaluated.
   the power of the noise is a good estimation of the variance of the Gaussian.
   Express the Gaussian variance $\sigma^2$ in terms of SNR.
 
-* Add noise to the image of your choice then check that the noise level corresponds to the expected SNR.
+* Add noise to the image of your choice by using `skimage.util.random_noise`
+  (with parameter `clip=False` to get a real Gaussian noise).
+
+  ```{note}
+  * Use a grayscale image (`skimage.color.rgb2gray`).
+  * For convenience, it is recommended to use an image of size less than 1000×1000. Use `skimage.transform.rescale` to reduce the image size.
+  * Be careful to work with `floats`. You may need to convert your image with `.astype(float)`.
+  ```
+
+* Check that the noise level corresponds to the expected SNR.
   For example, noise should be barely visible above 30 dB.
   On the contrary, the image should be difficult to discern below 0 dB.
 
-  ```{note}
-  * Be careful to work with `floats`. You may need to convert your image with `.astype(float)`.
-  * For convenience, it is recommended to use an image of size less than 1000×1000. Use `skimage.transform.rescale` to reduce the image size.
-  * Use a grayscale image (`skimage.color.rgb2gray`).
-  * the noise can be created by using `skimage.util.random_noise` with parameter `clip=False` to get a real Gaussian noise.
-  ```
 
 ### Denoising the noisy image
 
 Now that you dispose of a noisy image and its noiseless version,
-you can implement the denoising method you have chosen.
+you can implement the denoising method.
 
-If you choose a mean filter, use `scipy.ndimage.convolve` to filter by a square PSF of size `w` generated as follows:
+* Denoise the image with the chosen method:
 
-```
-h = np.ones((w,w)) / (w*w)
-```
-
-If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
-
-* Denoise the image with the chosen method.
+  * If you choose a mean filter, use `scipy.ndimage.convolve` to filter by a square PSF
+    `h = np.ones((w,w)) / (w*w)` of size `w`.
+    
+  * If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
 
 * Observe visually the effect of the parameter (size of the mean filter or regularization parameter) on the result, especially for extreme values.
 
@@ -79,7 +79,7 @@ If you choose TV regularization, use `skimage.restoration.denoise_tv_chambolle`.
   ```
   
 * Perform the convolution of $x$ by $h$ to obtain the image $y$.
-  To do this, use the function `scipy.ndimage.filters.convolve` with the argument `mode="wrap"` so that the convolution is circular.
+  To do this, use the function `scipy.ndimage.convolve` with the argument `mode="wrap"` so that the convolution is circular.
   
 * Apply the inverse filter on $y$ to get an estimate $\widehat{x} $ of $x$.
   What do you see?
