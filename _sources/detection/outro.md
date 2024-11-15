@@ -1,18 +1,14 @@
 # Conclusion
 
-We have seen in that chapter that methods for finding features are very different and depend on the seeking feature.
-* For edges, usual methods are essentially a filtering using the gradient or the Laplacian
-  (Roberts or Prewitt filters, Sobel or Canny detectors).
-* For corners, the dedicated methods analyze the variation in intensity in the neighbourhood of the pixels (Moravec and Harris detectors).
-* For lines and circles, the image is represented in the space of the parameters of the geometric shape (Hough transform).
+This chapter has introduced the common methods of feature detection:
+* cross-correlation for detecting perfectly known patterns;
+* Canny detector for detecting lines (based on the image gradient);
+* Harris detector for detecting corners (based on the intensity variations in the pixel neighborhood);
+* Hough transform for detecting lines or circles (by transforming the image into a parameter space).
 
 <!-- Parler aussi de classification (dont réseaux de neurones), qui sont utilisées sur des features -->
 
 <!-- Rajouter ? SIFT, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
-
-
-
-
 
 
 ## References
@@ -22,7 +18,7 @@ We have seen in that chapter that methods for finding features are very differen
 * (B:detection:Canny1986)=
   J. Canny,
   "A Computational Approach To Edge Detection",
-  _IEEE Transactions on Pattern Analysis and Machine Intelligence}_, vol.8, 1986.
+  _IEEE Transactions on Pattern Analysis and Machine Intelligence}_, vol. 8, 1986.
   
 * (B:detection:Harris1988)=
   C. Harris and M. Stephens
