@@ -6,77 +6,72 @@ Pronounce Hough as "[huff](https://www.google.com/search?q=pronounce+hough+trans
 (see [discussion](https://groups.google.com/g/sci.image.processing/c/yvgEDLPcQww?pli=1)).
 ```
 
-Line detection consists of detecting alignments of points on an image of contours.
+Line detection consists of detecting alignments of points in an image of contours.
 The usual method for line detection is the Hough transform [[Hough 1962](B:detection:Hough1962)].
-Like the Fourier transform, it transposes the image from the spatial domain to another domain,
-where the information of interest is represented differently.
-In this case, the lines in the spatial domain are transformed into points in the Hough domain.
-
-The Hough transform is not restricted to lines and can be used to detect any shape with a mathematical parameterization.
-The working process remains the same as for line detection, so the sequel focuses on line detection only.
+Like the Fourier transform, it transposes the image from the spatial space to another space,
+where the information of interest is represented differently:
+the lines in the spatial space are transformed into points in the Hough space.
 
 
 ## First parameterization
 
-In the spatial domain $(x,y)$, a line is parameterized by its coefficients $a$ and $b$:
+In the spatial space $(x,y)$, a line is parameterized by its coefficients $a$ and $b$,
+giving the equation $y = a x + b$.
+Thus, any line can be identified by the pair $(a,b)$.
+This is Hough's idea: each line of the image can be represented by a point in the Hough space $(a,b)$.
+The Hough space is then called the parameter space.
 
-$$
-y = a x + b.
-$$
 
-Thus, any line can be represented by the pair $(a,b)$.
-This is Hough's idea: each line of the image can be represented by a point in the Hough domain $(a,b)$.
-The Hough domain is also called the parameter space.
-
-```{figure} hough-1.png
+```{figure} hough-ab-0.svg
 ---
-width: 450px
+width: 500px
 name: F:lines:hough-1
 ---
 The Hough transform transforms a line in the image into a point in the parameter space.
 ```
 
-Conversely, a point in the image is represented by a line in the parameter space (which has the equation $b = \alpha a + \beta$).
+Conversely, a point in the image is represented by a line in the parameter space.
 
-```{figure} hough-2.png
+```{figure} hough-ab-1.svg
 ---
-width: 450px
+width: 500px
 name: F:lines:hough-2
 
 ```
 In particular, a constant line $b=\beta$ in the parameter space corresponds to a point of abscissa $x=0$ in the image.
 
-```{figure} hough-3.png
+```{figure} hough-ab-2.svg
 ---
-width: 450px
+width: 500px
 name: F:lines:hough-3
 ```
 
-Finally, if several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
+If several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
 which defines the equation of the line connecting them.
 
-```{figure} hough-5.png
+```{figure} hough-ab-3.svg
 ---
-width: 450px
+width: 500px
 name: F:lines:hough-5
 ```
 
 On a computer, the parameter space is finite and discretized (it is called an "accumulator").
-Consequently, certain lines of the image cannot be represented there (_e.g._ a vertical line for which $a=\infty$).
-In consequence, another parameterization of lines needs to be used in practice.
+Consequently, certain lines of the image cannot be represented,
+such as a vertical line of slope $a=\infty$.
+In consequence, another parameterization needs to be used in practice.
 
 
 ## New parameterization
 
 To avoid the aforementioned problem of the parameterization space $(a,b)$, the lines are defined from two other parameters:
 * the distance $d$ of the segment connecting the origin with the point closest to the line (this segment is perpendicular to the line),
-* the angle $\theta$ that this segment makes with the x-axis.
+* the angle $\theta$ of this segment with the x-axis.
 
 Each line of the image is therefore parameterized by the pair $(\theta,d)$ which corresponds to a point in the parameter space $(\theta,d)$.
 
-```{figure} hough-50.png
+```{figure} hough-td-1.svg
 ---
-width: 450px
+width: 500px
 name: F:lines:houghnew
 ---
 New parameterization of the Hough transform.
@@ -86,7 +81,13 @@ New parameterization of the Hough transform.
 
 We can show that for each point $(x_i,y_i)$ of the image, a sinusoid of equation $d = x_i \cos(\theta) + y_i \sin(\theta)$
 is associated in the space $(\theta,d)$.
-The sinusoids corresponding to the points of the same line intersect at the point $(\theta^*,d^*)$ parameterizing this line.
+The sinusoids corresponding to the points of the same line intersect at a unique point in the parameter space.
+
+```{figure} hough-td-2.svg
+---
+width: 500px
+name: F:lines:hough-td-2
+```
 
 The Hough transform algorithm is as follows:
 
@@ -94,13 +95,12 @@ The Hough transform algorithm is as follows:
 :gutter: 3
 
 :::{grid-item-card} Algorithm: Hough transform
-1. Get the result of an edge detection
-1. Initialize an accumulator (as the discrete space of the parameters)
+1. Compute an edge detection of the image
+1. Initialize the accumulator (as the discrete space of the parameters)
 1. For each pixel in the edges:
    1. Determine the sinusoid corresponding to the points
    1. Increment the accumulator along this sinusoid
-1. Search for the maxima in the accumulator
-1. Deduce the line parameters
+1. Search for the maxima in the accumulator: they correspond to the parameters of the lines in the image
 :::
 
 ::::
@@ -128,9 +128,14 @@ Hough transform associated with the image on the left.
 
 Besides, it appears that the Hough transform is robust to noise and to occultation (it can detect partially covered objects)
 
-As said above, the Hough transform can be extended to any parameterized object (circles, ellipses, etc.).
+## Hough transform for other shapes
+
+The Hough transform is not restricted to lines and can be used to detect any shape that has a mathematical parameterization: circles, ellipses, etc.
+
+To detect other parametrized objectif with Hough transform,
+the parameter space has to be adapted to the mathematical parameterization.
 For example, a circle is parameterized by three parameters (the center coordinates and the radius),
 then the corresponding Hough space is three-dimensional.
 
-Because, the dimension of the accumulator is equal to the number of parameters,
-the main drawback of this method is that the computing time and the memory used quickly become significant.
+In consequence, as the dimension of the accumulator is equal to the number of parameters,
+the main drawback of this method is that the computing time and the memory used quickly become significant for some shapes.

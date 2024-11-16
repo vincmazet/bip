@@ -456,6 +456,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-parameterization">First parameterization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-parameterization">New parameterization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hough-transform-for-other-shapes">Hough transform for other shapes</a></li>
 </ul>
             </nav>
         </div>
@@ -474,56 +475,52 @@ document.write(`
 <p>Pronounce Hough as “<a class="reference external" href="https://www.google.com/search?q=pronounce+hough+transform">huff</a>”
 (see <a class="reference external" href="https://groups.google.com/g/sci.image.processing/c/yvgEDLPcQww?pli=1">discussion</a>).</p>
 </aside>
-<p>Line detection consists of detecting alignments of points on an image of contours.
+<p>Line detection consists of detecting alignments of points in an image of contours.
 The usual method for line detection is the Hough transform [<a class="reference internal" href="outro.html#b-detection-hough1962"><span class="std std-ref">Hough 1962</span></a>].
-Like the Fourier transform, it transposes the image from the spatial domain to another domain,
-where the information of interest is represented differently.
-In this case, the lines in the spatial domain are transformed into points in the Hough domain.</p>
-<p>The Hough transform is not restricted to lines and can be used to detect any shape with a mathematical parameterization.
-The working process remains the same as for line detection, so the sequel focuses on line detection only.</p>
+Like the Fourier transform, it transposes the image from the spatial space to another space,
+where the information of interest is represented differently:
+the lines in the spatial space are transformed into points in the Hough space.</p>
 <section id="first-parameterization">
 <h2>First parameterization<a class="headerlink" href="#first-parameterization" title="Link to this heading">#</a></h2>
-<p>In the spatial domain <span class="math notranslate nohighlight">\((x,y)\)</span>, a line is parameterized by its coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-y = a x + b.
-\]</div>
-<p>Thus, any line can be represented by the pair <span class="math notranslate nohighlight">\((a,b)\)</span>.
-This is Hough’s idea: each line of the image can be represented by a point in the Hough domain <span class="math notranslate nohighlight">\((a,b)\)</span>.
-The Hough domain is also called the parameter space.</p>
+<p>In the spatial space <span class="math notranslate nohighlight">\((x,y)\)</span>, a line is parameterized by its coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,
+giving the equation <span class="math notranslate nohighlight">\(y = a x + b\)</span>.
+Thus, any line can be identified by the pair <span class="math notranslate nohighlight">\((a,b)\)</span>.
+This is Hough’s idea: each line of the image can be represented by a point in the Hough space <span class="math notranslate nohighlight">\((a,b)\)</span>.
+The Hough space is then called the parameter space.</p>
 <figure class="align-default" id="f-lines-hough-1">
-<a class="reference internal image-reference" href="../_images/hough-1.png"><img alt="../_images/hough-1.png" src="../_images/hough-1.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-ab-0.svg"><img alt="../_images/hough-ab-0.svg" src="../_images/hough-ab-0.svg" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 125 </span><span class="caption-text">The Hough transform transforms a line in the image into a point in the parameter space.</span><a class="headerlink" href="#f-lines-hough-1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Conversely, a point in the image is represented by a line in the parameter space (which has the equation <span class="math notranslate nohighlight">\(b = \alpha a + \beta\)</span>).</p>
+<p>Conversely, a point in the image is represented by a line in the parameter space.</p>
 <figure class="align-default" id="f-lines-hough-2">
-<a class="reference internal image-reference" href="../_images/hough-2.png"><img alt="../_images/hough-2.png" src="../_images/hough-2.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-ab-1.svg"><img alt="../_images/hough-ab-1.svg" src="../_images/hough-ab-1.svg" style="width: 500px;" /></a>
 </figure>
 <p>In particular, a constant line <span class="math notranslate nohighlight">\(b=\beta\)</span> in the parameter space corresponds to a point of abscissa <span class="math notranslate nohighlight">\(x=0\)</span> in the image.</p>
 <figure class="align-default" id="f-lines-hough-3">
-<a class="reference internal image-reference" href="../_images/hough-3.png"><img alt="../_images/hough-3.png" src="../_images/hough-3.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-ab-2.svg"><img alt="../_images/hough-ab-2.svg" src="../_images/hough-ab-2.svg" style="width: 500px;" /></a>
 </figure>
-<p>Finally, if several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
+<p>If several points in the image are aligned, their respective lines in the parameter space intersect at a single point,
 which defines the equation of the line connecting them.</p>
 <figure class="align-default" id="f-lines-hough-5">
-<a class="reference internal image-reference" href="../_images/hough-5.png"><img alt="../_images/hough-5.png" src="../_images/hough-5.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-ab-3.svg"><img alt="../_images/hough-ab-3.svg" src="../_images/hough-ab-3.svg" style="width: 500px;" /></a>
 </figure>
 <p>On a computer, the parameter space is finite and discretized (it is called an “accumulator”).
-Consequently, certain lines of the image cannot be represented there (<em>e.g.</em> a vertical line for which <span class="math notranslate nohighlight">\(a=\infty\)</span>).
-In consequence, another parameterization of lines needs to be used in practice.</p>
+Consequently, certain lines of the image cannot be represented,
+such as a vertical line of slope <span class="math notranslate nohighlight">\(a=\infty\)</span>.
+In consequence, another parameterization needs to be used in practice.</p>
 </section>
 <section id="new-parameterization">
 <h2>New parameterization<a class="headerlink" href="#new-parameterization" title="Link to this heading">#</a></h2>
 <p>To avoid the aforementioned problem of the parameterization space <span class="math notranslate nohighlight">\((a,b)\)</span>, the lines are defined from two other parameters:</p>
 <ul class="simple">
 <li><p>the distance <span class="math notranslate nohighlight">\(d\)</span> of the segment connecting the origin with the point closest to the line (this segment is perpendicular to the line),</p></li>
-<li><p>the angle <span class="math notranslate nohighlight">\(\theta\)</span> that this segment makes with the x-axis.</p></li>
+<li><p>the angle <span class="math notranslate nohighlight">\(\theta\)</span> of this segment with the x-axis.</p></li>
 </ul>
 <p>Each line of the image is therefore parameterized by the pair <span class="math notranslate nohighlight">\((\theta,d)\)</span> which corresponds to a point in the parameter space <span class="math notranslate nohighlight">\((\theta,d)\)</span>.</p>
 <figure class="align-default" id="f-lines-houghnew">
-<a class="reference internal image-reference" href="../_images/hough-50.png"><img alt="../_images/hough-50.png" src="../_images/hough-50.png" style="width: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/hough-td-1.svg"><img alt="../_images/hough-td-1.svg" src="../_images/hough-td-1.svg" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 126 </span><span class="caption-text">New parameterization of the Hough transform.</span><a class="headerlink" href="#f-lines-houghnew" title="Link to this image">#</a></p>
 </figcaption>
@@ -531,7 +528,10 @@ In consequence, another parameterization of lines needs to be used in practice.<
 <!-- Equation de la droite paramétrée ainsi -->
 <p>We can show that for each point <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> of the image, a sinusoid of equation <span class="math notranslate nohighlight">\(d = x_i \cos(\theta) + y_i \sin(\theta)\)</span>
 is associated in the space <span class="math notranslate nohighlight">\((\theta,d)\)</span>.
-The sinusoids corresponding to the points of the same line intersect at the point <span class="math notranslate nohighlight">\((\theta^*,d^*)\)</span> parameterizing this line.</p>
+The sinusoids corresponding to the points of the same line intersect at a unique point in the parameter space.</p>
+<figure class="align-default" id="f-lines-hough-td-2">
+<a class="reference internal image-reference" href="../_images/hough-td-2.svg"><img alt="../_images/hough-td-2.svg" src="../_images/hough-td-2.svg" style="width: 500px;" /></a>
+</figure>
 <p>The Hough transform algorithm is as follows:</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
@@ -541,16 +541,15 @@ The sinusoids corresponding to the points of the same line intersect at the poin
 <div class="sd-card-title sd-font-weight-bold docutils">
 Algorithm: Hough transform</div>
 <ol class="arabic simple">
-<li><p class="sd-card-text">Get the result of an edge detection</p></li>
-<li><p class="sd-card-text">Initialize an accumulator (as the discrete space of the parameters)</p></li>
+<li><p class="sd-card-text">Compute an edge detection of the image</p></li>
+<li><p class="sd-card-text">Initialize the accumulator (as the discrete space of the parameters)</p></li>
 <li><p class="sd-card-text">For each pixel in the edges:</p>
 <ol class="arabic simple">
 <li><p class="sd-card-text">Determine the sinusoid corresponding to the points</p></li>
 <li><p class="sd-card-text">Increment the accumulator along this sinusoid</p></li>
 </ol>
 </li>
-<li><p class="sd-card-text">Search for the maxima in the accumulator</p></li>
-<li><p class="sd-card-text">Deduce the line parameters</p></li>
+<li><p class="sd-card-text">Search for the maxima in the accumulator: they correspond to the parameters of the lines in the image</p></li>
 </ol>
 </div>
 </div>
@@ -574,11 +573,16 @@ The sinusoids intersect at four (very bright) points, each one is associated wit
 </figure>
 <!-- Autre exemple : Léo Letouzey + Thomas Chabrier 2008 http://gepasud.upf.pf/images/documents/Letouzey/perso/hough.pdf -->
 <p>Besides, it appears that the Hough transform is robust to noise and to occultation (it can detect partially covered objects)</p>
-<p>As said above, the Hough transform can be extended to any parameterized object (circles, ellipses, etc.).
+</section>
+<section id="hough-transform-for-other-shapes">
+<h2>Hough transform for other shapes<a class="headerlink" href="#hough-transform-for-other-shapes" title="Link to this heading">#</a></h2>
+<p>The Hough transform is not restricted to lines and can be used to detect any shape that has a mathematical parameterization: circles, ellipses, etc.</p>
+<p>To detect other parametrized objectif with Hough transform,
+the parameter space has to be adapted to the mathematical parameterization.
 For example, a circle is parameterized by three parameters (the center coordinates and the radius),
 then the corresponding Hough space is three-dimensional.</p>
-<p>Because, the dimension of the accumulator is equal to the number of parameters,
-the main drawback of this method is that the computing time and the memory used quickly become significant.</p>
+<p>In consequence, as the dimension of the accumulator is equal to the number of parameters,
+the main drawback of this method is that the computing time and the memory used quickly become significant for some shapes.</p>
 </section>
 </section>
 
@@ -648,6 +652,7 @@ the main drawback of this method is that the computing time and the memory used 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-parameterization">First parameterization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-parameterization">New parameterization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hough-transform-for-other-shapes">Hough transform for other shapes</a></li>
 </ul>
   </nav></div>
 
