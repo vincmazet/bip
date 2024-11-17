@@ -482,14 +482,13 @@ There are two dual top-hat transforms:</p>
 <li><p>The white top-hat transform is defined as the difference between the image <span class="math notranslate nohighlight">\(I\)</span> and its opening by the structuring element <span class="math notranslate nohighlight">\(E\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-  T_w = I \setminus I \circ E
+  T_w = I \setminus I \circ E.
   \]</div>
-<p>(where <span class="math notranslate nohighlight">\(\setminus\)</span> is the set subtraction).</p>
 </li>
 <li><p>The black top-hat transform is defined as the difference between the closing by the structuring element <span class="math notranslate nohighlight">\(E\)</span> and the image:</p>
 <div class="math notranslate nohighlight">
 \[
-  T_b = I \bullet E - I.
+  T_b = I \bullet E \setminus I.
   \]</div>
 </li>
 </ul>

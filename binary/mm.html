@@ -486,9 +486,9 @@ In this course, we limit the presentation to binary images,
 therefore we consider that the objects in the image define a set of pixels.</p>
 <section id="set-operations">
 <h2>Set operations<a class="headerlink" href="#set-operations" title="Link to this heading">#</a></h2>
-<p>Consider <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> as two sets.</p>
+<p>Consider the two following sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
 <div class="sd-col sd-d-flex-column docutils">
 <p>Set <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <figure class="align-default">
@@ -503,24 +503,49 @@ therefore we consider that the objects in the image define a set of pixels.</p>
 </div>
 </div>
 </div>
+<p>Then we have the following operations.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Complement</label><div class="sd-tab-content docutils">
 <p>The <strong>complement</strong> of <span class="math notranslate nohighlight">\(A\)</span> is denoted <span class="math notranslate nohighlight">\(A^\mathrm{c}\)</span> and is the set of pixels that are not in <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[A^\mathrm{c} = \{p \notin A \}\]</div>
 <figure class="align-default">
 <img alt="../_images/set-complement.png" src="../_images/set-complement.png" />
 </figure>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Union</label><div class="sd-tab-content docutils">
 <p>The <strong>union</strong> <span class="math notranslate nohighlight">\(A \cup B\)</span> is the set of pixels present in <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> or both:</p>
 <div class="math notranslate nohighlight">
 \[A \cup B = \{p \in A \, \mathrm{or} \, p \in B \}\]</div>
 <figure class="align-default">
 <img alt="../_images/set-union.png" src="../_images/set-union.png" />
 </figure>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Intersection</label><div class="sd-tab-content docutils">
 <p>The <strong>intersection</strong> <span class="math notranslate nohighlight">\(A \cap B\)</span> is the set of pixels present simultaneously in <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[A \cap B = \{p \in A \, \mathrm{and} \, p \in B \}\]</div>
 <figure class="align-default">
 <img alt="../_images/set-intersection.png" src="../_images/set-intersection.png" />
 </figure>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Difference</label><div class="sd-tab-content docutils">
+<p>The <strong>(set) difference</strong> <span class="math notranslate nohighlight">\(A \setminus B\)</span> is the set of pixels present in <span class="math notranslate nohighlight">\(A\)</span> but not in <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[A \setminus B = \{ x \in A \, \mathrm{and} \, x \notin B \}\]</div>
+<figure class="align-default">
+<img alt="../_images/set-difference.png" src="../_images/set-difference.png" />
+</figure>
+</div>
+</div>
 </section>
 <section id="structuring-element">
 <h2>Structuring element<a class="headerlink" href="#structuring-element" title="Link to this heading">#</a></h2>
