@@ -59,7 +59,7 @@ Deconvolution needs a degradation model, thus having knowledge about both $h$ an
   <!-- développer le 1er exemple, notamment avec une illustration en astro -->
   <!-- 1er point : déconvolution naïve en l'absence de bruit dans une petite zone, essai--erreur, ..-->
 
-* Models for the noise have already been presented in chapter {ref}`denoising`.
+* Models for the noise have already been presented in chapter {ref}`C:denoising`.
 
 
 ## Inverse filter

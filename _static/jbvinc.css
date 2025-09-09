@@ -29,13 +29,7 @@ h3 {
 }
 
 span.pre {
-  /* background-color: #eee; */
-  /* padding: 1px 5px; */
-  /* border: 0; */
   color: var(--pst-color-text-base);
-  /* font-family: Menlo, Consolas, 'DejaVu Sans Mono', monospace; */
-  /* font-size: inherit; */
-  /* line-height: 1.3077 */
 }
 
 /* Légendes */
@@ -68,3 +62,6 @@ table p { margin-bottom: 0 }
 /* Liens */
 
 a {text-decoration: none;}
+
+a.btn {color: #fff;}
+a.btn:hover {color: #fff;}
