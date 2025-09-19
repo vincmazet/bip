@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Deconvolution &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'restoration/deconvolution';</script>
@@ -423,7 +416,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="deconvolution">
-<span id="c-deconvolution"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Link to this heading">#</a></h1>
+<span id="c-deconvolution"></span><h1>Deconvolution<a class="headerlink" href="#deconvolution" title="Permalink to this heading">#</a></h1>
 <p>Usually, images acquired by a vision system suffer from degradation that can be modelled as a convolution.
 For example, some images present a camera shake effect (<a class="reference internal" href="#f-deconvolution-example-motion"><span class="std std-numref">Fig. 101</span></a>)
 or a blur due to poor focus (<a class="reference internal" href="#f-deconvolution-example-blur"><span class="std std-numref">Fig. 102</span></a>).
@@ -431,13 +424,13 @@ The goal of deconvolution is to cancel the effect of a convolution.</p>
 <figure class="align-default" id="f-deconvolution-example-motion">
 <a class="reference internal image-reference" href="../_images/budapest2.jpg"><img alt="../_images/budapest2.jpg" src="../_images/budapest2.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">An example of motion blur (the parliament of Budapest shot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">An example of motion blur (the parliament of Budapest shot by a camera).</span><a class="headerlink" href="#f-deconvolution-example-motion" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-deconvolution-example-blur">
 <a class="reference internal image-reference" href="../_images/ganymede1.png"><img alt="../_images/ganymede1.png" src="../_images/ganymede1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Hubble’s view of Ganymede in 1996.</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Hubble’s view of Ganymede in 1996.</span><a class="headerlink" href="#f-deconvolution-example-blur" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- rosetta.jpg / Example of poor focus blur (Rosetta spacecraft last image). -->
@@ -456,7 +449,7 @@ We will consider only linear methods, thus deconvolution comes to filtering by <
 <figure class="align-default" id="f-deconvolution-model">
 <a class="reference internal image-reference" href="../_images/model-deconvolution.png"><img alt="../_images/model-deconvolution.png" src="../_images/model-deconvolution.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Deconvolution model.</span><a class="headerlink" href="#f-deconvolution-model" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">Deconvolution model.</span><a class="headerlink" href="#f-deconvolution-model" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Deconvolution needs a degradation model, thus having knowledge about both <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
@@ -474,7 +467,7 @@ these are called blind deconvolution methods (French: <em>déconvolution myope</
 <li><p>Models for the noise have already been presented in chapter <a class="reference internal" href="denoising.html#c-denoising"><span class="std std-ref">Denoising</span></a>.</p></li>
 </ul>
 <section id="inverse-filter">
-<h2>Inverse filter<a class="headerlink" href="#inverse-filter" title="Link to this heading">#</a></h2>
+<h2>Inverse filter<a class="headerlink" href="#inverse-filter" title="Permalink to this heading">#</a></h2>
 <p>The inverse filter is the simplest deconvolution method.
 Since the degradation is modelled <span class="math notranslate nohighlight">\(y = h*x + b\)</span>, then this equation becomes in the Fourier domain:</p>
 <div class="math notranslate nohighlight">
@@ -501,9 +494,8 @@ and thus get the deconvolved image:</p>
 <p>The result of the inverse filter applied on an image is given <a class="reference internal" href="#f-deconvolution-inverse-filter"><span class="std std-numref">Fig. 104</span></a>.
 The result is not usable, and yet the observed image is very little blurred with very little noise!</p>
 <figure class="align-default" id="f-deconvolution-inverse-filter">
-<img alt="../_images/inverse-filter.svg" src="../_images/inverse-filter.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Link to this image">#</a></p>
+<img alt="../_images/inverse-filter.svg" src="../_images/inverse-filter.svg" /><figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Result of the inverse filter.</span><a class="headerlink" href="#f-deconvolution-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The catastrophic result of the inverse filter is due to the fact of having considered the noise to be zero.
@@ -525,14 +517,13 @@ This is equivalent to truncating the result given by the inverse filter by cance
 The result of the deconvolution is much more acceptable, as shown by <a class="reference internal" href="#f-deconvolution-truncated-inverse-filter"><span class="std std-numref">Fig. 105</span></a>,
 although the result is still far from perfect (there are many variations in intensity around objects, such as tree trunks)…</p>
 <figure class="align-default" id="f-deconvolution-truncated-inverse-filter">
-<img alt="../_images/truncated-inverse-filter.svg" src="../_images/truncated-inverse-filter.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Result of the truncated inverse filter with very small noise.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Link to this image">#</a></p>
+<img alt="../_images/truncated-inverse-filter.svg" src="../_images/truncated-inverse-filter.svg" /><figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Result of the truncated inverse filter with very small noise.</span><a class="headerlink" href="#f-deconvolution-truncated-inverse-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="wiener-filter">
-<h2>Wiener Filter<a class="headerlink" href="#wiener-filter" title="Link to this heading">#</a></h2>
+<h2>Wiener Filter<a class="headerlink" href="#wiener-filter" title="Permalink to this heading">#</a></h2>
 <p>Wiener filter, denoted by <span class="math notranslate nohighlight">\(g\)</span> (with Fourier transform <span class="math notranslate nohighlight">\(G\)</span>), applies to the observation <span class="math notranslate nohighlight">\(y\)</span> such that:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -621,10 +612,9 @@ since the inverse filter tends towards 0,</p></li>
 <p>The result of Wiener filter is presented <a class="reference internal" href="#f-deconvolution-wiener-filter"><span class="std std-numref">Fig. 106</span></a>:
 it is clearly much better than the inverse filter, even its truncated version!</p>
 <figure class="align-default" id="f-deconvolution-wiener-filter">
-<img alt="../_images/wiener-filter.svg" src="../_images/wiener-filter.svg" />
-<figcaption>
+<img alt="../_images/wiener-filter.svg" src="../_images/wiener-filter.svg" /><figcaption>
 <p><span class="caption-number">Fig. 106 </span><span class="caption-text">Result of Wiener filter
-(<span class="math notranslate nohighlight">\(\lambda\)</span> is set so that the estimation is the best in terms of MSE).</span><a class="headerlink" href="#f-deconvolution-wiener-filter" title="Link to this image">#</a></p>
+(<span class="math notranslate nohighlight">\(\lambda\)</span> is set so that the estimation is the best in terms of MSE).</span><a class="headerlink" href="#f-deconvolution-wiener-filter" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Cela dit, il n'est pas juste de comparer ces deux méthodes sur la {numref}`F:deconvolution:wiener`,

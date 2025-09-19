@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Edge detection &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'detection/edges';</script>
@@ -437,18 +430,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="edge-detection">
-<span id="c-edge-detection"></span><h1>Edge detection<a class="headerlink" href="#edge-detection" title="Link to this heading">#</a></h1>
+<span id="c-edge-detection"></span><h1>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h1>
 <p>An edge (French: <em>contour</em>) in an image is the frontier that delimits two objects.
 Therefore, edge detection is useful for identifying or measuring objects, or segmenting the image.</p>
 <section id="the-advantage-of-using-the-derivatives">
-<h2>The advantage of using the derivatives<a class="headerlink" href="#the-advantage-of-using-the-derivatives" title="Link to this heading">#</a></h2>
+<h2>The advantage of using the derivatives<a class="headerlink" href="#the-advantage-of-using-the-derivatives" title="Permalink to this heading">#</a></h2>
 <p>Edges are characterized by a rapid variation in the intensity of the pixels.
 <a class="reference internal" href="#f-detection-profile"><span class="std std-numref">Fig. 109</span></a> represents the brightness profile along a horizontal line in the image.
 One clearly sees that the outline of the industrial piece shows a sudden decrease in the brightness of the pixels.</p>
 <figure class="align-default" id="f-detection-profile">
-<a class="reference internal image-reference" href="../_images/edges-profile.svg"><img alt="../_images/edges-profile.svg" src="../_images/edges-profile.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/edges-profile.svg"><img alt="../_images/edges-profile.svg" src="../_images/edges-profile.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 109 </span><span class="caption-text">An image and the luminosity profile on it.</span><a class="headerlink" href="#f-detection-profile" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">An image and the luminosity profile on it.</span><a class="headerlink" href="#f-detection-profile" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From this example, it appears that derivation is an efficient tool for highlighting the edges:
@@ -456,9 +449,9 @@ an edge can be detected by analyzing the first derivative of the intensity profi
 taken perpendicular to the edge.
 Similarly, an edge can be detected by determining the zero crossing of the second derivative.</p>
 <figure class="align-default" id="f-detection-derivatives">
-<a class="reference internal image-reference" href="../_images/edges-derivatives.svg"><img alt="../_images/edges-derivatives.svg" src="../_images/edges-derivatives.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/edges-derivatives.svg"><img alt="../_images/edges-derivatives.svg" src="../_images/edges-derivatives.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">The profile of <a class="reference internal" href="#f-detection-profile"><span class="std std-numref">Fig. 109</span></a> and its derivatives.</span><a class="headerlink" href="#f-detection-derivatives" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">The profile of <a class="reference internal" href="#f-detection-profile"><span class="std std-numref">Fig. 109</span></a> and its derivatives.</span><a class="headerlink" href="#f-detection-derivatives" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Because an image depends on two dimensions, the derivatives must be calculated according to the two axes.
@@ -484,7 +477,7 @@ In addition, the derivatives are discrete differences in the case of digital ima
 \end{split}\]</div>
 </section>
 <section id="gradient-operators">
-<h2>Gradient operators<a class="headerlink" href="#gradient-operators" title="Link to this heading">#</a></h2>
+<h2>Gradient operators<a class="headerlink" href="#gradient-operators" title="Permalink to this heading">#</a></h2>
 <p>Gradient operators are very simple methods for detecting edges.
 They use the first derivative and can be calculated using a convolution.
 Indeed, the first derivative along the <span class="math notranslate nohighlight">\(x\)</span> axis of an image <span class="math notranslate nohighlight">\(f\)</span> can be written as a convolution product:</p>
@@ -520,7 +513,7 @@ h_y =
 These two kernels are very the very basic gradient operators
 and, in practice, variants of them are used.</p>
 <section id="roberts-operators">
-<h3>Roberts operators<a class="headerlink" href="#roberts-operators" title="Link to this heading">#</a></h3>
+<h3>Roberts operators<a class="headerlink" href="#roberts-operators" title="Permalink to this heading">#</a></h3>
 <p>The Roberts operators are along the diagonals [<a class="reference internal" href="outro.html#b-detection-roberts1965"><span class="std std-ref">Roberts 1965</span></a>]:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -538,7 +531,7 @@ and, in practice, variants of them are used.</p>
 \end{split}\]</div>
 </section>
 <section id="prewitt-operators">
-<h3>Prewitt operators<a class="headerlink" href="#prewitt-operators" title="Link to this heading">#</a></h3>
+<h3>Prewitt operators<a class="headerlink" href="#prewitt-operators" title="Permalink to this heading">#</a></h3>
 <p>Another variant are the Prewitt operators [<a class="reference internal" href="outro.html#b-detection-prewitt1970"><span class="std std-ref">Prewitt 1970</span></a>]
 which deal with a kernel with an odd size:</p>
 <div class="math notranslate nohighlight">
@@ -559,7 +552,7 @@ which deal with a kernel with an odd size:</p>
 \end{split}\]</div>
 </section>
 <section id="sobel-operators">
-<span id="c-detection-sobel"></span><h3>Sobel operators<a class="headerlink" href="#sobel-operators" title="Link to this heading">#</a></h3>
+<span id="c-detection-sobel"></span><h3>Sobel operators<a class="headerlink" href="#sobel-operators" title="Permalink to this heading">#</a></h3>
 <p>Finally, the Sobel operators [<a class="reference internal" href="outro.html#b-detection-sobel1968"><span class="std std-ref">Sobel 1968</span></a>] are a smoothed version of the Prewitt operators.
 Indeed, the coefficients reproduce a convolution by a Gaussian filter,
 which tends to play the role of a mean filter to attenuate noise:</p>
@@ -586,14 +579,14 @@ The top edge is white because it corresponds to an edge from black to white.
 On the contrary, the bottom edge is black.
 On the other side, <span class="math notranslate nohighlight">\(h_y\)</span> detects vertical edges.</p>
 <figure class="align-default" id="f-detection-sobel-h-v">
-<a class="reference internal image-reference" href="../_images/sobel-h-v.svg"><img alt="../_images/sobel-h-v.svg" src="../_images/sobel-h-v.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-h-v.svg"><img alt="../_images/sobel-h-v.svg" src="../_images/sobel-h-v.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Horizontal and vertical Sobel operators.</span><a class="headerlink" href="#f-detection-sobel-h-v" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Horizontal and vertical Sobel operators.</span><a class="headerlink" href="#f-detection-sobel-h-v" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="magnitude-and-angle">
-<h3>Magnitude and angle<a class="headerlink" href="#magnitude-and-angle" title="Link to this heading">#</a></h3>
+<h3>Magnitude and angle<a class="headerlink" href="#magnitude-and-angle" title="Permalink to this heading">#</a></h3>
 <p>From the operators above, we also define:</p>
 <ul>
 <li><p>the magnitude of the edge, which can be interpreted as the “fusion” of the horizontal and vertical Sobel operators:</p>
@@ -613,27 +606,27 @@ For example, an angle of <span class="math notranslate nohighlight">\(0\)</span>
 </li>
 </ul>
 <figure class="align-default" id="f-detection-sobel-magnitude-angle">
-<a class="reference internal image-reference" href="../_images/sobel-magnitude-angle.svg"><img alt="../_images/sobel-magnitude-angle.svg" src="../_images/sobel-magnitude-angle.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-magnitude-angle.svg"><img alt="../_images/sobel-magnitude-angle.svg" src="../_images/sobel-magnitude-angle.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Magnitude and angle of the Sobel operator.</span><a class="headerlink" href="#f-detection-sobel-magnitude-angle" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Magnitude and angle of the Sobel operator.</span><a class="headerlink" href="#f-detection-sobel-magnitude-angle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="thresholding">
-<h3>Thresholding<a class="headerlink" href="#thresholding" title="Link to this heading">#</a></h3>
+<h3>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this heading">#</a></h3>
 <p>In some cases, it would be useful to detect the most important edges.
 To do that, one can threshold the magnitude to keep only the large values of the gradients.
 As you can see in <a class="reference internal" href="#f-detection-sobel-magnitude-threshold"><span class="std std-numref">Fig. 113</span></a>, the threshold makes the second hand disappear.
 Indeed, the magnitude is lower than other parts of the image because the second hand is gray and not black.</p>
 <figure class="align-default" id="f-detection-sobel-magnitude-threshold">
-<a class="reference internal image-reference" href="../_images/sobel-magnitude-threshold.svg"><img alt="../_images/sobel-magnitude-threshold.svg" src="../_images/sobel-magnitude-threshold.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/sobel-magnitude-threshold.svg"><img alt="../_images/sobel-magnitude-threshold.svg" src="../_images/sobel-magnitude-threshold.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Thresholding the magnitude of the Sobel operator makes the second hands disappear!</span><a class="headerlink" href="#f-detection-sobel-magnitude-threshold" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Thresholding the magnitude of the Sobel operator makes the second hands disappear!</span><a class="headerlink" href="#f-detection-sobel-magnitude-threshold" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="the-impact-of-noise">
-<h3>The impact of noise<a class="headerlink" href="#the-impact-of-noise" title="Link to this heading">#</a></h3>
+<h3>The impact of noise<a class="headerlink" href="#the-impact-of-noise" title="Permalink to this heading">#</a></h3>
 <p>Noise in an image essentially brings great variations in brightness between pixels.
 Therefore, the gradient operators is based on the derivative are very sensitive to the noise,
 as seen in <a class="reference internal" href="#f-detection-edges-derivatives-noise"><span class="std std-numref">Fig. 114</span></a>.
@@ -641,22 +634,22 @@ Then it may be useful to denoise the image before edge detection.
 In figure <a class="reference internal" href="#f-detection-edges-sobel-noise"><span class="std std-numref">Fig. 115</span></a>, a small mean filter is used before the Sobel filter:
 the result is much cleaner than without the use of the mean filter.</p>
 <figure class="align-default" id="f-detection-edges-derivatives-noise">
-<a class="reference internal image-reference" href="../_images/edges-derivatives-noise.svg"><img alt="../_images/edges-derivatives-noise.svg" src="../_images/edges-derivatives-noise.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/edges-derivatives-noise.svg"><img alt="../_images/edges-derivatives-noise.svg" src="../_images/edges-derivatives-noise.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 114 </span><span class="caption-text">Consequence of noise on the brightness profile and its derivatives
-(orange: non-noisy profiles, blue: noisy profiles).</span><a class="headerlink" href="#f-detection-edges-derivatives-noise" title="Link to this image">#</a></p>
+(orange: non-noisy profiles, blue: noisy profiles).</span><a class="headerlink" href="#f-detection-edges-derivatives-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-detection-edges-sobel-noise">
-<a class="reference internal image-reference" href="../_images/edges-sobel-noise.svg"><img alt="../_images/edges-sobel-noise.svg" src="../_images/edges-sobel-noise.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/edges-sobel-noise.svg"><img alt="../_images/edges-sobel-noise.svg" src="../_images/edges-sobel-noise.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Left: noisy image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a <span class="math notranslate nohighlight">\(3\times3\)</span> mean filter.</span><a class="headerlink" href="#f-detection-edges-sobel-noise" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Left: noisy image. Center: Sobel operator (magnitude). Right: Sobel operator applied on the result of a <span class="math notranslate nohighlight">\(3\times3\)</span> mean filter.</span><a class="headerlink" href="#f-detection-edges-sobel-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="advanced-methods">
-<h2>Advanced methods<a class="headerlink" href="#advanced-methods" title="Link to this heading">#</a></h2>
+<h2>Advanced methods<a class="headerlink" href="#advanced-methods" title="Permalink to this heading">#</a></h2>
 <p>Following the gradient operators, new methods have been proposed to improve edge detection
 by taking into account the noise and the nature of the edges:</p>
 <ul class="simple">
@@ -664,7 +657,7 @@ by taking into account the noise and the nature of the edges:</p>
 <li><p>the Canny detector [<a class="reference internal" href="outro.html#b-detection-canny1986"><span class="std std-ref">Canny 1986</span></a>].</p></li>
 </ul>
 <section id="marr-hildreth-detector">
-<h3>Marr-Hildreth Detector<a class="headerlink" href="#marr-hildreth-detector" title="Link to this heading">#</a></h3>
+<h3>Marr-Hildreth Detector<a class="headerlink" href="#marr-hildreth-detector" title="Permalink to this heading">#</a></h3>
 <!-- Hypotèses~:
   \item Un contour doit être détecté quelle que soit l'échelle de l'image \\
   \uncover<3>{=> le détecteur doit être réglable pour détecter les contours à une échelle particulière.}
@@ -685,29 +678,28 @@ Hence, the filter <span class="math notranslate nohighlight">\(\ell*g\)</span> i
 <p>The filter <span class="math notranslate nohighlight">\(\ell*g\)</span> is represented <a class="reference internal" href="#f-detection-log"><span class="std std-numref">Fig. 116</span></a>.
 It is also called “LoG” for Laplacian of Gaussian (no French equivalent) or Mexican hat (for the resemblance to a sombrero).</p>
 <figure class="align-default" id="f-detection-log">
-<a class="reference internal image-reference" href="../_images/log.svg"><img alt="../_images/log.svg" src="../_images/log.svg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/log.svg"><img alt="../_images/log.svg" src="../_images/log.svg" width="500px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Laplacian of Gaussian (left: as an image, right: profile along an axis).</span><a class="headerlink" href="#f-detection-log" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Laplacian of Gaussian (left: as an image, right: profile along an axis).</span><a class="headerlink" href="#f-detection-log" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Le LoG peut être approximé par une différence de deux gaussiennes. -->
 <p>The zero-crossings in the image resulting from the LoG convolution are given by searching for changes of sign in the intensity of two pixels.
 <a class="reference internal" href="#f-detection-marr-hildreth"><span class="std std-numref">Fig. 117</span></a> gives an example.</p>
 <figure class="align-default" id="f-detection-marr-hildreth">
-<img alt="../_images/moulinsart-marr-hildreth.svg" src="../_images/moulinsart-marr-hildreth.svg" />
-<figcaption>
+<img alt="../_images/moulinsart-marr-hildreth.svg" src="../_images/moulinsart-marr-hildreth.svg" /><figcaption>
 <p><span class="caption-number">Fig. 117 </span><span class="caption-text">Marr-Hildreth Detector.
 Left: original image,
 center: result of the LoG filter,
-right: detection of the zeros crossings.</span><a class="headerlink" href="#f-detection-marr-hildreth" title="Link to this image">#</a></p>
+right: detection of the zeros crossings.</span><a class="headerlink" href="#f-detection-marr-hildreth" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-detection-caramba">
-<a class="reference internal image-reference" href="../_images/caramba-marr-hildreth.svg"><img alt="../_images/caramba-marr-hildreth.svg" src="../_images/caramba-marr-hildreth.svg" style="width: 3px;" /></a>
+<a class="reference internal image-reference" href="../_images/caramba-marr-hildreth.svg"><img alt="../_images/caramba-marr-hildreth.svg" src="../_images/caramba-marr-hildreth.svg" width="3px" /></a>
 </figure>
 </section>
 <section id="canny-detector">
-<h3>Canny Detector<a class="headerlink" href="#canny-detector" title="Link to this heading">#</a></h3>
+<h3>Canny Detector<a class="headerlink" href="#canny-detector" title="Permalink to this heading">#</a></h3>
 <p>According to Canny, a good detector should serve the following purposes:</p>
 <ul class="simple">
 <li><p>all edges should be found,</p></li>
@@ -776,28 +768,26 @@ Two thresholds are therefore defined (<span class="math notranslate nohighlight"
 </ol>
 <p><a class="reference internal" href="#f-detection-canny"><span class="std std-numref">Fig. 118</span></a> gives an example of Canny edge detection.</p>
 <figure class="align-default" id="f-detection-canny">
-<a class="reference internal image-reference" href="../_images/moulinsart-canny.svg"><img alt="../_images/moulinsart-canny.svg" src="../_images/moulinsart-canny.svg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/moulinsart-canny.svg"><img alt="../_images/moulinsart-canny.svg" src="../_images/moulinsart-canny.svg" width="500px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Canny Detector.</span><a class="headerlink" href="#f-detection-canny" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Canny Detector.</span><a class="headerlink" href="#f-detection-canny" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="comparison">
-<h3>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h3>
+<h3>Comparison<a class="headerlink" href="#comparison" title="Permalink to this heading">#</a></h3>
 <p><a class="reference internal" href="#f-detection-sobel-marr-hildreth-canny"><span class="std std-numref">Fig. 119</span></a> shows the results of the Sobel, Marr-Hildreth and Canny detectors on an image.</p>
 <figure class="align-default" id="f-detection-sobel-marr-hildreth-canny">
-<img alt="../_images/sobel-marr-hildreth-canny.svg" src="../_images/sobel-marr-hildreth-canny.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Comparison of Sobel, Marr-Hildreth and Canny detectors.</span><a class="headerlink" href="#f-detection-sobel-marr-hildreth-canny" title="Link to this image">#</a></p>
+<img alt="../_images/sobel-marr-hildreth-canny.svg" src="../_images/sobel-marr-hildreth-canny.svg" /><figcaption>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Comparison of Sobel, Marr-Hildreth and Canny detectors.</span><a class="headerlink" href="#f-detection-sobel-marr-hildreth-canny" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In <a class="reference internal" href="#f-detection-marr-hildreth-canny"><span class="std std-numref">Fig. 120</span></a>, which compares Marr-Hildreth and Canny detectors,
 one can see that the edges detected with Canny detector are better localized.</p>
 <figure class="align-default" id="f-detection-marr-hildreth-canny">
-<img alt="../_images/marr-hildreth-canny.svg" src="../_images/marr-hildreth-canny.svg" />
-<figcaption>
+<img alt="../_images/marr-hildreth-canny.svg" src="../_images/marr-hildreth-canny.svg" /><figcaption>
 <p><span class="caption-number">Fig. 120 </span><span class="caption-text">Comparison between Marr-Hildreth and Canny detectors (zoom).
-The edges are shown in green.</span><a class="headerlink" href="#f-detection-marr-hildreth-canny" title="Link to this image">#</a></p>
+The edges are shown in green.</span><a class="headerlink" href="#f-detection-marr-hildreth-canny" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

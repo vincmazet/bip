@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Histogram &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/histogram';</script>
@@ -433,9 +426,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="histogram">
-<span id="c-digital-images-histogram"></span><h1>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h1>
+<span id="c-digital-images-histogram"></span><h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
 <p>The histogram (French: <em>histogramme</em>) may be the simplest tool for image processing; it can be seen on cameras and even some smartphones, when shooting.
 It depicts how the intensities of the pixels are distributed.
 It is the discrete function <span class="math notranslate nohighlight">\(h\)</span> such that</p>
@@ -451,9 +444,9 @@ in the example below, we choose 128 bins and 16 bins.
 Both histograms lie on <span class="math notranslate nohighlight">\([0,255]\)</span> which are the intensity range of the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Load the image</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../_static/figs/daisy.png&quot;</span><span class="p">,</span> <span class="n">as_gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
@@ -496,7 +489,7 @@ Both histograms lie on <span class="math notranslate nohighlight">\([0,255]\)</s
 The one on the left (intensities around 75) corresponds to the dark tones in the image (mainly the background).
 The one on the right (intensities around 180) corresponds to the light tones (the petals and the center).</p>
 <section id="some-remarks">
-<h3>Some remarks<a class="headerlink" href="#some-remarks" title="Link to this heading">#</a></h3>
+<h3>Some remarks<a class="headerlink" href="#some-remarks" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>If the histogram <span class="math notranslate nohighlight">\(h\)</span> is <em>normalized</em> (<em>i.e.</em> the bins are divided by the pixel number <span class="math notranslate nohighlight">\(M \times N\)</span>),
 then it can be seen as a discrete probability density function <span class="math notranslate nohighlight">\(p\)</span>:</p>
@@ -508,10 +501,9 @@ then it can be seen as a discrete probability density function <span class="math
 <li><p>The histogram gives a global information about the pixel intensities of an image but loses the spatial information in the image.
 In consequence, two different images can have the same histogram (cf. <a class="reference internal" href="#f-histogram-daisy-sorted"><span class="std std-numref">Fig. 23</span></a>).</p>
 <figure class="align-default" id="f-histogram-daisy-sorted">
-<img alt="../_images/daisy-sorted.svg" src="../_images/daisy-sorted.svg" />
-<figcaption>
+<img alt="../_images/daisy-sorted.svg" src="../_images/daisy-sorted.svg" /><figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">These two images have the same histogram.
-The image on the right actually corresponds to the pixels of the image on the left sorted with respect to their gray level.</span><a class="headerlink" href="#f-histogram-daisy-sorted" title="Link to this image">#</a></p>
+The image on the right actually corresponds to the pixels of the image on the left sorted with respect to their gray level.</span><a class="headerlink" href="#f-histogram-daisy-sorted" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -519,7 +511,7 @@ The image on the right actually corresponds to the pixels of the image on the le
 </section>
 </section>
 <section id="histogram-transformations">
-<span id="c-histogram-transformations"></span><h2>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Link to this heading">#</a></h2>
+<span id="c-histogram-transformations"></span><h2>Histogram transformations<a class="headerlink" href="#histogram-transformations" title="Permalink to this heading">#</a></h2>
 <p>A histogram transformation consists of applying a mathematical function to the intensity distribution.
 Generally, the transformations are useful to improve the visual quality of an image,
 but are rarely needed inside an automatic processing.</p>
@@ -530,44 +522,41 @@ but are rarely needed inside an automatic processing.</p>
 As a consequence, the histogram of the new image differs from the histogram of the original image.</p>
 <p>Below are some common transformations (we assume the pixel intensities to lie in <span class="math notranslate nohighlight">\([0,1]\)</span>).</p>
 <section id="negative-image">
-<h3>Negative image<a class="headerlink" href="#negative-image" title="Link to this heading">#</a></h3>
+<h3>Negative image<a class="headerlink" href="#negative-image" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[T(i) = 1-i\]</div>
 <figure class="align-default" id="f-histogram-negative">
-<img alt="../_images/negative.svg" src="../_images/negative.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Negative image: the gray levels are reversed.</span><a class="headerlink" href="#f-histogram-negative" title="Link to this image">#</a></p>
+<img alt="../_images/negative.svg" src="../_images/negative.svg" /><figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Negative image: the gray levels are reversed.</span><a class="headerlink" href="#f-histogram-negative" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="gamma-correction">
-<h3>Gamma correction<a class="headerlink" href="#gamma-correction" title="Link to this heading">#</a></h3>
+<h3>Gamma correction<a class="headerlink" href="#gamma-correction" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[T(i) = i^\gamma\]</div>
 <figure class="align-default" id="f-histogram-gamma">
-<img alt="../_images/gamma.svg" src="../_images/gamma.svg" />
-<figcaption>
+<img alt="../_images/gamma.svg" src="../_images/gamma.svg" /><figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Gamma correction modifies the coulors of an image acquired by an electronic system,
 it is used to take into account the non-linear sensibility of human eyes to the light.
-Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a class="headerlink" href="#f-histogram-gamma" title="Link to this image">#</a></p>
+Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a class="headerlink" href="#f-histogram-gamma" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="histogram-spreading">
-<h3>Histogram spreading<a class="headerlink" href="#histogram-spreading" title="Link to this heading">#</a></h3>
+<h3>Histogram spreading<a class="headerlink" href="#histogram-spreading" title="Permalink to this heading">#</a></h3>
 <p>(French: <em>étalement d’histogramme</em>)</p>
 <div class="math notranslate nohighlight">
 \[T(i) = \frac{i-i_\text{min}}{i_\text{max}-i_\text{min}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(i_\text{min}\)</span> and <span class="math notranslate nohighlight">\(i_\text{max}\)</span> are respectively the minimum and maximum intensities in the image.</p>
 <figure class="align-default" id="f-histogram-spread">
-<img alt="../_images/spreading.svg" src="../_images/spreading.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Histogram spreading enhances the contrast by “dilating” the histogram to the whole intensity interval.</span><a class="headerlink" href="#f-histogram-spread" title="Link to this image">#</a></p>
+<img alt="../_images/spreading.svg" src="../_images/spreading.svg" /><figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Histogram spreading enhances the contrast by “dilating” the histogram to the whole intensity interval.</span><a class="headerlink" href="#f-histogram-spread" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="histogram-equalization">
-<h3>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Link to this heading">#</a></h3>
+<h3>Histogram equalization<a class="headerlink" href="#histogram-equalization" title="Permalink to this heading">#</a></h3>
 <p>(French: <em>égalisation d’histogramme</em>)</p>
 <div class="math notranslate nohighlight">
 \[T(i) = \frac{1}{MN} \sum_{k=0}^i n_k\]</div>
@@ -578,14 +567,13 @@ It is a fully automatic method that does not require any parameters to be set.
 The demonstration of this equation is available in
 <a class="reference internal" href="outro.html#b-histogram-gonzalez2010"><span class="std std-ref">[Gonzalez 2010, section 3.3.1]</span></a>.</p>
 <figure class="align-default" id="f-histogram-equalization">
-<img alt="../_images/equalization.svg" src="../_images/equalization.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tends to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Link to this image">#</a></p>
+<img alt="../_images/equalization.svg" src="../_images/equalization.svg" /><figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tends to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="thresholding">
-<h3>Thresholding<a class="headerlink" href="#thresholding" title="Link to this heading">#</a></h3>
+<h3>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this heading">#</a></h3>
 <p>The histogram is sometimes very useful to segment the image in two classes,
 that is to distinguish the objects in the image with respect to their gray level.
 Indeed, if the histogram shows clearly two modes (<em>i.e.</em> two “bumps”),
@@ -595,9 +583,8 @@ a threshold <span class="math notranslate nohighlight">\(T\)</span> can be defin
 <li><p>otherwise, the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>).</p></li>
 </ul>
 <figure class="align-default" id="f-histogram-threshold">
-<img alt="../_images/thresholding.svg" src="../_images/thresholding.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Threshold with a threshold set to 0.45.</span><a class="headerlink" href="#f-histogram-threshold" title="Link to this image">#</a></p>
+<img alt="../_images/thresholding.svg" src="../_images/thresholding.svg" /><figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Threshold with a threshold set to 0.45.</span><a class="headerlink" href="#f-histogram-threshold" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Such a thresholding yields a binary image whose pixels have only two values.

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>How to evaluate a segmentation? &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'segmentation/evaluation';</script>
@@ -412,7 +405,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-evaluate-a-segmentation">
-<h1>How to evaluate a segmentation?<a class="headerlink" href="#how-to-evaluate-a-segmentation" title="Link to this heading">#</a></h1>
+<h1>How to evaluate a segmentation?<a class="headerlink" href="#how-to-evaluate-a-segmentation" title="Permalink to this heading">#</a></h1>
 <p>This chapter has introduced the usual methods of segmentation, but there are many more!
 No method is the best because the result depends, among other things, on the image itself.
 Consequently, it is interesting to evaluate, for the type of image to process, the quality of the segmentation.
@@ -422,7 +415,7 @@ In addition to the image to be segmented, we also need the expected result, whic
 <figure class="align-default" id="f-segmentation-eval-gt-est">
 <a class="reference internal image-reference" href="../_images/segmentation-eval-gt-est.png"><img alt="../_images/segmentation-eval-gt-est.png" src="../_images/segmentation-eval-gt-est.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Ground truth <span class="math notranslate nohighlight">\(f^*\)</span> (left) and segmentation <span class="math notranslate nohighlight">\(f\)</span> (right).</span><a class="headerlink" href="#f-segmentation-eval-gt-est" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Ground truth <span class="math notranslate nohighlight">\(f^*\)</span> (left) and segmentation <span class="math notranslate nohighlight">\(f\)</span> (right).</span><a class="headerlink" href="#f-segmentation-eval-gt-est" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Each image has two areas: the segmented object (shown in white) and the background (in black).
@@ -440,7 +433,7 @@ So, we can define four types of zones (cf. <a class="reference internal" href="#
 <figure class="align-default" id="f-segmentation-eval-zones">
 <a class="reference internal image-reference" href="../_images/eval-zones.png"><img alt="../_images/eval-zones.png" src="../_images/eval-zones.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Definition of true positive (TP), false positive (FP), true negative (VN) and false negative (FN).</span><a class="headerlink" href="#f-segmentation-eval-zones" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Definition of true positive (TP), false positive (FP), true negative (VN) and false negative (FN).</span><a class="headerlink" href="#f-segmentation-eval-zones" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From these four quantities, one or the other of the criteria below can be used.</p>

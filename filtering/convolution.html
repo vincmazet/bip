@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Convolution &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filtering/convolution';</script>
@@ -425,9 +418,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolution">
-<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h1>
+<span id="filtering-convolution"></span><h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
 <p>Many image processing results come from a modification of one pixel with respect to its neighbors.
 When this modification is similar in the entire image <span class="math notranslate nohighlight">\(g\)</span>,
 it can be mathematically defined using a second image <span class="math notranslate nohighlight">\(h\)</span> which defines the neighbor relationships.
@@ -443,7 +436,7 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 <figure class="align-default" id="f-convolution-sketch">
 <img alt="../_images/convolution.png" src="../_images/convolution.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For the sake of simplicity, the image <span class="math notranslate nohighlight">\(h\)</span> is often:</p>
@@ -459,9 +452,8 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 <label class="sd-tab-label" for="sd-tab-item-0">
 Example 1</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example1">
-<img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Link to this image">#</a></p>
+<img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image composed of only four non-zero pixels.
@@ -476,9 +468,8 @@ Notice that the “spreading” of the two nearby pixels adds up, thus giving a 
 <label class="sd-tab-label" for="sd-tab-item-1">
 Example 2</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example2">
-<img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Link to this image">#</a></p>
+<img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here, each pixel of <span class="math notranslate nohighlight">\(g\)</span> appears twice in <span class="math notranslate nohighlight">\(f\)</span>:
@@ -490,9 +481,8 @@ the result corresponds to the two unique pixels of <span class="math notranslate
 <label class="sd-tab-label" for="sd-tab-item-2">
 Example 3</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example3">
-<img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Link to this image">#</a></p>
+<img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" /><figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
@@ -503,7 +493,7 @@ We will see in <a class="reference internal" href="filtering.html#filtering-filt
 </div>
 </section>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
 <p>As a mathematical operation, the convolution has several properties.</p>
 <ul class="simple">
 <li><p>The neutral element of convolution is an image filled with zeros but the pixel at the center equals 1.</p></li>
@@ -518,22 +508,20 @@ We will see in <a class="reference internal" href="filtering.html#filtering-filt
 </ul>
 </section>
 <section id="boundaries-effects">
-<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Link to this heading">#</a></h2>
+<span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this heading">#</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
 as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
 <p>Therefore, one has to make assumptions about the pixel values outside the image.
 <a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 33</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> shows the convolution of these images by a Gaussian.</p>
 <figure class="align-default" id="f-convolution-boundaries-hypotheses">
-<img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" />
-<figcaption>
+<img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" /><figcaption>
 <p><span class="caption-number">Fig. 33 </span><span class="caption-text">Several ways to assume the pixels outside the image.
-The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Link to this image">#</a></p>
+The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-convolution-boundaries-results">
-<img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Link to this image">#</a></p>
+<img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" /><figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> that the three convolutions are basically identical:
@@ -544,7 +532,7 @@ Also, the best thing is to ensure when acquiring the image that the objects of i
 This is also the result given by a multiplication in the Fourier domain (see <a class="reference internal" href="fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>).</p>
 </section>
 <section id="separable-convolution">
-<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Link to this heading">#</a></h2>
+<h2>Separable Convolution<a class="headerlink" href="#separable-convolution" title="Permalink to this heading">#</a></h2>
 <p>A separable convolution is when the convolution kernel <span class="math notranslate nohighlight">\(h\)</span> can be written as the convolution of two 1D filters (say <span class="math notranslate nohighlight">\(h_1\)</span> and <span class="math notranslate nohighlight">\(h_2\)</span>) defined along the two axes.
 Let’s give an example:</p>
 <div class="math notranslate nohighlight">

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Filtering &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filtering/filtering';</script>
@@ -426,7 +419,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="filtering">
-<span id="filtering-filtering"></span><h1>Filtering<a class="headerlink" href="#filtering" title="Link to this heading">#</a></h1>
+<span id="filtering-filtering"></span><h1>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h1>
 <p>The operation of filtering consists of applying a convolution with a specific PSF on an image
 so as to modify the image, or to enhance some features, or to reduce some frequencies.</p>
 <p>In this section we will see some examples of filters.
@@ -434,7 +427,7 @@ First, we begin with common filters (blur, edge detection and sharpening) that a
 Then, we continue with two important families of filters: low-pass and high-pass filters,
 which are defined from considerations in the Fourier domain.</p>
 <section id="blur-filtering">
-<span id="c-filtering-blur-filter"></span><h2>Blur filtering<a class="headerlink" href="#blur-filtering" title="Link to this heading">#</a></h2>
+<span id="c-filtering-blur-filter"></span><h2>Blur filtering<a class="headerlink" href="#blur-filtering" title="Permalink to this heading">#</a></h2>
 <p>An example of blur filtering is given in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a>.
 Each pixel of the output image is a mean of the pixel intensities in a window in the original image.
 The PSF in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a> is very simple:</p>
@@ -450,14 +443,14 @@ h = \begin{bmatrix}
 \end{split}\]</div>
 <p>Other size, shape, and coefficients can be used in the PSF as long as it defines a (possibly weighted) mean.</p>
 <figure class="align-default" id="f-blur-filtering">
-<a class="reference internal image-reference" href="../_images/blur-filtering.svg"><img alt="../_images/blur-filtering.svg" src="../_images/blur-filtering.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/blur-filtering.svg"><img alt="../_images/blur-filtering.svg" height="200px" src="../_images/blur-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Blur filtering.</span><a class="headerlink" href="#f-blur-filtering" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Blur filtering.</span><a class="headerlink" href="#f-blur-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="edge-detection-filtering">
-<span id="c-filtering-edge-filter"></span><h2>Edge detection filtering<a class="headerlink" href="#edge-detection-filtering" title="Link to this heading">#</a></h2>
+<span id="c-filtering-edge-filter"></span><h2>Edge detection filtering<a class="headerlink" href="#edge-detection-filtering" title="Permalink to this heading">#</a></h2>
 <p>Edge detection consists of highlighting the borders of the “objects” in the image.
 This corresponds to compute the discrete derivatives of a pixel with its four neighbors,
 so that a specific pixel <span class="math notranslate nohighlight">\((x,y)\)</span> in the output image <span class="math notranslate nohighlight">\(f\)</span> is defined as (<span class="math notranslate nohighlight">\(g\)</span> is the original image):</p>
@@ -481,14 +474,14 @@ h = \begin{bmatrix}
 \end{split}\]</div>
 <p>The result is given in <a class="reference internal" href="#f-edge-filtering"><span class="std std-numref">Fig. 38</span></a>.</p>
 <figure class="align-default" id="f-edge-filtering">
-<a class="reference internal image-reference" href="../_images/edge-filtering.svg"><img alt="../_images/edge-filtering.svg" src="../_images/edge-filtering.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/edge-filtering.svg"><img alt="../_images/edge-filtering.svg" height="200px" src="../_images/edge-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Edge filtering.</span><a class="headerlink" href="#f-edge-filtering" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Edge filtering.</span><a class="headerlink" href="#f-edge-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="sharp-filtering">
-<h2>Sharp filtering<a class="headerlink" href="#sharp-filtering" title="Link to this heading">#</a></h2>
+<h2>Sharp filtering<a class="headerlink" href="#sharp-filtering" title="Permalink to this heading">#</a></h2>
 <p>Sharp filtering strenghtens the border in the image.
 Then it can be computed as the sum of the original image with an edge detection.
 This yields the following PSF and the output given in <a class="reference internal" href="#f-sharp-filtering"><span class="std std-numref">Fig. 39</span></a>.</p>
@@ -501,14 +494,14 @@ h = \begin{bmatrix}
 \end{bmatrix}
 \end{split}\]</div>
 <figure class="align-default" id="f-sharp-filtering">
-<a class="reference internal image-reference" href="../_images/sharp-filtering.svg"><img alt="../_images/sharp-filtering.svg" src="../_images/sharp-filtering.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/sharp-filtering.svg"><img alt="../_images/sharp-filtering.svg" height="200px" src="../_images/sharp-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Sharp filtering (or sharpening).</span><a class="headerlink" href="#f-sharp-filtering" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Sharp filtering (or sharpening).</span><a class="headerlink" href="#f-sharp-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="low-pass-filtering">
-<h2>Low-pass filtering<a class="headerlink" href="#low-pass-filtering" title="Link to this heading">#</a></h2>
+<h2>Low-pass filtering<a class="headerlink" href="#low-pass-filtering" title="Permalink to this heading">#</a></h2>
 <p>Because filtering is the convolution of an image with a specific PSF,
 it can also be achieved by multiplying the DFT of the image and the DFT of the PSF.
 Then it becomes possible to define the filter in the Fourier domain instead of the spatial domain.</p>
@@ -518,25 +511,25 @@ the second row shows the same information in the Fourier domain,
 where the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the PSF.</p>
 <p>Low-pass filtering preserves only the low frequencies, yielding a blurred image.</p>
 <figure class="align-default" id="f-lowpass-filtering">
-<a class="reference internal image-reference" href="../_images/lowpass-filtering.svg"><img alt="../_images/lowpass-filtering.svg" src="../_images/lowpass-filtering.svg" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/lowpass-filtering.svg"><img alt="../_images/lowpass-filtering.svg" height="400px" src="../_images/lowpass-filtering.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 40 </span><span class="caption-text">Example of low-pass filtering: only the low frequencies are kept.
 Top row: spatial domain, bottom row: amplitude of the DFT
-(the phase is not shown for brevity).</span><a class="headerlink" href="#f-lowpass-filtering" title="Link to this image">#</a></p>
+(the phase is not shown for brevity).</span><a class="headerlink" href="#f-lowpass-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Similarly, the <a class="reference internal" href="#c-filtering-blur-filter"><span class="std std-ref">blur filter</span></a> defined above is also a low-pass filter.</p>
 </section>
 <section id="high-pass-filtering">
-<h2>High-pass filtering<a class="headerlink" href="#high-pass-filtering" title="Link to this heading">#</a></h2>
+<h2>High-pass filtering<a class="headerlink" href="#high-pass-filtering" title="Permalink to this heading">#</a></h2>
 <p>Contrary to low-pass filtering, high-pass filtering preserves only the high frequencies,
 i.e. the sudden changes in the intensities (<a class="reference internal" href="#f-highpass-filtering"><span class="std std-numref">Fig. 41</span></a>).</p>
 <figure class="align-default" id="f-highpass-filtering">
-<a class="reference internal image-reference" href="../_images/highpass-filtering.svg"><img alt="../_images/highpass-filtering.svg" src="../_images/highpass-filtering.svg" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/highpass-filtering.svg"><img alt="../_images/highpass-filtering.svg" height="400px" src="../_images/highpass-filtering.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 41 </span><span class="caption-text">Example of high-pass filtering: only the high frequencies are kept.
 Top row: spatial domain, bottom row: amplitude of the DFT
-(the phase is not shown for brevity).</span><a class="headerlink" href="#f-highpass-filtering" title="Link to this image">#</a></p>
+(the phase is not shown for brevity).</span><a class="headerlink" href="#f-highpass-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Similarly, the <a class="reference internal" href="#c-filtering-edge-filter"><span class="std std-ref">edge detection</span></a> filter defined above is also a high-pass filter.</p>

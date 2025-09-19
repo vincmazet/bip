@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Histogram thresholding &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'segmentation/histogram';</script>
@@ -424,9 +417,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="histogram-thresholding">
-<h1>Histogram thresholding<a class="headerlink" href="#histogram-thresholding" title="Link to this heading">#</a></h1>
+<h1>Histogram thresholding<a class="headerlink" href="#histogram-thresholding" title="Permalink to this heading">#</a></h1>
 <section id="binary-thresholding">
-<h2>Binary thresholding<a class="headerlink" href="#binary-thresholding" title="Link to this heading">#</a></h2>
+<h2>Binary thresholding<a class="headerlink" href="#binary-thresholding" title="Permalink to this heading">#</a></h2>
 <p>A very simple method of segmentation consists in associating with each pixel of the image <span class="math notranslate nohighlight">\(f\)</span>
 a binary number which depends on the intensity of the pixels and on a threshold (French: <em>seuil</em>) <span class="math notranslate nohighlight">\(T\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -441,30 +434,28 @@ a binary number which depends on the intensity of the pixels and on a threshold 
 It gives a segmentation into two classes, depending on the intensity of the pixels of a grayscale image
 (<a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 61</span></a>).</p>
 <figure class="align-default" id="f-segmentation-binarization">
-<a class="reference internal image-reference" href="../_images/binarization.svg"><img alt="../_images/binarization.svg" src="../_images/binarization.svg" style="height: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/binarization.svg"><img alt="../_images/binarization.svg" height="300px" src="../_images/binarization.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Example of binarization for two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Example of binarization for two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As you can see, the segmentation depends on the value of <span class="math notranslate nohighlight">\(T\)</span>.
 Therefore, the histogram is very useful to choose the threshold!
 As an example, <a class="reference internal" href="#f-segmentation-binarization-histogram"><span class="std std-numref">Fig. 62</span></a> gives the histogram of the image, with the chosen thresholds.</p>
 <figure class="align-default" id="f-segmentation-binarization-histogram">
-<img alt="../_images/binarization-histogram.svg" src="../_images/binarization-histogram.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Histogram of <a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 61</span></a> with the two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization-histogram" title="Link to this image">#</a></p>
+<img alt="../_images/binarization-histogram.svg" src="../_images/binarization-histogram.svg" /><figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Histogram of <a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 61</span></a> with the two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It would be useful to have an automatic process to define the threshold, whatever the image to segment.
 Otsu’s method is the most famous automatic method for histogram thresholding.</p>
 </section>
 <section id="otsu-s-method">
-<span id="segmentation-otsu"></span><h2>Otsu’s method<a class="headerlink" href="#otsu-s-method" title="Link to this heading">#</a></h2>
+<span id="segmentation-otsu"></span><h2>Otsu’s method<a class="headerlink" href="#otsu-s-method" title="Permalink to this heading">#</a></h2>
 <p>Binarization divides the histogram of the images in two groups, namely class 0 and class 1, as illustrated <a class="reference internal" href="#f-segmentation-otsu-histogram"><span class="std std-numref">Fig. 63</span></a>.</p>
 <figure class="align-default" id="f-segmentation-otsu-histogram">
-<img alt="../_images/otsu-histogram.svg" src="../_images/otsu-histogram.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">An histogram and a threshold <span class="math notranslate nohighlight">\(T\)</span>.</span><a class="headerlink" href="#f-segmentation-otsu-histogram" title="Link to this image">#</a></p>
+<img alt="../_images/otsu-histogram.svg" src="../_images/otsu-histogram.svg" /><figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">An histogram and a threshold <span class="math notranslate nohighlight">\(T\)</span>.</span><a class="headerlink" href="#f-segmentation-otsu-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Each group has a number of pixel <span class="math notranslate nohighlight">\(w_i(T)\)</span> with mean <span class="math notranslate nohighlight">\(\mu_i(T)\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_i^2(T)\)</span>,
@@ -508,21 +499,21 @@ the intra-class variance <span class="math notranslate nohighlight">\(\sigma_w^2
 and the one that gives the lowest value for <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is returned.</p>
 <p>An example of Otsu’s thresholding is given <a class="reference internal" href="#f-segmentation-otsu"><span class="std std-numref">Fig. 64</span></a>.</p>
 <figure class="align-default" id="f-segmentation-otsu">
-<a class="reference internal image-reference" href="../_images/otsu.svg"><img alt="../_images/otsu.svg" src="../_images/otsu.svg" style="height: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/otsu.svg"><img alt="../_images/otsu.svg" height="300px" src="../_images/otsu.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Result of Otsu’s segmentation.</span><a class="headerlink" href="#f-segmentation-otsu" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Result of Otsu’s segmentation.</span><a class="headerlink" href="#f-segmentation-otsu" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="multiple-thresholds">
-<h2>Multiple thresholds<a class="headerlink" href="#multiple-thresholds" title="Link to this heading">#</a></h2>
+<h2>Multiple thresholds<a class="headerlink" href="#multiple-thresholds" title="Permalink to this heading">#</a></h2>
 <p>An image can be segmented in more than two classes by defining or computing several thresholds (see <a class="reference internal" href="#f-segmentation-multiple-thresholds"><span class="std std-numref">Fig. 65</span></a>).
 In particular, Otsu’s method can be extended to several thresholds,
 but the computational complexity (hence the computation time) increases greatly with the number of classes!</p>
 <figure class="align-default" id="f-segmentation-multiple-thresholds">
-<a class="reference internal image-reference" href="../_images/multiple-thresholds.svg"><img alt="../_images/multiple-thresholds.svg" src="../_images/multiple-thresholds.svg" style="height: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/multiple-thresholds.svg"><img alt="../_images/multiple-thresholds.svg" height="300px" src="../_images/multiple-thresholds.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Several thresholds are applied to an image to get several classes (shown in colors).</span><a class="headerlink" href="#f-segmentation-multiple-thresholds" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Several thresholds are applied to an image to get several classes (shown in colors).</span><a class="headerlink" href="#f-segmentation-multiple-thresholds" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- 

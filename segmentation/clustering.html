@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Clustering &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'segmentation/clustering';</script>
@@ -412,15 +405,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clustering">
-<h1>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h1>
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h1>
 <p>Thresholding apply well on a grayscale image, for which it is easy to define a threshold from the modes of the histogram.
 However, this approach cannot be applied on a color or multiband image because there is no histogram.
 Each pixel in a <span class="math notranslate nohighlight">\(B\)</span>-band image can be represented by a point in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.
 By doing so, pixels with similar colors form groups in the space, as illustrated in <a class="reference internal" href="#f-segmentation-clustering"><span class="std std-numref">Fig. 66</span></a>.</p>
 <figure class="align-default" id="f-segmentation-clustering">
-<a class="reference internal image-reference" href="../_images/3d-space.svg"><img alt="../_images/3d-space.svg" src="../_images/3d-space.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/3d-space.svg"><img alt="../_images/3d-space.svg" src="../_images/3d-space.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Showing the pixels of a color image in a <span class="math notranslate nohighlight">\(B\)</span>-dimensional space.</span><a class="headerlink" href="#f-segmentation-clustering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <aside class="margin sidebar">
@@ -470,16 +463,16 @@ Algorithm: K-means</div>
 in the simple case of an image with two bands (hence the two-dimensional space)
 segmented into <span class="math notranslate nohighlight">\(K=2\)</span> classes.</p>
 <figure class="align-default" id="f-segmentation-kmeans-algo">
-<a class="reference internal image-reference" href="../_images/k-means-algorithm.svg"><img alt="../_images/k-means-algorithm.svg" src="../_images/k-means-algorithm.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/k-means-algorithm.svg"><img alt="../_images/k-means-algorithm.svg" src="../_images/k-means-algorithm.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Illustration of the k-means algorithm (click to enlarge).</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Illustration of the k-means algorithm (click to enlarge).</span><a class="headerlink" href="#f-segmentation-kmeans-algo" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><a class="reference internal" href="#f-segmentation-kmeans-result"><span class="std std-numref">Fig. 68</span></a> gives the result of the k-means algorithm on an image.</p>
 <figure class="align-default" id="f-segmentation-kmeans-result">
 <a class="reference internal image-reference" href="../_images/segmentation-kmeans-result.png"><img alt="../_images/segmentation-kmeans-result.png" src="../_images/segmentation-kmeans-result.png" style="height: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Segmentation with the k-means algorithm on the left image (center: <span class="math notranslate nohighlight">\(K=2\)</span> classes, right: <span class="math notranslate nohighlight">\(K=4\)</span> classes).</span><a class="headerlink" href="#f-segmentation-kmeans-result" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Segmentation with the k-means algorithm on the left image (center: <span class="math notranslate nohighlight">\(K=2\)</span> classes, right: <span class="math notranslate nohighlight">\(K=4\)</span> classes).</span><a class="headerlink" href="#f-segmentation-kmeans-result" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The pros and cons of the k-means method for image segmentation are listed below.</p>
@@ -522,26 +515,26 @@ it assumes that the groups are spherical.
 Therefore, the algorithm works well for spherical clusters, but it fails if the clusters are not spherical,
 as depicted in the images below.</p>
 <figure class="align-default" id="f-segmentation-kmeans-ok">
-<a class="reference internal image-reference" href="../_images/kmeans-ok.svg"><img alt="../_images/kmeans-ok.svg" src="../_images/kmeans-ok.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans-ok.svg"><img alt="../_images/kmeans-ok.svg" height="200px" src="../_images/kmeans-ok.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 69 </span><span class="caption-text">Spherical clusters: the k-means algorithm works well.
 The points are depicted by <span class="math notranslate nohighlight">\(\bullet\)</span> whose color correspond to the class,
-and the centroids are depicted by a black <span class="math notranslate nohighlight">\(\times\)</span>.</span><a class="headerlink" href="#f-segmentation-kmeans-ok" title="Link to this image">#</a></p>
+and the centroids are depicted by a black <span class="math notranslate nohighlight">\(\times\)</span>.</span><a class="headerlink" href="#f-segmentation-kmeans-ok" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-segmentation-kmeans-croissants">
-<a class="reference internal image-reference" href="../_images/kmeans-croissants.svg"><img alt="../_images/kmeans-croissants.svg" src="../_images/kmeans-croissants.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans-croissants.svg"><img alt="../_images/kmeans-croissants.svg" height="200px" src="../_images/kmeans-croissants.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentation-kmeans-croissants" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Non-spherical clusters: the k-means algorithm fails.</span><a class="headerlink" href="#f-segmentation-kmeans-croissants" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In addition to this, the centroids are calculated as the mean of the points in the cluster.
 But the mean is not a robust estimation and is sensitive to points located far from the group.
 Thus, the algorithm may fail in the presence of outliers (<em>valeurs aberrantes</em>).</p>
 <figure class="align-default" id="f-segmentation-kmeans-outliers">
-<a class="reference internal image-reference" href="../_images/kmeans-outliers.svg"><img alt="../_images/kmeans-outliers.svg" src="../_images/kmeans-outliers.svg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/kmeans-outliers.svg"><img alt="../_images/kmeans-outliers.svg" height="200px" src="../_images/kmeans-outliers.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentation-kmeans-outliers" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Presence of outliers: the k-means algorithm fails in this example.</span><a class="headerlink" href="#f-segmentation-kmeans-outliers" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Other clustering methods are available to avoid some of the aforementionned limits.

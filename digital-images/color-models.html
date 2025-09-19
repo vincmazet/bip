@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Color models &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/color-models';</script>
@@ -424,12 +417,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="color-models">
-<span id="c-digital-images-color-models"></span><h1>Color models<a class="headerlink" href="#color-models" title="Link to this heading">#</a></h1>
+<span id="c-digital-images-color-models"></span><h1>Color models<a class="headerlink" href="#color-models" title="Permalink to this heading">#</a></h1>
 <!-- Rajouter YCbCr ?--><p>A <em>color model</em>, or <em>color space</em>, is a mean to represent colors as points within a specific space.
 Several color models exist, some with multiple variations.
 This section focuses on the most common color spaces.</p>
 <section id="the-rgb-color-model">
-<span id="c-digital-images-rgb-color-model"></span><h2>The RGB color model<a class="headerlink" href="#the-rgb-color-model" title="Link to this heading">#</a></h2>
+<span id="c-digital-images-rgb-color-model"></span><h2>The RGB color model<a class="headerlink" href="#the-rgb-color-model" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>A “dual” color model is the CMY (cyan, magenta, yellow) color model.
@@ -441,9 +434,9 @@ where every colors can be made by combining primary colors (red, green, blue) wi
 (<a class="reference internal" href="#f-digital-images-additive-mixing"><span class="std std-numref">Fig. 16</span></a>).
 The RGB color model is used by screens, and, as a consequence, ubiquitous in image processing.</p>
 <figure class="align-default" id="f-digital-images-additive-mixing">
-<a class="reference internal image-reference" href="../_images/additive-mixing1.svg"><img alt="../_images/additive-mixing1.svg" src="../_images/additive-mixing1.svg" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../_images/additive-mixing1.svg"><img alt="../_images/additive-mixing1.svg" src="../_images/additive-mixing1.svg" width="30%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Additive color mixing.</span><a class="headerlink" href="#f-digital-images-additive-mixing" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Additive color mixing.</span><a class="headerlink" href="#f-digital-images-additive-mixing" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The RGB model is based on a 3D Cartesian coordinate system, as seen below.
@@ -452,9 +445,9 @@ Nevertheless, digital images are generally quantized on 8 bits per band,
 thus giving values <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(G\)</span>, and <span class="math notranslate nohighlight">\(B\)</span> to lie on <span class="math notranslate nohighlight">\(2^8=256\)</span> values in <span class="math notranslate nohighlight">\(\{0,\dots,255\}\)</span>.
 Therefore a total of <span class="math notranslate nohighlight">\(256^3=16\,777\,216\)</span> colors can be generated.</p>
 <figure class="align-default" id="f-digital-images-rgb">
-<a class="reference internal image-reference" href="../_images/model-rgb.svg"><img alt="../_images/model-rgb.svg" src="../_images/model-rgb.svg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/model-rgb.svg"><img alt="../_images/model-rgb.svg" src="../_images/model-rgb.svg" width="60%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The RGB color space.</span><a class="headerlink" href="#f-digital-images-rgb" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The RGB color space.</span><a class="headerlink" href="#f-digital-images-rgb" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ## The CMY color model
@@ -487,7 +480,7 @@ $$
   Y &= 1 - B. \\
 $$ --></section>
 <section id="the-hsv-color-model">
-<h2>The HSV color model<a class="headerlink" href="#the-hsv-color-model" title="Link to this heading">#</a></h2>
+<h2>The HSV color model<a class="headerlink" href="#the-hsv-color-model" title="Permalink to this heading">#</a></h2>
 <p>The RGB and CMY models do not directly relate to the human sense of color.
 Instead, the HSV (hue, saturation, value) color model corresponds closely with the way humans describe and interpret color.
 Indeed, hue corresponds to the type of color (such as orange, cyan or blue),
@@ -497,9 +490,9 @@ In addition to this, the HSV model has the advantage to extract the grayscale in
 making it suitable for some grayscale techniques.</p>
 <p>The HSV color model is represented by the cylinder, as seen below.</p>
 <figure class="align-default" id="f-digital-images-hsv">
-<a class="reference internal image-reference" href="../_images/model-hsv.svg"><img alt="../_images/model-hsv.svg" src="../_images/model-hsv.svg" style="width: 75%;" /></a>
+<a class="reference internal image-reference" href="../_images/model-hsv.svg"><img alt="../_images/model-hsv.svg" src="../_images/model-hsv.svg" width="75%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The HSV color space.</span><a class="headerlink" href="#f-digital-images-hsv" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The HSV color space.</span><a class="headerlink" href="#f-digital-images-hsv" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The conversion from RGB color model to HSV color model is performed using the following operations,
@@ -523,7 +516,7 @@ the HSI (hue, saturation, intensity) and HSL (hue, saturation, luminance) color 
 which mainly differ from the HSV color model in the third band.</p>
 </section>
 <section id="a-color-generator">
-<h2>A color generator<a class="headerlink" href="#a-color-generator" title="Link to this heading">#</a></h2>
+<h2>A color generator<a class="headerlink" href="#a-color-generator" title="Permalink to this heading">#</a></h2>
 <p>Below you can use the sliders to combine the different bands of the previous color models,
 and perceive the effect on the color.</p>
 <div id="color-generator">

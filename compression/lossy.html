@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lossy compression &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'compression/lossy';</script>
@@ -425,9 +418,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lossy-compression">
-<span id="compression-lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Link to this heading">#</a></h1>
+<span id="compression-lossy"></span><h1>Lossy compression<a class="headerlink" href="#lossy-compression" title="Permalink to this heading">#</a></h1>
 <section id="principle">
-<h2>Principle<a class="headerlink" href="#principle" title="Link to this heading">#</a></h2>
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading">#</a></h2>
 <p>The most famous lossy compression format for images is JPEG,
 created in 1992 by the Joint Photographic Experts Group.
 The main idea of JPEG compression is to apply a specific transform to the image
@@ -440,7 +433,7 @@ It appears though that the so-called <em>discrete cosine transform</em> (DCT) is
 Note that JPEG2000 (which is a newer but rarely used version of JPEG) uses a wavelet transform.</p>
 </section>
 <section id="the-discrete-cosine-transform">
-<h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Link to this heading">#</a></h2>
+<h2>The discrete cosine transform<a class="headerlink" href="#the-discrete-cosine-transform" title="Permalink to this heading">#</a></h2>
 <p>The DCT of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(N \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size defined as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -461,30 +454,27 @@ the difference lies in the fact that the DCT decomposes the image into cosines i
 <p>The DCT decomposes an image into 2D cosines of different frequencies.
 Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented in <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 43</span></a>.</p>
 <figure class="align-default" id="f-compression-dct-coefficients">
-<img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Link to this image">#</a></p>
+<img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" /><figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="example-of-the-dct-of-an-image">
-<h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Link to this heading">#</a></h2>
+<h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this heading">#</a></h2>
 <p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 44</span></a>,
 which is a crop of size 8 × 8 centered on the squirrel’s snout.</p>
 <figure class="align-default" id="f-compression-squirrel-crop">
-<img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Link to this image">#</a></p>
+<img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 45</span></a>.
 As you can see, the coefficients in the top left corner, which correspond to the lower frequencies
 (see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 43</span></a>) are the largest in magnitude.</p>
 <figure class="align-default" id="f-compression-squirrel-coefficients">
-<img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" />
-<figcaption>
+<img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><figcaption>
 <p><span class="caption-number">Fig. 45 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 44</span></a>.
-Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Link to this image">#</a></p>
+Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The next step of JPEG compression involves quantizing these coefficients.
@@ -501,14 +491,13 @@ even though less than 50 % of the coefficients are kept!
 This small example shows the interest of going into the domain of a transformation
 and “canceling” certain coefficients.</p>
 <figure class="align-default" id="f-compression-squirrel-comparison">
-<img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Link to this image">#</a></p>
+<img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="other-steps-in-jpeg-compression">
-<h2>Other steps in JPEG compression<a class="headerlink" href="#other-steps-in-jpeg-compression" title="Link to this heading">#</a></h2>
+<h2>Other steps in JPEG compression<a class="headerlink" href="#other-steps-in-jpeg-compression" title="Permalink to this heading">#</a></h2>
 <p>Computing the DCT of the image and using only the low frequency coefficients for reconstruction
 is at the heart of JPEG compression.
 To gain even more in terms of compression, other steps are added in the actual JPEG compression.

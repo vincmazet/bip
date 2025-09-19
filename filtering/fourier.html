@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Fourier transform &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'filtering/fourier';</script>
@@ -424,7 +417,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fourier-transform">
-<span id="filtering-fourier"></span><h1>Fourier transform<a class="headerlink" href="#fourier-transform" title="Link to this heading">#</a></h1>
+<span id="filtering-fourier"></span><h1>Fourier transform<a class="headerlink" href="#fourier-transform" title="Permalink to this heading">#</a></h1>
 <p>The (2D) Fourier transform is a very classical tool in image processing.
 It is the extension of the <a class="reference external" href="https://vincmazet.github.io/signal1/fourier/fourier.html">Fourier transform</a>
 for signals which decomposes a signal into a sum of complex oscillations (actually, complex exponential).
@@ -436,15 +429,14 @@ Note that the oscillations are not complex exponential if the the pixels are rea
 In this toy-example, the image is simple enough to be decomposed by using only three oscillations.
 We will see further that usual images need much more oscillations.</p>
 <figure class="align-default" id="f-fourier-decomposition">
-<img alt="../_images/fourier-decomposition.svg" src="../_images/fourier-decomposition.svg" />
-<figcaption>
+<img alt="../_images/fourier-decomposition.svg" src="../_images/fourier-decomposition.svg" /><figcaption>
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">A synthetic image and the three oscillations (frequencies)
 that compose the image.
-The third oscillation (on the right) is of lower frequency than the first two oscillations.</span><a class="headerlink" href="#f-fourier-decomposition" title="Link to this image">#</a></p>
+The third oscillation (on the right) is of lower frequency than the first two oscillations.</span><a class="headerlink" href="#f-fourier-decomposition" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="direct-fourier-transform">
-<h2>Direct Fourier transform<a class="headerlink" href="#direct-fourier-transform" title="Link to this heading">#</a></h2>
+<h2>Direct Fourier transform<a class="headerlink" href="#direct-fourier-transform" title="Permalink to this heading">#</a></h2>
 <p>The discrete Fourier transform (DFT) of an image <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(M \times N\)</span> is an image <span class="math notranslate nohighlight">\(F\)</span> of same size defined as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -455,10 +447,9 @@ The third oscillation (on the right) is of lower frequency than the first two os
 In consequence, the DFT of an image is possibly complex, so it cannot be displayed with a single image.
 That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in <a class="reference internal" href="#f-fourier-example"><span class="std std-numref">Fig. 36</span></a>.</p>
 <figure class="align-default" id="f-fourier-example">
-<img alt="../_images/fourier-example.svg" src="../_images/fourier-example.svg" />
-<figcaption>
+<img alt="../_images/fourier-example.svg" src="../_images/fourier-example.svg" /><figcaption>
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
-(an <a class="reference internal" href="../digital-images/histogram.html#c-histogram-transformations"><span class="std std-ref">histogram transformation</span></a> has been applied).</span><a class="headerlink" href="#f-fourier-example" title="Link to this image">#</a></p>
+(an <a class="reference internal" href="../digital-images/histogram.html#c-histogram-transformations"><span class="std std-ref">histogram transformation</span></a> has been applied).</span><a class="headerlink" href="#f-fourier-example" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The amplitude and phase represent the distribution of energy in the frequency plane.
@@ -467,7 +458,7 @@ The intensities of the low frequencies are located in the center of the image, a
 On the contrary, high frequencies are needed in the tail to show the rapid alternation between the hair and the background.</p>
 </section>
 <section id="inverse-fourier-transform">
-<h2>Inverse Fourier transform<a class="headerlink" href="#inverse-fourier-transform" title="Link to this heading">#</a></h2>
+<h2>Inverse Fourier transform<a class="headerlink" href="#inverse-fourier-transform" title="Permalink to this heading">#</a></h2>
 <p>The inverse discrete Fourier transform computes the original image from its Fourier transform:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -476,7 +467,7 @@ On the contrary, high frequencies are needed in the tail to show the rapid alter
 <p>It is denoted <span class="math notranslate nohighlight">\(\mathcal{F}^{-1}\)</span> below.</p>
 </section>
 <section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>The DFT is linear:</p>
 <div class="math notranslate nohighlight">

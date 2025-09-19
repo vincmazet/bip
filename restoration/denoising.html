@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Denoising &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'restoration/denoising';</script>
@@ -432,12 +425,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="denoising">
-<span id="c-denoising"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Link to this heading">#</a></h1>
+<span id="c-denoising"></span><h1>Denoising<a class="headerlink" href="#denoising" title="Permalink to this heading">#</a></h1>
 <p>Denoising (French: <em>débruitage</em>) consists in reducing noise in an image.
 Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.</p>
 <section id="noise-sources">
-<span id="c-denoising-noise-sources"></span><h2>Noise sources<a class="headerlink" href="#noise-sources" title="Link to this heading">#</a></h2>
+<span id="c-denoising-noise-sources"></span><h2>Noise sources<a class="headerlink" href="#noise-sources" title="Permalink to this heading">#</a></h2>
 <p>The main sources of noise in digital images are during the acquisition (quantity of photons collected too low, sensor temperature…)
 or during any transmission (echoes and atmospheric distortions in wireless communication).
 In some cases, noise is also considered to model the inaccuracies in the mathematical model of image formation,
@@ -445,7 +438,7 @@ the latter being necessarily different compared to reality, like any physical mo
 <p>The noise is by nature a random phenomenon, it is modelled by a probability density which represents the intensity distribution of the noise.</p>
 <p>In the following, we denote by <span class="math notranslate nohighlight">\(y\)</span> the observed (and noisy) image, <span class="math notranslate nohighlight">\(b\)</span> the noise and <span class="math notranslate nohighlight">\(x\)</span> the non-noisy image.</p>
 <section id="additive-gaussian-white-noise">
-<h3>Additive Gaussian white noise<a class="headerlink" href="#additive-gaussian-white-noise" title="Link to this heading">#</a></h3>
+<h3>Additive Gaussian white noise<a class="headerlink" href="#additive-gaussian-white-noise" title="Permalink to this heading">#</a></h3>
 <p>Additive white Gaussian noise (AWGN, in French: <em>bruit blanc gaussien additif</em>) models each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the observation <span class="math notranslate nohighlight">\(y\)</span>
 by the sum of the pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the noiseless image <span class="math notranslate nohighlight">\(x\)</span> and of a pixel of the noise <span class="math notranslate nohighlight">\(b\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -458,7 +451,7 @@ by the sum of the pixel <span class="math notranslate nohighlight">\((m,n)\)</sp
 It is used in most applications, including photography.</p>
 </section>
 <section id="poisson-noise">
-<h3>Poisson Noise<a class="headerlink" href="#poisson-noise" title="Link to this heading">#</a></h3>
+<h3>Poisson Noise<a class="headerlink" href="#poisson-noise" title="Permalink to this heading">#</a></h3>
 <!-- Jahne 3.4.1 -->
 <p>Poisson noise (also called <em>shot noise</em>, in French: <em>bruit de Poisson</em>) models the acquisition of photons on a photosite.
 The number of photons is random and depends on the illumination.
@@ -479,9 +472,8 @@ The intensity of each pixel <span class="math notranslate nohighlight">\((m,n)\)
 \]</div>
 <p><a class="reference internal" href="#f-denoising-poisson-distribution"><span class="std std-numref">Fig. 93</span></a> represents the Poisson distribution for three values of parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <figure class="align-default" id="f-denoising-poisson-distribution">
-<img alt="../_images/poisson-distribution.svg" src="../_images/poisson-distribution.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Link to this image">#</a></p>
+<img alt="../_images/poisson-distribution.svg" src="../_images/poisson-distribution.svg" /><figcaption>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean and variance of the Poisson distribution are both equal <span class="math notranslate nohighlight">\(\lambda\)</span>, which depends on the number of incident photons.
@@ -493,7 +485,7 @@ provided that enough photons are collected.</p>
 <!-- speckle noise (different from a fish noise) -->
 </section>
 <section id="salt-and-pepper-noise">
-<h3>Salt-and-pepper noise<a class="headerlink" href="#salt-and-pepper-noise" title="Link to this heading">#</a></h3>
+<h3>Salt-and-pepper noise<a class="headerlink" href="#salt-and-pepper-noise" title="Permalink to this heading">#</a></h3>
 <p>Salt-and-pepper noise (French: <em>bruit poivre et sel</em>), also called less poetically <em>impulse noise</em>,
 models saturated or dead pixels (due to photosite malfunction or saturation).</p>
 <div class="math notranslate nohighlight">
@@ -509,7 +501,7 @@ models saturated or dead pixels (due to photosite malfunction or saturation).</p
 <p>where <span class="math notranslate nohighlight">\(x_\mathrm{min}\)</span> and <span class="math notranslate nohighlight">\(x_\mathrm{max}\)</span> are the intensity minimum and maximum.</p>
 </section>
 <section id="noise-power">
-<h3>Noise power<a class="headerlink" href="#noise-power" title="Link to this heading">#</a></h3>
+<h3>Noise power<a class="headerlink" href="#noise-power" title="Permalink to this heading">#</a></h3>
 <p><a class="reference internal" href="#f-denoising-three-noises"><span class="std std-numref">Fig. 94</span></a> illustrates the effect of the previous noises on the same image.
 One can observe that:</p>
 <ul class="simple">
@@ -518,9 +510,8 @@ One can observe that:</p>
 <li><p>for impulse noise, only a few pixels are modified and they are replaced by black or white pixels.</p></li>
 </ul>
 <figure class="align-default" id="f-denoising-three-noises">
-<img alt="../_images/three-noises.svg" src="../_images/three-noises.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Link to this image">#</a></p>
+<img alt="../_images/three-noises.svg" src="../_images/three-noises.svg" /><figcaption>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Signal-to-noise ratio (SNR, in French: RSB for <em>rapport signal-sur-bruit</em>) is a measure of the noise level.
@@ -546,15 +537,14 @@ the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of th
 <p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 95</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
 As you can see, when the RSB or the PSNR increases, the noise decreases!</p>
 <figure class="align-default" id="f-denoising-snr-psnr">
-<img alt="../_images/snr-psnr.svg" src="../_images/snr-psnr.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Link to this image">#</a></p>
+<img alt="../_images/snr-psnr.svg" src="../_images/snr-psnr.svg" /><figcaption>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="mean-filter">
-<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Link to this heading">#</a></h2>
+<h2>Mean filter<a class="headerlink" href="#mean-filter" title="Permalink to this heading">#</a></h2>
 <p>The mean filter (French: <em>filtre moyenneur</em>) is a very simple denoising method.
 Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the denoised image <span class="math notranslate nohighlight">\(\widehat{x}\)</span> is the average of the pixels of the noisy image <span class="math notranslate nohighlight">\(y\)</span> around <span class="math notranslate nohighlight">\((m,n)\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -570,9 +560,8 @@ Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the de
 <p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 96</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
 If the neighbourhood grows, then the noise decreases but at the same time the image becomes more blurry.</p>
 <figure class="align-default" id="f-denoising-mean-filter-size">
-<img alt="../_images/mean-filter-size.svg" src="../_images/mean-filter-size.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Link to this image">#</a></p>
+<img alt="../_images/mean-filter-size.svg" src="../_images/mean-filter-size.svg" /><figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean filter can be expressed with a convolution product.
@@ -596,9 +585,8 @@ g(u,v) =
 <p>This definition can be extended to any type of kernel <span class="math notranslate nohighlight">\(g\)</span>!
 For example, <a class="reference internal" href="#f-denoising-mean-filter-kernels"><span class="std std-numref">Fig. 97</span></a> gives the result for two different kernels.</p>
 <figure class="align-default" id="f-denoising-mean-filter-kernels">
-<img alt="../_images/mean-filter-kernels.svg" src="../_images/mean-filter-kernels.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Link to this image">#</a></p>
+<img alt="../_images/mean-filter-kernels.svg" src="../_images/mean-filter-kernels.svg" /><figcaption>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In summary:</p>
@@ -609,7 +597,7 @@ For example, <a class="reference internal" href="#f-denoising-mean-filter-kernel
 </ul>
 </section>
 <section id="median-filter">
-<h2>Median filter<a class="headerlink" href="#median-filter" title="Link to this heading">#</a></h2>
+<h2>Median filter<a class="headerlink" href="#median-filter" title="Permalink to this heading">#</a></h2>
 <p>The median of a set of numbers is the element <span class="math notranslate nohighlight">\(m\)</span> of the set
 such that there are as many numbers smaller than <span class="math notranslate nohighlight">\(m\)</span> as there are numbers larger than <span class="math notranslate nohighlight">\(m\)</span>.
 For example, the median of <span class="math notranslate nohighlight">\(\{1,\,2,\,4,\,8,\,16\}\)</span> is <span class="math notranslate nohighlight">\(4\)</span>.</p>
@@ -624,22 +612,20 @@ because it does not blur the image, as a mean filter would do.</p>
 <p>Despite its name, the median filter is not a filter because it does not respect the linearity property.
 Therefore it cannot be written as a convolution.</p>
 <figure class="align-default" id="f-denoising-median-vs-mean">
-<img alt="../_images/median-vs-mean.svg" src="../_images/median-vs-mean.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Link to this image">#</a></p>
+<img alt="../_images/median-vs-mean.svg" src="../_images/median-vs-mean.svg" /><figcaption>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="periodic-noise-filtering">
-<span id="c-denoising-periodic-noise-filtering"></span><h2>Periodic noise filtering<a class="headerlink" href="#periodic-noise-filtering" title="Link to this heading">#</a></h2>
+<span id="c-denoising-periodic-noise-filtering"></span><h2>Periodic noise filtering<a class="headerlink" href="#periodic-noise-filtering" title="Permalink to this heading">#</a></h2>
 <p>Periodic noises are characterized by structures in the Fourier transform.
 These structures can be removed in the Fourier domain by cancelling the coefficients using a mask.
 The denoised image is then obtained by an inverse Fourier transform.</p>
 <figure class="align-default" id="f-denoising-periodic-noise">
-<img alt="../_images/periodic-noise.svg" src="../_images/periodic-noise.svg" />
-<figcaption>
+<img alt="../_images/periodic-noise.svg" src="../_images/periodic-noise.svg" /><figcaption>
 <p><span class="caption-number">Fig. 99 </span><span class="caption-text">Filtering a periodic noise on a photograph of the Moon:
-the image is cleaned of periodic image artefacts.</span><a class="headerlink" href="#f-denoising-periodic-noise" title="Link to this image">#</a></p>
+the image is cleaned of periodic image artefacts.</span><a class="headerlink" href="#f-denoising-periodic-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Estimer les paramètres du bruit
@@ -648,7 +634,7 @@ the image is cleaned of periodic image artefacts.</span><a class="headerlink" hr
 - travailler sur une zone noire ou une zone ou la moyenne est connue -->
 </section>
 <section id="tv-regularization">
-<h2>TV regularization<a class="headerlink" href="#tv-regularization" title="Link to this heading">#</a></h2>
+<h2>TV regularization<a class="headerlink" href="#tv-regularization" title="Permalink to this heading">#</a></h2>
 <p>From a certain point of view, the goal of denoising is to obtain an image <span class="math notranslate nohighlight">\(\widehat{x}\)</span>
 not only with small variations in intensity between pixels but also close to the observation <span class="math notranslate nohighlight">\(y\)</span>.
 TV regularization (<em>total variation</em>, French: <em>variation totale</em>)
@@ -690,9 +676,8 @@ Mathematically, we write:</p>
 <p>This comes to an optimization problem, and there are a large number of algorithms to minimize <span class="math notranslate nohighlight">\(E(x,y) + \lambda R(x)\)</span>.
 The choice and description of these algorithms are beyond the scope of the course.</p>
 <figure class="align-default" id="f-denoising-tv">
-<img alt="../_images/tv-denoising.svg" src="../_images/tv-denoising.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Link to this image">#</a></p>
+<img alt="../_images/tv-denoising.svg" src="../_images/tv-denoising.svg" /><figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

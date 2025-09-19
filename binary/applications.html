@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Applications &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'binary/applications';</script>
@@ -425,12 +418,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="applications">
-<span id="binary-applications"></span><h1>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h1>
+<span id="binary-applications"></span><h1>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h1>
 <p>The four morphological tools seen above are the elementary operations for more complex processing.
 In this section, we focus on some specific processings,
 others are given by <a class="reference internal" href="outro.html#b-binary-bloch2005"><span class="std std-ref">[Bloch 2005, chapter 6]</span></a>.</p>
 <section id="top-hat-transform">
-<span id="c-binary-top-hat-transform"></span><h2>Top-hat transform<a class="headerlink" href="#top-hat-transform" title="Link to this heading">#</a></h2>
+<span id="c-binary-top-hat-transform"></span><h2>Top-hat transform<a class="headerlink" href="#top-hat-transform" title="Permalink to this heading">#</a></h2>
 <p>The top-hat transformation (French: <em>transformée du chapeau haut-de-forme</em>) keeps in the image only the objects that are narrower than the structuring element.
 There are two dual top-hat transforms:</p>
 <ul>
@@ -453,15 +446,15 @@ and a black top-hat transform (only the black objects narrower than the structur
 Note that the structuring element, present in the original image, is not kept because it is not narrower than itself.
 The results also show many of very small artifacts that can be easily removed by discarding the objects whose size is smaller than a predefined threshold.</p>
 <figure class="align-default" id="f-binary-top-hat">
-<a class="reference internal image-reference" href="../_images/top-hat.svg"><img alt="../_images/top-hat.svg" src="../_images/top-hat.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../_images/top-hat.svg"><img alt="../_images/top-hat.svg" src="../_images/top-hat.svg" width="100%" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 88 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk of radius 3 pixels as structuring element
-(the latter is visible in the bottom-right corner of the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Link to this image">#</a></p>
+(the latter is visible in the bottom-right corner of the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="granulometry">
-<span id="c-binary-granulometry"></span><h2>Granulometry<a class="headerlink" href="#granulometry" title="Link to this heading">#</a></h2>
+<span id="c-binary-granulometry"></span><h2>Granulometry<a class="headerlink" href="#granulometry" title="Permalink to this heading">#</a></h2>
 <p>Granulometry (French: <em>granulométrie</em>) is an approach that successively selects particles of increasing sizes in a binary image.
 It consists of successive openings of an image <span class="math notranslate nohighlight">\(I\)</span> by a sequence of structural elements <span class="math notranslate nohighlight">\(E_k\)</span> of increasing size
 (usually, <span class="math notranslate nohighlight">\(E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}\)</span>) where <span class="math notranslate nohighlight">\(E\)</span> is a disk).</p>
@@ -470,20 +463,20 @@ It consists of successive openings of an image <span class="math notranslate noh
 <p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 90</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 89</span></a> by openings with a disk of different sizes.
 When the size of the opening corresponds to the characteristic size of most objects, a jump appears in the curve.</p>
 <figure class="align-default" id="f-binary-granulometry-images">
-<a class="reference internal image-reference" href="../_images/granulometry-images.svg"><img alt="../_images/granulometry-images.svg" src="../_images/granulometry-images.svg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/granulometry-images.svg"><img alt="../_images/granulometry-images.svg" src="../_images/granulometry-images.svg" width="500px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-binary-granulometry-plot">
-<a class="reference internal image-reference" href="../_images/granulometry-plot.svg"><img alt="../_images/granulometry-plot.svg" src="../_images/granulometry-plot.svg" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/granulometry-plot.svg"><img alt="../_images/granulometry-plot.svg" src="../_images/granulometry-plot.svg" width="400px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="hit-or-miss-transform">
-<span id="c-binary-hit-or-miss-transform"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Link to this heading">#</a></h2>
+<span id="c-binary-hit-or-miss-transform"></span><h2>Hit-or-miss transform<a class="headerlink" href="#hit-or-miss-transform" title="Permalink to this heading">#</a></h2>
 <p>The hit-or-miss transform (French: <em>transformée tout-ou-rien</em>) is used to detect objects of a particular shape.
 Contrary to the transformations seen so far, the hit-or-miss transform examines configurations where certain pixels verify a relationship with the object
 and others verify a relationship with the complement of the object.
@@ -501,11 +494,10 @@ Thus the structuring element <span class="math notranslate nohighlight">\(E\)</s
    &amp;= (I \ominus E_1) \cap (I \oplus E_2)^\mathrm{c}
 \end{split}\]</div>
 <figure class="align-default" id="f-binary-hit-or-miss">
-<img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" />
-<figcaption>
+<img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" /><figcaption>
 <p><span class="caption-number">Fig. 91 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
 The origin of the structuring elements are marked by the blue dot.
-Some white pixels in <span class="math notranslate nohighlight">\(I^\mathrm{c} \ominus E_2\)</span> comes from the background outside <span class="math notranslate nohighlight">\(I^\mathrm{c}\)</span> which is considered as white.</span><a class="headerlink" href="#f-binary-hit-or-miss" title="Link to this image">#</a></p>
+Some white pixels in <span class="math notranslate nohighlight">\(I^\mathrm{c} \ominus E_2\)</span> comes from the background outside <span class="math notranslate nohighlight">\(I^\mathrm{c}\)</span> which is considered as white.</span><a class="headerlink" href="#f-binary-hit-or-miss" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Sometimes, the two structuring elements are combined into a single structuring element whose pixels have the following values:
@@ -524,7 +516,7 @@ $$
   \end{pmatrix}
 $$ --></section>
 <section id="skeleton">
-<span id="c-binary-skeleton"></span><h2>Skeleton<a class="headerlink" href="#skeleton" title="Link to this heading">#</a></h2>
+<span id="c-binary-skeleton"></span><h2>Skeleton<a class="headerlink" href="#skeleton" title="Permalink to this heading">#</a></h2>
 <p>The skeleton (French: <em>squelette</em>) is a useful notion in pattern recognition:
 it is a “compact” form of the objects (thin lines centered within the objects),
 with the same number of connected components and the same number of holes.</p>
@@ -541,9 +533,8 @@ S(I) = \bigcup_{k \in \mathbb{N}^*}
 (I \ominus E_k) \setminus (I \ominus E_k) \circ E.
 \]</div>
 <figure class="align-default" id="f-binary-skeleton">
-<img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Skeleton of the image <span class="math notranslate nohighlight">\(I\)</span>.</span><a class="headerlink" href="#f-binary-skeleton" title="Link to this image">#</a></p>
+<img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" /><figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Skeleton of the image <span class="math notranslate nohighlight">\(I\)</span>.</span><a class="headerlink" href="#f-binary-skeleton" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:

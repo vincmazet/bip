@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>What is a digital image? &#8212; Basics of Image Processing</title>
   
@@ -28,14 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css?v=fb1254e2" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,18 +44,18 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,15 +64,7 @@
                 gtag('config', 'G-VFHC8CBJQK');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-VFHC8CBJQK');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'digital-images/definition';</script>
@@ -429,9 +422,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-digital-image">
-<span id="c-digital-images-definition"></span><h1>What is a digital image?<a class="headerlink" href="#what-is-a-digital-image" title="Link to this heading">#</a></h1>
+<span id="c-digital-images-definition"></span><h1>What is a digital image?<a class="headerlink" href="#what-is-a-digital-image" title="Permalink to this heading">#</a></h1>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>In very specific applications, the images may have a non-rectangular geometry.
@@ -466,15 +459,15 @@ the pixel at coordinates <span class="math notranslate nohighlight">\((0,0)\)</s
 <figure class="align-default" id="f-intro-coordinates">
 <a class="reference internal image-reference" href="../_images/coordinates.png"><img alt="../_images/coordinates.png" src="../_images/coordinates.png" style="width: 500.0px; height: 212.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Coordinate system generally used in image processing.</span><a class="headerlink" href="#f-intro-coordinates" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Coordinate system generally used in image processing.</span><a class="headerlink" href="#f-intro-coordinates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="diversity-of-images">
-<h2>Diversity of images<a class="headerlink" href="#diversity-of-images" title="Link to this heading">#</a></h2>
+<h2>Diversity of images<a class="headerlink" href="#diversity-of-images" title="Permalink to this heading">#</a></h2>
 <p>Digital images can be categorized in various ways.</p>
 <section id="dimension-number-d">
-<h3>Dimension number <span class="math notranslate nohighlight">\(d\)</span><a class="headerlink" href="#dimension-number-d" title="Link to this heading">#</a></h3>
+<h3>Dimension number <span class="math notranslate nohighlight">\(d\)</span><a class="headerlink" href="#dimension-number-d" title="Permalink to this heading">#</a></h3>
 <p>Common images, such as photographs, are 2D (2-dimensional) images while other images lie in more than two dimensions.
 A 3D image, as seen in MRI scans, is often referred to as a “3D image” or “cube”.
 A 1D image is essentially a signal.
@@ -482,7 +475,7 @@ The elements constituting a 2D image are called <em>pixels</em> (“picture elem
 and those constituting a 3D image are called <em>voxels</em> (“volume element”).</p>
 </section>
 <section id="dimension-heterogeneity">
-<h3>Dimension heterogeneity<a class="headerlink" href="#dimension-heterogeneity" title="Link to this heading">#</a></h3>
+<h3>Dimension heterogeneity<a class="headerlink" href="#dimension-heterogeneity" title="Permalink to this heading">#</a></h3>
 <p>In common 2D images, the two dimensions are spatial dimensions.
 However, the dimensions can represent another physical domain and be different.
 For instance, a video can be seen as a 2D+<span class="math notranslate nohighlight">\(t\)</span> image (two spatial dimensions, one temporal dimension);
@@ -491,14 +484,14 @@ and a <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperspe
 is a 2D+<span class="math notranslate nohighlight">\(\lambda\)</span> image (two spatial dimensions, plus a third dimension depending on the wavelength).</p>
 </section>
 <section id="element-dimension-b">
-<h3>Element dimension <span class="math notranslate nohighlight">\(B\)</span><a class="headerlink" href="#element-dimension-b" title="Link to this heading">#</a></h3>
+<h3>Element dimension <span class="math notranslate nohighlight">\(B\)</span><a class="headerlink" href="#element-dimension-b" title="Permalink to this heading">#</a></h3>
 <p>Each element within an image can be scalar (<span class="math notranslate nohighlight">\(B=1\)</span>) or vector (<span class="math notranslate nohighlight">\(B&gt;1\)</span>).
 For instance, pixels in a 2D grayscale image gather only one value: the gray intensity.
 Pixels in photography gather three values (the intensity of red, green and blue).
 Images from the <a class="reference external" href="https://en.wikipedia.org/wiki/Pleiades_(satellite)">Pléiades constellation</a> are RVB–IR: they gather four values (red, green, blue, and infrared).</p>
 </section>
 <section id="element-intensity-set">
-<h3>Element intensity set<a class="headerlink" href="#element-intensity-set" title="Link to this heading">#</a></h3>
+<h3>Element intensity set<a class="headerlink" href="#element-intensity-set" title="Permalink to this heading">#</a></h3>
 <p>Common images have pixel intensities within the range <span class="math notranslate nohighlight">\(\{0,1,\dots,255\}\)</span>,
 but binary images have values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.
 Most of the time, the intensities are assumed to be real numbers.</p>
