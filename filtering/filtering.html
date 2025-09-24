@@ -428,9 +428,9 @@ Then, we continue with two important families of filters: low-pass and high-pass
 which are defined from considerations in the Fourier domain.</p>
 <section id="blur-filtering">
 <span id="c-filtering-blur-filter"></span><h2>Blur filtering<a class="headerlink" href="#blur-filtering" title="Permalink to this heading">#</a></h2>
-<p>An example of blur filtering is given in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a>.
+<p>An example of blur filtering is given in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 38</span></a>.
 Each pixel of the output image is a mean of the pixel intensities in a window in the original image.
-The PSF in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 37</span></a> is very simple:</p>
+The PSF in <a class="reference internal" href="#f-blur-filtering"><span class="std std-numref">Fig. 38</span></a> is very simple:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 h = \begin{bmatrix}
@@ -445,7 +445,7 @@ h = \begin{bmatrix}
 <figure class="align-default" id="f-blur-filtering">
 <a class="reference internal image-reference" href="../_images/blur-filtering.svg"><img alt="../_images/blur-filtering.svg" height="200px" src="../_images/blur-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Blur filtering.</span><a class="headerlink" href="#f-blur-filtering" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Blur filtering.</span><a class="headerlink" href="#f-blur-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -472,11 +472,11 @@ h = \begin{bmatrix}
 0 &amp; -1 &amp; 0 \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>The result is given in <a class="reference internal" href="#f-edge-filtering"><span class="std std-numref">Fig. 38</span></a>.</p>
+<p>The result is given in <a class="reference internal" href="#f-edge-filtering"><span class="std std-numref">Fig. 39</span></a>.</p>
 <figure class="align-default" id="f-edge-filtering">
 <a class="reference internal image-reference" href="../_images/edge-filtering.svg"><img alt="../_images/edge-filtering.svg" height="200px" src="../_images/edge-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Edge filtering.</span><a class="headerlink" href="#f-edge-filtering" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Edge filtering.</span><a class="headerlink" href="#f-edge-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -484,7 +484,7 @@ h = \begin{bmatrix}
 <h2>Sharp filtering<a class="headerlink" href="#sharp-filtering" title="Permalink to this heading">#</a></h2>
 <p>Sharp filtering strenghtens the border in the image.
 Then it can be computed as the sum of the original image with an edge detection.
-This yields the following PSF and the output given in <a class="reference internal" href="#f-sharp-filtering"><span class="std std-numref">Fig. 39</span></a>.</p>
+This yields the following PSF and the output given in <a class="reference internal" href="#f-sharp-filtering"><span class="std std-numref">Fig. 40</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 h = \begin{bmatrix}
@@ -496,16 +496,16 @@ h = \begin{bmatrix}
 <figure class="align-default" id="f-sharp-filtering">
 <a class="reference internal image-reference" href="../_images/sharp-filtering.svg"><img alt="../_images/sharp-filtering.svg" height="200px" src="../_images/sharp-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Sharp filtering (or sharpening).</span><a class="headerlink" href="#f-sharp-filtering" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Sharp filtering (or sharpening).</span><a class="headerlink" href="#f-sharp-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="low-pass-filtering">
-<h2>Low-pass filtering<a class="headerlink" href="#low-pass-filtering" title="Permalink to this heading">#</a></h2>
+<span id="filtering-lowpass"></span><h2>Low-pass filtering<a class="headerlink" href="#low-pass-filtering" title="Permalink to this heading">#</a></h2>
 <p>Because filtering is the convolution of an image with a specific PSF,
 it can also be achieved by multiplying the DFT of the image and the DFT of the PSF.
 Then it becomes possible to define the filter in the Fourier domain instead of the spatial domain.</p>
-<p><a class="reference internal" href="#f-lowpass-filtering"><span class="std std-numref">Fig. 40</span></a> shows an example of low-pass filtering.
+<p><a class="reference internal" href="#f-lowpass-filtering"><span class="std std-numref">Fig. 41</span></a> shows an example of low-pass filtering.
 The first row shows the filtering as a convolution in the spatial domain,
 the second row shows the same information in the Fourier domain,
 where the DFT of the filtered image is the multiplication (point to point) of the DFT of the original image and the PSF.</p>
@@ -513,7 +513,7 @@ where the DFT of the filtered image is the multiplication (point to point) of th
 <figure class="align-default" id="f-lowpass-filtering">
 <a class="reference internal image-reference" href="../_images/lowpass-filtering.svg"><img alt="../_images/lowpass-filtering.svg" height="400px" src="../_images/lowpass-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Example of low-pass filtering: only the low frequencies are kept.
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Example of low-pass filtering: only the low frequencies are kept.
 Top row: spatial domain, bottom row: amplitude of the DFT
 (the phase is not shown for brevity).</span><a class="headerlink" href="#f-lowpass-filtering" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -523,11 +523,11 @@ Top row: spatial domain, bottom row: amplitude of the DFT
 <section id="high-pass-filtering">
 <h2>High-pass filtering<a class="headerlink" href="#high-pass-filtering" title="Permalink to this heading">#</a></h2>
 <p>Contrary to low-pass filtering, high-pass filtering preserves only the high frequencies,
-i.e. the sudden changes in the intensities (<a class="reference internal" href="#f-highpass-filtering"><span class="std std-numref">Fig. 41</span></a>).</p>
+i.e. the sudden changes in the intensities (<a class="reference internal" href="#f-highpass-filtering"><span class="std std-numref">Fig. 42</span></a>).</p>
 <figure class="align-default" id="f-highpass-filtering">
 <a class="reference internal image-reference" href="../_images/highpass-filtering.svg"><img alt="../_images/highpass-filtering.svg" height="400px" src="../_images/highpass-filtering.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Example of high-pass filtering: only the high frequencies are kept.
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Example of high-pass filtering: only the high frequencies are kept.
 Top row: spatial domain, bottom row: amplitude of the DFT
 (the phase is not shown for brevity).</span><a class="headerlink" href="#f-highpass-filtering" title="Permalink to this image">#</a></p>
 </figcaption>

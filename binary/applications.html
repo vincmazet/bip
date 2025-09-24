@@ -440,7 +440,7 @@ There are two dual top-hat transforms:</p>
   \]</div>
 </li>
 </ul>
-<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 88</span></a> shows the effect
+<p><a class="reference internal" href="#f-binary-top-hat"><span class="std std-numref">Fig. 89</span></a> shows the effect
 of a white top-hat transform (only the white objects narrower than the structuring element are kept)
 and a black top-hat transform (only the black objects narrower than the structuring element are kept).
 Note that the structuring element, present in the original image, is not kept because it is not narrower than itself.
@@ -448,7 +448,7 @@ The results also show many of very small artifacts that can be easily removed by
 <figure class="align-default" id="f-binary-top-hat">
 <a class="reference internal image-reference" href="../_images/top-hat.svg"><img alt="../_images/top-hat.svg" src="../_images/top-hat.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk of radius 3 pixels as structuring element
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Example of a white and black top-hat transforms with a disk of radius 3 pixels as structuring element
 (the latter is visible in the bottom-right corner of the original image).</span><a class="headerlink" href="#f-binary-top-hat" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -460,18 +460,18 @@ It consists of successive openings of an image <span class="math notranslate noh
 (usually, <span class="math notranslate nohighlight">\(E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}\)</span>) where <span class="math notranslate nohighlight">\(E\)</span> is a disk).</p>
 <p>At each stage of opening, the finer details are successively eliminated, and the area of the image is reduced
 (the area is the total number of pixels in the objects.).</p>
-<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 90</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 89</span></a> by openings with a disk of different sizes.
+<p><a class="reference internal" href="#f-binary-granulometry-plot"><span class="std std-numref">Fig. 91</span></a> shows the granulometry function obtained on the binary image of <a class="reference internal" href="#f-binary-granulometry-images"><span class="std std-numref">Fig. 90</span></a> by openings with a disk of different sizes.
 When the size of the opening corresponds to the characteristic size of most objects, a jump appears in the curve.</p>
 <figure class="align-default" id="f-binary-granulometry-images">
 <a class="reference internal image-reference" href="../_images/granulometry-images.svg"><img alt="../_images/granulometry-images.svg" src="../_images/granulometry-images.svg" width="500px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The original image and the corresponding openings by the successive structuring element (a disk).</span><a class="headerlink" href="#f-binary-granulometry-images" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-binary-granulometry-plot">
 <a class="reference internal image-reference" href="../_images/granulometry-plot.svg"><img alt="../_images/granulometry-plot.svg" src="../_images/granulometry-plot.svg" width="400px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The granulometry function.</span><a class="headerlink" href="#f-binary-granulometry-plot" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -495,7 +495,7 @@ Thus the structuring element <span class="math notranslate nohighlight">\(E\)</s
 \end{split}\]</div>
 <figure class="align-default" id="f-binary-hit-or-miss">
 <img alt="../_images/hit-or-miss-toy.svg" src="../_images/hit-or-miss-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Example of a hit-or-miss transform applied on the image <span class="math notranslate nohighlight">\(I\)</span> by the structuring elements <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>.
 The origin of the structuring elements are marked by the blue dot.
 Some white pixels in <span class="math notranslate nohighlight">\(I^\mathrm{c} \ominus E_2\)</span> comes from the background outside <span class="math notranslate nohighlight">\(I^\mathrm{c}\)</span> which is considered as white.</span><a class="headerlink" href="#f-binary-hit-or-miss" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -534,7 +534,7 @@ S(I) = \bigcup_{k \in \mathbb{N}^*}
 \]</div>
 <figure class="align-default" id="f-binary-skeleton">
 <img alt="../_images/skeleton.svg" src="../_images/skeleton.svg" /><figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Skeleton of the image <span class="math notranslate nohighlight">\(I\)</span>.</span><a class="headerlink" href="#f-binary-skeleton" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Skeleton of the image <span class="math notranslate nohighlight">\(I\)</span>.</span><a class="headerlink" href="#f-binary-skeleton" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:

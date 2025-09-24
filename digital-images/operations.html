@@ -430,17 +430,17 @@ whose pixels are the sum of the pixels in the original images:</p>
 \forall m, n,\quad
 h(m,n) = f(m,n) + g(m,n).
 \]</div>
-<p><a class="reference internal" href="#f-intro-addition"><span class="std std-numref">Fig. 20</span></a> gives an example of image addition to produce an artistic effect.
+<p><a class="reference internal" href="#f-intro-addition"><span class="std std-numref">Fig. 21</span></a> gives an example of image addition to produce an artistic effect.
 Addition can also be used to <a class="reference internal" href="../restoration/denoising.html#c-denoising"><span class="std std-ref">denoise a series of images</span></a>.</p>
 <figure class="align-default" id="f-intro-addition">
 <img alt="../_images/addition.svg" src="../_images/addition.svg" /><figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">The image on the right is the sum of the two images on the left.</span><a class="headerlink" href="#f-intro-addition" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">The image on the right is the sum of the two images on the left.</span><a class="headerlink" href="#f-intro-addition" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="subtraction">
 <h2>Subtraction<a class="headerlink" href="#subtraction" title="Permalink to this heading">#</a></h2>
-<p>The subtraction of two images is used for example to detect changes (<a class="reference internal" href="#f-intro-subtraction"><span class="std std-numref">Fig. 21</span></a>).</p>
+<p>The subtraction of two images is used for example to detect changes (<a class="reference internal" href="#f-intro-subtraction"><span class="std std-numref">Fig. 22</span></a>).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 &amp;\forall m, n,\quad h(m,n) = f(m,n) - g(m,n) \\
@@ -449,7 +449,7 @@ Addition can also be used to <a class="reference internal" href="../restoration/
 \end{split}\]</div>
 <figure class="align-default" id="f-intro-subtraction">
 <img alt="../_images/subtraction.svg" src="../_images/subtraction.svg" /><figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">The image on the right is the difference between the two images on the left.
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The image on the right is the difference between the two images on the left.
 Note that the image of difference has values between <span class="math notranslate nohighlight">\(-255\)</span> and <span class="math notranslate nohighlight">\(255\)</span>.</span><a class="headerlink" href="#f-intro-subtraction" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -457,7 +457,7 @@ Note that the image of difference has values between <span class="math notransla
 <section id="division">
 <h2>Division<a class="headerlink" href="#division" title="Permalink to this heading">#</a></h2>
 <p>The division of two images is used to correct non-homogeneous illumination.
-<a class="reference internal" href="#f-intro-division"><span class="std std-numref">Fig. 22</span></a> illustrates the removal of shadow.</p>
+<a class="reference internal" href="#f-intro-division"><span class="std std-numref">Fig. 23</span></a> illustrates the removal of shadow.</p>
 <div class="math notranslate nohighlight">
 \[
 \forall m, n,\quad
@@ -465,7 +465,7 @@ h(m,n) = \frac{f(m,n)}{g(m,n)}.
 \]</div>
 <figure class="align-default" id="f-intro-division">
 <img alt="../_images/division.svg" src="../_images/division.svg" /><figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The right image is the division of the left image by the right image.</span><a class="headerlink" href="#f-intro-division" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">The right image is the division of the left image by the right image.</span><a class="headerlink" href="#f-intro-division" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

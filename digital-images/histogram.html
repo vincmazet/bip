@@ -499,10 +499,10 @@ then it can be seen as a discrete probability density function <span class="math
   \]</div>
 </li>
 <li><p>The histogram gives a global information about the pixel intensities of an image but loses the spatial information in the image.
-In consequence, two different images can have the same histogram (cf. <a class="reference internal" href="#f-histogram-daisy-sorted"><span class="std std-numref">Fig. 23</span></a>).</p>
+In consequence, two different images can have the same histogram (cf. <a class="reference internal" href="#f-histogram-daisy-sorted"><span class="std std-numref">Fig. 24</span></a>).</p>
 <figure class="align-default" id="f-histogram-daisy-sorted">
 <img alt="../_images/daisy-sorted.svg" src="../_images/daisy-sorted.svg" /><figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">These two images have the same histogram.
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">These two images have the same histogram.
 The image on the right actually corresponds to the pixels of the image on the left sorted with respect to their gray level.</span><a class="headerlink" href="#f-histogram-daisy-sorted" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -527,7 +527,7 @@ As a consequence, the histogram of the new image differs from the histogram of t
 \[T(i) = 1-i\]</div>
 <figure class="align-default" id="f-histogram-negative">
 <img alt="../_images/negative.svg" src="../_images/negative.svg" /><figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Negative image: the gray levels are reversed.</span><a class="headerlink" href="#f-histogram-negative" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Negative image: the gray levels are reversed.</span><a class="headerlink" href="#f-histogram-negative" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -537,7 +537,7 @@ As a consequence, the histogram of the new image differs from the histogram of t
 \[T(i) = i^\gamma\]</div>
 <figure class="align-default" id="f-histogram-gamma">
 <img alt="../_images/gamma.svg" src="../_images/gamma.svg" /><figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Gamma correction modifies the coulors of an image acquired by an electronic system,
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Gamma correction modifies the coulors of an image acquired by an electronic system,
 it is used to take into account the non-linear sensibility of human eyes to the light.
 Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a class="headerlink" href="#f-histogram-gamma" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -551,7 +551,7 @@ Here, <span class="math notranslate nohighlight">\(\gamma=0.4\)</span></span><a 
 <p>where <span class="math notranslate nohighlight">\(i_\text{min}\)</span> and <span class="math notranslate nohighlight">\(i_\text{max}\)</span> are respectively the minimum and maximum intensities in the image.</p>
 <figure class="align-default" id="f-histogram-spread">
 <img alt="../_images/spreading.svg" src="../_images/spreading.svg" /><figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Histogram spreading enhances the contrast by “dilating” the histogram to the whole intensity interval.</span><a class="headerlink" href="#f-histogram-spread" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram spreading enhances the contrast by “dilating” the histogram to the whole intensity interval.</span><a class="headerlink" href="#f-histogram-spread" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -568,7 +568,7 @@ The demonstration of this equation is available in
 <a class="reference internal" href="outro.html#b-histogram-gonzalez2010"><span class="std std-ref">[Gonzalez 2010, section 3.3.1]</span></a>.</p>
 <figure class="align-default" id="f-histogram-equalization">
 <img alt="../_images/equalization.svg" src="../_images/equalization.svg" /><figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tends to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Histogram equalization is another contrast enhancing and tends to make the details more visible.</span><a class="headerlink" href="#f-histogram-equalization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -579,12 +579,12 @@ that is to distinguish the objects in the image with respect to their gray level
 Indeed, if the histogram shows clearly two modes (<em>i.e.</em> two “bumps”),
 a threshold <span class="math notranslate nohighlight">\(T\)</span> can be defined between these two modes, then apply a thresholding on the pixels, such that:</p>
 <ul class="simple">
-<li><p>if the pixel level is lower that <span class="math notranslate nohighlight">\(T\)</span>, then the pixel is in class 0 (displayed in black in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>),</p></li>
-<li><p>otherwise, the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 28</span></a>).</p></li>
+<li><p>if the pixel level is lower that <span class="math notranslate nohighlight">\(T\)</span>, then the pixel is in class 0 (displayed in black in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 29</span></a>),</p></li>
+<li><p>otherwise, the pixel is in class 1 (displayed in white in <a class="reference internal" href="#f-histogram-threshold"><span class="std std-numref">Fig. 29</span></a>).</p></li>
 </ul>
 <figure class="align-default" id="f-histogram-threshold">
 <img alt="../_images/thresholding.svg" src="../_images/thresholding.svg" /><figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Threshold with a threshold set to 0.45.</span><a class="headerlink" href="#f-histogram-threshold" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Threshold with a threshold set to 0.45.</span><a class="headerlink" href="#f-histogram-threshold" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Such a thresholding yields a binary image whose pixels have only two values.

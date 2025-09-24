@@ -427,7 +427,7 @@ would be equally likely to fall on one side or the other of the line.</p>
 <figure class="align-default" id="f-segmentation-watershed-concept">
 <a class="reference internal image-reference" href="../_images/watershed-concept.svg"><img alt="../_images/watershed-concept.svg" src="../_images/watershed-concept.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">A grayscale image (left) and its 3D representation as a topographic map (right).
 The crest line is the top of the mountain in the shape of a “b”.</span><a class="headerlink" href="#f-segmentation-watershed-concept" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -440,7 +440,7 @@ the dams correspond to the segmentation boundaries.</p>
 <figure class="align-default" id="f-segmentation-watershed-animation">
 <a class="reference internal image-reference" href="../_images/watershed-animation.svg"><img alt="../_images/watershed-animation.svg" src="../_images/watershed-animation.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 74</span></a>).
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Illustration of water flooding on a cut at row 150 (see <a class="reference internal" href="#f-segmentation-watershed-cut"><span class="std std-numref">Fig. 75</span></a>).
 The number corresponds to the water level,
 the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-watershed-animation" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -448,8 +448,8 @@ the dams are shown in red.</span><a class="headerlink" href="#f-segmentation-wat
 <figure class="align-default" id="f-segmentation-watershed-cut">
 <a class="reference internal image-reference" href="../_images/watershed-cut.svg"><img alt="../_images/watershed-cut.svg" src="../_images/watershed-cut.svg" width="250px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
-The profile considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 73</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">The grayscale image with the watershed boundaries (dams) shown in red.
+The profile considered in <a class="reference internal" href="#f-segmentation-watershed-animation"><span class="std std-numref">Fig. 74</span></a> is plotted in green.</span><a class="headerlink" href="#f-segmentation-watershed-cut" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- 
@@ -474,11 +474,11 @@ Note: several algorithms exist, which lead to slightly different results.
 <section id="application-to-an-image">
 <h2>Application to an image<a class="headerlink" href="#application-to-an-image" title="Permalink to this heading">#</a></h2>
 <p>Generally, the contours of the objects do not correspond to the crest lines,
-so the watershed has to be applied to the gradient of the image (see <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a>).</p>
+so the watershed has to be applied to the gradient of the image (see <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 76</span></a>).</p>
 <figure class="align-default" id="f-segmentation-watershed-ok">
 <a class="reference internal image-reference" href="../_images/cells-watershed-ok.svg"><img alt="../_images/cells-watershed-ok.svg" src="../_images/cells-watershed-ok.svg" width="700px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">An image (left), its gradient (center), and the result given by the watershed.
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">An image (left), its gradient (center), and the result given by the watershed.
 The contours are computed by using the <a class="reference internal" href="../detection/edges.html#c-detection-sobel"><span class="std std-ref">Sobel filter</span></a>.</span><a class="headerlink" href="#f-segmentation-watershed-ok" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -487,35 +487,35 @@ The contours are computed by using the <a class="reference internal" href="../de
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>One of the limitations of the watershed method appears when there are many local minima in the image:
 the watershed leads to over-segmentation because each local minimum will produce a segment.
-This phenomenon is illustrated <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a>
-where the image is the same as in <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a>
+This phenomenon is illustrated <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 77</span></a>
+where the image is the same as in <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 76</span></a>
 but degraded by additive noise and JPEG.
 Therefore the image gradient now presents some small local minima.</p>
 <figure class="align-default" id="f-segmentation-watershed-oversegmentation">
 <a class="reference internal image-reference" href="../_images/cells-watershed-oversegmentation.svg"><img alt="../_images/cells-watershed-oversegmentation.svg" src="../_images/cells-watershed-oversegmentation.svg" width="700px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Degraded version of <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 75</span></a> (left),
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Degraded version of <a class="reference internal" href="#f-segmentation-watershed-ok"><span class="std std-numref">Fig. 76</span></a> (left),
 its gradient (center), and the result given by the watershed (right).
 Clearly, the result is not satisfactory.</span><a class="headerlink" href="#f-segmentation-watershed-oversegmentation" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To reduce the number of segments, one can:</p>
 <ul class="simple">
-<li><p>manually choose the watersheds of interest with markers (<a class="reference internal" href="#f-segmentation-watershed-markers"><span class="std std-numref">Fig. 77</span></a>),</p></li>
-<li><p>smooth (with a low-pass filter) the gradient before applying the algorithm (<a class="reference internal" href="#f-segmentation-watershed-smooth"><span class="std std-numref">Fig. 78</span></a>),</p></li>
+<li><p>manually choose the watersheds of interest with markers (<a class="reference internal" href="#f-segmentation-watershed-markers"><span class="std std-numref">Fig. 78</span></a>),</p></li>
+<li><p>smooth (with a low-pass filter) the gradient before applying the algorithm (<a class="reference internal" href="#f-segmentation-watershed-smooth"><span class="std std-numref">Fig. 79</span></a>),</p></li>
 <li><p>merge the local minima.</p></li>
 </ul>
 <figure class="align-default" id="f-segmentation-watershed-markers">
 <a class="reference internal image-reference" href="../_images/cells-watershed-markers.svg"><img alt="../_images/cells-watershed-markers.svg" src="../_images/cells-watershed-markers.svg" width="700px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a> (left),
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 77</span></a> (left),
 its gradient and the chosen markers (center), and the result given by the watershed (right).</span><a class="headerlink" href="#f-segmentation-watershed-markers" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-segmentation-watershed-smooth">
 <a class="reference internal image-reference" href="../_images/cells-watershed-smooth.svg"><img alt="../_images/cells-watershed-smooth.svg" src="../_images/cells-watershed-smooth.svg" width="700px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 76</span></a> (left),
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Same image as in <a class="reference internal" href="#f-segmentation-watershed-oversegmentation"><span class="std std-numref">Fig. 77</span></a> (left),
 the gradient of a smoothed version of the image (center), and the result given by the watershed (right).</span><a class="headerlink" href="#f-segmentation-watershed-smooth" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

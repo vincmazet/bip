@@ -452,47 +452,47 @@ Note that JPEG2000 (which is a newer but rarely used version of JPEG) uses a wav
 <p>While the DCT resembles to <a class="reference internal" href="../filtering/fourier.html#filtering-fourier"><span class="std std-ref">Fourier transform</span></a>,
 the difference lies in the fact that the DCT decomposes the image into cosines instead of complex exponentials.</p>
 <p>The DCT decomposes an image into 2D cosines of different frequencies.
-Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented in <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 43</span></a>.</p>
+Considering an image of size 8 × 8, the 64 possible cosines of the DCT are represented in <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 44</span></a>.</p>
 <figure class="align-default" id="f-compression-dct-coefficients">
 <img alt="../_images/dct-coefficients.svg" src="../_images/dct-coefficients.svg" /><figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">The 64 coefficients of a DCT of size 8 × 8.</span><a class="headerlink" href="#f-compression-dct-coefficients" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="example-of-the-dct-of-an-image">
 <h2>Example of the DCT of an image<a class="headerlink" href="#example-of-the-dct-of-an-image" title="Permalink to this heading">#</a></h2>
-<p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 44</span></a>,
+<p>To illustrate the DCT applied to an image, consider the image given in <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 45</span></a>,
 which is a crop of size 8 × 8 centered on the squirrel’s snout.</p>
 <figure class="align-default" id="f-compression-squirrel-crop">
 <img alt="../_images/squirrel-crop.svg" src="../_images/squirrel-crop.svg" /><figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">The 8 × 8 image to be transformed with DCT (right).</span><a class="headerlink" href="#f-compression-squirrel-crop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 45</span></a>.
+<p>The 64 coefficients of the DCT of the crop are shown in <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 46</span></a>.
 As you can see, the coefficients in the top left corner, which correspond to the lower frequencies
-(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 43</span></a>) are the largest in magnitude.</p>
+(see <a class="reference internal" href="#f-compression-dct-coefficients"><span class="std std-numref">Fig. 44</span></a>) are the largest in magnitude.</p>
 <figure class="align-default" id="f-compression-squirrel-coefficients">
 <img alt="../_images/squirrel-coefficients.svg" src="../_images/squirrel-coefficients.svg" /><figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 44</span></a>.
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">The 64 coefficients of the DCT applied to <a class="reference internal" href="#f-compression-squirrel-crop"><span class="std std-numref">Fig. 45</span></a>.
 Those which are cancelled are stroked out with a red cross.</span><a class="headerlink" href="#f-compression-squirrel-coefficients" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The next step of JPEG compression involves quantizing these coefficients.
 Since the human eye is less sensitive to high-frequencies components than low-frequencies components,
-the idea of JPEG compression is to quantize roughly the coefficients primarily located in the bottom-right corner of <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 45</span></a>.</p>
+the idea of JPEG compression is to quantize roughly the coefficients primarily located in the bottom-right corner of <a class="reference internal" href="#f-compression-squirrel-coefficients"><span class="std std-numref">Fig. 46</span></a>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The expression of the inverse DCT is not given here but is similar to what the inverse Fourier transform is for the Fourier transform.</p>
 </aside>
 <p>To illustrate the process simply, here we cancel the coefficients marked with a red cross and reconstruct the image by using the inverse DCT.
-The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 46</span></a> (right).
+The reconstructed image with only 28 coefficients (over 64) is shown in <a class="reference internal" href="#f-compression-squirrel-comparison"><span class="std std-numref">Fig. 47</span></a> (right).
 As you can see, the result is very similar to the original image,
 even though less than 50 % of the coefficients are kept!
 This small example shows the interest of going into the domain of a transformation
 and “canceling” certain coefficients.</p>
 <figure class="align-default" id="f-compression-squirrel-comparison">
 <img alt="../_images/squirrel-comparison.svg" src="../_images/squirrel-comparison.svg" /><figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">The original image (left), the compressed one (middle) and the difference (right, multiplied by 10 to see the differences).</span><a class="headerlink" href="#f-compression-squirrel-comparison" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

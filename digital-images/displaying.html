@@ -422,22 +422,22 @@ document.write(`
 Screens are basically a matrix of pixels, each composed of red, green and blue luminophores
 (the shape, size and number of luminophores depends on the technology).
 Colors can be recreated by adjusting the luminophore intensities,
-thanks to the principles of additive color mixing (see <a class="reference internal" href="color-models.html#f-digital-images-additive-mixing"><span class="std std-numref">Fig. 16</span></a>).
+thanks to the principles of additive color mixing (see <a class="reference internal" href="color-models.html#f-digital-images-additive-mixing"><span class="std std-numref">Fig. 17</span></a>).
 The correspondence between the numerical value of the intensities and colors on the screen
 is visually represented by a <em>colormap</em>.</p>
 <section id="displaying-a-2d-grayscale-image">
 <h2>Displaying a 2D grayscale image<a class="headerlink" href="#displaying-a-2d-grayscale-image" title="Permalink to this heading">#</a></h2>
 <p>A 2D grayscale image is an array with <span class="math notranslate nohighlight">\(d=2\)</span> dimensions where each pixel contains a scalar (<span class="math notranslate nohighlight">\(B=1\)</span>).
 Therefore, each pixel is displayed with a specific gray level.
-<a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 19</span></a> shows the same image with different colormaps.
+<a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 20</span></a> shows the same image with different colormaps.
 As you can see, the choice of the colormap changes the perception of the colors,
 even though the information contained by the pixels remains unchanged.</p>
 <figure class="align-default" id="f-intro-colormap">
 <img alt="../_images/colormaps.svg" src="../_images/colormaps.svg" /><figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">An image showing Buzz Aldrin displayed with the colormaps given below the images.</span><a class="headerlink" href="#f-intro-colormap" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">An image showing Buzz Aldrin displayed with the colormaps given below the images.</span><a class="headerlink" href="#f-intro-colormap" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Note that the 3 images in <a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 19</span></a> are all grayscale images, even if one is displayed with colors.</p>
+<p>Note that the 3 images in <a class="reference internal" href="#f-intro-colormap"><span class="std std-numref">Fig. 20</span></a> are all grayscale images, even if one is displayed with colors.</p>
 <p>Colormaps are sometimes useful to bring out dark objects in an image with poor contrast.
 The code below shows an image with one bright spot, clearly visible on the first image,
 along four faint spots which are not visible with the usual colormap “gray”.

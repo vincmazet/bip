@@ -432,11 +432,11 @@ This is the so-called convolution <a class="reference internal" href="outro.html
   f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) \ h(m,n)
 \]</div>
 <p>Intuitively, the convolution “spreads” each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> in <span class="math notranslate nohighlight">\(g\)</span> following <span class="math notranslate nohighlight">\(h\)</span> and proportionally to the intensity <span class="math notranslate nohighlight">\(g(m,n)\)</span>.
-<a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> gives an example of the computing of a particular pixel.</p>
+<a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 30</span></a> gives an example of the computing of a particular pixel.</p>
 <figure class="align-default" id="f-convolution-sketch">
 <img alt="../_images/convolution.png" src="../_images/convolution.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Example for computing the pixel (2,2) of <span class="math notranslate nohighlight">\(f\)</span>.</span><a class="headerlink" href="#f-convolution-sketch" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>For the sake of simplicity, the image <span class="math notranslate nohighlight">\(h\)</span> is often:</p>
@@ -453,7 +453,7 @@ This is the so-called convolution <a class="reference internal" href="outro.html
 Example 1</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example1">
 <img alt="../_images/conv-example1.svg" src="../_images/conv-example1.svg" /><figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image composed of only four non-zero pixels.
@@ -469,7 +469,7 @@ Notice that the “spreading” of the two nearby pixels adds up, thus giving a 
 Example 2</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example2">
 <img alt="../_images/conv-example2.svg" src="../_images/conv-example2.svg" /><figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Here, each pixel of <span class="math notranslate nohighlight">\(g\)</span> appears twice in <span class="math notranslate nohighlight">\(f\)</span>:
@@ -482,7 +482,7 @@ the result corresponds to the two unique pixels of <span class="math notranslate
 Example 3</label><div class="sd-tab-content docutils">
 <figure class="align-default" id="f-convolution-example3">
 <img alt="../_images/conv-example3.svg" src="../_images/conv-example3.svg" /><figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">The image to the left is the convolution of the other two images.</span><a class="headerlink" href="#f-convolution-example3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(g\)</span> is an image made up of pixels of different intensities.
@@ -510,21 +510,21 @@ We will see in <a class="reference internal" href="filtering.html#filtering-filt
 <section id="boundaries-effects">
 <span id="c-convolution-boundaries"></span><h2>Boundaries effects<a class="headerlink" href="#boundaries-effects" title="Permalink to this heading">#</a></h2>
 <p>The convolution formula is not defined on the boundaries of the image:
-as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 29</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
+as an example, computing <span class="math notranslate nohighlight">\(f_{1,1}\)</span> in <a class="reference internal" href="#f-convolution-sketch"><span class="std std-numref">Fig. 30</span></a> requires the value of <span class="math notranslate nohighlight">\(g_{0,0}\)</span> which is not defined.</p>
 <p>Therefore, one has to make assumptions about the pixel values outside the image.
-<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 33</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> shows the convolution of these images by a Gaussian.</p>
+<a class="reference internal" href="#f-convolution-boundaries-hypotheses"><span class="std std-numref">Fig. 34</span></a> shows an image with some possibilities to consider the external pixels, and <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 35</span></a> shows the convolution of these images by a Gaussian.</p>
 <figure class="align-default" id="f-convolution-boundaries-hypotheses">
 <img alt="../_images/boundaries-hypotheses.svg" src="../_images/boundaries-hypotheses.svg" /><figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Several ways to assume the pixels outside the image.
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Several ways to assume the pixels outside the image.
 The image is delimited by the green edge.</span><a class="headerlink" href="#f-convolution-boundaries-hypotheses" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="f-convolution-boundaries-results">
 <img alt="../_images/boundaries-results.svg" src="../_images/boundaries-results.svg" /><figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Results of the convolution with the same image.</span><a class="headerlink" href="#f-convolution-boundaries-results" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 34</span></a> that the three convolutions are basically identical:
+<p>One can see on the <a class="reference internal" href="#f-convolution-boundaries-results"><span class="std std-numref">Fig. 35</span></a> that the three convolutions are basically identical:
 only the pixels near the boundaries may be different (darker or brighter on this example).
 Anyway, there is no perfect choice to set the pixels outside the image, and each choice yields some errors.
 Also, the best thing is to ensure when acquiring the image that the objects of interest are far from the edges</p>

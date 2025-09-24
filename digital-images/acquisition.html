@@ -593,25 +593,42 @@ which is both the sampling and quantization of the observed scene.</p>
 <p>Sampling corresponds to mapping a continuous scene onto a discrete grid.
 This is naturally done by the matrix of pixels.
 Sampling a continuous image leads to a loss of information.
-Intuitively, it is clear that sampling reduces resolution:
-structures at about the scale of the sampling distance and finer will be lost.
-Thus the number of pixels on the sensor, directly related to the sampling, is crucial.
-Besides, significant distortions occur when sampling an image with fine structures,
-as seen in <a class="reference internal" href="#f-digital-images-moire"><span class="std std-numref">Fig. 11</span></a>.</p>
+Intuitively, it is clear that sampling reduces resolution and that fine structures will be lost.
+Thus the number of pixels on the sensor, directly related to the sampling, is crucial
+(see <a class="reference internal" href="#f-digital-images-aliasing"><span class="std std-numref">Fig. 11</span></a>).</p>
+<figure class="align-default" id="f-digital-images-aliasing">
+<a class="reference internal image-reference" href="../_images/square-aliasing.svg"><img alt="../_images/square-aliasing.svg" src="../_images/square-aliasing.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Images made of black and white squares of different sizes.
+The results show significant aliasing for squares of size 0.8 and 0.12 pixels.
+Note that the right image looks like a “normal” image.</span><a class="headerlink" href="#f-digital-images-aliasing" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Besides, distortions also occur when resizing an image with fine structures,
+as seen in <a class="reference internal" href="#f-digital-images-moire"><span class="std std-numref">Fig. 12</span></a>.</p>
 <figure class="align-default" id="f-digital-images-moire">
 <a class="reference internal image-reference" href="../_images/moire.jpg"><img alt="../_images/moire.jpg" src="../_images/moire.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Me with my favourite moiré shirt.
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Me with my favourite moiré shirt.
 Left: image of size 1000×1000,
 right: image of size 595×595.</span><a class="headerlink" href="#f-digital-images-moire" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This kind of distortion is called the moiré effect.
-The same phenomenon exists in signal processing and is called aliasing.
-To avoid the moiré effect, one has to satisfy the sampling theorem
-which imposes a maximal sampling step in function of the frequencies present in the image.
-In practice, one prefers to put an optical low-pass filter before the sensor
-to vanish the high frequencies responsible for the moiré effect.</p>
+<p>This kind of distortion is called aliasing.
+It is also called moiré effect in images with pediodic or nearly periodic components.
+To avoid aliasing, one has to satisfy the sampling theorem
+which states that a continuous scene can be sampled with no error if the sampling intervals are</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta x &lt; \frac{T_x}{2}
+\quad\text{and}\quad
+\Delta y &lt; \frac{T_y}{2}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> and <span class="math notranslate nohighlight">\(\Delta y\)</span> are the sampling intervals in the two directions (<em>i.e.</em> the distance between two consecutive samples)
+and <span class="math notranslate nohighlight">\(T_x\)</span> and <span class="math notranslate nohighlight">\(T_y\)</span> are the periods of the finest structures in the image.</p>
+<p>In practice, one prefers to put an optical <a class="reference internal" href="../filtering/filtering.html#filtering-lowpass"><span class="std std-ref">low-pass filter</span></a> before the sensor
+to vanish the high frequencies responsible for aliasing,
+that is to increase <span class="math notranslate nohighlight">\(T_x\)</span> and <span class="math notranslate nohighlight">\(T_y\)</span> such that the sampling theorem is satisfied.</p>
 </section>
 <section id="quantization">
 <h3>Quantization<a class="headerlink" href="#quantization" title="Permalink to this heading">#</a></h3>
@@ -624,7 +641,7 @@ the illusion of a continuous change in gray values.</p>
 <figure class="align-default" id="f-digital-images-quantization">
 <a class="reference internal image-reference" href="../_images/quantization.png"><img alt="../_images/quantization.png" src="../_images/quantization.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Quantization of the same image with (from left to right)
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Quantization of the same image with (from left to right)
 256, 16, 4, and 2 gray levels.</span><a class="headerlink" href="#f-digital-images-quantization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -656,7 +673,7 @@ and is called speckle noise.</p>
 <figure class="align-default" id="f-digital-image-dark-current">
 <a class="reference internal image-reference" href="../_images/dark-current1.jpg"><img alt="../_images/dark-current1.jpg" src="../_images/dark-current1.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Noise on a photograph taken in a dark room (this noise is called “dark current”).</span><a class="headerlink" href="#f-digital-image-dark-current" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Noise on a photograph taken in a dark room (this noise is called “dark current”).</span><a class="headerlink" href="#f-digital-image-dark-current" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -675,7 +692,7 @@ and it is called optical transfer function, or OTF (French: <em>fonction de tran
 <figure class="align-default" id="f-digital-image-example-motion">
 <a class="reference internal image-reference" href="../_images/budapest1.jpg"><img alt="../_images/budapest1.jpg" src="../_images/budapest1.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Example of blur (parliament of Budapest).</span><a class="headerlink" href="#f-digital-image-example-motion" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Example of blur (parliament of Budapest).</span><a class="headerlink" href="#f-digital-image-example-motion" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

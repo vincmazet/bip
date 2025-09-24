@@ -425,12 +425,12 @@ In image processing, the Fourier transform decomposes an image into a sum of osc
 Note that the oscillations are not complex exponential if the the pixels are real values.</p>
 <p>So, the Fourier transform gives information about the frequency content of the image,
 <em>i.e.</em> how the intensities in the image are distributed through different frequencies.
-<a class="reference internal" href="#f-fourier-decomposition"><span class="std std-numref">Fig. 35</span></a> shows the decomposition of a synthetic image into oscillations.
+<a class="reference internal" href="#f-fourier-decomposition"><span class="std std-numref">Fig. 36</span></a> shows the decomposition of a synthetic image into oscillations.
 In this toy-example, the image is simple enough to be decomposed by using only three oscillations.
 We will see further that usual images need much more oscillations.</p>
 <figure class="align-default" id="f-fourier-decomposition">
 <img alt="../_images/fourier-decomposition.svg" src="../_images/fourier-decomposition.svg" /><figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">A synthetic image and the three oscillations (frequencies)
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">A synthetic image and the three oscillations (frequencies)
 that compose the image.
 The third oscillation (on the right) is of lower frequency than the first two oscillations.</span><a class="headerlink" href="#f-fourier-decomposition" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -445,10 +445,10 @@ The third oscillation (on the right) is of lower frequency than the first two os
 <p>In the sequel, we note <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> the DFT so that <span class="math notranslate nohighlight">\(\mathcal{F}[f] = F\)</span>.</p>
 <p>Note that the definition of the Fourier transform uses a complex exponential.
 In consequence, the DFT of an image is possibly complex, so it cannot be displayed with a single image.
-That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in <a class="reference internal" href="#f-fourier-example"><span class="std std-numref">Fig. 36</span></a>.</p>
+That is why we will show the amplitude (modulus) and phase (argument) of the DFT separately, as in <a class="reference internal" href="#f-fourier-example"><span class="std std-numref">Fig. 37</span></a>.</p>
 <figure class="align-default" id="f-fourier-example">
 <img alt="../_images/fourier-example.svg" src="../_images/fourier-example.svg" /><figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
 (an <a class="reference internal" href="../digital-images/histogram.html#c-histogram-transformations"><span class="std std-ref">histogram transformation</span></a> has been applied).</span><a class="headerlink" href="#f-fourier-example" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

@@ -470,10 +470,10 @@ The intensity of each pixel <span class="math notranslate nohighlight">\((m,n)\)
 \[
   p(k)=\frac{\lambda^k}{k\,!} e^{-\lambda}
 \]</div>
-<p><a class="reference internal" href="#f-denoising-poisson-distribution"><span class="std std-numref">Fig. 93</span></a> represents the Poisson distribution for three values of parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p><a class="reference internal" href="#f-denoising-poisson-distribution"><span class="std std-numref">Fig. 94</span></a> represents the Poisson distribution for three values of parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <figure class="align-default" id="f-denoising-poisson-distribution">
 <img alt="../_images/poisson-distribution.svg" src="../_images/poisson-distribution.svg" /><figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Poisson distribution for three values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-poisson-distribution" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean and variance of the Poisson distribution are both equal <span class="math notranslate nohighlight">\(\lambda\)</span>, which depends on the number of incident photons.
@@ -502,7 +502,7 @@ models saturated or dead pixels (due to photosite malfunction or saturation).</p
 </section>
 <section id="noise-power">
 <h3>Noise power<a class="headerlink" href="#noise-power" title="Permalink to this heading">#</a></h3>
-<p><a class="reference internal" href="#f-denoising-three-noises"><span class="std std-numref">Fig. 94</span></a> illustrates the effect of the previous noises on the same image.
+<p><a class="reference internal" href="#f-denoising-three-noises"><span class="std std-numref">Fig. 95</span></a> illustrates the effect of the previous noises on the same image.
 One can observe that:</p>
 <ul class="simple">
 <li><p>for Gaussian noise, the whole image is affected in the same way by the noise,</p></li>
@@ -511,7 +511,7 @@ One can observe that:</p>
 </ul>
 <figure class="align-default" id="f-denoising-three-noises">
 <img alt="../_images/three-noises.svg" src="../_images/three-noises.svg" /><figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Example of different types of noise (with almost the same power).</span><a class="headerlink" href="#f-denoising-three-noises" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Signal-to-noise ratio (SNR, in French: RSB for <em>rapport signal-sur-bruit</em>) is a measure of the noise level.
@@ -534,11 +534,11 @@ the peak signal-to-noise ratio (PSNR) is the ratio of the squared dynamics of th
   \text{PSNR} = 10 \log_{10} \left( \frac{\Delta x^{\;2}}{\frac{1}{M \times N} \sum_{m,n} b(m,n)^2} \right)
 \]</div>
 <!-- TODO : pourquoi introduire le PSNR ? -->
-<p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 95</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
+<p><a class="reference internal" href="#f-denoising-snr-psnr"><span class="std std-numref">Fig. 96</span></a> represents the same image corrupted with additive white Gaussian noise, at different SNR and PSNR.
 As you can see, when the RSB or the PSNR increases, the noise decreases!</p>
 <figure class="align-default" id="f-denoising-snr-psnr">
 <img alt="../_images/snr-psnr.svg" src="../_images/snr-psnr.svg" /><figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Noisy image at different RSB and PSNR.</span><a class="headerlink" href="#f-denoising-snr-psnr" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -557,11 +557,11 @@ Each pixel <span class="math notranslate nohighlight">\((m,n)\)</span> of the de
 <li><p><span class="math notranslate nohighlight">\(V_{m,n}\)</span> is the neighbourhood, that is the set of pixels around <span class="math notranslate nohighlight">\((m,n)\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(|V_{m,n}| \)</span> is the cardinality of <span class="math notranslate nohighlight">\(V_{m,n}\)</span>, that is, the number of pixels in the neighbourhood.</p></li>
 </ul>
-<p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 96</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
+<p><a class="reference internal" href="#f-denoising-mean-filter-size"><span class="std std-numref">Fig. 97</span></a> illustrates the effect of the mean filter for different sizes of the neighbourhood.
 If the neighbourhood grows, then the noise decreases but at the same time the image becomes more blurry.</p>
 <figure class="align-default" id="f-denoising-mean-filter-size">
 <img alt="../_images/mean-filter-size.svg" src="../_images/mean-filter-size.svg" /><figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Effect of the size of the mean filter.</span><a class="headerlink" href="#f-denoising-mean-filter-size" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The mean filter can be expressed with a convolution product.
@@ -583,10 +583,10 @@ g(u,v) =
 \end{cases}
 \end{split}\]</div>
 <p>This definition can be extended to any type of kernel <span class="math notranslate nohighlight">\(g\)</span>!
-For example, <a class="reference internal" href="#f-denoising-mean-filter-kernels"><span class="std std-numref">Fig. 97</span></a> gives the result for two different kernels.</p>
+For example, <a class="reference internal" href="#f-denoising-mean-filter-kernels"><span class="std std-numref">Fig. 98</span></a> gives the result for two different kernels.</p>
 <figure class="align-default" id="f-denoising-mean-filter-kernels">
 <img alt="../_images/mean-filter-kernels.svg" src="../_images/mean-filter-kernels.svg" /><figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Two mean filters with different kernels.</span><a class="headerlink" href="#f-denoising-mean-filter-kernels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In summary:</p>
@@ -613,7 +613,7 @@ because it does not blur the image, as a mean filter would do.</p>
 Therefore it cannot be written as a convolution.</p>
 <figure class="align-default" id="f-denoising-median-vs-mean">
 <img alt="../_images/median-vs-mean.svg" src="../_images/median-vs-mean.svg" /><figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.</span><a class="headerlink" href="#f-denoising-median-vs-mean" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -624,7 +624,7 @@ These structures can be removed in the Fourier domain by cancelling the coeffici
 The denoised image is then obtained by an inverse Fourier transform.</p>
 <figure class="align-default" id="f-denoising-periodic-noise">
 <img alt="../_images/periodic-noise.svg" src="../_images/periodic-noise.svg" /><figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Filtering a periodic noise on a photograph of the Moon:
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Filtering a periodic noise on a photograph of the Moon:
 the image is cleaned of periodic image artefacts.</span><a class="headerlink" href="#f-denoising-periodic-noise" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -677,7 +677,7 @@ Mathematically, we write:</p>
 The choice and description of these algorithms are beyond the scope of the course.</p>
 <figure class="align-default" id="f-denoising-tv">
 <img alt="../_images/tv-denoising.svg" src="../_images/tv-denoising.svg" /><figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Denoising with TV regularization, for two values of <span class="math notranslate nohighlight">\(\lambda\)</span>.</span><a class="headerlink" href="#f-denoising-tv" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

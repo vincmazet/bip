@@ -432,19 +432,19 @@ a binary number which depends on the intensity of the pixels and on a threshold 
 \end{split}\]</div>
 <p>This method is called “binarization” (French: <em>binarisation</em>).
 It gives a segmentation into two classes, depending on the intensity of the pixels of a grayscale image
-(<a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 61</span></a>).</p>
+(<a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 62</span></a>).</p>
 <figure class="align-default" id="f-segmentation-binarization">
 <a class="reference internal image-reference" href="../_images/binarization.svg"><img alt="../_images/binarization.svg" height="300px" src="../_images/binarization.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Example of binarization for two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Example of binarization for two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As you can see, the segmentation depends on the value of <span class="math notranslate nohighlight">\(T\)</span>.
 Therefore, the histogram is very useful to choose the threshold!
-As an example, <a class="reference internal" href="#f-segmentation-binarization-histogram"><span class="std std-numref">Fig. 62</span></a> gives the histogram of the image, with the chosen thresholds.</p>
+As an example, <a class="reference internal" href="#f-segmentation-binarization-histogram"><span class="std std-numref">Fig. 63</span></a> gives the histogram of the image, with the chosen thresholds.</p>
 <figure class="align-default" id="f-segmentation-binarization-histogram">
 <img alt="../_images/binarization-histogram.svg" src="../_images/binarization-histogram.svg" /><figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Histogram of <a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 61</span></a> with the two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization-histogram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Histogram of <a class="reference internal" href="#f-segmentation-binarization"><span class="std std-numref">Fig. 62</span></a> with the two thresholds.</span><a class="headerlink" href="#f-segmentation-binarization-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>It would be useful to have an automatic process to define the threshold, whatever the image to segment.
@@ -452,10 +452,10 @@ Otsu’s method is the most famous automatic method for histogram thresholding.<
 </section>
 <section id="otsu-s-method">
 <span id="segmentation-otsu"></span><h2>Otsu’s method<a class="headerlink" href="#otsu-s-method" title="Permalink to this heading">#</a></h2>
-<p>Binarization divides the histogram of the images in two groups, namely class 0 and class 1, as illustrated <a class="reference internal" href="#f-segmentation-otsu-histogram"><span class="std std-numref">Fig. 63</span></a>.</p>
+<p>Binarization divides the histogram of the images in two groups, namely class 0 and class 1, as illustrated <a class="reference internal" href="#f-segmentation-otsu-histogram"><span class="std std-numref">Fig. 64</span></a>.</p>
 <figure class="align-default" id="f-segmentation-otsu-histogram">
 <img alt="../_images/otsu-histogram.svg" src="../_images/otsu-histogram.svg" /><figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">An histogram and a threshold <span class="math notranslate nohighlight">\(T\)</span>.</span><a class="headerlink" href="#f-segmentation-otsu-histogram" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">An histogram and a threshold <span class="math notranslate nohighlight">\(T\)</span>.</span><a class="headerlink" href="#f-segmentation-otsu-histogram" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Each group has a number of pixel <span class="math notranslate nohighlight">\(w_i(T)\)</span> with mean <span class="math notranslate nohighlight">\(\mu_i(T)\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_i^2(T)\)</span>,
@@ -497,23 +497,23 @@ Class 2</div>
 <p>The algorithm to determine the value of <span class="math notranslate nohighlight">\(T\)</span> that minimize <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is simple:
 the intra-class variance <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is calculated for all the thresholds <span class="math notranslate nohighlight">\(T=\{0,\dots,L-1\}\)</span>,
 and the one that gives the lowest value for <span class="math notranslate nohighlight">\(\sigma_w^2(T)\)</span> is returned.</p>
-<p>An example of Otsu’s thresholding is given <a class="reference internal" href="#f-segmentation-otsu"><span class="std std-numref">Fig. 64</span></a>.</p>
+<p>An example of Otsu’s thresholding is given <a class="reference internal" href="#f-segmentation-otsu"><span class="std std-numref">Fig. 65</span></a>.</p>
 <figure class="align-default" id="f-segmentation-otsu">
 <a class="reference internal image-reference" href="../_images/otsu.svg"><img alt="../_images/otsu.svg" height="300px" src="../_images/otsu.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Result of Otsu’s segmentation.</span><a class="headerlink" href="#f-segmentation-otsu" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Result of Otsu’s segmentation.</span><a class="headerlink" href="#f-segmentation-otsu" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="multiple-thresholds">
 <h2>Multiple thresholds<a class="headerlink" href="#multiple-thresholds" title="Permalink to this heading">#</a></h2>
-<p>An image can be segmented in more than two classes by defining or computing several thresholds (see <a class="reference internal" href="#f-segmentation-multiple-thresholds"><span class="std std-numref">Fig. 65</span></a>).
+<p>An image can be segmented in more than two classes by defining or computing several thresholds (see <a class="reference internal" href="#f-segmentation-multiple-thresholds"><span class="std std-numref">Fig. 66</span></a>).
 In particular, Otsu’s method can be extended to several thresholds,
 but the computational complexity (hence the computation time) increases greatly with the number of classes!</p>
 <figure class="align-default" id="f-segmentation-multiple-thresholds">
 <a class="reference internal image-reference" href="../_images/multiple-thresholds.svg"><img alt="../_images/multiple-thresholds.svg" height="300px" src="../_images/multiple-thresholds.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Several thresholds are applied to an image to get several classes (shown in colors).</span><a class="headerlink" href="#f-segmentation-multiple-thresholds" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Several thresholds are applied to an image to get several classes (shown in colors).</span><a class="headerlink" href="#f-segmentation-multiple-thresholds" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- 
