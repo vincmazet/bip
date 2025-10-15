@@ -17,7 +17,7 @@ and are associated with programming exercices.
 Département I2S, diplôme généraliste, Télécom Physique Strasbourg
 
 <a class="btn btn-primary" href="https://vincmazet.github.io/tp-image/" role="button">Travaux pratiques</a>&nbsp;&nbsp;
-<a class="btn btn-primary" href="https://moodle.unistra.fr/course/view.php?id=xxxx" role="button">Moodle</a>
+<a class="btn btn-primary" href="https://moodle.unistra.fr/course/view.php?id=18192" role="button">Moodle</a>
 :::
 
 :::{grid-item-card} Basics of image processing
