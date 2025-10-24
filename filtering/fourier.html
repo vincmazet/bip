@@ -404,6 +404,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-fourier-transform">Direct Fourier transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-fourier-transform">Inverse Fourier transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-simple-fourier-transforms">Example of simple Fourier transforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
 </ul>
             </nav>
@@ -420,9 +421,8 @@ document.write(`
 <span id="filtering-fourier"></span><h1>Fourier transform<a class="headerlink" href="#fourier-transform" title="Permalink to this heading">#</a></h1>
 <p>The (2D) Fourier transform is a very classical tool in image processing.
 It is the extension of the <a class="reference external" href="https://vincmazet.github.io/signal1/fourier/fourier.html">Fourier transform</a>
-for signals which decomposes a signal into a sum of complex oscillations (actually, complex exponential).
-In image processing, the Fourier transform decomposes an image into a sum of oscillations with different frequencies, phase and orientation.
-Note that the oscillations are not complex exponential if the the pixels are real values.</p>
+for signals which decomposes a signal into a sum of complex oscillations (actually, complex exponentials).
+In image processing, the Fourier transform decomposes an image into a sum of oscillations with different frequencies, phase and orientation.</p>
 <p>So, the Fourier transform gives information about the frequency content of the image,
 <em>i.e.</em> how the intensities in the image are distributed through different frequencies.
 <a class="reference internal" href="#f-fourier-decomposition"><span class="std std-numref">Fig. 36</span></a> shows the decomposition of a synthetic image into oscillations.
@@ -465,6 +465,64 @@ On the contrary, high frequencies are needed in the tail to show the rapid alter
   f(m,n) = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} F(u,v) e^{+j\,2\pi \left(\frac{um}{M} + \frac{vn}{N}\right)}
 \]</div>
 <p>It is denoted <span class="math notranslate nohighlight">\(\mathcal{F}^{-1}\)</span> below.</p>
+</section>
+<section id="example-of-simple-fourier-transforms">
+<h2>Example of simple Fourier transforms<a class="headerlink" href="#example-of-simple-fourier-transforms" title="Permalink to this heading">#</a></h2>
+<p>In the examples below, the image (and their FFT) are 16×16 grayscale images.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-2 sd-g-4 sd-g-xs-4 sd-g-sm-4 sd-g-md-4 sd-g-lg-4 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-0.svg" src="../_images/fourier-0.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+On this example, only the pixel at frequency (0,0) in the Fourier domain is non zero.
+Because an oscillation with frequency 0 does not oscillate, the image is constant.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-1.svg" src="../_images/fourier-1.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+Two pixels in the Fourier domain are non zero.
+Because they are at frequency 1 along the x-axis,
+the image is a sinusoid along the x-axis.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-2.svg" src="../_images/fourier-2.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+Same example as above along the y-axis:
+the image is then a sinusoid along the y-axis.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-3.svg" src="../_images/fourier-3.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+Same example as above with a change in the phase.
+Therefore, the sinusoid is translated in the spatial domain.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-4.svg" src="../_images/fourier-4.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+Here, there is a oscillations both in x and y,
+with high frequency in x and low frequency in y.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-5.svg" src="../_images/fourier-5.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+Two waves are superimposed, both with the same frequency and phase but different orientations.
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/fourier-full.svg" src="../_images/fourier-full.svg" /></div>
+<div class="sd-col sd-d-flex-column docutils">
+<br />
+By combining oscillations at appropriate frequencies, phase and amplitudes,
+it is possible to generate a specific image
+(here, the mean of the image is set to 0).
+</div>
+</div>
+</div>
 </section>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h2>
@@ -567,6 +625,7 @@ provided that the convolution is circular (wrapping hypothesis on the edges):</p
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-fourier-transform">Direct Fourier transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-fourier-transform">Inverse Fourier transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-simple-fourier-transforms">Example of simple Fourier transforms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
 </ul>
   </nav></div>
