@@ -352,6 +352,12 @@ NASA content generally are not copyrighted.
 :::
 
 
+:::{grid-item-card} ![](../_static/figs/plane16.jpg)
+&copy; Vincent Mazet, 2025.
+Public domain.
+:::
+
+
 ::::
 
 Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html).
