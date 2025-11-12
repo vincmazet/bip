@@ -4,6 +4,7 @@
 | 🇬🇧 | 🇫🇷 |
 | :--- | ---: |
 | Additive white Gaussian noise (AWGN) | Bruit blanc gaussien additif |
+| Accuracy | <abbr title="Terme très peu utilisé en français">Exactitude</abbr> |
 | Binarization | Binarisation |
 | Blind deconvolution | Déconvolution myope |
 | Bounding box | Boîte englobante |
