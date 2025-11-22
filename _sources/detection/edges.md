@@ -96,7 +96,7 @@ h_y =
 $$
 
 Note that the row of 0 in $h_x$ and the column of 0 in $h_y$ allows having kernels of the same size.
-These two kernels are very the very basic gradient operators
+These two kernels are the very basic gradient operators
 and, in practice, variants of them are used.
 
 ### Roberts operators
