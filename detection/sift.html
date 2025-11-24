@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Interpolation methods &#8212; Basics of Image Processing</title>
+    <title>SIFT &#8212; Basics of Image Processing</title>
   
   
   
@@ -67,12 +67,12 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/interpolation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'detection/sift';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conclusion" href="outro.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="prev" title="Line detection" href="lines.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,10 +211,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interpolation methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
 <ul class="nav bd-sidenav">
@@ -243,12 +243,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature detection</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../detection/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../detection/matched-filter.html">Matched filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../detection/edges.html">Edge detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../detection/corners.html">Corner detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../detection/lines.html">Line detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../detection/outro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matched-filter.html">Matched filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edges.html">Edge detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corners.html">Corner detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lines.html">Line detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -308,7 +308,7 @@
       
       
       
-      <li><a href="../_sources/interpolation/interpolation.ipynb" target="_blank"
+      <li><a href="../_sources/detection/sift.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -318,7 +318,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -392,7 +392,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Interpolation methods</h1>
+    <h1>SIFT</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,9 +402,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation">Nearest neighbour interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-interpolation-order-1">Bilinear interpolation (order 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicubic-interpolation-order-3">Bicubic Interpolation (order 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-space-representation">Scale-space representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-of-gaussian-at-each-scale">Difference-of-Gaussian at each scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoint-detection">Keypoint detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoints-orientations">Keypoints orientations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoints-descriptors">Keypoints descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching">Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-to-sift">Alternatives to SIFT</a></li>
 </ul>
             </nav>
         </div>
@@ -416,175 +420,193 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="interpolation-methods">
-<span id="c-interpolation"></span><h1>Interpolation methods<a class="headerlink" href="#interpolation-methods" title="Permalink to this heading">#</a></h1>
-<section id="nearest-neighbour-interpolation">
-<h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this heading">#</a></h2>
-<p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
-The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
-<p>An example of nearest neighbour interpolation in 1D is given in <a class="reference internal" href="#f-interpolation-nearest-1d"><span class="std std-numref">Fig. 49</span></a>.</p>
-<figure class="align-default" id="f-interpolation-nearest-1d">
-<a class="reference internal image-reference" href="../_images/interp-nearest-1d.svg"><img alt="../_images/interp-nearest-1d.svg" src="../_images/interp-nearest-1d.svg" width="400px" /></a>
+  <section class="tex2jax_ignore mathjax_ignore" id="sift">
+<span id="c-sift"></span><h1>SIFT<a class="headerlink" href="#sift" title="Permalink to this heading">#</a></h1>
+<p>The scale-invariant feature transform (SIFT) algorithm was proposed by Lowe in 1999 [<a class="reference internal" href="#B:detection:Lowe1999"><span class="xref myst">Lowe 1999</span></a>]
+to detect specific pixels in images and to match them between two images by using the descriptors that characterize them.
+SIFT is still one of the most popular feature detectors today because the algorithm is robust to translation, scaling, rotation, partial occlusion or illumination changes.
+Applications include object recognition, video tracking, robotic navigation, image composition (stitching), etc.</p>
+<p>The 6 stages in SIFT are the following and they are described in the next sections:</p>
+<ol class="arabic simple">
+<li><p>a scale space with Gaussian kernel is computed so as to get a collection of images with different blur level and resolution,</p></li>
+<li><p>at each resolution, a few difference-of-Gaussian are computed : they are the data to find the following keypoints,</p></li>
+<li><p>pixels with high intensity variation in the scale space are detected: they are the so-called keypoints,</p></li>
+<li><p>the main orientation gradient is determined in a local window centered on the keypoints,</p></li>
+<li><p>descriptors (vectors with 128 values) are computed for each keypoints,</p></li>
+<li><p>finally a matching is possible between keypoints and their descriptors of two images.</p></li>
+</ol>
+<section id="scale-space-representation">
+<h2>Scale-space representation<a class="headerlink" href="#scale-space-representation" title="Permalink to this heading">#</a></h2>
+<p>A (discrete) scale-space representation is a family of images with increasing blur levels and decreasing resolution.
+SIFT uses a a Gaussian kernel, so the image at each level <span class="math notranslate nohighlight">\(L\)</span> is getting by:</p>
+<ol class="arabic simple">
+<li><p>convolving the image <span class="math notranslate nohighlight">\(f(x,y)\)</span> by a Gaussian <span class="math notranslate nohighlight">\(g(x,y,\sigma_L) = \frac{1}{2\pi\sigma_L^2} e^{-(x^2+y^2)/2\sigma_L^2}\)</span> to produce a blurred image</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+  \ell(x,y,\sigma_L) = f(x,y) * g(x,y,\sigma_L)
+  \]</div>
+<ol class="arabic simple" start="2">
+<li><p>downsampling the blurred image <span class="math notranslate nohighlight">\(\ell(x,y,\sigma_L)\)</span> by a factor 2 using <a class="reference internal" href="../interpolation/interpolation.html#c-interpolation-bilinear"><span class="std std-ref">bilinear interpolation</span></a>.</p></li>
+</ol>
+<p>In practice, the blurred images <span class="math notranslate nohighlight">\(\ell(x,y,\sigma_L)\)</span> can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions
+(the 2D Gaussian function is <a class="reference internal" href="../filtering/convolution.html#c-convolution-separability"><span class="std std-ref">separable</span></a>).</p>
+<p>The series of blurred and downsampled images produces a pyramid representation (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:scale-space</span></code>) and each level is called an <em>octave</em>.</p>
+<figure class="align-default" id="f-sift-scale-space">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg" height="400px" src="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Illustration of the nearest neighbour interpolation on a 1D example.
-The blue dots represent the input image pixels,
-the red dots represent the output image pixels.
-The gray line is the continuous image reconstructed from the input image.</span><a class="headerlink" href="#f-interpolation-nearest-1d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>In 2D, a 1D interpolation is made on each row of the image,
-then a last 1D interpolation is made on the column, as illustrated in <a class="reference internal" href="#f-interpolation-nearest-3d"><span class="std std-numref">Fig. 50</span></a>.</p>
-<figure class="align-default" id="f-interpolation-nearest-3d">
-<a class="reference internal image-reference" href="../_images/interp-nearest-3d.svg"><img alt="../_images/interp-nearest-3d.svg" src="../_images/interp-nearest-3d.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Illustration of the nearest neighbour interpolation on a 2D example:
-the interpolation is separated into the two dimensions.</span><a class="headerlink" href="#f-interpolation-nearest-3d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The result of nearest-neighbour interpolation on an image is given in <a class="reference internal" href="#f-interpolation-nearest-image"><span class="std std-numref">Fig. 51</span></a>.</p>
-<figure class="align-default" id="f-interpolation-nearest-image">
-<a class="reference internal image-reference" href="../_images/interp-0-image.svg"><img alt="../_images/interp-0-image.svg" src="../_images/interp-0-image.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Example of nearest-neighbour interpolation, with the same grid as in <a class="reference internal" href="intro.html#f-interpolation-principle"><span class="std std-numref">Fig. 48</span></a>.
-The original image is of size 32<span class="math notranslate nohighlight">\(\times\)</span>32.
-(For clarity, the grid depicted in <a class="reference internal" href="intro.html#f-interpolation-principle"><span class="std std-numref">Fig. 48</span></a> shows squares of size <span class="math notranslate nohighlight">\(2\times2\)</span> pixels).</span><a class="headerlink" href="#f-interpolation-nearest-image" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="bilinear-interpolation-order-1">
-<span id="c-interpolation-bilinear"></span><h2>Bilinear interpolation (order 1)<a class="headerlink" href="#bilinear-interpolation-order-1" title="Permalink to this heading">#</a></h2>
-<p>With linear interpolation (French: <em>interpolation linéaire</em>),
-the interpolated points lie on pieces of straight lines connecting neighbouring grid points.
-Because images are in 2D, this method is called <i>bi</i>linear interpolation.
-This generally gives better results than nearest neighbour interpolation, but structures with high frequencies are not correctly interpolated.</p>
-<p>An example of linear interpolation is given in <a class="reference internal" href="#f-interpolation-linear-1d"><span class="std std-numref">Fig. 52</span></a>,
-and the principle of bilinear interpolation is shown in <a class="reference internal" href="#f-interpolation-linear-3d"><span class="std std-numref">Fig. 53</span></a>.</p>
-<figure class="align-default" id="f-interpolation-linear-1d">
-<a class="reference internal image-reference" href="../_images/interp-linear-1d.svg"><img alt="../_images/interp-linear-1d.svg" src="../_images/interp-linear-1d.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Linear interpolation on a 1D example.</span><a class="headerlink" href="#f-interpolation-linear-1d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="f-interpolation-linear-3d">
-<a class="reference internal image-reference" href="../_images/interp-linear-3d.svg"><img alt="../_images/interp-linear-3d.svg" src="../_images/interp-linear-3d.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Illustration of bilinear interpolation on a 2D example:
-the interpolation is separated into the two dimensions.</span><a class="headerlink" href="#f-interpolation-linear-3d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The result of bilinear interpolation on an image is given in <a class="reference internal" href="#f-interpolation-linear-image"><span class="std std-numref">Fig. 54</span></a>.</p>
-<figure class="align-default" id="f-interpolation-linear-image">
-<a class="reference internal image-reference" href="../_images/interp-1-image.svg"><img alt="../_images/interp-1-image.svg" src="../_images/interp-1-image.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Example of bilinear interpolation.
-See how much more natural the result is compared to nearest-neighbor interpolation.</span><a class="headerlink" href="#f-interpolation-linear-image" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Scale space representation [Wikipedia].</span><a class="headerlink" href="#f-sift-scale-space" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="bicubic-interpolation-order-3">
-<h2>Bicubic Interpolation (order 3)<a class="headerlink" href="#bicubic-interpolation-order-3" title="Permalink to this heading">#</a></h2>
-<p>The principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
-Besides its poor behavior to interpolate high frequencies,
-linear interpolation has another signiﬁcant disadvantage:
-the interpolated curve is not continuous in its ﬁrst derivative at the grid points.</p>
-<p>Thus, cubic interpolation uses third-order polynomials to get the “continuous” image.
-An example of cubic interpolation is given in <a class="reference internal" href="#f-interpolation-cubic-1d"><span class="std std-numref">Fig. 55</span></a>.
-Consider the part of the interpolation between 1 and 2:
-this third-order polynomial is computed by using the four points identified with the arrows.
-Therefore, the whole interpolated function is a piecewise cubic function.</p>
-<figure class="align-default" id="f-interpolation-cubic-1d">
-<a class="reference internal image-reference" href="../_images/interp-cubic-1d.svg"><img alt="../_images/interp-cubic-1d.svg" src="../_images/interp-cubic-1d.svg" width="450px" /></a>
+<section id="difference-of-gaussian-at-each-scale">
+<h2>Difference-of-Gaussian at each scale<a class="headerlink" href="#difference-of-gaussian-at-each-scale" title="Permalink to this heading">#</a></h2>
+<p>At each octave <span class="math notranslate nohighlight">\(o\)</span> of the scale space, <span class="math notranslate nohighlight">\(K\)</span> blurred images are produced:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(x,y,\sigma_{L,k}) = f(x,y) * g(x,y,\sigma_{L,k})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{L,k}\)</span> (<span class="math notranslate nohighlight">\(k\in\{1,\dots,K\}\)</span>) is the parameter of the Gaussian kernel
+and depends on the level <span class="math notranslate nohighlight">\(L\)</span>, the parameter <span class="math notranslate nohighlight">\(\sigma_L\)</span> and the number of blurred image at level <span class="math notranslate nohighlight">\(L\)</span>
+(see [<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>] for details).</p>
+<!-- + Rey-Otero2014 qui détaille -->
+<p>Then, we compute the difference (<span class="math notranslate nohighlight">\(k&gt;0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D(x,y,\sigma_{L,k}) &amp;= \ell(x,y,k\sigma_{L,k}) - \ell(x,y,\sigma_{L,k}) \\
+                &amp;= f(x,y) * \big( g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}) \big)
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\((g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}))\)</span> is called the <em>difference-of-Gaussian</em> (DoG).
+It can be seen that the DoG acts as a bandpass filter.</p>
+<figure class="align-default" id="f-sift-dog">
+<a class="reference internal image-reference" href="../_images/sift-DoG.png"><img alt="../_images/sift-DoG.png" src="../_images/sift-DoG.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Cubic interpolation on a 1D example.</span><a class="headerlink" href="#f-interpolation-cubic-1d" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Scale space and DoG at each octave and for each couple of blurred images [<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>].</span><a class="headerlink" href="#f-sift-dog" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As with previous interpolation methods, the 2D interpolation is made with 1D interpolation on the rows of the image, then on the columns,
-as shown in <a class="reference internal" href="#f-interpolation-cubic-3d"><span class="std std-numref">Fig. 56</span></a>.</p>
-<figure class="align-default" id="f-interpolation-cubic-3d">
-<a class="reference internal image-reference" href="../_images/interp-cubic-3d.svg"><img alt="../_images/interp-cubic-3d.svg" src="../_images/interp-cubic-3d.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Illustration of the bicubic interpolation on a 2D example:
-the interpolation is separated into the two dimensions.</span><a class="headerlink" href="#f-interpolation-cubic-3d" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Finally, the result of bicubic interpolation on an image is given in <a class="reference internal" href="#f-interpolation-linear-image"><span class="std std-numref">Fig. 54</span></a>.</p>
-<figure class="align-default" id="f-interpolation-cubic-image">
-<a class="reference internal image-reference" href="../_images/interp-3-image.svg"><img alt="../_images/interp-3-image.svg" src="../_images/interp-3-image.svg" width="450px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Example of bicubic interpolation.</span><a class="headerlink" href="#f-interpolation-cubic-image" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<!-- ## Ideal interpolation
-
-The ideal interpolation function in Eq. (10.34) is separable. Therefore,
-interpolation can as easily be formulated for higher-dimensional images.
-We can expect that all solutions to the interpolation problem will also
-be separable. Consequently, we need only discuss the 1-D interpolation
-problem. Once it is solved, we also have a solution for the n-dimensional
-interpolation problem.
-
-Interpolation reduces to a simple operation in the Fourier domain.
-As shown by **Eq. (10.36)**, the transfer function of an ideal interpolation kernel is a rectangular (box) function
-which is zero outside the wave numbers that can be represented.
-This basic fact suggests the following interpolation procedure in Fourier space:
-
-1. Enlarge the matrix of the Fourier transformed image.
-   If an $M \times M$ matrix is increased to an $M' \times M'$ matrix,
-   the image in the spatial domain is also increased to an $M' \times M'$ image.
-   Because of the reciprocity of theInterpolation comes when an image is interpolated
-
-consists of calculating the intensities of new pixels that do not exist in the image but that appear following a resampling of the image. This resampling appears for example when resizing an image (case of a zoom), when rotating an image or in all cases where the geometry of the image is modified. The idea is to choose a function that models the spatial evolution of the intensities of the pixels and to adjust its parameters using the intensities of the existing pixels. The intensities of the new pixels are then the values ​​of the function at the location where these pixels are located. In this chapter, we will study the most common interpolation methods: nearest neighbor, bilinear, polynomial, [bicubic]le -->
-<!-- L'interpolation d'une image est le fait de calculer les intensités de nouveaux pixels qui n'existaient pas dans l'image initiale mais qui apparaissent suite à un rééchantillonnage de l'image. Ce rééchantillonnage apparaît par exemple lors du redimensionnement d'une image (cas d'un zoom), au moment de la rotation d'une image ou dans tous les cas où la géométrie de l'image est modifiée. L'idée est de choisir une fonction qui modélise l'évolution spatiale des intensités des pixels et de régler ses paramètres grâce aux intensités des pixels existants. Les intensités des nouveaux pixels sont alors les valeurs de la fonction à l'endroit où se trouvent ces pixels. Dans ce chapitre, nous allons étudier les méthodes d'interpolation les plus courantes : plus proche voisin, bilinéaire, polynomiale, [bicubique]. Fourier transform, the image size remains unchanged.
-   Only the spacing between pixels is decreased,
-   resulting in a higher spatial resolution.
-
-2. Fill the padded area in the Fourier space with zeroes
-   and compute an inverse Fourier transform.
-
-Theoretically, this procedure results in a perfectly interpolated image.
-Unfortunately, it has three drawbacks.
-
-1. The Fourier transform of a ﬁnite image
-   implies a cyclic repetition of the image in the spatial and Fourier domain.
-   Thus, the convolution performed by the Fourier transform is cyclic.
-   This means that at the edge of the image,
-   convolution continues with the image on the opposite side.
-   As the real world is not periodic and interpolation masks are large,
-   this may lead to signiﬁcant distortions of the interpolation
-   even at quite large distances from the edges of the image.
-
-2. The Fourier transform can be computed eﬃciently
-   only for a specified number of values for $M'$.
-   Best known are the fast radix-2 algorithms that can be applied
-   only to images of the size $M' = 2^{N'}$.
-   Therefore, the Fourier transform-based interpolation is slow for numbers $M'$ 
-   that cannot be expressed as a product of many small factors.
-   
-3. As the Fourier transform is a global transform, it can be applied only to scaling.
-   According to the generalized similarity theorem,
-   it could also be applied to rotation and affine transforms.
-   But then the interpolation problem is only shifted
-   from the spatial domain to the wave number domain.
- -->
-<!-- artifacts : aliasing (et donc échantillonnage, th shannon, filtre anti-repliement mais pas le principe de repliement spectral qui serait trop long >> envoyer vers une réf), blurring ?, edge halo ? (https://www.cambridgeincolour.com/tutorials/image-interpolation.htm) -->
-<!-- then this continuous image is filtered so as to give an image whose spectrum is compatible with the new sampling that we wish t carry out,
-
-The basis of interpolation is the sampling theorem (Section 9.2.2).
-This theorem states that the digital image completely represents the
-continuous image provided the sampling conditions are met. In short
-it means that each periodic structure that occurs in the image must be
-sampled at least twice per wavelength.
-
-These resampling operations rely on mathematical bases of the Shannon samling theory.
-
-The fact that interpolation is a convolution operation and thus can
-be described by a transfer function in Fourier space Eq. (10.36) gives
-us a handy tool to rate the errors associated with an interpolation tech-
-nique.
-
- -->
-<!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
+<!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
+<!-- lien avec le Laplacien : cf Lowe2004, section 3 -->
 </section>
+<section id="keypoint-detection">
+<h2>Keypoint detection<a class="headerlink" href="#keypoint-detection" title="Permalink to this heading">#</a></h2>
+<p>The keypoints are pixels in the image that are invariant to scale and orientation.
+To detect keypoints, each pixel in a blurred image (at each octave and scale)
+is compared to its 8 neighbors in the current image
+and 9 neighbors in the scale above and below (see Fig. X).
+This gives a total of 26 neighbors.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/sift-extrema.png"><img alt="../_images/sift-extrema.png" src="../_images/sift-extrema.png" style="height: 150px;" /></a>
+<figcaption>
+<p><span class="caption-text">Extrema of the DoG images are detected by comparing a pixel (marked with X)
+to its neighbors (marked with circles) at the current and adjacent scales
+[<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>].</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The pixel is then considered as a keypoint if and only if it is an extremum in its neighboring,
+that is it is greater or smaller than all of its neighbors.
+Note that some detected keypoints are discarded if they are low contrasted
+or if they lie on an edge (because their localization cannot be precise enough along the edge).</p>
+<figure class="align-default" id="f-sift-dog-appli">
+<a class="reference internal image-reference" href="../_images/sift-DoG-appli.png"><img alt="../_images/sift-DoG-appli.png" src="../_images/sift-DoG-appli.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of DoG scale-space on an image (left).
+[<a class="reference internal" href="#B:detection:ReyOtero2014"><span class="xref myst">Rey Otero 2014</span></a>].</span><a class="headerlink" href="#f-sift-dog-appli" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="keypoints-orientations">
+<h2>Keypoints orientations<a class="headerlink" href="#keypoints-orientations" title="Permalink to this heading">#</a></h2>
+<p>Each remaining keypoint is assigned to an orientation so that the descriptors are invariant to rotation.</p>
+<p>In order to make the orientation as stable as possible against lighting or contrast changes,
+the orientation is not the gradient angle but is determined from <em>histogram of oriented gradient</em> (HOG).
+HOG is simply the histogram of the gradient angles in a window around the keypoint:
+each pixel in the window contributes to the histogram by adding a value equal to the gradient magnitude
+to the (nearest) bin corresponding to the gradient orientation (<code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:HoG</span></code>).</p>
+<figure class="align-default" id="f-sift-hog">
+<a class="reference internal image-reference" href="../_images/sift-hog.svg"><img alt="../_images/sift-hog.svg" height="250px" src="../_images/sift-hog.svg" /></a>
+<figcaption>
+<p><span class="caption-text">HoG on a 160×160 image.
+Each window is of size 16×16.</span><a class="headerlink" href="#f-sift-hog" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In SIFT, the histogram has 36 bins covering the 360 degree range of rotations.
+The orientation to assign to the keypoint is determined by the highest peak in the histogram.</p>
+<figure class="align-default" id="f-sift-keypoints">
+<a class="reference internal image-reference" href="../_images/sift-keypoints.svg"><img alt="../_images/sift-keypoints.svg" height="250px" src="../_images/sift-keypoints.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Keypoints and their orientation.</span><a class="headerlink" href="#f-sift-keypoints" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="keypoints-descriptors">
+<h2>Keypoints descriptors<a class="headerlink" href="#keypoints-descriptors" title="Permalink to this heading">#</a></h2>
+<p>A descriptors is, generally, a list of numerical values that characterize the keypoint.
+This stage consists in computing a descriptor for the local region around each keypoint,
+so that the desciptor is as invariant as possible to remaining variations, such as change in illumination or 3D viewpoint.</p>
+<p>Again, the magnitude and angle of the gradient is used to define the desciptor.
+So, a 16×16 window centered on the keypoint is defined,
+furthermore it is oriented relative to the keypoint orientation in order to be invariant in rotation (<code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:keypoints-and-windows</span></code>).</p>
+<figure class="align-default" id="f-sift-keypoints-and-windows">
+<a class="reference internal image-reference" href="../_images/sift-keypoints-and-windows.svg"><img alt="../_images/sift-keypoints-and-windows.svg" height="250px" src="../_images/sift-keypoints-and-windows.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Keypoints, their orientation, and their windows where an HoG is computed.</span><a class="headerlink" href="#f-sift-keypoints-and-windows" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The 16×16 window is divided into 16 cells where an HoG is computer with 8 orientation bins in each.
+The descriptor is the vector containing the values of all the orientation histogram entries,
+therefore, it continas 16×8 = 128 element features.</p>
+</section>
+<section id="matching">
+<h2>Matching<a class="headerlink" href="#matching" title="Permalink to this heading">#</a></h2>
+<p>The final stage of SIFT is to find matching between the descriptors of one image with the descriptors of a second image.
+To do that, the descriptors are considered as points in a 128-dimensional space.
+The goal is to find the lowest Eclidean distance between the points
+The descriptor <span class="math notranslate nohighlight">\(d_i^1\)</span> of image 1 is paired to the descriptor <span class="math notranslate nohighlight">\(d_j^2\)</span> of image 2 that minimizes the Euclidean distance between descriptors.
+A pair is considered reliable only if its distance is below a certain threshold, otherwise it is discarded.</p>
+<p>This matching problem considered the pairing of, typically, thousands of descriptors in a high dimensional space:
+it is known to have high complexity if an exact solution is required.
+Instead, a modification of the k-d tree algorithm called the best-bin-first search method is used to identify the nearest neighbors with high probability,
+using only a limited amount of computation.</p>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:arc</span></code> shows an example of matching.</p>
+<figure class="align-default" id="f-sift-arc">
+<a class="reference internal image-reference" href="../_images/sift-arc.svg"><img alt="../_images/sift-arc.svg" src="../_images/sift-arc.svg" width="100%" /></a>
+<figcaption>
+<p><span class="caption-text">Example of matching on the main paired keypoints.</span><a class="headerlink" href="#f-sift-arc" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="alternatives-to-sift">
+<h2>Alternatives to SIFT<a class="headerlink" href="#alternatives-to-sift" title="Permalink to this heading">#</a></h2>
+<p>SURF (Speeded-Up Robust Features) [<a class="reference internal" href="#B:detection:Bay2006"><span class="xref myst">Bay 2006</span></a>] accelerates SIFT
+so it is more suitable for real-time applications.
+The main differences with SIFT are the following:</p>
+<ul>
+<li><p><em>Integral images</em> are used to deal with convolutions.
+An integral image <span class="math notranslate nohighlight">\(I\)</span> represents the sum of all pixels in the input image <span class="math notranslate nohighlight">\(f\)</span>
+that are in the rectangular region formed by the origin and the pixel in <span class="math notranslate nohighlight">\(I\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  I(x,y) = \sum_{m=0}^{x} \sum_{n=0}^{y} f(m,n).
+  \]</div>
+</li>
+<li><p>DoG approximates a second derivative (or Laplacian, which is actually the trace of the Hessian matrix).
+SURF replaces DoG by a fast approximation of the Hessian matrix.</p></li>
+<li><p>The orientation of the keypoints are determinated with <em>Haar wavelets</em>,
+which are a series of binary masks with rectangular regions.</p></li>
+<li><p>Other simplifications allows to simplify the different stages of the SIFT algorithm to the essential.
+For instance, SURF produces a 64-dimensional descriptor, which is more compact and faster to compute than SIFT descriptor.</p></li>
+</ul>
+<p>ORB (Orientated FAST and Robust BRIEF) [<a class="reference internal" href="#B:detection:Rublee2011"><span class="xref myst">Rublee 2011</span></a>]
+is considered to be roughly 10 times faster than SURF, while performing as well in many situations.</p>
+<!-- https://mikhail-kennerley.medium.com/a-comparison-of-sift-surf-and-orb-on-opencv-59119b9ec3d0 -->
+<!-- À ranger
+https://www.micc.unifi.it/delbimbo/wp-content/uploads/2011/03/slide_corso/A33%20SIFT-GLOH-SURF.pdf
+https://github.com/hoanglehaithanh/Traffic-Sign-Detection
+https://github.com/mohd-adeeb011/Traffic-Sign-Board-Recognition-Using-Camera
+https://www.geeksforgeeks.org/computer-vision/what-is-the-difference-between-sift-and-surf/
+https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_brief.html
+https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_orb.html
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -600,7 +622,7 @@ nique.
         },
         kernelOptions: {
             name: "python3",
-            path: "./interpolation"
+            path: "./detection"
         },
         predefinedOutput: true
     }
@@ -618,12 +640,12 @@ nique.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="lines.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Line detection</p>
       </div>
     </a>
     <a class="right-next"
@@ -651,9 +673,13 @@ nique.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation">Nearest neighbour interpolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-interpolation-order-1">Bilinear interpolation (order 1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicubic-interpolation-order-3">Bicubic Interpolation (order 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-space-representation">Scale-space representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-of-gaussian-at-each-scale">Difference-of-Gaussian at each scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoint-detection">Keypoint detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoints-orientations">Keypoints orientations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keypoints-descriptors">Keypoints descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching">Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-to-sift">Alternatives to SIFT</a></li>
 </ul>
   </nav></div>
 
