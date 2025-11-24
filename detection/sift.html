@@ -242,12 +242,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../restoration/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature detection</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matched-filter.html">Matched filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edges.html">Edge detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="corners.html">Corner detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lines.html">Line detection</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SIFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
@@ -422,7 +423,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sift">
 <span id="c-sift"></span><h1>SIFT<a class="headerlink" href="#sift" title="Permalink to this heading">#</a></h1>
-<p>The scale-invariant feature transform (SIFT) algorithm was proposed by Lowe in 1999 [<a class="reference internal" href="#B:detection:Lowe1999"><span class="xref myst">Lowe 1999</span></a>]
+<p>The scale-invariant feature transform (SIFT) algorithm was proposed by Lowe in 1999 [<a class="reference internal" href="outro.html#b-detection-lowe1999"><span class="std std-ref">Lowe 1999</span></a>]
 to detect specific pixels in images and to match them between two images by using the descriptors that characterize them.
 SIFT is still one of the most popular feature detectors today because the algorithm is robust to translation, scaling, rotation, partial occlusion or illumination changes.
 Applications include object recognition, video tracking, robotic navigation, image composition (stitching), etc.</p>
@@ -451,11 +452,11 @@ SIFT uses a a Gaussian kernel, so the image at each level <span class="math notr
 </ol>
 <p>In practice, the blurred images <span class="math notranslate nohighlight">\(\ell(x,y,\sigma_L)\)</span> can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions
 (the 2D Gaussian function is <a class="reference internal" href="../filtering/convolution.html#c-convolution-separability"><span class="std std-ref">separable</span></a>).</p>
-<p>The series of blurred and downsampled images produces a pyramid representation (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:scale-space</span></code>) and each level is called an <em>octave</em>.</p>
+<p>The series of blurred and downsampled images produces a pyramid representation (see <a class="reference internal" href="#f-sift-scale-space"><span class="std std-numref">Fig. 130</span></a>) and each level is called an <em>octave</em>.</p>
 <figure class="align-default" id="f-sift-scale-space">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg" height="400px" src="https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg" /></a>
 <figcaption>
-<p><span class="caption-text">Scale space representation [Wikipedia].</span><a class="headerlink" href="#f-sift-scale-space" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Scale space representation [Wikipedia].</span><a class="headerlink" href="#f-sift-scale-space" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -468,7 +469,7 @@ SIFT uses a a Gaussian kernel, so the image at each level <span class="math notr
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma_{L,k}\)</span> (<span class="math notranslate nohighlight">\(k\in\{1,\dots,K\}\)</span>) is the parameter of the Gaussian kernel
 and depends on the level <span class="math notranslate nohighlight">\(L\)</span>, the parameter <span class="math notranslate nohighlight">\(\sigma_L\)</span> and the number of blurred image at level <span class="math notranslate nohighlight">\(L\)</span>
-(see [<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>] for details).</p>
+(see [<a class="reference internal" href="outro.html#b-detection-lowe2004"><span class="std std-ref">Lowe 2004</span></a>] for details).</p>
 <!-- + Rey-Otero2014 qui détaille -->
 <p>Then, we compute the difference (<span class="math notranslate nohighlight">\(k&gt;0\)</span>):</p>
 <div class="math notranslate nohighlight">
@@ -481,7 +482,7 @@ It can be seen that the DoG acts as a bandpass filter.</p>
 <figure class="align-default" id="f-sift-dog">
 <a class="reference internal image-reference" href="../_images/sift-DoG.png"><img alt="../_images/sift-DoG.png" src="../_images/sift-DoG.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Scale space and DoG at each octave and for each couple of blurred images [<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>].</span><a class="headerlink" href="#f-sift-dog" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Scale space and DoG at each octave and for each couple of blurred images [<a class="reference internal" href="outro.html#b-detection-lowe2004"><span class="std std-ref">Lowe 2004</span></a>].</span><a class="headerlink" href="#f-sift-dog" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
@@ -494,12 +495,12 @@ To detect keypoints, each pixel in a blurred image (at each octave and scale)
 is compared to its 8 neighbors in the current image
 and 9 neighbors in the scale above and below (see Fig. X).
 This gives a total of 26 neighbors.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="f-sift-dog-extrema">
 <a class="reference internal image-reference" href="../_images/sift-extrema.png"><img alt="../_images/sift-extrema.png" src="../_images/sift-extrema.png" style="height: 150px;" /></a>
 <figcaption>
-<p><span class="caption-text">Extrema of the DoG images are detected by comparing a pixel (marked with X)
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Extrema of the DoG images are detected by comparing a pixel (marked with X)
 to its neighbors (marked with circles) at the current and adjacent scales
-[<a class="reference internal" href="#B:detection:Lowe2004"><span class="xref myst">Lowe 2004</span></a>].</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+[<a class="reference internal" href="outro.html#b-detection-lowe2004"><span class="std std-ref">Lowe 2004</span></a>].</span><a class="headerlink" href="#f-sift-dog-extrema" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The pixel is then considered as a keypoint if and only if it is an extremum in its neighboring,
@@ -509,8 +510,8 @@ or if they lie on an edge (because their localization cannot be precise enough a
 <figure class="align-default" id="f-sift-dog-appli">
 <a class="reference internal image-reference" href="../_images/sift-DoG-appli.png"><img alt="../_images/sift-DoG-appli.png" src="../_images/sift-DoG-appli.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Example of DoG scale-space on an image (left).
-[<a class="reference internal" href="#B:detection:ReyOtero2014"><span class="xref myst">Rey Otero 2014</span></a>].</span><a class="headerlink" href="#f-sift-dog-appli" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Example of DoG scale-space on an image (left).
+[<a class="reference internal" href="outro.html#b-detection-reyotero2014"><span class="std std-ref">Rey Otero 2014</span></a>].</span><a class="headerlink" href="#f-sift-dog-appli" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -521,11 +522,11 @@ or if they lie on an edge (because their localization cannot be precise enough a
 the orientation is not the gradient angle but is determined from <em>histogram of oriented gradient</em> (HOG).
 HOG is simply the histogram of the gradient angles in a window around the keypoint:
 each pixel in the window contributes to the histogram by adding a value equal to the gradient magnitude
-to the (nearest) bin corresponding to the gradient orientation (<code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:HoG</span></code>).</p>
+to the (nearest) bin corresponding to the gradient orientation (<a class="reference internal" href="#f-sift-hog"><span class="std std-numref">Fig. 134</span></a>).</p>
 <figure class="align-default" id="f-sift-hog">
 <a class="reference internal image-reference" href="../_images/sift-hog.svg"><img alt="../_images/sift-hog.svg" height="250px" src="../_images/sift-hog.svg" /></a>
 <figcaption>
-<p><span class="caption-text">HoG on a 160×160 image.
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">HoG on a 160×160 image.
 Each window is of size 16×16.</span><a class="headerlink" href="#f-sift-hog" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -534,7 +535,7 @@ The orientation to assign to the keypoint is determined by the highest peak in t
 <figure class="align-default" id="f-sift-keypoints">
 <a class="reference internal image-reference" href="../_images/sift-keypoints.svg"><img alt="../_images/sift-keypoints.svg" height="250px" src="../_images/sift-keypoints.svg" /></a>
 <figcaption>
-<p><span class="caption-text">Keypoints and their orientation.</span><a class="headerlink" href="#f-sift-keypoints" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Keypoints and their orientation.</span><a class="headerlink" href="#f-sift-keypoints" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -545,11 +546,11 @@ This stage consists in computing a descriptor for the local region around each k
 so that the desciptor is as invariant as possible to remaining variations, such as change in illumination or 3D viewpoint.</p>
 <p>Again, the magnitude and angle of the gradient is used to define the desciptor.
 So, a 16×16 window centered on the keypoint is defined,
-furthermore it is oriented relative to the keypoint orientation in order to be invariant in rotation (<code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:keypoints-and-windows</span></code>).</p>
+furthermore it is oriented relative to the keypoint orientation in order to be invariant in rotation (<a class="reference internal" href="#f-sift-keypoints-and-windows"><span class="std std-numref">Fig. 136</span></a>).</p>
 <figure class="align-default" id="f-sift-keypoints-and-windows">
 <a class="reference internal image-reference" href="../_images/sift-keypoints-and-windows.svg"><img alt="../_images/sift-keypoints-and-windows.svg" height="250px" src="../_images/sift-keypoints-and-windows.svg" /></a>
 <figcaption>
-<p><span class="caption-text">Keypoints, their orientation, and their windows where an HoG is computed.</span><a class="headerlink" href="#f-sift-keypoints-and-windows" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Keypoints, their orientation, and their windows where an HoG is computed.</span><a class="headerlink" href="#f-sift-keypoints-and-windows" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The 16×16 window is divided into 16 cells where an HoG is computer with 8 orientation bins in each.
@@ -567,17 +568,17 @@ A pair is considered reliable only if its distance is below a certain threshold,
 it is known to have high complexity if an exact solution is required.
 Instead, a modification of the k-d tree algorithm called the best-bin-first search method is used to identify the nearest neighbors with high probability,
 using only a limited amount of computation.</p>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">F:sift:arc</span></code> shows an example of matching.</p>
+<p><a class="reference internal" href="#f-sift-arc"><span class="std std-numref">Fig. 137</span></a> shows an example of matching.</p>
 <figure class="align-default" id="f-sift-arc">
 <a class="reference internal image-reference" href="../_images/sift-arc.svg"><img alt="../_images/sift-arc.svg" src="../_images/sift-arc.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-text">Example of matching on the main paired keypoints.</span><a class="headerlink" href="#f-sift-arc" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Example of matching on the main paired keypoints.</span><a class="headerlink" href="#f-sift-arc" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="alternatives-to-sift">
 <h2>Alternatives to SIFT<a class="headerlink" href="#alternatives-to-sift" title="Permalink to this heading">#</a></h2>
-<p>SURF (Speeded-Up Robust Features) [<a class="reference internal" href="#B:detection:Bay2006"><span class="xref myst">Bay 2006</span></a>] accelerates SIFT
+<p>SURF (Speeded-Up Robust Features) [<a class="reference internal" href="outro.html#b-detection-bay2006"><span class="std std-ref">Bay 2006</span></a>] accelerates SIFT
 so it is more suitable for real-time applications.
 The main differences with SIFT are the following:</p>
 <ul>
@@ -596,7 +597,7 @@ which are a series of binary masks with rectangular regions.</p></li>
 <li><p>Other simplifications allows to simplify the different stages of the SIFT algorithm to the essential.
 For instance, SURF produces a 64-dimensional descriptor, which is more compact and faster to compute than SIFT descriptor.</p></li>
 </ul>
-<p>ORB (Orientated FAST and Robust BRIEF) [<a class="reference internal" href="#B:detection:Rublee2011"><span class="xref myst">Rublee 2011</span></a>]
+<p>ORB (Orientated FAST and Robust BRIEF) [<a class="reference internal" href="outro.html#b-detection-rublee2011"><span class="std std-ref">Rublee 2011</span></a>]
 is considered to be roughly 10 times faster than SURF, while performing as well in many situations.</p>
 <!-- https://mikhail-kennerley.medium.com/a-comparison-of-sift-surf-and-orb-on-opencv-59119b9ec3d0 -->
 <!-- À ranger

@@ -89,7 +89,7 @@ This gives a total of 26 neighbors.
 ```{figure} sift-extrema.png
 ---
 height: 150px
-name: F:sift:DoG
+name: F:sift:DoG-extrema
 ---
 Extrema of the DoG images are detected by comparing a pixel (marked with X)
 to its neighbors (marked with circles) at the current and adjacent scales
