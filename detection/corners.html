@@ -210,10 +210,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../compression/lossy.html">Lossy compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation &amp; registration</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/registration.html">Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -431,7 +432,7 @@ If this is the case, then the considered pixel is a corner.</p>
 <figure class="align-default" id="f-corners-moravec">
 <a class="reference internal image-reference" href="../_images/corners-moravec.png"><img alt="../_images/corners-moravec.png" src="../_images/corners-moravec.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Principle of Moravec detector.
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">Principle of Moravec detector.
 From left to right :
 on a flat area, small shifts in the sub-image (in red) do not cause any change;
 on a contour, we observe changes in only one direction;
@@ -495,13 +496,13 @@ M = \sum_{u,v} w_{m,n}(u,v)
 \end{split}\]</div>
 <p>Finally, the last limit of the Moravec detector can be avoided by considering a new measure of the presence of a corner:
 more information about the intensity change in the window can be obtained
-by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> of the matrix <span class="math notranslate nohighlight">\(M\)</span> (<a class="reference internal" href="#f-corners-eigenvalues"><span class="std std-numref">Fig. 123</span></a>).
+by analyzing the eigenvalues <span class="math notranslate nohighlight">\(\lambda_1\)</span> and <span class="math notranslate nohighlight">\(\lambda_2\)</span> of the matrix <span class="math notranslate nohighlight">\(M\)</span> (<a class="reference internal" href="#f-corners-eigenvalues"><span class="std std-numref">Fig. 135</span></a>).
 Indeed, the presence of a corner is attested if the derivatives of <span class="math notranslate nohighlight">\(f\)</span> are very large,
 then <span class="math notranslate nohighlight">\(M\)</span> has large coefficients, and its eigenvalues are also very large.</p>
 <figure class="align-default" id="f-corners-eigenvalues">
 <a class="reference internal image-reference" href="../_images/harris-eigenvalues.png"><img alt="../_images/harris-eigenvalues.png" src="../_images/harris-eigenvalues.png" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">Decision to be taken in function of the eigenvalues.</span><a class="headerlink" href="#f-corners-eigenvalues" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The calculation of the eigenvalues of <span class="math notranslate nohighlight">\(M\)</span> can be difficult, so an alternative is to calculate:</p>
@@ -510,18 +511,18 @@ then <span class="math notranslate nohighlight">\(M\)</span> has large coefficie
 R = \mathrm{det}(M) - k (\mathrm{trace}(M))^2 = \lambda_1 \lambda_2 - k(\lambda_1 + \lambda_2)^2
 \]</div>
 <p>with <span class="math notranslate nohighlight">\(0.04 &lt; k &lt; 0.06\)</span>.</p>
-<p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 124</span></a>).</p>
+<p>Thus, the values of <span class="math notranslate nohighlight">\(R\)</span> are low in a flat region, negative on an edge, and positive on a corner (<a class="reference internal" href="#f-corners-r"><span class="std std-numref">Fig. 136</span></a>).</p>
 <figure class="align-default" id="f-corners-r">
 <a class="reference internal image-reference" href="../_images/harris-R.png"><img alt="../_images/harris-R.png" src="../_images/harris-R.png" style="width: 250px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">Decision to be taken in function of <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-r" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 125</span></a>.</p>
+<p>The Harris detector is illustrated on the example of <a class="reference internal" href="#f-corners-harris"><span class="std std-numref">Fig. 137</span></a>.</p>
 <figure class="align-default" id="f-corners-harris">
 <a class="reference internal image-reference" href="../_images/harris-detector.svg"><img alt="../_images/harris-detector.svg" src="../_images/harris-detector.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Harris detector.
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Harris detector.
 The binary images represent the negative (contours), weak (flat areas) and positive (corners) values of the coefficient <span class="math notranslate nohighlight">\(R\)</span>.</span><a class="headerlink" href="#f-corners-harris" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

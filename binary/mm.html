@@ -210,10 +210,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../compression/lossy.html">Lossy compression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation &amp; registration</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/interpolation.html">Interpolation methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpolation/registration.html">Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpolation/outro.html">Conclusion</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
@@ -519,12 +520,12 @@ and keeping the set of pixels of each displaced structuring element.</p>
 \]</div>
 <figure class="align-default" id="mm-dilation-toy">
 <img alt="../_images/dilation-toy.svg" src="../_images/dilation-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Example of dilation on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Example of dilation on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#mm-dilation-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The structuring element is often described with a matrix.
-So, the structuring element in <a class="reference internal" href="#mm-dilation-toy"><span class="std std-numref">Fig. 85</span></a> is written as:</p>
+So, the structuring element in <a class="reference internal" href="#mm-dilation-toy"><span class="std std-numref">Fig. 97</span></a> is written as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 E =
@@ -565,7 +566,7 @@ and keeping only the origin of each displaced structuring element.</p>
 \]</div>
 <figure class="align-default" id="f-mm-erosion-toy">
 <img alt="../_images/erosion-toy.svg" src="../_images/erosion-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Example of erosion on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Example of erosion on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-erosion-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -613,7 +614,7 @@ To avoid this, the result is dilated with the same structuring element.</p>
 \]</div>
 <figure class="align-default" id="f-mm-opening-toy">
 <img alt="../_images/opening-toy.svg" src="../_images/opening-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Example of an opening on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Example of an opening on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-opening-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -634,7 +635,7 @@ To avoid the widening of the objects, an erosion can be applied with the same st
 \]</div>
 <figure class="align-default" id="f-mm-closing-toy">
 <img alt="../_images/closing-toy.svg" src="../_images/closing-toy.svg" /><figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Example of closing on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Example of closing on a small image <span class="math notranslate nohighlight">\(I\)</span> by the structuring element <span class="math notranslate nohighlight">\(E_c\)</span>
 (with the origin <span class="math notranslate nohighlight">\(c\)</span> is at the centre and represented by the blue dot).</span><a class="headerlink" href="#f-mm-closing-toy" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

@@ -1,0 +1,871 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Registration &#8212; Basics of Image Processing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jbvinc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/jbvinc-checkpoint.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VFHC8CBJQK"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-VFHC8CBJQK');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/registration';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conclusion" href="outro.html" />
+    <link rel="prev" title="Interpolation methods" href="interpolation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Basics of Image Processing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Basics of image processing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital images</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/acquisition.html">Image acquisition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/definition.html">What is a digital image?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/color-models.html">Color models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/displaying.html">Displaying an image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/operations.html">Arithmetic operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/histogram.html">Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digital-images/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Transforms &amp; Filtering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../filtering/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/convolution.html">Convolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/fourier.html">Fourier transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/filtering.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compression</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compression/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossless.html">Lossless compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/lossy.html">Lossy compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compression/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpolation &amp; registration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolation.html">Interpolation methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Segmentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/histogram.html">Histogram thresholding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/watershed.html">Watershed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/evaluation.html">How to evaluate a segmentation?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../segmentation/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Binary image processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../binary/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/neighborhood.html">Neighborhood and connectivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/mm.html">Mathematical morphology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/measure.html">Measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../binary/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Restoration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../restoration/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/denoising.html">Denoising</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/deconvolution.html">Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../restoration/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature detection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../detection/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/matched-filter.html">Matched filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/edges.html">Edge detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/corners.html">Corner detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/lines.html">Line detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/sift.html">SIFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detection/outro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/license.html">License</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/interpolation/registration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Registration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-characteristics">Image characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-iconique">Approche iconique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-geometrique">Approche géométrique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-model">Transform model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-rigide">Déformation rigide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-affine">Déformation affine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-perspective">Déformation perspective</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-non-lineaire">Déformation non linéaire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-and-similarity-criterion">Interpolation and similarity criterion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Approche iconique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aapproche-geometrique">Aapproche géométrique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation-du-critere-de-similarite">Optimisation du critère de similarité</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="registration">
+<span id="c-registration"></span><h1>Registration<a class="headerlink" href="#registration" title="Permalink to this heading">#</a></h1>
+<p>Image registration is the process of applying geometric transformation on images so that they lie in the same coordinate system.
+Registration has many applications, for instance in remote sensing (<a class="reference internal" href="#f-registration-application-remote-sensing"><span class="std std-numref">Fig. 58</span></a>),
+medical imaging (<a class="reference internal" href="#f-registration-application-medical"><span class="std std-numref">Fig. 59</span></a>),
+or photograph stitching (<a class="reference internal" href="#f-registration-application-stitching"><span class="std std-numref">Fig. 60</span></a>).</p>
+<figure class="align-default" id="f-registration-application-remote-sensing">
+<a class="reference internal image-reference" href="../_images/vincent4.png"><img alt="../_images/vincent4.png" src="../_images/vincent4.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Registration of remote sensing images.</span><a class="headerlink" href="#f-registration-application-remote-sensing" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-registration-application-medical">
+<a class="reference internal image-reference" href="../_images/vincent6.png"><img alt="../_images/vincent6.png" src="../_images/vincent6.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Change detection in medical imaging.</span><a class="headerlink" href="#f-registration-application-medical" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="f-registration-application-stitching">
+<a class="reference internal image-reference" href="../_images/vincent13.png"><img alt="../_images/vincent13.png" src="../_images/vincent13.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Photograph stitching.</span><a class="headerlink" href="#f-registration-application-stitching" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The pipeline of image registration is given in <a class="reference internal" href="#f-registration-bigpicture"><span class="std std-numref">Fig. 61</span></a>.
+The next sections are devoted to give details on each step.</p>
+<figure class="align-default" id="f-registration-bigpicture">
+<a class="reference internal image-reference" href="../_images/bigpicture.png"><img alt="../_images/bigpicture.png" src="../_images/bigpicture.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Image registration.
+In this example, the characteristics are the edges, but they can be other informations like keypoints.</span><a class="headerlink" href="#f-registration-bigpicture" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="image-characteristics">
+<h2>Image characteristics<a class="headerlink" href="#image-characteristics" title="Permalink to this heading">#</a></h2>
+<p>La déformation à appliquer sur l’image source est basée sur des caractéristiques de cette image.
+Le choix des caractéristiques utilisées conduit à l’une des deux méthodes de recalage décrite ci-après.</p>
+<section id="approche-iconique">
+<h3>Approche iconique<a class="headerlink" href="#approche-iconique" title="Permalink to this heading">#</a></h3>
+<p>L’approche iconique (<em>intensity-based registration</em>) <!-- OU _DIRECT (PIXEL-BASED) ..._ ? -->
+se base directement sur l’intensité des pixels de l’image.
+Ainsi, toute l’information contenue dans l’intensité des pixels est utilisée.
+À la place de l’image elle-même, on peut aussi utiliser une de ses transformations (Fourier, ondelette, gradient…).</p>
+<p>L’avantage de l’approche iconique est quelle est relativement bien automatisée.</p>
+<p>Les inconvénients de l’approche iconique sont
+le coût calculatoire important et la mémoire nécessaire,
+mais elle est également sensible au bruit et aux variations d’intensité entre les images.</p>
+</section>
+<section id="approche-geometrique">
+<h3>Approche géométrique<a class="headerlink" href="#approche-geometrique" title="Permalink to this heading">#</a></h3>
+<p>Dans l’approche géométrique (<em>feature-based registration</em>),
+la déformation à appliquer à l’image source n’est pas définie à partir des intensités des pixels,
+mais à partir de caractéristiques particulières de l’image.
+Ces primitives peuvent être :</p>
+<ul class="simple">
+<li><p>intrinsèques à l’image : on se base sur les coins, les contours des objets, etc.</p></li>
+<li><p>extrinsèques à l’image : on se base sur des marqueurs insérés sur les objets.
+Il faut ensuite apparier les primitives (<em>feature matching</em>).</p></li>
+</ul>
+<figure class="align-default" id="f-registration-feature-based">
+<a class="reference internal image-reference" href="../_images/vincent18.png"><img alt="../_images/vincent18.png" src="../_images/vincent18.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Appariement de primitives entre deux images.</span><a class="headerlink" href="#f-registration-feature-based" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Les avantages de l’approche géométrique sont d’utiliser peu de données de l’image,
+impliquant un coût calculatoire faible.</p>
+<p>Les inconvénients de l’approche géométrique sont que :</p>
+<ul class="simple">
+<li><p>l’appariement des primitives peut être difficile à effectuer,</p></li>
+<li><p>la qualité du recalage dépend de la précision de l’extraction des primitives,</p></li>
+<li><p>la précision du recalage n’est garantie qu’au voisinage des primitives.</p></li>
+</ul>
+</section>
+</section>
+<section id="transform-model">
+<h2>Transform model<a class="headerlink" href="#transform-model" title="Permalink to this heading">#</a></h2>
+<p>La déformation appliquée à l’image source est une transformation mathématique qui peut être linéaire ou non.</p>
+<p>Une transformation linéaire s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[
+  p' = M p
+\]</div>
+<p>où</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p = [x \; y \; 1]^T\)</span> regroupe les coordonnées du pixel <span class="math notranslate nohighlight">\((x,y)\)</span> de l’image source,</p></li>
+<li><p><span class="math notranslate nohighlight">\(p' = [x' \; y' \; 1]^T\)</span> regroupe les coordonnées du pixel <span class="math notranslate nohighlight">\((x',y')\)</span> de l’image déformée,</p></li>
+<li><p><span class="math notranslate nohighlight">\(M \in \mathbb{R}^{3\times3}\)</span> est la matrice de transformation.</p></li>
+</ul>
+<p>Par exemple, si la matrice de déformation est</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  M = \begin{bmatrix}
+    1 &amp; 0 &amp; t_x \\
+    0 &amp; 1 &amp; t_y \\
+    0 &amp; 0 &amp; 1
+  \end{bmatrix}
+\end{split}\]</div>
+<p>alors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  p' = \begin{bmatrix}
+    x' \\
+    y' \\
+    1
+  \end{bmatrix}
+  = \begin{bmatrix}
+    x + t_x \\
+    y + t_y \\
+    1
+  \end{bmatrix}
+\end{split}\]</div>
+<p>Les coordonnées du pixel <span class="math notranslate nohighlight">\(p'\)</span> de l’image transformée
+correspondent à celle du pixel <span class="math notranslate nohighlight">\(p\)</span> de l’image source
+après une translation de de <span class="math notranslate nohighlight">\(t_x\)</span> pixels en <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(t_y\)</span> pixels en <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Les différents types de déformations sont illustrés ci-après
+sur l’image représentée <a class="reference internal" href="#f-registration-lena-defnull"><span class="std std-numref">Fig. 63</span></a>.</p>
+<figure class="align-default" id="f-registration-lena-defnull">
+<a class="reference internal image-reference" href="../_images/lena-defnull.png"><img alt="../_images/lena-defnull.png" src="../_images/lena-defnull.png" style="width: 211.0px; height: 211.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Image Lena.</span><a class="headerlink" href="#f-registration-lena-defnull" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="deformation-rigide">
+<h3>Déformation rigide<a class="headerlink" href="#deformation-rigide" title="Permalink to this heading">#</a></h3>
+<p>Une déformation rigide (ou euclidienne) est une transformation linéaire
+définie avec 3 paramètres : <span class="math notranslate nohighlight">\(\theta=\{\alpha,t_x,t_y\}\)</span>.
+La déformation rigide regroupe donc une rotation d’angle <span class="math notranslate nohighlight">\(\alpha\)</span> et une translation <span class="math notranslate nohighlight">\((t_x,t_y)\)</span>.
+La matrice de déformation s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  M\!=\!\begin{pmatrix}
+    \cos\alpha &amp; \sin\alpha &amp; t_x \\
+    -\sin\alpha &amp; \cos\alpha &amp; t_y \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix}
+\end{split}\]</div>
+<figure class="align-default" id="f-registration-lena-defrigide">
+<a class="reference internal image-reference" href="../_images/lena-defrigide.png"><img alt="../_images/lena-defrigide.png" src="../_images/lena-defrigide.png" style="width: 210.0px; height: 210.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Exemple de déformation rigide.</span><a class="headerlink" href="#f-registration-lena-defrigide" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="deformation-affine">
+<h3>Déformation affine<a class="headerlink" href="#deformation-affine" title="Permalink to this heading">#</a></h3>
+<p>Une déformation affine est une transformation bilinéaire définie
+avec 6 paramètres : <span class="math notranslate nohighlight">\(\theta=\{m_{11}, m_{12}, m_{13}, m_{21}, m_{22}, m_{23}\}\)</span>.
+L’image subit une mise à l’échelle et un cisaillement : les droites parallèles restent parallèles après déformation, mais les angles changent.
+La matrice de déformation s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  M\!=\!\begin{pmatrix}
+    m_{11} &amp; m_{12} &amp; m_{13} \\
+    m_{21} &amp; m_{22} &amp; m_{23} \\
+    0 &amp; 0 &amp; 1
+  \end{pmatrix}
+\end{split}\]</div>
+<figure class="align-default" id="f-registration-lena-defaffine">
+<a class="reference internal image-reference" href="../_images/lena-defaffine.png"><img alt="../_images/lena-defaffine.png" src="../_images/lena-defaffine.png" style="width: 211.0px; height: 211.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Exemple de déformation affine.</span><a class="headerlink" href="#f-registration-lena-defaffine" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="deformation-perspective">
+<h3>Déformation perspective<a class="headerlink" href="#deformation-perspective" title="Permalink to this heading">#</a></h3>
+<p>Une déformation perspective est une transformation linéaire définie
+avec 9 paramètres : <span class="math notranslate nohighlight">\(\theta=\{m_{11}, m_{12}, m_{13}, m_{21}, m_{22}, m_{23}, m_{31}, m_{32}, m_{33}\}\)</span>.
+La matrice de déformation s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  M\!=\!\begin{pmatrix}
+    m_{11} &amp; m_{12} &amp; m_{13} \\
+    m_{21} &amp; m_{22} &amp; m_{23} \\
+    m_{31} &amp; m_{32} &amp; m_{33}
+  \end{pmatrix}
+\end{split}\]</div>
+<figure class="align-default" id="f-registration-lena-persp">
+<a class="reference internal image-reference" href="../_images/lena-persp.png"><img alt="../_images/lena-persp.png" src="../_images/lena-persp.png" style="width: 211.0px; height: 211.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Déformation perspective.</span><a class="headerlink" href="#f-registration-lena-persp" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="deformation-non-lineaire">
+<h3>Déformation non linéaire<a class="headerlink" href="#deformation-non-lineaire" title="Permalink to this heading">#</a></h3>
+<p>On peut définir tout autre type de déformation sans passer par une transformation linéaire.
+Ainsi, l’utilisation de fonctions 2D spécifiques (polynôme, sinusoïde, spline, ondelette…)
+ou d’un champ de déformation non paramétrique est envisageable.</p>
+<p>Il peut alors être nécessaire d’introduire des contraintes sur le modèle de déformation
+(préservation de la topologie, douceur, symétrie…).</p>
+<figure class="align-default" id="f-registration-lena-deffnonlin">
+<a class="reference internal image-reference" href="../_images/lena-deffnonlin.png"><img alt="../_images/lena-deffnonlin.png" src="../_images/lena-deffnonlin.png" style="width: 210.0px; height: 210.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Déformation non linéaire.</span><a class="headerlink" href="#f-registration-lena-deffnonlin" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="interpolation-and-similarity-criterion">
+<h2>Interpolation and similarity criterion<a class="headerlink" href="#interpolation-and-similarity-criterion" title="Permalink to this heading">#</a></h2>
+<p>Connaissant les paramètres de déformation <span class="math notranslate nohighlight">\(\theta\)</span> à appliquer sur l’image,
+la transformation correspondante peut être effectuée.
+Il s’agit d’un problème d’<a class="reference internal" href="interpolation.html#c-interpolation"><span class="std std-ref">interpolation</span></a>.</p>
+<p>Le critère de similarité (<em>error metric</em>) <span class="math notranslate nohighlight">\(E(\theta)\)</span> représente la distance (au sens mathématique)
+entre l’image de référence <span class="math notranslate nohighlight">\(g\)</span> et l’image déformée <span class="math notranslate nohighlight">\(f'\)</span>
+(obtenue an appliquant le modèle de déformation de paramètres <span class="math notranslate nohighlight">\(\theta\)</span> sur l’image source <span class="math notranslate nohighlight">\(f\)</span>).
+Cette distance est minimale lorsque les deux images se superposent au mieux,
+c’est-à-dire lorsque la similarité entre l’image de référence <span class="math notranslate nohighlight">\(g\)</span> et l’image déformée <span class="math notranslate nohighlight">\(f\,'\)</span> est maximale.</p>
+<p>L’objectif du recalage est de trouver les paramètres <span class="math notranslate nohighlight">\(\theta\)</span> qui minimisent le critère de similarité <span class="math notranslate nohighlight">\(E(\theta)\)</span> :
+c’est donc un problème d’optimisation.
+Le choix de <span class="math notranslate nohighlight">\(E\)</span> dépend quant à lui du choix de l’approche choisie.</p>
+<section id="id1">
+<h3>Approche iconique<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Dans le cas d’une approche iconique (basée sur l’intensité des pixels),
+on utilisera un critère de similarité dit <em>dense</em>.
+Il existe plusieurs hypothèses sur les liens entre les intensités des deux images.
+Dans le cas le plus simple, on suppose que les intensités des pixels
+sont égales à un bruit additif gaussien près,
+donc le critère de similarité peut être la distance euclidienne,
+qui est proportionnelle à l’erreur quadratique moyenne (EQM) :</p>
+<div class="math notranslate nohighlight">
+\[
+  E(\theta) = \sum_{m=1}^M \sum_{n=1}^N \big(f\,'(m,n) - g(m,n)\big)^2
+\]</div>
+</section>
+<section id="aapproche-geometrique">
+<h3>Aapproche géométrique<a class="headerlink" href="#aapproche-geometrique" title="Permalink to this heading">#</a></h3>
+<p>Dans le cas d’une approche géométrique (basée sur des caractéristiques),
+on utilisera une distance entre ces primitives.</p>
+<ul>
+<li><p>Par exemple, dans le cas où les primitives sont des pixels particuliers,
+on peut considérer la distance entre ces pixels avec la norme euclidienne :</p>
+<div class="math notranslate nohighlight">
+\[
+    E(\theta) = \sum_{n=1}^N (x_n-x'_n)^2 + (y_n-y'_n)^2
+  \]</div>
+<p>où <span class="math notranslate nohighlight">\((x_n,y_n)\)</span> et <span class="math notranslate nohighlight">\((x'_n,y'_n)\)</span> sont les coordonnées des pixels appariés.</p>
+</li>
+<li><p>Un autre exemple est le cas où les primitives sont des courbes.
+L’algorithme ICP (<em>Iterative Closest Point</em>) peut être utilisé pour déterminer une distance entre ces deux courbes, définie comme</p>
+<div class="math notranslate nohighlight">
+\[
+    E(\theta) = \sum_{n=1}^N d_n^2
+  \]</div>
+<p>où <span class="math notranslate nohighlight">\(d_n\)</span> est la distance entre chaque point de la courbe 1 avec le point le plus proche de la courbe 2.</p>
+<figure class="align-default" id="f-registration-icp">
+<a class="reference internal image-reference" href="../_images/icp.png"><img alt="../_images/icp.png" src="../_images/icp.png" style="height: 150px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Distance entre deux courbes avec l’algorithme ICP.</span><a class="headerlink" href="#f-registration-icp" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section id="optimisation-du-critere-de-similarite">
+<h3>Optimisation du critère de similarité<a class="headerlink" href="#optimisation-du-critere-de-similarite" title="Permalink to this heading">#</a></h3>
+<p>Comme on l’a dit précédemment, on cherche les valeurs des paramètres <span class="math notranslate nohighlight">\(\theta\)</span>
+de la transformation qui minimise <span class="math notranslate nohighlight">\(E(\theta)\)</span>.
+Mathématiquement, le problème s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[
+  \hat{\theta} = \arg \min_{\theta} E(\theta)
+\]</div>
+<figure class="align-default" id="f-registration-optim">
+<a class="reference internal image-reference" href="../_images/optim.png"><img alt="../_images/optim.png" src="../_images/optim.png" style="height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Principe de l’optimisation d’un critère <span class="math notranslate nohighlight">\(E\)</span> :
+exemple pour <span class="math notranslate nohighlight">\(\theta=\alpha\)</span> dans le cas d’une simple rotation.</span><a class="headerlink" href="#f-registration-optim" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Il existe énormément de méthodes d’optimisation dont la description dépasse le cadre de ce cours :</p>
+<ul class="simple">
+<li><p>Solution explicite (en annulant la dérivée de <span class="math notranslate nohighlight">\(E\)</span>),</p></li>
+<li><p>Recherche exhaustive (toutes les possibilités sont testées),</p></li>
+<li><p>Méthodes déterministes :
+algorithme du simplexe, descente de gradient, gradient conjugué,
+algorithme de Levenberg-Marquardt, etc.</p></li>
+<li><p>Méthodes stochastiques :
+recuit simulé, algorithmes génétiques, gradient stochastique, etc.</p></li>
+</ul>
+<!-- solution explicite : méthode procustéenne, (_exact point matching_) -->
+<p>On peut combiner ces méthodes d’optimisation avec des schémas hiérarchiques (<em>hierarchical / coarse to fine approaches</em>) :
+l’idée est de décomposer le problème initial en plusieurs petits problèmes de complexité moindre.
+Cela a tendance à réduire le risque de convergence vers un minimum local et à accélérer le calcul.
+On peut donc utiliser une approche par multi-résolution
+(on commence par effectuer l’optimisation sur une image très sous-échantillonnée
+et affiner l’optimisation à des échelles progressivement plus proches de l’image originale).
+On peut également, en particulier dans le cas d’un modèle de déformation complexe,
+commencer par optimiser un modèle simple (déformation rigide par exemple)
+puis le complexifier petit à petit.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./interpolation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="interpolation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Interpolation methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="outro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-characteristics">Image characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-iconique">Approche iconique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-geometrique">Approche géométrique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-model">Transform model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-rigide">Déformation rigide</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-affine">Déformation affine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-perspective">Déformation perspective</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deformation-non-lineaire">Déformation non linéaire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation-and-similarity-criterion">Interpolation and similarity criterion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Approche iconique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aapproche-geometrique">Aapproche géométrique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation-du-critere-de-similarite">Optimisation du critère de similarité</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Vincent Mazet (University of Strasbourg, France)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2020-2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Basics of Image Processing &mdash; Vincent Mazet (Université de Strasbourg), 2020-2026 &mdash; <a href='https://vincmazet.github.io/bip/appendices/license.html'>CC BY-NC 4.0</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
