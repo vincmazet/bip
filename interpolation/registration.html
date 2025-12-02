@@ -548,6 +548,14 @@ impliquant un coût calculatoire faible.</p>
 <p>Les coordonnées du pixel <span class="math notranslate nohighlight">\(p'\)</span> de l’image transformée
 correspondent à celle du pixel <span class="math notranslate nohighlight">\(p\)</span> de l’image source
 après une translation de de <span class="math notranslate nohighlight">\(t_x\)</span> pixels en <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(t_y\)</span> pixels en <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notez que la définition de <span class="math notranslate nohighlight">\(p'\)</span> à partir de <span class="math notranslate nohighlight">\(p\)</span> peut résulter en une image transformée composée de pixels vides
+si aucun pixel <span class="math notranslate nohighlight">\(p\)</span> de l’image originale <span class="math notranslate nohighlight">\(f\)</span> ne tombe sur un pixel <span class="math notranslate nohighlight">\(p'\)</span> de l’image transformée <span class="math notranslate nohighlight">\(f'\)</span>.
+Pour éviter cela et obtenir la valeur de tous les pixels <span class="math notranslate nohighlight">\(p'\)</span>,
+on applique l’inverse de la transformation pour trouver la coordonnée (souvent non entière) dans l’image originale <span class="math notranslate nohighlight">\(f\)</span>.
+Une interpolation permet de déterminer la valeur de cette coordonnée, et donc du pixel <span class="math notranslate nohighlight">\(p'\)</span>.</p>
+</div>
 <p>Les différents types de déformations sont illustrés ci-après
 sur l’image représentée <a class="reference internal" href="#f-registration-lena-defnull"><span class="std std-numref">Fig. 63</span></a>.</p>
 <figure class="align-default" id="f-registration-lena-defnull">

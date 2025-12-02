@@ -402,7 +402,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation">Nearest neighbour interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation-order-0">Nearest neighbour interpolation (order 0)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-interpolation-order-1">Bilinear interpolation (order 1)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicubic-interpolation-order-3">Bicubic Interpolation (order 3)</a></li>
 </ul>
@@ -418,8 +418,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interpolation-methods">
 <span id="c-interpolation"></span><h1>Interpolation methods<a class="headerlink" href="#interpolation-methods" title="Permalink to this heading">#</a></h1>
-<section id="nearest-neighbour-interpolation">
-<h2>Nearest neighbour interpolation<a class="headerlink" href="#nearest-neighbour-interpolation" title="Permalink to this heading">#</a></h2>
+<section id="nearest-neighbour-interpolation-order-0">
+<h2>Nearest neighbour interpolation (order 0)<a class="headerlink" href="#nearest-neighbour-interpolation-order-0" title="Permalink to this heading">#</a></h2>
 <p>Nearest neighbour interpolation (French: <em>interpolation au plus proche voisin</em>) is the simplest method.
 The intensity of a pixel in the output image is assigned to the intensity of the closest pixel in the input image.</p>
 <p>An example of nearest neighbour interpolation in 1D is given in <a class="reference internal" href="#f-interpolation-nearest-1d"><span class="std std-numref">Fig. 49</span></a>.</p>
@@ -498,6 +498,7 @@ See how much more natural the result is compared to nearest-neighbor interpolati
 ``` --></section>
 <section id="bicubic-interpolation-order-3">
 <h2>Bicubic Interpolation (order 3)<a class="headerlink" href="#bicubic-interpolation-order-3" title="Permalink to this heading">#</a></h2>
+<!-- bicubique = cubic splines ? -->
 <p>The principle of linear interpolation was that a straight line was drawn to pass through two neighbouring points.
 Besides its poor behavior to interpolate high frequencies,
 linear interpolation has another signiﬁcant disadvantage:
@@ -674,7 +675,7 @@ nique.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation">Nearest neighbour interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbour-interpolation-order-0">Nearest neighbour interpolation (order 0)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-interpolation-order-1">Bilinear interpolation (order 1)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bicubic-interpolation-order-3">Bicubic Interpolation (order 3)</a></li>
 </ul>
