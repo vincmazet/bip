@@ -1,0 +1,1033 @@
+version: 0.12.2
+filePath: eval-zones.tex
+options:
+  $BIBINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  $TEXINPUTS:
+    - $ROOTDIR
+    - $ROOTDIR/$OUTDIR
+    - ''
+  bibtexEngine: bibtex
+  cleanPatterns:
+    - '**/*.aux'
+    - '**/*.aux.bak'
+    - '**/*.bbl'
+    - '**/*.bcf'
+    - '**/*.blg'
+    - '**/*.dvi'
+    - '**/*.fdb_latexmk'
+    - '**/*.fls'
+    - '**/*.idx'
+    - '**/*.idx.bak'
+    - '**/*.ilg'
+    - '**/*.ind'
+    - '**/*.lof'
+    - '**/*.log'
+    - '**/*.lol'
+    - '**/*.lot'
+    - '**/*.nav'
+    - '**/*.out'
+    - '**/*.ps'
+    - '**/*.snm'
+    - '**/*.yaml'
+    - '**/*-cache.yaml'
+    - '**/*.synctex.gz'
+    - '**/*.toc'
+    - '/**/_minted-${JOB}'
+    - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+    - /missfont.log
+    - /texput.log
+    - /texput.aux
+  dviToPdfEngine: xdvipdfmx
+  engine: xelatex
+  epstopdfBoundingBox: default
+  epstopdfOutputPath: $DIR_0/$NAME_0.pdf
+  indexAutomaticRanges: true
+  indexEngine: makeindex
+  indexOrdering: word
+  indexSorting: default
+  knitrConcordance: true
+  knitrOutputPath: $JOB.tex
+  lhs2texStyle: poly
+  literateAgdaEngine: agda
+  literateHaskellEngine: lhs2TeX
+  loadCache: true
+  loadUserOptions: true
+  outputFormat: pdf
+  phaseCycles: 20
+  pweaveCacheDirectory: pweave-cache-for-$JOB
+  pweaveFigureDirectory: pweave-figures-for-$JOB
+  pweaveKernel: python3
+  pweaveOutputFormat: tex
+  pweaveOutputPath: $JOB.tex
+  saveCache: true
+  severity: info
+  validateCache: true
+  synctex: false
+  copyTargetsToRoot: true
+  outputDirectory: ''
+  intermediatePostScript: true
+  $PATH: /usr/bin/
+files:
+  dicy-instance.yaml-ParsedYAML:
+    timeStamp: 2021-10-11T10:59:28.867Z
+    jobNames: []
+    value:
+      severity: info
+    type: ParsedYAML
+  dicy.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  eval-zones.yaml-ParsedYAML:
+    jobNames: []
+    type: ParsedYAML
+  eval-zones.tex-ParsedLaTeXMagic:
+    timeStamp: 2021-10-11T10:51:57.074Z
+    jobNames: []
+    value:
+      program: xelatex
+    type: ParsedLaTeXMagic
+  /home/miv/mazet/.config/dicy/config.yaml-ParsedYAML:
+    timeStamp: 2021-10-11T10:51:57.071Z
+    jobNames: []
+    value:
+      synctex: false
+      engine: pdflatex
+      severity: warning
+      copyTargetsToRoot: true
+      outputDirectory: ''
+      outputFormat: pdf
+      cleanPatterns:
+        - '**/*.aux'
+        - '**/*.aux.bak'
+        - '**/*.bbl'
+        - '**/*.bcf'
+        - '**/*.blg'
+        - '**/*.dvi'
+        - '**/*.fdb_latexmk'
+        - '**/*.fls'
+        - '**/*.idx'
+        - '**/*.idx.bak'
+        - '**/*.ilg'
+        - '**/*.ind'
+        - '**/*.lof'
+        - '**/*.log'
+        - '**/*.lol'
+        - '**/*.lot'
+        - '**/*.nav'
+        - '**/*.out'
+        - '**/*.ps'
+        - '**/*.snm'
+        - '**/*.yaml'
+        - '**/*-cache.yaml'
+        - '**/*.synctex.gz'
+        - '**/*.toc'
+        - '/**/_minted-${JOB}'
+        - '/${OUTDIR}/sage-plots-for-${JOB}.tex'
+        - /missfont.log
+        - /texput.log
+        - /texput.aux
+      intermediatePostScript: true
+      $PATH: /usr/bin/
+    type: ParsedYAML
+  eval-zones.tex:
+    timeStamp: 2021-10-11T10:53:54.274Z
+    jobNames: []
+    hash: jJiYRh4V+Qq3TIXvkS+TV+4S6gJPPc6X8We/UdH0cek=
+    type: LaTeX
+    subType: standalone
+  /home/miv/mazet/.config/dicy/config.yaml:
+    timeStamp: 2021-10-11T10:59:28.872Z
+    jobNames: []
+    type: YAML
+  x.y-Nil:
+    jobNames: []
+    type: Nil
+  eval-zones.fls-ParsedFileListing:
+    timeStamp: 2021-10-11T10:51:59.108Z
+    jobNames: []
+    value:
+      messages: []
+      inputs:
+        - /dev/null
+        - /etc/texmf/web2c/texmf.cnf
+        - /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+        - /usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+        - /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+        - /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+        - /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+        - >-
+          /usr/share/texlive/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg
+        - /usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex
+        - /usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex
+        - /usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex
+        - /usr/share/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+        - /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+        - /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+        - /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+        - /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+        - /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+        - /usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
+        - /usr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+        - /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cfg
+        - /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
+        - /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+        - /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+        - /usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+        - /usr/share/texlive/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+        - /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+        - /usr/share/texmf/web2c/texmf.cnf
+        - /var/lib/texmf/web2c/xetex/xelatex.fmt
+        - eval-zones.aux
+        - eval-zones.tex
+      outputs:
+        - eval-zones.aux
+        - eval-zones.log
+      calls: []
+    type: ParsedFileListing
+  eval-zones.log-ParsedLaTeXLog:
+    timeStamp: 2021-10-11T10:53:32.987Z
+    jobNames: []
+    value:
+      messages:
+        - name: XeTeX
+          severity: info
+          text: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 14
+              end: 14
+        - severity: info
+          name: XeTeX
+          category: Package ifluatex
+          text: LuaTeX not detected.
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 15
+              end: 15
+        - name: XeTeX
+          severity: info
+          text: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 17
+              end: 17
+        - name: XeTeX
+          severity: info
+          text: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 19
+              end: 19
+        - name: XeTeX
+          severity: info
+          text: xkeyval 2014/12/03 v2.7a package option processing (HA)
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 21
+              end: 21
+        - name: XeTeX
+          severity: info
+          text: 'pstricks 2018/01/06 v0.67 LaTeX wrapper for `PSTricks'' (RN,HV)'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 54
+              end: 54
+        - name: XeTeX
+          severity: info
+          text: >-
+            iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX,
+            XeTeX, and LuaTeX
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 56
+              end: 57
+        - name: XeTeX
+          severity: info
+          text: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 59
+              end: 59
+        - severity: info
+          name: XeTeX
+          category: Package shellesc
+          text: Restricted shell escape enabled
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+            range:
+              start: 69
+              end: 69
+          log:
+            file: eval-zones.log
+            range:
+              start: 60
+              end: 60
+        - name: XeTeX
+          severity: info
+          text: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+          log:
+            file: eval-zones.log
+            range:
+              start: 62
+              end: 62
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: 'Driver file: xetex.def'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 225
+              end: 225
+          log:
+            file: eval-zones.log
+            range:
+              start: 66
+              end: 66
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `cmy' substituted by `cmy0'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1348
+              end: 1348
+          log:
+            file: eval-zones.log
+            range:
+              start: 70
+              end: 70
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `RGB' extended
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1364
+              end: 1364
+          log:
+            file: eval-zones.log
+            range:
+              start: 71
+              end: 71
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `HTML' substituted by `rgb'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1366
+              end: 1366
+          log:
+            file: eval-zones.log
+            range:
+              start: 72
+              end: 72
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `Hsb' substituted by `hsb'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1367
+              end: 1367
+          log:
+            file: eval-zones.log
+            range:
+              start: 73
+              end: 73
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `tHsb' substituted by `hsb'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1368
+              end: 1368
+          log:
+            file: eval-zones.log
+            range:
+              start: 74
+              end: 74
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `HSB' substituted by `hsb'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1369
+              end: 1369
+          log:
+            file: eval-zones.log
+            range:
+              start: 75
+              end: 75
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `Gray' substituted by `gray'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1370
+              end: 1370
+          log:
+            file: eval-zones.log
+            range:
+              start: 76
+              end: 76
+        - severity: info
+          name: XeTeX
+          category: Package xcolor
+          text: Model `wave' substituted by `hsb'
+          source:
+            file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+            range:
+              start: 1371
+              end: 1371
+          log:
+            file: eval-zones.log
+            range:
+              start: 77
+              end: 77
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for OML/cmm/m/it ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 213
+              end: 214
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for T1/cmr/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 215
+              end: 216
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for OT1/cmr/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 217
+              end: 218
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for OMS/cmsy/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 219
+              end: 220
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for TU/lmr/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 221
+              end: 222
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for OMX/cmex/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 223
+              end: 224
+        - severity: info
+          name: XeTeX
+          category: LaTeX Font
+          text: Checking defaults for U/cmr/m/n ... okay
+          source:
+            file: eval-zones.tex
+            range:
+              start: 6
+              end: 6
+          log:
+            file: eval-zones.log
+            range:
+              start: 225
+              end: 226
+      inputs: []
+      outputs:
+        - eval-zones.pdf
+      calls: []
+    type: ParsedLaTeXLog
+  eval-zones.pdf:
+    timeStamp: 2021-10-11T10:53:55.034Z
+    jobNames: []
+    hash: V473k9yClRLWLgfNoBarM6jqRc1R+A8OExBQEyzNMKI=
+    type: PortableDocumentFormat
+  eval-zones.aux-ParsedLaTeXAuxilary:
+    timeStamp: 2021-10-11T10:51:59.105Z
+    jobNames: []
+    value:
+      commands:
+        - relax
+    type: ParsedLaTeXAuxilary
+  /dev/null:
+    timeStamp: 2021-10-11T06:00:30.075Z
+    jobNames: []
+  /etc/texmf/web2c/texmf.cnf:
+    timeStamp: 2018-05-29T13:13:17.781Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty:
+    timeStamp: 2016-11-25T18:33:35.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty:
+    timeStamp: 2017-03-26T21:48:50.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex:
+    timeStamp: 2016-11-25T18:33:36.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg:
+    timeStamp: 2017-04-19T22:28:49.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex:
+    timeStamp: 2017-10-04T23:04:03.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex:
+    timeStamp: 2018-01-06T21:54:11.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex:
+    timeStamp: 2016-11-25T18:33:39.000Z
+    jobNames: []
+    type: TeX
+  /usr/share/texlive/texmf-dist/tex/latex/base/article.cls:
+    timeStamp: 2016-11-25T18:33:41.000Z
+    jobNames: []
+    type: LaTeXClass
+  /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo:
+    timeStamp: 2016-11-25T18:33:41.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg:
+    timeStamp: 2016-11-25T18:33:50.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def:
+    timeStamp: 2017-06-25T21:51:33.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty:
+    timeStamp: 2018-01-06T21:54:11.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cfg:
+    timeStamp: 2016-11-25T18:33:59.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls:
+    timeStamp: 2016-11-25T18:33:59.000Z
+    jobNames: []
+    type: LaTeXClass
+  /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty:
+    timeStamp: 2016-11-25T18:34:01.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty:
+    timeStamp: 2016-11-25T18:34:03.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty:
+    timeStamp: 2016-11-25T18:34:03.000Z
+    jobNames: []
+    type: LaTeXStyle
+  /usr/share/texlive/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con:
+    timeStamp: 2016-11-25T18:34:07.000Z
+    jobNames: []
+  /usr/share/texlive/texmf-dist/web2c/texmf.cnf:
+    timeStamp: 2018-03-05T00:41:47.000Z
+    jobNames: []
+  /usr/share/texmf/web2c/texmf.cnf:
+    timeStamp: 2018-03-05T00:41:47.000Z
+    jobNames: []
+  /var/lib/texmf/web2c/xetex/xelatex.fmt:
+    timeStamp: 2018-10-12T04:58:05.888Z
+    jobNames: []
+rules:
+  - name: ApplyOptions
+    command: load
+    phase: initialize
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: eval-zones.yaml-ParsedYAML
+        type: default
+      - file: eval-zones.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: /home/miv/mazet/.config/dicy/config.yaml-ParsedYAML
+        type: default
+    outputs: []
+  - name: LoadAndValidateCache
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: Migrate
+    command: load
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ApplyOptions
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: dicy.yaml-ParsedYAML
+        type: default
+      - file: eval-zones.yaml-ParsedYAML
+        type: default
+      - file: eval-zones.tex-ParsedLaTeXMagic
+        type: default
+      - file: dicy-instance.yaml-ParsedYAML
+        type: default
+      - file: /home/miv/mazet/.config/dicy/config.yaml-ParsedYAML
+        type: default
+    outputs: []
+  - name: ParseOptionsFile
+    command: load
+    phase: execute
+    parameters: []
+    inputs:
+      - file: /home/miv/mazet/.config/dicy/config.yaml
+        type: default
+    outputs:
+      - file: /home/miv/mazet/.config/dicy/config.yaml-ParsedYAML
+        type: default
+  - name: ParseLaTeXMagic
+    command: load
+    phase: execute
+    parameters:
+      - eval-zones.tex
+    inputs:
+      - file: eval-zones.tex
+        type: default
+    outputs:
+      - file: eval-zones.tex-ParsedLaTeXMagic
+        type: default
+  - name: AssignJobNames
+    command: load
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: FindLogFiles
+    command: build
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: LaTeX
+    command: build
+    phase: execute
+    parameters:
+      - eval-zones.tex
+    inputs:
+      - file: eval-zones.tex
+        type: default
+      - file: eval-zones.fls-ParsedFileListing
+        type: default
+      - file: eval-zones.log-ParsedLaTeXLog
+        type: default
+      - file: /dev/null
+        type: default
+      - file: /etc/texmf/web2c/texmf.cnf
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+        type: default
+      - file: >-
+          /usr/share/texlive/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cfg
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+        type: default
+      - file: /usr/share/texlive/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+        type: default
+      - file: /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+        type: default
+      - file: /usr/share/texmf/web2c/texmf.cnf
+        type: default
+      - file: /var/lib/texmf/web2c/xetex/xelatex.fmt
+        type: default
+    outputs:
+      - file: eval-zones.pdf
+        type: target
+  - name: LogProducedTargets
+    command: build
+    phase: finalize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: CheckForMissingBuildRule
+    command: build
+    phase: finalize
+    parameters:
+      - eval-zones.tex
+    inputs:
+      - file: eval-zones.tex
+        type: default
+    outputs: []
+  - name: FindLogFiles
+    command: log
+    phase: initialize
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ReportLogMessages
+    command: log
+    phase: execute
+    parameters:
+      - eval-zones.log-ParsedLaTeXLog
+    inputs:
+      - file: eval-zones.log-ParsedLaTeXLog
+        type: default
+    outputs: []
+  - name: SaveCache
+    command: save
+    phase: execute
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: Clean
+    command: clean
+    phase: execute
+    parameters: []
+    inputs: []
+    outputs: []
+  - name: ParseLaTeXLog
+    command: log
+    phase: execute
+    parameters:
+      - eval-zones.log
+    inputs: []
+    outputs:
+      - file: eval-zones.log-ParsedLaTeXLog
+        type: default
+  - name: ParseLaTeXLog
+    command: build
+    phase: execute
+    parameters:
+      - eval-zones.log
+    inputs: []
+    outputs:
+      - file: eval-zones.log-ParsedLaTeXLog
+        type: default
+  - name: ParseLaTeXAuxilary
+    command: build
+    phase: execute
+    parameters:
+      - eval-zones.aux
+    inputs: []
+    outputs:
+      - file: eval-zones.aux-ParsedLaTeXAuxilary
+        type: default
+  - name: ParseFileListing
+    command: build
+    phase: execute
+    parameters:
+      - eval-zones.fls
+    inputs: []
+    outputs:
+      - file: eval-zones.fls-ParsedFileListing
+        type: default

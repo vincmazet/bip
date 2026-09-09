@@ -1,0 +1,171 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+
+version: 1
+
+project:
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Metadata
+
+  id: cadddaf9-8384-4d12-b96c-ac72e43dc98a
+
+  title: Basics of Image Processing
+  description: Image processing course at Télécom Physique Strasbourg
+  keywords:
+    - image processing
+    - traitement d'images
+    - image convolution
+    - lossless image compression
+    - lossy image compression
+    - image interpolation
+    - image registration
+    - recalage d'image
+    - image segmentation
+    - watershed
+    - mathematical morphology
+    - morphologie mathématique
+    - image restoration
+    - denoising
+    - débruitage
+    - deconvolution
+    - edge detection
+    - détection de contours
+    - corner detection
+    - détection de coins
+    - line detection
+    - détection de lignes
+    - sift
+    - Télécom Physique Strasbourg
+    - Université de Strasbourg
+
+  authors:
+  - name: Vincent Mazet
+    affiliation: Université de Strasbourg
+  
+  github: https://github.com/vincmazet/bip
+
+  license: CC-BY-NC-4.0
+  
+  # Numérotations
+  numbering:
+    equations: false
+  
+  # Fichier à exclure de la compilation
+  exclude:
+  - .ipynb_checkpoints
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Table of contents
+
+  toc:
+
+    - file: intro.md
+
+    # Digital images [BIP] [TI]
+    - file: digital-images/intro.md
+      children:
+      - file: digital-images/acquisition.md
+      - file: digital-images/definition.md
+      - file: digital-images/color-models.md
+      - file: digital-images/displaying.md
+      - file: digital-images/operations.md
+      - file: digital-images/histogram.ipynb
+      - file: digital-images/outro.md
+
+    # Transforms & Filtering [BIP] [TI]
+    - file: filtering/intro.ipynb
+      children:
+      - file: filtering/convolution.ipynb
+      - file: filtering/fourier.ipynb # développer Fourier pour les non TPS
+      # - file: filtering/wavelets.ipynb
+      - file: filtering/filtering.ipynb
+      - file: filtering/outro.ipynb
+
+    # Feature detection [BIP] [TI] (avancé avant la segmentation)
+    - file: detection/intro.md
+      children:
+      - file: detection/matched-filter.md
+      - file: detection/edges.md
+      - file: detection/corners.md
+      - file: detection/lines.md
+      - file: detection/sift.md
+      # ORB
+      - file: detection/outro.md
+
+    # Segmentation [BIP] [TI] (améliorer le cours)
+    - file: segmentation/intro.ipynb
+      children:
+      - file: segmentation/histogram.ipynb
+      - file: segmentation/clustering.ipynb
+      - file: segmentation/watershed.ipynb
+      - file: segmentation/evaluation.ipynb
+      - file: segmentation/outro.ipynb
+
+    # Binary image processing [BIP]
+    - file: binary/intro.ipynb
+      children:
+      - file: binary/neighborhood.ipynb
+      - file: binary/mm.ipynb
+      - file: binary/applications.ipynb
+      - file: binary/measure.ipynb
+      - file: binary/outro.ipynb
+
+    # Compression [BIP]
+    - file: compression/intro.ipynb
+      children:
+      - file: compression/lossless.ipynb
+      - file: compression/lossy.ipynb
+      - file: compression/outro.ipynb
+
+    # (déplacé ici, à la fin, pour les besoins de TI)
+    # (séparer interpolation et recalage)
+    # Interpolation [BIP] [TI] & registration [TI]
+    - file: interpolation/intro.ipynb
+      children:
+      - file: interpolation/interpolation.ipynb # (améliorer)
+      - file: interpolation/registration.ipynb # (faire un TP ? + mettre à jour)
+      - file: interpolation/outro.ipynb
+    
+    # Restoration [BIP] [TI]
+    - file: restoration/intro.md
+      children:
+      - file: restoration/denoising.ipynb
+      - file: restoration/deconvolution.ipynb
+      - file: restoration/outro.ipynb
+
+  #   # Textures
+
+  #   # In a nutshell: collection of technical appendices
+  #   #   - file: nutshell/optimization
+  #   #   - file: nutshell/classification
+  #   #   - file: nutshell/deeplearning
+  
+  #   # Fun section: collection of notebooks to illustrate fun ideas
+  #   #   - file: nutshell/anaglyph
+  #   #   - file: nutshell/color-transfer
+  #   #   - file: nutshell/music-spectrogram
+
+    # Appendices
+    - file: appendices/intro.md
+      children:
+      - file: appendices/glossary.md
+      - file: appendices/license.md
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Website configuration
+
+site:
+
+  template: book-theme
+  
+  options:
+    outline_maxdepth: 2
+    favicon: src/favicon.ico
+    logo: src/logo-bip-site.svg
+    hide_authors: true
+    hide_myst_branding: true
+    folders: true
+    style: src/style.css

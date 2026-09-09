@@ -1,0 +1,26 @@
+% !TEX program = latex
+
+\documentclass{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref} % Indispensable
+\usepackage{etoolbox}
+\usepackage{pstricks}
+
+\newcommand{\est}[1]{\hat{#1}}%\skew{6}{\hat}{f}}
+
+\begin{document}
+
+\begin{pspicture}(0.5,0)(9.5,2)
+  \rput(.75,1){$x$}
+  \psline{->}(1,1)(2,1)
+  \psframe(2,.5)(4.5,1.5) \rput(3.25,1){dégradation}
+  \psline{->}(4.5,1)(5.5,1) \rput(5,1.5){$y$}
+  \psframe(5.5,.5)(8,1.5) \rput(6.75,1){restauration}
+  \psline{->}(8,1)(9,1)
+  \rput(9.25,1){$\est{x}$}
+\end{pspicture}
+
+\end{document}

@@ -1,0 +1,29 @@
+% !TEX program = latex
+
+\documentclass{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{hyperref} % Indispensable
+\usepackage{pstricks, pst-plot}
+
+\definecolor{clr1}{RGB}{64,169,255}
+\definecolor{clr2}{RGB}{128,198,255}
+\definecolor{clr3}{RGB}{191,227,255}
+
+\begin{document}
+
+\psset{unit=4mm}
+\begin{pspicture}(-1.5,-1.5)(10.5,10.5)
+  \pspolygon*[linecolor=clr3](0,0)(5,0)(0,5)
+  \pspolygon*[linecolor=clr2](4,1)(5,0)(9.5,0)(9.5,5)
+  \pspolygon*[linecolor=clr2](1,4)(0,5)(0,9.5)(5,9.5)
+  \pspolygon*[linecolor=clr1](4,1)(9.5,5)(9.5,9.5)(5,9.5)(1,4)
+  \psaxes[labels=none,linewidth=.5pt]{->}(0,0)(-.99,-.99)(10,10)[$\lambda_1$,-90][$\lambda_2$,180]
+  \rput[c](1.6,1.5){\parbox{2cm}{\centering flat \\ region}}
+  \rput[c](7.5,1.5){\parbox{2cm}{\centering edge}}
+  \rput[c](2,8){\parbox{2cm}{\centering edge}}
+  \rput[c](6,6){\parbox{2cm}{\centering corner}}
+\end{pspicture}
+
+\end{document}

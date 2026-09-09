@@ -1,0 +1,21 @@
+% !TEX program = latex
+
+\documentclass{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{pstricks, pst-plot}
+
+\begin{document}
+
+\psset{unit=4mm}
+\begin{pspicture}(-1.5,-1.5)(10.5,10.5)
+  \rput[lb](0,0){\includegraphics[scale=0.4]{harris-contours}}
+  \psaxes[labels=none,linewidth=.5pt]{->}(0,0)(-.99,-.99)(10,10)[$\lambda_1$,-90][$\lambda_2$,180]
+  \rput[c](1.6,1.5){\parbox{2cm}{\centering flat \\ region}}
+  \rput[c](7.5,1.5){\parbox{2cm}{\centering edge}}
+  \rput[c](2,8){\parbox{2cm}{\centering edge}}
+  \rput[c](6,6){\parbox{2cm}{\centering corner}}
+\end{pspicture}
+
+\end{document}

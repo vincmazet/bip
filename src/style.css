@@ -1,0 +1,31 @@
+/* Liens hypertextes des paragraphes */
+.article p a {
+    font-weight: normal;
+    text-decoration: none;
+    font-style: inherit;    /* Evite l'italique pour les liens à tooltip */
+}
+
+/* Légende des figures */
+.article figcaption {
+    font-size: 1em;
+    text-align: center;
+    color: inherit;
+}
+.article figcaption a {
+    /* color: var(--tw-prose-captions); */
+    color: inherit;
+}
+.article figcaption a:hover {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* Rend les puces des listes de la même couleur que le texte */
+.article{
+    --tw-prose-bullets: var(--tw-prose-body);
+}
+
+/* Suppression de la source pour le contenu intégré (embed) */
+/* .text-xsmyst-jp-output-deco-light {
+    visibility: collapse;
+} */
