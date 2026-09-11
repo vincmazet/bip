@@ -163,8 +163,8 @@ site:
   
   options:
     outline_maxdepth: 2
-    favicon: src/favicon.ico
-    logo: src/logo-bip-site.svg
+    favicon: src/logo-bip-site.png
+    logo: src/logo-bip-site.png
     hide_authors: true
     hide_myst_branding: true
     folders: true
