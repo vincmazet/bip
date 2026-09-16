@@ -75,13 +75,12 @@ project:
       - file: digital-images/outro.md
 
     # Transforms & Filtering [BIP] [TI]
-    - file: filtering/intro.ipynb
+    - file: filtering/intro.md
       children:
-      - file: filtering/convolution.ipynb
-      - file: filtering/fourier.ipynb # développer Fourier pour les non TPS
-      # - file: filtering/wavelets.ipynb
-      - file: filtering/filtering.ipynb
-      - file: filtering/outro.ipynb
+      - file: filtering/convolution.md
+      - file: filtering/fourier.md
+      - file: filtering/filtering.md
+      - file: filtering/outro.md
 
     # Feature detection [BIP] [TI] (avancé avant la segmentation)
     - file: detection/intro.md
@@ -131,9 +130,9 @@ project:
     # Restoration [BIP] [TI]
     - file: restoration/intro.md
       children:
-      - file: restoration/denoising.ipynb
-      - file: restoration/deconvolution.ipynb
-      - file: restoration/outro.ipynb
+      - file: restoration/denoising.md
+      - file: restoration/deconvolution.md
+      - file: restoration/outro.md
 
   #   # Textures
 

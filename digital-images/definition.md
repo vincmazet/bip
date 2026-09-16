@@ -91,10 +91,7 @@ An image file format is a standard way to organize and store image data in a com
 Various criteria are taken into account to choose the format adapted to the application.
 The list below gives the main characteristics of the most common image file formats.
 
-<!-- Sources
-Liste des formats d’image, leurs fonctionnalités et leurs prises en charge par les navigateurs et logiciels de retouche d’image
-https://developer.mozilla.org/fr/docs/Web/Media/Guides/Formats/Image_types
--->
+<!-- https://developer.mozilla.org/fr/docs/Web/Media/Guides/Formats/Image_types -->
 
 :::{dropdown} AVIF
 - Name: AV1 Image File Format

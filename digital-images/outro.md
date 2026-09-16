@@ -22,7 +22,7 @@ The histogram will be used especially for @C:segmentation:intro.
 The next chapters list more complex tools for modifying the image or extracting information from it.
 
 
-## References
+:::{seealso} References
 
 * (B:histogram:Gonzalez2010)=
   R.C. Gonzalez and R.E. Woods,
@@ -32,4 +32,6 @@ The next chapters list more complex tools for modifying the image or extracting 
 * (B:digital-images:Jahne2005)=
   B. Jähne,
   _Digital Image Processing_,
-  Springer, 2005.                                                                          
+  Springer, 2005.
+
+:::

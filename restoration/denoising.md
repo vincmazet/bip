@@ -1,4 +1,4 @@
-(C:denoising)=
+(P:denoising)=
 # Denoising
 
 Denoising (French: _débruitage_) consists in reducing noise in an image.
