@@ -223,7 +223,7 @@ that is to increase $T_x$ and $T_y$ such that the sampling theorem is satisfied.
 ### Quantization
 
 Quantization corresponds to mapping the continuous light intensities to a finite set of numbers.
-Typically, image are quantized into 256 gray valuPes; then, each pixel then occupies one byte (8 bits).
+Typically, image are quantized into 256 gray values; then, each pixel then occupies one byte (8 bits).
 The reason for assigning 256 gray values to each pixel is
 not only because it is well adapted to the architecture of computers,
 but also because it is good enough to give humans
