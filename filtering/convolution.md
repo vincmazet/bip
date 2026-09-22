@@ -14,7 +14,7 @@ This results in a third image $f$.
 This is the so-called convolution [[Jähne 2005, section 4]](B:filtering:Jahne2005) and it is denoted with $*$:
 
 $$
-  f(x,y) = (g*h)(x,y) = \sum_m \sum_n g(x-m,y-n) \ h(m,n)
+  f(y,x) = (g*h)(y,x) = \sum_m \sum_n g(y-m,x-n) \ h(m,n)
 $$
 
 Intuitively, the convolution "spreads" each pixel $(m,n)$ in $g$ following $h$ and proportionally to the intensity $g(m,n)$.
