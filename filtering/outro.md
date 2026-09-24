@@ -33,7 +33,12 @@ justifying the specific processing of @P:deconvolution to deal with.
 
 * (B:filtering:Jahne2005)=
   B. Jähne,
-  _Digital Image Processing_,
+  *Digital Image Processing*,
   Springer, 2005.
 
+* (B:filtering:Shannon1948)=
+  C.E. Shannon,
+  "A Mathematical Theory of Communication",
+  *Bell System Technical Journal*,
+  vol. 27, pp. 379-423, 1948.
 :::

@@ -173,6 +173,7 @@ The Bayer filter on an image sensor.
 The final step of digital image formation is digitization,
 which is both the sampling and quantization of the observed scene.
 
+(P:digital-images:sampling)=
 ### Sampling
 
 Sampling corresponds to mapping a continuous scene onto a discrete grid.

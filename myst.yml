@@ -80,6 +80,7 @@ project:
       - file: filtering/convolution.md
       - file: filtering/fourier.md
       - file: filtering/filtering.md
+      - file: filtering/sampling.md
       - file: filtering/outro.md
 
     # Feature detection [BIP] [TI] (avancé avant la segmentation)
