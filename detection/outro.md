@@ -15,6 +15,8 @@ This chapter has introduced the common methods of feature detection:
 
 <!-- To highlight ref: http://jsfiddle.net/davidThomas/NGyVL/ -->
 
+:::{seealso} References
+
 * (B:detection:Bay2006)=
   H. Bay, T. Tuytelaars, and L. Van Gool,
   "SURF: Speeded up robust features",
@@ -24,6 +26,11 @@ This chapter has introduced the common methods of feature detection:
   J. Canny,
   "A Computational Approach To Edge Detection",
   _IEEE Transactions on Pattern Analysis and Machine Intelligence}_, vol. 8, 1986.
+
+* (B:detection:Gonzalez2010)=
+  R.C. Gonzalez and R.E. Woods,
+  _Digital Image Processing_,
+  Pearson, 2010.
   
 * (B:detection:Harris1988)=
   C. Harris and M. Stephens
@@ -81,3 +88,5 @@ This chapter has introduced the common methods of feature detection:
   I. Sobel and G. Feldman,
   "A $3\times3$ Isotropic Gradient Operator for Image Processing",
   In _Stanford Artificial Intelligence Project_, 1968.
+
+:::
