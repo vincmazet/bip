@@ -23,7 +23,7 @@ $$
 $$
 
 The equivalent 1D signal of $ш_T$ is called a "Dirac comb".
-$T$ is called the *sampling period* and corresponds to the distance between the pixels in the sensor.
+$T$ is called the *sampling period* (French: *période d'échantillonnage*) and corresponds to the distance between the pixels in the sensor.
 In 2D, $ш_T$ corresponds to a field of Dirac pulses with a distance $T$ between two neighboring Dirac pulses.
 
 Applying the Fourier transform on the model yields:
@@ -33,7 +33,7 @@ $$
 $$
 
 The Fourier transform of $ш_T$ is $\mathcal{F}[ш_T] = ш_F$
-where $F=1/T$ is called the *sampling frequency*.
+where $F=1/T$ is called the *sampling frequency* (French: *fréquence d'échantillonnage*).
 
 Because of the convolution, the Fourier transform of the acquired scene
 is a periodical reproduction of the Fourier transform of the observed scene.
@@ -67,6 +67,7 @@ the frequency content of the image change,
 so the image itself changes.
 
 The consequence of spectrum overlapping is a phenomenon called *aliasing*
+(French: *repliement spectral*)
 (an example is shown in @F:digital-images:moire in section @P:digital-images:sampling).
 
 <!-- TODO : rajouter des exemples d'aliasing -->

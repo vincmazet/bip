@@ -2,9 +2,10 @@
 # Glossary
 
 | 🇬🇧 | 🇫🇷 |
-| :--- | ---: |
+| :--- | :--- |
 | Additive white Gaussian noise (AWGN) | Bruit blanc gaussien additif |
 | Accuracy | Exactitude _(peu utilisé en français)_ |
+| Aliasing | Repliement spectral |
 | Binarization | Binarisation |
 | Blind deconvolution | Déconvolution myope |
 | Bounding box | Boîte englobante |
@@ -53,6 +54,8 @@
 | Retina | Rétine |
 | Rod | Bâtonnet |
 | Salt-and-pepper noise |  Bruit poivre et sel |
+| Sampling frequency | Fréquence d'échantillonnage |
+| Sampling period | Période d'échantillonnage |
 | Signal-to-noise ratio (SNR) | Rapport signal-sur-bruit (RSB) |
 | Standard deviation | Écart-type |
 | Structuring element | Élément structurant |
