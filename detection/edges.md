@@ -1,4 +1,4 @@
-(P:edge-detection)=
+(P:detection:edge)=
 # Edge detection
 
 
