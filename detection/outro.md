@@ -1,14 +1,15 @@
 # Conclusion
 
-This chapter has introduced the common methods of feature detection:
-* cross-correlation for detecting perfectly known patterns;
-* Canny detector for detecting lines (based on the image gradient);
-* Harris detector for detecting corners (based on the intensity variations in the pixel neighborhood);
-* Hough transform for detecting lines or circles (by transforming the image into a parameter space).
+This chapter has introduced the common methods for feature detection:
+* the matched filter (or template matching) for detecting perfectly known patterns, by using cross-correlation,
+* Canny detector for detecting lines (based on the image gradient),
+* Harris detector for detecting corners (based on the intensity variations in the pixel neighborhood),
+* Hough transform for detecting lines or circles (by transforming the image into a parameter space),
+* SIFT for matching similar pixels in two different umages.
 
 <!-- Parler aussi de classification (dont réseaux de neurones), qui sont utilisées sur des features -->
 
-<!-- Rajouter ? SIFT, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
+<!-- Rajouter (?) : ORB, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
 
 
 ## References
