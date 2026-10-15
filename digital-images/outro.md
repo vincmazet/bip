@@ -17,7 +17,7 @@ Fundamental image processing operations involve basic array manipulations (addit
 The histogram is a graphical representation of the intensity distribution in a digital image:
 the horizontal axis represents the intensities and the vertical axis represents the number of pixels at each intensity.
 It shows how the intensities of the pixels are distributed, regardless of their spatial position.
-The histogram will be used especially for @C:segmentation:intro.
+The histogram will be used especially for @P:segmentation:intro.
 
 The next chapters list more complex tools for modifying the image or extracting information from it.
 

@@ -79,7 +79,7 @@ F > 2 f_\mathrm{max}.
 $$
 
 This condition is at the heart of the samping theorem,
-edicted by [[Shannon, 1948]](B:filtering:Shannon1948),
+edicted by [[Shannon, 1948]](#B:filtering:Shannon1948),
 which can be written as the fact that an analog image
 with maximal frequency $f_\mathrm{max}$ has to be sampled
 at frequency $F > 2 f_\mathrm{max}$ to prevent aliasing.

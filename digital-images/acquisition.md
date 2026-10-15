@@ -259,7 +259,7 @@ The two main distortions are noise and blurring.
 Noise introduces erroneous intensities in the digital image.
 Sources of noise are multiple, from electronic noise due to the imaging system itself
 to the acquisition conditions (low-light-level for example).
-The main noise models are desribed in @C:denoising:noise-sources:
+The main noise models are desribed in @P:denoising:noise-sources:
 Gaussian noise, Poisson noise and salt-and-pepper noise.
 In specific imaging systems, other noise can be encountered.
 For example, in radar imaging systems the noise is considered to be multiplicative
@@ -279,7 +279,7 @@ but onto a more or less extended area with varying intensities.
 The function that describes the imaging of a point is an essential feature of the imaging system and is called the point spread function or PSF (French: *fonction d'étalement du point*).
 Generally, the PSF is assumed to be independent of the position.
 Then, the imaging system can be treated as a linear shift-invariant system,
-which is mathematically described as a convolution (see the [dedicated chapter](P:filtering:convolution)).
+which is mathematically described as a convolution (see the [dedicated chapter](#P:filtering:convolution)).
 Sometimes, an imaging system is described not by its PSF
 but by its [Fourier transform](#P:filtering:fourier),
 and it is called optical transfer function, or OTF (French: *fonction de transfert optique*).

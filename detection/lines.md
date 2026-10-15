@@ -7,7 +7,7 @@ Pronounce Hough as "[huff](https://www.google.com/search?q=pronounce+hough+trans
 :::
 
 Line detection consists of detecting alignments of points in an image of contours.
-The usual method for line detection is the Hough transform [[Hough 1962](B:detection:Hough1962)].
+The usual method for line detection is the Hough transform [[Hough 1962](#B:detection:Hough1962)].
 Like the Fourier transform, it transposes the image from the spatial space to another space,
 where the information of interest is represented differently:
 the lines in the spatial space are transformed into points in the Hough space.

@@ -11,9 +11,6 @@ This chapter has introduced the common methods for feature detection:
 
 <!-- Rajouter (?) : ORB, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
 
-
-## References
-
 <!-- To highlight ref: http://jsfiddle.net/davidThomas/NGyVL/ -->
 
 :::{seealso} References

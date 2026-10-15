@@ -95,13 +95,13 @@ project:
       - file: detection/outro.md
 
     # Segmentation [BIP] [TI] (améliorer le cours)
-    - file: segmentation/intro.ipynb
+    - file: segmentation/intro.md
       children:
-      - file: segmentation/histogram.ipynb
-      - file: segmentation/clustering.ipynb
-      - file: segmentation/watershed.ipynb
-      - file: segmentation/evaluation.ipynb
-      - file: segmentation/outro.ipynb
+      - file: segmentation/histogram.md
+      - file: segmentation/clustering.md
+      - file: segmentation/watershed.md
+      - file: segmentation/evaluation.md
+      - file: segmentation/outro.md
 
     # Binary image processing [BIP]
     - file: binary/intro.ipynb

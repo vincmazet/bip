@@ -2,7 +2,7 @@
 # SIFT
 
 
-The scale-invariant feature transform (SIFT) algorithm was proposed by [Lowe, 1999](B:detection:Lowe1999)
+The scale-invariant feature transform (SIFT) algorithm was proposed by [Lowe, 1999](#B:detection:Lowe1999)
 to detect specific pixels in two images and to match them by using some descriptors that characterize them.
 SIFT is still one of the most popular feature detectors today because the algorithm is robust to translation, scaling, rotation, partial occlusion or illumination changes.
 Applications include object recognition, video tracking, robotic navigation, image composition (stitching), etc.
@@ -34,7 +34,7 @@ SIFT uses a a Gaussian kernel, so the image at each level $L$ is getting by:
 2. downsampling the blurred image $\ell(x,y,\sigma_L)$ by a factor 2 using @P:interpolation:bilinear.
 
 In practice, the blurred images $\ell(x,y,\sigma_L)$ can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions
-(the 2D Gaussian function is [separable](P:convolution:separability)).
+(the 2D Gaussian function is [separable](#P:convolution:separability)).
 
 The series of blurred and downsampled images produces a pyramid representation (see @F:sift:scale-space) and each level is called an _octave_.
 
@@ -56,7 +56,7 @@ $$
 
 where $\sigma_{L,k}$ ($k\in\{1,\dots,K\}$) is the parameter of the Gaussian kernel
 and depends on the level $L$, the parameter $\sigma_L$ and the number of blurred image at level $L$
-(see [[Lowe 2004](B:detection:Lowe2004)] for details).
+(see [[Lowe 2004](#B:detection:Lowe2004)] for details).
 <!-- + Rey-Otero2014 qui détaille -->
 
 Then, we compute the difference ($k>0$):
@@ -72,7 +72,7 @@ It can be seen that the DoG acts as a bandpass filter.
 :::{figure} figs/sift-DoG.png
 height: 400px
 name: F:sift:DoG
-Scale space and DoG at each octave and for each couple of blurred images [[Lowe 2004](B:detection:Lowe2004)].
+Scale space and DoG at each octave and for each couple of blurred images [[Lowe 2004](#B:detection:Lowe2004)].
 :::
 
 <!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
@@ -93,7 +93,7 @@ This gives a total of 26 neighbors.
 :name: F:sift:DoG-extrema
 Extrema of the DoG images are detected by comparing a pixel (marked with X)
 to its neighbors (marked with circles) at the current and adjacent scales
-[[Lowe 2004](B:detection:Lowe2004)].
+[[Lowe 2004](#B:detection:Lowe2004)].
 :::
 
 The pixel is then considered as a keypoint if and only if it is an extremum in its neighboring,
@@ -105,7 +105,7 @@ or if they lie on an edge (because their localization cannot be precise enough a
 :width: 100%
 :name: F:sift:DoG-appli
 Example of DoG scale-space on an image (left).
-[[Rey Otero 2014](B:detection:ReyOtero2014)].
+[[Rey Otero 2014](#B:detection:ReyOtero2014)].
 :::
 
 <!------------------------------------------------------------------------------------------------>
@@ -185,7 +185,7 @@ Example of matching on the main paired keypoints.
 
 ## Alternatives to SIFT
 
-SURF (Speeded-Up Robust Features) [[Bay 2006](B:detection:Bay2006)] accelerates SIFT
+SURF (Speeded-Up Robust Features) [[Bay 2006](#B:detection:Bay2006)] accelerates SIFT
 so it is more suitable for real-time applications.
 The main differences with SIFT are the following:
 
@@ -206,7 +206,7 @@ The main differences with SIFT are the following:
 * Other simplifications allows to simplify the different stages of the SIFT algorithm to the essential.
   For instance, SURF produces a 64-dimensional descriptor, which is more compact and faster to compute than SIFT descriptor.
 
-ORB (Orientated FAST and Robust BRIEF) [[Rublee 2011](B:detection:Rublee2011)]
+ORB (Orientated FAST and Robust BRIEF) [[Rublee 2011](#B:detection:Rublee2011)]
 is considered to be roughly 10 times faster than SURF, while performing as well in many situations.
 
 <!-- https://mikhail-kennerley.medium.com/a-comparison-of-sift-surf-and-orb-on-opencv-59119b9ec3d0 -->

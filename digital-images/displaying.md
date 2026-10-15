@@ -31,7 +31,7 @@ Note that the 3 images in @F:intro:colormap are all grayscale images, even if on
 Colormaps are sometimes useful to bring out dark objects in an image with poor contrast.
 The image below, with the usual "gray" colormap, clearly shows one bright spot but not the four other faint spots.
 Instead, the "jet" colormap makes the faint spots visible.
-Also, displaying the logarithm of the image helps to make the spots visible (see @P:histogram-transformations).
+Also, displaying the logarithm of the image helps to make the spots visible (see @P:digital-images:histogram-transformations).
 
 :::{figure} figs/spots.svg
 :name: F:intro:spots

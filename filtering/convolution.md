@@ -11,14 +11,14 @@ This is the case, for example, for blurring.
 When this modification is similar in the entire image $g$,
 it can be mathematically defined using a second image $h$ which defines the neighbor relationships.
 This results in a third image $f$.
-This is the so-called convolution [[Jähne 2005, section 4]](B:filtering:Jahne2005) and it is denoted with $*$:
+This is the so-called convolution [[Jähne 2005, section 4]](#B:filtering:Jahne2005) and it is denoted with $*$:
 
 $$
   f(y,x) = (g*h)(y,x) = \sum_m \sum_n g(y-m,x-n) \ h(m,n)
 $$
 
 Intuitively, the convolution "spreads" each pixel $(m,n)$ in $g$ following $h$ and proportionally to the intensity $g(m,n)$.
-{numref}`F:convolution:sketch` gives an example of the computing of a particular pixel.
+@F:convolution:sketch gives an example of the computing of a particular pixel.
 
 :::{figure} figs/convolution.svg
 :name: F:convolution:sketch

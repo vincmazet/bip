@@ -102,7 +102,7 @@ and, in practice, variants of them are used.
 
 ### Roberts operator
 
-The Roberts operator finds the edges along the diagonals [[Roberts 1965](B:detection:Roberts1965)]:
+The Roberts operator finds the edges along the diagonals [[Roberts 1965](#B:detection:Roberts1965)]:
 
 $$
   h_x=
@@ -121,7 +121,7 @@ $$
 
 ### Prewitt operator
 
-The Prewitt operator [[Prewitt 1970](B:detection:Prewitt1970)]
+The Prewitt operator [[Prewitt 1970](#B:detection:Prewitt1970)]
 use kernels with odd sizes, so as to get a detection centered on the edges:
 
 $$
@@ -144,7 +144,7 @@ $$
 (P:detection:sobel)=
 ### Sobel operator
 
-The Sobel operator [[Sobel 1968](B:detection:Sobel1968)]
+The Sobel operator [[Sobel 1968](#B:detection:Sobel1968)]
 can be seen as a smoothed version of the Prewitt operator.
 Indeed, the coefficients reproduce a convolution by a Gaussian filter,
 which tends to play the role of a mean filter to attenuate noise:
@@ -232,7 +232,7 @@ Consequence of noise on the brightness profile and its derivatives
 (orange: non-noisy profiles, blue: noisy profiles).
 :::
 
-In @F:detection:edges-sobel-noise, a small [blur filter](P:filtering:blur-filter) is used before the Sobel filter:
+In @F:detection:edges-sobel-noise, a small [blur filter](#P:filtering:blur-filter) is used before the Sobel filter:
 the result is much cleaner than without the use of the mean filter.
 
 :::{figure} figs/edges-sobel-noise.svg
@@ -248,8 +248,8 @@ Right: Sobel operator applied on the result of a 3×3 mean filter.
 
 Following the gradient operator, new methods have been proposed to improve edge detection
 by taking into account the noise and the nature of the edges:
-* the Marr-Hildreth detector [[Marr & Hildreth 1980](B:detection:Marr1980)],
-* the Canny detector [[Canny 1986](B:detection:Canny1986)].
+* the Marr-Hildreth detector [[Marr & Hildreth 1980](#B:detection:Marr1980)],
+* the Canny detector [[Canny 1986](#B:detection:Canny1986)].
 
 
 ### Marr-Hildreth Detector
@@ -300,7 +300,7 @@ right: detection of the zeros crossings.
 :::{note}
 Marr and Hildreth note that it is possible to approximate the LoG filter
 by a difference of Gaussians (DoG) with $\sigma_1 > \sigma_2$
-[[Gonzalez 2010](B:detection:Gonzalez2010)].
+[[Gonzalez 2010](#B:detection:Gonzalez2010)].
 
 $$
 \mathrm{DoG}(y,x)

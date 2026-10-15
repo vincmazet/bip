@@ -29,3 +29,14 @@
 /* .text-xsmyst-jp-output-deco-light {
     visibility: collapse;
 } */
+
+/* Badge (utilisable avec l'instruction {span .badge}`texte`) */
+.badge {
+  background-color: rgb(59,130,246);
+  padding: 3px 6px;
+  font-size: .8rem;
+  text-align: center;
+  border-radius: 9px;
+  color: white;
+  margin-right: .5ex;
+}
