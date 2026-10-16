@@ -12,7 +12,7 @@ By doing so, pixels with similar colors form groups in the space, as illustrated
 
 :::{figure} figs/3d-space.svg
 :name: F:segmentation:clustering
-:width: 100%
+:width: 600
 Pixels of a $5 \times 5$ color image in a $B$-dimensional space ($B=3$).
 :::
 
@@ -25,9 +25,9 @@ Therefore, all the pixels in the same group define a class in the segmented imag
 
 <!------------------------------------------------------------------------------------------------>
 
-## K-means
+## The K-means algorithm
 
-A classical clustering method for image segmentation is the K-means algorithm (French: *k-moyennes*) [[Steinhaus 1957](#B:segmentation:Steinhaus1957), [MacQueen 1967](#B:segmentation:MacQueen1967)].
+A classical clustering method for image segmentation is the K-means algorithm (French: *K-moyennes*) [[Steinhaus 1957](#B:segmentation:Steinhaus1957), [MacQueen 1967](#B:segmentation:MacQueen1967)].
 This is an iterative method that affects every point in the space $\mathbb{R}^B$ to a group (called *cluster*).
 The number $K$ of clusters is chosen by the user.
 
@@ -51,47 +51,87 @@ The K-means algorithm is given below.
 [A funny illustration of the K-means algorithm](https://allisonhorst.com/k-means-clustering).
 :::
 
-@F:segmentation:kmeans-algo illustrates the application of this algorithm
-in the simple case of an image with two bands (hence the two-dimensional space)
-segmented into $K=2$ classes.
+<!------------------------------------------------------------------------------------------------>
 
-:::{figure} figs/k-means-algorithm.svg
+## Application on a toy example
+
+The following illustrates the K-means algorithm on the 2D image shown @F:segmentation:kmeans-example.
+The pixel intensities are drawn in a 2D space in @F:segmentation:kmeans-scatter.
+
+:::{figure} figs/kmeans-intensities.svg
+:height: 200
+:name: F:segmentation:kmeans-example
+A 4×4 image with two bands.
+Suppose, for instance, that it is a remote sensing image showing a river flowing through a forest.
+Left: the image with bands in green and blue.
+Right: the image with the pixel intensities.
+:::
+
+:::{figure} figs/kmeans-scatter.svg
+:height: 250
+:name: F:segmentation:kmeans-scatter
+A 4×4 image with two bands.
+Suppose, for instance, that it is a remote sensing image showing a river flowing through a forest.
+Left: the image with bands in green and blue.
+Right: the image with the pixel intensities.
+:::
+
+We start with the following iteration:
+:::{image} figs/step-0.svg
+:align: center
+:::
+
+The 3 first iterations of the K-means algorithm are illustrated below.
+The black dashed line represents the frontier between the centroids.
+
+|  |  |
+| :-: | :-: |
+| **Iteration 1** &nbsp; {span .badge}`STEP A`<br/>Assign the pixels to the closest outlier<br />![](figs/step-1A.svg) | **Iteration 2** &nbsp; {span .badge}`STEP B`<br />Update the centroid location<br />![](figs/step-1B.svg) |
+| **Iteration 1** &nbsp; {span .badge}`STEP A`<br/>Assign the pixels to the closest outlier<br />![](figs/step-2A.svg) | **Iteration 2** &nbsp; {span .badge}`STEP B`<br />Update the centroid location<br />![](figs/step-2B.svg) |
+| **Iteration 1** &nbsp; {span .badge}`STEP A`<br/>Assign the pixels to the closest outlier<br />![](figs/step-3A.svg) | **Iteration 2** &nbsp; {span .badge}`STEP B`<br />Update the centroid location<br />![](figs/step-3B.svg) |
+
+<!------------------------------------------------------------------------------------------------>
+
+## Application on a real image
+
+@F:segmentation:kmeans-appli gives the result of the K-means algorithm on an image.
+
+:::{figure} figs/kmeans-appli.svg
 :width: 100%
-:name: F:segmentation:kmeans-algo
-Illustration of the K-means algorithm.
+:name: F:segmentation:kmeans-appli
+Segmentation of a real remote sensing image with the K-means algorithm.
+Left: observation, center: $K=2$ classes, right: $K=4$ classes.
+Especially, the segmentation with $K=4$ classes identifies water, forest, artificial areas and meadows.
 :::
 
-@F:segmentation:kmeans-result gives the result of the K-means algorithm on an image.
+<!------------------------------------------------------------------------------------------------>
 
-:::{figure} figs/segmentation-kmeans-result.png
-:height: 200px
-:name: F:segmentation:kmeans-result
-Segmentation with the K-means algorithm on the left image (center: $K=2$ classes, right: $K=4$ classes).
-:::
+## Discussion
 
 The pros and cons of the K-means method for image segmentation are listed below.
+In particular, the characteristics above identified with * are detailed hereafter.
+Other clustering methods are available to avoid some of limits,
+as for example Gaussian mixture modeling or mean-shift.
 
-::::{grid} 1 1 2 2
-:gutter: 3
-
-:::{card} 😀 Advantages
+:::{card}
+:header: 😀 Advantages of the K-means method
 * simplicity
 * easy to implement
 * generally fast
 * works correctly when the clusters are spherical*
 :::
 
-:::{card} ☹️ Disadvantages
-* requires to know the number of classes
+:::{card}
+:header: ☹️ Disadvantages of the K-means method
+* requires to know the number $K$ of classes
 * sensitive to initialization
 * can be slow in large dimensions
 * fails for non-spherical structures*
 * sensitive to outliers*
 :::
 
-::::
 
-The characteristics above identified with * are now detailed.
+### Spherical vs non-spherical clusters
 
 Because the K-means algorithm performs the grouping with respect to the distance of the points to the centroids,
 it assumes that the clusters are spherical.
@@ -103,7 +143,7 @@ as depicted in the images below.
 :name: F:segmentation:kmeans-ok
 Spherical clusters: the K-means algorithm works well.
 The points are depicted by $\bullet$ whose color correspond to the class,
-and the centroids are depicted by a black $\times$.
+and the centroids are depicted by a black $+$.
 :::
 
 :::{figure} figs/kmeans-croissants.svg
@@ -111,6 +151,8 @@ and the centroids are depicted by a black $\times$.
 :name: F:segmentation:kmeans-croissants
 Non-spherical clusters: the K-means algorithm fails.
 :::
+
+### Sensitivity to outliers
 
 In addition to this, the centroids are calculated as the mean of the points in the cluster.
 But the mean is not a robust estimation and is sensitive to points located far from the cluster.
@@ -122,8 +164,6 @@ Thus, the algorithm may fail in the presence of outliers (*valeurs aberrantes*).
 Presence of outliers: the K-means algorithm fails in this example.
 :::
 
-Other clustering methods are available to avoid some of the aforementionned limits.
-We can cite for example Gaussian mixture modeling or Mean-shift.
    
 
 <!-- ### Modèles paramétriques

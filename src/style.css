@@ -32,11 +32,13 @@
 
 /* Badge (utilisable avec l'instruction {span .badge}`texte`) */
 .badge {
-  background-color: rgb(59,130,246);
+  font-size: .7rem;
+  background-color: #eee;
+  border: 1px solid #444;
   padding: 3px 6px;
-  font-size: .8rem;
+  position: relative;
+  top: -.1rem;
   text-align: center;
-  border-radius: 9px;
-  color: white;
+  border-radius: 999px;
   margin-right: .5ex;
 }
