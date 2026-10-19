@@ -104,13 +104,13 @@ project:
       - file: segmentation/outro.md
 
     # Binary image processing [BIP]
-    - file: binary/intro.ipynb
+    - file: binary/intro.md
       children:
-      - file: binary/neighborhood.ipynb
-      - file: binary/mm.ipynb
-      - file: binary/applications.ipynb
-      - file: binary/measure.ipynb
-      - file: binary/outro.ipynb
+      - file: binary/neighborhood.md
+      - file: binary/mm.md
+      - file: binary/applications.md
+      - file: binary/measure.md
+      - file: binary/outro.md
 
     # Compression [BIP]
     - file: compression/intro.ipynb
