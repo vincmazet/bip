@@ -38,7 +38,7 @@ It can be outside the object.
 ## Eccentricity
 
 Eccentricity measures the elongation, or stretching, of the object, as it would be an ellipse.
-It is a positive value, where 0 corresponds ot a round object.
+It is a positive value, where 0 corresponds to a round object.
 
 :::{figure} figs/prop-eccentricity.svg
 :width: 500px
