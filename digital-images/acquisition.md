@@ -30,7 +30,7 @@ There are three types of cones which are sensitive to short (S), medium (M) and 
 Basically, they are sensitive to blue, green and red light.
 Rods and cones are connected to the brain by nerves, which proceeds to the image analysis.
 
-:::{figure} https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cone-fundamentals-with-srgb-spectrum.svg/960px-Cone-fundamentals-with-srgb-spectrum.svg.png
+:::{figure} figs/responsivity.png
 :name: F:digital-images:cone-responsivity
 :width: 100%
 Responsivity of the three kinds of cones, compared to electromagnetic spectrum.
