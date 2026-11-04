@@ -61,10 +61,10 @@ and depends on the level $L$, the parameter $\sigma_L$ and the number of blurred
 
 Then, we compute the difference ($k>0$):
 
-$$
+\begin{align*}
 D(x,y,\sigma_{L,k}) &= \ell(x,y,k\sigma_{L,k}) - \ell(x,y,\sigma_{L,k}) \\
                 &= f(x,y) * \big( g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}) \big)
-$$
+\end{align*}
 
 where $(g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}))$ is called the _difference-of-Gaussian_ (DoG).
 It can be seen that the DoG acts as a bandpass filter.

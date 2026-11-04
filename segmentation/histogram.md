@@ -65,18 +65,18 @@ $$
 Considering the intensities to lie in $\{0,\dots,L-1\}$ and $h$ being the histogram, we have:
 
 * For class 1:
-  $$
+  \begin{align*}
   w_0(T) &= \sum_{i = 0}^{T} h(i)\\
   \mu_0(T) &= \frac{1}{w_0(T)} \sum_{i = 0}^{T} i h(i)\\
   \sigma^2_0(T) & = \frac{1}{w_0(T)} \sum_{i = 0}^{T}(i-\mu_0(T))^2 h(i)
-  $$
+  \end{align*}
 
 * For class 2:
-  $$
+  \begin{align*}
   w_1(T) &= \sum_{i = T+1}^{L-1} h(i)\\
   \mu_1(T) &= \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1} i h(i)\\
   \sigma^2_1(T) &= \frac{1}{w_1(T)} \sum_{i = T+1}^{L-1}(i-\mu_1(T))^2 h(i)
-  $$
+  \end{align*}
 
 The algorithm to determine the value of $T$ that minimize $\sigma_w^2(T)$ is simple:
 the intra-class variance $\sigma_w^2(T)$ is calculated for all the thresholds $T=\{0,\dots,L-1\}$,

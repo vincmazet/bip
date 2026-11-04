@@ -62,7 +62,7 @@ The HSV color space.
 The conversion from RGB color model to HSV color model is performed using the following operations,
 assuming that the RGB values have been normalised in the range $[0,1]$, hue is in the range $[0,360^{\circ}]$, saturation and value are in the range $[0,1]$:
 
-$$
+\begin{align*}
   H &= H' \,\mathrm{mod}\, 360
   \quad\text{where}\quad
   H' &=
@@ -73,7 +73,7 @@ $$
   \end{cases}\\
   S &= \frac{\delta}{V}, \\
   V &= \mathrm{max}(R, G, B),
-$$
+\end{align*}
 with $\delta = \mathrm{max}(R, G, B) - \mathrm{min}(R, G, B)$.
 
 The HSV color model has not to be confused with

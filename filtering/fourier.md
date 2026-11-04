@@ -39,8 +39,9 @@ That is why we will show the amplitude (modulus) and phase (argument) of the DFT
 :::{figure} figs/fourier-example.svg
 :name: F:fourier:example
 DFT of the squirrel. The amplitude is shown with a logarithmic scale to distinguish clearly the details
-(an [histogram transformation](#P:digital-images:histogram:transformations) has been applied).
+(an [histogram transformation](#P:digital-images:histogram-transformations) has been applied).
 :::
+
 
 The amplitude and phase represent the distribution of energy in the frequency plane.
 The intensities of the low frequencies are located in the center of the image, and the intensities of the high frequencies near the boundaries.

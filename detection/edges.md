@@ -32,10 +32,10 @@ Because an image depends on two dimensions, the derivatives must be calculated a
 In addition, the derivatives are discrete differences in the case of digital images.
 Then, the first derivative of a digital image $f$ are defined as:
 
-$$
+\begin{align*}
 \frac{\partial f(y,x)}{\partial x} &= f(y,x+1) - f(y,x) \\
 \frac{\partial f(y,x)}{\partial y} &= f(y+1,x) - f(y,x).
-$$
+\end{align*}
 
 <!-- (image représentant le gradient, GW p.729) -->
 

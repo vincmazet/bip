@@ -3,7 +3,7 @@
 
 The four morphological tools seen in @P:binary:mm are the elementary operations for more complex processing.
 In this section, we focus on some specific processings,
-others are given by [[Bloch 2005, chapter 6](B:binary:Bloch2005)].
+others are given by [[Bloch 2005, chapter 6](#B:binary:Bloch2005)].
 
 <!------------------------------------------------------------------------------------------------>
 
@@ -80,11 +80,11 @@ The result of the hit-or-miss transform is the intersection of the two sets give
 
 The hit-or-miss transform by the two structuring elements $E_1$ and $E_2$ is noted $I \otimes (E_1, E_2)$:
 
-$$
+\begin{align*}
    I \otimes (E_1, E_2)
    &= (I \ominus E_1) \cap (I^\mathrm{c} \ominus E_2) \\
    &= (I \ominus E_1) \cap (I \oplus E_2)^\mathrm{c}
-$$
+\begin{align*}
 
 :::{figure} figs/hit-or-miss-toy.svg
 :name: F:binary:hit-or-miss

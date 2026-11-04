@@ -63,7 +63,7 @@ project:
 
     - file: intro.md
 
-    # Digital images [BIP] [TI]
+    # Digital images
     - file: digital-images/intro.md
       children:
       - file: digital-images/acquisition.md
@@ -74,7 +74,7 @@ project:
       - file: digital-images/histogram.ipynb
       - file: digital-images/outro.md
 
-    # Transforms & Filtering [BIP] [TI]
+    # Transforms & Filtering
     - file: filtering/intro.md
       children:
       - file: filtering/convolution.md
@@ -83,7 +83,7 @@ project:
       - file: filtering/sampling.md
       - file: filtering/outro.md
 
-    # Feature detection [BIP] [TI] (avancé avant la segmentation)
+    # Feature detection
     - file: detection/intro.md
       children:
       - file: detection/matched-filter.md
@@ -94,7 +94,7 @@ project:
       # ORB
       - file: detection/outro.md
 
-    # Segmentation [BIP] [TI] (améliorer le cours)
+    # Segmentation
     - file: segmentation/intro.md
       children:
       - file: segmentation/histogram.md
@@ -103,7 +103,7 @@ project:
       - file: segmentation/evaluation.md
       - file: segmentation/outro.md
 
-    # Binary image processing [BIP]
+    # Binary image processing
     - file: binary/intro.md
       children:
       - file: binary/neighborhood.md
@@ -112,21 +112,24 @@ project:
       - file: binary/measure.md
       - file: binary/outro.md
 
-    # Compression [BIP]
-    - file: compression/intro.ipynb
+    # Compression
+    - file: compression/intro.md
       children:
-      - file: compression/lossless.ipynb
-      - file: compression/lossy.ipynb
-      - file: compression/outro.ipynb
+      - file: compression/lossless.md
+      - file: compression/lossy.md
+      - file: compression/outro.md
 
-    # (déplacé ici, à la fin, pour les besoins de TI)
-    # (séparer interpolation et recalage)
-    # Interpolation [BIP] [TI] & registration [TI]
-    - file: interpolation/intro.ipynb
+    # Interpolation
+    - file: interpolation/intro.md
       children:
-      - file: interpolation/interpolation.ipynb # (améliorer)
-      - file: interpolation/registration.ipynb # (faire un TP ? + mettre à jour)
-      - file: interpolation/outro.ipynb
+      - file: interpolation/interpolation.md
+      - file: interpolation/outro.md
+
+    # Registration
+    - file: registration/intro.md
+      children:
+      - file: registration/registration.md
+      - file: registration/outro.md
     
     # Restoration [BIP] [TI]
     - file: restoration/intro.md

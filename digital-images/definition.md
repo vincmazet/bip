@@ -42,7 +42,6 @@ one uses the coordinate system showed @F:intro:coordinates:
 the pixel at coordinates $(0,0)$ is on the top left corner of the image.
 
 :::{figure} figs/coordinates.png
-:scale: 100%
 :name: F:intro:coordinates
 Coordinate system generally used in image processing.
 :::

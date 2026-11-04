@@ -45,13 +45,13 @@ Edge detection consists of highlighting the borders of the "objects" in the imag
 This corresponds to compute the discrete derivatives of a pixel with its four neighbors,
 so that a specific pixel $(x,y)$ in the output image $f$ is defined as ($g$ is the original image):
 
-$$
+\begin{align*}
 f(x,y)
 &=      g(x,y) - g(x-1,y) \\
 &+\; g(x,y) - g(x+1,y) \\
 &+\; g(x,y) - g(x,y-1) \\
 &+\; g(x,y) - g(x,y+1)
-$$
+\end{align*}
 
 so:
 

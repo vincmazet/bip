@@ -43,17 +43,17 @@ Some convolution examples are shown above.
 The image to the left is the convolution of the other two images.
 :::
 Since $h$ has only three non-zero pixels, then the convolution formula has only three non-zero terms, and reads:
-$$
+\begin{align*}
   f(x,y)
   &= g(x,y) \ h(0,0) + g(x,y-1) \ h(0,1) + g(x,y-2) \ h(0,2) \\
   &= g(x,y) \times 1 + g(x,y-1) \times 2 + g(x,y-2) \times 3.
-$$
+\end{align*}
 Then:
-$$
+\begin{align*}
   f(1,1) &= g(1,1) \times 1 + g(1,0) \times 2 + g(1,1) \times 3 = g(1,1), \\
   f(1,2) &= g(1,2) \times 1 + g(1,1) \times 2 + g(1,2) \times 3 = g(1,1) \times 2, \\
   f(1,3) &= g(1,3) \times 1 + g(1,2) \times 2 + g(1,3) \times 3 = g(1,1) \times 3.
-$$
+\end{align*}
 ::::
 
 ::::{tab-item} Example 2

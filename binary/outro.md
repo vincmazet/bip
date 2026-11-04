@@ -10,7 +10,6 @@ The four basic operators of mathematical morphology perform operations by using 
 
 ::::{list-table}
 :header-rows: 0
-:widths: 10 30
 
 * - :::{image} figs/greece.png
     :::

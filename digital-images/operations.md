@@ -31,11 +31,11 @@ The image on the right is the sum of the two images on the left.
 
 The subtraction of two images is used for example to detect changes (@F:intro:subtraction).
 
-$$
+\begin{align*}
 &\forall m, n,\quad h(m,n) = f(m,n) - g(m,n) \\
 \text{or}\qquad
 &\forall m, n,\quad h(m,n) = | f(m,n) - g(m,n) |
-$$
+\end{align*}
 
 :::{figure} figs/subtraction.svg
 :name: F:intro:subtraction
