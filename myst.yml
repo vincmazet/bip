@@ -122,7 +122,9 @@ project:
     # Interpolation
     - file: interpolation/intro.md
       children:
-      - file: interpolation/interpolation.md
+      - file: interpolation/nearest-neighbour.md
+      - file: interpolation/bilinear.md
+      - file: interpolation/bicubic.md
       - file: interpolation/outro.md
 
     # Registration

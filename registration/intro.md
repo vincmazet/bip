@@ -81,3 +81,9 @@ image is transformed by means of the mapping
 functions. Image values in non-integer coordinates
 are computed by the appropriate interpolation
 technique. -->
+
+
+
+<!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
+
+
