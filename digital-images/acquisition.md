@@ -231,8 +231,8 @@ but also because it is good enough to give humans
 the illusion of a continuous change in gray values.
 
 :::{figure} figs/quantization.png
-name: F:digital-images:quantization
-width: 100%
+:name: F:digital-images:quantization
+:width: 100%
 Quantization of the same image with (from left to right)
 256, 16, 4, and 2 gray levels.
 :::
