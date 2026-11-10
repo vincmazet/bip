@@ -129,7 +129,7 @@ $h_1*(h_2*h_3) = (h_1*h_2)*h_3$.
 ## Boundaries effects
 
 The convolution formula is not defined on the boundaries of the image:
-as an example, computing $f_{1,1}$ in @F:convolution:sketch requires the value of $g_{0,0}$ which is not defined.
+as an example, computing $f_{0,0}$ in @F:convolution:sketch requires the value of $g_{0,0}$ which is not defined.
 
 Therefore, one has to make assumptions about the pixel values outside the image.
 @F:convolution:boundaries-hypotheses shows an image with some possibilities to consider the external pixels,
