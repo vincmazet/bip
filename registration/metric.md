@@ -1,151 +1,74 @@
 (P:registration:metric)=
 # Similarity metric
 
-:::{caution}
-This page is currently being written and will be ready in a few days.
-:::
 
+Applying the transformation parameterized by its parameters $\theta$ on the source image $f$ yields the transformed image $f'$.
+The similarity metric $E(\theta)$ measures the distance (in a mathematical sense) between the reference image $g$ and the transformed image $f'$.
+Optimal registration between $g$ and $f'$ is achieved when $E(\theta)$ reaches its minimum.
 
+Thus, the goal of registration reduces to an optimization problem to find the parameters $\theta$ that minimize the similarity metric $E(\theta)$.
 
-**////-> éléments sur la pyramide (dans la partie interpolation je crois) (formation des images)**
+The choice of $E$ depends on the feature matching approach.
 
+<!------------------------------------------------------------------------------------------------>
 
+## Definition of the metric
 
-## Interpolation and similarity criterion
+### Intensity-based approach
 
-Connaissant les paramètres de déformation $\theta$ à appliquer sur l'image,
-la transformation correspondante peut être effectuée.
-Il s'agit d'un problème d'[interpolation](C:interpolation).
+In the case of an intensity-based (iconic) approach,
+a so-called *dense* similarity criterion is used.
 
-Le critère de similarité (_error metric_) $E(\theta)$ représente la distance (au sens mathématique)
-entre l'image de référence $g$ et l'image déformée $f'$
-(obtenue an appliquant le modèle de déformation de paramètres $\theta$ sur l'image source $f$).
-Cette distance est minimale lorsque les deux images se superposent au mieux,
-c'est-à-dire lorsque la similarité entre l'image de référence $g$ et l'image déformée $f\,'$ est maximale.
-
-L'objectif du recalage est de trouver les paramètres $\theta$ qui minimisent le critère de similarité $E(\theta)$ :
-c'est donc un problème d'optimisation.
-Le choix de $E$ dépend quant à lui du choix de l'approche choisie.
-
-### Approche iconique
-
-Dans le cas d'une approche iconique (basée sur l'intensité des pixels),
-on utilisera un critère de similarité dit _dense_.
-Il existe plusieurs hypothèses sur les liens entre les intensités des deux images.
-Dans le cas le plus simple, on suppose que les intensités des pixels
-sont égales à un bruit additif gaussien près,
-donc le critère de similarité peut être la distance euclidienne,
-qui est proportionnelle à l'erreur quadratique moyenne (EQM) :
+There exist several assumptions regarding the relationships between the intensities of the two images.
+In the simplest case, it is assumed that pixel intensities are equal, up to additive Gaussian noise.
+Therefore, the similarity criterion can be the Euclidean distance between the two images:
 
 $$
-  E(\theta) = \sum_{m=1}^M \sum_{n=1}^N \big(f\,'(m,n) - g(m,n)\big)^2
+  E(\theta) = \sum_{m=1}^M \sum_{n=1}^N \big(f'(m,n) - g(m,n)\big)^2
 $$
 
-### Approche géométrique
+As we will see in @P:restoration:intro, this metric is also called mean squared error (MSE).
 
-Dans le cas d'une approche géométrique (basée sur des caractéristiques),
-on utilisera une distance entre ces primitives.
 
-* Par exemple, dans le cas où les primitives sont des pixels particuliers,
-  on peut considérer la distance entre ces pixels avec la norme euclidienne :
+### Feature-based approach
 
-  $$
-    E(\theta) = \sum_{n=1}^N (x_n-x'_n)^2 + (y_n-y'_n)^2
-  $$
+In the case of a feature-based (geometric) approach, a distance between the features is used.
 
-  où $(x_n,y_n)$ et $(x'_n,y'_n)$ sont les coordonnées des pixels appariés.
+For example, if the features are specific pixels (*e.g.* corners),
+the distance between these pixels can be calculated using the Euclidean norm:
+$$
+  E(\theta) = \sum_{n=1}^N (x_n-x'_n)^2 + (y_n-y'_n)^2
+$$
+where $(x_n,y_n)$ and $(x'_n,y'_n)$ are the coordinates of the paired pixels.
 
-* Un autre exemple est le cas où les primitives sont des courbes.
-  L'algorithme ICP (_Iterative Closest Point_) peut être utilisé pour déterminer une distance entre ces deux courbes, définie comme
+<!------------------------------------------------------------------------------------------------>
 
-  $$
-    E(\theta) = \sum_{n=1}^N d_n^2
-  $$
+## Optimisation of the metric
 
-  où $d_n$ est la distance entre chaque point de la courbe 1 avec le point le plus proche de la courbe 2.
-
-  ```{figure} XXX/icp.png
-  ---
-  height: 150px
-  name: F:registration:icp
-  ---
-  Distance entre deux courbes avec l'algorithme ICP.
-  ```
-
-### Optimisation du critère de similarité
-
-Comme on l'a dit précédemment, on cherche les valeurs des paramètres $\theta$
-de la transformation qui minimise $E(\theta)$.
-Mathématiquement, le problème s'écrit :
-
+As previously mentioned, the goal is to find the transformation parameters ​​$\theta$ that minimize $E(\theta)$.
+Mathematically, the problem is expressed as follows:
 $$
   \hat{\theta} = \arg \min_{\theta} E(\theta)
 $$
 
+@F:registration:optimization-principle illustrates the principle of mathematical optimization.
 
-```{figure} XXX/optim.png
----
-height: 200px
-name: F:registration:optim
----
-Principe de l'optimisation d'un critère $E$ :
-exemple pour $\theta=\alpha$ dans le cas d'une simple rotation.
-```
+:::{figure} figs/optimization.png
+:height: 250px
+:name: F:registration:optimization-principle
+Principle of mathematical optimization.
+In this example, $E$ is a function of only one parameter: the rotation angle $\theta = \alpha$.
+:::
 
-Il existe énormément de méthodes d'optimisation dont la description dépasse le cadre de ce cours :
-* Solution explicite (en annulant la dérivée de $E$),
-* Recherche exhaustive (toutes les possibilités sont testées),
-* Méthodes déterministes :
-  algorithme du simplexe, descente de gradient, gradient conjugué,
-  algorithme de Levenberg-Marquardt, etc.
-* Méthodes stochastiques :
-  recuit simulé, algorithmes génétiques, gradient stochastique, etc.
+There is a wide variety of optimization methods, but their detailed description lies beyond the scope of this course:
+* explicit solution is possible when the mathematical derivative of $E$ can be computed and equated to zero,
+* exhaustive search tests all possible solutions (typically implemented via a loop),
+* deterministic methods, such as gradient descent, simplex algorithm, or Levenberg-Marquardt algorithm.
+* stochastic methods, such as simulated annealing, genetic algorithms, or stochastic gradient.
 
-<!-- solution explicite : méthode procustéenne, (_exact point matching_) -->
-
-On peut combiner ces méthodes d'optimisation avec des schémas hiérarchiques (_hierarchical / coarse to fine approaches_) :
-l'idée est de décomposer le problème initial en plusieurs petits problèmes de complexité moindre.
-Cela a tendance à réduire le risque de convergence vers un minimum local et à accélérer le calcul.
-On peut donc utiliser une approche par multi-résolution
-(on commence par effectuer l'optimisation sur une image très sous-échantillonnée
-et affiner l'optimisation à des échelles progressivement plus proches de l'image originale).
-On peut également, en particulier dans le cas d'un modèle de déformation complexe,
-commencer par optimiser un modèle simple (déformation rigide par exemple)
-puis le complexifier petit à petit.
-
-Approches hiérarchiques
-
-L'idée des approches hiérarchiques (_hierarchical / coarse to fine approaches_)
-est de décomposer le problème initial en plusieurs petits problèmes de complexité moindre.
-Cela a tendance à réduire le risque de convergence vers un minimum local et à accélérer le calcul.
-
-* Dans le cas de données complexes, on adoptera une approche par multi-résolution :
-  on commence par effectuer l'optimisation sur une image très sous-échantillonnée (niveau 0),
-  et refaire l'optimisation à différentes échelles jusqu'à l'image originale.
-  Chaque algorithme d'optimisation est initialisé avec la valeurs de $\theta$ obtenue
-  au niveau précédent.
-
-  ```{figure} XXX/multiresolution.png
-  ---
-  height: 200px
-  name: F:registration:multiresolution
-  ---
-  Exemple : pyramide gaussienne.
-  ```
-
-* Dans le cas d'un Modèle de déformation complexe,
-  on privilégiera une complexification de ce modèle.
-  Par exemple, on pourra commencer par considérer une déformation rigide,
-  qui sera affinée ensuite en déformation affine voire non rigide.
-  On peut aussi utiliser une approche multi-échelle (_multiscale approach_)
-  illustrée {numref}`F:registration:multiscale`.
-
-    ```{figure} XXX/multiscale.png
-    ---
-    height: 100px
-    name: F:registration:multiscale
-    ---
-    Approche multi-échelle.
-    ```
-
-% =============================================================================================== %
+These optimization methods can be combined with hierarchical schemes (often referred to as "coarse-to-fine" approaches):
+the core idea is to decompose the original problem into several smaller, less complex subproblems.
+This tends to reduce the risk of converging to a local minimum and accelerates computation.
+For instance, a multi-resolution approach can be employed:
+the optimization starts on a downsampled image, then it is refined at scales progressively closer to the original image resolution.
+Otherwise, the optimization can begin by optimizing a simple deformation model (rigid deformation) then gradually increase its complexity.

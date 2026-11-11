@@ -7,7 +7,7 @@ remote sensing (@F:registration:application:remote-sensing),
 medical imaging (@F:registration:application:medical),
 or photograph stitching (@F:registration:application:stitching).
 
-```{figure} XXX/vincent4.png
+```{figure} figs/vincent4.png
 ---
 width: 400px
 name: F:registration:application:remote-sensing
@@ -15,7 +15,7 @@ name: F:registration:application:remote-sensing
 Registration of remote sensing images.
 ```
 
-```{figure} XXX/vincent6.png
+```{figure} figs/vincent6.png
 ---
 width: 400px
 name: F:registration:application:medical
@@ -26,7 +26,7 @@ Change detection in medical imaging.
 <!-- Intra-individual monomodal registration :
   - One patient, two exams n-months appart (Estimate a transformation (in this case rigid) to compensate for the difference in positioning of the patient in the camera.) -->
 
-```{figure} XXX/vincent13.png
+```{figure} figs/vincent13.png
 ---
 width: 400px
 name: F:registration:application:stitching

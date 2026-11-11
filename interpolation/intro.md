@@ -1,3 +1,4 @@
+(P:interpolation:intro)=
 # Interpolation
 
 Image interpolation is a tool used extensively when an image is mapped into a predefined geometry,

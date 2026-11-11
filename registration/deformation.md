@@ -36,6 +36,8 @@ The coordinates of pixel $p'$ in the transformed image
 correspond to those of pixel $p$ in the source image
 after a translation of $t_x$ pixels in $x$ and $t_y$ pixels in $y$.
 
+The transformation change the geometry of the image and the intensities of the transformed image are computed by using @P:interpolation:intro.
+
 :::{note}
 Note that defining $p'$ based on $p$ can result in a transformed image containing empty pixels
 if no pixel $p$ from the original image $f$ maps to a pixel $p'$ in the transformed image $f'$.
