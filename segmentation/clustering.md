@@ -113,16 +113,14 @@ In particular, the characteristics above identified with * are detailed hereafte
 Other clustering methods are available to avoid some of limits,
 as for example Gaussian mixture modeling or mean-shift.
 
-:::{card}
-:header: 😀 Advantages of the K-means method
+:::{card} 😀 Advantages of the K-means method
 * simplicity
 * easy to implement
 * generally fast
 * works correctly when the clusters are spherical*
 :::
 
-:::{card}
-:header: ☹️ Disadvantages of the K-means method
+:::{card} ☹️ Disadvantages of the K-means method
 * requires to know the number $K$ of classes
 * sensitive to initialization
 * can be slow in large dimensions
