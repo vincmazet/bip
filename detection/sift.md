@@ -31,7 +31,7 @@ SIFT uses a a Gaussian kernel, so the image at each level $L$ is getting by:
   \ell(x,y,\sigma_L) = f(x,y) * g(x,y,\sigma_L)
   $$
 
-2. downsampling the blurred image $\ell(x,y,\sigma_L)$ by a factor 2 using @P:interpolation:bilinear.
+2. downsampling the blurred image $\ell(x,y,\sigma_L)$ by a factor 2 using @P:interpolation:order1.
 
 In practice, the blurred images $\ell(x,y,\sigma_L)$ can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions
 (the 2D Gaussian function is [separable](#P:convolution:separability)).
