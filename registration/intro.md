@@ -48,8 +48,8 @@ Most registration methods consist of the following three steps,
 which are highlighted by the blue regions in @F:registration:bigpicture and detailed in the next sections.
 - @P:registration:features: distinctive objects (*e.g.* edges or corners) are identified in the reference and source images.
   For example, the chosen features in @F:registration:bigpicture are the edges.
-- @P:registration:metric: a correspondence between the features detected in the two images are established.
-  The lower the similarity metric, the better the registration.
 - @P:registration:deformation: the transformation of the source image is defined by its type and parameters,
 with the optimal parameters determined by minimizing the similarity metric.
 An interpolation of the source image is then performed to generate the registered image.
+- @P:registration:metric: a correspondence between the features detected in the two images are established.
+  The lower the similarity metric, the better the registration.

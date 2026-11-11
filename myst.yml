@@ -131,8 +131,8 @@ project:
     - file: registration/intro.md
       children:
       - file: registration/features.md
-      - file: registration/metric.md
       - file: registration/deformation.md
+      - file: registration/metric.md
       - file: registration/outro.md
     
     # Restoration [BIP] [TI]

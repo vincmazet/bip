@@ -6,6 +6,8 @@ Applications arise in many domains:
 creating panoramas in photography, returning a cartographic reference in remote sensing,
 or aligning images on anatomical references in medical imaging.
 
+<!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276)  -->
+
 The consequence of a geometric transformation on an image
 is that the coordinates of the pixels in the original (input) and the transformed (output) image no longer coincide.
 Thus the pixel intensities in the output image have to be calculated.
