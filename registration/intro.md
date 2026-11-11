@@ -6,10 +6,10 @@ This chapter is currently being written and will be ready in a few days.
 
 :::
 
+<!--
 
 
-
-<!-- ## Introduction
+ ## Introduction
 
 Le recalage de deux images consiste à trouver la correspondance entre deux images représentant la même zone.
 Les figures ci-dessous présentent quelques applications dans lesquelles le recalage est indispensable.
@@ -84,10 +84,11 @@ means of the established feature correspondence.
 image is transformed by means of the mapping
 functions. Image values in non-integer coordinates
 are computed by the appropriate interpolation
-technique. -->
+technique. 
 
 
 
-<!-- Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) -->
+ Geometric transformation ? rescale/resize, rotation, translation, stretch, shearing... (cf Jahne fig 10.16 p. 277 + fig 10.15 p. 276) 
 
 
+-->
