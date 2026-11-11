@@ -1,5 +1,9 @@
-(P:registration:metrics)=
-# Similarity metrics
+(P:registration:metric)=
+# Similarity metric
+
+:::{caution}
+This page is currently being written and will be ready in a few days.
+:::
 
 
 

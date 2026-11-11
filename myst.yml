@@ -131,7 +131,7 @@ project:
     - file: registration/intro.md
       children:
       - file: registration/features.md
-      - file: registration/metrics.md
+      - file: registration/metric.md
       - file: registration/deformation.md
       - file: registration/outro.md
     

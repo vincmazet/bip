@@ -1,6 +1,10 @@
 (P:registration:deformation)=
 # Deformation model
 
+:::{caution}
+This page is currently being written and will be ready in a few days.
+:::
+
 
 
 **////-> éléments sur la pyramide (dans la partie interpolation je crois) (formation des images)**

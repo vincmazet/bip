@@ -367,6 +367,17 @@ Public domain.
 :::
 
 
+
+:::{card} ![](../src/figs/Strasbourg1950.jpg)
+&copy; IGN (CC-BY 2.0)
+[Original picture](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-ORTHO-HISTO).
+:::
+
+:::{card} ![](../src/figs/Strasbourg2024.jpg)
+&copy; IGN (CC-BY 2.0)
+[Original picture](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-ORTHO).
+:::
+
 ::::
 
 Other images from [scikit-image](https://scikit-image.org/docs/dev/api/skimage.data.html).
