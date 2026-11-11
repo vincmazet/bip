@@ -60,34 +60,19 @@ Several scenarios
 
 
 
-The pipeline of image registration is given in {numref}`F:registration:bigpicture`.
-The next sections are devoted to give details on each step.
+The pipeline of image registration is illustrated @F:registration:bigpicture.
 
-```{figure} XXX/bigpicture.png
----
-width: 100%
-name: F:registration:bigpicture
----
-Image registration.
-In this example, the characteristics are the edges, but they can be other informations like keypoints.
-```
+:::{figure} figs/bigpicture.png
+:width: 100%
+:name: F:registration:bigpicture
+Image registration
+(in this example, the features chosen for registration are the edges, but others can be used).
+:::
 
-
-
-
-
-
-
-
-
-The majority of the registration methods consists of the following four steps (see Fig. 1):
-* Feature detection. Salient and distinctive objects (closed-boundary regions, edges, contours, line intersections, corners, etc.)
-  are manually or, preferably, automatically detected. For further processing, these features can be represented by their point representatives
-  (centers of gravity, line endings, distinctive points), which are called control points (CPs) in the literature.
-* Feature matching. In this step, the correspondence between the features detected in the sensed image and those detected in the reference image is established.
-  Various feature descriptors and similarity measures along with spatial relationships among the features are used for that purpose.
-
-* Transform model estimation. The type and parameters of the so-called mapping functions, aligning the sensed image with the reference image, are estimated.
-  The parameters of the mapping functions are computed by means of the established feature correspondence.
-  + Image resampling and transformation. The sensed image is transformed by means of the mapping functions.
-  Image values in non-integer coordinates are computed by the appropriate interpolation technique. 
+Most registration methods consist of the following three steps,
+which are highlighted by the blue regions in @F:registration:bigpicture and detailed in the next sections:
+- @P:registration:features: distinctive objects within the images (*e.g.* edges or corners) are identified;
+- @P:registration:metrics: correspondences between the features detected in the two images are established;
+- @P:registration:deformation: a transformation of the source image is computed to align it with the reference image.
+  The parameters of the transformation are those that minimize the similarity criterion.
+  An interpolation of the source image is performed to generate the registered image.

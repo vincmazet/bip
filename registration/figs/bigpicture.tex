@@ -1,0 +1,75 @@
+% !TEX program = xelatex
+\documentclass[margin=1mm]{standalone}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+\setmainfont[Ligatures=TeX]{Source Sans Pro}
+
+\newcommand{\boxnode}[4]{\node[draw] (#1) at (#2,#3) [box] {#4};}
+\newcommand{\imgnode}[4]{\node (#1) at (#2,#3) {\includegraphics[width=10mm]{#4.png}};}
+
+\begin{document}
+
+\begin{tikzpicture}[
+  % Arrow style
+  arrow/.style={->,>=stealth},
+  % Box style
+  box/.style={ rectangle, draw, rounded corners=2pt, align=center, inner sep=6pt, text width=2cm, fill=white},
+]
+
+  % Zones
+  \definecolor{clr}{HTML}{DEEDFE}
+  \fill[clr] (2,4.2) rectangle (5,7.8);
+  \fill[clr] (7.5,0.2) rectangle (10.5,5.8);
+  \fill[clr] (13.5,5.2) rectangle (16.5,6.8);
+
+  % Reference image
+  \imgnode{R}{1}{7}{smiley-ref}
+  \node[below=0pt of R] {Reference $g$};
+  \boxnode{CaracR}{3.5}{7}{Features}
+  \imgnode{CR}{6}{7}{smiley-carac-ref}
+
+  % Source image
+  \imgnode{S}{1}{5}{smiley-src}
+  \node [below=0pt of S] (Sl) {Source $f$};
+  \boxnode{CaracS}{3.5}{5}{Features}
+  \imgnode{CS}{6}{5}{smiley-carac-src}
+
+  % Similarity metrics
+  \boxnode{Critere}{15}{6}{Similarity metrics}
+
+  % Deformation and parameters
+  \boxnode{Interpol} {9}{5}{Deformation}
+  \boxnode{params}   {9}{3}{Deformation parameters}
+  \boxnode{Interpol2}{9}{1}{Deformation}
+  \imgnode{CD}{12}{5}{smiley-carac-ref}
+  
+  % Registered image
+  \imgnode{D}{14}{1}{smiley}
+  \node[below=1pt of D] {Registered $f'$};
+
+  % Flèches
+  \draw [arrow] (R) -- (CaracR);
+  \draw [arrow] (S) -- (CaracS);
+  \draw [arrow] (CaracR) -- (CR);
+  \draw [arrow] (CaracS) -- (CS);
+  \draw [arrow] (CS) -- (Interpol);
+  \draw [arrow] (Interpol) -- (CD);
+  \draw [arrow] (Interpol2) -- (D);
+  
+  \draw [arrow] (params) -- (Interpol);
+  \draw [arrow] (params) -- (Interpol2);
+  
+  \draw [arrow] (CR.east) -| (Critere.north);
+  \draw [arrow] (CD.east) -| (Critere.south);
+  
+  \draw [arrow] (Critere.east) -- ++ (1,0) |- (params);
+  
+  \draw [arrow] (Sl.south) |- (Interpol2.west);
+
+\end{tikzpicture}
+
+\end{document}
