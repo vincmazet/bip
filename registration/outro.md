@@ -1,3 +1,5 @@
+(P:registration:outro)=
+# Conclusion
 
 <!-- :::{seealso} References
 
