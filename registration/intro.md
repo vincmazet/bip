@@ -1,6 +1,10 @@
 # Registration
 
-🏗️ To do...
+:::{caution}
+
+This chapter is currently being written and will be ready in a few days.
+
+:::
 
 
 
