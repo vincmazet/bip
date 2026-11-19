@@ -1,0 +1,46 @@
+% !TEX program = xelatex
+
+% Le PDF produit doit être convertit en PNG. Pour l'instant, je le fais avec Gimp.
+
+\documentclass[margin=1mm]{standalone}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing,calligraphy}
+\setmainfont[Ligatures=TeX]{Source Sans Pro}
+
+
+\begin{document}
+
+\begin{tikzpicture}[
+  % Arrow style
+  arrow/.style={->,>=stealth},
+  % Boxes style
+  box/.style={ rectangle, draw, rounded corners=2pt, minimum height=1cm, align=center, inner sep=6pt, text width=2cm, fill=white},
+  txt/.style={ align=center, inner sep=6pt, text width=15mm},
+]
+
+  % Blocks
+  \node[txt] (x) at ( 1,2) {Image $x$};
+  \node[box] (d) at ( 4,2) {Degradation};
+  \node[txt] (y) at ( 7,2) {Degraded image $y$};
+  \node[box] (r) at (10,2) {Restoration};
+  \node[txt] (z) at (13,2) {Restored image $\hat{x}$};
+
+  % Arrows
+  \draw [arrow] (x)--(d);
+  \draw [arrow] (d)--(y);
+  \draw [arrow] (y)--(r);
+  \draw [arrow] (r)--(z);
+
+  % Direct & inverse problems
+  \draw [decorate, decoration={brace, mirror, amplitude=2mm}] (1.5,1.2)--(6.5,1.2);
+  \node at ( 4,.5) {Direct problem};
+  \draw [decorate, decoration={brace, mirror, amplitude=2mm}] (7.5,1.2)--(12.5,1.2);
+  \node at (10,.5) {Inverse problem};
+
+\end{tikzpicture}
+
+\end{document}

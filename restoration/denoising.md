@@ -1,6 +1,9 @@
 (P:denoising)=
 # Denoising
 
+
+<!-- on ne voit pas l'aspect knowledge et model et inversion dans certains filtres de débruitage -->
+
 Denoising (French: _débruitage_) consists in reducing noise in an image.
 Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present some denoising methods.

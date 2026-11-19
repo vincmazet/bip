@@ -135,7 +135,7 @@ project:
       - file: registration/metric.md
       - file: registration/outro.md
     
-    # Restoration [BIP] [TI]
+    # Restoration
     - file: restoration/intro.md
       children:
       - file: restoration/denoising.md
