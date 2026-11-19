@@ -250,7 +250,7 @@ the image is cleaned of periodic image artefacts.
 Actually, the goal of denoising is to obtain an image $\widehat{x}$
 not only with small variations in intensity between pixels but also close to the observation $y$.
 TV regularization (*total variation*, French: *variation totale*)
-[[Rudin et al. 1992](B:restoration:Rudin1992), [Chambolle 2004](B:restoration:Chambolle2004)]
+[[Rudin et al. 1992](#B:restoration:Rudin1992), [Chambolle 2004](#B:restoration:Chambolle2004)]
 is a denoising method that describes these two objectives by mathematical functions (the so-called criterion).
 
 * The wish to have a denoised image $\widehat{x}$ close to the observation $y$ results in a "data-fit" criterion

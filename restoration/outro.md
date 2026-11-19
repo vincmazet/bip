@@ -11,7 +11,7 @@ Three elementary denoising methods have been presented, and have to be chosen ac
 * the filtering of certain areas of the spectrum in case of periodic noise.
 
 Many other methods exist, such as regularization (including TV regularization, among others),
-wavelet transforms, statistical approaches, non-local means [[Buades et al. 2005](#B:segmentation:Buades2005)],
+wavelet transforms, statistical approaches, non-local means [[Buades et al. 2005](#B:restoration:Buades2005)],
 and deep learning methods.
 While these methods are more complex than the standard approaches detailed in this chapter, they can be far more efficient.
 
@@ -19,7 +19,7 @@ Besides, deconvolution consists of inverting the (generally low-pass) filtering 
 The inverse filter generally fails because it amplifies the noise present in the image.
 The Wiener filter remains the simplest deconvolution method and can give an acceptable result.
 More advanced methods have also been developed, such as the Richardson-Lucy algorithm
-[[Richardson 1972](#B:segmentation:Richardson1972), [Lucy 1974](#B:segmentation:Lucy1974)]
+[[Richardson 1972](#B:restoration:Richardson1972), [Lucy 1974](#B:restoration:Lucy1974)]
 and Bayesian methods.
 
 <!-- MAP Contrained least squares -->

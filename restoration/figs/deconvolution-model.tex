@@ -1,0 +1,47 @@
+% !TEX program = xelatex
+
+% Le PDF produit doit être convertit en PNG. Pour l'instant, je le fais avec Gimp.
+
+\documentclass[margin=1mm]{standalone}
+
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+\setmainfont[Ligatures=TeX]{Source Sans Pro}
+
+
+\begin{document}
+
+\begin{tikzpicture}[
+  % Arrow style
+  arrow/.style={->,>=stealth},
+  % Boxes style
+  box/.style={ rectangle, draw, minimum height=10mm, align=center, inner sep=6pt, text width=8mm, fill=white},
+  txt/.style={ align=center, inner sep=6pt},
+]
+
+  % Blocks
+  \node[txt]         (x) at (  0,  1) {$x$};
+  \node[box]         (h) at (  2,  1) {$h$};
+  \node[draw,circle] (s) at (  4,  1) {$+$};
+  \node[txt]         (b) at (  4,2.5) {$b$};
+  \node[txt]         (y) at (4.8,1.2) {$y$};
+  \node[box]         (g) at (  6,  1) {$g$};
+  \node[txt]         (e) at (  8,  1) {$\hat{x}$};
+
+  % Captions
+  \node at (2,0) {degradation};
+  \node at (6,0) {restoration};
+
+  % Arrows
+  \draw [arrow] (x)--(h);
+  \draw [arrow] (h)--(s);
+  \draw [arrow] (b)--(s);
+  \draw [arrow] (s)--(g);
+  \draw [arrow] (g)--(e);
+
+\end{tikzpicture}
+
+\end{document}

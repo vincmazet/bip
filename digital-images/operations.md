@@ -18,7 +18,7 @@ h(m,n) = f(m,n) + g(m,n).
 $$
 
 @F:intro:addition gives an example of image addition to produce an artistic effect.
-Addition can also be used to [denoise a series of images](#P:denoising).
+Addition can also be used to [denoise a series of images](#P:restoration:denoising).
 
 :::{figure} figs/addition.svg
 :name: F:intro:addition

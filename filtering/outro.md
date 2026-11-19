@@ -13,7 +13,7 @@ although the information is represented in frequency space rather than the spati
 In general, the output of the Fourier transform is an image with complex values ​
 where the low frequencies are in the center and the high frequencies are on the periphery.
 The Fourier transform could be used to analyze the frequency content of an image,
-as we will see in @P:denoising and @P:deconvolution.
+as we will see in @P:restoration:denoising and @P:restoration:deconvolution.
 
 Filtering an image consists of applying a filter (also called PSF for point spread function) to an image.
 In practice, filtering is the result of a convolution (in the spatial domain)
@@ -26,7 +26,7 @@ A question remains:
 is there an inverse convolution operator, like division is the inverse of multiplication?
 The answer is generally no.
 Practically, the quantification in the image, the presence of noise and the lack of knowledge of the PSF make the problem hard,
-justifying the specific processing of @P:deconvolution to deal with.
+justifying the specific processing of @P:restoration:deconvolution to deal with.
 
 
 :::{seealso} References

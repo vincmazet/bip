@@ -160,4 +160,4 @@ Similarly, @P:filtering:edge-filter, as defined above, is also a high-pass filte
 
 It is possible to define filters when only specific frequencies are discarded.
 This is useful to remove some unwanted frequencies in the image,
-like the ones given by periodic noises (see @P:denoising:periodic-noise-filtering).
+like the ones given by periodic noises (see @P:restoration:periodic-noise-filtering).
