@@ -67,7 +67,7 @@ as illustrated in @F:detection:sift:scale-space.
 Scale space representation [Wikipedia].
 :::
 
-<!------------------------------------------------------------------------------------------------>
+<!-- -------------------------------------------------------------------------------------------- -->
 
 ## Difference-of-Gaussian at each scale
 
