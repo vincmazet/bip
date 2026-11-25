@@ -105,10 +105,11 @@ Example of DoG scale-space on an image (left).
 [[Rey Otero 2014](#B:detection:ReyOtero2014)].
 :::
 
-<!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
+% <!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
 
-<!-- lien avec le Laplacien : cf Lowe2004, section 3 -->
+% <!-- lien avec le Laplacien : cf Lowe2004, section 3 -->
 
+% ##################################################################################################################### %
 
 ## Keypoint detection
 
@@ -131,7 +132,7 @@ i.e. it is greater or smaller than all of its neighbors.
 Note that some detected keypoints are discarded if they are low contrasted
 or if they lie on an edge (because their localization cannot be precise enough along the edge).
 
-<!------------------------------------------------------------------------------------------------>
+% ##################################################################################################################### %
 
 ## Keypoints orientations
 
