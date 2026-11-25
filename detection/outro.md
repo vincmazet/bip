@@ -7,11 +7,11 @@ This chapter has introduced the common methods for feature detection:
 * Hough transform for detecting lines or circles (by transforming the image into a parameter space),
 * SIFT for matching similar pixels in two different umages.
 
-<!-- Parler aussi de classification (dont réseaux de neurones), qui sont utilisées sur des features -->
+%  Parler aussi de classification (dont réseaux de neurones), qui sont utilisées sur des features -->
 
-<!-- Rajouter (?) : ORB, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
+%  Rajouter (?) : ORB, SURF, sur images binaires (cf binary.ipynb, ACP, isomap, analyse discriminante sur une image, HoG, descripteurs de Fourier -->
 
-<!-- To highlight ref: http://jsfiddle.net/davidThomas/NGyVL/ -->
+%  To highlight ref: http://jsfiddle.net/davidThomas/NGyVL/ -->
 
 :::{seealso} References
 

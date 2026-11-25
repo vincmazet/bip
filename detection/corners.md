@@ -5,7 +5,7 @@ There are however other methods, among which:
 * the Moravec detector [[Moravec 1980](#B:detection:Moravec1980)],
 * the Harris detector [[Harris & Stephens 1988](#B:detection:Harris1988)].
 
-<!------------------------------------------------------------------------------------------------>
+% ---------------------------------------------------------------------------------------------->
 
 ## Moravec detector
 
@@ -52,7 +52,7 @@ Second, only four directions are considered.
 Third, the detector remains very sensitive to edges because only the minimum of $E$ is considered.
 For these reasons, Harris has proposed a detector to overcome these limitations.
 
-<!------------------------------------------------------------------------------------------------>
+% ---------------------------------------------------------------------------------------------->
 
 ## Harris detector
 

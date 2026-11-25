@@ -105,9 +105,9 @@ Example of DoG scale-space on an image (left).
 [[Rey Otero 2014](#B:detection:ReyOtero2014)].
 :::
 
-% <!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
+% Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95
 
-% <!-- lien avec le Laplacien : cf Lowe2004, section 3 -->
+% lien avec le Laplacien : cf Lowe2004, section 3
 
 % ##################################################################################################################### %
 
@@ -160,7 +160,7 @@ The orientation to assign to the keypoint is determined by the highest peak in t
 Keypoints and their orientation.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+% ##################################################################################################################### %
 
 ## Keypoints descriptors
 
@@ -182,7 +182,7 @@ The 16×16 window is divided into 16 cells where an HoG is computer with 8 orien
 The descriptor is the vector containing the values of all the orientation histogram entries,
 therefore, it contains 16 cells × 8 bins = 128 features.
 
-<!------------------------------------------------------------------------------------------------>
+% ##################################################################################################################### %
 
 ## Matching
 
@@ -205,7 +205,7 @@ using only a limited amount of computation.
 Example of matching on the main paired keypoints.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+% ##################################################################################################################### %
 
 ## Alternatives to SIFT
 
@@ -233,14 +233,13 @@ The main differences with SIFT are the following:
 ORB (Orientated FAST and Robust BRIEF) [[Rublee 2011](#B:detection:Rublee2011)]
 is considered to be roughly 10 times faster than SURF, while performing as well in many situations.
 
-<!-- https://mikhail-kennerley.medium.com/a-comparison-of-sift-surf-and-orb-on-opencv-59119b9ec3d0 -->
+% https://mikhail-kennerley.medium.com/a-comparison-of-sift-surf-and-orb-on-opencv-59119b9ec3d0
 
 
-<!-- À ranger
-https://www.micc.unifi.it/delbimbo/wp-content/uploads/2011/03/slide_corso/A33%20SIFT-GLOH-SURF.pdf
-https://github.com/hoanglehaithanh/Traffic-Sign-Detection
-https://github.com/mohd-adeeb011/Traffic-Sign-Board-Recognition-Using-Camera
-https://www.geeksforgeeks.org/computer-vision/what-is-the-difference-between-sift-and-surf/
-https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_brief.html
-https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_orb.html
--->
+% À ranger
+% https://www.micc.unifi.it/delbimbo/wp-content/uploads/2011/03/slide_corso/A33%20SIFT-GLOH-SURF.pdf
+% https://github.com/hoanglehaithanh/Traffic-Sign-Detection
+% https://github.com/mohd-adeeb011/Traffic-Sign-Board-Recognition-Using-Camera
+% https://www.geeksforgeeks.org/computer-vision/what-is-the-difference-between-sift-and-surf/
+% https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_brief.html
+% https://scikit-image.org/docs/0.25.x/auto_examples/features_detection/plot_orb.html

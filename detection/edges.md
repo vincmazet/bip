@@ -5,7 +5,7 @@
 An edge (French: *contour*) in an image is the frontier that delimits two objects.
 Therefore, edge detection is useful for identifying or measuring objects, or segmenting the image.
 
-<!------------------------------------------------------------------------------------------------>
+% ---------------------------------------------------------------------------------------------->
 
 ## The advantage of using the derivatives
 
@@ -37,7 +37,7 @@ Then, the first derivative of a digital image $f$ are defined as:
 \frac{\partial f(y,x)}{\partial y} &= f(y+1,x) - f(y,x).
 \end{align*}
 
-<!-- (image représentant le gradient, GW p.729) -->
+%  (image représentant le gradient, GW p.729) -->
 
 The first derivatives are gathered in the so-called "gradient" (French: *gradient*) defined as:
 
@@ -57,7 +57,7 @@ $$
 \end{pmatrix}
 $$
 
-<!------------------------------------------------------------------------------------------------>
+% ---------------------------------------------------------------------------------------------->
 
 ## Gradient operators
 
@@ -242,7 +242,7 @@ Center: Sobel operator (magnitude).
 Right: Sobel operator applied on the result of a 3×3 mean filter.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+% ---------------------------------------------------------------------------------------------->
 
 ## Advanced methods
 
@@ -254,7 +254,7 @@ by taking into account the noise and the nature of the edges:
 
 ### Marr-Hildreth Detector
 
-<!-- Hypotèses~:
+%  Hypotèses~:
   \item Un contour doit être détecté quelle que soit l'échelle de l'image \\
   \uncover<3>{=> le détecteur doit être réglable pour détecter les contours à une échelle particulière.}
   \item Un contour implique un passage par zéro de la dérivée 2\textsuperscript{e} \\
@@ -321,7 +321,7 @@ According to Canny, a good detector should serve the following purposes:
 Canny expressed these goals in mathematical form and came up with optimal solutions verifying these goals.
 The Canny detector algorithm follows the four steps detailed below.
 
-<!-- TODO : présenter l'algo avec des illustrations et des schémas -->
+%  TODO : présenter l'algo avec des illustrations et des schémas -->
 
 1. The image $f$ is first smoothed with a Gaussian filter to reduce noise.
     This is done by using a convolution with a Gaussian kernel $g$ to obtain an image $z = f*g$.

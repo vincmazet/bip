@@ -47,4 +47,4 @@ Normalized cross-correlation with the pattern shown top-left (the digit 0).
 To overcome this limit, one can apply several matched filters, each representative of all the variations of the patterns.
 However, this  is very time-consuming!
 
-<!-- Alternative: find characteristics of objects and perform a classification. -->
+%  Alternative: find characteristics of objects and perform a classification. -->
