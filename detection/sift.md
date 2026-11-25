@@ -11,36 +11,59 @@ The 6 stages in SIFT are the following and they are described in the next sectio
 
 :::{note} Scale-invariant feature transform (SIFT)
 :icon: false
-1. A scale space with Gaussian kernel is computed so as to get a collection of images with different blur level and resolution.
-1. At each resolution, a few difference-of-Gaussian are computed : they are the data to find the following keypoints.
-1. Pixels with high intensity variation in the scale space are detected: they are the so-called keypoints.
+1. A *scale-space* with Gaussian kernel is computed so as to get a collection of images with different blur level and resolution.
+1. At each resolution, a few difference-of-Gaussian are computed : they are the data to find the following *keypoints*.
+1. Pixels with high intensity variation in the scale-space are detected: they are the so-called keypoints.
 1. The main orientation gradient is determined in a local window centered on the keypoints.
 1. Descriptors (vectors with 128 values) are computed for each keypoints.
 1. Finally a matching is possible between keypoints and their descriptors of two images.
+:::
+
+:::{caution}
+This page presents a simplified version of the SIFT algorithm and aims to give the main ideas of the algorithm.
+Detailed specifications are given in [[Rey-Otero, 2014](#B:detection:ReyOtero2014)], for instance.
 :::
 
 <!------------------------------------------------------------------------------------------------>
 
 ## Scale-space representation
 
-A (discrete) scale-space representation is a family of images with increasing blur levels and decreasing resolution.
-SIFT uses a a Gaussian kernel, so the image at each level $L$ is getting by:
-1. convolving the image $f(x,y)$ by a Gaussian $g(x,y,\sigma_L) = \frac{1}{2\pi\sigma_L^2} e^{-(x^2+y^2)/2\sigma_L^2}$ to produce a blurred image
- 
+A *scale-space representation* is a series of images with decreasing resolution.
+Each resolution is called an *octave*.
+
+Let $f(x,y)$ be the original image and $O$ the number of octaves (typically, $O=8$).
+The first image $f_0$ in the scale-space representation is the original image:
+
+$$
+f_0(x,y) = f(x,y).
+$$
+
+The image $f_o$ at octave $o\in\{1,\dots,O-1\}$ is defined as
+
+$$
+f_o(x,y) = \mathcal{D}_o \big[ f(x,y) * g(x,y,\sigma_o) \big]
+$$
+
+where:
+
+* $\mathcal{D}_o$ is a downsampling by a factor $2^o$ by using @P:interpolation:order1.
+
+* $g$ is a Gaussian kernel that prevents aliasing after downsampling:
   $$
-  \ell(x,y,\sigma_L) = f(x,y) * g(x,y,\sigma_L)
+  g(x,y,\sigma_o) = \frac{1}{2\pi\sigma_o^2} e^{-(x^2+y^2)/2\sigma_o^2}.
   $$
+  Because the Gaussian function is [separable](#P:convolution:separability),
+  the convolution can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions.
 
-2. downsampling the blurred image $\ell(x,y,\sigma_L)$ by a factor 2 using @P:interpolation:order1.
+* $\sigma_o$ is the parameter of the Gaussian kernel and is defined as $\sigma_o = 2^{o-1} \sigma_\mathrm{min}$
+  and $\sigma_\mathrm{min}$ is the blur level considered in the original image (see [[Rey-Otero, 2014](#B:detection:ReyOtero2014)]).
 
-In practice, the blurred images $\ell(x,y,\sigma_L)$ can be efficiently computed by applying two passes of a 1D Gaussian function in the horizontal and vertical directions
-(the 2D Gaussian function is [separable](#P:convolution:separability)).
+The series of blurred and downsampled images produces a pyramid representation,
+as illustrated in @F:detection:sift:scale-space.
 
-The series of blurred and downsampled images produces a pyramid representation (see @F:sift:scale-space) and each level is called an _octave_.
-
-:::{figure} https://upload.wikimedia.org/wikipedia/commons/4/43/Image_pyramid.svg
+:::{figure} figs/image_pyramid.webp
 :height: 400px
-:name: F:sift:scale-space
+:name: F:detection:sift:scale-space
 Scale space representation [Wikipedia].
 :::
 
@@ -48,31 +71,38 @@ Scale space representation [Wikipedia].
 
 ## Difference-of-Gaussian at each scale
 
-At each octave $o$ of the scale space, $K$ blurred images are produced:
+At each octave $o$ of the scale space, $K$ blurred images are produced (typically, $K=3$).
+The image $f_{o,k}$ at octave $o$ and blur level $k\in\{1,\dots,K\}$ is defined as:
 
 $$
-\ell(x,y,\sigma_{L,k}) = f(x,y) * g(x,y,\sigma_{L,k})
+f_{o,k}(x,y) = \mathcal{D}_o \big[ f(x,y) * g(x,y,k\sigma_o) \big]
 $$
 
-where $\sigma_{L,k}$ ($k\in\{1,\dots,K\}$) is the parameter of the Gaussian kernel
-and depends on the level $L$, the parameter $\sigma_L$ and the number of blurred image at level $L$
-(see [[Lowe 2004](#B:detection:Lowe2004)] for details).
-<!-- + Rey-Otero2014 qui détaille -->
+Note that $f_{o,1}(x,y) = f_o(x,y)$.
 
-Then, we compute the difference ($k>0$):
+Then, we compute the differences between two successive images:
 
 \begin{align*}
-D(x,y,\sigma_{L,k}) &= \ell(x,y,k\sigma_{L,k}) - \ell(x,y,\sigma_{L,k}) \\
-                &= f(x,y) * \big( g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}) \big)
+d_{o,k}(x,y)
+&= f_{o,k}(x,y) - f_{o,k-1}(x,y) \\
+&= \mathcal{D}_o \big[ f(x,y) * g(x,y,k\sigma_o) \big] - \mathcal{D}_o \big[ f(x,y) * g(x,y,(k-1)\sigma_o) \big] \\
+&= \mathcal{D}_o \big[ f(x,y) * g(x,y,k\sigma_o) - f(x,y) * g(x,y,(k-1)\sigma_o) \big] \\
+&= \mathcal{D}_o \big[ f(x,y) * \big( \underbrace{g(x,y,k\sigma_o) - g(x,y,(k-1)\sigma_o)}_\mathrm{DoG} \big) \big] \\
 \end{align*}
 
-where $(g(x,y,k\sigma_{L,k}) - g(x,y,\sigma_{L,k}))$ is called the _difference-of-Gaussian_ (DoG).
-It can be seen that the DoG acts as a bandpass filter.
+where $g(x,y,k\sigma_o) - g(x,y,(k-1)\sigma_o)$ is called the *difference-of-Gaussian* (DoG) and acts as a bandpass filter.
 
 :::{figure} figs/sift-DoG.png
-height: 400px
-name: F:sift:DoG
+:width: 100%
+:name: F:detection:sift:DoG
 Scale space and DoG at each octave and for each couple of blurred images [[Lowe 2004](#B:detection:Lowe2004)].
+:::
+
+:::{figure} figs/sift-DoG-appli.png
+:width: 100%
+:name: F:detection:sift:DoG-appli
+Example of DoG scale-space on an image (left).
+[[Rey Otero 2014](#B:detection:ReyOtero2014)].
 :::
 
 <!-- Illustration du DoG (en particulier sur une ellipse : cf Lowe2004, fin de la p.95 -->
@@ -82,31 +112,24 @@ Scale space and DoG at each octave and for each couple of blurred images [[Lowe 
 
 ## Keypoint detection
 
-The keypoints are pixels in the image that are invariant to scale and orientation.
+*Keypoints* are defined as pixels in the image that are invariant to scale and orientation.
 To detect keypoints, each pixel in a blurred image (at each octave and scale)
 is compared to its 8 neighbors in the current image
-and 9 neighbors in the scale above and below (see Fig. X).
+and its 18 neighbors in the scale above and below (@F:detection:sift:DoG-extrema).
 This gives a total of 26 neighbors.
 
 :::{figure} figs/sift-extrema.png
-:height: 150px
-:name: F:sift:DoG-extrema
-Extrema of the DoG images are detected by comparing a pixel (marked with X)
+:height: 200px
+:name: F:detection:sift:DoG-extrema
+Extrema of the DoG images are detected by comparing a pixel (marked with $\times$)
 to its neighbors (marked with circles) at the current and adjacent scales
 [[Lowe 2004](#B:detection:Lowe2004)].
 :::
 
 The pixel is then considered as a keypoint if and only if it is an extremum in its neighboring,
-that is it is greater or smaller than all of its neighbors.
+i.e. it is greater or smaller than all of its neighbors.
 Note that some detected keypoints are discarded if they are low contrasted
 or if they lie on an edge (because their localization cannot be precise enough along the edge).
-
-:::{figure} figs/sift-DoG-appli.png
-:width: 100%
-:name: F:sift:DoG-appli
-Example of DoG scale-space on an image (left).
-[[Rey Otero 2014](#B:detection:ReyOtero2014)].
-:::
 
 <!------------------------------------------------------------------------------------------------>
 
@@ -115,14 +138,14 @@ Example of DoG scale-space on an image (left).
 Each remaining keypoint is assigned to an orientation so that the descriptors are invariant to rotation.
 
 In order to make the orientation as stable as possible against lighting or contrast changes,
-the orientation is not the gradient angle but is determined from _histogram of oriented gradient_ (HOG).
+the orientation is not the gradient angle but is determined from *histogram of oriented gradient* (HOG).
 HOG is simply the histogram of the gradient angles in a window around the keypoint:
 each pixel in the window contributes to the histogram by adding a value equal to the gradient magnitude
-to the (nearest) bin corresponding to the gradient orientation (@F:sift:HoG).
+to the (nearest) bin corresponding to the gradient orientation (@F:detection:sift:HoG).
 
 :::{figure} figs/sift-hog.svg
-:height: 250px
-:name: F:sift:HoG
+:height: 300px
+:name: F:detection:sift:HoG
 HoG on a 160×160 image.
 Each window is of size 16×16.
 :::
@@ -131,8 +154,8 @@ In SIFT, the histogram has 36 bins covering the 360 degree range of rotations.
 The orientation to assign to the keypoint is determined by the highest peak in the histogram.
 
 :::{figure} figs/sift-keypoints.svg
-:height: 250px
-:name: F:sift:keypoints
+:height: 300px
+:name: F:detection:sift:keypoints
 Keypoints and their orientation.
 :::
 
@@ -156,7 +179,7 @@ Keypoints, their orientation, and their windows where an HoG is computed.
 
 The 16×16 window is divided into 16 cells where an HoG is computer with 8 orientation bins in each.
 The descriptor is the vector containing the values of all the orientation histogram entries,
-therefore, it continas 16×8 = 128 element features.
+therefore, it contains 16 cells × 8 bins = 128 features.
 
 <!------------------------------------------------------------------------------------------------>
 
@@ -164,7 +187,7 @@ therefore, it continas 16×8 = 128 element features.
 
 The final stage of SIFT is to find matching between the descriptors of one image with the descriptors of a second image.
 To do that, the descriptors are considered as points in a 128-dimensional space.
-The goal is to find the lowest Eclidean distance between the points 
+The goal is to find the lowest Eclidean distance between the points.
 The descriptor $d_i^1$ of image 1 is paired to the descriptor $d_j^2$ of image 2 that minimizes the Euclidean distance between descriptors.
 A pair is considered reliable only if its distance is below a certain threshold, otherwise it is discarded.
 
@@ -203,7 +226,7 @@ The main differences with SIFT are the following:
 * The orientation of the keypoints are determinated with _Haar wavelets_,
   which are a series of binary masks with rectangular regions.
 
-* Other simplifications allows to simplify the different stages of the SIFT algorithm to the essential.
+* Other modifications simplify the different stages of the SIFT algorithm to the essential.
   For instance, SURF produces a 64-dimensional descriptor, which is more compact and faster to compute than SIFT descriptor.
 
 ORB (Orientated FAST and Robust BRIEF) [[Rublee 2011](#B:detection:Rublee2011)]
