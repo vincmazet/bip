@@ -24,7 +24,7 @@ This page presents a simplified version of the SIFT algorithm and aims to give t
 Detailed specifications are given in [[Rey-Otero, 2014](#B:detection:ReyOtero2014)], for instance.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+<!-- -------------------------------------------------------------------------------------------- -->
 
 ## Scale-space representation
 
