@@ -5,7 +5,7 @@ There are however other methods, among which:
 * the Moravec detector [[Moravec 1980](#B:detection:Moravec1980)],
 * the Harris detector [[Harris & Stephens 1988](#B:detection:Harris1988)].
 
-% ---------------------------------------------------------------------------------------------->
+% ----------------------------------------------------------------------------------------------
 
 ## Moravec detector
 
