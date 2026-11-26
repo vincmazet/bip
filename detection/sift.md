@@ -237,6 +237,7 @@ is considered to be roughly 10 times faster than SURF, while performing as well 
 
 
 % À ranger
+
 % https://www.micc.unifi.it/delbimbo/wp-content/uploads/2011/03/slide_corso/A33%20SIFT-GLOH-SURF.pdf
 % https://github.com/hoanglehaithanh/Traffic-Sign-Detection
 % https://github.com/mohd-adeeb011/Traffic-Sign-Board-Recognition-Using-Camera
