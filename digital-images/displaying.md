@@ -10,7 +10,7 @@ thanks to the principles of additive color mixing (see @F:digital-images:additiv
 The correspondence between the numerical value of the intensities and colors on the screen
 is visually represented by a *colormap*.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Displaying a 2D grayscale image
 
@@ -39,7 +39,7 @@ Also, displaying the logarithm of the image helps to make the spots visible (see
 An image of spots displayed with differente colormaps.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Displaying a 2D color image
 
@@ -49,7 +49,7 @@ So, a color image is simply a composition of the intensities of these three wave
 Each of these three bands codes the intensity of red, green and blue light of the image, hence the name RGB (red, green, blue).
 This is why digital screens are made of red, green and blue luminophores.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Displaying other types of images
 
@@ -59,4 +59,4 @@ For example, only three bands can be selected and displayed as an RGB image.
 Another possibility is to gather the bands into three groups and compute the mean within each group,
 these means becoming the three bands of a standard RGB image.
 
-<!-- niveau gris, images en fausses couleurs -->
+% niveau gris, images en fausses couleurs

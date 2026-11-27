@@ -20,7 +20,7 @@ The third oscillation (on the right) is of lower frequency than the first two os
 because the alternation of black and white pixel is smoother than on the first oscillations.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Direct Fourier transform
 
@@ -49,7 +49,7 @@ The intensities of the low frequencies are located in the center of the image, a
 In the figure above, the gray background behind the squirrel "contains" mainly low frequencies because the intensities of the pixels slowly evolve from one pixel to another.
 On the contrary, high frequencies are needed in the tail to show the rapid alternation between the hair and the background.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Inverse Fourier transform
 
@@ -61,7 +61,7 @@ $$
 
 It is denoted $\mathcal{F}^{-1}$ below.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Example of simple Fourier transforms
 
@@ -131,7 +131,7 @@ it is possible to generate a specific image
 (here, the mean of the image is set to 0).
 ::::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Properties
 
@@ -165,4 +165,4 @@ it is possible to generate a specific image
 
 * A rotation on the image implies the same rotation on the DFT.
 
-<!-- Illustrer toutes ces propriétés -->
+% Illustrer toutes ces propriétés

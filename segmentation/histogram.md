@@ -3,7 +3,7 @@
 
 Histogram thresholding is a very basic method for segmenting grayscale images based on the pixel intensities.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Binary thresholding
 
@@ -40,7 +40,7 @@ Histogram of @F:segmentation:binarization with the two thresholds.
 It would be useful to have an automatic process to define the threshold.
 Several methods exist but Otsu's method is the most famous automatic method for histogram thresholding.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:segmentation:otsu)=
 ## Otsu's method
@@ -90,7 +90,7 @@ An example of Otsu's thresholding is given @F:segmentation:otsu.
 Result of Otsu's segmentation.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Multiple thresholds
 
@@ -104,33 +104,32 @@ but the computational complexity (hence the computation time) increases greatly 
 Several thresholds are applied to an image to get several classes (shown in colors).
 :::
 
-<!-- 
-En TP ?
-La variation d'illumination ne permet pas de seuiller correctement l'image. Plusieurs solutions sont possibles.
-TODO : afficher :
-- image originale + son histogramme + son seuillage
-- fond
-- image sans fond + son histogramme + son seuillage
-[image : seuillage_variation_illumination, \imgref{Gonzalez $\&$ Woods}
-
-Éclairage $g$ connu : on utilise un modèle paramétrique pour le décrire et on corrige l'image avant le seuillage :
-$$
-\forall (m,n), \quad  h(m,n) = \frac{f(m,n)}{g(m,n)}
-$$
-* Éclairage $g$ inconnu : seuillage local par exemple
-  \includegraphics[width=8.5cm]{seuillage_bloc}
-  \imgref{Gonzalez $\&$ Woods}
-\pnode(3.8,1.2){A}
-\rput[lt](2,0.3){\rnode{B}Attention : zone à une seule classe ($\Rightarrow$ test de la variance)}
-\ncline[linecolor=gray]{<-}{A}{B}
-
-Influence du bruit
-Ajout d'un bruit gaussien sur l'image $\Rightarrow$ convolution de l'histogramme de l'image par une gaussienne.
-  \includegraphics[width=10cm]{seuillage_bruit}
-  \imgref{Gonzalez $\&$ Woods}
-Solutions possibles :
-* Débruiter l'image initiale (filtre gaussien, filtre moyenneur, méthode de débruitage, ...)
-* Filtrer l'image seuillée (opérateurs morphologiques, filtre médian, ...)
-  \only<2>{\rput[c](.5\linewidth,-2){\includegraphics[width=8cm]{vincent72}}}
-* Incorporer de l'information spatiale dans la méthode de segmentation.
-  \includegraphics[width=10cm]{seuillage_filtre_median} -->
+% En TP ?
+% La variation d'illumination ne permet pas de seuiller correctement l'image. Plusieurs solutions sont possibles.
+% TODO : afficher :
+% - image originale + son histogramme + son seuillage
+% - fond
+% - image sans fond + son histogramme + son seuillage
+% [image : seuillage_variation_illumination, \imgref{Gonzalez $\&$ Woods}
+% 
+% Éclairage $g$ connu : on utilise un modèle paramétrique pour le décrire et on corrige l'image avant le seuillage :
+% $$
+% \forall (m,n), \quad  h(m,n) = \frac{f(m,n)}{g(m,n)}
+% $$
+% * Éclairage $g$ inconnu : seuillage local par exemple
+%   \includegraphics[width=8.5cm]{seuillage_bloc}
+%   \imgref{Gonzalez $\&$ Woods}
+% \pnode(3.8,1.2){A}
+% \rput[lt](2,0.3){\rnode{B}Attention : zone à une seule classe ($\Rightarrow$ test de la variance)}
+% \ncline[linecolor=gray]{<-}{A}{B}
+% 
+% Influence du bruit
+% Ajout d'un bruit gaussien sur l'image $\Rightarrow$ convolution de l'histogramme de l'image par une gaussienne.
+%   \includegraphics[width=10cm]{seuillage_bruit}
+%   \imgref{Gonzalez $\&$ Woods}
+% Solutions possibles :
+% * Débruiter l'image initiale (filtre gaussien, filtre moyenneur, méthode de débruitage, ...)
+% * Filtrer l'image seuillée (opérateurs morphologiques, filtre médian, ...)
+%   \only<2>{\rput[c](.5\linewidth,-2){\includegraphics[width=8cm]{vincent72}}}
+% * Incorporer de l'information spatiale dans la méthode de segmentation.
+%   \includegraphics[width=10cm]{seuillage_filtre_median}

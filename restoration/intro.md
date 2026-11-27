@@ -19,4 +19,4 @@ this is a mathematical function whose minimum corresponds to the best possible r
 Direct and inverse problems.
 :::
 
-<!-- donner des exemples réels, liés à des problèmes de restauration (denoising, deconvolution, dehazing, gestion des distortions) ? -->
+% donner des exemples réels, liés à des problèmes de restauration (denoising, deconvolution, dehazing, gestion des distortions) ?

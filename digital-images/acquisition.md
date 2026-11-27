@@ -1,7 +1,7 @@
 (P:digital-images:acquisition)=
 # Image acquisition
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Human vision
 
@@ -36,7 +36,7 @@ Rods and cones are connected to the brain by nerves, which proceeds to the image
 Responsivity of the three kinds of cones, compared to electromagnetic spectrum.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Image acquisition
 
@@ -92,12 +92,12 @@ Image of pollen grains taken on a electron microscope.
 
 In the following, we focus mainly on electromagnetic imaging, especially through visible light.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Sensor (electromagnetic imaging)
 
-<!-- détailler, en particulier sur les aspects géométriques.
-FH propose de rajouter dans BIP : formation des images caméra optique classique (géométrique, photométrique, bruits, il y avait des TP avant sur les caméras rapides, projection perspective, CCD, CMOS. cf avec Adlane par ex), modalité d'imagerie très différentes (impossible de tout couvrir) -->
+% détailler, en particulier sur les aspects géométriques.
+% FH propose de rajouter dans BIP : formation des images caméra optique classique (géométrique, photométrique, bruits, il y avait des TP avant sur les caméras rapides, projection perspective, CCD, CMOS. cf avec Adlane par ex), modalité d'imagerie très différentes (impossible de tout couvrir)
 
 A [photodiode](https://en.wikipedia.org/wiki/Photodiode) is the most common and basic sensor for image acquisition with visible light.
 It is constructed of silicon materials so that its output voltage is proportional to incoming light.
@@ -151,24 +151,24 @@ For example in astronomy, the sensors can be arranged on an hexagonal grid.
 The Bayer filter on an image sensor.
 :::
 
-<!--
-Évoquer dans chaque section les particularités liées aux différents types d'images :
-- niveau de gris, multispectral/hyperspectal
-- visible, IR ou même non électromagnétique
-- tomographie, PET, IRM, scanner
-- Computational photography (New cameras do not capture photons;they compute pictures)
-  + flutter shutter
-- interférométrie
-- SKA (utile aussi pour la fabrication d'une image avec un capteur non classique)
-- radar
-- Example on Acoustic Images
--->
 
-<!------------------------------------------------------------------------------------------------>
+% Évoquer dans chaque section les particularités liées aux différents types d'images :
+% - niveau de gris, multispectral/hyperspectal
+% - visible, IR ou même non électromagnétique
+% - tomographie, PET, IRM, scanner
+% - Computational photography (New cameras do not capture photons;they compute pictures)
+%   + flutter shutter
+% - interférométrie
+% - SKA (utile aussi pour la fabrication d'une image avec un capteur non classique)
+% - radar
+% - Example on Acoustic Images
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Sampling and quantization
 
-<!-- compressive sensing -->
+% compressive sensing
 
 The final step of digital image formation is digitization,
 which is both the sampling and quantization of the observed scene.
@@ -246,7 +246,7 @@ For most common applications, the error is sufficiently low to be acceptable.
 But some applications, such as medical imaging or astronomy,
 require a finer resolution and, in consequence, use more than 256 gray levels.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Distortions
 

@@ -1,6 +1,6 @@
 # Watershed
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Principle
 
@@ -40,26 +40,24 @@ The grayscale image with the watershed boundaries (dams) shown in red.
 The profile considered in {numref}`F:segmentation:watershed-animation` is plotted in green.
 :::
 
-<!-- 
-Le principe de la ligne de partage des eaux est donc :
-1. de construire la carte d'élévation,
-1. de remplir progressivement d'eau chaque bassin versant : l'eau apparaît tout en bas du relief,
-1. de faire monter le niveau de l'eau,
-1. lorsque deux bassins se rejoignent, la ligne de partage des eaux est marquée comme frontière.
+% Le principe de la ligne de partage des eaux est donc :
+% 1. de construire la carte d'élévation,
+% 1. de remplir progressivement d'eau chaque bassin versant : l'eau apparaît tout en bas du relief,
+% 1. de faire monter le niveau de l'eau,
+% 1. lorsque deux bassins se rejoignent, la ligne de partage des eaux est marquée comme frontière.
+% 
+% Algorithm:
+% * Calculate the gradient (or Laplacian) of the image.
+% * The pixels with the lowest intensity form the initial watersheds.
+% * For each intensity level $i$ :
+% * For each group of pixels of intensity $i$ :
+% * If adjacent to exactly one existing region: add these pixels in this region.
+% * If adjacent to several regions simultaneously: mark as watershed.
+% * Otherwise, start a new region.
+% 
+% Note: several algorithms exist, which lead to slightly different results.
 
-Algorithm:
-* Calculate the gradient (or Laplacian) of the image.
-* The pixels with the lowest intensity form the initial watersheds.
-* For each intensity level $i$ :
-* For each group of pixels of intensity $i$ :
-* If adjacent to exactly one existing region: add these pixels in this region.
-* If adjacent to several regions simultaneously: mark as watershed.
-* Otherwise, start a new region.
-
-Note: several algorithms exist, which lead to slightly different results.
--->
-
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Application to an image
 
@@ -73,7 +71,7 @@ An image (left), its gradient (center), and the result given by the watershed.
 The contours are computed by using the [Sobel filter](C:detection:sobel).
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Limitations
 

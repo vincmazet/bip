@@ -22,7 +22,7 @@ More advanced methods have also been developed, such as the Richardson-Lucy algo
 [[Richardson 1972](#B:restoration:Richardson1972), [Lucy 1974](#B:restoration:Lucy1974)]
 and Bayesian methods.
 
-<!-- MAP Contrained least squares -->
+% MAP Contrained least squares
 
 
 :::{seealso} References

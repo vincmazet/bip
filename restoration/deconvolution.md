@@ -48,12 +48,12 @@ A knowledge about the degradation model (i.e. $h$ and $b$) is necessary to perfo
   Note finally that certain deconvolution methods estimate the PSF $h$ at the same time as $x$:
   these are refered to as blind deconvolution methods (French: _déconvolution myope_).
 
-  <!-- développer le 1er exemple, notamment avec une illustration en astro -->
-  <!-- 1er point : déconvolution naïve en l'absence de bruit dans une petite zone, essai--erreur, ..-->
+  % développer le 1er exemple, notamment avec une illustration en astro
+  % 1er point : déconvolution naïve en l'absence de bruit dans une petite zone, essai--erreur, .
 
 * Models for the noise have already been presented in @P:restoration:denoising.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Inverse filter
 
@@ -116,7 +116,7 @@ Result of the truncated inverse filter with very small noise.
 The truncation is set so that the restored image is visually the best one.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Wiener Filter
 
@@ -140,7 +140,7 @@ $$
 \widehat{x} = \mathcal{F}^{-1} \Bigg[ \frac{H^*}{|H|^2 + K} Y \Bigg].
 $$
   
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :::{dropdown} Proof
 
@@ -239,7 +239,7 @@ and the term $S_b/S_x$ is replaced by a constant $K$, which becomes the paramete
 
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The result of the Wiener filter is illustrated @F:restoration:wiener-filter:
 it is clearly much better than the inverse filter, including its truncated variant!
@@ -264,34 +264,34 @@ $$
 
 
 
-<!-- Cela dit, il n'est pas juste de comparer ces deux méthodes sur la {numref}`F:deconvolution:wiener`,
-car les paramètres des méthodes (10% et $K=10^{-5}$) ne sont peut être pas les meilleurs.
-Il se pose donc la question : comment régler le paramètre de chaque méthode ?
-
-```{margin}
-L'EQM dont il est question ici n'est pas au sens statistique, comme ci-avant.
-Il s'agit ici du carré de la différence entre les deux images.
-```
-
-Pour y répondre, la {numref}`F:deconvolution:parametre` représente la qualité du résultat, en termes d'EQM,
-en fonction de ces paramètres.
-On constate que pour le meilleur choix des paramètres (point rouge sur la courbe),
-l'EQM est bien meilleure pour le filtre de Wiener que pour le filtre inverse.
-Le résultat correspondant est représenté {numref}`F:deconvolution:wiener-best`.
-La différence sur cette sous-image est assez faible, mais il n'empêche que le dessin sur la voile est plus net avec le filtre de Wiener.
-
-```{figure} figs/restauration15.png
----
-width: 600px
-name: F:deconvolution:parametre
----
-Comparaison de l'EQM en fonction du paramètre de la méthode, pour le filtre inverse tronqué et le filtre de Wiener.
-```
-
-```{figure} figs/restauration16.png
----
-width: 600px
-name: F:deconvolution:wiener-best
----
-Résultat du filtre inverse tronquée et du filtre de Wiener pour les meilleurs choix de paramètres.
-``` -->
+% Cela dit, il n'est pas juste de comparer ces deux méthodes sur la {numref}`F:deconvolution:wiener`,
+% car les paramètres des méthodes (10% et $K=10^{-5}$) ne sont peut être pas les meilleurs.
+% Il se pose donc la question : comment régler le paramètre de chaque méthode ?
+% 
+% ```{margin}
+% L'EQM dont il est question ici n'est pas au sens statistique, comme ci-avant.
+% Il s'agit ici du carré de la différence entre les deux images.
+% ```
+% 
+% Pour y répondre, la {numref}`F:deconvolution:parametre` représente la qualité du résultat, en termes d'EQM,
+% en fonction de ces paramètres.
+% On constate que pour le meilleur choix des paramètres (point rouge sur la courbe),
+% l'EQM est bien meilleure pour le filtre de Wiener que pour le filtre inverse.
+% Le résultat correspondant est représenté {numref}`F:deconvolution:wiener-best`.
+% La différence sur cette sous-image est assez faible, mais il n'empêche que le dessin sur la voile est plus net avec le filtre de Wiener.
+% 
+% ```{figure} figs/restauration15.png
+% ---
+% width: 600px
+% name: F:deconvolution:parametre
+% ---
+% Comparaison de l'EQM en fonction du paramètre de la méthode, pour le filtre inverse tronqué et le filtre de Wiener.
+% ```
+% 
+% ```{figure} figs/restauration16.png
+% ---
+% width: 600px
+% name: F:deconvolution:wiener-best
+% ---
+% Résultat du filtre inverse tronquée et du filtre de Wiener pour les meilleurs choix de paramètres.
+% ```

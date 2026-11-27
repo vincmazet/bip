@@ -23,8 +23,7 @@ name: F:registration:application:medical
 Change detection in medical imaging.
 ```
 
-<!-- Intra-individual monomodal registration :
-  - One patient, two exams n-months appart (Estimate a transformation (in this case rigid) to compensate for the difference in positioning of the patient in the camera.) -->
+% Intra-individual monomodal registration : One patient, two exams n-months appart (Estimate a transformation (in this case rigid) to compensate for the difference in positioning of the patient in the camera.) 
 
 ```{figure} figs/vincent13.png
 ---

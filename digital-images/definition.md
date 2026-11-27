@@ -1,7 +1,7 @@
 (P:digital-images:definition)=
 # What is a digital image?
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:digital-images:definition:definition)=
 ## Definition
@@ -46,7 +46,7 @@ the pixel at coordinates $(0,0)$ is on the top left corner of the image.
 Coordinate system generally used in image processing.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Diversity of images
 
@@ -82,7 +82,7 @@ Common images have pixel intensities within the range $\{0,1,\dots,255\}$,
 but binary images have values in $\{0,1\}$.
 Most of the time, the intensities are assumed to be real numbers.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## File format
 
@@ -90,7 +90,7 @@ An image file format is a standard way to organize and store image data in a com
 Various criteria are taken into account to choose the format adapted to the application.
 The list below gives the main characteristics of the most common image file formats.
 
-<!-- https://developer.mozilla.org/fr/docs/Web/Media/Guides/Formats/Image_types -->
+% https://developer.mozilla.org/fr/docs/Web/Media/Guides/Formats/Image_types
 
 :::{dropdown} AVIF
 - Name: AV1 Image File Format

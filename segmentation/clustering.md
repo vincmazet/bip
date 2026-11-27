@@ -1,6 +1,6 @@
 # Clustering
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Principle of clustering
 
@@ -23,7 +23,7 @@ In French, these methods are called *méthodes de classification*, although it w
 Clustering methods consists in defining groups of pixels.
 Therefore, all the pixels in the same group define a class in the segmented image.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## The K-means algorithm
 
@@ -51,7 +51,7 @@ The K-means algorithm is given below.
 [A funny illustration of the K-means algorithm](https://allisonhorst.com/k-means-clustering).
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Application on a toy example
 
@@ -90,7 +90,7 @@ The black dashed line represents the frontier between the centroids.
 | **Iteration 1** &nbsp; {span .badge}`STEP A`<br/>Assign the pixels to the closest outlier<br />![](figs/step-2A.svg) | **Iteration 2** &nbsp; {span .badge}`STEP B`<br />Update the centroid location<br />![](figs/step-2B.svg) |
 | **Iteration 1** &nbsp; {span .badge}`STEP A`<br/>Assign the pixels to the closest outlier<br />![](figs/step-3A.svg) | **Iteration 2** &nbsp; {span .badge}`STEP B`<br />Update the centroid location<br />![](figs/step-3B.svg) |
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Application on a real image
 
@@ -104,7 +104,7 @@ Left: observation, center: $K=2$ classes, right: $K=4$ classes.
 Especially, the segmentation with $K=4$ classes identifies water, forest, artificial areas and meadows.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Discussion
 
@@ -164,67 +164,65 @@ Presence of outliers: the K-means algorithm fails in this example.
 
    
 
-<!-- ### Modèles paramétriques
-
-
-L'histogramme de l'image est modélisé par un mélange de lois \eng{mixture model} :
-on dispose d'un modèle paramétrique représentatif des classes présentes dans l'image.
-
-  \includegraphics[width=10cm]{vincent52}
-
-* Lois : souvent gaussiennes \eng{GMM : Gaussian mixture model}.
-* Extension possible à plusieurs dimensions
-
-Deux étapes :
-\begin{enumerate}
-* Estimation des paramètres des lois
-  {\color{gray}Poids $\Pi_k$, moyennes $\mu_k$, écart-types $\sigma_k$}
-    \includegraphics[width=6cm]{vincent54}
-* Classification
-  {\color{gray}Associer à chaque intensité la classe la plus représentative}
-\end{enumerate}
-
-\paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}1}}\; Estimation}
-
-$$
-  \forall i,\qquad
-  p(h(i)|\theta) = \sum_{k=1}^K \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(h(i)-\mu_k)^2}{2\sigma_k^2}\right)
-$$
-
-où $K$ est le nombre de classes
-et $\theta$ regroupe les paramètres inconnus des lois :
-$\theta=[\Pi_1,...,\Pi_K,\mu_1,...,\mu_K,\sigma_1,...,\sigma_K]$.
-
-Estimation des paramètres au sens du maximum de vraisemblance :
-
-$$
-  \hat{\theta}^\text{MV} = \arg \max_{\theta} \prod_i p(h(i)|\theta)
-$$
-
-Méthode de résolution : algorithme EM, algorithmes MCMC, ...
-
-\paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}2}}\; Classification}
-
-  \includegraphics[width=6cm]{vincent54}
-
-Chaque pixel est affecté à la classe dont il maximise la loi :
-
-$$
-  f_\text{seg}(m,n) = \arg \max_{k\in\{1,...,K\}}
-    \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(f(m,n)-\mu_k)^2}{2\sigma_k^2}\right)
-$$
-
-\paragraph{k-moyennes}
-Estimation uniquement des $\mu_k$
-Sensible à l'initialisation
-Sensible aux minima locaux
-Nécessite de connaître le nombre de classes
-\includegraphics[width=4cm]{vincent58-kmeans}
-
-\paragraph{Mélange de gaussiennes}
-Estimation des $\mu_k$ et $\sigma_k$
-Sensible à l'initialisation
-Sensible aux minima locaux
-Nécessite de connaître le nombre de classes
-\includegraphics[width=4cm]{vincent58-gmm}
--->
+% ### Modèles paramétriques
+% % 
+% L'histogramme de l'image est modélisé par un mélange de lois \eng{mixture model} :
+% on dispose d'un modèle paramétrique représentatif des classes présentes dans l'image.
+% 
+%   \includegraphics[width=10cm]{vincent52}
+% 
+% * Lois : souvent gaussiennes \eng{GMM : Gaussian mixture model}.
+% * Extension possible à plusieurs dimensions
+% 
+% Deux étapes :
+% \begin{enumerate}
+% * Estimation des paramètres des lois
+%   {\color{gray}Poids $\Pi_k$, moyennes $\mu_k$, écart-types $\sigma_k$}
+%     \includegraphics[width=6cm]{vincent54}
+% * Classification
+%   {\color{gray}Associer à chaque intensité la classe la plus représentative}
+% \end{enumerate}
+% 
+% \paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}1}}\; Estimation}
+% 
+% $$
+%   \forall i,\qquad
+%   p(h(i)|\theta) = \sum_{k=1}^K \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(h(i)-\mu_k)^2}{2\sigma_k^2}\right)
+% $$
+% 
+% où $K$ est le nombre de classes
+% et $\theta$ regroupe les paramètres inconnus des lois :
+% $\theta=[\Pi_1,...,\Pi_K,\mu_1,...,\mu_K,\sigma_1,...,\sigma_K]$.
+% 
+% Estimation des paramètres au sens du maximum de vraisemblance :
+% 
+% $$
+%   \hat{\theta}^\text{MV} = \arg \max_{\theta} \prod_i p(h(i)|\theta)
+% $$
+% 
+% Méthode de résolution : algorithme EM, algorithmes MCMC, ...
+% 
+% \paragraph{{\color{unistra}$\blacksquare$\hspace*{-.6em}\scriptsize\sf\raisebox{.5mm}{\color{white}2}}\; Classification}
+% 
+%   \includegraphics[width=6cm]{vincent54}
+% 
+% Chaque pixel est affecté à la classe dont il maximise la loi :
+% 
+% $$
+%   f_\text{seg}(m,n) = \arg \max_{k\in\{1,...,K\}}
+%     \frac{\Pi_k}{\sqrt{2\pi\sigma_k^2}} \exp\left(-\frac{(f(m,n)-\mu_k)^2}{2\sigma_k^2}\right)
+% $$
+% 
+% \paragraph{k-moyennes}
+% Estimation uniquement des $\mu_k$
+% Sensible à l'initialisation
+% Sensible aux minima locaux
+% Nécessite de connaître le nombre de classes
+% \includegraphics[width=4cm]{vincent58-kmeans}
+% 
+% \paragraph{Mélange de gaussiennes}
+% Estimation des $\mu_k$ et $\sigma_k$
+% Sensible à l'initialisation
+% Sensible aux minima locaux
+% Nécessite de connaître le nombre de classes
+% \includegraphics[width=4cm]{vincent58-gmm}

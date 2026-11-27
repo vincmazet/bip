@@ -1,13 +1,13 @@
 (P:digital-images:color-models)=
 # Color models
 
-<!-- Rajouter YCbCr ?-->
+% Rajouter YCbCr ?
 
 A *color model*, or *color space*, is a mean to represent colors as points within a specific space.
 Several color models exist, some with multiple variations.
 This section focuses on the most common color spaces.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:digital-images:rgb-color-model)=
 ## The RGB color model
@@ -39,7 +39,7 @@ A "dual" color model is the CMY (cyan, magenta, yellow) color model.
 It is not designed to be used in image processing but rather for color printing since adding pigments on a white surface removes light:
 this explained why it uses subtractive color mixing rather than additive color mixing.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## The HSV color model
 
@@ -80,7 +80,7 @@ The HSV color model has not to be confused with
 the HSI (hue, saturation, intensity) and HSL (hue, saturation, luminance) color models
 which mainly differ from the HSV color model in the third band.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## A color generator
 

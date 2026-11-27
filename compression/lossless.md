@@ -3,7 +3,7 @@
 
 Lossless compression consists of reducing the size of an image file while maintaining the original visual quality.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Run-length encoding
 
@@ -33,7 +33,7 @@ $$
 
 In this example, the compression rate is 66 % (6 bytes compared to 9 bytes).
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Lempel-Ziv-Welch Algorithm
 
@@ -42,10 +42,9 @@ It is used in format such as GIF or TIFF.
 In short, the principle is to build a dictionary where the "words" are groups of pixels and to assign a code to each group.
 The dictionary is built during the compression stage and depends on the image.
 
-<!--
- The algorithm is the following one:
- Initialize the dictionary with all the possible intensities
- For each pixel:
-   Look to the longest sequence in the dictionary that starts at this pixel
-   Replace this sequence with the corresponding code
-   Add to the dictionary the sequence followed by the next pixel -->
+% The algorithm is the following one:
+% Initialize the dictionary with all the possible intensities
+% For each pixel:
+%   Look to the longest sequence in the dictionary that starts at this pixel
+%   Replace this sequence with the corresponding code
+%   Add to the dictionary the sequence followed by the next pixel

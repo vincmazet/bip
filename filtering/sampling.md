@@ -4,7 +4,7 @@
 In this section we study the consequence of a digital acquisition of an image,
 especially the effect due to the sampling.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Mathematical model of sampling
 
@@ -57,7 +57,7 @@ It is important to see that the reproductions can overlap, depending on two vari
 * the distance between each reproductions in the Fourier space,
   which is actually the sampling frequency $F$.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Aliasing and anti-aliasing
 
@@ -70,7 +70,7 @@ The consequence of spectrum overlapping is a phenomenon called *aliasing*
 (French: *repliement spectral*)
 (an example is shown in @F:digital-images:moire in section @P:digital-images:sampling).
 
-<!-- TODO : rajouter des exemples d'aliasing -->
+% TODO : rajouter des exemples d'aliasing
 
 To prevent aliasing, it is mandatory to satisfy
 

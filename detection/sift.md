@@ -24,7 +24,7 @@ This page presents a simplified version of the SIFT algorithm and aims to give t
 Detailed specifications are given in [[Rey-Otero, 2014](#B:detection:ReyOtero2014)], for instance.
 :::
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Scale-space representation
 
@@ -67,7 +67,7 @@ as illustrated in @F:detection:sift:scale-space.
 Scale space representation [Wikipedia].
 :::
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Difference-of-Gaussian at each scale
 
@@ -109,7 +109,7 @@ Example of DoG scale-space on an image (left).
 
 % lien avec le Laplacien : cf Lowe2004, section 3
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Keypoint detection
 
@@ -132,7 +132,7 @@ i.e. it is greater or smaller than all of its neighbors.
 Note that some detected keypoints are discarded if they are low contrasted
 or if they lie on an edge (because their localization cannot be precise enough along the edge).
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Keypoints orientations
 
@@ -160,7 +160,7 @@ The orientation to assign to the keypoint is determined by the highest peak in t
 Keypoints and their orientation.
 :::
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Keypoints descriptors
 
@@ -182,7 +182,7 @@ The 16×16 window is divided into 16 cells where an HoG is computer with 8 orien
 The descriptor is the vector containing the values of all the orientation histogram entries,
 therefore, it contains 16 cells × 8 bins = 128 features.
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Matching
 
@@ -205,7 +205,7 @@ using only a limited amount of computation.
 Example of matching on the main paired keypoints.
 :::
 
-% ##################################################################################################################### %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Alternatives to SIFT
 

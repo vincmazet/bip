@@ -5,7 +5,7 @@ The four morphological tools seen in @P:binary:mm are the elementary operations 
 In this section, we focus on some specific processings,
 others are given by [[Bloch 2005, chapter 6](#B:binary:Bloch2005)].
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:binary:top-hat-transform)=
 ## Top-hat transform 
@@ -37,7 +37,7 @@ Example of a white and black top-hat transforms with a disk of radius 3 pixels a
 (the latter is visible in the bottom-right corner of the original image).
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:binary:granulometry)=
 ## Granulometry
@@ -64,7 +64,7 @@ The original image and the corresponding openings by the successive structuring 
 The granulometry function.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:binary:hit-or-miss-transform)=
 ## Hit-or-miss transform
@@ -95,23 +95,23 @@ then the background outside $I^\mathrm{c}$ is considered white,
 hence some white pixels in $I^\mathrm{c} \ominus E_2$.
 :::
 
-<!-- Sometimes, the two structuring elements are combined into a single structuring element whose pixels have the following values:
-* $1$: pixels that belong to the object to detect,
-* $-1$: pixels that do not belong to the object to detect (*i.e* pixels of the background),
-* $0$: unused pixels (also called "don't care pixels").
+% Sometimes, the two structuring elements are combined into a single structuring element whose pixels have the following values:
+% * $1$: pixels that belong to the object to detect,
+% * $-1$: pixels that do not belong to the object to detect (*i.e* pixels of the background),
+% * $0$: unused pixels (also called "don't care pixels").
+% 
+% With this notation, the structuring element of the hit-or-miss transform in @hit-or-miss` writes
+% 
+% $$
+%   (E_1, E_2) =
+%   \begin{pmatrix}
+%     -1 & -1 & -1 & -1
+%     -1 &  1 &  1 & -1
+%     -1 & -1 & -1 & -1
+%   \end{pmatrix}
+% $$
 
-With this notation, the structuring element of the hit-or-miss transform in @hit-or-miss` writes
-
-$$
-  (E_1, E_2) =
-  \begin{pmatrix}
-    -1 & -1 & -1 & -1 \\
-    -1 &  1 &  1 & -1 \\
-    -1 & -1 & -1 & -1
-  \end{pmatrix}
-$$ -->
-
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:binary:skeleton)=
 ## Skeleton
@@ -126,7 +126,7 @@ $$
 E_k = \underbrace{E\oplus \ldots \oplus E} _{k{\mbox{ times}}}
 $$
 
-<!-- Lantuéjoul's formula -->
+% Lantuéjoul's formula
 
 The skeleton $S(I)$ of image $I$ is defined as:
 
@@ -142,33 +142,33 @@ $$
 Skeleton of the image $I$.
 :::
 
-<!-- ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:
-
-The thinning of $X$ by the structuring element $T=(T_1,T_2)$ is defined by:
-
-$$
-X \circ T = X \ X \otimes T
-$$
-
-and the thickening by:
-
-$$
-X \odot T = X \cup X \otimes T
-$$
-
-Thinning, an anti-extensive operation, therefore removes from $X$ points that are in a particular configuration, selected by the all-or-nothing transformation. The appropriate structuring elements are those for which the origin belongs to $T_1$. On the contrary, thickening adds to $X$ the points selected by the all-or-nothing transformation and is an extensive operation. The appropriate structuring elements are those for which the origin belongs to $T_2$. These two transformations are dual to each other in the following sense:
-
-$$
-X \ocirc T = (X^C \odot T')^C
-$$
-
-with $T' = (T_2,T_1)$ if $T = (T_1,T_2)$.
-
-There is a whole "alphabet" of structuring elements, called the Golay alphabet in hexagonal grid, which allows a wide variety of operations to be performed [Serra, 1982a]. For example
-:
-- if $T_1$ is the elementary structuring element on the grid considered and $T_2$ is empty, the all-or-nothing transformation is an erosion and the corresponding thinning extracts the boundary of the objects;
-- if the configurations sought by the all-or-nothing transformation correspond to a point of the complement surrounded by points of the object forming a locally non-convex configuration, the corresponding thickening (applied iteratively until convergence) makes it possible to calculate the smallest discrete convex containing the initial object;
-- if $T_1$ is the central point of the elementary structuring element and contains the others, the all-or-nothing transformation selects the isolated points of the object;
-– etc.
-
-We will see later that particular configurations make it possible to extract the skeleton of an object by thinning. -->
+% ## Thinning (amincissement), thickening (épaississement) -- besoin pour squeletteTwo new transformations are deduced from the all-or-nothing transformation:
+% 
+% The thinning of $X$ by the structuring element $T=(T_1,T_2)$ is defined by:
+% 
+% $$
+% X \circ T = X \ X \otimes T
+% $$
+% 
+% and the thickening by:
+% 
+% $$
+% X \odot T = X \cup X \otimes T
+% $$
+% 
+% Thinning, an anti-extensive operation, therefore removes from $X$ points that are in a particular configuration, selected by the all-or-nothing transformation. The appropriate structuring elements are those for which the origin belongs to $T_1$. On the contrary, thickening adds to $X$ the points selected by the all-or-nothing transformation and is an extensive operation. The appropriate structuring elements are those for which the origin belongs to $T_2$. These two transformations are dual to each other in the following sense:
+% 
+% $$
+% X \ocirc T = (X^C \odot T')^C
+% $$
+% 
+% with $T' = (T_2,T_1)$ if $T = (T_1,T_2)$.
+% 
+% There is a whole "alphabet" of structuring elements, called the Golay alphabet in hexagonal grid, which allows a wide variety of operations to be performed [Serra, 1982a]. For example
+% :
+% - if $T_1$ is the elementary structuring element on the grid considered and $T_2$ is empty, the all-or-nothing transformation is an erosion and the corresponding thinning extracts the boundary of the objects;
+% - if the configurations sought by the all-or-nothing transformation correspond to a point of the complement surrounded by points of the object forming a locally non-convex configuration, the corresponding thickening (applied iteratively until convergence) makes it possible to calculate the smallest discrete convex containing the initial object;
+% - if $T_1$ is the central point of the elementary structuring element and contains the others, the all-or-nothing transformation selects the isolated points of the object;
+% – etc.
+% 
+% We will see later that particular configurations make it possible to extract the skeleton of an object by thinning.

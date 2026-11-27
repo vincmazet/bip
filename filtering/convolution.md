@@ -1,7 +1,7 @@
 (P:filtering:convolution)=
 # Convolution
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Definition
 
@@ -102,7 +102,7 @@ We will see in @P:filtering:filtering that we have applied here a low pass filte
 
 :::::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Properties
 
@@ -123,7 +123,7 @@ $\alpha (g*h) = (\alpha g) * h = g * (\alpha h)$ &nbsp; (with $\alpha\in\mathbb{
 $h_1*(h_2*h_3) = (h_1*h_2)*h_3$.
 
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (C:convolution-boundaries)=
 ## Boundaries effects
@@ -154,7 +154,7 @@ Also, the best thing is to ensure when acquiring the image that the objects of i
 At last, note that the wrapping hypothesis yields a *circular convolution*.
 This is also the result given by a multiplication in the Fourier domain (see @P:filtering:fourier).
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:convolution:separability)=
 ## Separable Convolution
@@ -213,18 +213,18 @@ $$
 
 The convolution separability saves computation time because the computation of two 1D convolutions requires less operations than the computation of a 2D convolution.
 
-<!-- Exemple pour des images $g$ et $h$ de taille $M \times N$~:
-
-   | multiplications | additions
-
-Sans séparabilité :
-  $f(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)$ | $MN$      | $MN-1$
-  Pour tous les pixels $x,y$~:               | $(MN)^2$  | $MN(MN-1)$
-
-  Avec séparabilité :
-  $f_1(x,y) = \sum_m g(x-m,y) h_1(m)$        | $M$       | $M-1$
-  $f(x,y) = \sum_n f_1(x,y-n) h_2(n)$        | $N$       | $N-1$
-  Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$ -->
+% Exemple pour des images $g$ et $h$ de taille $M \times N$~:
+% 
+%    | multiplications | additions
+% 
+% Sans séparabilité :
+%   $f(x,y) = \sum_m \sum_n g(x-m,y-n) h(m,n)$ | $MN$      | $MN-1$
+%   Pour tous les pixels $x,y$~:               | $(MN)^2$  | $MN(MN-1)$
+% 
+%   Avec séparabilité :
+%   $f_1(x,y) = \sum_m g(x-m,y) h_1(m)$        | $M$       | $M-1$
+%   $f(x,y) = \sum_n f_1(x,y-n) h_2(n)$        | $N$       | $N-1$
+%   Pour tous les pixels $x,y$~:               | $MN(M+N)$ | $MN(M+N-2)$
 
 
 :::{dropdown} Proof

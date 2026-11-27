@@ -2,14 +2,14 @@
 # Denoising
 
 
-<!-- on ne voit pas l'aspect knowledge et model et inversion dans certains filtres de débruitage -->
+% on ne voit pas l'aspect knowledge et model et inversion dans certains filtres de débruitage
 
 Denoising (French: *débruitage*) consists in reducing noise in an image.
 Note that it is often not possible to completely cancel the noise.
 We start this section by listing the most common noise models, then we present four denoising methods:
 mean filter, median filter, periodic noise filtering, and TV regularization.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:denoising:noise-sources)=
 ## Noise sources
@@ -96,7 +96,7 @@ $$
 where $x_\mathrm{min}$ and $x_\mathrm{max}$ are the intensity minimum and maximum.
 
 
-<!-- speckle noise -->
+% speckle noise
 
 
 ### Noise power
@@ -142,7 +142,7 @@ As you can see, when the RSB or the PSNR increases, the noise decreases!
 Noisy image at different RSB and PSNR.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Mean filter
 
@@ -200,7 +200,7 @@ In summary:
 * the mean filter can be written as a convolution,
 * the noise is reduced by averaging the intensities but the image is blurred.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Median filter
 
@@ -227,7 +227,7 @@ Therefore it cannot be written as a convolution.
 Comparison between a mean filter and a median filter, on an image with salt-and-pepper noise.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 (P:restoration:periodic-noise-filtering)=
 ## Periodic noise filtering
@@ -243,7 +243,7 @@ Filtering a periodic noise on a photograph of the Moon:
 the image is cleaned of periodic image artefacts.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## TV regularization
 

@@ -6,7 +6,7 @@ Image registration requires reference points (features) in the images to determi
 Two families of features can be used and have their respective advantages and limitations,
 but they can sometimes be advantageously combined.
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Intensity-based (iconic) approach
 
@@ -24,7 +24,7 @@ Since all pixels are processed, memory and computational demands can be high.
 Furthermore, intensity-based approaches are sensitive to noise and intensity variation between images.
 :::
 
-<!------------------------------------------------------------------------------------------------>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Feature-based (geometric) approach
 

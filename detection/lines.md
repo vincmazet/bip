@@ -12,7 +12,7 @@ Like the Fourier transform, it transposes the image from the spatial space to an
 where the information of interest is represented differently:
 the lines in the spatial space are transformed into points in the Hough space.
 
-% ---------------------------------------------------------------------------------------------->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## First parameterization
 
@@ -56,7 +56,7 @@ But the parameterization has a major drawback:
 a vertical line of slope $a=\infty$ cannot be represented.
 So another parameterization needs to be used in practice.
 
-% ---------------------------------------------------------------------------------------------->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## New parameterization
 
@@ -82,7 +82,7 @@ This parameterization allows to model any type of traight line.
 :name: F:lines:hough-td-2
 :::
 
-% ---------------------------------------------------------------------------------------------->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Hough transform for line detection
 
@@ -121,7 +121,7 @@ The green circles identify the three brighter points in the accumulator.
 
 Besides, it appears that the Hough transform is robust to noise and to occultation (it can detect partially covered objects)
 
-% ---------------------------------------------------------------------------------------------->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## Hough transform for other shapes
 

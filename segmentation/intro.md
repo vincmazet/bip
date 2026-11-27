@@ -33,7 +33,7 @@ Example of segmentation on color
 (left: original image, right: segmentation given as regions).
 :::
 
-<!-- Ajouter un exemple avec comme critère la texture. Cf par ex https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_glcm.html -->
+% Ajouter un exemple avec comme critère la texture. Cf par ex https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_glcm.html
 
 The result of segmentation is not unique:
 it depends on the criterion, the segmentation method, the initialization of the method, etc.
@@ -41,28 +41,26 @@ There are many different segmentation methods and this chapter focuses on the mo
 Finally, we talk about how to measure the quality of segmentation.
 
 
-<!--
-  Dire qu'il y a plein de manière de catégoriser les méthodes.
-  Pour ma part, j propose une classification qui m'arrange.
-  Présenter les liens avec une carte mentale ?
-  Renseignements :
-    - https://pequan.lip6.fr/~bereziat/pima/2012/seuillage/sezgin04.pdf
-    - Wikipedia 
-    - webdocs.cs.ualberta.ca/ nray1/CMPUT605/track3_papers/Threshold_survey.pdf
-      "We categorize the thresholding methods in six groups according to the information they are exploiting:
-      1. histogram shape-based methods (eg the peaks, valleys and curvatures of the smoothed histogram are analyzed)
-      2. clustering-based methods (the gray-level samples are clustered in two parts or alternately are modeled as a mixture of two Gaussians)
-      3. entropy-based methods (entropy of the foreground and background regions, cross-entropy between original and binarized image, etc.)
-      4. object attribute-based methods (search a measure of similarity between the gray-level and the binarized images)
-      5. the spatial methods (higher-order probability distribution and/or correlation between pixels)
-      6. local methods (adapt the threshold value on each pixel to the local image characteristics)"
-  Autres méthodes de que je pourrais présenter :
-    - par texture
-    - Mean-shift {Fukunaga75}
-    - SLIC {Achanta12}
-    - Split/merge
-    - Snakes
--->
+%  Dire qu'il y a plein de manière de catégoriser les méthodes.
+%  Pour ma part, j propose une classification qui m'arrange.
+%  Présenter les liens avec une carte mentale ?
+%  Renseignements :
+%    - https://pequan.lip6.fr/~bereziat/pima/2012/seuillage/sezgin04.pdf
+%    - Wikipedia 
+%    - webdocs.cs.ualberta.ca/ nray1/CMPUT605/track3_papers/Threshold_survey.pdf
+%      "We categorize the thresholding methods in six groups according to the information they are exploiting:
+%      1. histogram shape-based methods (eg the peaks, valleys and curvatures of the smoothed histogram are analyzed)
+%      2. clustering-based methods (the gray-level samples are clustered in two parts or alternately are modeled as a mixture of two Gaussians)
+%      3. entropy-based methods (entropy of the foreground and background regions, cross-entropy between original and binarized image, etc.)
+%      4. object attribute-based methods (search a measure of similarity between the gray-level and the binarized images)
+%      5. the spatial methods (higher-order probability distribution and/or correlation between pixels)
+%      6. local methods (adapt the threshold value on each pixel to the local image characteristics)"
+%  Autres méthodes de que je pourrais présenter :
+%    - par texture
+%    - Mean-shift {Fukunaga75}
+%    - SLIC {Achanta12}
+%    - Split/merge
+%    - Snakes
 
 
 

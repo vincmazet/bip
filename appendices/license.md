@@ -1,25 +1,23 @@
 (P:licence)=
 # Licence
 
-<!-- Add licence for:
-chat convolution
-pièce convolution
-3 gaussiennes fourier
-registration
-freiburg
-fingerprint
-mickey
-MM
-dobble
-R8
-moulinsart
-moravec
-hough
-coins lab 4
-simpsons1
-simpsons2
--->
-
+% Add licence for:
+% chat convolution
+% pièce convolution
+% 3 gaussiennes fourier
+% registration
+% freiburg
+% fingerprint
+% mickey
+% MM
+% dobble
+% R8
+% moulinsart
+% moravec
+% hough
+% coins lab 4
+% simpsons1
+% simpsons2
 
 
 <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Vincent Mazet</span>,
