@@ -65,34 +65,32 @@ Finally, we talk about how to measure the quality of segmentation.
 -->
 
 
-<!--
-some basic relationship between pixels
-- neigbors of a pixel
-- adjancy, connectivity, regions and boundaries
-- distance measure
 
-
-La connexité est la façon dont sont définis les voisins d'un pixel.
-En général, on n'utilise que l'une des deux connexités suivantes :
-* la 4-connexité : un pixel possède quatre voisins (en haut, en bas, à gauche, à droite),
-* la 8-connexité : un pixel possède huit voisins (les quatre précédents et ceux sur les diagonales).
-
-figure figs/connexity.png
-name: F:segmentation:connexity
-4-connexité (à gauche) et 8-connexité (à droite). Les pixels en gris sont les voisins du pixel $(m,n)$.
-
-Chaque région $R_i$ de la segmentation est une composante connexe.
-
-Une composante connexe (_connected component_) est un groupe de pixels
-tel qu'on puisse aller d'un pixel de ce groupe à un autre pixel de ce groupe
-en passant par des pixels du même groupe voisins entre eux.
-
-Ainsi, dans la {numref}`F:segmentation:connected-component`,
-le nombre de composantes connexes est égal à 5 si on considère un voisinage en 4-connexité,
-ou à 4 si on considère un voisinage en 8-connexité.
-
-figure figs/connected-component.png
-name: F:segmentation:connected-component
-Le nombre de composantes connexes (entourées d'un trait de couleur) dépend de la connexité considérée.
-
--->
+% some basic relationship between pixels
+% - neigbors of a pixel
+% - adjancy, connectivity, regions and boundaries
+% - distance measure
+% 
+% 
+% La connexité est la façon dont sont définis les voisins d'un pixel.
+% En général, on n'utilise que l'une des deux connexités suivantes :
+% * la 4-connexité : un pixel possède quatre voisins (en haut, en bas, à gauche, à droite),
+% * la 8-connexité : un pixel possède huit voisins (les quatre précédents et ceux sur les diagonales).
+% 
+% figure figs/connexity.png
+% name: F:segmentation:connexity
+% 4-connexité (à gauche) et 8-connexité (à droite). Les pixels en gris sont les voisins du pixel $(m,n)$.
+% 
+% Chaque région $R_i$ de la segmentation est une composante connexe.
+% 
+% Une composante connexe (_connected component_) est un groupe de pixels
+% tel qu'on puisse aller d'un pixel de ce groupe à un autre pixel de ce groupe
+% en passant par des pixels du même groupe voisins entre eux.
+% 
+% Ainsi, dans la {numref}`F:segmentation:connected-component`,
+% le nombre de composantes connexes est égal à 5 si on considère un voisinage en 4-connexité,
+% ou à 4 si on considère un voisinage en 8-connexité.
+% 
+% figure figs/connected-component.png
+% name: F:segmentation:connected-component
+% Le nombre de composantes connexes (entourées d'un trait de couleur) dépend de la connexité considérée.
