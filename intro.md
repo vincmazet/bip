@@ -28,8 +28,8 @@ Each section of the textbook focuses on a specific problem,
 we were careful to write short and easy-to-read sections.
 
 x
-<!-- In addition to this, chapter [In a Nutshell](mathematical-optimization) gives some explanation of the tools
-that are used in image processing but not specific to the domain, so we put them apart and are not too detailed. -->
+% In addition to this, chapter [In a Nutshell](mathematical-optimization) gives some explanation of the tools
+% that are used in image processing but not specific to the domain, so we put them apart and are not too detailed.
 
 For French speakers, a @P:glossary lists the French translation of the technical terms used in the textbook.
 
